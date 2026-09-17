@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-08T03:51:25.009Z",
+  "results": [
+    {
+      "width": 1440,
+      "status": 200,
+      "text": "Sample Control Valve — CMS Test\n\nWritten by\n\nin\n\nFictional product for CMS testing. These values are examples, not verified manufacturing specifications.\n\nModel\n\nDEMO-CV-01\n\nMaterial\n\nSample brass — updated through ACF\n\nMinimum order\n\nConfirm with supplier\n\nLead time\n\nConfirm before ordering\n\nMORE POSTS\nHello world!\nSeptember 8, 2026",
+      "h1": 1,
+      "overflow": false,
+      "adminToolbar": false
+    },
+    {
+      "width": 390,
+      "status": 200,
+      "text": "Sample Control Valve — CMS Test\n\nWritten by\n\nin\n\nFictional product for CMS testing. These values are examples, not verified manufacturing specifications.\n\nModel\n\nDEMO-CV-01\n\nMaterial\n\nSample brass — updated through ACF\n\nMinimum order\n\nConfirm with supplier\n\nLead time\n\nConfirm before ordering\n\nMORE POSTS\nHello world!\nSeptember 8, 2026",
+      "h1": 1,
+      "overflow": false,
+      "adminToolbar": false
+    }
+  ],
+  "passed": true
+}

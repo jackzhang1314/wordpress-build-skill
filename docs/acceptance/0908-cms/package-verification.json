@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-09-08T03:59:41.914Z",
+  "sha256": "7fb636c0bb3263c703d0e9298ac6e0d40d46c94c744fc681f1527631f350ad57",
+  "standaloneHelpPassed": true,
+  "commands": [
+    "doctor",
+    "read-page --id ID",
+    "build --plan FILE [--publish]",
+    "status",
+    "template-parts",
+    "navigation-plan --plan FILE",
+    "navigation-apply --id PLAN_HASH",
+    "page-edit-plan --plan FILE",
+    "page-edit-apply --id PLAN_HASH",
+    "upload-media --plan FILE",
+    "content-type --type TYPE",
+    "read-content --type TYPE --id ID",
+    "content-plan --plan FILE",
+    "content-apply --id PLAN_HASH",
+    "import-plan --plan FILE",
+    "import-apply --id PLAN_HASH"
+  ],
+  "licenseFileIncluded": true,
+  "temporaryVerificationDirectory": "/var/folders/9n/j8qrkwc95mvbjbx3ypbw119r0000gn/T/wp-skill-cms-jvJRrm"
+}

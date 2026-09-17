@@ -1,0 +1,19 @@
+/*
+Theme Name: Octopus Trade
+Description: Native block theme for editable B2B product and case-study websites.
+Version: 0.1.0
+Requires at least: 6.6
+Requires PHP: 8.0
+License: GPL-2.0-or-later
+Text Domain: octopus-trade
+*/
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; }
+a { text-underline-offset: .2em; }
+.wp-block-post-featured-image img { border-radius: 12px; }
+.wp-block-button__link { transition: filter .15s; }
+.wp-block-button__link:hover { filter: brightness(.9); }
+.wp-block-details { padding: 1.25rem 0; border-bottom: 1px solid #dce3de; }
+.wp-block-details summary { cursor: pointer; font-weight: 600; }
+:where(a, button, input, textarea, summary):focus-visible { outline: 3px solid var(--wp--preset--color--accent); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

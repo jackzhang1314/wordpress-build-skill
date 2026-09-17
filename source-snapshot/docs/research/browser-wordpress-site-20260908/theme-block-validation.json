@@ -1,0 +1,72 @@
+[
+  {
+    "file": "templates/404.html",
+    "nodes": 5,
+    "invalid": []
+  },
+  {
+    "file": "templates/archive-oct_case.html",
+    "nodes": 15,
+    "invalid": []
+  },
+  {
+    "file": "templates/archive-oct_product.html",
+    "nodes": 15,
+    "invalid": []
+  },
+  {
+    "file": "templates/archive.html",
+    "nodes": 15,
+    "invalid": []
+  },
+  {
+    "file": "templates/home.html",
+    "nodes": 14,
+    "invalid": []
+  },
+  {
+    "file": "templates/index.html",
+    "nodes": 14,
+    "invalid": []
+  },
+  {
+    "file": "templates/landing.html",
+    "nodes": 5,
+    "invalid": []
+  },
+  {
+    "file": "templates/page.html",
+    "nodes": 6,
+    "invalid": []
+  },
+  {
+    "file": "templates/search.html",
+    "nodes": 15,
+    "invalid": []
+  },
+  {
+    "file": "templates/single-oct_case.html",
+    "nodes": 10,
+    "invalid": []
+  },
+  {
+    "file": "templates/single-oct_product.html",
+    "nodes": 14,
+    "invalid": []
+  },
+  {
+    "file": "templates/single.html",
+    "nodes": 6,
+    "invalid": []
+  },
+  {
+    "file": "parts/footer.html",
+    "nodes": 3,
+    "invalid": []
+  },
+  {
+    "file": "parts/header.html",
+    "nodes": 4,
+    "invalid": []
+  }
+]

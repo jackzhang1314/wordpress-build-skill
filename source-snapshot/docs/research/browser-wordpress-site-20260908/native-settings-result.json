@@ -1,0 +1,113 @@
+{
+    "wordpress": "6.9.7",
+    "theme": "twentytwentyfive",
+    "results": [
+        {
+            "name": "No companion plugin",
+            "passed": true
+        },
+        {
+            "name": "Read native settings",
+            "passed": true
+        },
+        {
+            "name": "Schema exposes title",
+            "passed": true
+        },
+        {
+            "name": "Schema exposes description",
+            "passed": true
+        },
+        {
+            "name": "Schema exposes show_on_front",
+            "passed": true
+        },
+        {
+            "name": "Schema exposes page_on_front",
+            "passed": true
+        },
+        {
+            "name": "Schema exposes page_for_posts",
+            "passed": true
+        },
+        {
+            "name": "Write native settings",
+            "passed": true
+        },
+        {
+            "name": "Readback title",
+            "passed": true
+        },
+        {
+            "name": "Readback description",
+            "passed": true
+        },
+        {
+            "name": "Readback show_on_front",
+            "passed": true
+        },
+        {
+            "name": "Readback page_on_front",
+            "passed": true
+        },
+        {
+            "name": "Readback page_for_posts",
+            "passed": true
+        },
+        {
+            "name": "Theme unchanged",
+            "passed": true
+        },
+        {
+            "name": "Site URL unchanged",
+            "passed": true
+        },
+        {
+            "name": "Read navigation",
+            "passed": true
+        },
+        {
+            "name": "Read templates",
+            "passed": true
+        },
+        {
+            "name": "Read template-parts",
+            "passed": true
+        },
+        {
+            "name": "Anonymous write denied",
+            "passed": true
+        }
+    ],
+    "collections": {
+        "navigation": {
+            "count": 0,
+            "ids": []
+        },
+        "templates": {
+            "count": 8,
+            "ids": [
+                "twentytwentyfive\/\/404",
+                "twentytwentyfive\/\/archive",
+                "twentytwentyfive\/\/home",
+                "twentytwentyfive\/\/index",
+                "twentytwentyfive\/\/page-no-title",
+                "twentytwentyfive\/\/page",
+                "twentytwentyfive\/\/search",
+                "twentytwentyfive\/\/single"
+            ]
+        },
+        "template-parts": {
+            "count": 7,
+            "ids": [
+                "twentytwentyfive\/\/footer-columns",
+                "twentytwentyfive\/\/footer-newsletter",
+                "twentytwentyfive\/\/footer",
+                "twentytwentyfive\/\/header-large-title",
+                "twentytwentyfive\/\/header",
+                "twentytwentyfive\/\/sidebar",
+                "twentytwentyfive\/\/vertical-header"
+            ]
+        }
+    }
+}

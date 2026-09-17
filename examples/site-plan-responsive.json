@@ -1,0 +1,326 @@
+{
+  "title": "Harbor Valve · Demo",
+  "description": "Industrial flow control — fictional demonstration site",
+  "sourceFiles": [
+    "examples/company.md"
+  ],
+  "home": "home",
+  "pages": [
+    {
+      "key": "home",
+      "title": "Flow control, specified clearly.",
+      "slug": "harbor-home",
+      "blocks": [
+        {
+          "type": "section",
+          "style": {
+            "background": "#EAF1F5",
+            "color": "#182B38",
+            "padding": 32,
+            "radius": 12
+          },
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "HARBOR VALVE / INDUSTRIAL FLOW CONTROL"
+            },
+            {
+              "type": "heading",
+              "text": "Start with the operating conditions."
+            },
+            {
+              "type": "paragraph",
+              "text": "Compare ball and check valve options, then share the medium, connection size, pressure and temperature your application needs."
+            },
+            {
+              "type": "button",
+              "text": "Explore the product range",
+              "url": "page:products"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Two functions. A clearer selection."
+        },
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "children": [
+                {
+                  "type": "heading",
+                  "level": 3,
+                  "text": "HV-B1 / Ball valve"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "A fictional stainless steel body with manual lever operation. Discuss the required shut-off duty with the sales team."
+                }
+              ]
+            },
+            {
+              "children": [
+                {
+                  "type": "heading",
+                  "level": 3,
+                  "text": "HV-C1 / Check valve"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "A fictional stainless steel body for a check-valve selection exercise. Confirm the installation and process conditions before specification."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "style": {
+            "background": "#25465C",
+            "color": "#FFFFFF",
+            "padding": 24,
+            "radius": 12
+          },
+          "children": [
+            {
+              "type": "heading",
+              "text": "Make your enquiry specific."
+            },
+            {
+              "type": "paragraph",
+              "text": "Include a drawing or connection standard and the operating range. Product suitability, ratings and availability require confirmation."
+            },
+            {
+              "type": "button",
+              "text": "Prepare an enquiry",
+              "url": "page:contact"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Demonstration only. Harbor Valve and the products on this site are fictional acceptance-test data."
+        }
+      ]
+    },
+    {
+      "key": "products",
+      "title": "Select by function.",
+      "slug": "harbor-products",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A concise comparison for an initial enquiry. The products and specifications below are fictional test data."
+        },
+        {
+          "type": "heading",
+          "text": "Product comparison"
+        },
+        {
+          "type": "columns",
+          "columns": [
+            {
+              "children": [
+                {
+                  "type": "section",
+                  "style": {
+                    "background": "#EAF1F5",
+                    "padding": 24,
+                    "radius": 12
+                  },
+                  "children": [
+                    {
+                      "type": "heading",
+                      "level": 3,
+                      "text": "HV-B1 / Ball valve"
+                    },
+                    {
+                      "type": "paragraph",
+                      "text": "Body: stainless steel. Operation: manual lever. Fictional example for a product-selection exercise."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "children": [
+                {
+                  "type": "section",
+                  "style": {
+                    "background": "#EAF1F5",
+                    "padding": 24,
+                    "radius": 12
+                  },
+                  "children": [
+                    {
+                      "type": "heading",
+                      "level": 3,
+                      "text": "HV-C1 / Check valve"
+                    },
+                    {
+                      "type": "paragraph",
+                      "text": "Body: stainless steel. Operation and suitability require confirmation. Fictional example for a product-selection exercise."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "style": {
+            "background": "#EAF1F5",
+            "padding": 24,
+            "radius": 12
+          },
+          "children": [
+            {
+              "type": "heading",
+              "text": "Before a quotation"
+            },
+            {
+              "type": "paragraph",
+              "text": "Provide the process medium, connection size, working pressure and operating temperature. No pressure rating or certification is claimed by this demonstration."
+            }
+          ]
+        },
+        {
+          "type": "faq",
+          "question": "Can these examples be used for procurement?",
+          "answer": "No. This is a fictional site for testing WordPress automation. Real product suitability must be confirmed using an actual supplier's documentation."
+        },
+        {
+          "type": "button",
+          "text": "View enquiry details",
+          "url": "page:contact"
+        },
+        {
+          "type": "button",
+          "text": "Back to home",
+          "url": "page:home"
+        }
+      ]
+    },
+    {
+      "key": "about",
+      "title": "Clarity before commitment.",
+      "slug": "harbor-about",
+      "blocks": [
+        {
+          "type": "section",
+          "style": {
+            "background": "#EAF1F5",
+            "padding": 32,
+            "radius": 12
+          },
+          "children": [
+            {
+              "type": "heading",
+              "text": "A demonstration built around buyer questions."
+            },
+            {
+              "type": "paragraph",
+              "text": "Harbor Valve is a fictional company. This website demonstrates how a small industrial product range can be presented with transparent information and a clear enquiry route."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "What this site tells you"
+        },
+        {
+          "type": "paragraph",
+          "text": "It distinguishes the two example product functions, shows the available example material data and explains which operating details are needed for a specification discussion."
+        },
+        {
+          "type": "heading",
+          "text": "What still requires confirmation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Pressure ratings, certifications, delivery dates, origin, commercial terms and application suitability are not supplied. No customer references or manufacturing credentials are implied."
+        },
+        {
+          "type": "button",
+          "text": "Compare the examples",
+          "url": "page:products"
+        },
+        {
+          "type": "button",
+          "text": "Contact details",
+          "url": "page:contact"
+        }
+      ]
+    },
+    {
+      "key": "contact",
+      "title": "A useful enquiry starts here.",
+      "slug": "harbor-contact",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Demonstration contact page. The example address below is not a working sales inbox. Do not send an actual enquiry."
+        },
+        {
+          "type": "section",
+          "style": {
+            "background": "#EAF1F5",
+            "padding": 24,
+            "radius": 12
+          },
+          "children": [
+            {
+              "type": "heading",
+              "text": "Information for a specification request"
+            },
+            {
+              "type": "table",
+              "rows": [
+                [
+                  "Detail",
+                  "What to include"
+                ],
+                [
+                  "Product",
+                  "Ball valve or check valve"
+                ],
+                [
+                  "Medium",
+                  "Fluid and relevant process conditions"
+                ],
+                [
+                  "Connection",
+                  "Size and connection standard"
+                ],
+                [
+                  "Operating range",
+                  "Working pressure and temperature"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Example email"
+        },
+        {
+          "type": "paragraph",
+          "text": "sales@example.com — reserved example address. No enquiry form or email delivery is configured on this test site."
+        },
+        {
+          "type": "button",
+          "text": "Review product information",
+          "url": "page:products"
+        },
+        {
+          "type": "button",
+          "text": "Return to home",
+          "url": "page:home"
+        }
+      ]
+    }
+  ]
+}

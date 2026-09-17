@@ -1,0 +1,21 @@
+{
+  "createdAt": "2026-09-07T19:36:04.449Z",
+  "head": "3e4f1666784dfa6cb9bc8784b2d37dbd4dea7161",
+  "uncommitted": true,
+  "candidate": "output/builds/wp-resume-0908",
+  "loadedExtension": "output/playwright/wp-e2e-0908/extension",
+  "artifacts": [
+    {
+      "path": "background.js",
+      "sha256": "7bd07e11ed476be5d9c197f85532c748412bd5e8471590c92d6a7edc63267224"
+    },
+    {
+      "path": "sidepanel.js",
+      "sha256": "35eb9b7f214c7818d83dd262c4b21195c5bd749a89e9eb4358932ceaaee67adf"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "3d2aaa268c6c63ada720686f942531e0b037adfe24c602070fe33cfc7ab39240"
+    }
+  ]
+}

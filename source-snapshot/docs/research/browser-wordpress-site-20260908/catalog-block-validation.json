@@ -1,0 +1,81 @@
+{
+  "versions": {
+    "blocks": "15.27.0",
+    "library": "10.5.0"
+  },
+  "result": [
+    {
+      "name": "core/heading",
+      "isValid": true
+    },
+    {
+      "name": "core/heading",
+      "isValid": true
+    },
+    {
+      "name": "core/paragraph",
+      "isValid": true
+    },
+    {
+      "name": "core/image",
+      "isValid": true
+    },
+    {
+      "name": "core/buttons",
+      "isValid": true
+    },
+    {
+      "name": "core/button",
+      "isValid": true
+    },
+    {
+      "name": "core/shortcode",
+      "isValid": true
+    },
+    {
+      "name": "core/group",
+      "isValid": true
+    },
+    {
+      "name": "core/heading",
+      "isValid": true
+    },
+    {
+      "name": "core/paragraph",
+      "isValid": true
+    },
+    {
+      "name": "core/query",
+      "isValid": true
+    },
+    {
+      "name": "core/post-template",
+      "isValid": true
+    },
+    {
+      "name": "core/post-title",
+      "isValid": true
+    },
+    {
+      "name": "core/post-excerpt",
+      "isValid": true
+    },
+    {
+      "name": "core/query-pagination",
+      "isValid": true
+    },
+    {
+      "name": "core/query-pagination-previous",
+      "isValid": true
+    },
+    {
+      "name": "core/query-pagination-numbers",
+      "isValid": true
+    },
+    {
+      "name": "core/query-pagination-next",
+      "isValid": true
+    }
+  ],
+  "serialized": "<!-- wp:heading -->\n<h2 class=\"wp-block-heading\">Product &amp; FAQ</h2>\n<!-- /wp:heading -->\n\n<!-- wp:heading {\"level\":3} -->\n<h3 class=\"wp-block-heading\">Details</h3>\n<!-- /wp:heading -->\n\n<!-- wp:paragraph -->\n<p>Facts<br>Line two</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:image {\"id\":3,\"sizeSlug\":\"full\",\"linkDestination\":\"none\"} -->\n<figure class=\"wp-block-image size-full\"><img src=\"https://site.example/part.png\" alt=\"Metal part\" class=\"wp-image-3\"/></figure>\n<!-- /wp:image -->\n\n<!-- wp:buttons -->\n<div class=\"wp-block-buttons\"><!-- wp:button -->\n<div class=\"wp-block-button\"><a class=\"wp-block-button__link wp-element-button\" href=\"https://site.example/contact\">Get quote</a></div>\n<!-- /wp:button --></div>\n<!-- /wp:buttons -->\n\n<!-- wp:shortcode -->\n[wpforms id=\"5\"]\n<!-- /wp:shortcode -->\n\n<!-- wp:group -->\n<div class=\"wp-block-group\"><!-- wp:heading -->\n<h2 class=\"wp-block-heading\">Specs</h2>\n<!-- /wp:heading -->\n\n<!-- wp:paragraph -->\n<p>Truth</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:group -->\n\n<!-- wp:query {\"queryId\":1,\"query\":{\"perPage\":9,\"pages\":0,\"offset\":0,\"postType\":\"oct_product\",\"order\":\"desc\",\"orderBy\":\"date\",\"author\":\"\",\"search\":\"\",\"exclude\":[],\"sticky\":\"\",\"inherit\":false}} -->\n<div class=\"wp-block-query\"><!-- wp:post-template -->\n<!-- wp:post-title {\"isLink\":true} /-->\n\n<!-- wp:post-excerpt /-->\n<!-- /wp:post-template -->\n\n<!-- wp:query-pagination -->\n<!-- wp:query-pagination-previous /-->\n\n<!-- wp:query-pagination-numbers /-->\n\n<!-- wp:query-pagination-next /-->\n<!-- /wp:query-pagination --></div>\n<!-- /wp:query -->"
+}

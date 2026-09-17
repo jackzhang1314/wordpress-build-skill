@@ -1,0 +1,142 @@
+{
+  "recordedAt": "2026-09-17T19:50:00+08:00",
+  "site": {
+    "url": "http://127.0.0.1:9462",
+    "scope": "isolated loopback demo",
+    "wordpressReported": "7.1",
+    "phpResponseHeader": "8.5.8",
+    "theme": "twentytwentyfive",
+    "themeVersion": "1.5"
+  },
+  "company": {
+    "name": "TerraDig Export — Demo",
+    "fictional": true,
+    "purpose": "excavator export enquiry workflow demonstration"
+  },
+  "engineeringBaseline": {
+    "node": 24,
+    "typecheck": "pass",
+    "lint": "pass",
+    "tests": {
+      "total": 22,
+      "passed": 22,
+      "failed": 0
+    },
+    "build": "pass"
+  },
+  "media": {
+    "heroMediaId": 29,
+    "frontendLoaded": true,
+    "altMatches": true,
+    "license": "public domain, U.S. Bureau of Land Management via Wikimedia Commons"
+  },
+  "products": [
+    {
+      "key": "TD-MINI",
+      "id": 30,
+      "slug": "td-mini",
+      "status": "publish"
+    },
+    {
+      "key": "TD-CRAWLER",
+      "id": 31,
+      "slug": "td-crawler",
+      "status": "publish"
+    },
+    {
+      "key": "TD-LONGREACH",
+      "id": 32,
+      "slug": "td-longreach",
+      "status": "publish"
+    }
+  ],
+  "pages": [
+    {
+      "key": "home",
+      "id": 36,
+      "slug": "terradig-home",
+      "url": "http://127.0.0.1:9462/",
+      "status": "publish"
+    },
+    {
+      "key": "products",
+      "id": 37,
+      "slug": "terradig-products",
+      "url": "http://127.0.0.1:9462/terradig-products/",
+      "status": "publish"
+    },
+    {
+      "key": "process",
+      "id": 38,
+      "slug": "terradig-process",
+      "url": "http://127.0.0.1:9462/terradig-process/",
+      "status": "publish"
+    },
+    {
+      "key": "contact",
+      "id": 39,
+      "slug": "terradig-contact",
+      "url": "http://127.0.0.1:9462/terradig-contact/",
+      "status": "publish"
+    }
+  ],
+  "templates": [
+    {
+      "id": "twentytwentyfive//single-oct_product",
+      "wpId": 54,
+      "purpose": "dedicated product enquiry profile template",
+      "readbackMatches": true
+    }
+  ],
+  "anonymousChecks": {
+    "singleH1": {
+      "home": true,
+      "products": true,
+      "process": true,
+      "contact": true
+    },
+    "mobileHorizontalOverflow": false,
+    "heroImageLoaded": true,
+    "heroAltMatches": true,
+    "mobileMenuOpensAndCloses": true,
+    "productMetaRenders": true,
+    "queryLoopShowsOnlyThreeExcavatorProfiles": true,
+    "internalUniqueUrlsChecked": 24,
+    "internalUniqueUrlsPassed": 24,
+    "redirectsFound": 0,
+    "httpFailures": 0
+  },
+  "issuesFoundAndResolved": [
+    {
+      "issue": "three-column cards were too narrow in theme content width",
+      "resolution": "changed to two-column layout and shorter copy"
+    },
+    {
+      "issue": "four process cards were split into two tall columns, producing reading order 1, 3, 2, 4",
+      "resolution": "split into two sequential two-column groups"
+    },
+    {
+      "issue": "older CMS fixture products appeared in unfiltered Query Loop",
+      "resolution": "explicitly moved fixture products 22 and 24 back to draft; no deletion"
+    },
+    {
+      "issue": "product detail inherited post template with author and unrelated posts",
+      "resolution": "created dedicated single-oct_product block template"
+    },
+    {
+      "issue": "body buttons initially used ?page_id= URLs",
+      "resolution": "page-edit plans replaced them with final permalinks"
+    },
+    {
+      "issue": "two footer navigation plans shared one template part",
+      "resolution": "first stale plan was rejected as designed; part was reread and a fresh plan applied"
+    }
+  ],
+  "boundaries": [
+    "local loopback only; not HTTPS or production acceptance",
+    "Twenty Twenty-Five only; not a theme compatibility matrix",
+    "ACF/meta text fields only; image, repeater and relationship adapters are not accepted",
+    "catalog has no taxonomy/term/search filter in the current bounded schema",
+    "form delivery, SEO plugins and WooCommerce are out of scope"
+  ]
+}

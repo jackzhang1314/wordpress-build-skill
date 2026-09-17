@@ -1,0 +1,1 @@
+{"title":"WordPress 原生区块建页","category":"website","summary":"连接WordPress，根据企业资料创建标准外贸站、产品案例与原生区块页面。","inputs":["企业资料、页面用途与语言"],"outputs":["原生区块页面草稿和预览检查"],"tags":["WordPress","独立站","Gutenberg"],"example":"使用WordPress连接器，根据企业资料建设一个产品展示站，先检查建站组件，规划页面并生成草稿，预览后再按我的目标上线。","requirements":"设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。","connections":["wordpress"]}

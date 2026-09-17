@@ -1,0 +1,26 @@
+.skill-composer{min-width:0;width:100%;position:relative}
+.skill-editor{box-sizing:border-box;min-height:62px;max-height:220px;overflow:auto;padding:6px 0;outline:none;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ui-color-text);font-family:var(--ui-font-sans);font-size:var(--ui-text-body);line-height:1.9;cursor:text}
+.skill-editor[data-empty=true]::before{content:attr(data-placeholder);color:var(--ui-color-subtle);pointer-events:none}
+.skill-editor:focus-visible{outline:none}
+textarea.skill-textarea-bridge{position:absolute!important;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;clip-path:inset(50%);overflow:hidden!important;opacity:0;pointer-events:none}
+.agent-composer.is-expanded .skill-composer:not([hidden]){display:flex;flex:1;min-height:80px}
+.agent-composer.is-expanded .skill-editor{flex:1;max-height:none;min-height:80px}
+
+.skill-composer[hidden],.skill-token-tooltip[hidden]{display:none}
+.skill-composer .skill-token{display:inline-flex;align-items:baseline;gap:6px;max-width:100%;vertical-align:baseline;user-select:all;min-height:24px;margin:0 3px;padding:0 6px;border:1px solid var(--ui-color-border);border-radius:6px;background:var(--ui-color-surface);color:var(--ui-color-text);font:inherit;line-height:1.5;cursor:pointer}
+.skill-composer .skill-token:hover{background:var(--ui-color-surface-muted);border-color:var(--ui-color-subtle)}
+.skill-composer .skill-token[aria-pressed=true]{color:var(--ui-color-primary);border-color:var(--ui-color-primary);background:var(--ui-color-primary-soft)}
+.skill-composer .skill-token:focus-visible{outline:var(--ui-focus-ring);outline-offset:2px}
+/* The text supplies the inline baseline; the icon must not supply its SVG bottom edge. */
+.skill-token>.skill-token-symbol{align-self:center}
+.skill-token-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.skill-token-symbol{display:inline-flex;align-items:center;flex:none}
+.skill-token-symbol svg{width:16px;height:16px;stroke-width:1.7}
+.skill-token-tooltip{position:fixed;z-index:10020;box-sizing:border-box;width:min(300px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;padding:16px;border:1px solid var(--ui-color-border);border-radius:var(--ui-radius-card);background:var(--ui-color-surface);box-shadow:var(--ui-shadow-popover);color:var(--ui-color-text);font-family:var(--ui-font-sans);font-size:var(--ui-text-body);line-height:1.55}
+.skill-token-tooltip>.skill-token-symbol{display:flex;margin-bottom:10px;color:var(--ui-color-muted)}
+.skill-token-tooltip>.skill-token-symbol svg{width:22px;height:22px}
+.skill-token-tooltip strong{display:block;font-size:var(--ui-text-section);color:var(--ui-color-heading)}
+.skill-token-tooltip p{margin:5px 0 12px;color:var(--ui-color-muted);overflow-wrap:anywhere}
+.skill-token-source{display:inline-flex;align-items:center;gap:4px;padding:2px 6px;border-radius:var(--ui-radius-small);background:var(--ui-color-surface-muted);color:var(--ui-color-muted);font-size:var(--ui-text-meta)}
+.skill-token-source span{display:flex}.skill-token-source svg{width:14px;height:14px}
+.skill-token-tooltip small{display:block;margin-top:10px;font-size:var(--ui-text-meta);color:var(--ui-color-subtle)}

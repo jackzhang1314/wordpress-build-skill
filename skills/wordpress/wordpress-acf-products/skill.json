@@ -1,0 +1,1 @@
+{"title":"ACF 产品批量导入","category":"website","summary":"读取 Excel 或 CSV，映射已有 ACF 字段并分批创建产品草稿。","inputs":["产品表格、唯一编号、已有ACF内容类型"],"outputs":["字段映射预览、产品草稿和逐行回执"],"tags":["WordPress","独立站","运营"],"example":"请帮我完成ACF 产品批量导入，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。","requirements":"设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。","connections":["wordpress"]}

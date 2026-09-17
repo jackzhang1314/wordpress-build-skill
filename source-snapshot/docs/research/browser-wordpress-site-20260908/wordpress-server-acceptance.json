@@ -1,0 +1,70 @@
+{
+    "wordpress": "6.9.7",
+    "php": "8.5.6",
+    "results": [
+        {
+            "name": "CPTs registered",
+            "passed": true
+        },
+        {
+            "name": "Site discovery",
+            "passed": true
+        },
+        {
+            "name": "Create product with native meta",
+            "passed": true
+        },
+        {
+            "name": "Core binding renders field",
+            "passed": true
+        },
+        {
+            "name": "Field edit changes rendering",
+            "passed": true
+        },
+        {
+            "name": "Configure and activate installed theme",
+            "passed": true
+        },
+        {
+            "name": "Native block theme active",
+            "passed": true
+        },
+        {
+            "name": "Home selection saved",
+            "passed": true
+        },
+        {
+            "name": "Stale revision rejected",
+            "passed": true
+        },
+        {
+            "name": "CSS injection rejected",
+            "passed": true
+        },
+        {
+            "name": "Draft home rejected",
+            "passed": true
+        },
+        {
+            "name": "Unknown settings rejected",
+            "passed": true
+        },
+        {
+            "name": "Editor discovery allowed",
+            "passed": true
+        },
+        {
+            "name": "Editor cannot configure site",
+            "passed": true
+        },
+        {
+            "name": "Anonymous discovery rejected",
+            "passed": true
+        },
+        {
+            "name": "Theme switching preserves business data",
+            "passed": true
+        }
+    ]
+}

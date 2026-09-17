@@ -1,0 +1,418 @@
+{
+  "checkedAt": "2026-09-08T03:24:55.274Z",
+  "anonymous": true,
+  "pages": [
+    {
+      "key": "home",
+      "views": [
+        {
+          "width": 1440,
+          "status": 200,
+          "screenshot": "output/playwright/published-home-1440.png",
+          "h1": 1,
+          "overflow": false,
+          "adminToolbar": false,
+          "placeholderLinks": 0,
+          "navigation": [
+            {
+              "label": "Home",
+              "url": "http://127.0.0.1:9462/"
+            },
+            {
+              "label": "Products",
+              "url": "http://127.0.0.1:9462/harbor-products/"
+            },
+            {
+              "label": "About",
+              "url": "http://127.0.0.1:9462/harbor-about/"
+            },
+            {
+              "label": "Contact",
+              "url": "http://127.0.0.1:9462/harbor-contact/"
+            }
+          ],
+          "links": [
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "http://127.0.0.1:9462/?page_id=6",
+            "http://127.0.0.1:9462/?page_id=8",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "https://wordpress.org/"
+          ],
+          "images": []
+        },
+        {
+          "width": 390,
+          "status": 200,
+          "screenshot": "output/playwright/published-home-390.png",
+          "h1": 1,
+          "overflow": false,
+          "adminToolbar": false,
+          "placeholderLinks": 0,
+          "navigation": [
+            {
+              "label": "Home",
+              "url": "http://127.0.0.1:9462/"
+            },
+            {
+              "label": "Products",
+              "url": "http://127.0.0.1:9462/harbor-products/"
+            },
+            {
+              "label": "About",
+              "url": "http://127.0.0.1:9462/harbor-about/"
+            },
+            {
+              "label": "Contact",
+              "url": "http://127.0.0.1:9462/harbor-contact/"
+            }
+          ],
+          "links": [
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "http://127.0.0.1:9462/?page_id=6",
+            "http://127.0.0.1:9462/?page_id=8",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "https://wordpress.org/"
+          ],
+          "images": []
+        }
+      ]
+    },
+    {
+      "key": "products",
+      "views": [
+        {
+          "width": 1440,
+          "status": 200,
+          "screenshot": "output/playwright/published-products-1440.png",
+          "h1": 1,
+          "overflow": false,
+          "adminToolbar": false,
+          "placeholderLinks": 0,
+          "navigation": [
+            {
+              "label": "Home",
+              "url": "http://127.0.0.1:9462/"
+            },
+            {
+              "label": "Products",
+              "url": "http://127.0.0.1:9462/harbor-products/"
+            },
+            {
+              "label": "About",
+              "url": "http://127.0.0.1:9462/harbor-about/"
+            },
+            {
+              "label": "Contact",
+              "url": "http://127.0.0.1:9462/harbor-contact/"
+            }
+          ],
+          "links": [
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "https://wordpress.org/"
+          ],
+          "images": []
+        },
+        {
+          "width": 390,
+          "status": 200,
+          "screenshot": "output/playwright/published-products-390.png",
+          "h1": 1,
+          "overflow": false,
+          "adminToolbar": false,
+          "placeholderLinks": 0,
+          "navigation": [
+            {
+              "label": "Home",
+              "url": "http://127.0.0.1:9462/"
+            },
+            {
+              "label": "Products",
+              "url": "http://127.0.0.1:9462/harbor-products/"
+            },
+            {
+              "label": "About",
+              "url": "http://127.0.0.1:9462/harbor-about/"
+            },
+            {
+              "label": "Contact",
+              "url": "http://127.0.0.1:9462/harbor-contact/"
+            }
+          ],
+          "links": [
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "https://wordpress.org/"
+          ],
+          "images": []
+        }
+      ]
+    },
+    {
+      "key": "about",
+      "views": [
+        {
+          "width": 1440,
+          "status": 200,
+          "screenshot": "output/playwright/published-about-1440.png",
+          "h1": 1,
+          "overflow": false,
+          "adminToolbar": false,
+          "placeholderLinks": 0,
+          "navigation": [
+            {
+              "label": "Home",
+              "url": "http://127.0.0.1:9462/"
+            },
+            {
+              "label": "Products",
+              "url": "http://127.0.0.1:9462/harbor-products/"
+            },
+            {
+              "label": "About",
+              "url": "http://127.0.0.1:9462/harbor-about/"
+            },
+            {
+              "label": "Contact",
+              "url": "http://127.0.0.1:9462/harbor-contact/"
+            }
+          ],
+          "links": [
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "http://127.0.0.1:9462/?page_id=6",
+            "http://127.0.0.1:9462/?page_id=8",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "https://wordpress.org/"
+          ],
+          "images": []
+        },
+        {
+          "width": 390,
+          "status": 200,
+          "screenshot": "output/playwright/published-about-390.png",
+          "h1": 1,
+          "overflow": false,
+          "adminToolbar": false,
+          "placeholderLinks": 0,
+          "navigation": [
+            {
+              "label": "Home",
+              "url": "http://127.0.0.1:9462/"
+            },
+            {
+              "label": "Products",
+              "url": "http://127.0.0.1:9462/harbor-products/"
+            },
+            {
+              "label": "About",
+              "url": "http://127.0.0.1:9462/harbor-about/"
+            },
+            {
+              "label": "Contact",
+              "url": "http://127.0.0.1:9462/harbor-contact/"
+            }
+          ],
+          "links": [
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "http://127.0.0.1:9462/?page_id=6",
+            "http://127.0.0.1:9462/?page_id=8",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "https://wordpress.org/"
+          ],
+          "images": []
+        }
+      ]
+    },
+    {
+      "key": "contact",
+      "views": [
+        {
+          "width": 1440,
+          "status": 200,
+          "screenshot": "output/playwright/published-contact-1440.png",
+          "h1": 1,
+          "overflow": false,
+          "adminToolbar": false,
+          "placeholderLinks": 0,
+          "navigation": [
+            {
+              "label": "Home",
+              "url": "http://127.0.0.1:9462/"
+            },
+            {
+              "label": "Products",
+              "url": "http://127.0.0.1:9462/harbor-products/"
+            },
+            {
+              "label": "About",
+              "url": "http://127.0.0.1:9462/harbor-about/"
+            },
+            {
+              "label": "Contact",
+              "url": "http://127.0.0.1:9462/harbor-contact/"
+            }
+          ],
+          "links": [
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "http://127.0.0.1:9462/?page_id=6",
+            "http://127.0.0.1:9462/?page_id=5",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "https://wordpress.org/"
+          ],
+          "images": []
+        },
+        {
+          "width": 390,
+          "status": 200,
+          "screenshot": "output/playwright/published-contact-390.png",
+          "h1": 1,
+          "overflow": false,
+          "adminToolbar": false,
+          "placeholderLinks": 0,
+          "navigation": [
+            {
+              "label": "Home",
+              "url": "http://127.0.0.1:9462/"
+            },
+            {
+              "label": "Products",
+              "url": "http://127.0.0.1:9462/harbor-products/"
+            },
+            {
+              "label": "About",
+              "url": "http://127.0.0.1:9462/harbor-about/"
+            },
+            {
+              "label": "Contact",
+              "url": "http://127.0.0.1:9462/harbor-contact/"
+            }
+          ],
+          "links": [
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "http://127.0.0.1:9462/?page_id=6",
+            "http://127.0.0.1:9462/?page_id=5",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/",
+            "http://127.0.0.1:9462/harbor-products/",
+            "http://127.0.0.1:9462/harbor-about/",
+            "http://127.0.0.1:9462/harbor-contact/",
+            "https://wordpress.org/"
+          ],
+          "images": []
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "url": "http://127.0.0.1:9462/",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:9462/"
+    },
+    {
+      "url": "http://127.0.0.1:9462/harbor-products/",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:9462/harbor-products/"
+    },
+    {
+      "url": "http://127.0.0.1:9462/harbor-about/",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:9462/harbor-about/"
+    },
+    {
+      "url": "http://127.0.0.1:9462/harbor-contact/",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:9462/harbor-contact/"
+    },
+    {
+      "url": "http://127.0.0.1:9462/?page_id=6",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:9462/harbor-products/"
+    },
+    {
+      "url": "http://127.0.0.1:9462/?page_id=8",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:9462/harbor-contact/"
+    },
+    {
+      "url": "http://127.0.0.1:9462/?page_id=5",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:9462/"
+    }
+  ],
+  "mobileMenu": {
+    "menuLinks": [
+      "Home",
+      "Products",
+      "About",
+      "Contact"
+    ],
+    "closeVisible": true,
+    "closed": true
+  },
+  "passed": true
+}

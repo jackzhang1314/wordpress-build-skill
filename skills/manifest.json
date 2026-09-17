@@ -1,0 +1,929 @@
+{
+  "formatVersion": 1,
+  "source": "builtinSkills()实际导出；历史别名见archive",
+  "skills": [
+    {
+      "name": "technical-seo",
+      "version": "78166ca25ec29a7b4d140d128e3545550261ca7c08b9af7e3838f52326882457",
+      "directory": "skills/related/technical-seo",
+      "description": "进行有范围的全站或单页技术 SEO 审计，检查抓取、索引指令、重复内容、重定向与迁移证据；保留实际覆盖和未知项。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "技术 SEO 审计",
+        "seoGroup": "技术审计",
+        "category": "seo",
+        "summary": "检查单页或有界全站的抓取、重复内容、重定向与索引证据。",
+        "inputs": [
+          "目标页面或域名",
+          "抓取上限、JS 选项与审计目标"
+        ],
+        "outputs": [
+          "技术问题与修复清单",
+          "覆盖范围和证据文件"
+        ],
+        "tags": [
+          "SEO",
+          "Google",
+          "canonical",
+          "robots",
+          "技术审计"
+        ],
+        "example": "审计这个网站的技术 SEO，先确定抓取范围和费用，再按实际证据交付报告。",
+        "requirements": "单页 DOM 检查无需 API。全站抓取使用 DataForSEO，真实索引检查使用 Google 站点授权；按模式配置。",
+        "connections": [
+          "dataforseo",
+          "google"
+        ]
+      }
+    },
+    {
+      "name": "on-page-seo",
+      "version": "d491ff828675de264e0e7dab440edf673b4fea26a878cdb22b7a24af784d3729",
+      "directory": "skills/related/on-page-seo",
+      "description": "检查当前页面的 On-page SEO，包括标题与内容意图、采购信息、图片 alt 和内链，给出带证据的修改建议。技术元数据深入核查与搜索样本研究可使用 technical-seo。",
+      "files": [
+        "LICENSE.txt",
+        "references/on-page-checks.md",
+        "references/sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "On-page SEO 检查",
+        "seoGroup": "页面优化",
+        "category": "seo",
+        "summary": "检查标题、内容、图片与内链，交付逐项修改建议。",
+        "inputs": [
+          "当前页面",
+          "目标词与市场（选填）"
+        ],
+        "outputs": [
+          "原值与建议值",
+          "证据与修改清单"
+        ],
+        "tags": [
+          "SEO",
+          "独立站",
+          "关键词",
+          "页面优化"
+        ],
+        "example": "检查当前页面的 On-page SEO：标题、内容意图、图片和内链，给出原值、证据与修改建议。",
+        "requirements": "使用已有网页或任务资料；不会自动连接外部账户。"
+      }
+    },
+    {
+      "name": "seo-keyword-research",
+      "version": "eb10a46234c266e7382a885226ba95854b1c128ae7f1dd3caa9a6af64c854665",
+      "directory": "skills/related/seo-keyword-research",
+      "description": "从产品种子词扩展目标市场关键词，按真实需求、意图和业务相关性筛选。 使用 DataForSEO API 数据，适用于外贸独立站 SEO。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "关键词研究与机会筛选",
+        "seoGroup": "关键词",
+        "category": "seo",
+        "summary": "从产品种子词扩展目标市场关键词，按真实需求、意图和业务相关性筛选。",
+        "inputs": [
+          "产品与种子词、目标国家和语言"
+        ],
+        "outputs": [
+          "关键词表与机会优先级",
+          "查询来源与范围记录"
+        ],
+        "tags": [
+          "SEO",
+          "DataForSEO",
+          "独立站",
+          "内容",
+          "关键词"
+        ],
+        "example": "请帮我做关键词研究与机会筛选，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+        "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+        "connections": [
+          "dataforseo"
+        ]
+      }
+    },
+    {
+      "name": "seo-serp-analysis",
+      "version": "004e2a1b8fe42c680d5816b12106485be447a1be2cd2030443b8be3baf9c966e",
+      "directory": "skills/related/seo-serp-analysis",
+      "description": "读取目标市场实时 SERP，比较排名页面类型、内容覆盖和可切入问题。 使用 DataForSEO API 数据，适用于外贸独立站 SEO。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "Google 搜索结果分析",
+        "seoGroup": "关键词",
+        "category": "seo",
+        "summary": "读取目标市场实时 SERP，比较排名页面类型、内容覆盖和可切入问题。",
+        "inputs": [
+          "目标词、国家、语言与可选目标页"
+        ],
+        "outputs": [
+          "SERP 样本表与页面规划",
+          "查询来源与范围记录"
+        ],
+        "tags": [
+          "SEO",
+          "DataForSEO",
+          "独立站",
+          "内容",
+          "关键词"
+        ],
+        "example": "请帮我做Google 搜索结果分析，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+        "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+        "connections": [
+          "dataforseo"
+        ]
+      }
+    },
+    {
+      "name": "seo-content-gap",
+      "version": "a8acd509a241a1dcf1854837acc1e367502bd5fa0b2023c6a03494429ded2e40",
+      "directory": "skills/related/seo-content-gap",
+      "description": "找出竞品有排名而自家站没有排名的关键词，再核实值得补齐的内容。 使用 DataForSEO API 数据，适用于外贸独立站 SEO。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "竞争关键词与内容缺口",
+        "seoGroup": "竞争分析",
+        "category": "seo",
+        "summary": "找出竞品有排名而自家站没有排名的关键词，再核实值得补齐的内容。",
+        "inputs": [
+          "自家域名、竞品域名、国家与语言"
+        ],
+        "outputs": [
+          "缺口关键词表与内容优先级",
+          "查询来源与范围记录"
+        ],
+        "tags": [
+          "SEO",
+          "DataForSEO",
+          "独立站",
+          "内容",
+          "关键词",
+          "竞争分析"
+        ],
+        "example": "请帮我做竞争关键词与内容缺口，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+        "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+        "connections": [
+          "dataforseo"
+        ]
+      }
+    },
+    {
+      "name": "seo-topic-clusters",
+      "version": "8a827fa2d62cabb8252c8af552ae55d42283e079f40808f64dc9c9f3281485e5",
+      "directory": "skills/related/seo-topic-clusters",
+      "description": "结合关键词指标和 SERP 重叠规划主题页、子页面与内链。 使用 DataForSEO API 数据，适用于外贸独立站 SEO。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "关键词聚类与内容地图",
+        "seoGroup": "关键词",
+        "category": "seo",
+        "summary": "结合关键词指标和 SERP 重叠规划主题页、子页面与内链。",
+        "inputs": [
+          "关键词或种子词、目标市场、站点页面清单"
+        ],
+        "outputs": [
+          "主题分组、页面地图与内链计划",
+          "查询来源与范围记录"
+        ],
+        "tags": [
+          "SEO",
+          "DataForSEO",
+          "独立站",
+          "内容",
+          "关键词"
+        ],
+        "example": "请帮我做关键词聚类与内容地图，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+        "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+        "connections": [
+          "dataforseo"
+        ]
+      }
+    },
+    {
+      "name": "seo-content-refresh",
+      "version": "9ffb5749cd4d7a803020389bd5dc2f9db76d0e897397d38edbd2c4fdc6b4cf30",
+      "directory": "skills/related/seo-content-refresh",
+      "description": "对照当前搜索意图和原文证据，更新已有文章并保留可复核修改记录。 使用 DataForSEO API 数据，适用于外贸独立站 SEO。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "旧文章数据诊断与更新",
+        "seoGroup": "内容生产",
+        "category": "seo",
+        "summary": "对照当前搜索意图和原文证据，更新已有文章并保留可复核修改记录。",
+        "inputs": [
+          "原文 URL 或文件、关键词与市场"
+        ],
+        "outputs": [
+          "更新稿、修改记录与资料缺口",
+          "查询来源与范围记录"
+        ],
+        "tags": [
+          "SEO",
+          "DataForSEO",
+          "独立站",
+          "内容",
+          "关键词",
+          "内容生产"
+        ],
+        "example": "请帮我做旧文章数据诊断与更新，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+        "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+        "connections": [
+          "dataforseo"
+        ]
+      }
+    },
+    {
+      "name": "seo-content-studio",
+      "version": "76f9eee59e49c39b14ae2e038c20896f3604983b079f97166312ebb915486720",
+      "directory": "skills/related/seo-content-studio",
+      "description": "使用 DataForSEO 关键词和 SERP 数据生成 SEO 简报、大纲或完整文章；也可结合企业数据写研究文章，适合外贸独立站内容生产。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "SEO 文章工作室",
+        "seoGroup": "内容生产",
+        "category": "seo",
+        "summary": "从关键词或企业数据出发，按需生成简报、大纲或完整文章。",
+        "inputs": [
+          "主题或关键词、国家与语言",
+          "产品事实、受众和交付目标"
+        ],
+        "outputs": [
+          "简报、大纲或完整文章",
+          "元信息与来源记录"
+        ],
+        "tags": [
+          "SEO",
+          "DataForSEO",
+          "独立站",
+          "文章",
+          "简报",
+          "大纲",
+          "内容生产"
+        ],
+        "example": "请做SEO 文章工作室，使用我的目标国家和语言，保留数据来源和分析范围。",
+        "requirements": "研究模式使用 DataForSEO；文章由当前模型生成。需要保存到 WordPress 时再配置该连接器。默认草稿，发布须明确请求并确认。",
+        "connections": [
+          "dataforseo",
+          "wordpress"
+        ]
+      }
+    },
+    {
+      "name": "seo-competitor-analysis",
+      "version": "f9b558e48386a6f0a9ec5e701e876d32fb68ddd52eef6ccdcdc10fe354e66536",
+      "directory": "skills/related/seo-competitor-analysis",
+      "description": "使用 DataForSEO 分析单个网站或比较竞争对手的自然排名、关键词和估算流量，输出有来源的外贸独立站 SEO 机会报告。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "竞品与域名分析",
+        "seoGroup": "竞争分析",
+        "category": "seo",
+        "summary": "分析单个网站或比较同行的自然排名、关键词与估算流量。",
+        "inputs": [
+          "域名、国家与语言",
+          "可选竞争对手与分析范围"
+        ],
+        "outputs": [
+          "域名或竞品报告",
+          "关键词与机会表"
+        ],
+        "tags": [
+          "SEO",
+          "DataForSEO",
+          "独立站",
+          "竞品",
+          "域名",
+          "关键词",
+          "竞争分析"
+        ],
+        "example": "请做竞品与域名分析，使用我的目标国家和语言，保留数据来源和分析范围。",
+        "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+        "connections": [
+          "dataforseo"
+        ]
+      }
+    },
+    {
+      "name": "wordpress-block-pages",
+      "version": "d9ed15b02c7a92ed38f803127d40cce41b1aa97c4926f23d7e0527d4d4514c7e",
+      "directory": "skills/wordpress/wordpress-block-pages",
+      "description": "根据企业资料构建标准WordPress外贸站，管理可编辑的产品、案例和页面。",
+      "files": [
+        "assets/patterns.json",
+        "LICENSE.txt",
+        "references/site-setup.md",
+        "references/wordpress-api.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "WordPress 原生区块建页",
+        "category": "website",
+        "summary": "连接WordPress，根据企业资料创建标准外贸站、产品案例与原生区块页面。",
+        "inputs": [
+          "企业资料、页面用途与语言"
+        ],
+        "outputs": [
+          "原生区块页面草稿和预览检查"
+        ],
+        "tags": [
+          "WordPress",
+          "独立站",
+          "Gutenberg"
+        ],
+        "example": "使用WordPress连接器，根据企业资料建设一个产品展示站，先检查建站组件，规划页面并生成草稿，预览后再按我的目标上线。",
+        "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+        "connections": [
+          "wordpress"
+        ]
+      }
+    },
+    {
+      "name": "wordpress-acf-products",
+      "version": "18dcd02c84a106fdb61715d9500b75ded68966a9fcfc7d8683b8915162980d61",
+      "directory": "skills/wordpress/wordpress-acf-products",
+      "description": "读取 Excel 或 CSV，映射已有 ACF 字段并分批创建产品草稿。",
+      "files": [
+        "LICENSE.txt",
+        "references/wordpress-api.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "ACF 产品批量导入",
+        "category": "website",
+        "summary": "读取 Excel 或 CSV，映射已有 ACF 字段并分批创建产品草稿。",
+        "inputs": [
+          "产品表格、唯一编号、已有ACF内容类型"
+        ],
+        "outputs": [
+          "字段映射预览、产品草稿和逐行回执"
+        ],
+        "tags": [
+          "WordPress",
+          "独立站",
+          "运营"
+        ],
+        "example": "请帮我完成ACF 产品批量导入，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+        "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+        "connections": [
+          "wordpress"
+        ]
+      }
+    },
+    {
+      "name": "wordpress-media",
+      "version": "176ab7342addba028d6b039fb7483d4ad6c7dc435ab6e91b5106c4154ca5370b",
+      "directory": "skills/wordpress/wordpress-media",
+      "description": "上传图片或 PDF，设置图片说明、特色图并插入文章。",
+      "files": [
+        "LICENSE.txt",
+        "references/wordpress-api.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "WordPress 图文素材与发布",
+        "category": "website",
+        "summary": "上传图片或 PDF，设置图片说明、特色图并插入文章。",
+        "inputs": [
+          "原始图片/PDF、正文与说明"
+        ],
+        "outputs": [
+          "媒体回执、图文文章草稿或发布结果"
+        ],
+        "tags": [
+          "WordPress",
+          "独立站",
+          "运营"
+        ],
+        "example": "请帮我完成WordPress 图文素材与发布，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+        "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+        "connections": [
+          "wordpress"
+        ]
+      }
+    },
+    {
+      "name": "wordpress-forms",
+      "version": "b215e3aa3b0b18842853e73cd8ceae2caaebcb967d80b39da836e1e5e742d0a8",
+      "directory": "skills/wordpress/wordpress-forms",
+      "description": "设计询盘字段，创建表单并嵌入 WordPress 原生区块页面。",
+      "files": [
+        "LICENSE.txt",
+        "references/wordpress-api.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "WPForms 询盘表单",
+        "category": "website",
+        "summary": "设计询盘字段，创建表单并嵌入 WordPress 原生区块页面。",
+        "inputs": [
+          "询盘目标、字段和已有页面"
+        ],
+        "outputs": [
+          "表单ID、字段回读和嵌入页面"
+        ],
+        "tags": [
+          "WordPress",
+          "独立站",
+          "运营"
+        ],
+        "example": "请帮我完成WPForms 询盘表单，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+        "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+        "connections": [
+          "wordpress"
+        ]
+      }
+    },
+    {
+      "name": "wordpress-seo-settings",
+      "version": "2040e3df189a68d2254020b0d6cc2f78efcd30842fb192de25cba35d9a8696d4",
+      "directory": "skills/wordpress/wordpress-seo-settings",
+      "description": "依据实时站点能力检查并修改 SEO 设置，保留变更前后证据。",
+      "files": [
+        "LICENSE.txt",
+        "references/wordpress-api.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "Rank Math 站点 SEO 设置",
+        "category": "website",
+        "summary": "依据实时站点能力检查并修改 SEO 设置，保留变更前后证据。",
+        "inputs": [
+          "站点SEO问题与修改目标"
+        ],
+        "outputs": [
+          "设置差异、回读证据和页面核验"
+        ],
+        "tags": [
+          "WordPress",
+          "独立站",
+          "运营"
+        ],
+        "example": "请帮我完成Rank Math 站点 SEO 设置，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+        "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+        "connections": [
+          "wordpress"
+        ]
+      }
+    },
+    {
+      "name": "site-outline",
+      "version": "2a344019b3774127a3ecdcafc8f0bc8eff77f5a3efdeb35cc78b191f4f17a58c",
+      "directory": "skills/related/site-outline",
+      "description": "梳理网站导航、菜单层级和页面结构。用户要求网站目录、导航树或站点内容结构时使用。",
+      "files": [
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "landing-cro",
+      "version": "1aa87c9c6780b51f525b1ea6e6877e400c1524134b928dae6c4f985bcfb188da",
+      "directory": "skills/related/landing-cro",
+      "description": "从海外 B2B 采购商角度检查产品页或广告落地页的采购信息、信任证据和询盘路径，形成可定位的修改建议或批注。不是全站 SEO 审计。",
+      "files": [
+        "LICENSE.txt",
+        "references/b2b-review.md",
+        "references/sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "询盘转化检查",
+        "category": "website",
+        "summary": "找出采购信息与询盘路径缺口，形成可定位的修改建议。",
+        "inputs": [
+          "产品页或落地页",
+          "目标客户与产品事实"
+        ],
+        "outputs": [
+          "问题与建议",
+          "页面批注或修改清单"
+        ],
+        "tags": [
+          "独立站",
+          "CRO",
+          "表单"
+        ],
+        "example": "从海外采购商角度检查当前页面的询盘路径，给出有依据的修改建议。",
+        "requirements": "使用已有网页或任务资料；不会自动连接外部账户。"
+      }
+    },
+    {
+      "name": "b2b-copywriting",
+      "version": "3d003a0d84dcfa2a6eb47bcb86f1a8d95d981f42074577c9d9544b5cf6cc9e6a",
+      "directory": "skills/related/b2b-copywriting",
+      "description": "根据真实产品和公司资料，生成外贸 B2B 产品页、分类页或落地页文案及待补资料清单。适用于建站与内容改稿，不直接部署网站。",
+      "files": [
+        "LICENSE.txt",
+        "references/b2b-review.md",
+        "references/sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "B2B 产品页文案",
+        "category": "website",
+        "summary": "把真实产品资料整理成清楚、可用于建站的文案。",
+        "inputs": [
+          "产品规格、应用与卖点",
+          "页面用途和语言"
+        ],
+        "outputs": [
+          "页面文案",
+          "待补资料清单"
+        ],
+        "tags": [
+          "建站",
+          "独立站",
+          "文案"
+        ],
+        "example": "根据产品资料生成产品页文案，保留参数和来源，缺失事实列为待确认。",
+        "requirements": "使用已有网页或任务资料；不会自动连接外部账户。"
+      }
+    },
+    {
+      "name": "seo-performance-review",
+      "version": "a1c2bcd2cfbd7bd4282dc5291021d00c2c6833e5a813f09ed2d089641c0fc866",
+      "directory": "skills/related/seo-performance-review",
+      "description": "比较同口径的自然搜索表现，结合真实站点数据或定时快照形成复盘。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "SEO 数据复盘",
+        "seoGroup": "竞争分析",
+        "category": "seo",
+        "summary": "比较同口径的自然搜索表现，结合真实站点数据或定时快照形成复盘。",
+        "inputs": [
+          "两个时间段与国家/设备口径",
+          "站点授权、历史数据或监测目标"
+        ],
+        "outputs": [
+          "变化归因与待验证假设",
+          "快照对照表与后续行动"
+        ],
+        "tags": [
+          "SEO",
+          "竞争分析",
+          "独立站"
+        ],
+        "example": "请帮我做SEO 数据复盘，先确认资料和覆盖范围，再根据实际证据交付结果。",
+        "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+        "connections": [
+          "google",
+          "dataforseo"
+        ]
+      }
+    },
+    {
+      "name": "seo-content-plan",
+      "version": "b68042331cd0b43eb950840892774420e4e13fcd6aab20278b55b5610eec7daf",
+      "directory": "skills/related/seo-content-plan",
+      "description": "将研究结果变成按目标市场组织的内容日历、页面类型和本地化简报。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "内容计划与本地化",
+        "seoGroup": "内容生产",
+        "category": "seo",
+        "summary": "将研究结果变成按目标市场组织的内容日历、页面类型和本地化简报。",
+        "inputs": [
+          "产品事实、市场与语言",
+          "研究数据、产能与时间范围"
+        ],
+        "outputs": [
+          "内容日历",
+          "本地化关键词和页面简报"
+        ],
+        "tags": [
+          "SEO",
+          "内容生产",
+          "独立站"
+        ],
+        "example": "请帮我做内容计划与本地化，先确认资料和覆盖范围，再根据实际证据交付结果。",
+        "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+        "connections": [
+          "dataforseo"
+        ]
+      }
+    },
+    {
+      "name": "seo-backlink-audit",
+      "version": "9c6faa38e0f07482950c1c50e80cef9ffe43e4ba32571e8edd6cb517789e27ec",
+      "directory": "skills/related/seo-backlink-audit",
+      "description": "分析引用域、外链、锚文本及供应商索引中的新增丢失，保留样本证据。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "外链画像与变化",
+        "seoGroup": "外链",
+        "category": "seo",
+        "summary": "分析引用域、外链、锚文本及供应商索引中的新增丢失，保留样本证据。",
+        "inputs": [
+          "目标域名与日期范围",
+          "分析数量与已知问题"
+        ],
+        "outputs": [
+          "外链画像报告",
+          "新增丢失及核实清单"
+        ],
+        "tags": [
+          "SEO",
+          "外链",
+          "独立站"
+        ],
+        "example": "请帮我做外链画像与变化，先确认资料和覆盖范围，再根据实际证据交付结果。",
+        "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+        "connections": [
+          "dataforseo"
+        ]
+      }
+    },
+    {
+      "name": "seo-link-prospecting",
+      "version": "5c832e21fc70a182457a1ef5ebb716760e67382683c7c1aee61fd5b5018212a7",
+      "directory": "skills/related/seo-link-prospecting",
+      "description": "从同行外链和行业内容中找到相关来源页，现场核实引用或合作机会。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "外链机会发现",
+        "seoGroup": "外链",
+        "category": "seo",
+        "summary": "从同行外链和行业内容中找到相关来源页，现场核实引用或合作机会。",
+        "inputs": [
+          "我方域名、产品和真实内容资产",
+          "同行域名与目标市场"
+        ],
+        "outputs": [
+          "核实过的外链候选表",
+          "联系切入点与未验证项"
+        ],
+        "tags": [
+          "SEO",
+          "外链",
+          "独立站"
+        ],
+        "example": "请帮我做外链机会发现，先确认资料和覆盖范围，再根据实际证据交付结果。",
+        "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+        "connections": [
+          "dataforseo"
+        ]
+      }
+    },
+    {
+      "name": "seo-link-outreach",
+      "version": "038d337a71251c71ee696d02b8b25ef5e57466f88fca66615dfd64b0db2e628f",
+      "directory": "skills/related/seo-link-outreach",
+      "description": "基于已核实的来源页生成个性化联系内容，管理发送、跟进和停止联系记录。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "外链联系与跟进",
+        "seoGroup": "外链",
+        "category": "seo",
+        "summary": "基于已核实的来源页生成个性化联系内容，管理发送、跟进和停止联系记录。",
+        "inputs": [
+          "候选来源页与真实联系人",
+          "我方可引用资产和联系目标"
+        ],
+        "outputs": [
+          "个性化邮件草稿",
+          "发送回执与联系状态表"
+        ],
+        "tags": [
+          "SEO",
+          "外链",
+          "独立站"
+        ],
+        "example": "请帮我做外链联系与跟进，先确认资料和覆盖范围，再根据实际证据交付结果。",
+        "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+        "connections": [
+          "google"
+        ]
+      }
+    },
+    {
+      "name": "seo-internal-links",
+      "version": "0a863d058d3cc5d7af74df0c0f116d75a18262af52bdb0b1abc2bb9638787931",
+      "directory": "skills/related/seo-internal-links",
+      "description": "基于实际页面和抓取图给出内链建议，定位深度、断链与可能的孤立页面。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "内链与页面结构",
+        "seoGroup": "页面优化",
+        "category": "seo",
+        "summary": "基于实际页面和抓取图给出内链建议，定位深度、断链与可能的孤立页面。",
+        "inputs": [
+          "站点或内容清单",
+          "可用抓取任务、sitemap 或页面证据"
+        ],
+        "outputs": [
+          "内链建议表",
+          "站点结构问题与范围说明"
+        ],
+        "tags": [
+          "SEO",
+          "页面优化",
+          "独立站"
+        ],
+        "example": "请帮我做内链与页面结构，先确认资料和覆盖范围，再根据实际证据交付结果。",
+        "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+        "connections": [
+          "dataforseo"
+        ]
+      }
+    },
+    {
+      "name": "seo-schema",
+      "version": "3144621a774b5c27b1c0d6f144708de4d7e7b3b03fe708b9e2bded1e83f6727e",
+      "directory": "skills/related/seo-schema",
+      "description": "检查页面实际 JSON-LD 与 Microdata 属性，或根据真实内容生成结构化数据草稿。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "结构化数据检查",
+        "seoGroup": "页面优化",
+        "category": "seo",
+        "summary": "检查页面实际 JSON-LD 与 Microdata 属性，或根据真实内容生成结构化数据草稿。",
+        "inputs": [
+          "页面与业务类型",
+          "实际产品、文章或企业字段"
+        ],
+        "outputs": [
+          "结构化数据问题表",
+          "JSON-LD 草稿及验证步骤"
+        ],
+        "tags": [
+          "SEO",
+          "页面优化",
+          "独立站"
+        ],
+        "example": "请帮我做结构化数据检查，先确认资料和覆盖范围，再根据实际证据交付结果。",
+        "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+        "connections": []
+      }
+    },
+    {
+      "name": "seo-international",
+      "version": "d7ef08f819d3308ec2e126d96360dd2159e546d52e141c59c32c8d4944b80dd1",
+      "directory": "skills/related/seo-international",
+      "description": "核对多语言版本的 hreflang、canonical、语言和跨页回链，定位区域配置问题。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "国际 SEO 检查",
+        "seoGroup": "技术审计",
+        "category": "seo",
+        "summary": "核对多语言版本的 hreflang、canonical、语言和跨页回链，定位区域配置问题。",
+        "inputs": [
+          "目标国家语言与对应 URL",
+          "页面清单或 sitemap"
+        ],
+        "outputs": [
+          "多语言版本矩阵",
+          "跨页问题与修复清单"
+        ],
+        "tags": [
+          "SEO",
+          "技术审计",
+          "独立站"
+        ],
+        "example": "请帮我做国际 SEO 检查，先确认资料和覆盖范围，再根据实际证据交付结果。",
+        "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+        "connections": []
+      }
+    },
+    {
+      "name": "seo-performance",
+      "version": "c5bc7f1e2062952fe453d084c19e07a51daf968cec3ad3f47f483734dc6a86b6",
+      "directory": "skills/related/seo-performance",
+      "description": "结合云端 Lighthouse 实验室检测与 CrUX 现场数据，给出有证据的优化清单。",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ],
+      "product": {
+        "title": "性能与体验诊断",
+        "seoGroup": "技术审计",
+        "category": "seo",
+        "summary": "结合云端 Lighthouse 实验室检测与 CrUX 现场数据，给出有证据的优化清单。",
+        "inputs": [
+          "公开 URL、移动或桌面目标",
+          "性能问题及可选 CrUX 配置"
+        ],
+        "outputs": [
+          "性能报告",
+          "开发修复优先级与复测条件"
+        ],
+        "tags": [
+          "SEO",
+          "技术审计",
+          "独立站"
+        ],
+        "example": "请帮我做性能与体验诊断，先确认资料和覆盖范围，再根据实际证据交付结果。",
+        "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+        "connections": [
+          "dataforseo",
+          "google"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "time": "2026-09-07T19:48:34.903Z",
+  "status": "not-passed",
+  "modelConfigurationReused": true,
+  "realModelExecuted": true,
+  "publishedPages": [],
+  "firstRun": {
+    "id": "7e410232-1bb8-4b68-9ad7-d9af856c0787",
+    "state": "paused",
+    "steps": 39
+  },
+  "secondRun": {
+    "id": "66853be1-5f28-4943-914f-2b9363116261",
+    "state": "paused",
+    "steps": 14
+  },
+  "thirdRun": {
+    "id": "c4183250-47a0-40f4-a8d9-f5738a1c75f8",
+    "state": "paused",
+    "steps": 10,
+    "groupingVerified": false
+  },
+  "lastAttempt": {
+    "newTaskCreated": false,
+    "error": "Native sidepanel CDP evaluation timed out; root cause unconfirmed",
+    "worker": "background-wp-tools.js",
+    "testVersion": "0.5.14.1"
+  },
+  "testBrowser": "closed, persistent profile retained",
+  "validation": {
+    "typecheck": true,
+    "lint": true,
+    "tests": 53,
+    "build": true,
+    "realHttpsContentRead": true
+  },
+  "artifacts": [
+    {
+      "path": "background-wp-tools.js",
+      "sha256": "3db4d6bd05a74b157f6fbe814caeb7399d5666bd7172d581801d0bf75efea90a"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "66f5137e7b77352a6afba9f5471adb0d6294c225a7dc252bad2135569bbab568"
+    }
+  ]
+}

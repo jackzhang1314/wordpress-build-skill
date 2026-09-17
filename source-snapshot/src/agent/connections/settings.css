@@ -1,0 +1,9 @@
+.connector-settings{padding:20px 22px;overflow:auto;flex:1;min-height:0}
+.connector-settings p{color:var(--ui-color-muted);line-height:1.7;margin:0 0 16px}
+.connector-settings h3{font-size:var(--ui-text-ui,14px);margin:24px 0 10px;font-weight:600}
+.connector-settings .connector-row{display:flex;width:100%;justify-content:space-between;align-items:center;text-align:left;white-space:normal;gap:12px;padding:18px 0;border:0;border-bottom:1px solid var(--ui-color-divider);border-radius:0;background:transparent;color:inherit}
+.connector-row>span:first-child{flex:1;min-width:0}
+.connector-row strong,.connector-row small{display:block}
+.connector-row small{color:var(--ui-color-muted);margin-top:6px;line-height:1.6}
+.connector-status{font-size:var(--ui-text-meta,12px);color:var(--ui-color-muted);max-width:110px}
+.connector-settings .skill-api-config{border:0;padding:0;margin:0}

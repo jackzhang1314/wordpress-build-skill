@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+.lab/
+output/
+.wordpress-builder/
+.agents/skills/wordpress-builder/scripts/wp.mjs
+coverage/
+*.tsbuildinfo
+.playwright-cli/

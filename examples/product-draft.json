@@ -1,0 +1,23 @@
+{
+  "type": "oct_product",
+  "title": "Sample Control Valve — CMS Test",
+  "slug": "sample-control-valve-cms-test",
+  "excerpt": "Fictional product for verifying the CMS workflow. Specifications are test data.",
+  "acf": {
+    "oct_model": "DEMO-CV-01",
+    "oct_material": "Sample stainless steel",
+    "oct_moq": "Confirm with supplier",
+    "oct_lead_time": "Confirm before ordering"
+  },
+  "blocks": [
+    {"type": "paragraph", "text": "Fictional product for CMS testing. These values are examples, not verified manufacturing specifications."},
+    {"type": "heading", "text": "Model", "level": 2},
+    {"type": "meta", "key": "oct_model", "fallback": "Model pending"},
+    {"type": "heading", "text": "Material", "level": 2},
+    {"type": "meta", "key": "oct_material", "fallback": "Material pending"},
+    {"type": "heading", "text": "Minimum order", "level": 2},
+    {"type": "meta", "key": "oct_moq", "fallback": "Minimum order pending"},
+    {"type": "heading", "text": "Lead time", "level": 2},
+    {"type": "meta", "key": "oct_lead_time", "fallback": "Lead time pending"}
+  ]
+}

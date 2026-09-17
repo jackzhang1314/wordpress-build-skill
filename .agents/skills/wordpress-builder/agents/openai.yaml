@@ -1,0 +1,4 @@
+interface:
+  display_name: "WordPress 建站"
+  short_description: "用 Codex 创建原生 WordPress 页面、核验发布与导航，并从保存的任务进度继续"
+  default_prompt: "使用 $wordpress-builder，根据企业资料完成 WordPress 建站，并验证真实页面、发布结果和任务恢复。"

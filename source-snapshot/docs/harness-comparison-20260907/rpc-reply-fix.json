@@ -1,0 +1,172 @@
+{
+  "phase": "U04",
+  "base": "69f530e92092bb7648cd79171fd6ac57218b1eaa",
+  "time": "2026-09-08T01:47:17.092439+08:00",
+  "sourceSha256": {
+    "src/agent/panel.ts": "d01bf952fc013903963feb5c674781195f9f471e79d2897f442eabfdf1bf9b03",
+    "tests/panel-session.test.ts": "d7568647ed76c6dcfdda3453cbe465b11382cf1118dd733990aff3efe869ab96",
+    "tests/prompt-panel-send.test.ts": "021923c44f84a6f2694743cb474fc617898b211a133e95bb913c628e74c35d69"
+  },
+  "typecheck": "passed",
+  "lint": "passed",
+  "build": "passed",
+  "red": {
+    "files": 2,
+    "passed": 39,
+    "failed": 8,
+    "reason": "new regressions fail on old implementation"
+  },
+  "focused": {
+    "files": 4,
+    "passed": 66,
+    "failed": 0
+  },
+  "full": {
+    "files": 140,
+    "passed": 1073,
+    "failed": 0,
+    "frozenSource": true
+  },
+  "native": {
+    "normal": {
+      "nativeSidePanel": true,
+      "sourceEvents": 400,
+      "collapsedTools": 1000,
+      "initialToolNodes": 0,
+      "inputEvents": 12,
+      "inputCommandMaxMs": 4,
+      "readingTop": 0,
+      "full": 2,
+      "patch": 196,
+      "append": 188,
+      "bytes": 11177591,
+      "patchBytes": 184301,
+      "longTasks": [],
+      "inputs": 12,
+      "patchCountBeforeReload": 196,
+      "exactFinalText": true,
+      "reloadRestored": true,
+      "liveMarkdown": true,
+      "finalRawMarkdown": true
+    },
+    "fault": {
+      "nativeSidePanel": true,
+      "recovery": {
+        "dropped": true,
+        "connections": 2
+      },
+      "sourceEvents": 400,
+      "collapsedTools": 1000,
+      "initialToolNodes": 0,
+      "inputEvents": 12,
+      "inputCommandMaxMs": 2,
+      "readingTop": 0,
+      "full": 3,
+      "patch": 196,
+      "append": 188,
+      "bytes": 16674230,
+      "patchBytes": 184295,
+      "longTasks": [],
+      "inputs": 12,
+      "patchCountBeforeReload": 196,
+      "exactFinalText": true,
+      "reloadRestored": true,
+      "liveMarkdown": true,
+      "finalRawMarkdown": true
+    }
+  },
+  "nativeScope": "Isolated Chromium MV3 fixture; no model, no user Comet reload; timestamp arbitration covered by controlled jsdom tests, native tests cover existing streaming/recovery regression.",
+  "integration": {
+    "base": "397e8dd3231f79de3809924e1c5319c2b86f94b2",
+    "source": "f7c496f086ff1cb45473ca93096b8f3039be2017",
+    "files": [
+      "docs/Agent流式消息性能优化与验收.md",
+      "docs/harness-comparison-20260907/rpc-reply-fix.json",
+      "docs/前端会话状态与同步优化计划.md",
+      "process_docs/0908-22_前端晚回执接受保护.md",
+      "src/agent/panel.ts",
+      "tests/panel-session.test.ts",
+      "tests/prompt-panel-send.test.ts"
+    ],
+    "mainSourceHashes": {
+      "src/agent/panel.ts": "12fa75fabbb9412eb368fae6500d6027d2546617e406cc9dad3038b725728720",
+      "tests/panel-session.test.ts": "d7568647ed76c6dcfdda3453cbe465b11382cf1118dd733990aff3efe869ab96",
+      "tests/prompt-panel-send.test.ts": "fe1fab6e280712bbf4548f4db26a104753b27c80bcd1657fbd9e181580b9bc46"
+    }
+  },
+  "implementation": "708534a",
+  "combinedCandidate": {
+    "source": "c26b5f69aacba3445731888eb0c10ee6a238014b",
+    "files": 6,
+    "passed": 81,
+    "failed": 0,
+    "typecheck": "passed",
+    "lint": "passed",
+    "laterMerge": "f7c496f contains only additional H07 documentation; U04 hashes unchanged"
+  },
+  "mainChecks": {
+    "files": 8,
+    "passed": 123,
+    "failed": 0,
+    "typecheck": "passed after connector owner corrected unrelated TS2554",
+    "lint": "passed",
+    "isolatedBuild": "passed",
+    "native": {
+      "normal": {
+        "nativeSidePanel": true,
+        "sourceEvents": 400,
+        "collapsedTools": 1000,
+        "initialToolNodes": 0,
+        "inputEvents": 12,
+        "inputCommandMaxMs": 7,
+        "readingTop": 0,
+        "full": 2,
+        "patch": 198,
+        "append": 188,
+        "bytes": 11179522,
+        "patchBytes": 186232,
+        "longTasks": [],
+        "inputs": 12,
+        "patchCountBeforeReload": 198,
+        "exactFinalText": true,
+        "reloadRestored": true,
+        "liveMarkdown": true,
+        "finalRawMarkdown": true
+      },
+      "fault": {
+        "nativeSidePanel": true,
+        "recovery": {
+          "dropped": true,
+          "connections": 2
+        },
+        "sourceEvents": 400,
+        "collapsedTools": 1000,
+        "initialToolNodes": 0,
+        "inputEvents": 12,
+        "inputCommandMaxMs": 3,
+        "readingTop": 0,
+        "full": 3,
+        "patch": 196,
+        "append": 188,
+        "bytes": 16674224,
+        "patchBytes": 184289,
+        "longTasks": [],
+        "inputs": 12,
+        "patchCountBeforeReload": 196,
+        "exactFinalText": true,
+        "reloadRestored": true,
+        "liveMarkdown": true,
+        "finalRawMarkdown": true
+      }
+    },
+    "scope": "Main working tree with uncommitted i18n/video/connection work. U04 three files fingerprinted before and after tests/native/integration. No full-main-product suite claimed. Native build captured 506 sources/assets/scripts plus wordpress-site; build and native exercised frozen copy, user main dist untouched.",
+    "nativeBuildManifestSha256": "01ffaa79bd66973756925a1b2f359d1b45e2715f13c8ef518f1e5591dd069a5b",
+    "nativePanelSha256": "12fa75fabbb9412eb368fae6500d6027d2546617e406cc9dad3038b725728720",
+    "snapshotLimit": "Native copy was captured before unrelated seo-service-view i18n type correction; main typecheck passed afterwards. These checks are reported separately, not a single whole-tree frozen release validation."
+  },
+  "issues": [
+    "Main initial typecheck failed in seo-service-view.ts(37,277) TS2554; owner fixed i18n label requiring arguments, later main typecheck passed.",
+    "First isolated main build omitted wordpress-site/build.mjs from temporary copy, failed ERR_MODULE_NOT_FOUND. Copied existing wordpress-site source and rebuilt successfully; no production build-script change."
+  ],
+  "userComet": "not reloaded; active user task preserved"
+}

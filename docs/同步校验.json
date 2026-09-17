@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-09-08T02:31:37.528Z",
+  "snapshotFiles": 511,
+  "categories": {
+    "WordPress研究与验收原始资料": 45,
+    "研究与架构补充": 33,
+    "历史开发记录": 56,
+    "实现与Skill真源参考": 119,
+    "已撤回主题实验源码": 18,
+    "实现集成与验证参考": 19,
+    "既有SEO导出包历史快照": 98,
+    "规范Skill包": 123
+  },
+  "curatedLocalLinksChecked": 426,
+  "missingCuratedLocalLinks": [],
+  "skills": 26,
+  "wordpressSkills": 5,
+  "relatedSkills": 21,
+  "historyVersions": 55,
+  "validation": "逐文件SHA-256与Skill文件齐全性通过；不代表产品测试重跑。历史原文跨工作区链接原样保留，未逐一验证网络链接。"
+}

@@ -1,0 +1,3711 @@
+{
+  "createdAt": "2026-09-08T02:26:29.882Z",
+  "source": "/Users/Zhuanz1/Documents/ChatGPT/浏览器网页批注插件",
+  "target": "/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill",
+  "sourceHead": "44bf53176ef5fb3ec119046bb9fea660e1935d05",
+  "sourceBranch": "codex/agent-workspace-sandbox",
+  "includesUncommitted": true,
+  "snapshotNotLiveSync": true,
+  "files": [
+    {
+      "source": "docs/research/wordpress-ecosystem-20260907/WordPress生态与Skill扩展研究.html",
+      "destination": "source-snapshot/docs/research/wordpress-ecosystem-20260907/WordPress生态与Skill扩展研究.html",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 29568,
+      "sha256": "d0a54fb1a81b58d2a561aabe958e7bc02264416cbb8ab2eb33d7bc519e3a97b2"
+    },
+    {
+      "source": "docs/research/wordpress-ecosystem-20260907/gutenberg-block-validation.json",
+      "destination": "source-snapshot/docs/research/wordpress-ecosystem-20260907/gutenberg-block-validation.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 2078,
+      "sha256": "8827531fc71ea9b9bcfebcd0624e3301a0b4be574a0b41a21451541a92179ce0"
+    },
+    {
+      "source": "docs/research/wordpress-ecosystem-20260907/report-source.md",
+      "destination": "source-snapshot/docs/research/wordpress-ecosystem-20260907/report-source.md",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 23279,
+      "sha256": "9559fcd3e7e9204555a54f8d186673bd1bc84349c58edabb810847145d016999"
+    },
+    {
+      "source": "docs/research/wordpress-ecosystem-20260907/source-ledger.json",
+      "destination": "source-snapshot/docs/research/wordpress-ecosystem-20260907/source-ledger.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 23078,
+      "sha256": "74322851894c17d17501a0de716fb89b5996a2b83b0044935efb81e646108938"
+    },
+    {
+      "source": "docs/research/gutenberg-page-agent-20260908/layout-block-validation.json",
+      "destination": "source-snapshot/docs/research/gutenberg-page-agent-20260908/layout-block-validation.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 3754,
+      "sha256": "af2b22d0598e0f42643712346d763994ee9652dea6301191948356e16f3617e5"
+    },
+    {
+      "source": "docs/research/gutenberg-page-agent-20260908/方案.md",
+      "destination": "source-snapshot/docs/research/gutenberg-page-agent-20260908/方案.md",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 15427,
+      "sha256": "70c711fd11d7911ca5b1e3e1d616e26d19ccafdc0ea628acf1c7aa8eedc58659"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/acf-server-acceptance.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/acf-server-acceptance.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 1919,
+      "sha256": "81cda30fbf51a69c70170f7189c52ffdc4359f6ee9bec0039899b286cd98a6ad"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/assessment-real-wordpress.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/assessment-real-wordpress.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 2194,
+      "sha256": "aec03fb85469f4405db2761078f0eef0b6238a7f62e538471fe3664fe56764cc"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/catalog-block-validation.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/catalog-block-validation.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 3032,
+      "sha256": "35122164a2582970cee44e954df02c2f3b5c45a8a6ad7130a3c7c1684ab27d9c"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/e2e/README.md",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/README.md",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 4254,
+      "sha256": "04533ecf1f5565545a39709104cbd7ba81c86acf329f35d62a15c5cbd93131c6"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/e2e/candidate-build.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/candidate-build.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 739,
+      "sha256": "e20cce8f9edf4eeaf4bb7adaae96955917cb42ba06231e5a83f52ed986e7f29c"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/e2e/current-result.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/current-result.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 1195,
+      "sha256": "ba96364ae44e431226c2f75b6ee0500a15a32275d95fefec25d9e3a6add85ce0"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/e2e/https-connector-result.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/https-connector-result.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 6649,
+      "sha256": "c5acf0b8d88532d7e3163f22696951fd875a37675e69628332e6d1897bfbafad"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/e2e/real-agent-first-run.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/real-agent-first-run.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 245572,
+      "sha256": "fb7ce3e79d90c7ca8f7aaf8d21b859a6a57433ccbe7c5d4b78e7e7ced116b306"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/e2e/real-agent-second-run.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/real-agent-second-run.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 109175,
+      "sha256": "fe142773c5ee090bd619973bde44c9cd10b573c86db2e350f76e47861fc1b8ca"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/e2e/real-agent-third-run.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/real-agent-third-run.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 78968,
+      "sha256": "2abfd44537e66d32c01913dbed1ff67060afcf6c82c36ee2ae7d71b41261c084"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/e2e/resume-build.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/resume-build.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 634,
+      "sha256": "bd021f565bdf3764d91841a8c774193cf2eb2d3dce9a361069a32ccd4048821f"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/e2e/second-run-ledger.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/second-run-ledger.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 28206,
+      "sha256": "f06da4a9439d1c0cea834f066eeceed6f4cc28d7e8828b9e5f1864445b5581c5"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/e2e/tools-build.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/tools-build.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 556,
+      "sha256": "2dccab08b60feab7c113e92bbf92ffc0d0309c60aad814d2c193f09447c4c794"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/e2e/完整验收任务.md",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/完整验收任务.md",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 1083,
+      "sha256": "627c6c5c05cdde57bb6482326c9e1087eaa8192e5169681538edd4a85d052971"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/e2e/示例企业资料.md",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/示例企业资料.md",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 720,
+      "sha256": "be19d06cb6b14227e04d41781334dadb849b608092b34c15324d5c71fe368c7b"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/four-pages/README.md",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/four-pages/README.md",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 2580,
+      "sha256": "9eb7a39196b1b1d45682426e23d9ae4c7aeafcb1c2bc5de6d0a5c604b2dfc18d"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/four-pages/about-390.png",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/four-pages/about-390.png",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 55261,
+      "sha256": "45b5291bd33298be636e76f951919d139c660787bc7ca874e62ef06b0a4325eb"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/four-pages/browser-result.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/four-pages/browser-result.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 8871,
+      "sha256": "ceba0164bdb9f3d82d921426f2fd6ceb880b881345822535a30a23d32602848d"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/four-pages/contact-390.png",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/four-pages/contact-390.png",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 50170,
+      "sha256": "a211caa9b2f8ec8ecbb95e76153ff9b9d6149d20c05857b341f443df1580c4e0"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/four-pages/four-pages-result.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/four-pages/four-pages-result.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 14657,
+      "sha256": "4320e7a477518cd39522d0f3b391b5fc937e5cfcfd6e89db18e29c41b9a3c6f7"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/four-pages/home-1440.png",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/four-pages/home-1440.png",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 80310,
+      "sha256": "0a78abea94288f498f8ed9948a7876a1b8585786105f362e17e782f53e14712f"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/four-pages/home-390.png",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/four-pages/home-390.png",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 55151,
+      "sha256": "395457cb94a9f9da64b31862f21cf9d80ae4030e2a1fb344153796307d846c69"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/four-pages/product-390.png",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/four-pages/product-390.png",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 50350,
+      "sha256": "66850977c3c4e12fca08248ab37b65c921ba28bb3dd52a64e2f903207fae08ad"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/native-settings-result.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/native-settings-result.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 2875,
+      "sha256": "10e03699853854fb44e14c161f311260b324b3b330e27d327f7707a6abdc43f1"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/navigation/README.md",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/navigation/README.md",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 2319,
+      "sha256": "1f562ed45bd38081ea99ae9446bd6d2f1659093ee3f040f4ff3cf0ce0a340138"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/navigation/navigation-1440.png",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/navigation/navigation-1440.png",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 58003,
+      "sha256": "d7a61d5718296381b69639d393ff37b95889fe9a0f17f6290dd4e02baa896171"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/navigation/navigation-390.png",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/navigation/navigation-390.png",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 35547,
+      "sha256": "600cc394b311df71c8f8c2159891863db6f01a2b2fbccd21b052e54a0e77984e"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/navigation/navigation-mobile-open.png",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/navigation/navigation-mobile-open.png",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 7596,
+      "sha256": "88cff72b81e4a113fc8ee8ecf21717cfbe908a6a20f0d396249b7861169ede65"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/navigation/result.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/navigation/result.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 5298,
+      "sha256": "8ed44b32539d3c6af35db60a063f1c1190c981588eddff7e9e58a71e6c947c1c"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/no-theme-acceptance.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/no-theme-acceptance.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 1948,
+      "sha256": "c01c8bba1c64069433581aa444e193cf330a823d41a2899b2b663ec8794bfe44"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/package-download-validation.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/package-download-validation.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 578,
+      "sha256": "2553cb2aeff3ccd0a127c236f392c2ed775a589f548083976d1b9e54839c0554"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/theme-block-validation.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/theme-block-validation.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 1160,
+      "sha256": "24f9f536a49a1eaa04e1258ec7b003e334d9dcd5614546c32cae4b57c5cbe719"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/wordpress-server-acceptance.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/wordpress-server-acceptance.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 1628,
+      "sha256": "d793e0d895f8ce1d06cd9f421c78b7d4665668d35edb8189c737f0902ee3d8d8"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/zip-install-acceptance.json",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/zip-install-acceptance.json",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 1857,
+      "sha256": "e715e357da500cc79b9e60268a88b426d7c7e47182f05c21b6f4c44683e7eeb7"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/原生站点设置与导航适配方案.md",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/原生站点设置与导航适配方案.md",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 1941,
+      "sha256": "8f9f7d8941ae7ce4262f20c2c7d59afbe150992e703df6d598849e23729b47f5"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/导航精确修改实施方案.md",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/导航精确修改实施方案.md",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 2155,
+      "sha256": "05397a9e9c15e1985f8c6e23a5a498a8d49e6219d7a80bd56a86ffeedcae0341"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/浏览器Agent独立建站实施方案.md",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/浏览器Agent独立建站实施方案.md",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 5397,
+      "sha256": "3c6fb92fcb89ad7141eb37f8384163c295d9cf5b2b6f786e6e9d297612e10477"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/现有站点适配实施方案.md",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/现有站点适配实施方案.md",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 2040,
+      "sha256": "9c89060b457d802cc89cd6c0e414e8c065f90e881cd35f624dbdaea5e24c927c"
+    },
+    {
+      "source": "docs/research/browser-wordpress-site-20260908/适配报告示例.md",
+      "destination": "source-snapshot/docs/research/browser-wordpress-site-20260908/适配报告示例.md",
+      "category": "WordPress研究与验收原始资料",
+      "bytes": 848,
+      "sha256": "2b7da022e6d1ab82ec09fdbc74e68d65b6ba59b0491298da42d9c8e11544b8cd"
+    },
+    {
+      "source": "docs/ARCHITECTURE.md",
+      "destination": "source-snapshot/docs/ARCHITECTURE.md",
+      "category": "研究与架构补充",
+      "bytes": 49055,
+      "sha256": "0302270a5bcb82d6ce91b2b448825efc5c624a0ceac55a7c9a3a6a3dbdd630f6"
+    },
+    {
+      "source": "docs/AgentSkills使用与实现.md",
+      "destination": "source-snapshot/docs/AgentSkills使用与实现.md",
+      "category": "研究与架构补充",
+      "bytes": 7863,
+      "sha256": "57016642101b1f7ea57a24fe7ceada9e1eda9d9aa1d698918851916f70a35d99"
+    },
+    {
+      "source": "docs/AgentSkills内核兼容性审计.md",
+      "destination": "source-snapshot/docs/AgentSkills内核兼容性审计.md",
+      "category": "研究与架构补充",
+      "bytes": 9661,
+      "sha256": "d4bcb19d0ee99796b12defc8222e6cc06d75e0d843cdc43576daadec14720125"
+    },
+    {
+      "source": "docs/Harness-0.5.13重构与验收.md",
+      "destination": "source-snapshot/docs/Harness-0.5.13重构与验收.md",
+      "category": "研究与架构补充",
+      "bytes": 6799,
+      "sha256": "fbceefb53844010c07c606204d9aec7c54b3435faccfacc3c801f855595c84f8"
+    },
+    {
+      "source": "docs/PROJECT_STATUS.md",
+      "destination": "source-snapshot/docs/PROJECT_STATUS.md",
+      "category": "研究与架构补充",
+      "bytes": 48056,
+      "sha256": "071f520f6c0659ed8d3037bb43fb89d22ca5d37ed52441fddf08a701b8c4883d"
+    },
+    {
+      "source": "docs/Skill场景分类与使用交互优化建议.md",
+      "destination": "source-snapshot/docs/Skill场景分类与使用交互优化建议.md",
+      "category": "研究与架构补充",
+      "bytes": 6746,
+      "sha256": "ffcd01081a9dc62333ccaac01b148ba788e07be233181018c8eaf36f3c45b008"
+    },
+    {
+      "source": "docs/Skill场景化重构与开源技能研究.md",
+      "destination": "source-snapshot/docs/Skill场景化重构与开源技能研究.md",
+      "category": "研究与架构补充",
+      "bytes": 9114,
+      "sha256": "245eea32e562e4d242196362905f4b3505ed2fc29b6a0940502944974f8a2bad"
+    },
+    {
+      "source": "docs/WordPress原生区块AI建站完整架构方案.md",
+      "destination": "source-snapshot/docs/WordPress原生区块AI建站完整架构方案.md",
+      "category": "研究与架构补充",
+      "bytes": 20246,
+      "sha256": "27c41cd02af0cc51e5de74aa8967cd206527682d49538e069c074cba10a89b60"
+    },
+    {
+      "source": "docs/baselines/browser-executor-pre-refactor-20260908/capture.json",
+      "destination": "source-snapshot/docs/baselines/browser-executor-pre-refactor-20260908/capture.json",
+      "category": "研究与架构补充",
+      "bytes": 391989,
+      "sha256": "4f9c9fd47f06a0af7d7570171b090076a268a7e27fe2a55971324e39188170ff"
+    },
+    {
+      "source": "docs/baselines/browser-executor-pre-refactor-20260908/known-failures.md",
+      "destination": "source-snapshot/docs/baselines/browser-executor-pre-refactor-20260908/known-failures.md",
+      "category": "研究与架构补充",
+      "bytes": 2396,
+      "sha256": "309feb2a76941588a9c1036f14f441e4ee374fad58283141b82037cc2931996a"
+    },
+    {
+      "source": "docs/baselines/browser-executor-pre-refactor-20260908/test-results.json",
+      "destination": "source-snapshot/docs/baselines/browser-executor-pre-refactor-20260908/test-results.json",
+      "category": "研究与架构补充",
+      "bytes": 525109,
+      "sha256": "f6a77405b885875c91ccaafb513806bab43216d1bdc52ea68305be3f9a295713"
+    },
+    {
+      "source": "docs/harness-comparison-20260907/i06-executor-input.json",
+      "destination": "source-snapshot/docs/harness-comparison-20260907/i06-executor-input.json",
+      "category": "研究与架构补充",
+      "bytes": 3238,
+      "sha256": "1fed5ac1ba967df69c7a849980a646d019985088e8f7b7b9a0ce6d1a04bca655"
+    },
+    {
+      "source": "docs/harness-comparison-20260907/r01-foundation-dependencies.json",
+      "destination": "source-snapshot/docs/harness-comparison-20260907/r01-foundation-dependencies.json",
+      "category": "研究与架构补充",
+      "bytes": 2697,
+      "sha256": "a1396b56aa55469ccc2cb6eca47aabdcc91cb388a2f7720e46f401ae04a57d55"
+    },
+    {
+      "source": "docs/harness-comparison-20260907/rpc-reply-fix.json",
+      "destination": "source-snapshot/docs/harness-comparison-20260907/rpc-reply-fix.json",
+      "category": "研究与架构补充",
+      "bytes": 5950,
+      "sha256": "ada89a2f9c2df86d847e59bb45261c52d31aef3a757c3609fca6fef92ca6c208"
+    },
+    {
+      "source": "docs/harness-comparison-20260907/worktree-merge-ledger.md",
+      "destination": "source-snapshot/docs/harness-comparison-20260907/worktree-merge-ledger.md",
+      "category": "研究与架构补充",
+      "bytes": 83302,
+      "sha256": "fddbd16861b4df1ae3438f70fb1ba5d585c4eed4ea007e5df12d232c44164e94"
+    },
+    {
+      "source": "docs/modules/interface-language.md",
+      "destination": "source-snapshot/docs/modules/interface-language.md",
+      "category": "研究与架构补充",
+      "bytes": 9335,
+      "sha256": "2db9e7ca513ffa2064ce6bdf25b71a3962e0805951a1924a70379b67bc58c3e5"
+    },
+    {
+      "source": "docs/modules/wordpress-workflows.md",
+      "destination": "source-snapshot/docs/modules/wordpress-workflows.md",
+      "category": "研究与架构补充",
+      "bytes": 16977,
+      "sha256": "26227c98221285c379a6faaf56306c39c4815263e7a8be1b46b53ab088e507cc"
+    },
+    {
+      "source": "docs/skills-examples/evidence-check/SKILL.md",
+      "destination": "source-snapshot/docs/skills-examples/evidence-check/SKILL.md",
+      "category": "研究与架构补充",
+      "bytes": 837,
+      "sha256": "bd4c67c0b1edcff99e81fcc39ec239e19ec6724fe33411c7f42de14bd6ee4cd0"
+    },
+    {
+      "source": "docs/skills-examples/evidence-check/references/checklist.md",
+      "destination": "source-snapshot/docs/skills-examples/evidence-check/references/checklist.md",
+      "category": "研究与架构补充",
+      "bytes": 394,
+      "sha256": "8a2f8ad24ce1a2e4cd4dd540512060ddd036707231558d8c47822a1150cf5b5d"
+    },
+    {
+      "source": "docs/外贸专业插件场景与Skills调研.md",
+      "destination": "source-snapshot/docs/外贸专业插件场景与Skills调研.md",
+      "category": "研究与架构补充",
+      "bytes": 27632,
+      "sha256": "97b838054ec10a33df3b53cabfce2aa3d70677e79d464da9e86fe084971e5e98"
+    },
+    {
+      "source": "docs/外贸人群场景适配与Skill库优化方案.md",
+      "destination": "source-snapshot/docs/外贸人群场景适配与Skill库优化方案.md",
+      "category": "研究与架构补充",
+      "bytes": 13995,
+      "sha256": "ca70e36177697c7b5761447efd211ddf0d191f7ee39efe2a9f9242c458cbd7cd"
+    },
+    {
+      "source": "docs/外贸场景验收/0907_AI_Agent连接器配置架构对标研究.md",
+      "destination": "source-snapshot/docs/外贸场景验收/0907_AI_Agent连接器配置架构对标研究.md",
+      "category": "研究与架构补充",
+      "bytes": 9739,
+      "sha256": "4afca2ebefe244b880a7c91bd0c44bebf0008ed45df6e9ac6836746a31fc342a"
+    },
+    {
+      "source": "docs/外贸场景验收/0907_Google搜索与地图主动开发Skill研究.md",
+      "destination": "source-snapshot/docs/外贸场景验收/0907_Google搜索与地图主动开发Skill研究.md",
+      "category": "研究与架构补充",
+      "bytes": 13376,
+      "sha256": "9f562ccf927b723f658ca0d276ec93a97ca4f177291d0f2dcc28c9dd220b3775"
+    },
+    {
+      "source": "docs/外贸场景验收/0907_SEO场景全景与自主Skill体系研究.md",
+      "destination": "source-snapshot/docs/外贸场景验收/0907_SEO场景全景与自主Skill体系研究.md",
+      "category": "研究与架构补充",
+      "bytes": 39490,
+      "sha256": "c5642e2fcc2a8ccdc23a0d79632771388df749f415fee91b86ec330e34b5c946"
+    },
+    {
+      "source": "docs/外贸场景验收/0907_SEO完整实施补充方案.md",
+      "destination": "source-snapshot/docs/外贸场景验收/0907_SEO完整实施补充方案.md",
+      "category": "研究与架构补充",
+      "bytes": 2964,
+      "sha256": "62e9fe818195198929af928387cf4f45a188b9086c024aced8660677829d048f"
+    },
+    {
+      "source": "docs/外贸场景验收/0907_SEO完整实施验收与使用指南.md",
+      "destination": "source-snapshot/docs/外贸场景验收/0907_SEO完整实施验收与使用指南.md",
+      "category": "研究与架构补充",
+      "bytes": 8465,
+      "sha256": "f7551bf4bd1b97cf9770c0aa69da34fc05a2d85cdf8b0a0b20960e4fcf2c4c85"
+    },
+    {
+      "source": "docs/外贸场景验收/0907_SEO架构适配与分阶段实施方案.md",
+      "destination": "source-snapshot/docs/外贸场景验收/0907_SEO架构适配与分阶段实施方案.md",
+      "category": "研究与架构补充",
+      "bytes": 5070,
+      "sha256": "d5f691fe95ef4121fed4ec6a907cd0ec3022a79acb2d72894e42c1948557d982"
+    },
+    {
+      "source": "docs/外贸场景验收/0907_SEO首批实施与验收.md",
+      "destination": "source-snapshot/docs/外贸场景验收/0907_SEO首批实施与验收.md",
+      "category": "研究与架构补充",
+      "bytes": 4106,
+      "sha256": "7fbe1e4c5a16a2cb92f299ed117d1b66a042509cb830bb09cba22014243653ea"
+    },
+    {
+      "source": "docs/外贸场景验收/0907_Skill_API配置接入.md",
+      "destination": "source-snapshot/docs/外贸场景验收/0907_Skill_API配置接入.md",
+      "category": "研究与架构补充",
+      "bytes": 2669,
+      "sha256": "f5b360531ac8baf96c3ad8f401ab604484f67406515a11f262d66abc6b0e3ce4"
+    },
+    {
+      "source": "docs/外贸场景验收/0907_连接器设置流程与实现.md",
+      "destination": "source-snapshot/docs/外贸场景验收/0907_连接器设置流程与实现.md",
+      "category": "研究与架构补充",
+      "bytes": 2696,
+      "sha256": "4334383541860f8dad75c6473468bf7b591b71199d0e3266115db42952680bd3"
+    },
+    {
+      "source": "docs/录屏控件关闭与拖动修复验收-20260908.md",
+      "destination": "source-snapshot/docs/录屏控件关闭与拖动修复验收-20260908.md",
+      "category": "研究与架构补充",
+      "bytes": 3981,
+      "sha256": "5c1c43a6b99526277722f4245f9c9957ce29d417387ac4f7f50ea07e20cd8add"
+    },
+    {
+      "source": "docs/我现在选中的这些我认为适合做的高价值场景.md",
+      "destination": "source-snapshot/docs/我现在选中的这些我认为适合做的高价值场景.md",
+      "category": "研究与架构补充",
+      "bytes": 12955,
+      "sha256": "3b3ae1e883755b1e418c74402b8a07cbdf9e5991ef4b6af756a0300eda43812f"
+    },
+    {
+      "source": "docs/高价值场景验收任务与证据矩阵.md",
+      "destination": "source-snapshot/docs/高价值场景验收任务与证据矩阵.md",
+      "category": "研究与架构补充",
+      "bytes": 7816,
+      "sha256": "b8a03d90a2a3d0613be9ab2c12f4c539fc1ff2fb5a144a81178866554915340a"
+    },
+    {
+      "source": "process_docs/0905-50_AgentSkills兼容性与接入方案.md",
+      "destination": "source-snapshot/process_docs/0905-50_AgentSkills兼容性与接入方案.md",
+      "category": "历史开发记录",
+      "bytes": 3603,
+      "sha256": "8a2c044acd2be70539ee08c2ea4690a11d6d90d3f543777aa79cd1fa6c01d4c6"
+    },
+    {
+      "source": "process_docs/0905-51_Skill内核审计与最小实验.md",
+      "destination": "source-snapshot/process_docs/0905-51_Skill内核审计与最小实验.md",
+      "category": "历史开发记录",
+      "bytes": 1289,
+      "sha256": "bbf7ba8b433372fdf8abba7ac69063642b00f69ed5542d94e72559a7d4e0f68a"
+    },
+    {
+      "source": "process_docs/0905-52_Skill正式实现.md",
+      "destination": "source-snapshot/process_docs/0905-52_Skill正式实现.md",
+      "category": "历史开发记录",
+      "bytes": 2545,
+      "sha256": "42a36cdb83092f450863742da62d4ed7442368c71bf1eccbf924dfe77abb666f"
+    },
+    {
+      "source": "process_docs/0906-127_Skill场景目录与交互重构阶段.md",
+      "destination": "source-snapshot/process_docs/0906-127_Skill场景目录与交互重构阶段.md",
+      "category": "历史开发记录",
+      "bytes": 1257,
+      "sha256": "d8853916cae30631ffd68bbd0bdd7210d3a7f333f0e5b852c6b202c6e5c578e1"
+    },
+    {
+      "source": "process_docs/0906-132_Skill场景重构与开源研究验收.md",
+      "destination": "source-snapshot/process_docs/0906-132_Skill场景重构与开源研究验收.md",
+      "category": "历史开发记录",
+      "bytes": 1928,
+      "sha256": "99030e610ced7519bf4727fd8076d45d23c41f61b0654b4e5107bc49d5c7f5f4"
+    },
+    {
+      "source": "process_docs/0907-116_外贸场景现状审查与SEO证据修正.md",
+      "destination": "source-snapshot/process_docs/0907-116_外贸场景现状审查与SEO证据修正.md",
+      "category": "历史开发记录",
+      "bytes": 2209,
+      "sha256": "83a2d710a337aa8e4323fcaf282b4f3bc66246e0407eb2403f695128e2fab0ee"
+    },
+    {
+      "source": "process_docs/0907-123_Skill_API配置与Apify连接入口.md",
+      "destination": "source-snapshot/process_docs/0907-123_Skill_API配置与Apify连接入口.md",
+      "category": "历史开发记录",
+      "bytes": 1210,
+      "sha256": "87634547e8829e37e955a4c4111136c37f1c08b0b279937c627284d56eaf7440"
+    },
+    {
+      "source": "process_docs/0907-131_Agent连接器配置架构官方对标研究.md",
+      "destination": "source-snapshot/process_docs/0907-131_Agent连接器配置架构官方对标研究.md",
+      "category": "历史开发记录",
+      "bytes": 1114,
+      "sha256": "26341d5f1433f922b0552f211a785c4651e55225eb75ed1b7a640474b7fdfe50"
+    },
+    {
+      "source": "process_docs/0907-138_连接器独立设置与技能依赖导航.md",
+      "destination": "source-snapshot/process_docs/0907-138_连接器独立设置与技能依赖导航.md",
+      "category": "历史开发记录",
+      "bytes": 1111,
+      "sha256": "bdc2407c5c6afcfb9169d105cd77bfdb044ab860613d4838eec9a412abb27325"
+    },
+    {
+      "source": "process_docs/0907-139_地图找客Skill与Apify执行接入.md",
+      "destination": "source-snapshot/process_docs/0907-139_地图找客Skill与Apify执行接入.md",
+      "category": "历史开发记录",
+      "bytes": 1637,
+      "sha256": "1d4f96f094c0a8bd012e03a7bb00be9108c4d7a39f3723583194dce3b44331c4"
+    },
+    {
+      "source": "process_docs/0907-140_DataForSEO共享连接器接入.md",
+      "destination": "source-snapshot/process_docs/0907-140_DataForSEO共享连接器接入.md",
+      "category": "历史开发记录",
+      "bytes": 867,
+      "sha256": "179612d2476630d1e208a8d47309964543a30a4fd34bbe78e0ecd6775af269c6"
+    },
+    {
+      "source": "process_docs/0907-143_SEO全景研究与自有技能体系规划.md",
+      "destination": "source-snapshot/process_docs/0907-143_SEO全景研究与自有技能体系规划.md",
+      "category": "历史开发记录",
+      "bytes": 1805,
+      "sha256": "a6f7fcf77d46716510e924df6f474a02060c47505ba67d1e22d3c94ca659484d"
+    },
+    {
+      "source": "process_docs/0907-144_SEO实施前架构方案.md",
+      "destination": "source-snapshot/process_docs/0907-144_SEO实施前架构方案.md",
+      "category": "历史开发记录",
+      "bytes": 452,
+      "sha256": "423155183a69e53920d94a714a08c4bc82ff62b65b2fc8649464f090dfd4f047"
+    },
+    {
+      "source": "process_docs/0907-146_SEO查询可靠性与专门测试.md",
+      "destination": "source-snapshot/process_docs/0907-146_SEO查询可靠性与专门测试.md",
+      "category": "历史开发记录",
+      "bytes": 773,
+      "sha256": "634ff9380be43f6bff9700ed366d66f29e2cbb23d09aeb046a3d9b710daf8059"
+    },
+    {
+      "source": "process_docs/0907-148_SEO首批技能与前端验收完成.md",
+      "destination": "source-snapshot/process_docs/0907-148_SEO首批技能与前端验收完成.md",
+      "category": "历史开发记录",
+      "bytes": 1128,
+      "sha256": "0aa8f9168ae54362e1b88c90e53713a5b0794b5d758cfc4d4e822b9c0c544247"
+    },
+    {
+      "source": "process_docs/0907-155_SEO外链全站审计底层能力完成.md",
+      "destination": "source-snapshot/process_docs/0907-155_SEO外链全站审计底层能力完成.md",
+      "category": "历史开发记录",
+      "bytes": 760,
+      "sha256": "ffa013da949ed271c427ba0e5b2b8e275531924bc8de8b90e6a3f4cb75fc20dd"
+    },
+    {
+      "source": "process_docs/0907-159_SEO十八技能与发送发布监测阶段验证.md",
+      "destination": "source-snapshot/process_docs/0907-159_SEO十八技能与发送发布监测阶段验证.md",
+      "category": "历史开发记录",
+      "bytes": 1097,
+      "sha256": "5958deec761ea519497fe687887e125540523854e2f35676a287fb457d03e072"
+    },
+    {
+      "source": "process_docs/0907-163_SEO十八技能公开仓库发布.md",
+      "destination": "source-snapshot/process_docs/0907-163_SEO十八技能公开仓库发布.md",
+      "category": "历史开发记录",
+      "bytes": 918,
+      "sha256": "9e8f6799f5a44a16b8c01e85a81860ee436f93a141f9857a6524d6b7d0a614cb"
+    },
+    {
+      "source": "process_docs/0907-164_SEO完整实施验收与会话归档.md",
+      "destination": "source-snapshot/process_docs/0907-164_SEO完整实施验收与会话归档.md",
+      "category": "历史开发记录",
+      "bytes": 979,
+      "sha256": "47cc8e446a2c3484dc73b530dca17ef59612439cae2ecdb8a284026424c8b996"
+    },
+    {
+      "source": "process_docs/0907-167_WordPress连接器官方路线核查.md",
+      "destination": "source-snapshot/process_docs/0907-167_WordPress连接器官方路线核查.md",
+      "category": "历史开发记录",
+      "bytes": 4432,
+      "sha256": "b41bd341d577a0892924996ac6803fcb4a9dd96b9db3f8630cd2116cfb7b7238"
+    },
+    {
+      "source": "process_docs/0907-177_WordPress生态深度研究与扩展方案.md",
+      "destination": "source-snapshot/process_docs/0907-177_WordPress生态深度研究与扩展方案.md",
+      "category": "历史开发记录",
+      "bytes": 1682,
+      "sha256": "4c85fe3c38434bdc5861a65dc64587f69879400acd8cae64ec1849101961aa2a"
+    },
+    {
+      "source": "process_docs/0907-180_WordPress原生区块与七项场景范围确认.md",
+      "destination": "source-snapshot/process_docs/0907-180_WordPress原生区块与七项场景范围确认.md",
+      "category": "历史开发记录",
+      "bytes": 1102,
+      "sha256": "7a4e908a130413218361912621f2e7de0e7e781235720c6df42451bceff8e779"
+    },
+    {
+      "source": "process_docs/0908-004_WordPress七场景实现与验证中.md",
+      "destination": "source-snapshot/process_docs/0908-004_WordPress七场景实现与验证中.md",
+      "category": "历史开发记录",
+      "bytes": 1171,
+      "sha256": "30daa496f447ac680ce26cbb2d83727f6885767a9f6f8a3c0467ac1aea586ea7"
+    },
+    {
+      "source": "process_docs/0908-006_WordPress七场景集成验收.md",
+      "destination": "source-snapshot/process_docs/0908-006_WordPress七场景集成验收.md",
+      "category": "历史开发记录",
+      "bytes": 1774,
+      "sha256": "f6790dc985618d124375c2da82e2bd057058f0a74d3ac4531d293af2101d18f9"
+    },
+    {
+      "source": "process_docs/0908-008_Gutenberg页面设计Agent研究方案.md",
+      "destination": "source-snapshot/process_docs/0908-008_Gutenberg页面设计Agent研究方案.md",
+      "category": "历史开发记录",
+      "bytes": 1114,
+      "sha256": "5608997d16106fc5fb553b8147a7ba14bcb24485fbb0c27b7ce3c232176c54b3"
+    },
+    {
+      "source": "process_docs/0908-014_区块主题与ACF字段边界澄清.md",
+      "destination": "source-snapshot/process_docs/0908-014_区块主题与ACF字段边界澄清.md",
+      "category": "历史开发记录",
+      "bytes": 840,
+      "sha256": "5a9423356155e692de80beb12650f02aeafe5184642292933efe88d2e5f5e926"
+    },
+    {
+      "source": "process_docs/0908-015_WordPress原生区块完整方案定稿.md",
+      "destination": "source-snapshot/process_docs/0908-015_WordPress原生区块完整方案定稿.md",
+      "category": "历史开发记录",
+      "bytes": 1087,
+      "sha256": "5cf5eb0a76c9681da06cbb90c4d3e5bc01b0ed2e6ced7ed73e9ae8e8f5018854"
+    },
+    {
+      "source": "process_docs/0908-017_WordPress区块布局实现与验证中.md",
+      "destination": "source-snapshot/process_docs/0908-017_WordPress区块布局实现与验证中.md",
+      "category": "历史开发记录",
+      "bytes": 1100,
+      "sha256": "88eb04d7ea9b1ca0a22f1810107fe5ec6326f07dc06b3b24cebb84b2404fa986"
+    },
+    {
+      "source": "process_docs/0908-019_WordPress页面布局阶段验收.md",
+      "destination": "source-snapshot/process_docs/0908-019_WordPress页面布局阶段验收.md",
+      "category": "历史开发记录",
+      "bytes": 2193,
+      "sha256": "bf7450995fa8cc6d91f0415351c43f49fb37e0ee5ae31d6a7f85e7305ece3a0c"
+    },
+    {
+      "source": "process_docs/0908-020_WordPress工具预算回归修复.md",
+      "destination": "source-snapshot/process_docs/0908-020_WordPress工具预算回归修复.md",
+      "category": "历史开发记录",
+      "bytes": 1116,
+      "sha256": "44b24b4eaa25ce47a42c479b14f67fcc219776c5474033ea51539d9c751e9156"
+    },
+    {
+      "source": "process_docs/0908-023_WordPress配套插件与主题服务端验收.md",
+      "destination": "source-snapshot/process_docs/0908-023_WordPress配套插件与主题服务端验收.md",
+      "category": "历史开发记录",
+      "bytes": 1390,
+      "sha256": "391c58c35048625dd70947a22773287dfbed0db5add14c8836a09437ce3d7933"
+    },
+    {
+      "source": "process_docs/0908-025_浏览器独立建站扩展接入与验收中.md",
+      "destination": "source-snapshot/process_docs/0908-025_浏览器独立建站扩展接入与验收中.md",
+      "category": "历史开发记录",
+      "bytes": 1523,
+      "sha256": "ad53b3ff2f491a9a08259e18a78bc074d54f67acff1c3f216a0f7d6fcc6afabf"
+    },
+    {
+      "source": "process_docs/0908-028_浏览器Agent标准外贸建站首版交付.md",
+      "destination": "source-snapshot/process_docs/0908-028_浏览器Agent标准外贸建站首版交付.md",
+      "category": "历史开发记录",
+      "bytes": 4356,
+      "sha256": "8df94d31503fa557e97eb1dc5767fcde55ec8c2e5022baf1b2948a06ecd5ca91"
+    },
+    {
+      "source": "process_docs/0908-030_撤回浏览器扩展捆绑WordPress主题.md",
+      "destination": "source-snapshot/process_docs/0908-030_撤回浏览器扩展捆绑WordPress主题.md",
+      "category": "历史开发记录",
+      "bytes": 1463,
+      "sha256": "68b8e2d5cbbb07a08df17e0e4698b01a6f55ae512fcc8a9a131cc4466aee3b0b"
+    },
+    {
+      "source": "process_docs/0908-036_现有WordPress站点检测与适配方案交付.md",
+      "destination": "source-snapshot/process_docs/0908-036_现有WordPress站点检测与适配方案交付.md",
+      "category": "历史开发记录",
+      "bytes": 2471,
+      "sha256": "dc05588a7229bf4dc80925224d5af95f972185266148f767e9efdda7b853ad4c"
+    },
+    {
+      "source": "process_docs/0908-039_WordPress四页草稿验证中.md",
+      "destination": "source-snapshot/process_docs/0908-039_WordPress四页草稿验证中.md",
+      "category": "历史开发记录",
+      "bytes": 803,
+      "sha256": "41bde34c54f1f89732d2627908bfe887b18339a91cf305e781dc2e584de8e450"
+    },
+    {
+      "source": "process_docs/0908-041_WordPress四页草稿与浏览器验收.md",
+      "destination": "source-snapshot/process_docs/0908-041_WordPress四页草稿与浏览器验收.md",
+      "category": "历史开发记录",
+      "bytes": 2228,
+      "sha256": "c94d41e6b97ab89cbd908bdf36bb04df8b6a72ad83866ab7bb4a28b45dde36ed"
+    },
+    {
+      "source": "process_docs/0908-043_WordPress原生设置与布局读取交付.md",
+      "destination": "source-snapshot/process_docs/0908-043_WordPress原生设置与布局读取交付.md",
+      "category": "历史开发记录",
+      "bytes": 2493,
+      "sha256": "f55cd041f886fb56516009b534516e8e8218ec128d3ea9942cb337728479cd4d"
+    },
+    {
+      "source": "process_docs/0908-046_WordPress导航局部修改验收中.md",
+      "destination": "source-snapshot/process_docs/0908-046_WordPress导航局部修改验收中.md",
+      "category": "历史开发记录",
+      "bytes": 1197,
+      "sha256": "eca761a41de2df056f64eb316f07dc2419009d90deaceba70ad5cec3e66c9317"
+    },
+    {
+      "source": "process_docs/0908-047_WordPress简单导航精确修改交付.md",
+      "destination": "source-snapshot/process_docs/0908-047_WordPress简单导航精确修改交付.md",
+      "category": "历史开发记录",
+      "bytes": 2473,
+      "sha256": "94e2defda7c68f1af35dfe346ee871bd4916aebf58f1439252379756e72ee6f8"
+    },
+    {
+      "source": "process_docs/0908-054_WordPress真实HTTPS验收与模型待配置.md",
+      "destination": "source-snapshot/process_docs/0908-054_WordPress真实HTTPS验收与模型待配置.md",
+      "category": "历史开发记录",
+      "bytes": 1699,
+      "sha256": "5173dddea7fd220c71e1f005c7e3406af5091b7db1efb75d6d3d813c891204b4"
+    },
+    {
+      "source": "process_docs/0908-055_复用现有模型配置启动WordPress真实Agent验收.md",
+      "destination": "source-snapshot/process_docs/0908-055_复用现有模型配置启动WordPress真实Agent验收.md",
+      "category": "历史开发记录",
+      "bytes": 1661,
+      "sha256": "791dc59f0e5a437333036c57243347df75ee39cf48735888835ec88a87422ac5"
+    },
+    {
+      "source": "process_docs/0908-059_WordPress真实模型首轮问题修复与复测.md",
+      "destination": "source-snapshot/process_docs/0908-059_WordPress真实模型首轮问题修复与复测.md",
+      "category": "历史开发记录",
+      "bytes": 1265,
+      "sha256": "906ebf69614e93c57d08bda42758e6a3b3b81305e2bc2e67ead79feb96ee896b"
+    },
+    {
+      "source": "process_docs/0908-05_多语言剩余界面收尾回归.md",
+      "destination": "source-snapshot/process_docs/0908-05_多语言剩余界面收尾回归.md",
+      "category": "历史开发记录",
+      "bytes": 1860,
+      "sha256": "35863211a07548e60794ab2e92a4dc5fbecd049c89c674facccd82a8ea8d4493"
+    },
+    {
+      "source": "process_docs/0908-062_SEO地图工具按需加载与WordPress复测.md",
+      "destination": "source-snapshot/process_docs/0908-062_SEO地图工具按需加载与WordPress复测.md",
+      "category": "历史开发记录",
+      "bytes": 2367,
+      "sha256": "c4614477e67a1f59abd01f9f38310be9e878c08891345faca1fc8f434f67e4c9"
+    },
+    {
+      "source": "process_docs/0908-16_多语言跨入口整合与全量回归.md",
+      "destination": "source-snapshot/process_docs/0908-16_多语言跨入口整合与全量回归.md",
+      "category": "历史开发记录",
+      "bytes": 2561,
+      "sha256": "eaf7a4d0b56e4a3844d86342f406f3a055bf9d1ab0d908b52e748669cbe8b457"
+    },
+    {
+      "source": "process_docs/0908-18_浏览器执行器重构前快照.md",
+      "destination": "source-snapshot/process_docs/0908-18_浏览器执行器重构前快照.md",
+      "category": "历史开发记录",
+      "bytes": 5088,
+      "sha256": "612e11463892b77d3e63130e4dc9315a3605bbb4287063122ad0670b9aacb5e3"
+    },
+    {
+      "source": "process_docs/0908-20_Vercel与浏览器执行器职责边界.md",
+      "destination": "source-snapshot/process_docs/0908-20_Vercel与浏览器执行器职责边界.md",
+      "category": "历史开发记录",
+      "bytes": 4803,
+      "sha256": "01a97b4eab54aa3b33535c3165e1c8c1a425e7586d1ea437902ee94946b9c9a1"
+    },
+    {
+      "source": "process_docs/0908-21_中英文与恢复引导交付验收.md",
+      "destination": "source-snapshot/process_docs/0908-21_中英文与恢复引导交付验收.md",
+      "category": "历史开发记录",
+      "bytes": 5426,
+      "sha256": "60f56e1deacbbfe292e03a7f5a53e7a37d4714950847b316b46c6d1e26cd3c76"
+    },
+    {
+      "source": "process_docs/0908-22_Harness按需WordPress工具与预算隔离.md",
+      "destination": "source-snapshot/process_docs/0908-22_Harness按需WordPress工具与预算隔离.md",
+      "category": "历史开发记录",
+      "bytes": 3776,
+      "sha256": "cb74ad82f98cd5627978493f2da8bb915b71287f11a1c57c411326e8c27b6bb2"
+    },
+    {
+      "source": "process_docs/0908-22_前端晚回执接受保护.md",
+      "destination": "source-snapshot/process_docs/0908-22_前端晚回执接受保护.md",
+      "category": "历史开发记录",
+      "bytes": 4836,
+      "sha256": "7fc061c7d799601b2d0776b2df28c99d30cf1cadd75c73f85743f2229aff3182"
+    },
+    {
+      "source": "process_docs/0908-24_Harness待处理复核作废与恢复交付.md",
+      "destination": "source-snapshot/process_docs/0908-24_Harness待处理复核作废与恢复交付.md",
+      "category": "历史开发记录",
+      "bytes": 4142,
+      "sha256": "cae627735eb9a7835b4e070a64f29bfff39dcabc2178f57dcafff0bb4f86e69e"
+    },
+    {
+      "source": "process_docs/0908-27_视频字幕入口悬停对比度修复.md",
+      "destination": "source-snapshot/process_docs/0908-27_视频字幕入口悬停对比度修复.md",
+      "category": "历史开发记录",
+      "bytes": 1704,
+      "sha256": "9146ea49f19d85cfbdfb1029c6508972e2ba0c8acec2066f6b0983430b850f57"
+    },
+    {
+      "source": "process_docs/0908-29_Harness_JSON对象检查与冻结前自测.md",
+      "destination": "source-snapshot/process_docs/0908-29_Harness_JSON对象检查与冻结前自测.md",
+      "category": "历史开发记录",
+      "bytes": 5421,
+      "sha256": "7c280c1f3307c279300d2801f23bee09eb63c1a90b4a9648b50c23a91dcc775c"
+    },
+    {
+      "source": "process_docs/0908-31_录屏浮层真实浏览器复测完成.md",
+      "destination": "source-snapshot/process_docs/0908-31_录屏浮层真实浏览器复测完成.md",
+      "category": "历史开发记录",
+      "bytes": 977,
+      "sha256": "2ae68376f8789a09bdb99571c8be2beec6f958536f3f234ba712270621b8febd"
+    },
+    {
+      "source": "process_docs/0908-36_Harness来源复核原句对照.md",
+      "destination": "source-snapshot/process_docs/0908-36_Harness来源复核原句对照.md",
+      "category": "历史开发记录",
+      "bytes": 4823,
+      "sha256": "e6b4b184e352203eb4c967d2d657c79866c79250c37a5bbe5872634a57df2fa4"
+    },
+    {
+      "source": "src/agent/connections/apify.ts",
+      "destination": "source-snapshot/src/agent/connections/apify.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 6076,
+      "sha256": "1edd900032d9351b98f5ba78ef4f94d750624c720099ec77adfc415daaf8c770"
+    },
+    {
+      "source": "src/agent/connections/catalog.ts",
+      "destination": "source-snapshot/src/agent/connections/catalog.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 1759,
+      "sha256": "a7fdbcf2847f305ef07cd596aea1e6390f02ca13331eec8a0c36ff3fc6ecdfff"
+    },
+    {
+      "source": "src/agent/connections/dataforseo-view.ts",
+      "destination": "source-snapshot/src/agent/connections/dataforseo-view.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 4209,
+      "sha256": "7e5929e158ce04a42e1a4f45d0eb0b3b70144d6bbc1e12ba4d2d82a5acfcab49"
+    },
+    {
+      "source": "src/agent/connections/dataforseo.ts",
+      "destination": "source-snapshot/src/agent/connections/dataforseo.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 6823,
+      "sha256": "9262a30240191d20ff889e6c74f0b0bed3419a1a741c43781b09512aec552eeb"
+    },
+    {
+      "source": "src/agent/connections/dependency.ts",
+      "destination": "source-snapshot/src/agent/connections/dependency.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 1394,
+      "sha256": "b0d9c550e3c8335c5df19241ce03b0b7458a7e9ce413f0b3865fdc5639c15bf6"
+    },
+    {
+      "source": "src/agent/connections/google.ts",
+      "destination": "source-snapshot/src/agent/connections/google.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 6868,
+      "sha256": "1958b1e1a08aa1f9de2b56bc99795144adb0c09490745dc52aa1109a99949b17"
+    },
+    {
+      "source": "src/agent/connections/ids.ts",
+      "destination": "source-snapshot/src/agent/connections/ids.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 260,
+      "sha256": "82e99fe8c4fa7d439c5ca3eb7110ecf9a08b54fc96c430ddfc00e594158a947f"
+    },
+    {
+      "source": "src/agent/connections/maps-tools.ts",
+      "destination": "source-snapshot/src/agent/connections/maps-tools.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 3852,
+      "sha256": "53c7aabc7b62304391930fd97f3fd6abe148d9548cc684fe9429a5ce76e4abd4"
+    },
+    {
+      "source": "src/agent/connections/maps.ts",
+      "destination": "source-snapshot/src/agent/connections/maps.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 6597,
+      "sha256": "4d5d421ee7ea34c9266fb2ffffc4909abbac8024ef3d0479a59e5724a34b7151"
+    },
+    {
+      "source": "src/agent/connections/publishing-tools.ts",
+      "destination": "source-snapshot/src/agent/connections/publishing-tools.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 16149,
+      "sha256": "7f4f643e155204765756de3407eb6baf39d68cc5c2bb259711578f482ab44d99"
+    },
+    {
+      "source": "src/agent/connections/seo-advanced.ts",
+      "destination": "source-snapshot/src/agent/connections/seo-advanced.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 9084,
+      "sha256": "16347e6f01e299ed47e36c96c2590463fae2774842283cce7375ced120dc63f7"
+    },
+    {
+      "source": "src/agent/connections/seo-monitors.ts",
+      "destination": "source-snapshot/src/agent/connections/seo-monitors.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 7604,
+      "sha256": "d99ab0f17af0751fd6838b71dc5f4f3e838992ae12b9eb4300b603fbf34f52b8"
+    },
+    {
+      "source": "src/agent/connections/seo-paths.ts",
+      "destination": "source-snapshot/src/agent/connections/seo-paths.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 795,
+      "sha256": "12dafca8ade3cf8b15cd9b8b41bec624233539e6cfa9fc5b166d076153a7a94b"
+    },
+    {
+      "source": "src/agent/connections/seo-service-view.ts",
+      "destination": "source-snapshot/src/agent/connections/seo-service-view.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 7542,
+      "sha256": "ee3437d497e4170c5a87bd37795561598f75cb2720b31854c235e9087d315dad"
+    },
+    {
+      "source": "src/agent/connections/seo-tools.ts",
+      "destination": "source-snapshot/src/agent/connections/seo-tools.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 9614,
+      "sha256": "de4c8d24af174c7b895f98b1165c820df347808542c6a62b65cf259a76a5acd6"
+    },
+    {
+      "source": "src/agent/connections/settings.css",
+      "destination": "source-snapshot/src/agent/connections/settings.css",
+      "category": "实现与Skill真源参考",
+      "bytes": 882,
+      "sha256": "9fbb624f5a7c5891ea4dbc71e4821db7e58d9703cefa6b649377874b2258e27d"
+    },
+    {
+      "source": "src/agent/connections/settings.ts",
+      "destination": "source-snapshot/src/agent/connections/settings.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 4908,
+      "sha256": "d163d1b233299aa3e412ce572589c288372f1482525798edd45bbe8180a107ad"
+    },
+    {
+      "source": "src/agent/connections/view.css",
+      "destination": "source-snapshot/src/agent/connections/view.css",
+      "category": "实现与Skill真源参考",
+      "bytes": 760,
+      "sha256": "3482b895de305be210b5ea228cd13ebcccc240b10aa0f82d344a9e6b2a3541c9"
+    },
+    {
+      "source": "src/agent/connections/view.ts",
+      "destination": "source-snapshot/src/agent/connections/view.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 3723,
+      "sha256": "b142f4f8db71676a9155693f512f9ab73626ae457dbcd79706f1566de6533edb"
+    },
+    {
+      "source": "src/agent/connections/wordpress-assessment.ts",
+      "destination": "source-snapshot/src/agent/connections/wordpress-assessment.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 5462,
+      "sha256": "7573c79a2f4ede4f5da09b977cdf8b5233c723d75b5632c29f2a3388db75b50c"
+    },
+    {
+      "source": "src/agent/connections/wordpress-blocks.ts",
+      "destination": "source-snapshot/src/agent/connections/wordpress-blocks.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 7797,
+      "sha256": "f850e354f3690b099e3f66c2f58d5a6ff4e144752691ddf5cabc00bfb40a5b42"
+    },
+    {
+      "source": "src/agent/connections/wordpress-design.ts",
+      "destination": "source-snapshot/src/agent/connections/wordpress-design.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 4412,
+      "sha256": "23d0c74a86b894dba3262c1d58b76d97ef59874afbd6b99a567f35f770f279ee"
+    },
+    {
+      "source": "src/agent/connections/wordpress-navigation.ts",
+      "destination": "source-snapshot/src/agent/connections/wordpress-navigation.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 8353,
+      "sha256": "d30223cbe60393fde595a02ca98025f804e9e90c9059d6948656019f7d5d683e"
+    },
+    {
+      "source": "src/agent/connections/wordpress-site.ts",
+      "destination": "source-snapshot/src/agent/connections/wordpress-site.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 5983,
+      "sha256": "a210f971ab3cf99d32fdf368d3120c7dc4373ab52006ca567f6c7e44445d519e"
+    },
+    {
+      "source": "src/agent/connections/wordpress-tools.ts",
+      "destination": "source-snapshot/src/agent/connections/wordpress-tools.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 7140,
+      "sha256": "fa00c8e2a5187017c0da4480f8f335ef570fd223eb6f8e0906e0a0117f92be55"
+    },
+    {
+      "source": "src/agent/connections/wordpress-workflows.ts",
+      "destination": "source-snapshot/src/agent/connections/wordpress-workflows.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 24747,
+      "sha256": "cc37b02c32ec5f3529a8c286f31c364dc32f816198cfc7fc7d1ce3829d913de4"
+    },
+    {
+      "source": "src/agent/connections/wordpress.ts",
+      "destination": "source-snapshot/src/agent/connections/wordpress.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 3942,
+      "sha256": "4730fe34d95de7962e5a2f0684249e8dbcacbe1807b226acd3ef68be2c724efb"
+    },
+    {
+      "source": "src/agent/skills/aliases.ts",
+      "destination": "source-snapshot/src/agent/skills/aliases.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 503,
+      "sha256": "5bdac1fbcc4ae3ff887cbe0036ead8604414d68c6b411f462949e2bbfe008465"
+    },
+    {
+      "source": "src/agent/skills/builtin/ad-creative.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/ad-creative.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1382,
+      "sha256": "1f5fef1545dcb0a9ba2ca522460682d2498635e1a400eea2f42ca626562f868a"
+    },
+    {
+      "source": "src/agent/skills/builtin/alibaba-research.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/alibaba-research.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 2148,
+      "sha256": "3f98729a965691016a8b72d77d4f039aa64a8d8e9970f1d71e7ece729e928080"
+    },
+    {
+      "source": "src/agent/skills/builtin/alibaba-search-page.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/alibaba-search-page.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 2742,
+      "sha256": "c8862ba14dabec4a85e00da9ca5f4e7cdad1504a20e67beab5bff33c1a9f22ad"
+    },
+    {
+      "source": "src/agent/skills/builtin/annotation-tasks.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/annotation-tasks.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 600,
+      "sha256": "4d8a7b5882122bb1dd886b9aad79ec99b31fea083cdfa92bbfb68fb83f33aa30"
+    },
+    {
+      "source": "src/agent/skills/builtin/apify-google-maps-leads.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/apify-google-maps-leads.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 3159,
+      "sha256": "63f65a84acd44a9d3824751bd0189f25662c5ad0a1c45f4819c03775790e02a4"
+    },
+    {
+      "source": "src/agent/skills/builtin/b2b-copywriting.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/b2b-copywriting.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1369,
+      "sha256": "4b624a5aae5fb998d35a47c5a85990f790362aa383d93f42db93d26808fc821f"
+    },
+    {
+      "source": "src/agent/skills/builtin/cold-outreach.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/cold-outreach.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1356,
+      "sha256": "d065a91477fca4369d2f2d8a6553328e2ab5d0113d0e9aae2601fc745e47f49d"
+    },
+    {
+      "source": "src/agent/skills/builtin/company-research.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/company-research.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 2596,
+      "sha256": "bc1315de2c548621b01c244b4b83a2359d1f9ebb9455492a60a4b4575bb62e33"
+    },
+    {
+      "source": "src/agent/skills/builtin/landing-cro.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/landing-cro.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1491,
+      "sha256": "c287ceda5260f4af86a918e91e6eaeebf3f270a53e85aab37a219a20ae436421"
+    },
+    {
+      "source": "src/agent/skills/builtin/negative-keywords.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/negative-keywords.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1463,
+      "sha256": "3ee10ba9f70831815759614190ebefbd943c063bcac5e5e35404a749acb15e66"
+    },
+    {
+      "source": "src/agent/skills/builtin/on-page-seo.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/on-page-seo.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 2820,
+      "sha256": "4aab68a773825171b21306e40170e12d63bc4a46ef3c80f7112b601150d54c6c"
+    },
+    {
+      "source": "src/agent/skills/builtin/page-table.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/page-table.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 4425,
+      "sha256": "e87833301f40a547b55d59a73fb7b3b4eda31c9ccf408fa0b648f7ca6910bd8c"
+    },
+    {
+      "source": "src/agent/skills/builtin/product-compare.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/product-compare.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 692,
+      "sha256": "501324530aad6002371ce8e1076ae9af2693b16a4e2eb5eb951c2651ca0eda6d"
+    },
+    {
+      "source": "src/agent/skills/builtin/references/b2b-review.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/references/b2b-review.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 981,
+      "sha256": "e4d81ea3529229e64b5e087ae6f1ed76448b9ba99636938bb232cdad4f4ee7db"
+    },
+    {
+      "source": "src/agent/skills/builtin/references/marketing-license.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/references/marketing-license.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1069,
+      "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591"
+    },
+    {
+      "source": "src/agent/skills/builtin/references/on-page-checks.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/references/on-page-checks.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1684,
+      "sha256": "b3bcb2be35ea7368635e2c5e7e302e1f0085d1f912ca45c231ff1775a756eac5"
+    },
+    {
+      "source": "src/agent/skills/builtin/references/social-platforms.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/references/social-platforms.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1003,
+      "sha256": "a64001d1e1c9d0bf24069d97d23c183bdf180d8647e3c05b8dbf1841721b22ab"
+    },
+    {
+      "source": "src/agent/skills/builtin/references/sources.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/references/sources.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1841,
+      "sha256": "e5aadef9f42bd0dd503b02b382d179436aa19cd3e7282a79f3b31c78b542c1aa"
+    },
+    {
+      "source": "src/agent/skills/builtin/search-term-review.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/search-term-review.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 3226,
+      "sha256": "4ce5dc55da3d5544f404dbc8846afc598c0b1716a58a98893e73daee6fe542d2"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/api-guide.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/api-guide.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/legacy-packages.json",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/legacy-packages.json",
+      "category": "实现与Skill真源参考",
+      "bytes": 406296,
+      "sha256": "048b0f6aa0e5ee16fa8664ace17f9aa99798e2d1f9f90f3d1161cc841d69f1b4"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/licenses.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/licenses.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/products.json",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/products.json",
+      "category": "实现与Skill真源参考",
+      "bytes": 18582,
+      "sha256": "9c839a4cce2f9eac7f9c0b00c931c6d97594767a504e782d047b4a79b49d9b4f"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-backlink-audit.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-backlink-audit.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1221,
+      "sha256": "0c0d3bcc6c1b81e55268edaaae30239d39dd3cbaa3f2aa2743a669649bf4ae7b"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-competitor-analysis.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-competitor-analysis.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1904,
+      "sha256": "602b64f6c0b27a8763d9cc072c2da5980e3ac1471c550376271e85e320f06b60"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-competitor-research.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-competitor-research.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1148,
+      "sha256": "44cef7a28891f19e91a09ad8f06889d5e16ec937f67d2d47b1d9320f8ac0c54b"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-content-brief.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-content-brief.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1171,
+      "sha256": "9f04a84d00fe0d34ab156403bd1f142e1f54081afcfed76c74f7be9024258371"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-content-gap.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-content-gap.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1194,
+      "sha256": "72dedcd0b6a7eab024900204f9aea52f6d9ea74861e68b8cb804f16147e51159"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-content-plan.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-content-plan.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1329,
+      "sha256": "4a687fe49caa23d80c7b1d73c70c7150fe8f195ab2cdde055dfacf35021fabbc"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-content-refresh.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-content-refresh.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1184,
+      "sha256": "f590835625ff16aa8ea1e1e51e8b83974c221cc19f56ab66e9adca79481cd58b"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-content-studio.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-content-studio.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 2774,
+      "sha256": "4aebfc9de4d45ca615c7b3e539eae7b9c3c194515e22b0117199d7c6ff2eba10"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-data-article.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-data-article.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1217,
+      "sha256": "116e49cedcff66f60831c1ca5e6cb3e0c60fa1fdbdf822e1c6b3b541c29d52fa"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-domain-analysis.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-domain-analysis.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1252,
+      "sha256": "9edd05ab22caf4230fa2df1f0a7e738f10f2fb7d2a656fc1bf0688b5808f9bd7"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-internal-links.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-internal-links.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1320,
+      "sha256": "ff06464305534a4251e7712b8a014e37293fe8a0452d7350570a0267293a37b8"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-international.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-international.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1272,
+      "sha256": "2ebaf7b9064a4d28ff40616d4a895df233953ee480aadf8e3453f3a296c3193f"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-keyword-article.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-keyword-article.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1249,
+      "sha256": "f1a649f9ed226b29364e9691045fb17dd4ef845c76a9036d1374d3b92d513644"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-keyword-research.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-keyword-research.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1192,
+      "sha256": "3ed5e48ffb5bb8c19f57c76e6cd63fdc52cfd388d78d843124d699295247c988"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-link-outreach.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-link-outreach.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1469,
+      "sha256": "46cfc98209e1b60a9045804e720ff0731a61b19021eea08c30286c3456af9b89"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-link-prospecting.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-link-prospecting.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1345,
+      "sha256": "4d76be9b92e65a58f6155465f27c61e65e0a5fd5931f94ea931eaf4b6d646d58"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-performance-review.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-performance-review.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1390,
+      "sha256": "39a22df03e2ab534e35ad414b696f19ebfbbf4ee7255b1c99ffea3e724506129"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-performance.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-performance.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1272,
+      "sha256": "5b1f90f2a06564fd68c2ca36f84f217561c63a307c439ce20865c09243d5f1bf"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-schema.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-schema.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1415,
+      "sha256": "73d333577c9f7ba3b00ffd78d8295ab5aa0e8bed2d5acb07d43f1c276fae0c7b"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-serp-analysis.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-serp-analysis.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1191,
+      "sha256": "db516449c82e23889a266a2b7ddf5d8c82c1f2b29ee3115f383ade3e68ef475f"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/seo-topic-clusters.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/seo-topic-clusters.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1120,
+      "sha256": "d921ed81b0b8bf514dfe780fca0eb1885c01d45a3b7e61a3711c34ff4e1a7fbe"
+    },
+    {
+      "source": "src/agent/skills/builtin/seo/sources.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/seo/sources.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "src/agent/skills/builtin/site-outline.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/site-outline.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 587,
+      "sha256": "a566332f4cd994c70de075042168c6acf7c40091371e7f262b67e59bb2f49c4c"
+    },
+    {
+      "source": "src/agent/skills/builtin/social-content.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/social-content.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1476,
+      "sha256": "7c65088485be33868b713a93bf23e770ed67dbc7c8c38fd0ecefe2e25cdd37bd"
+    },
+    {
+      "source": "src/agent/skills/builtin/technical-seo.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/technical-seo.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 2501,
+      "sha256": "18e1744dfdeec3fc469b08d4f9bf035d45adac21b8c145b4f6fb0e0e0af4e42e"
+    },
+    {
+      "source": "src/agent/skills/builtin/wordpress/api-guide.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/wordpress/api-guide.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 2405,
+      "sha256": "07c565298f02ee1d01d234a78d2d03e99c9f4f9d7ac2d9da6fad5f8af639980f"
+    },
+    {
+      "source": "src/agent/skills/builtin/wordpress/legacy-packages.json",
+      "destination": "source-snapshot/src/agent/skills/builtin/wordpress/legacy-packages.json",
+      "category": "实现与Skill真源参考",
+      "bytes": 103791,
+      "sha256": "948b0482b6bae19e2a6e7b9fef6b5e9fea9d86f70c80161f5327affbd2ca4a50"
+    },
+    {
+      "source": "src/agent/skills/builtin/wordpress/license.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/wordpress/license.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1083,
+      "sha256": "20b3cdfa2aa7d5f0167686808c60687040f42a89d62b248de1e26ad2d1470fe0"
+    },
+    {
+      "source": "src/agent/skills/builtin/wordpress/patterns.json",
+      "destination": "source-snapshot/src/agent/skills/builtin/wordpress/patterns.json",
+      "category": "实现与Skill真源参考",
+      "bytes": 4089,
+      "sha256": "15f48e7be88555dd84c164d8d32020c4e02288dcc0a00a64601b53392e86be28"
+    },
+    {
+      "source": "src/agent/skills/builtin/wordpress/products.json",
+      "destination": "source-snapshot/src/agent/skills/builtin/wordpress/products.json",
+      "category": "实现与Skill真源参考",
+      "bytes": 3867,
+      "sha256": "9266ea7fdfc65aa048aa898c739ccb857bd15394420f51535ea1395c6c151e3c"
+    },
+    {
+      "source": "src/agent/skills/builtin/wordpress/site-setup.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/wordpress/site-setup.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 9451,
+      "sha256": "736feeada0c26965df2c5c1b8df9d4152ee32a4b93b9a4b3e6ef58213fa6b666"
+    },
+    {
+      "source": "src/agent/skills/builtin/wordpress/wordpress-acf-products.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/wordpress/wordpress-acf-products.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1730,
+      "sha256": "969bcf111fc5b925a149b3b8909776cee4216b49f7b86c58f397fdb1600f8061"
+    },
+    {
+      "source": "src/agent/skills/builtin/wordpress/wordpress-block-pages.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/wordpress/wordpress-block-pages.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 2625,
+      "sha256": "25b3f8ebf33c744eeb64cc2aadecdb86305281853ba519cf13457f0339a91a4e"
+    },
+    {
+      "source": "src/agent/skills/builtin/wordpress/wordpress-forms.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/wordpress/wordpress-forms.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1561,
+      "sha256": "bdf9d2cef811355792a356a9fada793ca77b4418dc318f9b5494371a9be64903"
+    },
+    {
+      "source": "src/agent/skills/builtin/wordpress/wordpress-media.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/wordpress/wordpress-media.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1415,
+      "sha256": "205dbffc60c81f900c041abf60ceb5f5f7d29cd9fbbc51450a47cb61615d5b52"
+    },
+    {
+      "source": "src/agent/skills/builtin/wordpress/wordpress-seo-settings.md",
+      "destination": "source-snapshot/src/agent/skills/builtin/wordpress/wordpress-seo-settings.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1581,
+      "sha256": "fb7ff4f20ab51633a880812a048d7bb0bdb859d4d378835f9bda6a627fc947d9"
+    },
+    {
+      "source": "src/agent/skills/builtin.ts",
+      "destination": "source-snapshot/src/agent/skills/builtin.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 8805,
+      "sha256": "86b586f45c24163f31ba2175cdc91d765db371f9c12f76e5c3e702956f0beaca"
+    },
+    {
+      "source": "src/agent/skills/catalog.ts",
+      "destination": "source-snapshot/src/agent/skills/catalog.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 10137,
+      "sha256": "63a1c9a12c923ed554fd2dd17a4231d49ffdbd48533cff9145dabacad040a236"
+    },
+    {
+      "source": "src/agent/skills/composer.css",
+      "destination": "source-snapshot/src/agent/skills/composer.css",
+      "category": "实现与Skill真源参考",
+      "bytes": 3228,
+      "sha256": "c0ae05006cbd09b9b829f88794e0d384161a38c19117668a901cc75b88d05366"
+    },
+    {
+      "source": "src/agent/skills/composer.ts",
+      "destination": "source-snapshot/src/agent/skills/composer.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 18012,
+      "sha256": "1ab0068724fc4b13b88aba022dac409f5576bf763f9219aade8f5c0b9fbc092b"
+    },
+    {
+      "source": "src/agent/skills/detail-content.ts",
+      "destination": "source-snapshot/src/agent/skills/detail-content.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 6539,
+      "sha256": "728bb38ccd866ed85db67919d96efe268d2e85e1b8327b4c0561000755c35f23"
+    },
+    {
+      "source": "src/agent/skills/github.ts",
+      "destination": "source-snapshot/src/agent/skills/github.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 8599,
+      "sha256": "b65f2efb500c5d65aec9d107314df0457a85feecf6de41928c43fd84d96c240f"
+    },
+    {
+      "source": "src/agent/skills/import.ts",
+      "destination": "source-snapshot/src/agent/skills/import.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 5856,
+      "sha256": "0a67955e906f17a8f1d4b14edd52d164017ec23c79bc28c1b75b1121c89e076c"
+    },
+    {
+      "source": "src/agent/skills/localization.ts",
+      "destination": "source-snapshot/src/agent/skills/localization.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 20707,
+      "sha256": "852c3a147dc5852ad174283e0b9a84bb4c5b88145057b24dc17dd53ca41f01ab"
+    },
+    {
+      "source": "src/agent/skills/manage.css",
+      "destination": "source-snapshot/src/agent/skills/manage.css",
+      "category": "实现与Skill真源参考",
+      "bytes": 7013,
+      "sha256": "ef5b25f951bacb5b4fa768480b28e67f4bc04668e26220b6b9eaec34af65bcc8"
+    },
+    {
+      "source": "src/agent/skills/model.ts",
+      "destination": "source-snapshot/src/agent/skills/model.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 3155,
+      "sha256": "d27827facc508681fba428d8a0a38e941c7cda2d54f757ae351199d365c00e3b"
+    },
+    {
+      "source": "src/agent/skills/package.ts",
+      "destination": "source-snapshot/src/agent/skills/package.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 413,
+      "sha256": "ca0e589fda0ad4f3652bb157bcf9053938b040d5afa7c11b90f9a801cc82c1ba"
+    },
+    {
+      "source": "src/agent/skills/picker.ts",
+      "destination": "source-snapshot/src/agent/skills/picker.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 12618,
+      "sha256": "8c94a65983e762270176192edda7a43a99e45f91222e68927f19e85c59ac4cfc"
+    },
+    {
+      "source": "src/agent/skills/preferences.ts",
+      "destination": "source-snapshot/src/agent/skills/preferences.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 611,
+      "sha256": "656054262fedafc24d5d19f2e07fcdaf6d7191bd28586c956f597d714342b68d"
+    },
+    {
+      "source": "src/agent/skills/presentation.ts",
+      "destination": "source-snapshot/src/agent/skills/presentation.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 251,
+      "sha256": "12d836a6dea34e0be9056abfbb59c0a018ce813cd60ce8be4bf1867f6b518600"
+    },
+    {
+      "source": "src/agent/skills/references.ts",
+      "destination": "source-snapshot/src/agent/skills/references.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 823,
+      "sha256": "f0b000e867b2425d8d7d98698ffec0193ea61f7983685a6d92c2db1715efe1cf"
+    },
+    {
+      "source": "src/agent/skills/runtime.ts",
+      "destination": "source-snapshot/src/agent/skills/runtime.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 5760,
+      "sha256": "5dee29a1b749134e1ac505d4116183ace3bb25ab6dd3872e37fdc6824d4a5bcd"
+    },
+    {
+      "source": "src/agent/skills/store.ts",
+      "destination": "source-snapshot/src/agent/skills/store.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 4841,
+      "sha256": "40782f25238ae7dcbb31c9c6c4acdf52288d716de517d083af814e90c7322634"
+    },
+    {
+      "source": "src/agent/skills/view.ts",
+      "destination": "source-snapshot/src/agent/skills/view.ts",
+      "category": "实现与Skill真源参考",
+      "bytes": 23176,
+      "sha256": "3e68c4962cf71446c605180a0603e6a9d09e5737e341be0a7b6173c09ff5a7a2"
+    },
+    {
+      "source": "wordpress-site/README.md",
+      "destination": "source-snapshot/wordpress-site/README.md",
+      "category": "实现与Skill真源参考",
+      "bytes": 1149,
+      "sha256": "ad706441a6fa9463d42b2a45020443372629c73fbca0019e0667942ad2c6d085"
+    },
+    {
+      "source": "wordpress-site/build.mjs",
+      "destination": "source-snapshot/wordpress-site/build.mjs",
+      "category": "实现与Skill真源参考",
+      "bytes": 1355,
+      "sha256": "1a921b5ebff00832d6759dbe90e5469b8fdb15bf3f18f22e639531492ffc72e3"
+    },
+    {
+      "source": "wordpress-site/plugin/octopus-site/LICENSE.txt",
+      "destination": "source-snapshot/wordpress-site/plugin/octopus-site/LICENSE.txt",
+      "category": "实现与Skill真源参考",
+      "bytes": 558,
+      "sha256": "d2f31793387722083537d91ebf9b9e0fac0e85147d15099d58010cf8469eea33"
+    },
+    {
+      "source": "wordpress-site/plugin/octopus-site/octopus-site.php",
+      "destination": "source-snapshot/wordpress-site/plugin/octopus-site/octopus-site.php",
+      "category": "实现与Skill真源参考",
+      "bytes": 7804,
+      "sha256": "580c114b3995c25344281d12b05b8540c7ca8acfbc59266cdd686d541428d22e"
+    },
+    {
+      "source": "wordpress-site/tests/acceptance.php",
+      "destination": "source-snapshot/wordpress-site/tests/acceptance.php",
+      "category": "实现与Skill真源参考",
+      "bytes": 4890,
+      "sha256": "2a6fb361935d420536868a813006d9b749f5e4f05102eca481317435a9d78fd1"
+    },
+    {
+      "source": "wordpress-site/tests/check-four-pages-browser.mjs",
+      "destination": "source-snapshot/wordpress-site/tests/check-four-pages-browser.mjs",
+      "category": "实现与Skill真源参考",
+      "bytes": 2748,
+      "sha256": "028101ee35757d9cceb972f542cf5ca39f99451a73b6ec30bb0dec22bc91934f"
+    },
+    {
+      "source": "wordpress-site/tests/check-navigation-browser.mjs",
+      "destination": "source-snapshot/wordpress-site/tests/check-navigation-browser.mjs",
+      "category": "实现与Skill真源参考",
+      "bytes": 4211,
+      "sha256": "6278fff07a95aecd1a34916ad351c87edfae6869e99afe3f7f5145334f2a48c8"
+    },
+    {
+      "source": "wordpress-site/tests/four-pages.json",
+      "destination": "source-snapshot/wordpress-site/tests/four-pages.json",
+      "category": "实现与Skill真源参考",
+      "bytes": 1429,
+      "sha256": "02870db9e947ed5d1f0186d34de6f215239c698904cfd6e8545c7139876f8d3f"
+    },
+    {
+      "source": "wordpress-site/tests/four-pages.php",
+      "destination": "source-snapshot/wordpress-site/tests/four-pages.php",
+      "category": "实现与Skill真源参考",
+      "bytes": 3606,
+      "sha256": "645ef0a605833ca6f73ed23664f8c3ca1adc0af3f6f6ef991108d5aeee6f2ee2"
+    },
+    {
+      "source": "wordpress-site/tests/native-settings.php",
+      "destination": "source-snapshot/wordpress-site/tests/native-settings.php",
+      "category": "实现与Skill真源参考",
+      "bytes": 3069,
+      "sha256": "947495566f957ea8f3de8a75b0b3d7f7ff45eddd467f5dc04689b3c16190d491"
+    },
+    {
+      "source": "wordpress-site/tests/prepare-four-pages.mjs",
+      "destination": "source-snapshot/wordpress-site/tests/prepare-four-pages.mjs",
+      "category": "实现与Skill真源参考",
+      "bytes": 1171,
+      "sha256": "495fdc3d98aa4efdf35ee5005ebce8c36d965a80fa6130a172f918044f6c0176"
+    },
+    {
+      "source": "wordpress-site/tests/read-assessment.php",
+      "destination": "source-snapshot/wordpress-site/tests/read-assessment.php",
+      "category": "实现与Skill真源参考",
+      "bytes": 877,
+      "sha256": "5129d8f72d8c85490f4c02abf503c6021de76a34bc259f767349ce4624487993"
+    },
+    {
+      "source": "wordpress-site/tests/run-playground.mjs",
+      "destination": "source-snapshot/wordpress-site/tests/run-playground.mjs",
+      "category": "实现与Skill真源参考",
+      "bytes": 1656,
+      "sha256": "85334e597e90028b52eab4124e6ef08f05afd8cdde6d36fc7de9d1c13dce6ec8"
+    },
+    {
+      "source": "wordpress-site/tests/serve-https-acceptance.mjs",
+      "destination": "source-snapshot/wordpress-site/tests/serve-https-acceptance.mjs",
+      "category": "实现与Skill真源参考",
+      "bytes": 1604,
+      "sha256": "d657f8f6686ac519e64af7e4a717d49675628a696ad4e1e4526c9b0fbe9bc2fe"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/LICENSE.txt",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/LICENSE.txt",
+      "category": "已撤回主题实验源码",
+      "bytes": 558,
+      "sha256": "d2f31793387722083537d91ebf9b9e0fac0e85147d15099d58010cf8469eea33"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/functions.php",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/functions.php",
+      "category": "已撤回主题实验源码",
+      "bytes": 1032,
+      "sha256": "bd1b25ff37ca492e5845c8a3bc136f6a871e5c2e5e2af8a96e369c046f532080"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/parts/footer.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/parts/footer.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 272,
+      "sha256": "8f55f76a887f0025ecfcecc633a72292f0a8aa7f24a18243f3421d61896414e0"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/parts/header.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/parts/header.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 435,
+      "sha256": "329596785c6ba5cb40ad181ccd7699717346ec18c38bfbb396d51b41ce98ea91"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/style.css",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/style.css",
+      "category": "已撤回主题实验源码",
+      "bytes": 859,
+      "sha256": "ec43273810188f8561afa2409ace1e35e6fc7298f6e29fd2e7f453105effcc61"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/templates/404.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/templates/404.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 520,
+      "sha256": "5ca32d5edc84e3d29246376658ea02827a462e2029c58c46957cc1e419cf9f73"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/templates/archive-oct_case.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/templates/archive-oct_case.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 1175,
+      "sha256": "6f34bbfef8ebbc41450a8ef1f48f9480327afecff966cd5d7c303b1c7a5d38fb"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/templates/archive-oct_product.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/templates/archive-oct_product.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 1175,
+      "sha256": "6f34bbfef8ebbc41450a8ef1f48f9480327afecff966cd5d7c303b1c7a5d38fb"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/templates/archive.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/templates/archive.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 1175,
+      "sha256": "6f34bbfef8ebbc41450a8ef1f48f9480327afecff966cd5d7c303b1c7a5d38fb"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/templates/home.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/templates/home.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 1132,
+      "sha256": "4cca4b4e4eb615e4c85683dea19b7c1071902fbcd565df07daddb052de166dff"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/templates/index.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/templates/index.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 1132,
+      "sha256": "4cca4b4e4eb615e4c85683dea19b7c1071902fbcd565df07daddb052de166dff"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/templates/landing.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/templates/landing.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 456,
+      "sha256": "e731d2ffb0e6fcdd58c1d8d45c5d3d5cf1a6f3c64574cdcd3d4b67cb36e13252"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/templates/page.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/templates/page.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 506,
+      "sha256": "2ebaa23d867cfe8705e1902c2c7521e3ea872c64a9a6aca2201511e34c820f46"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/templates/search.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/templates/search.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 1174,
+      "sha256": "9897827e7b8bd9fea5bfe24fb0ffd3e5142dded6b7911099ac10e0da17eccefb"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/templates/single-oct_case.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/templates/single-oct_case.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 1000,
+      "sha256": "c0dabc6d80a507f226691505a6b6290a1111c8be73c6d23faabf55cabd4c88af"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/templates/single-oct_product.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/templates/single-oct_product.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 1494,
+      "sha256": "8e6bfccb7487ec8c5b0f1113d05bf34994b07c46a62bdf2cb1d10fffdcec7a02"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/templates/single.html",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/templates/single.html",
+      "category": "已撤回主题实验源码",
+      "bytes": 506,
+      "sha256": "2ebaa23d867cfe8705e1902c2c7521e3ea872c64a9a6aca2201511e34c820f46"
+    },
+    {
+      "source": "wordpress-site/theme/octopus-trade/theme.json",
+      "destination": "source-snapshot/wordpress-site/theme/octopus-trade/theme.json",
+      "category": "已撤回主题实验源码",
+      "bytes": 3481,
+      "sha256": "5af1a52c590ae881d0b46e290632ec2e685f9908446edacbbca7b4df63fbcf8d"
+    },
+    {
+      "source": "package.json",
+      "destination": "source-snapshot/package.json",
+      "category": "实现集成与验证参考",
+      "bytes": 1381,
+      "sha256": "395636bc14bcee5ffb5546abff40995eb4e3453a7987a27503fb1ef2bd32e42b"
+    },
+    {
+      "source": "package-lock.json",
+      "destination": "source-snapshot/package-lock.json",
+      "category": "实现集成与验证参考",
+      "bytes": 170151,
+      "sha256": "2cf36af98a8ae2a57931b3a8737a60e755fa20dd5150fc84fc1b275f27cfc3da"
+    },
+    {
+      "source": "THIRD_PARTY_NOTICES.md",
+      "destination": "source-snapshot/THIRD_PARTY_NOTICES.md",
+      "category": "实现集成与验证参考",
+      "bytes": 71199,
+      "sha256": "3f4c0a2dcf25ac65bfdd23b9b8dd4030c802dc4ca9ac044c565c8839aab67d42"
+    },
+    {
+      "source": "scripts/export-seo-skills.mjs",
+      "destination": "source-snapshot/scripts/export-seo-skills.mjs",
+      "category": "实现集成与验证参考",
+      "bytes": 1816,
+      "sha256": "c1c7e64c7689af1d9fa1db73b4b1439aec6e1e1d1bdba49943198d0c12de3e6d"
+    },
+    {
+      "source": "scripts/build.mjs",
+      "destination": "source-snapshot/scripts/build.mjs",
+      "category": "实现集成与验证参考",
+      "bytes": 5072,
+      "sha256": "194edd815d6579bbabd412c5aa71ca672fe3390b545573875456c083ad99fb55"
+    },
+    {
+      "source": "src/agent/model.ts",
+      "destination": "source-snapshot/src/agent/model.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 10589,
+      "sha256": "e142027da75d862acfa2289abe8c074c2431041ff01dc144d422e00c1a0b75ee"
+    },
+    {
+      "source": "src/agent/tools.ts",
+      "destination": "source-snapshot/src/agent/tools.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 10268,
+      "sha256": "ecfc5cfcc8614e83f5dbb3fb58dc574cdb1343fa5ff10b018dc77b46278ed29c"
+    },
+    {
+      "source": "src/agent/runtime.ts",
+      "destination": "source-snapshot/src/agent/runtime.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 47684,
+      "sha256": "4b8a1d0f982dd8093c88fb90d9a46e4b7500e78090e9a66daf1b588af89513ee"
+    },
+    {
+      "source": "src/agent/background.ts",
+      "destination": "source-snapshot/src/agent/background.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 28064,
+      "sha256": "0be3916e98462ef9a9949c879840f88d4e878cfb3e8921e51944f73baaf5c714"
+    },
+    {
+      "source": "src/agent/storage.ts",
+      "destination": "source-snapshot/src/agent/storage.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 11715,
+      "sha256": "97cd1f4715cf187bbae04a1843db268136a2c3be5e3f6ce084ec9fe39d647403"
+    },
+    {
+      "source": "src/agent/providers.ts",
+      "destination": "source-snapshot/src/agent/providers.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 5116,
+      "sha256": "9f781ce0d7cd2c8f3e2a4fb6ae49fb99c5a287de373ccebefc42d27bf389c8ad"
+    },
+    {
+      "source": "src/agent/harness/tool-selection.ts",
+      "destination": "source-snapshot/src/agent/harness/tool-selection.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 3404,
+      "sha256": "b1cf40ae237b99d549c757185e9773bd130a83a804eeaeb11f464bff48301d83"
+    },
+    {
+      "source": "src/agent/context/manager.ts",
+      "destination": "source-snapshot/src/agent/context/manager.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 27570,
+      "sha256": "c6791f02a7b2f7ad79b24ae41f2e722161c6881cfb250077c643e298b336a9ae"
+    },
+    {
+      "source": "tests/wordpress-workflows.test.ts",
+      "destination": "source-snapshot/tests/wordpress-workflows.test.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 28614,
+      "sha256": "f044c9236087269af11eef0eeee19e8472b47ff940c58ab9ff6dd5e0effcf555"
+    },
+    {
+      "source": "tests/wordpress-assessment.test.ts",
+      "destination": "source-snapshot/tests/wordpress-assessment.test.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 3379,
+      "sha256": "95284211b049926a0073df8adbeff67499e5a743258022e4c89b79362ab965f8"
+    },
+    {
+      "source": "tests/wordpress-browser-acceptance.ts",
+      "destination": "source-snapshot/tests/wordpress-browser-acceptance.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 2876,
+      "sha256": "6808899ee02215ed3dc7a15ed2a028acab89c8be3eca7aec3a0ad7fe3da33b19"
+    },
+    {
+      "source": "tests/seo-approval.test.ts",
+      "destination": "source-snapshot/tests/seo-approval.test.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 3381,
+      "sha256": "bc59e5ca4e8d9e2e8c4d5f50de75ed85de70038b8ffa79f815e9ed599c4f17a3"
+    },
+    {
+      "source": "tests/harness-tool-selection.test.ts",
+      "destination": "source-snapshot/tests/harness-tool-selection.test.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 4949,
+      "sha256": "3ba607c59b2a1fb0e42ac3d5bd91b9d54d26308659e5491d8f2d622e227e57c5"
+    },
+    {
+      "source": "tests/skills-catalog.test.ts",
+      "destination": "source-snapshot/tests/skills-catalog.test.ts",
+      "category": "实现集成与验证参考",
+      "bytes": 6128,
+      "sha256": "c121e0fdbfdb40aeb358ba832bc243ec65bf70a1bcbc1209e8aea7b5b183fd43"
+    },
+    {
+      "source": "seo-skills/LICENSE",
+      "destination": "source-snapshot/seo-skills/LICENSE",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1266,
+      "sha256": "34bf5d20f2387575b496e6d372ce239096f5533cbad120dd73d707d4d70d6275"
+    },
+    {
+      "source": "seo-skills/README.md",
+      "destination": "source-snapshot/seo-skills/README.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 4547,
+      "sha256": "607401f3f70ffd990653b1a38634e9da9a4f2478c04af8ed5b393e4f89c7ac91"
+    },
+    {
+      "source": "seo-skills/THIRD_PARTY_NOTICES.md",
+      "destination": "source-snapshot/seo-skills/THIRD_PARTY_NOTICES.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 3018,
+      "sha256": "85ed28ad3715d2d97577cedb45e3913526308f84c52b4d188db72bd878cdc17b"
+    },
+    {
+      "source": "seo-skills/adapters/browser-agent.md",
+      "destination": "source-snapshot/seo-skills/adapters/browser-agent.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2613,
+      "sha256": "f61bcc538c5fcdd236edc178e790c888558a0cd3faa5719dae0763571e60ccd8"
+    },
+    {
+      "source": "seo-skills/connectors/dataforseo.md",
+      "destination": "source-snapshot/seo-skills/connectors/dataforseo.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1601,
+      "sha256": "a072e8c989058c6d6c91c2b71771af6c06d4a35259c260b2dd83f8a79881c8a2"
+    },
+    {
+      "source": "seo-skills/examples/scenarios.json",
+      "destination": "source-snapshot/seo-skills/examples/scenarios.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1761,
+      "sha256": "edba9bd42831d5efe79dfbc0c8776681ec9d281dcc55676010e5e11cea437c82"
+    },
+    {
+      "source": "seo-skills/manifest.json",
+      "destination": "source-snapshot/seo-skills/manifest.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 5303,
+      "sha256": "61b768a9c456b21fdfbd17143972d6bdcb6b82e08580fc297f3559f699f5fec2"
+    },
+    {
+      "source": "seo-skills/scripts/validate.mjs",
+      "destination": "source-snapshot/seo-skills/scripts/validate.mjs",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1633,
+      "sha256": "ed179d447a3b41d6be84f2adcdb65807766f42edf2bc9564267eae459945f09f"
+    },
+    {
+      "source": "seo-skills/skills/on-page-seo/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/on-page-seo/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1069,
+      "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591"
+    },
+    {
+      "source": "seo-skills/skills/on-page-seo/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/on-page-seo/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2820,
+      "sha256": "4aab68a773825171b21306e40170e12d63bc4a46ef3c80f7112b601150d54c6c"
+    },
+    {
+      "source": "seo-skills/skills/on-page-seo/references/on-page-checks.md",
+      "destination": "source-snapshot/seo-skills/skills/on-page-seo/references/on-page-checks.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1684,
+      "sha256": "b3bcb2be35ea7368635e2c5e7e302e1f0085d1f912ca45c231ff1775a756eac5"
+    },
+    {
+      "source": "seo-skills/skills/on-page-seo/references/sources.md",
+      "destination": "source-snapshot/seo-skills/skills/on-page-seo/references/sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1841,
+      "sha256": "e5aadef9f42bd0dd503b02b382d179436aa19cd3e7282a79f3b31c78b542c1aa"
+    },
+    {
+      "source": "seo-skills/skills/on-page-seo/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/on-page-seo/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 542,
+      "sha256": "cfcd18d20241991e63fe5676a8dea622715a9faf3e242012f76643ff954fb040"
+    },
+    {
+      "source": "seo-skills/skills/seo-backlink-audit/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-backlink-audit/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-backlink-audit/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-backlink-audit/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1221,
+      "sha256": "0c0d3bcc6c1b81e55268edaaae30239d39dd3cbaa3f2aa2743a669649bf4ae7b"
+    },
+    {
+      "source": "seo-skills/skills/seo-backlink-audit/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-backlink-audit/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-backlink-audit/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-backlink-audit/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-backlink-audit/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-backlink-audit/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 666,
+      "sha256": "364149928f5445e848c2264f4a7dfd3aa89cf2b9931cbafb0048f3f6c31f1e1c"
+    },
+    {
+      "source": "seo-skills/skills/seo-competitor-analysis/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-competitor-analysis/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-competitor-analysis/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-competitor-analysis/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1904,
+      "sha256": "602b64f6c0b27a8763d9cc072c2da5980e3ac1471c550376271e85e320f06b60"
+    },
+    {
+      "source": "seo-skills/skills/seo-competitor-analysis/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-competitor-analysis/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-competitor-analysis/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-competitor-analysis/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-competitor-analysis/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-competitor-analysis/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 708,
+      "sha256": "cbf1285dabf2c672784a859792904b86b05e66a79901a7d29a36beea1e28aa2e"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-gap/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-gap/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-gap/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-gap/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1194,
+      "sha256": "72dedcd0b6a7eab024900204f9aea52f6d9ea74861e68b8cb804f16147e51159"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-gap/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-gap/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-gap/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-gap/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-gap/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-gap/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 759,
+      "sha256": "3bf3944768bad5089b0fff0d6422e4345b5748cf4dd40df84dc5b4aaafd8f5ad"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-plan/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-plan/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-plan/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-plan/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1329,
+      "sha256": "4a687fe49caa23d80c7b1d73c70c7150fe8f195ab2cdde055dfacf35021fabbc"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-plan/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-plan/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-plan/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-plan/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-plan/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-plan/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 693,
+      "sha256": "c2eef9f106abf7a3a330cd18546de4de16f5bf34c8a429a19e14e850cf026d42"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-refresh/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-refresh/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-refresh/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-refresh/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1184,
+      "sha256": "f590835625ff16aa8ea1e1e51e8b83974c221cc19f56ab66e9adca79481cd58b"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-refresh/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-refresh/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-refresh/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-refresh/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-refresh/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-refresh/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 758,
+      "sha256": "d783010d3fafc5f6d3c038e936bca5bff9aec875e6cf3369aad782e63036cbb7"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-studio/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-studio/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-studio/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-studio/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2774,
+      "sha256": "4aebfc9de4d45ca615c7b3e539eae7b9c3c194515e22b0117199d7c6ff2eba10"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-studio/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-studio/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-studio/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-studio/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-content-studio/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-content-studio/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 746,
+      "sha256": "29e38d0a715202ecac2999768709f73d4311edc85e4293818c264d10ce84bcfb"
+    },
+    {
+      "source": "seo-skills/skills/seo-internal-links/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-internal-links/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-internal-links/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-internal-links/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1320,
+      "sha256": "ff06464305534a4251e7712b8a014e37293fe8a0452d7350570a0267293a37b8"
+    },
+    {
+      "source": "seo-skills/skills/seo-internal-links/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-internal-links/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-internal-links/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-internal-links/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-internal-links/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-internal-links/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 695,
+      "sha256": "69b9ed8e40b420dfda9a24449359057b57313db790124758fea4c918f388bcbc"
+    },
+    {
+      "source": "seo-skills/skills/seo-international/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-international/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-international/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-international/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1272,
+      "sha256": "2ebaf7b9064a4d28ff40616d4a895df233953ee480aadf8e3453f3a296c3193f"
+    },
+    {
+      "source": "seo-skills/skills/seo-international/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-international/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-international/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-international/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-international/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-international/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 664,
+      "sha256": "39a1fb2d129cdc1c20cb31ed283fd76292c4c83547a22d30ce955789e5432b52"
+    },
+    {
+      "source": "seo-skills/skills/seo-keyword-research/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-keyword-research/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-keyword-research/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-keyword-research/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1192,
+      "sha256": "3ed5e48ffb5bb8c19f57c76e6cd63fdc52cfd388d78d843124d699295247c988"
+    },
+    {
+      "source": "seo-skills/skills/seo-keyword-research/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-keyword-research/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-keyword-research/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-keyword-research/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-keyword-research/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-keyword-research/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 738,
+      "sha256": "560b85fee7154c65ab605fcbaeb0a8b1a6a37d7845773aef7edf0a9013e0d552"
+    },
+    {
+      "source": "seo-skills/skills/seo-link-outreach/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-link-outreach/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-link-outreach/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-link-outreach/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1469,
+      "sha256": "46cfc98209e1b60a9045804e720ff0731a61b19021eea08c30286c3456af9b89"
+    },
+    {
+      "source": "seo-skills/skills/seo-link-outreach/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-link-outreach/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-link-outreach/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-link-outreach/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-link-outreach/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-link-outreach/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 689,
+      "sha256": "c363653c0c38a7fe6e3b2236266c1cea858fdb094aee1a5452d74d9b628fd9b7"
+    },
+    {
+      "source": "seo-skills/skills/seo-link-prospecting/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-link-prospecting/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-link-prospecting/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-link-prospecting/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1345,
+      "sha256": "4d76be9b92e65a58f6155465f27c61e65e0a5fd5931f94ea931eaf4b6d646d58"
+    },
+    {
+      "source": "seo-skills/skills/seo-link-prospecting/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-link-prospecting/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-link-prospecting/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-link-prospecting/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-link-prospecting/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-link-prospecting/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 684,
+      "sha256": "7cd39d9ed219f067434bf0886153401ddba1babd331d9418874d442ee0781e38"
+    },
+    {
+      "source": "seo-skills/skills/seo-performance/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-performance/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-performance/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-performance/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1272,
+      "sha256": "5b1f90f2a06564fd68c2ca36f84f217561c63a307c439ce20865c09243d5f1bf"
+    },
+    {
+      "source": "seo-skills/skills/seo-performance/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-performance/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-performance/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-performance/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-performance/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-performance/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 703,
+      "sha256": "1c547f2298038034b49a24bf7253dbc6b13342554c6f6ca99eabf73e98e2eaf7"
+    },
+    {
+      "source": "seo-skills/skills/seo-performance-review/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-performance-review/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-performance-review/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-performance-review/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1390,
+      "sha256": "39a22df03e2ab534e35ad414b696f19ebfbbf4ee7255b1c99ffea3e724506129"
+    },
+    {
+      "source": "seo-skills/skills/seo-performance-review/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-performance-review/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-performance-review/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-performance-review/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-performance-review/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-performance-review/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 714,
+      "sha256": "3c4b846762ca7744ae05dbae22d0d690a712bae626cdf860c28acf0b86511610"
+    },
+    {
+      "source": "seo-skills/skills/seo-schema/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-schema/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-schema/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-schema/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1415,
+      "sha256": "73d333577c9f7ba3b00ffd78d8295ab5aa0e8bed2d5acb07d43f1c276fae0c7b"
+    },
+    {
+      "source": "seo-skills/skills/seo-schema/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-schema/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-schema/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-schema/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-schema/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-schema/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 682,
+      "sha256": "b3f9750b87333e2417381764cf764de09c862947be99f5e1393f002dfa8fdb1d"
+    },
+    {
+      "source": "seo-skills/skills/seo-serp-analysis/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-serp-analysis/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-serp-analysis/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-serp-analysis/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1191,
+      "sha256": "db516449c82e23889a266a2b7ddf5d8c82c1f2b29ee3115f383ade3e68ef475f"
+    },
+    {
+      "source": "seo-skills/skills/seo-serp-analysis/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-serp-analysis/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-serp-analysis/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-serp-analysis/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-serp-analysis/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-serp-analysis/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 723,
+      "sha256": "23ddbfff08f3a2d6e8406301f30ec431aa5dff8cd453400f259182bb2d1beb26"
+    },
+    {
+      "source": "seo-skills/skills/seo-topic-clusters/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/seo-topic-clusters/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/seo-topic-clusters/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-topic-clusters/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 1120,
+      "sha256": "d921ed81b0b8bf514dfe780fca0eb1885c01d45a3b7e61a3711c34ff4e1a7fbe"
+    },
+    {
+      "source": "seo-skills/skills/seo-topic-clusters/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-topic-clusters/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/seo-topic-clusters/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/seo-topic-clusters/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/seo-topic-clusters/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/seo-topic-clusters/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 741,
+      "sha256": "1cdde2370100a17a8afacbd4caec6eecb435c71306264e0f8837dd18bfc73404"
+    },
+    {
+      "source": "seo-skills/skills/technical-seo/LICENSE.txt",
+      "destination": "source-snapshot/seo-skills/skills/technical-seo/LICENSE.txt",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a"
+    },
+    {
+      "source": "seo-skills/skills/technical-seo/SKILL.md",
+      "destination": "source-snapshot/seo-skills/skills/technical-seo/SKILL.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2501,
+      "sha256": "18e1744dfdeec3fc469b08d4f9bf035d45adac21b8c145b4f6fb0e0e0af4e42e"
+    },
+    {
+      "source": "seo-skills/skills/technical-seo/references/seo-api.md",
+      "destination": "source-snapshot/seo-skills/skills/technical-seo/references/seo-api.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229"
+    },
+    {
+      "source": "seo-skills/skills/technical-seo/references/seo-sources.md",
+      "destination": "source-snapshot/seo-skills/skills/technical-seo/references/seo-sources.md",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5"
+    },
+    {
+      "source": "seo-skills/skills/technical-seo/skill.json",
+      "destination": "source-snapshot/seo-skills/skills/technical-seo/skill.json",
+      "category": "既有SEO导出包历史快照",
+      "bytes": 671,
+      "sha256": "ea6a754404a76e754f561d1debd5318e5645b99e6d6917a9485cf120a5db10ba"
+    },
+    {
+      "source": "builtinSkills:technical-seo/LICENSE.txt",
+      "destination": "skills/related/technical-seo/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "78166ca25ec29a7b4d140d128e3545550261ca7c08b9af7e3838f52326882457"
+    },
+    {
+      "source": "builtinSkills:technical-seo/references/seo-api.md",
+      "destination": "skills/related/technical-seo/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "78166ca25ec29a7b4d140d128e3545550261ca7c08b9af7e3838f52326882457"
+    },
+    {
+      "source": "builtinSkills:technical-seo/references/seo-sources.md",
+      "destination": "skills/related/technical-seo/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "78166ca25ec29a7b4d140d128e3545550261ca7c08b9af7e3838f52326882457"
+    },
+    {
+      "source": "builtinSkills:technical-seo/skill.json",
+      "destination": "skills/related/technical-seo/skill.json",
+      "category": "规范Skill包",
+      "bytes": 671,
+      "sha256": "ea6a754404a76e754f561d1debd5318e5645b99e6d6917a9485cf120a5db10ba",
+      "packageVersion": "78166ca25ec29a7b4d140d128e3545550261ca7c08b9af7e3838f52326882457"
+    },
+    {
+      "source": "builtinSkills:technical-seo/SKILL.md",
+      "destination": "skills/related/technical-seo/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 2501,
+      "sha256": "18e1744dfdeec3fc469b08d4f9bf035d45adac21b8c145b4f6fb0e0e0af4e42e",
+      "packageVersion": "78166ca25ec29a7b4d140d128e3545550261ca7c08b9af7e3838f52326882457"
+    },
+    {
+      "source": "builtinSkills:on-page-seo/LICENSE.txt",
+      "destination": "skills/related/on-page-seo/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 1069,
+      "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591",
+      "packageVersion": "d491ff828675de264e0e7dab440edf673b4fea26a878cdb22b7a24af784d3729"
+    },
+    {
+      "source": "builtinSkills:on-page-seo/references/on-page-checks.md",
+      "destination": "skills/related/on-page-seo/references/on-page-checks.md",
+      "category": "规范Skill包",
+      "bytes": 1684,
+      "sha256": "b3bcb2be35ea7368635e2c5e7e302e1f0085d1f912ca45c231ff1775a756eac5",
+      "packageVersion": "d491ff828675de264e0e7dab440edf673b4fea26a878cdb22b7a24af784d3729"
+    },
+    {
+      "source": "builtinSkills:on-page-seo/references/sources.md",
+      "destination": "skills/related/on-page-seo/references/sources.md",
+      "category": "规范Skill包",
+      "bytes": 1841,
+      "sha256": "e5aadef9f42bd0dd503b02b382d179436aa19cd3e7282a79f3b31c78b542c1aa",
+      "packageVersion": "d491ff828675de264e0e7dab440edf673b4fea26a878cdb22b7a24af784d3729"
+    },
+    {
+      "source": "builtinSkills:on-page-seo/skill.json",
+      "destination": "skills/related/on-page-seo/skill.json",
+      "category": "规范Skill包",
+      "bytes": 542,
+      "sha256": "cfcd18d20241991e63fe5676a8dea622715a9faf3e242012f76643ff954fb040",
+      "packageVersion": "d491ff828675de264e0e7dab440edf673b4fea26a878cdb22b7a24af784d3729"
+    },
+    {
+      "source": "builtinSkills:on-page-seo/SKILL.md",
+      "destination": "skills/related/on-page-seo/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 2820,
+      "sha256": "4aab68a773825171b21306e40170e12d63bc4a46ef3c80f7112b601150d54c6c",
+      "packageVersion": "d491ff828675de264e0e7dab440edf673b4fea26a878cdb22b7a24af784d3729"
+    },
+    {
+      "source": "builtinSkills:seo-keyword-research/LICENSE.txt",
+      "destination": "skills/related/seo-keyword-research/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "eb10a46234c266e7382a885226ba95854b1c128ae7f1dd3caa9a6af64c854665"
+    },
+    {
+      "source": "builtinSkills:seo-keyword-research/references/seo-api.md",
+      "destination": "skills/related/seo-keyword-research/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "eb10a46234c266e7382a885226ba95854b1c128ae7f1dd3caa9a6af64c854665"
+    },
+    {
+      "source": "builtinSkills:seo-keyword-research/references/seo-sources.md",
+      "destination": "skills/related/seo-keyword-research/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "eb10a46234c266e7382a885226ba95854b1c128ae7f1dd3caa9a6af64c854665"
+    },
+    {
+      "source": "builtinSkills:seo-keyword-research/skill.json",
+      "destination": "skills/related/seo-keyword-research/skill.json",
+      "category": "规范Skill包",
+      "bytes": 738,
+      "sha256": "560b85fee7154c65ab605fcbaeb0a8b1a6a37d7845773aef7edf0a9013e0d552",
+      "packageVersion": "eb10a46234c266e7382a885226ba95854b1c128ae7f1dd3caa9a6af64c854665"
+    },
+    {
+      "source": "builtinSkills:seo-keyword-research/SKILL.md",
+      "destination": "skills/related/seo-keyword-research/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1192,
+      "sha256": "3ed5e48ffb5bb8c19f57c76e6cd63fdc52cfd388d78d843124d699295247c988",
+      "packageVersion": "eb10a46234c266e7382a885226ba95854b1c128ae7f1dd3caa9a6af64c854665"
+    },
+    {
+      "source": "builtinSkills:seo-serp-analysis/LICENSE.txt",
+      "destination": "skills/related/seo-serp-analysis/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "004e2a1b8fe42c680d5816b12106485be447a1be2cd2030443b8be3baf9c966e"
+    },
+    {
+      "source": "builtinSkills:seo-serp-analysis/references/seo-api.md",
+      "destination": "skills/related/seo-serp-analysis/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "004e2a1b8fe42c680d5816b12106485be447a1be2cd2030443b8be3baf9c966e"
+    },
+    {
+      "source": "builtinSkills:seo-serp-analysis/references/seo-sources.md",
+      "destination": "skills/related/seo-serp-analysis/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "004e2a1b8fe42c680d5816b12106485be447a1be2cd2030443b8be3baf9c966e"
+    },
+    {
+      "source": "builtinSkills:seo-serp-analysis/skill.json",
+      "destination": "skills/related/seo-serp-analysis/skill.json",
+      "category": "规范Skill包",
+      "bytes": 723,
+      "sha256": "23ddbfff08f3a2d6e8406301f30ec431aa5dff8cd453400f259182bb2d1beb26",
+      "packageVersion": "004e2a1b8fe42c680d5816b12106485be447a1be2cd2030443b8be3baf9c966e"
+    },
+    {
+      "source": "builtinSkills:seo-serp-analysis/SKILL.md",
+      "destination": "skills/related/seo-serp-analysis/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1191,
+      "sha256": "db516449c82e23889a266a2b7ddf5d8c82c1f2b29ee3115f383ade3e68ef475f",
+      "packageVersion": "004e2a1b8fe42c680d5816b12106485be447a1be2cd2030443b8be3baf9c966e"
+    },
+    {
+      "source": "builtinSkills:seo-content-gap/LICENSE.txt",
+      "destination": "skills/related/seo-content-gap/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "a8acd509a241a1dcf1854837acc1e367502bd5fa0b2023c6a03494429ded2e40"
+    },
+    {
+      "source": "builtinSkills:seo-content-gap/references/seo-api.md",
+      "destination": "skills/related/seo-content-gap/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "a8acd509a241a1dcf1854837acc1e367502bd5fa0b2023c6a03494429ded2e40"
+    },
+    {
+      "source": "builtinSkills:seo-content-gap/references/seo-sources.md",
+      "destination": "skills/related/seo-content-gap/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "a8acd509a241a1dcf1854837acc1e367502bd5fa0b2023c6a03494429ded2e40"
+    },
+    {
+      "source": "builtinSkills:seo-content-gap/skill.json",
+      "destination": "skills/related/seo-content-gap/skill.json",
+      "category": "规范Skill包",
+      "bytes": 759,
+      "sha256": "3bf3944768bad5089b0fff0d6422e4345b5748cf4dd40df84dc5b4aaafd8f5ad",
+      "packageVersion": "a8acd509a241a1dcf1854837acc1e367502bd5fa0b2023c6a03494429ded2e40"
+    },
+    {
+      "source": "builtinSkills:seo-content-gap/SKILL.md",
+      "destination": "skills/related/seo-content-gap/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1194,
+      "sha256": "72dedcd0b6a7eab024900204f9aea52f6d9ea74861e68b8cb804f16147e51159",
+      "packageVersion": "a8acd509a241a1dcf1854837acc1e367502bd5fa0b2023c6a03494429ded2e40"
+    },
+    {
+      "source": "builtinSkills:seo-topic-clusters/LICENSE.txt",
+      "destination": "skills/related/seo-topic-clusters/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "8a827fa2d62cabb8252c8af552ae55d42283e079f40808f64dc9c9f3281485e5"
+    },
+    {
+      "source": "builtinSkills:seo-topic-clusters/references/seo-api.md",
+      "destination": "skills/related/seo-topic-clusters/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "8a827fa2d62cabb8252c8af552ae55d42283e079f40808f64dc9c9f3281485e5"
+    },
+    {
+      "source": "builtinSkills:seo-topic-clusters/references/seo-sources.md",
+      "destination": "skills/related/seo-topic-clusters/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "8a827fa2d62cabb8252c8af552ae55d42283e079f40808f64dc9c9f3281485e5"
+    },
+    {
+      "source": "builtinSkills:seo-topic-clusters/skill.json",
+      "destination": "skills/related/seo-topic-clusters/skill.json",
+      "category": "规范Skill包",
+      "bytes": 741,
+      "sha256": "1cdde2370100a17a8afacbd4caec6eecb435c71306264e0f8837dd18bfc73404",
+      "packageVersion": "8a827fa2d62cabb8252c8af552ae55d42283e079f40808f64dc9c9f3281485e5"
+    },
+    {
+      "source": "builtinSkills:seo-topic-clusters/SKILL.md",
+      "destination": "skills/related/seo-topic-clusters/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1120,
+      "sha256": "d921ed81b0b8bf514dfe780fca0eb1885c01d45a3b7e61a3711c34ff4e1a7fbe",
+      "packageVersion": "8a827fa2d62cabb8252c8af552ae55d42283e079f40808f64dc9c9f3281485e5"
+    },
+    {
+      "source": "builtinSkills:seo-content-refresh/LICENSE.txt",
+      "destination": "skills/related/seo-content-refresh/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "9ffb5749cd4d7a803020389bd5dc2f9db76d0e897397d38edbd2c4fdc6b4cf30"
+    },
+    {
+      "source": "builtinSkills:seo-content-refresh/references/seo-api.md",
+      "destination": "skills/related/seo-content-refresh/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "9ffb5749cd4d7a803020389bd5dc2f9db76d0e897397d38edbd2c4fdc6b4cf30"
+    },
+    {
+      "source": "builtinSkills:seo-content-refresh/references/seo-sources.md",
+      "destination": "skills/related/seo-content-refresh/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "9ffb5749cd4d7a803020389bd5dc2f9db76d0e897397d38edbd2c4fdc6b4cf30"
+    },
+    {
+      "source": "builtinSkills:seo-content-refresh/skill.json",
+      "destination": "skills/related/seo-content-refresh/skill.json",
+      "category": "规范Skill包",
+      "bytes": 758,
+      "sha256": "d783010d3fafc5f6d3c038e936bca5bff9aec875e6cf3369aad782e63036cbb7",
+      "packageVersion": "9ffb5749cd4d7a803020389bd5dc2f9db76d0e897397d38edbd2c4fdc6b4cf30"
+    },
+    {
+      "source": "builtinSkills:seo-content-refresh/SKILL.md",
+      "destination": "skills/related/seo-content-refresh/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1184,
+      "sha256": "f590835625ff16aa8ea1e1e51e8b83974c221cc19f56ab66e9adca79481cd58b",
+      "packageVersion": "9ffb5749cd4d7a803020389bd5dc2f9db76d0e897397d38edbd2c4fdc6b4cf30"
+    },
+    {
+      "source": "builtinSkills:seo-content-studio/LICENSE.txt",
+      "destination": "skills/related/seo-content-studio/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "76f9eee59e49c39b14ae2e038c20896f3604983b079f97166312ebb915486720"
+    },
+    {
+      "source": "builtinSkills:seo-content-studio/references/seo-api.md",
+      "destination": "skills/related/seo-content-studio/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "76f9eee59e49c39b14ae2e038c20896f3604983b079f97166312ebb915486720"
+    },
+    {
+      "source": "builtinSkills:seo-content-studio/references/seo-sources.md",
+      "destination": "skills/related/seo-content-studio/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "76f9eee59e49c39b14ae2e038c20896f3604983b079f97166312ebb915486720"
+    },
+    {
+      "source": "builtinSkills:seo-content-studio/skill.json",
+      "destination": "skills/related/seo-content-studio/skill.json",
+      "category": "规范Skill包",
+      "bytes": 746,
+      "sha256": "29e38d0a715202ecac2999768709f73d4311edc85e4293818c264d10ce84bcfb",
+      "packageVersion": "76f9eee59e49c39b14ae2e038c20896f3604983b079f97166312ebb915486720"
+    },
+    {
+      "source": "builtinSkills:seo-content-studio/SKILL.md",
+      "destination": "skills/related/seo-content-studio/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 2774,
+      "sha256": "4aebfc9de4d45ca615c7b3e539eae7b9c3c194515e22b0117199d7c6ff2eba10",
+      "packageVersion": "76f9eee59e49c39b14ae2e038c20896f3604983b079f97166312ebb915486720"
+    },
+    {
+      "source": "builtinSkills:seo-competitor-analysis/LICENSE.txt",
+      "destination": "skills/related/seo-competitor-analysis/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "f9b558e48386a6f0a9ec5e701e876d32fb68ddd52eef6ccdcdc10fe354e66536"
+    },
+    {
+      "source": "builtinSkills:seo-competitor-analysis/references/seo-api.md",
+      "destination": "skills/related/seo-competitor-analysis/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "f9b558e48386a6f0a9ec5e701e876d32fb68ddd52eef6ccdcdc10fe354e66536"
+    },
+    {
+      "source": "builtinSkills:seo-competitor-analysis/references/seo-sources.md",
+      "destination": "skills/related/seo-competitor-analysis/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "f9b558e48386a6f0a9ec5e701e876d32fb68ddd52eef6ccdcdc10fe354e66536"
+    },
+    {
+      "source": "builtinSkills:seo-competitor-analysis/skill.json",
+      "destination": "skills/related/seo-competitor-analysis/skill.json",
+      "category": "规范Skill包",
+      "bytes": 708,
+      "sha256": "cbf1285dabf2c672784a859792904b86b05e66a79901a7d29a36beea1e28aa2e",
+      "packageVersion": "f9b558e48386a6f0a9ec5e701e876d32fb68ddd52eef6ccdcdc10fe354e66536"
+    },
+    {
+      "source": "builtinSkills:seo-competitor-analysis/SKILL.md",
+      "destination": "skills/related/seo-competitor-analysis/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1904,
+      "sha256": "602b64f6c0b27a8763d9cc072c2da5980e3ac1471c550376271e85e320f06b60",
+      "packageVersion": "f9b558e48386a6f0a9ec5e701e876d32fb68ddd52eef6ccdcdc10fe354e66536"
+    },
+    {
+      "source": "builtinSkills:wordpress-block-pages/assets/patterns.json",
+      "destination": "skills/wordpress/wordpress-block-pages/assets/patterns.json",
+      "category": "规范Skill包",
+      "bytes": 1716,
+      "sha256": "46a57d36cc2d4071e49e37c2a0c23a0536d439a5d999f7f1b5104b653e5305bd",
+      "packageVersion": "d9ed15b02c7a92ed38f803127d40cce41b1aa97c4926f23d7e0527d4d4514c7e"
+    },
+    {
+      "source": "builtinSkills:wordpress-block-pages/LICENSE.txt",
+      "destination": "skills/wordpress/wordpress-block-pages/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 1083,
+      "sha256": "20b3cdfa2aa7d5f0167686808c60687040f42a89d62b248de1e26ad2d1470fe0",
+      "packageVersion": "d9ed15b02c7a92ed38f803127d40cce41b1aa97c4926f23d7e0527d4d4514c7e"
+    },
+    {
+      "source": "builtinSkills:wordpress-block-pages/references/site-setup.md",
+      "destination": "skills/wordpress/wordpress-block-pages/references/site-setup.md",
+      "category": "规范Skill包",
+      "bytes": 9451,
+      "sha256": "736feeada0c26965df2c5c1b8df9d4152ee32a4b93b9a4b3e6ef58213fa6b666",
+      "packageVersion": "d9ed15b02c7a92ed38f803127d40cce41b1aa97c4926f23d7e0527d4d4514c7e"
+    },
+    {
+      "source": "builtinSkills:wordpress-block-pages/references/wordpress-api.md",
+      "destination": "skills/wordpress/wordpress-block-pages/references/wordpress-api.md",
+      "category": "规范Skill包",
+      "bytes": 2405,
+      "sha256": "07c565298f02ee1d01d234a78d2d03e99c9f4f9d7ac2d9da6fad5f8af639980f",
+      "packageVersion": "d9ed15b02c7a92ed38f803127d40cce41b1aa97c4926f23d7e0527d4d4514c7e"
+    },
+    {
+      "source": "builtinSkills:wordpress-block-pages/skill.json",
+      "destination": "skills/wordpress/wordpress-block-pages/skill.json",
+      "category": "规范Skill包",
+      "bytes": 647,
+      "sha256": "126a9d67bbe11cda07f70a623fff71f89cb51a57630cf39bdadc4b960ccd845b",
+      "packageVersion": "d9ed15b02c7a92ed38f803127d40cce41b1aa97c4926f23d7e0527d4d4514c7e"
+    },
+    {
+      "source": "builtinSkills:wordpress-block-pages/SKILL.md",
+      "destination": "skills/wordpress/wordpress-block-pages/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 2625,
+      "sha256": "25b3f8ebf33c744eeb64cc2aadecdb86305281853ba519cf13457f0339a91a4e",
+      "packageVersion": "d9ed15b02c7a92ed38f803127d40cce41b1aa97c4926f23d7e0527d4d4514c7e"
+    },
+    {
+      "source": "builtinSkills:wordpress-acf-products/LICENSE.txt",
+      "destination": "skills/wordpress/wordpress-acf-products/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 1083,
+      "sha256": "20b3cdfa2aa7d5f0167686808c60687040f42a89d62b248de1e26ad2d1470fe0",
+      "packageVersion": "18dcd02c84a106fdb61715d9500b75ded68966a9fcfc7d8683b8915162980d61"
+    },
+    {
+      "source": "builtinSkills:wordpress-acf-products/references/wordpress-api.md",
+      "destination": "skills/wordpress/wordpress-acf-products/references/wordpress-api.md",
+      "category": "规范Skill包",
+      "bytes": 2405,
+      "sha256": "07c565298f02ee1d01d234a78d2d03e99c9f4f9d7ac2d9da6fad5f8af639980f",
+      "packageVersion": "18dcd02c84a106fdb61715d9500b75ded68966a9fcfc7d8683b8915162980d61"
+    },
+    {
+      "source": "builtinSkills:wordpress-acf-products/skill.json",
+      "destination": "skills/wordpress/wordpress-acf-products/skill.json",
+      "category": "规范Skill包",
+      "bytes": 634,
+      "sha256": "987e16600e3c3c6efa40526cd9c62475f0b9853196fc6a7bfe633ee9dae0733b",
+      "packageVersion": "18dcd02c84a106fdb61715d9500b75ded68966a9fcfc7d8683b8915162980d61"
+    },
+    {
+      "source": "builtinSkills:wordpress-acf-products/SKILL.md",
+      "destination": "skills/wordpress/wordpress-acf-products/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1730,
+      "sha256": "969bcf111fc5b925a149b3b8909776cee4216b49f7b86c58f397fdb1600f8061",
+      "packageVersion": "18dcd02c84a106fdb61715d9500b75ded68966a9fcfc7d8683b8915162980d61"
+    },
+    {
+      "source": "builtinSkills:wordpress-media/LICENSE.txt",
+      "destination": "skills/wordpress/wordpress-media/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 1083,
+      "sha256": "20b3cdfa2aa7d5f0167686808c60687040f42a89d62b248de1e26ad2d1470fe0",
+      "packageVersion": "176ab7342addba028d6b039fb7483d4ad6c7dc435ab6e91b5106c4154ca5370b"
+    },
+    {
+      "source": "builtinSkills:wordpress-media/references/wordpress-api.md",
+      "destination": "skills/wordpress/wordpress-media/references/wordpress-api.md",
+      "category": "规范Skill包",
+      "bytes": 2405,
+      "sha256": "07c565298f02ee1d01d234a78d2d03e99c9f4f9d7ac2d9da6fad5f8af639980f",
+      "packageVersion": "176ab7342addba028d6b039fb7483d4ad6c7dc435ab6e91b5106c4154ca5370b"
+    },
+    {
+      "source": "builtinSkills:wordpress-media/skill.json",
+      "destination": "skills/wordpress/wordpress-media/skill.json",
+      "category": "规范Skill包",
+      "bytes": 629,
+      "sha256": "deb91b30f096f3753a2780ea50ccc32f56a45c365b0898d35b8522a6581ac02b",
+      "packageVersion": "176ab7342addba028d6b039fb7483d4ad6c7dc435ab6e91b5106c4154ca5370b"
+    },
+    {
+      "source": "builtinSkills:wordpress-media/SKILL.md",
+      "destination": "skills/wordpress/wordpress-media/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1415,
+      "sha256": "205dbffc60c81f900c041abf60ceb5f5f7d29cd9fbbc51450a47cb61615d5b52",
+      "packageVersion": "176ab7342addba028d6b039fb7483d4ad6c7dc435ab6e91b5106c4154ca5370b"
+    },
+    {
+      "source": "builtinSkills:wordpress-forms/LICENSE.txt",
+      "destination": "skills/wordpress/wordpress-forms/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 1083,
+      "sha256": "20b3cdfa2aa7d5f0167686808c60687040f42a89d62b248de1e26ad2d1470fe0",
+      "packageVersion": "b215e3aa3b0b18842853e73cd8ceae2caaebcb967d80b39da836e1e5e742d0a8"
+    },
+    {
+      "source": "builtinSkills:wordpress-forms/references/wordpress-api.md",
+      "destination": "skills/wordpress/wordpress-forms/references/wordpress-api.md",
+      "category": "规范Skill包",
+      "bytes": 2405,
+      "sha256": "07c565298f02ee1d01d234a78d2d03e99c9f4f9d7ac2d9da6fad5f8af639980f",
+      "packageVersion": "b215e3aa3b0b18842853e73cd8ceae2caaebcb967d80b39da836e1e5e742d0a8"
+    },
+    {
+      "source": "builtinSkills:wordpress-forms/skill.json",
+      "destination": "skills/wordpress/wordpress-forms/skill.json",
+      "category": "规范Skill包",
+      "bytes": 603,
+      "sha256": "37c1cecbe03b445648c0ed9fc78a8330ba297786411d70de6b315d7d358f26f0",
+      "packageVersion": "b215e3aa3b0b18842853e73cd8ceae2caaebcb967d80b39da836e1e5e742d0a8"
+    },
+    {
+      "source": "builtinSkills:wordpress-forms/SKILL.md",
+      "destination": "skills/wordpress/wordpress-forms/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1561,
+      "sha256": "bdf9d2cef811355792a356a9fada793ca77b4418dc318f9b5494371a9be64903",
+      "packageVersion": "b215e3aa3b0b18842853e73cd8ceae2caaebcb967d80b39da836e1e5e742d0a8"
+    },
+    {
+      "source": "builtinSkills:wordpress-seo-settings/LICENSE.txt",
+      "destination": "skills/wordpress/wordpress-seo-settings/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 1083,
+      "sha256": "20b3cdfa2aa7d5f0167686808c60687040f42a89d62b248de1e26ad2d1470fe0",
+      "packageVersion": "2040e3df189a68d2254020b0d6cc2f78efcd30842fb192de25cba35d9a8696d4"
+    },
+    {
+      "source": "builtinSkills:wordpress-seo-settings/references/wordpress-api.md",
+      "destination": "skills/wordpress/wordpress-seo-settings/references/wordpress-api.md",
+      "category": "规范Skill包",
+      "bytes": 2405,
+      "sha256": "07c565298f02ee1d01d234a78d2d03e99c9f4f9d7ac2d9da6fad5f8af639980f",
+      "packageVersion": "2040e3df189a68d2254020b0d6cc2f78efcd30842fb192de25cba35d9a8696d4"
+    },
+    {
+      "source": "builtinSkills:wordpress-seo-settings/skill.json",
+      "destination": "skills/wordpress/wordpress-seo-settings/skill.json",
+      "category": "规范Skill包",
+      "bytes": 621,
+      "sha256": "c49ad581b08a595d706abd4f642090333819da1d6ad941bfe782ffe6683b0aee",
+      "packageVersion": "2040e3df189a68d2254020b0d6cc2f78efcd30842fb192de25cba35d9a8696d4"
+    },
+    {
+      "source": "builtinSkills:wordpress-seo-settings/SKILL.md",
+      "destination": "skills/wordpress/wordpress-seo-settings/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1581,
+      "sha256": "fb7ff4f20ab51633a880812a048d7bb0bdb859d4d378835f9bda6a627fc947d9",
+      "packageVersion": "2040e3df189a68d2254020b0d6cc2f78efcd30842fb192de25cba35d9a8696d4"
+    },
+    {
+      "source": "builtinSkills:site-outline/SKILL.md",
+      "destination": "skills/related/site-outline/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 587,
+      "sha256": "a566332f4cd994c70de075042168c6acf7c40091371e7f262b67e59bb2f49c4c",
+      "packageVersion": "2a344019b3774127a3ecdcafc8f0bc8eff77f5a3efdeb35cc78b191f4f17a58c"
+    },
+    {
+      "source": "builtinSkills:landing-cro/LICENSE.txt",
+      "destination": "skills/related/landing-cro/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 1069,
+      "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591",
+      "packageVersion": "1aa87c9c6780b51f525b1ea6e6877e400c1524134b928dae6c4f985bcfb188da"
+    },
+    {
+      "source": "builtinSkills:landing-cro/references/b2b-review.md",
+      "destination": "skills/related/landing-cro/references/b2b-review.md",
+      "category": "规范Skill包",
+      "bytes": 981,
+      "sha256": "e4d81ea3529229e64b5e087ae6f1ed76448b9ba99636938bb232cdad4f4ee7db",
+      "packageVersion": "1aa87c9c6780b51f525b1ea6e6877e400c1524134b928dae6c4f985bcfb188da"
+    },
+    {
+      "source": "builtinSkills:landing-cro/references/sources.md",
+      "destination": "skills/related/landing-cro/references/sources.md",
+      "category": "规范Skill包",
+      "bytes": 1841,
+      "sha256": "e5aadef9f42bd0dd503b02b382d179436aa19cd3e7282a79f3b31c78b542c1aa",
+      "packageVersion": "1aa87c9c6780b51f525b1ea6e6877e400c1524134b928dae6c4f985bcfb188da"
+    },
+    {
+      "source": "builtinSkills:landing-cro/skill.json",
+      "destination": "skills/related/landing-cro/skill.json",
+      "category": "规范Skill包",
+      "bytes": 493,
+      "sha256": "a06e09ff33c273ec42aaa491b76509caf3e86f2abd39a68398f275a49365f2e2",
+      "packageVersion": "1aa87c9c6780b51f525b1ea6e6877e400c1524134b928dae6c4f985bcfb188da"
+    },
+    {
+      "source": "builtinSkills:landing-cro/SKILL.md",
+      "destination": "skills/related/landing-cro/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1491,
+      "sha256": "c287ceda5260f4af86a918e91e6eaeebf3f270a53e85aab37a219a20ae436421",
+      "packageVersion": "1aa87c9c6780b51f525b1ea6e6877e400c1524134b928dae6c4f985bcfb188da"
+    },
+    {
+      "source": "builtinSkills:b2b-copywriting/LICENSE.txt",
+      "destination": "skills/related/b2b-copywriting/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 1069,
+      "sha256": "b70d71e24e40fce5da8f4b6f9cd862096a048e433db7f3c8cac5e348e6d34591",
+      "packageVersion": "3d003a0d84dcfa2a6eb47bcb86f1a8d95d981f42074577c9d9544b5cf6cc9e6a"
+    },
+    {
+      "source": "builtinSkills:b2b-copywriting/references/b2b-review.md",
+      "destination": "skills/related/b2b-copywriting/references/b2b-review.md",
+      "category": "规范Skill包",
+      "bytes": 981,
+      "sha256": "e4d81ea3529229e64b5e087ae6f1ed76448b9ba99636938bb232cdad4f4ee7db",
+      "packageVersion": "3d003a0d84dcfa2a6eb47bcb86f1a8d95d981f42074577c9d9544b5cf6cc9e6a"
+    },
+    {
+      "source": "builtinSkills:b2b-copywriting/references/sources.md",
+      "destination": "skills/related/b2b-copywriting/references/sources.md",
+      "category": "规范Skill包",
+      "bytes": 1841,
+      "sha256": "e5aadef9f42bd0dd503b02b382d179436aa19cd3e7282a79f3b31c78b542c1aa",
+      "packageVersion": "3d003a0d84dcfa2a6eb47bcb86f1a8d95d981f42074577c9d9544b5cf6cc9e6a"
+    },
+    {
+      "source": "builtinSkills:b2b-copywriting/skill.json",
+      "destination": "skills/related/b2b-copywriting/skill.json",
+      "category": "规范Skill包",
+      "bytes": 482,
+      "sha256": "e7b6c36f54d1bc2afa7bdc71d1f80daec7b21fbd4cfd86a7290fa7a51762a359",
+      "packageVersion": "3d003a0d84dcfa2a6eb47bcb86f1a8d95d981f42074577c9d9544b5cf6cc9e6a"
+    },
+    {
+      "source": "builtinSkills:b2b-copywriting/SKILL.md",
+      "destination": "skills/related/b2b-copywriting/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1369,
+      "sha256": "4b624a5aae5fb998d35a47c5a85990f790362aa383d93f42db93d26808fc821f",
+      "packageVersion": "3d003a0d84dcfa2a6eb47bcb86f1a8d95d981f42074577c9d9544b5cf6cc9e6a"
+    },
+    {
+      "source": "builtinSkills:seo-performance-review/LICENSE.txt",
+      "destination": "skills/related/seo-performance-review/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "a1c2bcd2cfbd7bd4282dc5291021d00c2c6833e5a813f09ed2d089641c0fc866"
+    },
+    {
+      "source": "builtinSkills:seo-performance-review/references/seo-api.md",
+      "destination": "skills/related/seo-performance-review/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "a1c2bcd2cfbd7bd4282dc5291021d00c2c6833e5a813f09ed2d089641c0fc866"
+    },
+    {
+      "source": "builtinSkills:seo-performance-review/references/seo-sources.md",
+      "destination": "skills/related/seo-performance-review/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "a1c2bcd2cfbd7bd4282dc5291021d00c2c6833e5a813f09ed2d089641c0fc866"
+    },
+    {
+      "source": "builtinSkills:seo-performance-review/skill.json",
+      "destination": "skills/related/seo-performance-review/skill.json",
+      "category": "规范Skill包",
+      "bytes": 714,
+      "sha256": "3c4b846762ca7744ae05dbae22d0d690a712bae626cdf860c28acf0b86511610",
+      "packageVersion": "a1c2bcd2cfbd7bd4282dc5291021d00c2c6833e5a813f09ed2d089641c0fc866"
+    },
+    {
+      "source": "builtinSkills:seo-performance-review/SKILL.md",
+      "destination": "skills/related/seo-performance-review/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1390,
+      "sha256": "39a22df03e2ab534e35ad414b696f19ebfbbf4ee7255b1c99ffea3e724506129",
+      "packageVersion": "a1c2bcd2cfbd7bd4282dc5291021d00c2c6833e5a813f09ed2d089641c0fc866"
+    },
+    {
+      "source": "builtinSkills:seo-content-plan/LICENSE.txt",
+      "destination": "skills/related/seo-content-plan/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "b68042331cd0b43eb950840892774420e4e13fcd6aab20278b55b5610eec7daf"
+    },
+    {
+      "source": "builtinSkills:seo-content-plan/references/seo-api.md",
+      "destination": "skills/related/seo-content-plan/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "b68042331cd0b43eb950840892774420e4e13fcd6aab20278b55b5610eec7daf"
+    },
+    {
+      "source": "builtinSkills:seo-content-plan/references/seo-sources.md",
+      "destination": "skills/related/seo-content-plan/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "b68042331cd0b43eb950840892774420e4e13fcd6aab20278b55b5610eec7daf"
+    },
+    {
+      "source": "builtinSkills:seo-content-plan/skill.json",
+      "destination": "skills/related/seo-content-plan/skill.json",
+      "category": "规范Skill包",
+      "bytes": 693,
+      "sha256": "c2eef9f106abf7a3a330cd18546de4de16f5bf34c8a429a19e14e850cf026d42",
+      "packageVersion": "b68042331cd0b43eb950840892774420e4e13fcd6aab20278b55b5610eec7daf"
+    },
+    {
+      "source": "builtinSkills:seo-content-plan/SKILL.md",
+      "destination": "skills/related/seo-content-plan/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1329,
+      "sha256": "4a687fe49caa23d80c7b1d73c70c7150fe8f195ab2cdde055dfacf35021fabbc",
+      "packageVersion": "b68042331cd0b43eb950840892774420e4e13fcd6aab20278b55b5610eec7daf"
+    },
+    {
+      "source": "builtinSkills:seo-backlink-audit/LICENSE.txt",
+      "destination": "skills/related/seo-backlink-audit/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "9c6faa38e0f07482950c1c50e80cef9ffe43e4ba32571e8edd6cb517789e27ec"
+    },
+    {
+      "source": "builtinSkills:seo-backlink-audit/references/seo-api.md",
+      "destination": "skills/related/seo-backlink-audit/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "9c6faa38e0f07482950c1c50e80cef9ffe43e4ba32571e8edd6cb517789e27ec"
+    },
+    {
+      "source": "builtinSkills:seo-backlink-audit/references/seo-sources.md",
+      "destination": "skills/related/seo-backlink-audit/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "9c6faa38e0f07482950c1c50e80cef9ffe43e4ba32571e8edd6cb517789e27ec"
+    },
+    {
+      "source": "builtinSkills:seo-backlink-audit/skill.json",
+      "destination": "skills/related/seo-backlink-audit/skill.json",
+      "category": "规范Skill包",
+      "bytes": 666,
+      "sha256": "364149928f5445e848c2264f4a7dfd3aa89cf2b9931cbafb0048f3f6c31f1e1c",
+      "packageVersion": "9c6faa38e0f07482950c1c50e80cef9ffe43e4ba32571e8edd6cb517789e27ec"
+    },
+    {
+      "source": "builtinSkills:seo-backlink-audit/SKILL.md",
+      "destination": "skills/related/seo-backlink-audit/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1221,
+      "sha256": "0c0d3bcc6c1b81e55268edaaae30239d39dd3cbaa3f2aa2743a669649bf4ae7b",
+      "packageVersion": "9c6faa38e0f07482950c1c50e80cef9ffe43e4ba32571e8edd6cb517789e27ec"
+    },
+    {
+      "source": "builtinSkills:seo-link-prospecting/LICENSE.txt",
+      "destination": "skills/related/seo-link-prospecting/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "5c832e21fc70a182457a1ef5ebb716760e67382683c7c1aee61fd5b5018212a7"
+    },
+    {
+      "source": "builtinSkills:seo-link-prospecting/references/seo-api.md",
+      "destination": "skills/related/seo-link-prospecting/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "5c832e21fc70a182457a1ef5ebb716760e67382683c7c1aee61fd5b5018212a7"
+    },
+    {
+      "source": "builtinSkills:seo-link-prospecting/references/seo-sources.md",
+      "destination": "skills/related/seo-link-prospecting/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "5c832e21fc70a182457a1ef5ebb716760e67382683c7c1aee61fd5b5018212a7"
+    },
+    {
+      "source": "builtinSkills:seo-link-prospecting/skill.json",
+      "destination": "skills/related/seo-link-prospecting/skill.json",
+      "category": "规范Skill包",
+      "bytes": 684,
+      "sha256": "7cd39d9ed219f067434bf0886153401ddba1babd331d9418874d442ee0781e38",
+      "packageVersion": "5c832e21fc70a182457a1ef5ebb716760e67382683c7c1aee61fd5b5018212a7"
+    },
+    {
+      "source": "builtinSkills:seo-link-prospecting/SKILL.md",
+      "destination": "skills/related/seo-link-prospecting/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1345,
+      "sha256": "4d76be9b92e65a58f6155465f27c61e65e0a5fd5931f94ea931eaf4b6d646d58",
+      "packageVersion": "5c832e21fc70a182457a1ef5ebb716760e67382683c7c1aee61fd5b5018212a7"
+    },
+    {
+      "source": "builtinSkills:seo-link-outreach/LICENSE.txt",
+      "destination": "skills/related/seo-link-outreach/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "038d337a71251c71ee696d02b8b25ef5e57466f88fca66615dfd64b0db2e628f"
+    },
+    {
+      "source": "builtinSkills:seo-link-outreach/references/seo-api.md",
+      "destination": "skills/related/seo-link-outreach/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "038d337a71251c71ee696d02b8b25ef5e57466f88fca66615dfd64b0db2e628f"
+    },
+    {
+      "source": "builtinSkills:seo-link-outreach/references/seo-sources.md",
+      "destination": "skills/related/seo-link-outreach/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "038d337a71251c71ee696d02b8b25ef5e57466f88fca66615dfd64b0db2e628f"
+    },
+    {
+      "source": "builtinSkills:seo-link-outreach/skill.json",
+      "destination": "skills/related/seo-link-outreach/skill.json",
+      "category": "规范Skill包",
+      "bytes": 689,
+      "sha256": "c363653c0c38a7fe6e3b2236266c1cea858fdb094aee1a5452d74d9b628fd9b7",
+      "packageVersion": "038d337a71251c71ee696d02b8b25ef5e57466f88fca66615dfd64b0db2e628f"
+    },
+    {
+      "source": "builtinSkills:seo-link-outreach/SKILL.md",
+      "destination": "skills/related/seo-link-outreach/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1469,
+      "sha256": "46cfc98209e1b60a9045804e720ff0731a61b19021eea08c30286c3456af9b89",
+      "packageVersion": "038d337a71251c71ee696d02b8b25ef5e57466f88fca66615dfd64b0db2e628f"
+    },
+    {
+      "source": "builtinSkills:seo-internal-links/LICENSE.txt",
+      "destination": "skills/related/seo-internal-links/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "0a863d058d3cc5d7af74df0c0f116d75a18262af52bdb0b1abc2bb9638787931"
+    },
+    {
+      "source": "builtinSkills:seo-internal-links/references/seo-api.md",
+      "destination": "skills/related/seo-internal-links/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "0a863d058d3cc5d7af74df0c0f116d75a18262af52bdb0b1abc2bb9638787931"
+    },
+    {
+      "source": "builtinSkills:seo-internal-links/references/seo-sources.md",
+      "destination": "skills/related/seo-internal-links/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "0a863d058d3cc5d7af74df0c0f116d75a18262af52bdb0b1abc2bb9638787931"
+    },
+    {
+      "source": "builtinSkills:seo-internal-links/skill.json",
+      "destination": "skills/related/seo-internal-links/skill.json",
+      "category": "规范Skill包",
+      "bytes": 695,
+      "sha256": "69b9ed8e40b420dfda9a24449359057b57313db790124758fea4c918f388bcbc",
+      "packageVersion": "0a863d058d3cc5d7af74df0c0f116d75a18262af52bdb0b1abc2bb9638787931"
+    },
+    {
+      "source": "builtinSkills:seo-internal-links/SKILL.md",
+      "destination": "skills/related/seo-internal-links/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1320,
+      "sha256": "ff06464305534a4251e7712b8a014e37293fe8a0452d7350570a0267293a37b8",
+      "packageVersion": "0a863d058d3cc5d7af74df0c0f116d75a18262af52bdb0b1abc2bb9638787931"
+    },
+    {
+      "source": "builtinSkills:seo-schema/LICENSE.txt",
+      "destination": "skills/related/seo-schema/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "3144621a774b5c27b1c0d6f144708de4d7e7b3b03fe708b9e2bded1e83f6727e"
+    },
+    {
+      "source": "builtinSkills:seo-schema/references/seo-api.md",
+      "destination": "skills/related/seo-schema/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "3144621a774b5c27b1c0d6f144708de4d7e7b3b03fe708b9e2bded1e83f6727e"
+    },
+    {
+      "source": "builtinSkills:seo-schema/references/seo-sources.md",
+      "destination": "skills/related/seo-schema/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "3144621a774b5c27b1c0d6f144708de4d7e7b3b03fe708b9e2bded1e83f6727e"
+    },
+    {
+      "source": "builtinSkills:seo-schema/skill.json",
+      "destination": "skills/related/seo-schema/skill.json",
+      "category": "规范Skill包",
+      "bytes": 682,
+      "sha256": "b3f9750b87333e2417381764cf764de09c862947be99f5e1393f002dfa8fdb1d",
+      "packageVersion": "3144621a774b5c27b1c0d6f144708de4d7e7b3b03fe708b9e2bded1e83f6727e"
+    },
+    {
+      "source": "builtinSkills:seo-schema/SKILL.md",
+      "destination": "skills/related/seo-schema/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1415,
+      "sha256": "73d333577c9f7ba3b00ffd78d8295ab5aa0e8bed2d5acb07d43f1c276fae0c7b",
+      "packageVersion": "3144621a774b5c27b1c0d6f144708de4d7e7b3b03fe708b9e2bded1e83f6727e"
+    },
+    {
+      "source": "builtinSkills:seo-international/LICENSE.txt",
+      "destination": "skills/related/seo-international/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "d7ef08f819d3308ec2e126d96360dd2159e546d52e141c59c32c8d4944b80dd1"
+    },
+    {
+      "source": "builtinSkills:seo-international/references/seo-api.md",
+      "destination": "skills/related/seo-international/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "d7ef08f819d3308ec2e126d96360dd2159e546d52e141c59c32c8d4944b80dd1"
+    },
+    {
+      "source": "builtinSkills:seo-international/references/seo-sources.md",
+      "destination": "skills/related/seo-international/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "d7ef08f819d3308ec2e126d96360dd2159e546d52e141c59c32c8d4944b80dd1"
+    },
+    {
+      "source": "builtinSkills:seo-international/skill.json",
+      "destination": "skills/related/seo-international/skill.json",
+      "category": "规范Skill包",
+      "bytes": 664,
+      "sha256": "39a1fb2d129cdc1c20cb31ed283fd76292c4c83547a22d30ce955789e5432b52",
+      "packageVersion": "d7ef08f819d3308ec2e126d96360dd2159e546d52e141c59c32c8d4944b80dd1"
+    },
+    {
+      "source": "builtinSkills:seo-international/SKILL.md",
+      "destination": "skills/related/seo-international/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1272,
+      "sha256": "2ebaf7b9064a4d28ff40616d4a895df233953ee480aadf8e3453f3a296c3193f",
+      "packageVersion": "d7ef08f819d3308ec2e126d96360dd2159e546d52e141c59c32c8d4944b80dd1"
+    },
+    {
+      "source": "builtinSkills:seo-performance/LICENSE.txt",
+      "destination": "skills/related/seo-performance/LICENSE.txt",
+      "category": "规范Skill包",
+      "bytes": 16046,
+      "sha256": "7a5a5c0a61be0f60a34ec251c94f132ecfa4a4a6e7692d82a3f98f2345c9123a",
+      "packageVersion": "c5bc7f1e2062952fe453d084c19e07a51daf968cec3ad3f47f483734dc6a86b6"
+    },
+    {
+      "source": "builtinSkills:seo-performance/references/seo-api.md",
+      "destination": "skills/related/seo-performance/references/seo-api.md",
+      "category": "规范Skill包",
+      "bytes": 6621,
+      "sha256": "5e339eec8c05e743ff383f517739c8004f66f1dfa3682f8e5d12be668e18a229",
+      "packageVersion": "c5bc7f1e2062952fe453d084c19e07a51daf968cec3ad3f47f483734dc6a86b6"
+    },
+    {
+      "source": "builtinSkills:seo-performance/references/seo-sources.md",
+      "destination": "skills/related/seo-performance/references/seo-sources.md",
+      "category": "规范Skill包",
+      "bytes": 2884,
+      "sha256": "6e5105f59ab82a1a245b0d95b529d39003e8820ea859041a7d379c9bc33efdf5",
+      "packageVersion": "c5bc7f1e2062952fe453d084c19e07a51daf968cec3ad3f47f483734dc6a86b6"
+    },
+    {
+      "source": "builtinSkills:seo-performance/skill.json",
+      "destination": "skills/related/seo-performance/skill.json",
+      "category": "规范Skill包",
+      "bytes": 703,
+      "sha256": "1c547f2298038034b49a24bf7253dbc6b13342554c6f6ca99eabf73e98e2eaf7",
+      "packageVersion": "c5bc7f1e2062952fe453d084c19e07a51daf968cec3ad3f47f483734dc6a86b6"
+    },
+    {
+      "source": "builtinSkills:seo-performance/SKILL.md",
+      "destination": "skills/related/seo-performance/SKILL.md",
+      "category": "规范Skill包",
+      "bytes": 1272,
+      "sha256": "5b1f90f2a06564fd68c2ca36f84f217561c63a307c439ce20865c09243d5f1bf",
+      "packageVersion": "c5bc7f1e2062952fe453d084c19e07a51daf968cec3ad3f47f483734dc6a86b6"
+    }
+  ]
+}

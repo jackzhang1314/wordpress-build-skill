@@ -1,0 +1,1 @@
+{"title":"WordPress 图文素材与发布","category":"website","summary":"上传图片或 PDF，设置图片说明、特色图并插入文章。","inputs":["原始图片/PDF、正文与说明"],"outputs":["媒体回执、图文文章草稿或发布结果"],"tags":["WordPress","独立站","运营"],"example":"请帮我完成WordPress 图文素材与发布，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。","requirements":"设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。","connections":["wordpress"]}

@@ -1,0 +1,4 @@
+SKU,Name,Material,Summary
+001,"Demo Valve, compact",Sample brass,"Fictional CSV product. Confirm specifications before use."
+002,"Demo Valve ""standard""",Sample stainless steel,"Fictional CSV product.
+Second line verifies quoted multiline cells."
