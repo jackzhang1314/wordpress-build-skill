@@ -26,6 +26,17 @@
 | Company | 73 | `/terralift-company/` |
 | Contact | 74 | `/terralift-contact/` |
 
+2026-09-18 扩展后新增 6 个支持/转化页面：
+
+| 页面 | ID | URL |
+| --- | ---: | --- |
+| Quality | 93 | `/terralift-quality/` |
+| OEM | 94 | `/terralift-oem/` |
+| Dealer | 95 | `/terralift-dealer/` |
+| Payment & Delivery | 96 | `/terralift-payment-delivery/` |
+| Support | 97 | `/terralift-support/` |
+| FAQ | 98 | `/terralift-faq/` |
+
 新增产品 CPT 记录 ID 55–60：
 
 - TL-E08 Compact Excavator。
@@ -51,6 +62,21 @@
 10. 用 `page-edit-plan/page-edit-apply` 将正文按钮从 `?page_id=` 替换为最终 permalink。
 11. 匿名检查桌面、手机、菜单、H1、溢出、产品 meta、Query Loop 和链接。
 
+## 2026-09-18 信息架构扩展
+
+在不复制参考站受保护内容的前提下，把通用外贸机械站常见的支持类信息补齐为 6 个原创页面：
+
+- **Quality**：下单前、生产中、装柜前的审查清单；不虚构工厂产能或认证。
+- **OEM**：把机械配置、品牌物料、文档责任和售后边界分开。
+- **Dealer**：只描述经销商评估框架；不虚构区域、折扣或收益。
+- **Payment & Delivery**：把付款、装运、目的港和现场接收检查分开。
+- **Support**：把服务范围、保修证据和备件计划列为需确认事项。
+- **FAQ**：用原生 details 区块回答常见采购澄清问题，并明示 demo 非真实库存。
+
+header 当前为 Home / Equipment / Industries / Company / Support / Contact；footer 两组导航覆盖 Quality / OEM / Dealer / Payment / Support / FAQ 与既有产品页。
+
+扩展页通过原生区块创建并逐页发布。发现 Quality 页的 Support 按钮仍是 `?page_id=97` 后，用 page-edit 计划替换为 `/terralift-support/`，再次检查通过。
+
 ## 验收结果
 
 - 8 个页面全部 publish。
@@ -61,7 +87,8 @@
 - 首页图片实际加载，alt 为 placeholder 说明。
 - 产品详情使用专用 `single-oct_product` 模板，meta 值正常显示。
 - Query Loop 只显示 6 条新 TL 产品，不显示旧 TD 产品。
-- 站内唯一 URL 检查通过：43 个请求全部 HTTP 200，无跳转，包含 8 个页面、6 个产品、feeds/oembed/assets。
+- 初始站内唯一 URL 检查通过：43 个请求全部 HTTP 200，无跳转，包含 8 个页面、6 个产品、feeds/oembed/assets。
+- 扩展后 14 个页面站内唯一 URL 检查通过：67 个请求全部 HTTP 200，无跳转，无失败。
 - 结构化记录：`docs/acceptance/0917-terralift/test-records.json`。
 
 ## 与“像素级复刻”的差距

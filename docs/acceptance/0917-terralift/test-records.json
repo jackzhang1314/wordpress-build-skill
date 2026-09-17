@@ -23,6 +23,14 @@
     {"key": "company", "id": 73, "url": "http://127.0.0.1:9462/terralift-company/"},
     {"key": "contact", "id": 74, "url": "http://127.0.0.1:9462/terralift-contact/"}
   ],
+  "expandedPages": [
+    {"key": "quality", "id": 93, "url": "http://127.0.0.1:9462/terralift-quality/"},
+    {"key": "oem", "id": 94, "url": "http://127.0.0.1:9462/terralift-oem/"},
+    {"key": "dealer", "id": 95, "url": "http://127.0.0.1:9462/terralift-dealer/"},
+    {"key": "payment", "id": 96, "url": "http://127.0.0.1:9462/terralift-payment-delivery/"},
+    {"key": "support", "id": 97, "url": "http://127.0.0.1:9462/terralift-support/"},
+    {"key": "faq", "id": 98, "url": "http://127.0.0.1:9462/terralift-faq/"}
+  ],
   "publishedProducts": [
     {"id": 55, "slug": "tl-e08", "title": "TL-E08 Compact Excavator"},
     {"id": 56, "slug": "tl-e20", "title": "TL-E20 Compact Excavator"},
@@ -32,9 +40,9 @@
     {"id": 60, "slug": "tl-s50", "title": "TL-S50 Skid Steer Loader"}
   ],
   "navigation": {
-    "header": ["Home", "Equipment", "Industries", "Company", "Contact"],
-    "footerGroupOne": ["Home", "Equipment", "Industries"],
-    "footerGroupTwo": ["Company", "Excavators", "Loaders", "Contact"],
+    "header": ["Home", "Equipment", "Industries", "Company", "Support", "Contact"],
+    "footerGroupOne": ["Home", "Equipment", "Industries", "Quality", "OEM", "Dealer"],
+    "footerGroupTwo": ["Company", "Excavators", "Loaders", "Payment", "Support", "FAQ"],
     "mobileMenuOpensAndCloses": true
   },
   "anonymousChecks": {
@@ -47,6 +55,20 @@
     "queryLoopShowsOnlyNewTlProducts": true,
     "internalUniqueUrlsChecked": 43,
     "internalUniqueUrlsPassed": 43,
+    "httpFailures": 0,
+    "redirects": 0
+  },
+  "expansionChecks": {
+    "publishedExpandedPages": 6,
+    "singleH1PerPage": true,
+    "desktopHorizontalOverflow": false,
+    "mobileHorizontalOverflow": false,
+    "adminBarAbsent": true,
+    "faqDetailsBlocks": 4,
+    "mobileMenuOpensAndCloses": true,
+    "qualitySupportButtonUsesFinalPermalink": true,
+    "internalUniqueUrlsChecked": 67,
+    "internalUniqueUrlsPassed": 67,
     "httpFailures": 0,
     "redirects": 0
   },

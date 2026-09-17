@@ -1,0 +1,428 @@
+{
+  "checkedAt": "2026-09-17T17:23:44.355Z",
+  "pages": [
+    "http://127.0.0.1:9462/",
+    "http://127.0.0.1:9462/terralift-equipment/",
+    "http://127.0.0.1:9462/terralift-excavators/",
+    "http://127.0.0.1:9462/terralift-loaders/",
+    "http://127.0.0.1:9462/terralift-skid-steer/",
+    "http://127.0.0.1:9462/terralift-industries/",
+    "http://127.0.0.1:9462/terralift-company/",
+    "http://127.0.0.1:9462/terralift-contact/",
+    "http://127.0.0.1:9462/terralift-quality/",
+    "http://127.0.0.1:9462/terralift-oem/",
+    "http://127.0.0.1:9462/terralift-dealer/",
+    "http://127.0.0.1:9462/terralift-payment-delivery/",
+    "http://127.0.0.1:9462/terralift-support/",
+    "http://127.0.0.1:9462/terralift-faq/"
+  ],
+  "rows": [
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/feed/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/comments/feed/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/wp-json/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/67",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/xmlrpc.php?rsd",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=efaa5193bbad9c60ffd1",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/terralift-equipment/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/terralift-industries/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/terralift-company/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/terralift-support/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/terralift-contact/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/products/tl-s50/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/products/tl-l10/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/products/tl-e35/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/products/tl-e20/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/products/tl-e08/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/products/tl-b30/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/terralift-quality/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/terralift-oem/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/terralift-dealer/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/terralift-excavators/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/terralift-loaders/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/terralift-payment-delivery/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/",
+      "href": "http://127.0.0.1:9462/terralift-faq/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-equipment/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-equipment%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-equipment/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-equipment%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-equipment/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/68",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-excavators/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-excavators%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-excavators/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-excavators%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-excavators/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/69",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-loaders/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-loaders%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-loaders/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-loaders%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-loaders/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/70",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-skid-steer/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-skid-steer%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-skid-steer/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-skid-steer%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-skid-steer/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/71",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-skid-steer/",
+      "href": "http://127.0.0.1:9462/terralift-skid-steer/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-industries/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-industries%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-industries/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-industries%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-industries/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/72",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-company/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-company%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-company/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-company%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-company/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/73",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-contact/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-contact%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-contact/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-contact%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-contact/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/74",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-quality/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-quality%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-quality/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-quality%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-quality/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/93",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-oem/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-oem%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-oem/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-oem%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-oem/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/94",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-dealer/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-dealer%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-dealer/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-dealer%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-dealer/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/95",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-payment-delivery/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-payment-delivery%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-payment-delivery/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-payment-delivery%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-payment-delivery/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/96",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-support/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-support%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-support/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-support%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-support/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/97",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-faq/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-faq%2F",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-faq/",
+      "href": "http://127.0.0.1:9462/wp-json/oembed/1.0/embed?url=http%3A%2F%2F127.0.0.1%3A9462%2Fterralift-faq%2F&#038;format=xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "from": "http://127.0.0.1:9462/terralift-faq/",
+      "href": "http://127.0.0.1:9462/wp-json/wp/v2/pages/98",
+      "status": 200,
+      "location": null
+    }
+  ],
+  "summary": {
+    "checked": 67,
+    "passed": 67,
+    "failed": 0
+  }
+}
