@@ -77,6 +77,34 @@ header 当前为 Home / Equipment / Industries / Company / Support / Contact；f
 
 扩展页通过原生区块创建并逐页发布。发现 Quality 页的 Support 按钮仍是 `?page_id=97` 后，用 page-edit 计划替换为 `/terralift-support/`，再次检查通过。
 
+## 2026-09-18 开放授权素材链路
+
+继续测试图片素材链路时，不抓取参考站或阿里巴巴平台图片；改用 Wikimedia Commons 上明确标记为 **CC0** 的四张机械照片，并保留来源、作者、许可证和页面链接：
+
+| 测试用途 | Commons 文件 | 许可证 |
+| --- | --- | --- |
+| Mini excavator | `File:IHI 9NX.JPG` | CC0 |
+| Wheel loader | `File:Moscow, Shipilovsky Proezd, SDLG loader, Aug 2025 02.jpg` | CC0 |
+| Backhoe loader | `File:Street repair backhoe digging Summit NJ.jpg` | CC0 |
+| Skid steer | `File:ASV VT-70 High Output Posi-Track - Arlington, MA.jpg` | CC0 |
+
+这些照片只作为测试 placeholder，不代表 TerraLift 产品或配置。来源记录在 `docs/acceptance/0917-terralift/open-assets-manifest.json`。
+
+执行内容：
+
+1. 通过 Commons API 读取原始授权与作者信息。
+2. 下载 1600px 缩略图，上传到 WordPress 媒体库，实际媒体 ID 为 109–112。
+3. 用 `content-plan/content-apply` 为产品 ID 55–60 设置 featured image。
+4. 更新 `single-oct_product` block template，开启 featured image 展示。
+5. 用 page-edit 更新首页和 Equipment 页的分类图卡。
+
+验收：
+
+- 首页 4 张图片实际加载，alt 均为 placeholder 说明。
+- Equipment 页 4 张分类图片实际加载。
+- 6 个产品详情页均渲染对应 featured image。
+- 桌面与手机无横向溢出，首页仍保持单一 H1。
+
 ## 验收结果
 
 - 8 个页面全部 publish。

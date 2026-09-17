@@ -72,6 +72,27 @@
     "httpFailures": 0,
     "redirects": 0
   },
+  "openAssetChecks": {
+    "source": "Wikimedia Commons CC0 thumbnails",
+    "targetSiteImagesCopied": false,
+    "alibabaImagesCopied": false,
+    "uploadedMediaIds": [109, 110, 111, 112],
+    "productFeaturedMedia": {
+      "55": 109,
+      "56": 109,
+      "57": 109,
+      "58": 110,
+      "59": 111,
+      "60": 112
+    },
+    "productTemplateShowsFeaturedImage": true,
+    "productDetailImagesRendered": 6,
+    "homeImagesRendered": 4,
+    "equipmentImagesRendered": 4,
+    "desktopHorizontalOverflow": false,
+    "mobileHorizontalOverflow": false,
+    "manifest": "open-assets-manifest.json"
+  },
   "copyrightBoundary": {
     "pixelLevelCloneRequested": true,
     "pixelLevelClonePerformed": false,
