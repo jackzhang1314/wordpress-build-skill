@@ -1,0 +1,59 @@
+{
+  "recordedAt": "2026-09-17T20:55:00+08:00",
+  "scope": "original reference-informed demo; not a pixel-level clone",
+  "site": {
+    "url": "http://127.0.0.1:9462",
+    "wordpressReported": "7.1",
+    "phpResponseHeader": "8.5.8",
+    "theme": "twentytwentyfive",
+    "themeVersion": "1.5"
+  },
+  "brand": {
+    "name": "TerraLift Machinery — Demo",
+    "fictional": true,
+    "usesReferenceBrandAssets": false
+  },
+  "publishedPages": [
+    {"key": "home", "id": 67, "url": "http://127.0.0.1:9462/"},
+    {"key": "equipment", "id": 68, "url": "http://127.0.0.1:9462/terralift-equipment/"},
+    {"key": "excavators", "id": 69, "url": "http://127.0.0.1:9462/terralift-excavators/"},
+    {"key": "loaders", "id": 70, "url": "http://127.0.0.1:9462/terralift-loaders/"},
+    {"key": "skid", "id": 71, "url": "http://127.0.0.1:9462/terralift-skid-steer/"},
+    {"key": "industries", "id": 72, "url": "http://127.0.0.1:9462/terralift-industries/"},
+    {"key": "company", "id": 73, "url": "http://127.0.0.1:9462/terralift-company/"},
+    {"key": "contact", "id": 74, "url": "http://127.0.0.1:9462/terralift-contact/"}
+  ],
+  "publishedProducts": [
+    {"id": 55, "slug": "tl-e08", "title": "TL-E08 Compact Excavator"},
+    {"id": 56, "slug": "tl-e20", "title": "TL-E20 Compact Excavator"},
+    {"id": 57, "slug": "tl-e35", "title": "TL-E35 Compact Excavator"},
+    {"id": 58, "slug": "tl-l10", "title": "TL-L10 Compact Wheel Loader"},
+    {"id": 59, "slug": "tl-b30", "title": "TL-B30 Backhoe Loader"},
+    {"id": 60, "slug": "tl-s50", "title": "TL-S50 Skid Steer Loader"}
+  ],
+  "navigation": {
+    "header": ["Home", "Equipment", "Industries", "Company", "Contact"],
+    "footerGroupOne": ["Home", "Equipment", "Industries"],
+    "footerGroupTwo": ["Company", "Excavators", "Loaders", "Contact"],
+    "mobileMenuOpensAndCloses": true
+  },
+  "anonymousChecks": {
+    "singleH1PerPage": true,
+    "desktopHorizontalOverflow": false,
+    "mobileHorizontalOverflow": false,
+    "heroImageLoaded": true,
+    "heroAltPresent": true,
+    "productMetaRenders": true,
+    "queryLoopShowsOnlyNewTlProducts": true,
+    "internalUniqueUrlsChecked": 43,
+    "internalUniqueUrlsPassed": 43,
+    "httpFailures": 0,
+    "redirects": 0
+  },
+  "copyrightBoundary": {
+    "pixelLevelCloneRequested": true,
+    "pixelLevelClonePerformed": false,
+    "reason": "reference site brand, images, copy, model data, CSS/HTML and exact visual design are protected; only generic information-architecture concepts were reused",
+    "referenceAuditSaved": ".lab/terralift-source/reference-audit.md"
+  }
+}
