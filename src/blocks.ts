@@ -52,6 +52,7 @@ export function serializeWpBlocks(raw:WpBlocks,media:ReadonlyMap<number,string>)
    case 'button':if(node.url.startsWith('page:'))throw new Error('Resolve page references before serialization.');return block('buttons',undefined,`<div class="wp-block-buttons">${block('button',undefined,`<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="${escapeHtml(node.url)}">${escapeHtml(node.text)}</a></div>`)}</div>`);
    case 'form':return block('shortcode',undefined,`[wpforms id="${node.formId}"]`);
    case 'catalog':return block('query',{queryId:++queryId,query:{perPage:node.perPage,pages:0,offset:0,postType:node.postType,order:'desc',orderBy:'date',author:'',search:'',exclude:[],sticky:'',inherit:false}},`<div class="wp-block-query"><!-- wp:post-template -->
+<!-- wp:post-featured-image {"isLink":true} /-->
 <!-- wp:post-title {"isLink":true,"level":2} /-->
 <!-- wp:post-excerpt /-->
 <!-- /wp:post-template -->
