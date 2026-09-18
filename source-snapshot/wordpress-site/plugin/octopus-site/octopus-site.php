@@ -1,9 +1,10 @@
 <?php
 /**
  * Plugin Name: Octopus Trade Site
- * Description: Native product/case content models and controlled site setup for the Octopus browser Agent.
- * Version: 0.1.0
+ * Description: Native product/case content models with mandatory ACF field groups for the Octopus browser Agent.
+ * Version: 0.2.0
  * Requires at least: 6.6
+ * Requires Plugins: advanced-custom-fields
  * Requires PHP: 8.0
  * License: GPL-2.0-or-later
  * Text Domain: octopus-site
@@ -12,8 +13,27 @@ if (!defined('ABSPATH')) { exit; }
 
 function octopus_site_fields(string $type): array {
     return $type === 'oct_product'
-        ? ['oct_model' => 'Model', 'oct_material' => 'Material', 'oct_moq' => 'Minimum order', 'oct_lead_time' => 'Lead time']
-        : ['oct_industry' => 'Industry', 'oct_outcome' => 'Outcome'];
+        ? [
+            'oct_model' => ['Model', 'text'],
+            'oct_material' => ['Configuration / material', 'text'],
+            'oct_moq' => ['Minimum order', 'text'],
+            'oct_lead_time' => ['Lead time', 'text'],
+            'oct_spec_weight' => ['Operating weight', 'text'],
+            'oct_spec_engine' => ['Engine / power', 'text'],
+            'oct_spec_dig_depth' => ['Max digging depth', 'text'],
+            'oct_spec_width' => ['Transport width', 'text'],
+            'oct_highlight_1' => ['Highlight 1', 'text'],
+            'oct_highlight_2' => ['Highlight 2', 'text'],
+            'oct_highlight_3' => ['Highlight 3', 'text'],
+            'oct_gallery_image' => ['Detail image', 'image'],
+            'oct_gallery_alt' => ['Detail image alt text', 'text'],
+            'oct_cta_text' => ['Enquiry button text', 'text'],
+            'oct_cta_url' => ['Enquiry button URL', 'url'],
+        ]
+        : [
+            'oct_industry' => ['Industry', 'text'],
+            'oct_outcome' => ['Outcome', 'text'],
+        ];
 }
 function octopus_site_register(): void {
     foreach (['oct_product' => 'Products', 'oct_case' => 'Case studies'] as $type => $label) {
@@ -24,52 +44,37 @@ function octopus_site_register(): void {
             'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields'],
             'template' => [['core/paragraph', ['placeholder' => 'Describe verified facts and applications.']]],
         ]);
-        foreach (octopus_site_fields($type) as $key => $label) {
-            register_post_meta($type, $key, [
-                'type' => 'string', 'single' => true, 'default' => '', 'description' => $label,
-                'show_in_rest' => ['schema' => ['type' => 'string', 'maxLength' => 2000]],
-                'sanitize_callback' => 'sanitize_text_field',
-                'auth_callback' => static fn($allowed, $meta_key, $post_id): bool => current_user_can('edit_post', (int) $post_id),
-            ]);
-        }
     }
-    register_taxonomy('oct_product_category', ['oct_product'], ['label' => 'Product categories', 'public' => true, 'hierarchical' => true, 'show_in_rest' => true]);
+    register_taxonomy('oct_product_category', ['oct_product'], ['label' => 'Product categories', 'public' => true, 'hierarchical' => true, 'show_in_rest' => true, 'rewrite' => ['slug' => 'product-category']]);
     register_taxonomy('oct_case_industry', ['oct_case'], ['label' => 'Case industries', 'public' => true, 'hierarchical' => true, 'show_in_rest' => true]);
 }
 add_action('init', 'octopus_site_register');
 register_activation_hook(__FILE__, static function (): void { octopus_site_register(); flush_rewrite_rules(); });
 register_deactivation_hook(__FILE__, static function (): void { flush_rewrite_rules(); });
 
-// The same post-meta values are edited by ACF when available; never maintain a second data copy.
+// ACF is the required field editor and binding source. Field definitions remain in code, not only in the database.
 add_action('acf/init', static function (): void {
     foreach (['oct_product', 'oct_case'] as $type) {
         $fields = [];
-        foreach (octopus_site_fields($type) as $key => $label) {
-            $fields[] = ['key' => 'field_octopus_' . $key, 'name' => $key, 'label' => $label, 'type' => 'text', 'maxlength' => 2000];
+        foreach (octopus_site_fields($type) as $key => [$label, $field_type]) {
+            $field = [
+                'key' => 'field_octopus_' . $key,
+                'name' => $key,
+                'label' => $label,
+                'type' => $field_type,
+                'allow_in_bindings' => true,
+                'maxlength' => 2000,
+            ];
+            if ($field_type === 'image') {
+                $field['return_format'] = 'url';
+                unset($field['maxlength']);
+            }
+            $fields[] = $field;
         }
         acf_add_local_field_group(['key' => 'group_octopus_' . $type, 'title' => 'Trade details', 'fields' => $fields,
             'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => $type]]], 'show_in_rest' => 1]);
     }
 });
-// ACF is optional: a native editor form makes every supplied field editable without a paid plugin.
-add_action('add_meta_boxes', static function (): void {
-    if (function_exists('acf_add_local_field_group')) { return; }
-    foreach (['oct_product', 'oct_case'] as $type) {
-        add_meta_box('octopus-details', 'Trade details', static function (WP_Post $post): void {
-            wp_nonce_field('octopus_details', 'octopus_details_nonce');
-            foreach (octopus_site_fields($post->post_type) as $key => $label) {
-                echo '<p><label>' . esc_html($label) . '<br><input style="width:100%" maxlength="2000" name="' . esc_attr($key) . '" value="' . esc_attr((string) get_post_meta($post->ID, $key, true)) . '"></label></p>';
-            }
-        }, $type);
-    }
-});
-add_action('save_post', static function (int $id, WP_Post $post): void {
-    if (!in_array($post->post_type, ['oct_product', 'oct_case'], true) || wp_is_post_revision($id) || (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)) { return; }
-    if (!isset($_POST['octopus_details_nonce']) || !is_string($_POST['octopus_details_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['octopus_details_nonce'])), 'octopus_details') || !current_user_can('edit_post', $id)) { return; }
-    foreach (octopus_site_fields($post->post_type) as $key => $label) {
-        if (isset($_POST[$key]) && is_string($_POST[$key])) { update_post_meta($id, $key, sanitize_text_field(wp_unslash($_POST[$key]))); }
-    }
-}, 10, 2);
 
 function octopus_site_status(): array {
     $state = ['siteTitle' => get_option('blogname'), 'description' => get_option('blogdescription'),
