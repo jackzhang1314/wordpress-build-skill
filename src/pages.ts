@@ -48,6 +48,7 @@ export function resolvePageLinks(blocks: WpBlocks, pages: ReadonlyMap<string, Pa
 export async function compile(client: WordPressClient, blocks: WpBlocks, context?: ContentModel): Promise<string> {
   const media = new Map<number, string>();
   const catalogs = new Set<string>();
+  const patternNames = new Set<string>();
   let model = context;
   for (const node of walkWpBlocks(blocks)) {
     if (node.type === 'form') throw new Error('Forms require a verified plugin adapter; this runtime has not implemented one yet.');
@@ -55,6 +56,7 @@ export async function compile(client: WordPressClient, blocks: WpBlocks, context
       await discoverContentModel(client, node.postType);
       catalogs.add(node.postType);
     }
+    if (node.type === 'pattern') patternNames.add(node.name);
     if (node.type === 'meta') {
       model ??= await discoverContentModel(client, 'page');
       const field = fieldDefinitions(model, 'meta')[node.key];
@@ -66,7 +68,14 @@ export async function compile(client: WordPressClient, blocks: WpBlocks, context
       media.set(record.id, record.source_url);
     }
   }
-  return serializeWpBlocks(blocks, media);
+  let patterns = new Map<string, string>();
+  if (patternNames.size > 0) {
+    const registry = z.array(z.object({ name: z.string(), content: z.string() })).parse(
+      await client.request('/wp/v2/block-patterns/patterns?per_page=100&context=edit'),
+    );
+    patterns = new Map(registry.map((item) => [item.name, item.content]));
+  }
+  return serializeWpBlocks(blocks, media, patterns);
 }
 
 export async function createPage(client: WordPressClient, journal: Journal, key: string, input: { title: string; slug: string; content: string; template?: string }): Promise<Page> {

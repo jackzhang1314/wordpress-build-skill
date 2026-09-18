@@ -140,6 +140,21 @@ test('block compiler escapes injected markup and rejects unresolved links and un
   assert.throws(() => wpBlocksSchema.parse([{ type: 'columns', columns: [{ width: 20, children: blocks }, { width: 90, children: blocks }] }]));
 });
 
+test('block compiler inlines registered patterns and rejects unknown names', () => {
+  const blocks = wpBlocksSchema.parse([
+    { type: 'paragraph', text: 'Before' },
+    { type: 'pattern', name: 'terralift-ui/hero-industrial' },
+  ]);
+  const registry = new Map([['terralift-ui/hero-industrial', '<!-- wp:group {"className":"tl-hero"} /-->']]);
+  const output = serializeWpBlocks(blocks, new Map(), registry);
+  assert.ok(output.includes('tl-hero'));
+  assert.throws(
+    () => serializeWpBlocks(wpBlocksSchema.parse([{ type: 'pattern', name: 'terralift-ui/missing' }]), new Map(), registry),
+    /注册区块样式 terralift-ui\/missing/,
+  );
+  assert.throws(() => wpBlocksSchema.parse([{ type: 'pattern', name: 'Bad Name' }]));
+});
+
 test('site plan rejects duplicated keys and unresolved internal page references', () => {
   const page = { key: 'home', title: 'Home', slug: 'home', blocks: [{ type: 'paragraph', text: 'Hello' }] };
   const plan = { title: 'Lab', description: '', sourceFiles: ['company.md'], home: 'home', pages: [page] };

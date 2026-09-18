@@ -13,6 +13,7 @@ const leaf=z.discriminatedUnion('type',[
  z.object({type:z.literal('table'),rows:z.array(z.array(text).min(1).max(12)).min(1).max(40)}),
  z.object({type:z.literal('faq'),question:text,answer:text}),
  z.object({type:z.literal('catalog'),postType:z.string().regex(/^[a-z][a-z0-9_-]{0,31}$/),perPage:z.number().int().min(1).max(24).default(9)}),
+ z.object({type:z.literal('pattern'),name:z.string().regex(/^[a-z0-9_-]+\/[a-z0-9-]+$/)}),
 ]);
 const sectionStyle=z.object({
  background:z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
@@ -41,10 +42,11 @@ export const escapeHtml=(v:string)=>v.replaceAll('&','&amp;').replaceAll('<','&l
 const attrs=(v:object)=>JSON.stringify(v).replaceAll('--','\\u002d\\u002d').replaceAll('<','\\u003c').replaceAll('>','\\u003e').replaceAll('&','\\u0026');
 function block(name:string,attributes:object|undefined,body:string){return `<!-- wp:${name}${attributes?' '+attrs(attributes):''} -->\n${body}\n<!-- /wp:${name} -->`;}
 /** A bounded core-block vocabulary. No raw HTML/code blocks or third-party layout metadata. */
-export function serializeWpBlocks(raw:WpBlocks,media:ReadonlyMap<number,string>):string{
+export function serializeWpBlocks(raw:WpBlocks,media:ReadonlyMap<number,string>,patterns:ReadonlyMap<string,string> = new Map()):string{
  const nodes=wpBlocksSchema.parse(raw);let queryId=0;
  const render=(node:WpBlocks[number]):string=>{
-  switch(node.type){
+ switch(node.type){
+   case 'pattern':{const content=patterns.get(node.name);if(!content)throw new Error(`注册区块样式 ${node.name} 不存在或未解析；先用 theme pattern 注册并在计划前核验。`);return content;}
    case 'heading':return block('heading',node.level===2?undefined:{level:node.level},`<h${node.level} class="wp-block-heading">${escapeHtml(node.text)}</h${node.level}>`);
    case 'paragraph':return block('paragraph',undefined,`<p>${escapeHtml(node.text).replaceAll('\n','<br>')}</p>`);
    case 'meta':return block('paragraph',{metadata:{bindings:{content:{source:'core/post-meta',args:{key:node.key}}}}},`<p>${escapeHtml(node.fallback)}</p>`);
@@ -77,4 +79,4 @@ export function serializeWpBlocks(raw:WpBlocks,media:ReadonlyMap<number,string>)
 }
 
 /** Compact transport schema; full validation still runs before any remote operation. */
-export const wpToolBlocksSchema=z.array(z.record(z.string(),z.unknown())).min(1).max(100).describe('原生区块JSON；具体结构见建页Skill的assets/patterns.json。支持heading/paragraph/image/button/form/section/columns/table/faq/catalog。').transform((value,ctx)=>{const parsed=wpBlocksSchema.safeParse(value);if(parsed.success)return parsed.data;for(const issue of parsed.error.issues)ctx.issues.push({code:'custom',input:value,path:issue.path,message:issue.message});return z.NEVER;});
+export const wpToolBlocksSchema=z.array(z.record(z.string(),z.unknown())).min(1).max(100).describe('原生区块JSON；具体结构见建页Skill的assets/patterns.json。支持heading/paragraph/image/button/form/section/columns/table/faq/catalog/pattern。').transform((value,ctx)=>{const parsed=wpBlocksSchema.safeParse(value);if(parsed.success)return parsed.data;for(const issue of parsed.error.issues)ctx.issues.push({code:'custom',input:value,path:issue.path,message:issue.message});return z.NEVER;});
