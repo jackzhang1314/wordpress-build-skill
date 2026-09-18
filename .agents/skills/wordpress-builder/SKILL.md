@@ -35,6 +35,7 @@ description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 �
 2. 优先使用主题已注册 block pattern。没有合适主题时，仅在授权范围内按 [设计系统与视觉 QA](references/design.md) 生成 token 化 Block Theme，并保留证据与恢复方式。
 3. 显式加载本地 `frontend-design` skill 获取美学方向；再按 `references/design.md` 把方向落到 WordPress token、Pattern、类名和视觉 QA。两者互补：frontend-design 管方向与自批评，design.md 管工程落地。
 4. 先完成一页视觉验证，再批量扩展。每个页面只保留一个签名视觉焦点，其余区块服从统一节奏。
+5. 复杂视觉页面（首页、详情页、分类页、专题页）先过 HTML 预览门：产出 `design/preview-[page]-v{n}.html` 静态预览（复用主题 token 的类名与视觉、每个待编辑元素带 `data-field="acf字段名"`），浏览器桌面 + 390px QA 通过并经用户确认后再转 WordPress 模板；`data-field` 与 ACF 字段名一一对应，转模板时不允许改名或遗漏。
 
 ## 阶段 5：页面生成
 
@@ -44,6 +45,7 @@ description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 �
 4. 结果未知时读取操作记录和远端状态，不重复 POST；已收到响应但回读失败，重复相同命令只继续回读。锁冲突须先核对 owner.json 中的真实进程，不能仅凭文件时间删锁。
 5. 复用型视觉页面（产品/案例详情、产品分类等）默认走 D 模式自由模板：主题根目录 `single-{cpt}.php` / `taxonomy-{tax}.php`，完整文档壳 + `block_template_part()` + `get_field()` 读 ACF，自由 HTML 复用主题 token；同时删除同层级 `.html` 区块模板（区块模板优先级更高，会压过 PHP）。模板选择规则与实测优先级见 docs/14。需要后台逐篇切换时再注册 `templates/*.html` customTemplates + Block Bindings（B 模式）。
 6. 页面级 ACF 字段组跟随模板成对输出（`page-*.php` + `acf-*.php`，location 绑定 `page_template`），CPT 字段组集中注册并全部开启 `show_in_rest` + `allow_in_bindings`；图片字段 `return_format: url`，REST 写入传附件 ID。询盘表单优先 Fluent Forms 短代码，不手写表单处理。
+7. 页面级自由模板命名带版本号（`page-contact-v1.php`），迭代出 v2 而非覆盖 v1；新版本页面切换并验证通过后再删旧文件。模板层级模板（single/taxonomy）由 git 管版本，不加版本号。
 
 ## 阶段 6：视觉 QA
 
