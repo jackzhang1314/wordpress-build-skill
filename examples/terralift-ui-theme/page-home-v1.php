@@ -17,7 +17,8 @@ $g          = static fn( string $key, string $default = '' ): string => trim( (s
 $eyebrow    = $g( 'hero_eyebrow', 'Compact machinery · factory direct export' );
 $hero_title = $g( 'hero_title', get_bloginfo( 'name' ) );
 $hero_intro = $g( 'hero_intro', 'Mini excavators, loaders and skid steers built for distributors and rental fleets — verified spec sheets, stable lead times, export-grade packaging.' );
-$hero_img_raw = get_field( 'hero_image', $pid, false ); // raw value (attachment ID), unformatted
+$hero_img_raw = tl_field( 'hero_image', $pid, '', false ); // raw attachment ID
+$hero_alt     = $hero_img_raw ? (string) get_post_meta( (int) $hero_img_raw, '_wp_attachment_image_alt', true ) : '';
 $hero_img     = $hero_img_raw ? (string) wp_get_attachment_image_url( (int) $hero_img_raw, 'large' ) : '';
 $cta_text   = $g( 'cta_text', 'Browse the catalogue' );
 $cta_url    = $g( 'cta_url', '/products/' );
@@ -149,7 +150,9 @@ $cases = new WP_Query(
 					<a class="tl-fx-cat-card" href="<?php echo esc_url( (string) get_term_link( $cat ) ); ?>">
 						<figure class="tl-fx-cat-card-media">
 							<?php if ( $cat_post && has_post_thumbnail( $cat_post ) ) : ?>
-								<?php echo get_the_post_thumbnail( $cat_post, 'medium_large', array( 'class' => 'tl-fx-cat-card-img' ) ); ?>
+								<?php echo get_the_post_thumbnail( $cat_post, 'medium_large', array( 'class' => 'tl-fx-cat-card-img', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
+							<?php else : ?>
+								<div class="tl-fx-media-placeholder">Photo coming soon</div>
 							<?php endif; ?>
 							<span class="tl-fx-cat-card-badge"><?php echo esc_html( sprintf( _n( '%d model', '%d models', (int) $cat->count, 'terralift-ui' ), (int) $cat->count ) ); ?></span>
 						</figure>
@@ -180,7 +183,9 @@ $cases = new WP_Query(
 					<a class="tl-fx-cat-card" href="<?php the_permalink(); ?>">
 						<figure class="tl-fx-cat-card-media">
 							<?php if ( has_post_thumbnail() ) : ?>
-								<?php the_post_thumbnail( 'medium_large', array( 'class' => 'tl-fx-cat-card-img' ) ); ?>
+								<?php the_post_thumbnail( 'medium_large', array( 'class' => 'tl-fx-cat-card-img', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
+							<?php else : ?>
+								<div class="tl-fx-media-placeholder">Photo coming soon</div>
 							<?php endif; ?>
 							<?php if ( $model ) : ?>
 								<span class="tl-fx-cat-card-badge"><?php echo esc_html( $model ); ?></span>
@@ -219,7 +224,7 @@ $cases = new WP_Query(
 					<a class="tl-fx-home-case" href="<?php the_permalink(); ?>">
 						<figure class="tl-fx-home-case-media">
 							<?php if ( has_post_thumbnail() ) : ?>
-								<?php the_post_thumbnail( 'medium_large', array( 'class' => 'tl-fx-home-case-img' ) ); ?>
+								<?php the_post_thumbnail( 'medium_large', array( 'class' => 'tl-fx-home-case-img', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
 							<?php endif; ?>
 						</figure>
 						<div class="tl-fx-home-case-body">

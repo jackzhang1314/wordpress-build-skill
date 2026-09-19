@@ -18,10 +18,12 @@ $eyebrow   = $g( 'hero_eyebrow', 'Application cases' );
 $hero_t    = $g( 'hero_title', 'Proven in the field' );
 $hero_sub  = $g( 'hero_intro', 'How TerraLift machines perform on real job sites — construction, agriculture and municipal work.' );
 
+$paged = max( 1, (int) get_query_var( 'paged' ) );
 $cases = new WP_Query(
 	array(
 		'post_type'      => 'oct_case',
 		'posts_per_page' => 9,
+		'paged'          => $paged,
 	)
 );
 ?>
@@ -60,7 +62,9 @@ $cases = new WP_Query(
 					<a class="tl-fx-cat-card" href="<?php the_permalink(); ?>">
 						<figure class="tl-fx-cat-card-media">
 							<?php if ( has_post_thumbnail() ) : ?>
-								<?php the_post_thumbnail( 'medium_large', array( 'class' => 'tl-fx-cat-card-img' ) ); ?>
+								<?php the_post_thumbnail( 'medium_large', array( 'class' => 'tl-fx-cat-card-img', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
+							<?php else : ?>
+								<div class="tl-fx-media-placeholder">Photo coming soon</div>
 							<?php endif; ?>
 							<?php if ( $industry ) : ?>
 								<span class="tl-fx-cat-card-badge"><?php echo esc_html( $industry ); ?></span>
@@ -77,6 +81,22 @@ $cases = new WP_Query(
 				wp_reset_postdata();
 				?>
 			</div>
+			<?php
+			$case_links = paginate_links(
+				array(
+					'total'     => (int) $cases->max_num_pages,
+					'current'   => $paged,
+					'prev_text' => '← Newer',
+					'next_text' => 'Older →',
+					'type'      => 'plain',
+				)
+			);
+			if ( $case_links && (int) $cases->max_num_pages > 1 ) :
+				?>
+				<nav class="tl-fx-cat-pagination" aria-label="Cases pagination">
+					<?php echo wp_kses_post( $case_links ); ?>
+				</nav>
+			<?php endif; ?>
 		<?php else : ?>
 			<div class="tl-fx-cat-empty">
 				<h2 class="tl-fx-cat-card-title">Cases are being written</h2>

@@ -82,7 +82,9 @@ $siblings    = is_array( $siblings ) ? $siblings : array();
 					<a class="tl-fx-cat-card" href="<?php the_permalink(); ?>">
 						<figure class="tl-fx-cat-card-media">
 							<?php if ( has_post_thumbnail() ) : ?>
-								<?php the_post_thumbnail( 'medium_large', array( 'class' => 'tl-fx-cat-card-img' ) ); ?>
+								<?php the_post_thumbnail( 'medium_large', array( 'class' => 'tl-fx-cat-card-img', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
+							<?php else : ?>
+								<div class="tl-fx-media-placeholder">Photo coming soon</div>
 							<?php endif; ?>
 							<?php if ( $model ) : ?>
 								<span class="tl-fx-cat-card-badge"><?php echo esc_html( $model ); ?></span>
