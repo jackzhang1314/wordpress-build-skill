@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Template Name: Cases v1 (free HTML)
  * Description: Case studies landing page with live oct_case query. Paired with
@@ -29,9 +34,10 @@ $cases = new WP_Query(
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
 <?php block_template_part( 'header' ); ?>
 
-<main class="tl-fx tl-fx-cat">
+<main id="tl-main" class="tl-fx tl-fx-cat">
 	<section class="tl-fx-hero tl-fx-cat-hero">
 		<div class="tl-fx-hero-inner">
 			<div class="tl-fx-hero-copy">

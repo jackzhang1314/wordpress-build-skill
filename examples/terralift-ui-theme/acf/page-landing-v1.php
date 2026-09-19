@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Field group for page-landing-v1.php — hero eyebrow/intro + CTA switch.
  */

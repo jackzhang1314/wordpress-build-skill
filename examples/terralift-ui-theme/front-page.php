@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Site front page. Delegates to the Home v1 free template (page-home-v1.php):
  * get_front_page_template() only honours front-page.php and ignores the

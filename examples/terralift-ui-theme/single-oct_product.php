@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Free-HTML product detail template (D mode).
  *
@@ -20,6 +25,7 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
 <?php block_template_part( 'header' ); ?>
 
 <?php
@@ -39,7 +45,7 @@ while ( have_posts() ) :
 	$gallery_img = $f( 'oct_gallery_image' );
 	$gallery_alt = $f( 'oct_gallery_alt' ) ?: get_the_title();
 	$cta_text    = $f( 'oct_cta_text' ) ?: 'Request a quote';
-	$cta_url     = $f( 'oct_cta_url' ) ?: '/contact/';
+	$cta_url     = $f( 'oct_cta_url' ) ?: tl_page_url( 'terralift-contact' );
 
 	$specs = array_values(
 		array_filter(
@@ -58,7 +64,7 @@ while ( have_posts() ) :
 	);
 	?>
 
-	<main class="tl-fx">
+	<main id="tl-main" class="tl-fx">
 		<!-- Hero -->
 		<section class="tl-fx-hero">
 			<div class="tl-fx-hero-inner">
@@ -82,7 +88,7 @@ while ( have_posts() ) :
 					<?php endif; ?>
 					<div class="tl-fx-actions">
 						<a class="tl-fx-btn" href="<?php echo esc_url( $cta_url ); ?>"><?php echo esc_html( $cta_text ); ?></a>
-						<a class="tl-fx-btn tl-fx-btn--ghost" href="/products/">View all machines</a>
+						<a class="tl-fx-btn tl-fx-btn--ghost" href="<?php echo esc_url( get_post_type_archive_link( 'oct_product' ) ); ?>">View all machines</a>
 					</div>
 				</div>
 				<figure class="tl-fx-hero-media">

@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Field group for page-home-v1.php. Category showcase, featured machines and
  * case teasers are queried live — only hero and stats are editable fields.

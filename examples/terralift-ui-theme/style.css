@@ -26,6 +26,9 @@ Tags: block-theme, full-site-editing, industrial, business
   --tl-graphite: var(--wp--preset--color--graphite, #17272F);
   --tl-steel: var(--wp--preset--color--steel, #46585F);
   --tl-signal: var(--wp--preset--color--signal, #E8570E);
+  --tl-signal-text: #C9430A; /* WCAG AA on white (~4.9:1); use for small orange text/buttons */
+  --tl-signal-bright: color-mix(in srgb, var(--tl-signal) 88%, #ffffff);
+  --tl-signal-deep: color-mix(in srgb, var(--tl-signal) 88%, #7a2600);
   --tl-safety: var(--wp--preset--color--safety, #F0A92E);
   --tl-concrete: var(--wp--preset--color--concrete, #DFE3E0);
   --tl-line: var(--wp--preset--color--line, #C2CCC8);
@@ -544,9 +547,11 @@ body.home .entry-content > .wp-block-group:first-child {
 
 .tl-fx { padding-bottom: 0; }
 .tl-fx-hero {
+  /* Panel gradient + signal glow; brand colors come from theme.json presets.
+     White/ink rgba() overlays are contextual alpha values (glass badges). */
   background:
-    radial-gradient(1100px 460px at 82% -10%, rgba(232, 87, 14, .16), transparent 62%),
-    linear-gradient(118deg, #0A161C 0%, #17272F 55%, #1F333D 100%);
+    radial-gradient(1100px 460px at 82% -10%, color-mix(in srgb, var(--tl-signal) 16%, transparent), transparent 62%),
+    var(--wp--preset--gradient--panel, linear-gradient(118deg, #0A161C 0%, #17272F 55%, #1F333D 100%));
   color: var(--tl-base);
   overflow: hidden;
 }
@@ -597,7 +602,7 @@ body.home .entry-content > .wp-block-group:first-child {
   justify-content: center;
   padding: .85rem 1.7rem;
   border-radius: var(--tl-radius-sm);
-  background: var(--tl-signal);
+  background: var(--tl-signal-text);
   color: #fff;
   font-family: var(--tl-body);
   font-size: .85rem;
@@ -608,11 +613,11 @@ body.home .entry-content > .wp-block-group:first-child {
   box-shadow: var(--tl-shadow-soft);
   transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
 }
-.tl-fx-btn:hover { transform: translateY(-2px); box-shadow: var(--tl-shadow-lift); background: #ff6a1f; color: #fff; }
+.tl-fx-btn:hover { transform: translateY(-2px); box-shadow: var(--tl-shadow-lift); background: var(--tl-signal-bright); color: #fff; }
 .tl-fx-btn--ghost { background: transparent; border: 1px solid rgba(255, 255, 255, .35); box-shadow: none; }
 .tl-fx-btn--ghost:hover { border-color: #fff; background: rgba(255, 255, 255, .08); }
 .tl-fx-btn--dark { background: var(--tl-ink); }
-.tl-fx-btn--dark:hover { background: #12222b; }
+.tl-fx-btn--dark:hover { background: var(--tl-graphite); }
 .tl-fx-hero-media {
   position: relative;
   margin: 0;
@@ -717,7 +722,7 @@ body.home .entry-content > .wp-block-group:first-child {
 .tl-fx-body-inner p { color: var(--tl-graphite); line-height: 1.75; max-width: 68ch; }
 
 .tl-fx-cta {
-  background: linear-gradient(118deg, #E8570E 0%, #C9430A 100%);
+  background: linear-gradient(118deg, var(--tl-signal) 0%, var(--tl-signal-deep) 100%);
   color: #fff;
 }
 .tl-fx-cta-inner {
@@ -828,7 +833,7 @@ body.home .entry-content > .wp-block-group:first-child {
   font-size: .72rem;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--tl-signal);
+  color: var(--tl-signal-text);
 }
 .tl-fx-cat-pagination {
   max-width: 1240px;
@@ -1007,7 +1012,40 @@ body.home .entry-content > .wp-block-group:first-child {
   font-size: .68rem;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--tl-signal);
+  color: var(--tl-signal-text);
+}
+
+/* Skip link (free templates) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 10000;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  padding: .75rem 1rem;
+  background: var(--tl-surface, #fff);
+  color: var(--tl-ink);
+  border-radius: var(--tl-radius-sm);
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .tl-fx-cat-card:hover,
+  .tl-fx-home-case:hover,
+  .tl-fx-btn:hover {
+    transform: none;
+  }
 }
 
 @media (max-width: 980px) {

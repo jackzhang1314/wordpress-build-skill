@@ -80,7 +80,7 @@ function octopus_site_status(): array {
     $state = ['siteTitle' => get_option('blogname'), 'description' => get_option('blogdescription'),
         'homePage' => (int) get_option('page_on_front'), 'postsPage' => (int) get_option('page_for_posts'),
         'showOnFront' => get_option('show_on_front'), 'theme' => get_stylesheet()];
-    return ['version' => '0.1.0', 'modelVersion' => 1, 'state' => $state,
+    return ['version' => '0.2.0', 'modelVersion' => 1, 'state' => $state,
         'revision' => hash('sha256', wp_json_encode($state)),
         'acfAvailable' => function_exists('acf_add_local_field_group'),
         'canConfigure' => current_user_can('manage_options'),

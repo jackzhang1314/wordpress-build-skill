@@ -25,36 +25,122 @@
         }
       ],
       "palette": [
-        {"slug": "base", "name": "Base", "color": "#F1F2F0"},
-        {"slug": "surface", "name": "Surface", "color": "#FFFFFF"},
-        {"slug": "ink", "name": "Ink", "color": "#0A161C"},
-        {"slug": "graphite", "name": "Graphite", "color": "#17272F"},
-        {"slug": "steel", "name": "Steel", "color": "#46585F"},
-        {"slug": "signal", "name": "Signal", "color": "#E8570E"},
-        {"slug": "safety", "name": "Safety", "color": "#F0A92E"},
-        {"slug": "concrete", "name": "Concrete", "color": "#DFE3E0"},
-        {"slug": "line", "name": "Line", "color": "#C2CCC8"}
+        {
+          "slug": "base",
+          "name": "Base",
+          "color": "#F1F2F0"
+        },
+        {
+          "slug": "surface",
+          "name": "Surface",
+          "color": "#FFFFFF"
+        },
+        {
+          "slug": "ink",
+          "name": "Ink",
+          "color": "#0A161C"
+        },
+        {
+          "slug": "graphite",
+          "name": "Graphite",
+          "color": "#17272F"
+        },
+        {
+          "slug": "steel",
+          "name": "Steel",
+          "color": "#46585F"
+        },
+        {
+          "slug": "signal",
+          "name": "Signal",
+          "color": "#E8570E"
+        },
+        {
+          "slug": "safety",
+          "name": "Safety",
+          "color": "#F0A92E"
+        },
+        {
+          "slug": "concrete",
+          "name": "Concrete",
+          "color": "#DFE3E0"
+        },
+        {
+          "slug": "line",
+          "name": "Line",
+          "color": "#C2CCC8"
+        }
       ]
     },
     "spacing": {
       "defaultSpacingSizes": false,
       "spacingSizes": [
-        {"slug": "10", "name": "Hairline", "size": "4px"},
-        {"slug": "20", "name": "Tiny", "size": "8px"},
-        {"slug": "30", "name": "Small", "size": "16px"},
-        {"slug": "40", "name": "Medium", "size": "24px"},
-        {"slug": "50", "name": "Large", "size": "40px"},
-        {"slug": "60", "name": "X-Large", "size": "64px"},
-        {"slug": "70", "name": "Display", "size": "96px"},
-        {"slug": "80", "name": "Section", "size": "128px"}
+        {
+          "slug": "10",
+          "name": "Hairline",
+          "size": "4px"
+        },
+        {
+          "slug": "20",
+          "name": "Tiny",
+          "size": "8px"
+        },
+        {
+          "slug": "30",
+          "name": "Small",
+          "size": "16px"
+        },
+        {
+          "slug": "40",
+          "name": "Medium",
+          "size": "24px"
+        },
+        {
+          "slug": "50",
+          "name": "Large",
+          "size": "40px"
+        },
+        {
+          "slug": "60",
+          "name": "X-Large",
+          "size": "64px"
+        },
+        {
+          "slug": "70",
+          "name": "Display",
+          "size": "96px"
+        },
+        {
+          "slug": "80",
+          "name": "Section",
+          "size": "128px"
+        }
       ],
-      "units": ["px", "rem", "%", "vw", "vh"]
+      "units": [
+        "px",
+        "rem",
+        "%",
+        "vw",
+        "vh"
+      ]
     },
     "dimensions": {
       "aspectRatios": [
-        {"slug": "product", "name": "Product 4:3", "ratio": "4/3"},
-        {"slug": "scene", "name": "Scene 16:10", "ratio": "16/10"},
-        {"slug": "portrait", "name": "Portrait 4:5", "ratio": "4/5"}
+        {
+          "slug": "product",
+          "name": "Product 4:3",
+          "ratio": "4/3"
+        },
+        {
+          "slug": "scene",
+          "name": "Scene 16:10",
+          "ratio": "16/10"
+        },
+        {
+          "slug": "portrait",
+          "name": "Portrait 4:5",
+          "ratio": "4/5"
+        }
       ]
     },
     "custom": {
@@ -90,7 +176,10 @@
               "fontFamily": "Ysabeau Office",
               "fontStyle": "normal",
               "fontWeight": "100 900",
-              "src": ["file:./assets/fonts/ysabeau-office/YsabeauOffice-VariableFont_wght.woff2"]
+              "src": [
+                "file:./assets/fonts/ysabeau-office/YsabeauOffice-VariableFont_wght.woff2"
+              ],
+              "fontDisplay": "swap"
             }
           ]
         },
@@ -99,10 +188,42 @@
           "name": "Body",
           "fontFamily": "\"Fira Sans\", system-ui, sans-serif",
           "fontFace": [
-            {"fontFamily": "Fira Sans", "fontStyle": "normal", "fontWeight": "400", "src": ["file:./assets/fonts/fira-sans/FiraSans-Regular.woff2"]},
-            {"fontFamily": "Fira Sans", "fontStyle": "normal", "fontWeight": "500", "src": ["file:./assets/fonts/fira-sans/FiraSans-Medium.woff2"]},
-            {"fontFamily": "Fira Sans", "fontStyle": "normal", "fontWeight": "600", "src": ["file:./assets/fonts/fira-sans/FiraSans-SemiBold.woff2"]},
-            {"fontFamily": "Fira Sans", "fontStyle": "normal", "fontWeight": "700", "src": ["file:./assets/fonts/fira-sans/FiraSans-Bold.woff2"]}
+            {
+              "fontFamily": "Fira Sans",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "src": [
+                "file:./assets/fonts/fira-sans/FiraSans-Regular.woff2"
+              ],
+              "fontDisplay": "swap"
+            },
+            {
+              "fontFamily": "Fira Sans",
+              "fontStyle": "normal",
+              "fontWeight": "500",
+              "src": [
+                "file:./assets/fonts/fira-sans/FiraSans-Medium.woff2"
+              ],
+              "fontDisplay": "swap"
+            },
+            {
+              "fontFamily": "Fira Sans",
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "src": [
+                "file:./assets/fonts/fira-sans/FiraSans-SemiBold.woff2"
+              ],
+              "fontDisplay": "swap"
+            },
+            {
+              "fontFamily": "Fira Sans",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "src": [
+                "file:./assets/fonts/fira-sans/FiraSans-Bold.woff2"
+              ],
+              "fontDisplay": "swap"
+            }
           ]
         },
         {
@@ -114,18 +235,61 @@
               "fontFamily": "Fira Code",
               "fontStyle": "normal",
               "fontWeight": "300 700",
-              "src": ["file:./assets/fonts/fira-code/FiraCode-VariableFont_wght.woff2"]
+              "src": [
+                "file:./assets/fonts/fira-code/FiraCode-VariableFont_wght.woff2"
+              ],
+              "fontDisplay": "swap"
             }
           ]
         }
       ],
       "fontSizes": [
-        {"slug": "x-small", "name": "X small", "size": ".76rem"},
-        {"slug": "small", "name": "Small", "size": ".88rem"},
-        {"slug": "medium", "name": "Medium", "size": "1rem", "fluid": {"min": ".98rem", "max": "1.05rem"}},
-        {"slug": "large", "name": "Large", "size": "1.2rem", "fluid": {"min": "1.1rem", "max": "1.35rem"}},
-        {"slug": "x-large", "name": "X large", "size": "1.7rem", "fluid": {"min": "1.5rem", "max": "2.1rem"}},
-        {"slug": "display", "name": "Display", "size": "3rem", "fluid": {"min": "2.1rem", "max": "4rem"}}
+        {
+          "slug": "x-small",
+          "name": "X small",
+          "size": ".76rem"
+        },
+        {
+          "slug": "small",
+          "name": "Small",
+          "size": ".88rem"
+        },
+        {
+          "slug": "medium",
+          "name": "Medium",
+          "size": "1rem",
+          "fluid": {
+            "min": ".98rem",
+            "max": "1.05rem"
+          }
+        },
+        {
+          "slug": "large",
+          "name": "Large",
+          "size": "1.2rem",
+          "fluid": {
+            "min": "1.1rem",
+            "max": "1.35rem"
+          }
+        },
+        {
+          "slug": "x-large",
+          "name": "X large",
+          "size": "1.7rem",
+          "fluid": {
+            "min": "1.5rem",
+            "max": "2.1rem"
+          }
+        },
+        {
+          "slug": "display",
+          "name": "Display",
+          "size": "3rem",
+          "fluid": {
+            "min": "2.1rem",
+            "max": "4rem"
+          }
+        }
       ]
     }
   },
@@ -141,7 +305,10 @@
     },
     "spacing": {
       "blockGap": "1.15rem",
-      "padding": {"left": "24px", "right": "24px"}
+      "padding": {
+        "left": "24px",
+        "right": "24px"
+      }
     },
     "elements": {
       "heading": {
@@ -153,21 +320,37 @@
         }
       },
       "link": {
-        "color": {"text": "var:preset|color|signal"},
-        "typography": {"fontWeight": "600", "textDecoration": "none"},
+        "color": {
+          "text": "var:preset|color|signal"
+        },
+        "typography": {
+          "fontWeight": "600",
+          "textDecoration": "none"
+        },
         ":hover": {
-          "color": {"text": "var:preset|color|ink"},
-          "typography": {"textDecoration": "underline"}
+          "color": {
+            "text": "var:preset|color|ink"
+          },
+          "typography": {
+            "textDecoration": "underline"
+          }
         }
       },
       "button": {
-        "border": {"radius": "var:preset|custom|radius|xs"},
+        "border": {
+          "radius": "var:preset|custom|radius|xs"
+        },
         "color": {
           "background": "var:preset|color|signal",
           "text": "#FFFFFF"
         },
         "spacing": {
-          "padding": {"top": "1rem", "bottom": "1rem", "left": "1.5rem", "right": "1.5rem"}
+          "padding": {
+            "top": "1rem",
+            "bottom": "1rem",
+            "left": "1.5rem",
+            "right": "1.5rem"
+          }
         },
         "typography": {
           "fontFamily": "var:preset|font-family|body",
@@ -177,7 +360,10 @@
           "textTransform": "uppercase"
         },
         ":hover": {
-          "color": {"background": "var:preset|color|ink", "text": "#FFFFFF"}
+          "color": {
+            "background": "var:preset|color|ink",
+            "text": "#FFFFFF"
+          }
         }
       }
     },
@@ -201,21 +387,42 @@
         }
       },
       "core/post-featured-image": {
-        "dimensions": {"aspectRatio": "16/10"}
+        "dimensions": {
+          "aspectRatio": "16/10"
+        }
       },
       "core/post-excerpt": {
-        "typography": {"fontSize": "var:preset|font-size|medium"}
+        "typography": {
+          "fontSize": "var:preset|font-size|medium"
+        }
       },
       "core/table": {
-        "border": {"color": "var:preset|color|line", "width": "1px"}
+        "border": {
+          "color": "var:preset|color|line",
+          "width": "1px"
+        }
       }
     }
   },
   "templateParts": [
-    {"name": "header", "title": "Header", "area": "header"},
-    {"name": "footer", "title": "Footer", "area": "footer"}
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    }
   ],
   "customTemplates": [
-    {"name": "product-dynamic", "title": "Product dynamic (block bindings)", "postTypes": ["oct_product"]}
+    {
+      "name": "product-dynamic",
+      "title": "Product dynamic (block bindings)",
+      "postTypes": [
+        "oct_product"
+      ]
+    }
   ]
 }

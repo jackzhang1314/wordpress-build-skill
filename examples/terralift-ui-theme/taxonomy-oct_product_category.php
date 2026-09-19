@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Free-HTML product category archive template (D mode).
  *
@@ -15,6 +20,7 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
 <?php block_template_part( 'header' ); ?>
 
 <?php
@@ -34,7 +40,7 @@ $siblings    = $term instanceof WP_Term ? get_terms(
 $siblings    = is_array( $siblings ) ? $siblings : array();
 ?>
 
-<main class="tl-fx tl-fx-cat">
+<main id="tl-main" class="tl-fx tl-fx-cat">
 	<!-- Category hero -->
 	<section class="tl-fx-hero tl-fx-cat-hero">
 		<div class="tl-fx-hero-inner">
@@ -57,7 +63,8 @@ $siblings    = is_array( $siblings ) ? $siblings : array();
 			<?php foreach ( $siblings as $sib ) : ?>
 				<a
 					class="tl-fx-cat-rail-link<?php echo $sib->term_id === ( $term->term_id ?? 0 ) ? ' is-active' : ''; ?>"
-					href="<?php echo esc_url( get_term_link( $sib ) ); ?>"
+					href="<?php echo esc_url( (string) get_term_link( $sib ) ); ?>"
+					<?php echo $sib->term_id === ( $term->term_id ?? 0 ) ? 'aria-current="page"' : ''; ?>
 				><?php echo esc_html( $sib->name ); ?></a>
 			<?php endforeach; ?>
 		</nav>
@@ -70,7 +77,7 @@ $siblings    = is_array( $siblings ) ? $siblings : array();
 				<?php
 				while ( have_posts() ) :
 					the_post();
-					$model = trim( (string) get_field( 'oct_model' ) );
+					$model = trim( (string) tl_field( 'oct_model' ) );
 					?>
 					<a class="tl-fx-cat-card" href="<?php the_permalink(); ?>">
 						<figure class="tl-fx-cat-card-media">
@@ -93,7 +100,7 @@ $siblings    = is_array( $siblings ) ? $siblings : array();
 			</div>
 
 			<?php if ( get_next_posts_link() || get_previous_posts_link() ) : ?>
-				<nav class="tl-fx-cat-pagination">
+				<nav class="tl-fx-cat-pagination" aria-label="Category pagination">
 					<?php previous_posts_link( '← Newer' ); ?>
 					<?php next_posts_link( 'Older →' ); ?>
 				</nav>

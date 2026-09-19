@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Free-HTML products archive (D mode).
  *
@@ -22,9 +27,10 @@ $categories = is_array( $categories ) ? $categories : array();
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
 <?php block_template_part( 'header' ); ?>
 
-<main class="tl-fx tl-fx-cat">
+<main id="tl-main" class="tl-fx tl-fx-cat">
 	<section class="tl-fx-hero tl-fx-cat-hero">
 		<div class="tl-fx-hero-inner">
 			<div class="tl-fx-hero-copy">
@@ -40,7 +46,7 @@ $categories = is_array( $categories ) ? $categories : array();
 		<nav class="tl-fx-cat-rail" aria-label="Product categories">
 			<a class="tl-fx-cat-rail-link is-active" href="<?php echo esc_url( get_post_type_archive_link( 'oct_product' ) ); ?>">All machines</a>
 			<?php foreach ( $categories as $cat ) : ?>
-				<a class="tl-fx-cat-rail-link" href="<?php echo esc_url( get_term_link( $cat ) ); ?>"><?php echo esc_html( $cat->name ); ?></a>
+				<a class="tl-fx-cat-rail-link" href="<?php echo esc_url( (string) get_term_link( $cat ) ); ?>"><?php echo esc_html( $cat->name ); ?></a>
 			<?php endforeach; ?>
 		</nav>
 	<?php endif; ?>
@@ -51,7 +57,7 @@ $categories = is_array( $categories ) ? $categories : array();
 				<?php
 				while ( have_posts() ) :
 					the_post();
-					$model = trim( (string) get_field( 'oct_model' ) );
+					$model = trim( (string) tl_field( 'oct_model' ) );
 					?>
 					<a class="tl-fx-cat-card" href="<?php the_permalink(); ?>">
 						<figure class="tl-fx-cat-card-media">
@@ -74,7 +80,7 @@ $categories = is_array( $categories ) ? $categories : array();
 			</div>
 
 			<?php if ( get_next_posts_link() || get_previous_posts_link() ) : ?>
-				<nav class="tl-fx-cat-pagination">
+				<nav class="tl-fx-cat-pagination" aria-label="Catalogue pagination">
 					<?php previous_posts_link( '← Newer' ); ?>
 					<?php next_posts_link( 'Older →' ); ?>
 				</nav>

@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Free-HTML case study detail template (D mode).
  *
@@ -12,7 +17,7 @@ while ( have_posts() ) :
 	$industry  = $f( 'oct_industry' );
 	$outcome   = $f( 'oct_outcome' );
 	$cta_text  = 'Request a similar setup';
-	$cta_url   = '/terralift-contact/';
+	$cta_url   = tl_page_url( 'terralift-contact' );
 	?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -23,9 +28,10 @@ while ( have_posts() ) :
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
 <?php block_template_part( 'header' ); ?>
 
-<main class="tl-fx">
+<main id="tl-main" class="tl-fx">
 	<section class="tl-fx-hero">
 		<div class="tl-fx-hero-inner">
 			<div class="tl-fx-hero-copy">

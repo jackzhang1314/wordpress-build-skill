@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Template Name: Landing v1 (free HTML)
  * Description: Dark hero + page content + CTA band. Upgrades secondary pages
@@ -23,9 +28,10 @@ $cta_on   = get_field( 'hide_cta', $pid );
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
 <?php block_template_part( 'header' ); ?>
 
-<main class="tl-fx">
+<main id="tl-main" class="tl-fx">
 	<section class="tl-fx-hero tl-fx-cat-hero">
 		<div class="tl-fx-hero-inner">
 			<div class="tl-fx-hero-copy">

@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Template Name: Contact v1 (free HTML)
  * Description: Paired with acf/page-contact-v1.php. Forms go through Fluent Forms
@@ -29,9 +34,10 @@ $has_ff       = shortcode_exists( 'fluentform' );
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
 <?php block_template_part( 'header' ); ?>
 
-<main class="tl-fx tl-fx-contact">
+<main id="tl-main" class="tl-fx tl-fx-contact">
 	<section class="tl-fx-hero tl-fx-cat-hero">
 		<div class="tl-fx-hero-inner">
 			<div class="tl-fx-hero-copy">
@@ -47,10 +53,11 @@ $has_ff       = shortcode_exists( 'fluentform' );
 			<div class="tl-fx-contact-channels">
 				<h2 class="tl-fx-contact-heading">Direct channels</h2>
 				<ul class="tl-fx-contact-list">
-					<li><strong>Email</strong><a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a></li>
-					<li><strong>Phone</strong><a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></li>
+					<li><strong>Email</strong><a href="<?php echo esc_url( 'mailto:' . $email ); ?>"><?php echo esc_html( $email ); ?></a></li>
+					<li><strong>Phone</strong><a href="<?php echo esc_url( 'tel:' . preg_replace( '/\s+/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></li>
 					<?php if ( $whatsapp ) : ?>
-						<li><strong>WhatsApp</strong><span><?php echo esc_html( $whatsapp ); ?></span></li>
+						<?php $wa_digits = preg_replace( '/\D+/', '', $whatsapp ); ?>
+						<li><strong>WhatsApp</strong><a href="<?php echo esc_url( 'https://wa.me/' . $wa_digits ); ?>"><?php echo esc_html( $whatsapp ); ?></a></li>
 					<?php endif; ?>
 					<li><strong>Address</strong><span><?php echo esc_html( $address ); ?></span></li>
 					<li><strong>Hours</strong><span><?php echo esc_html( $hours ); ?></span></li>

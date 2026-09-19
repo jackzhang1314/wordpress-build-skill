@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Field group for page-contact-v1.php. Edit per page in WP admin or via REST `acf` object.
  * Pairs 1:1 with the template file name (fusion item #2, docs/15).

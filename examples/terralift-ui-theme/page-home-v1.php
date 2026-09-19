@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Template Name: Home v1 (free HTML)
  * Description: Paired with acf/page-home-v1.php. Category showcase, featured
@@ -12,7 +17,8 @@ $g          = static fn( string $key, string $default = '' ): string => trim( (s
 $eyebrow    = $g( 'hero_eyebrow', 'Compact machinery · factory direct export' );
 $hero_title = $g( 'hero_title', get_bloginfo( 'name' ) );
 $hero_intro = $g( 'hero_intro', 'Mini excavators, loaders and skid steers built for distributors and rental fleets — verified spec sheets, stable lead times, export-grade packaging.' );
-$hero_img   = $g( 'hero_image' );
+$hero_img_raw = get_field( 'hero_image', $pid, false ); // raw value (attachment ID), unformatted
+$hero_img     = $hero_img_raw ? (string) wp_get_attachment_image_url( (int) $hero_img_raw, 'large' ) : '';
 $cta_text   = $g( 'cta_text', 'Browse the catalogue' );
 $cta_url    = $g( 'cta_url', '/products/' );
 
@@ -32,12 +38,44 @@ $categories = get_terms(
 );
 $categories = is_array( $categories ) ? $categories : array();
 
+// One grouped query for category representative products (avoids N+1).
+$cat_products = array();
+$cat_ids      = wp_list_pluck( $categories, 'term_id' );
+if ( $cat_ids ) {
+	$cat_product_posts = get_posts(
+		array(
+			'post_type'      => 'oct_product',
+			'posts_per_page' => 100,
+			'orderby'        => 'date',
+			'order'          => 'ASC',
+			'no_found_rows'  => true,
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'oct_product_category',
+					'field'    => 'term_id',
+					'terms'    => $cat_ids,
+				),
+			),
+		)
+	);
+	foreach ( $cat_product_posts as $product ) {
+		$product_terms = get_the_terms( $product, 'oct_product_category' );
+		if ( ! is_array( $product_terms ) ) {
+			continue;
+		}
+		foreach ( $product_terms as $product_term ) {
+			$cat_products[ $product_term->term_id ] ??= $product;
+		}
+	}
+}
+
 $featured = new WP_Query(
 	array(
 		'post_type'      => 'oct_product',
 		'posts_per_page' => 3,
 		'orderby'        => 'date',
 		'order'          => 'ASC',
+		'no_found_rows'  => true,
 	)
 );
 
@@ -45,6 +83,7 @@ $cases = new WP_Query(
 	array(
 		'post_type'      => 'oct_case',
 		'posts_per_page' => 2,
+		'no_found_rows'  => true,
 	)
 );
 ?>
@@ -57,9 +96,10 @@ $cases = new WP_Query(
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
 <?php block_template_part( 'header' ); ?>
 
-<main class="tl-fx tl-fx-home">
+<main id="tl-main" class="tl-fx tl-fx-home">
 	<!-- Hero -->
 	<section class="tl-fx-hero">
 		<div class="tl-fx-hero-inner">
@@ -74,7 +114,7 @@ $cases = new WP_Query(
 			</div>
 			<figure class="tl-fx-hero-media">
 				<?php if ( $hero_img ) : ?>
-					<img class="tl-fx-hero-img" src="<?php echo esc_url( $hero_img ); ?>" alt="<?php echo esc_attr( $hero_title ); ?>" />
+					<img class="tl-fx-hero-img" src="<?php echo esc_url( $hero_img ); ?>" alt="<?php echo esc_attr( $hero_alt ?: $hero_title ); ?>" />
 				<?php elseif ( has_post_thumbnail( $pid ) ) : ?>
 					<?php echo get_the_post_thumbnail( $pid, 'large', array( 'class' => 'tl-fx-hero-img' ) ); ?>
 				<?php endif; ?>
@@ -105,27 +145,11 @@ $cases = new WP_Query(
 			</div>
 			<div class="tl-fx-cat-grid tl-fx-home-cats">
 				<?php foreach ( $categories as $cat ) : ?>
-					<?php
-					$cat_post = get_posts(
-						array(
-							'post_type'      => 'oct_product',
-							'posts_per_page' => 1,
-							'orderby'        => 'date',
-							'order'          => 'ASC',
-							'tax_query'      => array(
-								array(
-									'taxonomy' => 'oct_product_category',
-									'field'    => 'term_id',
-									'terms'    => $cat->term_id,
-								),
-							),
-						)
-					);
-					?>
-					<a class="tl-fx-cat-card" href="<?php echo esc_url( get_term_link( $cat ) ); ?>">
+					<?php $cat_post = $cat_products[ $cat->term_id ] ?? null; ?>
+					<a class="tl-fx-cat-card" href="<?php echo esc_url( (string) get_term_link( $cat ) ); ?>">
 						<figure class="tl-fx-cat-card-media">
-							<?php if ( $cat_post && has_post_thumbnail( $cat_post[0] ) ) : ?>
-								<?php echo get_the_post_thumbnail( $cat_post[0], 'medium_large', array( 'class' => 'tl-fx-cat-card-img' ) ); ?>
+							<?php if ( $cat_post && has_post_thumbnail( $cat_post ) ) : ?>
+								<?php echo get_the_post_thumbnail( $cat_post, 'medium_large', array( 'class' => 'tl-fx-cat-card-img' ) ); ?>
 							<?php endif; ?>
 							<span class="tl-fx-cat-card-badge"><?php echo esc_html( sprintf( _n( '%d model', '%d models', (int) $cat->count, 'terralift-ui' ), (int) $cat->count ) ); ?></span>
 						</figure>
@@ -151,7 +175,7 @@ $cases = new WP_Query(
 				<?php
 				while ( $featured->have_posts() ) :
 					$featured->the_post();
-					$model = trim( (string) get_field( 'oct_model' ) );
+					$model = trim( (string) tl_field( 'oct_model' ) );
 					?>
 					<a class="tl-fx-cat-card" href="<?php the_permalink(); ?>">
 						<figure class="tl-fx-cat-card-media">
