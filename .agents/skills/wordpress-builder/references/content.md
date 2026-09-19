@@ -21,7 +21,9 @@
 
 修改先 `read-content --type oct_product --id 123` 获取 version，然后输入 `{"type":"oct_product","id":123,"expectedVersion":"实际version","acf":{"oct_material":"新材质"}}`。省略 blocks 保留原文，包括工具不认识的区块。提供 blocks 将完整替换正文；不要用不完整区块数组做局部修改。发布用同一流程，仅设 `status:"publish"`，会保留正文。已有发布授权无需重复询问。
 
-可选字段：title、slug、status(draft/publish)、excerpt、featuredMedia（实际图片 ID；0 清除）、meta、acf。未提供字段保持；特色图参数已实现，尚需独立视觉验收。不能同时通过 meta/acf 写同名字段。保护字段、schema 未声明字段、只读字段、null 删除均拒绝。空文本是明确值，不自动跳过。复杂关系/图片/重复器等 ACF 类型必须先单独确认读写转换，当前真实验收覆盖文本字段。
+可选字段：title、slug、status(draft/publish)、excerpt、featuredMedia（实际图片 ID；0 清除）、meta、acf。未提供字段保持；特色图参数已实现，尚需独立视觉验收。不能同时通过 meta/acf 写同名字段。保护字段、schema 未声明字段、只读字段、null 删除均拒绝。空文本是明确值，不自动跳过。
+
+**ACF 图片字段实测语义（image 类型，`return_format: url`）**：REST GET 返回原始附件 ID（不是 URL）；REST 写入校验要求整数附件 ID，传 URL 字符串会被 `rest_invalid_param` 拒绝；`get_field()` 前台与 `acf/field` Block Bindings 渲染层自动按 return_format 转 URL。模板需要控制尺寸时取原始 ID 后用 `wp_get_attachment_image_url()`。关系/重复器等复杂类型仍需先单独确认读写转换。
 
 元数据绑定要求目标类型真实注册非下划线开头的 REST string meta，ACF 字段存在本身不保证符合此条件。生成 core/paragraph + core/post-meta binding，fallback 只是缺值文字。验证时只改字段，比较正文哈希不变，并从匿名前台确认新值。若前台仍显示 fallback，检查 WordPress 绑定支持、字段注册和模板上下文；不能称为动态展示已完成。
 

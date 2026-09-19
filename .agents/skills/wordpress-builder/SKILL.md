@@ -1,6 +1,6 @@
 ---
 name: wordpress-builder
-description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 阶段管线，把企业资料建成原生区块页面，预览、修订后发布并配置首页与简单导航，支持任务恢复和改动核验。
+description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 阶段管线，把企业资料建成原生区块页面与 ACF 驱动的自由 HTML 模板，HTML 预览门先行，预览、修订后发布并配置首页与导航，支持任务恢复、分层部署和改动核验。
 ---
 
 # Codex WordPress 建站：8 阶段设计工程管线
@@ -10,6 +10,8 @@ description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 �
 先阅读 [执行接口](references/runtime.md)。需要整站任务时阅读 [建站与验收](references/site-workflow.md)。设计 token、Pattern、评分卡与反 AI 味规则见 [设计系统与视觉 QA](references/design.md)。历史 `selectTools/wpRead/wpWriteContent` 是另一个宿主的接口，不在 Codex 里直接调用。
 
 按顺序执行 8 个阶段。阶段结论写入任务目录；恢复任务时先读取已有阶段文件、`status` 和远端状态，再从下一项未完成操作继续，不重复已确认的写入。
+
+生成或修改主题模板与 PHP 代码时，必读 [自由模板与主题代码工程规范](references/theme-code.md)——模板优先级、文档壳、ACF REST 细节、CSS 纪律、部署坑全部来自隔离站实测。
 
 ## 阶段 1：Brief
 
@@ -26,7 +28,7 @@ description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 �
 ## 阶段 3：内容模型
 
 1. 用 `doctor --task <目录>` 读取实际账号权限、主题、区块及内容模型；用 `content-type --type <实际类型>` 读取 `/wp/v2/types` 声明和真实写入 schema。不能把 unknown 当成不支持。
-2. 产品、案例或批量导入任务阅读 [内容模型与导入](references/content.md)。先用实际 CPT/ACF 字段建立产品与案例结构，再 `content-plan/content-apply`；字段更新可保留完整原文。不要为使用工具擅自重注册客户内容模型或安装测试插件。
+2. 产品、案例或批量导入任务阅读 [内容模型与导入](references/content.md)。先用实际 CPT/ACF 字段建立产品与案例结构，再 `content-plan/content-apply`；字段更新可保留完整原文。不要为使用工具擅自重注册客户内容模型或安装测试插件。ACF 必装；字段组开启 `show_in_rest` + `allow_in_bindings`；REST 写图片字段传附件 ID（GET 返回的也是 ID，前台渲染自动转 URL）。
 3. 映射每个页面的文字、图片、参数表和内部引用；素材使用 `upload-media` 上传已确认的本地图片/PDF，再用实际 mediaId 建图像块。不要把测试截图或生成图冒充企业实拍。参考 [素材说明](references/media.md)。
 
 ## 阶段 4：设计系统
@@ -46,6 +48,8 @@ description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 �
 5. 复用型视觉页面（产品/案例详情、产品分类等）默认走 D 模式自由模板：主题根目录 `single-{cpt}.php` / `taxonomy-{tax}.php`，完整文档壳 + `block_template_part()` + `get_field()` 读 ACF，自由 HTML 复用主题 token；同时删除同层级 `.html` 区块模板（区块模板优先级更高，会压过 PHP）。模板选择规则与实测优先级见 docs/14。需要后台逐篇切换时再注册 `templates/*.html` customTemplates + Block Bindings（B 模式）。
 6. 页面级 ACF 字段组跟随模板成对输出（`page-*.php` + `acf-*.php`，location 绑定 `page_template`），CPT 字段组集中注册并全部开启 `show_in_rest` + `allow_in_bindings`；图片字段 `return_format: url`，REST 写入传附件 ID。询盘表单优先 Fluent Forms 短代码，不手写表单处理。
 7. 页面级自由模板命名带版本号（`page-contact-v1.php`），迭代出 v2 而非覆盖 v1；新版本页面切换并验证通过后再删旧文件。模板层级模板（single/taxonomy）由 git 管版本，不加版本号。
+8. 自由模板必须过 [主题代码工程规范](references/theme-code.md) 的基线：完整文档壳（禁 `get_header()`，用 `block_template_part()` + `wp_head()/wp_footer()`）、ABSPATH 守卫、`title-tag` 支持、skip link、可移植路由 helper、ACF 安全读取 helper。站点首页用 `front-page.php` 委托（自定义页面模板对首页无效，实测）。
+9. 部署模板后按 [theme-code 规范](references/theme-code.md) 第 7 节验证：隔离站模板部件改动必须整进程重启 Playground 再验；交付前跑第 8 节检查清单。
 
 ## 阶段 6：视觉 QA
 
@@ -63,7 +67,7 @@ description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 �
 
 1. 已授权发布时执行同一命令加 `--publish`。工具只改变状态、保留正文，并设置站点标题、描述和首页。
 2. 导航使用 `template-parts` 中的真实 ID 和唯一导航原文生成 `navigation-plan`；审阅影响后在既有授权范围执行 `navigation-apply`。它影响所有引用该模板部件的页面。
-3. 检查已发布前台、首页、导航的实际链接与手机菜单开关。交付真实 URL、ID、状态、评分卡、截图证据目录，以及仍未验证的业务要求。表单创建不等于邮件送达，静态产品表格不等于 ACF 动态绑定。
+3. 检查已发布前台、首页、导航的实际链接与手机菜单开关；核对 `<title>`、无 theme-compat 兜底标记、REST 无 `source: custom` 模板覆盖（[theme-code 检查清单](references/theme-code.md) 第 8 节）。交付真实 URL、ID、状态、评分卡、截图证据目录，以及仍未验证的业务要求。表单创建不等于邮件送达，静态产品表格不等于 ACF 动态绑定。
 4. 发布写入结果未知时，先读操作记录、远端状态和前台证据，再决定是否只回读或继续；不要凭猜测重复 POST。
 
 当前工具完成度以本仓库验收记录为准。CMS/ACF 文本字段、原生字段绑定与 CSV 草稿导入已有隔离站实测；复杂 ACF 字段、产品模板设计、复杂页面局部编辑、表单送达和 SEO 插件写入仍需后续实现或具体适配。继续推进完整任务，同时明确具体缺口。

@@ -30,3 +30,9 @@ footer 字面量输出排查历经：REST part 检查（无 DB 覆盖）→ shor
 ## 遗留
 
 i18n 包装、ACF 字段名前缀迁移、pattern 内联样式收敛、ready_to_ship 字段——维持记录待真实站点。
+
+## 追加：经验沉淀进 Skill（同日）
+
+- 新增 `.agents/skills/wordpress-builder/references/theme-code.md`：模板优先级/首页特例/DB 覆盖、文档壳与 ABSPATH、title-tag、可移植路由、ACF helper 与 REST 图片语义、CSS/对比度/a11y 纪律、WP 6.9 shortcode 部件行为、分层部署与 Playground 三坑、交付前检查清单。
+- SKILL.md：描述更新（自由 HTML 模板 + 预览门 + 分层部署）；阶段 3 补 ACF 必装与 REST 图片语义；阶段 5 接入 theme-code 基线与重启验证；阶段 8 接入检查清单。
+- design.md v3 / content.md：ACF 图片字段实测语义、v3 演进记录。

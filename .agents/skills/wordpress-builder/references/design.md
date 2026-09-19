@@ -160,3 +160,4 @@ register_block_pattern(
 | --- | --- | --- |
 | v1 | token 档位、Pattern 库、6×4 评分卡、反 AI 味规则 | 首版工程落地规范 |
 | v2 | 增补视觉避免清单与版本历史节；吸收 wpagent 设计系统「避免事项 + 演进记录」纪律 | 用户确认融合外部项目优点（docs/15） |
+| v3 | 新增自由模板工程规范引用（[theme-code.md](theme-code.md)）；对比度实测修正（品牌亮橙仅限大装饰，按钮/小字用深一档 token）；卡片图 lazy 属性、无图占位、reduced-motion、fontDisplay swap 纳入避免清单执行项 | 全站自由模板重构与架构审计实测（docs/16） |
