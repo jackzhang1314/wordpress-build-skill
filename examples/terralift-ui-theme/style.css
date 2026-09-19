@@ -6,7 +6,7 @@ Description: Token-driven industrial design system for native WordPress block si
 Requires at least: 6.7
 Tested up to: 6.9
 Requires PHP: 8.0
-Version: 0.3.0
+Version: 0.4.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: terralift-ui
@@ -934,4 +934,87 @@ body.home .entry-content > .wp-block-group:first-child {
 
 @media (max-width: 980px) {
   .tl-fx-contact-grid { grid-template-columns: 1fr; }
+}
+
+/* Home page template (page-home-v1.php) */
+.tl-fx-home { background: var(--tl-base); }
+.tl-fx-home-stats {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem) clamp(2.2rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, .14);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: var(--tl-radius-sm);
+  overflow: hidden;
+}
+.tl-fx-home-stat { background: rgba(10, 22, 28, .55); padding: 1.1rem 1.3rem; }
+.tl-fx-home-stat-value {
+  margin: 0 0 .2rem;
+  font-family: var(--tl-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: #fff;
+}
+.tl-fx-home-stat-label {
+  margin: 0;
+  font-family: var(--tl-mono);
+  font-size: .66rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--tl-safety);
+}
+.tl-fx-home-section { padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem) 0; max-width: 1240px; margin: 0 auto; }
+.tl-fx-home-section--alt { padding-bottom: clamp(3rem, 6vw, 5rem); }
+.tl-fx-home-section-head { display: grid; gap: .6rem; margin-bottom: 1.8rem; }
+.tl-fx-home-heading {
+  margin: 0;
+  font-family: var(--tl-display);
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+  color: var(--tl-ink);
+}
+.tl-fx-home-cats { padding: 0; }
+.tl-fx-home-more { display: flex; justify-content: center; margin-top: 2rem; }
+.tl-fx-home-cases {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.tl-fx-home-case {
+  display: grid;
+  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+  background: var(--tl-surface);
+  border: 1px solid var(--tl-line-soft);
+  border-radius: var(--tl-radius-sm);
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: var(--tl-shadow-soft);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.tl-fx-home-case:hover { transform: translateY(-4px); box-shadow: var(--tl-shadow-lift); }
+.tl-fx-home-case-media { margin: 0; }
+.tl-fx-home-case-img { display: block; width: 100%; height: 100%; min-height: 180px; object-fit: cover; }
+.tl-fx-home-case-body { display: grid; gap: .5rem; align-content: center; padding: 1.4rem 1.5rem; }
+.tl-fx-home-case-industry {
+  margin: 0;
+  font-family: var(--tl-mono);
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--tl-signal);
+}
+
+@media (max-width: 980px) {
+  .tl-fx-home-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tl-fx-home-cases { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .tl-fx-home-stats { grid-template-columns: 1fr; }
 }
