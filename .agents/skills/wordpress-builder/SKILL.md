@@ -7,6 +7,10 @@ description: 编排官方 WordPress 专业 Skill 和项目工具，从干净环�
 
 用当前 Codex 完成编排。官方专业模块承担具体工作流，项目工具承担内容写入与状态记录。先读 [能力接入与交接](references/orchestration.md)，只加载当前任务所需专业模块，不一次读取全部 Skill。
 
+## 新环境依赖
+
+完整仓库按根 AGENTS.md 执行 harness:doctor / harness:setup；Node 缺失时先按实际系统配置官方 Node.js 22+。仅安装当前任务需要的工具，避免将全部专业 Skill 的可选依赖都变成必装项。独立 Skill 包不包含仓库 Docker 启动器，按 references/runtime.md 和专业模块前置条件核对，不能调用不存在的仓库脚本。Hostinger 初始化脚本随 Skill 提供，见下文。
+
 ## 范围与入口
 
 - 项目 `AGENTS.md` 是日常开发入口。新站 Discover 按 [项目指令规范](references/project-instructions.md) 建立或合并客户源码根的 AGENTS.md，记录真实目录、环境、命令及 Skill/质量规范路由；不把本工具仓库约定直接复制给客户。
@@ -38,6 +42,7 @@ description: 编排官方 WordPress 专业 Skill 和项目工具，从干净环�
 - 内容写入沿用 plan → apply → readback。未知结果先协调日志与远端状态，不换一个工具重复写入。官方工具执行的写操作也要保存回执；项目 Journal 不会自动拦截所有外部工具。
 - 已有授权持续有效。无关的上游安装、遥测、通知或发布动作不因读取 Skill 自动获得授权。
 - 专业模块返回变更、检查结果、证据和缺口。阶段 `project-record` 只记录有文件证据的声明；不能替代真实验收或作为发布授权。
+- 进入 Hostinger 部署任务时先执行 `node "<本 Skill 绝对目录>/scripts/hostinger-setup.mjs"` 检查工具；缺少 CLI 且已有部署/配置授权时加 `--install`，再用 `--connect` 验证只读账户访问。首次官方浏览器登录由用户完成；不索取聊天 Token，不因 CLI 可用就跳过目标/备份/发布验收。只加载 Skill 或做本地设计时不主动安装主机工具，MCP 可选。无 Homebrew/Windows 的官方二进制路径按 hostinger reference 执行，不能把提示当安装成功。
 - 当前唯一公网部署目标为 Hostinger Managed WordPress，先读 [Hostinger 部署规范](references/hostinger.md)，再按需使用官方 wp-wpcli-and-ops。CLI/API 管托管资源，SSH/WP-CLI 管文件与 WordPress；MCP 可选，不新增必装 AI 插件。当前参考站已验证 CLI TUS + 一次性 cron/WP-CLI 的首次部署；通用远程执行器和 SSH 路径尚未验收，不把本地成功或 build --publish 当成主机部署成功。
 - 发布前读 [release.md](references/release.md)。验证后台修改字段/图片/正文后的回显、菜单、链接、询盘、移动端和恢复；代码检查或 API 成功不足以证明整站完成。
 - 整站验证或修复后，按 [验证与经验沉淀](references/verification.md) 核对询盘、编辑和恢复证据；已验证的通用做法回写相应 reference，版本特例保留边界。

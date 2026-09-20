@@ -8,6 +8,12 @@
 - 新站默认原生区块主题 + 业务插件/CPT/分类 + ACF + 原生模板/Patterns + 必要 PHP 动态块；不使用 Elementor，不承担旧站迁移。新增 [区块代表页样板](examples/b2b-block-starter/README.md) 已独立落地；历史 HONGDA PHP 示例保留；当前 Hostinger 预览站使用原生区块样板，实测范围以架构现状和验收证据为准。
 - 开始改动前检查目录、分支、HEAD 和未提交内容。现有共享工作区修改不得覆盖；实验环境与参考网站分别识别，不清空不明数据。
 
+## 克隆后的依赖引导
+
+新环境首次执行建站任务先运行 `node scripts/harness-doctor.mjs`；已有初始化授权时运行 `--setup` 补齐 npm 依赖与 Skill 构建，按任务加 `--deploy --connect` 检查 Hostinger。Node 未安装时 Codex 先按实际系统从官方发行/已安装包管理器安装 Node.js 22+，不能要求缺 Node 的用户先运行 npm。macOS/Homebrew 的 Docker 缺失可用 `--install-system`；其他平台按官方安装流程处理并复检，不把安装提示当成功。Docker 首次 UI、账户登录等需本人完成时明确指出当前步骤，其余工作继续。不要因缺本机 wp 命令安装重复栈：Starter 在容器提供 WP-CLI/WordPress/PHP/MySQL，插件按统一清单安装；WordPress/Hostinger MCP 均非必装。
+
+依赖就绪、干净站启动、网站验收、生产部署分别记录。默认 doctor 不写环境；安装不自动创建站点或发布。新机器不得复用仓库作者的 .lab 指针、路径或凭据。
+
 ## Skill 与规范路由
 
 - 建站、主题/插件、内容、SEO 和交付任务先读 [wordpress-builder](.agents/skills/wordpress-builder/SKILL.md)，再按任务加载它路由的官方专业模块及 references。普通工具代码维护只读相关规范，不加载整个技能库。
@@ -19,6 +25,8 @@
 - 新站插件基线由 config/wordpress-plugins.json 统一管理，按 [插件初始化规范](.agents/skills/wordpress-builder/references/plugins.md) 执行；不在多个脚本分别维护安装版本。必装、可选能力和仅测试依赖分别验收，不增加旧插件兼容。
 
 - 当前只围绕 Hostinger Managed WordPress 实施公网部署，遵循 [部署规范](.agents/skills/wordpress-builder/references/hostinger.md)。不并行开发其他供应商适配；首次发布与后续更新分开，后续不得用本地数据库覆盖线上询盘。已确认的架构选择不代表真实账户部署已通过。
+
+- Hostinger 新机器初始化按 Skill 的 hostinger-setup 和部署规范执行：部署时按需检测/安装官方 CLI、验证账户访问；MCP 可选，浏览器账户授权由用户本人完成，不把本机已安装状态套到其他用户。
 
 - 用户已授权自动开通/部署时，先核对当前官方工具能力和已有认证，能由工具完成的建站步骤直接执行，不把手动后台操作当作默认前置条件。缺失必要业务信息再询问；异步操作先记录并查询结果，避免重放未知写入。
 

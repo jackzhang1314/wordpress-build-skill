@@ -17,8 +17,7 @@
 ```sh
 git clone https://github.com/jackzhang1314/wordpress-build-skill.git
 cd wordpress-build-skill
-npm ci
-npm run build
+npm run harness:setup
 npm run starter:start
 ```
 
@@ -42,3 +41,9 @@ npm run starter:sync
 本地实例信息在 `.lab/b2b-starter-latest.json`，包括 Compose 文件和项目名。可用这些值运行 `docker compose -p PROJECT -f COMPOSE stop` / `start` 停止和恢复；不要使用全局删除或 `down -v` 清空其他站点。
 
 这是完整演示内容的可重建起点，并非线上数据库逐字节快照。线上手工编辑、历史询盘、用户和媒体新增不会自动回流到 seed；迁移这些内容需要另做授权导出和脱敏验收。产品参数与图片为演示，实际商业站需要替换为真实资料。当前视觉质量和正式邮件交付仍有待验收项。
+
+## 缺依赖时的统一入口
+
+`npm run harness:doctor` 只读检测；`npm run harness:setup` 安装缺失 npm 依赖并构建/校验 Skill。需要 Docker 且 macOS 已有 Homebrew 时可加 `-- --install-system`；安装后仍须启动 Docker 并完成首次 UI。部署前用 `npm run harness:setup -- --deploy --connect`，按需安装 Hostinger CLI 并触发官方登录。Windows/Linux 无对应安装器时报告具体官方配置步骤，不声称全平台自动安装。Node 本身缺失时由 Codex 先配置 Node.js 22+，npm 命令无法安装执行它自身所需的运行时。
+
+WordPress、PHP、MySQL、容器内 WP-CLI 在 starter:start 阶段提供，ACF/表单/SEO 插件按统一版本清单安装；无需额外 WordPress MCP。本机 doctor 通过不代表镜像已下载、所有插件安装通过或网站已经上线。高级浏览器/性能/PHPStan 工作流仍按专业 Skill 独立检查工具，当前 doctor 不宣称覆盖全部可选模块。

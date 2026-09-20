@@ -146,3 +146,13 @@ npm run hostinger:preflight -- .wordpress-builder/hostinger/target.json --connec
 官方 CLI files list-website-and-directories + website-content 可读取主题文本，无须上传远端脚本。参考仓库命令：`node scripts/hostinger/theme-baseline.mjs USER DOMAIN THEME CANDIDATE_DIR REPORT.json`。目录分页、重复项、符号链接、深度边界及内容长度必须检查；当前接口最大目录深度为 10。读前后目录清单核对只能发现部分并发变化，不提供原子快照。
 
 实测文件内容接口可能去掉末尾 LF：此时仅在本地完整字节数相同、仅末尾 LF 差异且余下内容完全一致时标记 normalizedFinalNewlineMatches，不能声称远端字节哈希完全一致。未知截断直接失败；字体等二进制明确 unverified。结果只检查主题文本，不包括插件、数据库覆盖或自动发布授权；releaseApproval 始终 false。
+
+## 新电脑按需引导（先于部署预检）
+
+首次进入已授权的部署任务时执行 Skill 随包 `scripts/hostinger-setup.mjs`；完整仓库可用 `npm run hostinger:setup`。无 CLI 时运行 `npm run hostinger:setup -- --install`，在 macOS/Linux 且已有 Homebrew 的机器安装官方 `hostinger/tap/hostinger`，不升级或覆盖已有可用版本。再运行 `npm run hostinger:setup -- --connect`，以只读 hosting orders list 验证账户访问；不打印订单内容。当前 CLI 无 auth/login 子命令，首次账户命令会触发官方浏览器登录，用户本人完成授权后重新检查。登录失败也可能是网络/API 或旧环境 Token 优先级问题，不直接断言无账户。
+
+Windows/无 Homebrew：当前脚本返回 official-release-required，并非安装完成。Codex 应继续按官方 releases 下载与实际 OS/架构匹配的文件，核验该 release 校验和，安装到用户可写目录并确认 PATH，运行 version 和 --help 后重跑 setup。未知架构或无法验证下载则明确报告，不执行不明来源安装脚本。这个分支尚未实现为自动安装器或完成跨平台实测；不要要求用户安装 MCP 来绕过缺失 CLI。
+
+CLI 是默认路径；已有可用官方 Hostinger MCP 时可以复用，但无需两套都安装。配置 MCP 要按当前 Codex 客户端支持方式完成连接/授权验证，不把配置文件存在称为连接成功。读取 Skill 本身不触发安装、登录或资源创建。账户能读取也不证明套餐支持 WordPress、目标可覆盖或发布已通过。
+
+官方认证依据：https://www.hostinger.com/support/11679133-how-to-use-hostinger-api-cli/ 。本机实测与缺工具模拟分开报告；客户端未授权时需要用户官方登录这一步，不应代用户购买或索取密码。

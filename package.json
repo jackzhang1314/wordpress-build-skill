@@ -8,7 +8,7 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src tests scripts/build.mjs scripts/lab.mjs scripts/lab-wp.mjs scripts/lab-bind.mjs scripts/deploy-lab.mjs scripts/migrate-demo.mjs scripts/test-theme.mjs scripts/audit-lab.mjs scripts/test-new-site.mjs scripts/reference-site.mjs scripts/test-reference-site.mjs scripts/hongda-site.mjs scripts/test-hongda-site.mjs scripts/hongda-snapshot.mjs scripts/hongda-restore.mjs scripts/test-hongda-recovery.mjs scripts/test-hongda-enquiry.mjs scripts/wordpress-ready.mjs scripts/hongda-package.mjs scripts/hongda-clean-site.mjs scripts/hongda-e2e.mjs scripts/hongda-native.mjs scripts/build-block-starter.mjs examples/b2b-block-starter/scripts/*.mjs examples/b2b-block-starter/scripts/release/*.mjs scripts/hostinger/*.mjs",
+    "lint": "eslint src tests scripts/build.mjs scripts/lab.mjs scripts/lab-wp.mjs scripts/lab-bind.mjs scripts/deploy-lab.mjs scripts/migrate-demo.mjs scripts/test-theme.mjs scripts/audit-lab.mjs scripts/test-new-site.mjs scripts/reference-site.mjs scripts/test-reference-site.mjs scripts/hongda-site.mjs scripts/test-hongda-site.mjs scripts/hongda-snapshot.mjs scripts/hongda-restore.mjs scripts/test-hongda-recovery.mjs scripts/test-hongda-enquiry.mjs scripts/wordpress-ready.mjs scripts/hongda-package.mjs scripts/hongda-clean-site.mjs scripts/hongda-e2e.mjs scripts/hongda-native.mjs scripts/build-block-starter.mjs examples/b2b-block-starter/scripts/*.mjs examples/b2b-block-starter/scripts/release/*.mjs scripts/hostinger/*.mjs scripts/harness-doctor.mjs",
     "test": "tsx --test tests/*.test.ts tests/*.test.mjs",
     "test:theme": "node scripts/test-theme.mjs",
     "build": "node scripts/build.mjs",
@@ -39,7 +39,10 @@
     "test:starter:release": "node examples/b2b-block-starter/scripts/release.mjs",
     "hostinger:preflight": "node scripts/hostinger/preflight.mjs",
     "test:starter:template-update": "node examples/b2b-block-starter/scripts/template-update-check.mjs",
-    "starter:update-preflight": "node examples/b2b-block-starter/scripts/update-preflight.mjs"
+    "starter:update-preflight": "node examples/b2b-block-starter/scripts/update-preflight.mjs",
+    "hostinger:setup": "node .agents/skills/wordpress-builder/scripts/hostinger-setup.mjs",
+    "harness:doctor": "node scripts/harness-doctor.mjs",
+    "harness:setup": "node scripts/harness-doctor.mjs --setup"
   },
   "dependencies": {
     "csv-parse": "7.0.2",
