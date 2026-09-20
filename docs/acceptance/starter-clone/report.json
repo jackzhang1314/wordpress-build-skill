@@ -1,0 +1,63 @@
+{
+  "wordpress": "7.1",
+  "blockTheme": true,
+  "noindex": true,
+  "counts": {
+    "page": 19,
+    "post": 9,
+    "hd_product": 19,
+    "hd_solution": 11,
+    "attachment": 6
+  },
+  "testedAt": "2026-09-20T22:45:12.710Z",
+  "scope": "fresh-export-copy-docker-install-with-online-plugin-downloads",
+  "routes": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/",
+      "status": 200
+    },
+    {
+      "path": "/contact-us/",
+      "status": 200
+    },
+    {
+      "path": "/our-story/",
+      "status": 200
+    },
+    {
+      "path": "/wp-login.php",
+      "status": 200
+    }
+  ],
+  "runtime": {
+    "wordpress": "7.1",
+    "php": "8.3.33",
+    "mysql": "8.4.11",
+    "seo": {
+      "name": "Rank Math Free",
+      "version": "1.0.278"
+    },
+    "acf": "6.8.9",
+    "acfPro": false,
+    "fluentform": "6.2.9",
+    "blockTheme": true,
+    "theme": "b2b-equipment",
+    "bindings": [
+      "acf/field",
+      "core/pattern-overrides",
+      "core/post-data",
+      "core/post-meta",
+      "core/term-data"
+    ]
+  },
+  "startupComplete": true,
+  "limitations": [
+    "Not a byte-for-byte production database clone",
+    "Local WordPress image reports 7.1; Hostinger previously reported 7.1.1",
+    "No full browser interaction regression in this clean-install run"
+  ]
+}
