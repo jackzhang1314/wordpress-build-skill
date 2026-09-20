@@ -1,0 +1,30 @@
+{
+  "testedAt": "2026-09-20T17:35:52.700Z",
+  "scope": "local-reuse-template-file-update-not-full-deployment",
+  "checks": {
+    "databaseOverrideWins": true,
+    "preflightBlocksChangedTemplate": true,
+    "unrelatedFileDoesNotConflict": true,
+    "preflightDoesNotModifyOverride": true,
+    "wp_template_partConflictDetected": true,
+    "wp_template_partOtherThemeExcluded": true,
+    "wp_template_partContentUnchanged": true,
+    "wp_global_stylesConflictDetected": true,
+    "wp_global_stylesOtherThemeExcluded": true,
+    "wp_global_stylesContentUnchanged": true,
+    "fileUpdatePreservesOperatorTemplate": true,
+    "updatedFileExistsButIsShadowed": true,
+    "operatorContentAndAcfPreserved": true,
+    "existingEnquiryRowsUnchanged": true,
+    "explicitResetRevealsNewFile": true,
+    "resetClearsConflict": true,
+    "testObjectsRemoved": true
+  },
+  "notCovered": [
+    "remote-incremental-transport",
+    "new-enquiry-during-deployment",
+    "media-update",
+    "template-parts-and-global-styles-rendering",
+    "plugin-schema-migration"
+  ]
+}

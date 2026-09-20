@@ -1,0 +1,17 @@
+{
+  "recordedAt": "2026-09-20T00:13:52+08:00",
+  "head": "a49821fa88311b5fa59f4d0298b8a6f5b71bd7a1",
+  "workingTree": "uncommitted; includes earlier changes",
+  "files": {
+    "src/orchestration.ts": "4f40465dfad29b7961c7ebf6c68999b4738e0beb3ff7e470bf67be7ddbc251a4",
+    "src/cli.ts": "446640d1c2a5c77bf1fbb8e5bff8b9516fb946988c734bec5cc69c9ad356b3dd",
+    "scripts/build.mjs": "22f1b75e7c6afeb8501f0bbada2f5be53969be78a6ba0f6eca44bbcba2e4b95d",
+    "scripts/test-new-site.mjs": "f9bf2842c397e1bc0637ed217821f46114933d1f9f15f7d107d908d382ad8b9b",
+    "tests/orchestration.test.ts": "c0cc16f10002b9c2b65adb2c2458c1ecfb5ab5727e2024646989b95d1813d28a",
+    "package.json": "376018d33838ff205e8e32ff7b9a234d65608c646a5850e370a5a313df93c013",
+    "package-lock.json": "e724784299fe20632926fed5b4012c578d4cc6e1a6d848c4098e5e3daea5b60a",
+    ".agents/skills/wordpress-builder/SKILL.md": "846dd46c7d21d0d704dc923166cafc0f2b7cf1c6287316d5cbcb5c20a5bd6831",
+    ".agents/skills/wordpress-builder/capabilities.json": "484b25259045927e478eefa8e870dbcbb34e6aa8ebd15b4a3c024b1fecca85cf",
+    ".agents/skills/wordpress-builder/scripts/wp.mjs": "c2732eacf03ec652cd2801acfd2fcbaa0d5a1234a704e82d930a32569c2bf823"
+  }
+}

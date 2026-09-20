@@ -1,0 +1,8 @@
+{
+  "testedAt": "2026-09-19T21:46:00.653Z",
+  "scope": "SQL restored into separate database; verified through WordPress APIs using existing theme/plugins/media files, not a fresh complete deployment",
+  "templateOverride": true,
+  "productSelection": true,
+  "categorySelection": true,
+  "acfModel": true
+}

@@ -1,0 +1,428 @@
+{
+  "$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": {
+      "contentSize": "1080px",
+      "wideSize": "1240px"
+    },
+    "color": {
+      "defaultDuotone": false,
+      "defaultGradients": false,
+      "defaultPalette": false,
+      "gradients": [
+        {
+          "slug": "panel",
+          "name": "Panel",
+          "gradient": "linear-gradient(118deg, #0A161C 0%, #17272F 55%, #1F333D 100%)"
+        },
+        {
+          "slug": "panel-soft",
+          "name": "Panel Soft",
+          "gradient": "linear-gradient(150deg, #13242C 0%, #1B2F38 100%)"
+        }
+      ],
+      "palette": [
+        {
+          "slug": "base",
+          "name": "Base",
+          "color": "#F1F2F0"
+        },
+        {
+          "slug": "surface",
+          "name": "Surface",
+          "color": "#FFFFFF"
+        },
+        {
+          "slug": "ink",
+          "name": "Ink",
+          "color": "#0A161C"
+        },
+        {
+          "slug": "graphite",
+          "name": "Graphite",
+          "color": "#17272F"
+        },
+        {
+          "slug": "steel",
+          "name": "Steel",
+          "color": "#46585F"
+        },
+        {
+          "slug": "signal",
+          "name": "Signal",
+          "color": "#E8570E"
+        },
+        {
+          "slug": "safety",
+          "name": "Safety",
+          "color": "#F0A92E"
+        },
+        {
+          "slug": "concrete",
+          "name": "Concrete",
+          "color": "#DFE3E0"
+        },
+        {
+          "slug": "line",
+          "name": "Line",
+          "color": "#C2CCC8"
+        }
+      ]
+    },
+    "spacing": {
+      "defaultSpacingSizes": false,
+      "spacingSizes": [
+        {
+          "slug": "10",
+          "name": "Hairline",
+          "size": "4px"
+        },
+        {
+          "slug": "20",
+          "name": "Tiny",
+          "size": "8px"
+        },
+        {
+          "slug": "30",
+          "name": "Small",
+          "size": "16px"
+        },
+        {
+          "slug": "40",
+          "name": "Medium",
+          "size": "24px"
+        },
+        {
+          "slug": "50",
+          "name": "Large",
+          "size": "40px"
+        },
+        {
+          "slug": "60",
+          "name": "X-Large",
+          "size": "64px"
+        },
+        {
+          "slug": "70",
+          "name": "Display",
+          "size": "96px"
+        },
+        {
+          "slug": "80",
+          "name": "Section",
+          "size": "128px"
+        }
+      ],
+      "units": [
+        "px",
+        "rem",
+        "%",
+        "vw",
+        "vh"
+      ]
+    },
+    "dimensions": {
+      "aspectRatios": [
+        {
+          "slug": "product",
+          "name": "Product 4:3",
+          "ratio": "4/3"
+        },
+        {
+          "slug": "scene",
+          "name": "Scene 16:10",
+          "ratio": "16/10"
+        },
+        {
+          "slug": "portrait",
+          "name": "Portrait 4:5",
+          "ratio": "4/5"
+        }
+      ]
+    },
+    "custom": {
+      "shadow": {
+        "soft": "0 14px 34px rgba(10, 22, 28, .06)",
+        "lift": "0 24px 60px rgba(10, 22, 28, .12)",
+        "panel": "0 32px 80px rgba(10, 22, 28, .20)"
+      },
+      "radius": {
+        "xs": "3px",
+        "sm": "6px",
+        "md": "10px",
+        "lg": "14px"
+      },
+      "rule": {
+        "thin": "rgba(10, 22, 28, .10)",
+        "heavy": "var(--wp--preset--color--signal)"
+      },
+      "shell": {
+        "wide": "1240px"
+      }
+    },
+    "typography": {
+      "fluid": true,
+      "defaultFontSizes": false,
+      "fontFamilies": [
+        {
+          "slug": "display",
+          "name": "Display",
+          "fontFamily": "\"Ysabeau Office\", Arial Narrow, sans-serif",
+          "fontFace": [
+            {
+              "fontFamily": "Ysabeau Office",
+              "fontStyle": "normal",
+              "fontWeight": "100 900",
+              "src": [
+                "file:./assets/fonts/ysabeau-office/YsabeauOffice-VariableFont_wght.woff2"
+              ],
+              "fontDisplay": "swap"
+            }
+          ]
+        },
+        {
+          "slug": "body",
+          "name": "Body",
+          "fontFamily": "\"Fira Sans\", system-ui, sans-serif",
+          "fontFace": [
+            {
+              "fontFamily": "Fira Sans",
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "src": [
+                "file:./assets/fonts/fira-sans/FiraSans-Regular.woff2"
+              ],
+              "fontDisplay": "swap"
+            },
+            {
+              "fontFamily": "Fira Sans",
+              "fontStyle": "normal",
+              "fontWeight": "500",
+              "src": [
+                "file:./assets/fonts/fira-sans/FiraSans-Medium.woff2"
+              ],
+              "fontDisplay": "swap"
+            },
+            {
+              "fontFamily": "Fira Sans",
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "src": [
+                "file:./assets/fonts/fira-sans/FiraSans-SemiBold.woff2"
+              ],
+              "fontDisplay": "swap"
+            },
+            {
+              "fontFamily": "Fira Sans",
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "src": [
+                "file:./assets/fonts/fira-sans/FiraSans-Bold.woff2"
+              ],
+              "fontDisplay": "swap"
+            }
+          ]
+        },
+        {
+          "slug": "mono",
+          "name": "Mono",
+          "fontFamily": "\"Fira Code\", ui-monospace, monospace",
+          "fontFace": [
+            {
+              "fontFamily": "Fira Code",
+              "fontStyle": "normal",
+              "fontWeight": "300 700",
+              "src": [
+                "file:./assets/fonts/fira-code/FiraCode-VariableFont_wght.woff2"
+              ],
+              "fontDisplay": "swap"
+            }
+          ]
+        }
+      ],
+      "fontSizes": [
+        {
+          "slug": "x-small",
+          "name": "X small",
+          "size": ".76rem"
+        },
+        {
+          "slug": "small",
+          "name": "Small",
+          "size": ".88rem"
+        },
+        {
+          "slug": "medium",
+          "name": "Medium",
+          "size": "1rem",
+          "fluid": {
+            "min": ".98rem",
+            "max": "1.05rem"
+          }
+        },
+        {
+          "slug": "large",
+          "name": "Large",
+          "size": "1.2rem",
+          "fluid": {
+            "min": "1.1rem",
+            "max": "1.35rem"
+          }
+        },
+        {
+          "slug": "x-large",
+          "name": "X large",
+          "size": "1.7rem",
+          "fluid": {
+            "min": "1.5rem",
+            "max": "2.1rem"
+          }
+        },
+        {
+          "slug": "display",
+          "name": "Display",
+          "size": "3rem",
+          "fluid": {
+            "min": "2.1rem",
+            "max": "4rem"
+          }
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var:preset|color|base",
+      "text": "var:preset|color|ink"
+    },
+    "typography": {
+      "fontFamily": "var:preset|font-family|body",
+      "fontSize": "var:preset|font-size|medium",
+      "lineHeight": "1.65"
+    },
+    "spacing": {
+      "blockGap": "1.15rem",
+      "padding": {
+        "left": "24px",
+        "right": "24px"
+      }
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|display",
+          "fontWeight": "800",
+          "lineHeight": "1.05",
+          "letterSpacing": "-.02em"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "var:preset|color|signal"
+        },
+        "typography": {
+          "fontWeight": "600",
+          "textDecoration": "none"
+        },
+        ":hover": {
+          "color": {
+            "text": "var:preset|color|ink"
+          },
+          "typography": {
+            "textDecoration": "underline"
+          }
+        }
+      },
+      "button": {
+        "border": {
+          "radius": "var:preset|custom|radius|xs"
+        },
+        "color": {
+          "background": "var:preset|color|signal",
+          "text": "#FFFFFF"
+        },
+        "spacing": {
+          "padding": {
+            "top": "1rem",
+            "bottom": "1rem",
+            "left": "1.5rem",
+            "right": "1.5rem"
+          }
+        },
+        "typography": {
+          "fontFamily": "var:preset|font-family|body",
+          "fontSize": ".8rem",
+          "fontWeight": "800",
+          "letterSpacing": ".09em",
+          "textTransform": "uppercase"
+        },
+        ":hover": {
+          "color": {
+            "background": "var:preset|color|ink",
+            "text": "#FFFFFF"
+          }
+        }
+      }
+    },
+    "blocks": {
+      "core/site-title": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|display",
+          "fontSize": "1.5rem",
+          "fontWeight": "800",
+          "textTransform": "uppercase"
+        }
+      },
+      "core/post-title": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|display",
+          "fontSize": "var:preset|font-size|display",
+          "fontWeight": "800",
+          "lineHeight": ".95",
+          "letterSpacing": "-.035em",
+          "textTransform": "uppercase"
+        }
+      },
+      "core/post-featured-image": {
+        "dimensions": {
+          "aspectRatio": "16/10"
+        }
+      },
+      "core/post-excerpt": {
+        "typography": {
+          "fontSize": "var:preset|font-size|medium"
+        }
+      },
+      "core/table": {
+        "border": {
+          "color": "var:preset|color|line",
+          "width": "1px"
+        }
+      }
+    }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    }
+  ],
+  "customTemplates": [
+    {
+      "name": "product-dynamic",
+      "title": "Product dynamic (block bindings)",
+      "postTypes": [
+        "oct_product"
+      ]
+    }
+  ]
+}

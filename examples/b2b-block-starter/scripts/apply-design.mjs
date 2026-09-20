@@ -1,0 +1,10 @@
+import {readFile,writeFile,copyFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import {join} from 'node:path';
+import assert from 'node:assert/strict';
+const p=JSON.parse(await readFile('.lab/b2b-starter-latest.json','utf8'));assert.equal(p.urls.primary,'http://127.0.0.1:9490');
+const dc=(...args)=>execFileSync('docker',['compose','-p',p.project,'-f',p.compose,...args],{encoding:'utf8',timeout:120000,maxBuffer:30*1024*1024});
+const backup=dc('exec','-T','db-primary','sh','-c','MYSQL_PWD="$MYSQL_ROOT_PASSWORD" exec mysqldump -uroot --single-transaction --set-gtid-purged=OFF --no-tablespaces wordpress');await writeFile(join(p.run,'before-design-'+Date.now()+'.sql'),backup,{mode:0o600});
+for(const file of ['redesign.php','home.html','about.html'])await copyFile(join(p.source,'content',file),join(p.run,'source-primary',file));
+dc('exec','-T','primary','mkdir','-p','/design');dc('cp',join(p.source,'content')+'/.','primary:/design');
+console.log(dc('exec','-T','primary','php','/tools/wp','--allow-root','eval-file','/design/redesign.php'));

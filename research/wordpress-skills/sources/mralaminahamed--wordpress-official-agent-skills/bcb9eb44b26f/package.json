@@ -1,0 +1,22 @@
+{
+  "name": "wordpress-official-agent-skills",
+  "version": "1.0.0",
+  "description": "Expert-level WordPress knowledge for AI coding agents — blocks, themes, REST API, WP-CLI, performance, PHPStan, Playground, Interactivity API, Abilities API, and more.",
+  "keywords": [
+    "wordpress",
+    "gutenberg",
+    "blocks",
+    "rest-api",
+    "wp-cli",
+    "agent-skills",
+    "claude-code",
+    "gemini-cli"
+  ],
+  "author": "Al Amin Ahamed <mrabir.ahamed@gmail.com>",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://github.com/mralaminahamed/wordpress-official-agent-skills",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mralaminahamed/wordpress-official-agent-skills"
+  }
+}

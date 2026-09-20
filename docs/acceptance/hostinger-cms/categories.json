@@ -1,0 +1,50 @@
+{
+  "testedAt": "2026-09-20T12:00:54.659356+00:00",
+  "rows": [
+    {
+      "sourceId": 5,
+      "layouts": [
+        "catalogue",
+        "editorial"
+      ],
+      "pass": true,
+      "testCategoryRemoved": true
+    },
+    {
+      "sourceId": 2,
+      "layouts": [
+        "catalogue",
+        "editorial"
+      ],
+      "pass": true,
+      "testCategoryRemoved": true
+    },
+    {
+      "sourceId": 3,
+      "layouts": [
+        "catalogue",
+        "editorial"
+      ],
+      "pass": true,
+      "testCategoryRemoved": true
+    },
+    {
+      "sourceId": 6,
+      "layouts": [
+        "catalogue",
+        "editorial"
+      ],
+      "pass": true,
+      "testCategoryRemoved": true
+    },
+    {
+      "sourceId": 4,
+      "layouts": [
+        "catalogue",
+        "editorial"
+      ],
+      "pass": true,
+      "testCategoryRemoved": true
+    }
+  ]
+}

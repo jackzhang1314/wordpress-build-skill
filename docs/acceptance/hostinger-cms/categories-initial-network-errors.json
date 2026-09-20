@@ -1,0 +1,48 @@
+{
+  "testedAt": "2026-09-20T11:59:50.071424+00:00",
+  "rows": [
+    {
+      "sourceId": 5,
+      "layouts": [
+        "catalogue",
+        "editorial"
+      ],
+      "pass": true,
+      "testCategoryRemoved": true
+    },
+    {
+      "sourceId": 2,
+      "layouts": [
+        "catalogue"
+      ],
+      "pass": false,
+      "error": "IncompleteRead",
+      "testCategoryRemoved": true
+    },
+    {
+      "sourceId": 3,
+      "layouts": [],
+      "pass": false,
+      "error": "IncompleteRead",
+      "testCategoryRemoved": true
+    },
+    {
+      "sourceId": 6,
+      "layouts": [
+        "catalogue",
+        "editorial"
+      ],
+      "pass": true,
+      "testCategoryRemoved": true
+    },
+    {
+      "sourceId": 4,
+      "layouts": [
+        "catalogue",
+        "editorial"
+      ],
+      "pass": true,
+      "testCategoryRemoved": true
+    }
+  ]
+}

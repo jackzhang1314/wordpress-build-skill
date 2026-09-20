@@ -1,0 +1,203 @@
+{
+  "formatVersion": 1,
+  "skills": [
+    {
+      "name": "technical-seo",
+      "version": "78166ca25ec29a7b4d140d128e3545550261ca7c08b9af7e3838f52326882457",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "on-page-seo",
+      "version": "d491ff828675de264e0e7dab440edf673b4fea26a878cdb22b7a24af784d3729",
+      "files": [
+        "LICENSE.txt",
+        "references/on-page-checks.md",
+        "references/sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-keyword-research",
+      "version": "eb10a46234c266e7382a885226ba95854b1c128ae7f1dd3caa9a6af64c854665",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-serp-analysis",
+      "version": "004e2a1b8fe42c680d5816b12106485be447a1be2cd2030443b8be3baf9c966e",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-content-gap",
+      "version": "a8acd509a241a1dcf1854837acc1e367502bd5fa0b2023c6a03494429ded2e40",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-topic-clusters",
+      "version": "8a827fa2d62cabb8252c8af552ae55d42283e079f40808f64dc9c9f3281485e5",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-content-refresh",
+      "version": "9ffb5749cd4d7a803020389bd5dc2f9db76d0e897397d38edbd2c4fdc6b4cf30",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-content-studio",
+      "version": "76f9eee59e49c39b14ae2e038c20896f3604983b079f97166312ebb915486720",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-competitor-analysis",
+      "version": "f9b558e48386a6f0a9ec5e701e876d32fb68ddd52eef6ccdcdc10fe354e66536",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-performance-review",
+      "version": "a1c2bcd2cfbd7bd4282dc5291021d00c2c6833e5a813f09ed2d089641c0fc866",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-content-plan",
+      "version": "b68042331cd0b43eb950840892774420e4e13fcd6aab20278b55b5610eec7daf",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-backlink-audit",
+      "version": "9c6faa38e0f07482950c1c50e80cef9ffe43e4ba32571e8edd6cb517789e27ec",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-link-prospecting",
+      "version": "5c832e21fc70a182457a1ef5ebb716760e67382683c7c1aee61fd5b5018212a7",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-link-outreach",
+      "version": "038d337a71251c71ee696d02b8b25ef5e57466f88fca66615dfd64b0db2e628f",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-internal-links",
+      "version": "0a863d058d3cc5d7af74df0c0f116d75a18262af52bdb0b1abc2bb9638787931",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-schema",
+      "version": "3144621a774b5c27b1c0d6f144708de4d7e7b3b03fe708b9e2bded1e83f6727e",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-international",
+      "version": "d7ef08f819d3308ec2e126d96360dd2159e546d52e141c59c32c8d4944b80dd1",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    },
+    {
+      "name": "seo-performance",
+      "version": "c5bc7f1e2062952fe453d084c19e07a51daf968cec3ad3f47f483734dc6a86b6",
+      "files": [
+        "LICENSE.txt",
+        "references/seo-api.md",
+        "references/seo-sources.md",
+        "skill.json",
+        "SKILL.md"
+      ]
+    }
+  ]
+}

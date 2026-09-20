@@ -1,0 +1,8 @@
+.skill-api-config{border:1px solid var(--ui-color-divider,#e2e8f0);border-radius:var(--ui-radius-control,8px);padding:10px 12px;margin:8px 0;font-size:13px;line-height:1.6}
+.skill-api-config>summary{cursor:pointer;font-weight:600}
+.skill-api-config p{margin:8px 0;color:var(--ui-color-muted,#64748b)}
+.skill-api-config label{display:block;font-weight:500}
+.skill-api-config input{display:block;width:100%;box-sizing:border-box;min-height:36px;margin:6px 0 8px;padding:6px 9px;border:1px solid var(--ui-color-divider,#e2e8f0);border-radius:6px;font:inherit}
+.skill-api-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.skill-api-actions button{font:inherit;padding:6px 9px;min-height:34px}
+.skill-api-config a{color:var(--ui-color-primary,#4f46e5)}

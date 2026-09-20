@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "result": {
+    "project": {
+      "schemaVersion": 1,
+      "scope": "new-site",
+      "name": "HONGDA B2B WordPress design preview",
+      "sourceRoot": "/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill/examples/hongda-wordpress",
+      "theme": "php-hybrid",
+      "environment": "playground",
+      "targets": {
+        "wordpress": "7.1.1",
+        "php": "8.3",
+        "acf": "free"
+      },
+      "brief": "# HONGDA WordPress 新站实施契约\n\n参考站仅提供样式、信息架构和页面布局。主架构为 PHP 混合主题 + theme.json + 原生正文 + ACF 免费版 + 独立业务插件；不加载原站 React bundle。官方 Skills 负责项目识别、插件、Playground 和 Blueprint 工作流。\n\n目标买家：设备经销商、承包商、农场及租赁采购者。语言：英文。环境：独立本地 Playground，9464；生产发布不在本阶段。\n\n设计：红 #b70e1f、炭黑 #171d22、金 #c48a1d、雾灰 #f6f7f8、白 #fff。标题使用 Arial Black/Arial 粗体，正文 Arial，参数使用等宽系统字体。首页宽幅分栏首屏 + 设备入口；分类为紧凑目录；详情为图像/参数双栏；行业以工况和选型为主；企业页以编辑正文为主。视觉重点是红色工业品牌与设备选型信息，不增加无用途动效。\n\n产品 CPT、设备分类、行业 CPT 和关联关系归业务插件；品牌首页呈现字段归主题；正文/摘要/标题/主图使用原生数据。规格使用 ACF 免费文本字段（每行“项目 | 值”），不用未授权 PRO repeater。原始参考数据仅作为注明来源的预览内容；认证、联系方式及产品规格尚未核实，正式发布前必须审核。图片预览不构成自有产品/工厂实拍证据。\n\n验收包括：真实页面路由、后台字段/正文修改回显、对象关系、分类筛选、桌面/手机布局、询盘必填/成功/入库/本地通知。生产邮件、MySQL 和备份恢复另行验证。\n"
+    },
+    "projectHash": "5c1d2735a4023bdc93aee353253dfdca23c45dc57dbdff1fb4f5648c574731b9",
+    "registryHash": "5118af9d567b1cec988ba70346beb6ef8b8d000a554fb065b87087914942f157",
+    "progress": [
+      {
+        "stage": "discover",
+        "state": "recorded-verified"
+      },
+      {
+        "stage": "model",
+        "state": "recorded-verified"
+      },
+      {
+        "stage": "theme",
+        "state": "recorded-verified"
+      },
+      {
+        "stage": "content",
+        "state": "recorded-verified"
+      },
+      {
+        "stage": "verify",
+        "state": "recorded-verified"
+      },
+      {
+        "stage": "release",
+        "state": "pending"
+      }
+    ],
+    "next": "release",
+    "note": "Evidence-backed declarations; not a live remote audit or automatic publication."
+  }
+}

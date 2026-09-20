@@ -1,0 +1,75 @@
+name: Validate Skill Submission
+
+# Runs on push to main as well as on pull requests.
+#
+# It used to run on pull_request only, which meant main was never checked
+# against its own rules. A metadata.json landed in commit 2f16a07 and sat there
+# for months: every subsequent PR inherited the failure, so the check was red on
+# work that had nothing to do with it and everyone learned to ignore it. A check
+# that is always red is worse than no check, because it trains people past the
+# one time it is right.
+#
+# The paths filter is 'skills/**' rather than a list of allowed filenames for
+# the same reason. This job's whole job is rejecting files that should not
+# exist, so enumerating the permitted ones meant a PR adding only a disallowed
+# file did not trigger the job that exists to reject it.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/**'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - '.github/workflows/validate-skill.yml'
+  pull_request:
+    paths:
+      - 'skills/**'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - '.github/workflows/validate-skill.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate skill folder structure
+        run: |
+          set -euo pipefail
+          test -d skills || { echo "Missing skills/ directory"; exit 1; }
+
+          for dir in skills/*/ ; do
+            skill_dir="${dir%/}"
+            if [ ! -f "$skill_dir/SKILL.md" ]; then
+              echo "Missing SKILL.md in $skill_dir"
+              exit 1
+            fi
+
+            if grep -qE '^---$' "$skill_dir/SKILL.md"; then
+              :
+            else
+              echo "Missing YAML frontmatter delimiter in $skill_dir/SKILL.md"
+              exit 1
+            fi
+
+            if [ -f "$skill_dir/README.md" ]; then
+              echo "Disallowed: $skill_dir/README.md (move details into references/)"
+              exit 1
+            fi
+
+            if [ -f "$skill_dir/metadata.json" ]; then
+              echo "Disallowed: $skill_dir/metadata.json (use YAML frontmatter in SKILL.md)"
+              exit 1
+            fi
+          done
+
+      - name: Check SKILL.md frontmatter keys
+        run: |
+          set -euo pipefail
+          for skill in skills/*/SKILL.md; do
+            echo "Checking $skill"
+            head -n 40 "$skill" | grep -q '^name:' || { echo "Missing name: in $skill"; exit 1; }
+            head -n 40 "$skill" | grep -q '^description:' || { echo "Missing description: in $skill"; exit 1; }
+            head -n 40 "$skill" | grep -q '^license:' || { echo "Missing license: in $skill"; exit 1; }
+          done

@@ -1,0 +1,39 @@
+{
+  "startedAt": "2026-09-19T20:36:42.908Z",
+  "scope": "local-new-site",
+  "steps": [
+    {
+      "script": "hongda-package",
+      "status": "passed"
+    },
+    {
+      "script": "hongda-clean-site",
+      "status": "ready"
+    },
+    {
+      "script": "test-hongda-site",
+      "status": "passed"
+    },
+    {
+      "script": "test-hongda-enquiry",
+      "status": "passed"
+    },
+    {
+      "script": "hongda-snapshot",
+      "status": "passed"
+    },
+    {
+      "script": "hongda-restore",
+      "status": "ready"
+    },
+    {
+      "script": "test-hongda-recovery",
+      "status": "passed"
+    }
+  ],
+  "visualApproval": "pending",
+  "productionEmail": "not-tested",
+  "productionMysql": "not-tested",
+  "status": "passed",
+  "finishedAt": "2026-09-19T20:39:38.614Z"
+}

@@ -1,0 +1,27 @@
+{
+  "startedAt": "2026-09-20T00:35:20.444Z",
+  "scope": "block-reference-local-package-clean-install",
+  "checks": {
+    "sanitized": {
+      "users": 0,
+      "enquiries": 0,
+      "form": 3,
+      "public": 0
+    }
+  },
+  "hostinger": "not-tested",
+  "externalMail": "not-tested",
+  "commercialContent": "mock-not-approved",
+  "visualApproval": "not-tested",
+  "runtime": {
+    "wordpress": "7.1",
+    "php": "8.3.33",
+    "mysql": "8.4.11"
+  },
+  "sourceHead": "a49821fa88311b5fa59f4d0298b8a6f5b71bd7a1",
+  "sourceUncommitted": true,
+  "status": "failed",
+  "phase": "Sanitize only the isolated snapshot",
+  "error": "Forbidden package path: wp-content/plugins/fluentform/.phpcs.xml",
+  "finishedAt": "2026-09-20T00:35:55.060Z"
+}

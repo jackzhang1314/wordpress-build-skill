@@ -1,0 +1,24 @@
+[
+  {
+    "kind": "plugin",
+    "name": "octopus-site",
+    "version": "0.1.0",
+    "filename": "octopus-site-0.1.0.zip",
+    "sha256": "733a7c7308021ddf7a64b10b7fa012b0e99d332f40c04ea8b1f73ddc1a863477",
+    "bytes": 3399,
+    "files": 2,
+    "httpStatus": 200,
+    "verified": true
+  },
+  {
+    "kind": "theme",
+    "name": "octopus-trade",
+    "version": "0.1.0",
+    "filename": "octopus-trade-0.1.0.zip",
+    "sha256": "05779dba8f156be3b0620c51f0ed56ca4324396f2d6cac55bdd0897d0ea75641",
+    "bytes": 10063,
+    "files": 18,
+    "httpStatus": 200,
+    "verified": true
+  }
+]

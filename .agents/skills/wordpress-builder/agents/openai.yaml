@@ -1,0 +1,4 @@
+interface:
+  display_name: "WordPress 新站编排"
+  short_description: "整合官方专业 Skill，从干净环境构建 ACF 网站并验证交付"
+  default_prompt: "使用 $wordpress-builder，按新站范围选择官方专业模块，完成内容模型、主题、内容录入和真实验收。"

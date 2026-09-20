@@ -1,0 +1,190 @@
+{
+  "checkedAt": "2026-09-08T03:15:25.926Z",
+  "passed": true,
+  "pages": [
+    {
+      "key": "home",
+      "id": 5,
+      "editor": {
+        "blockCount": 20,
+        "invalid": []
+      },
+      "views": [
+        {
+          "width": 1440,
+          "screenshot": "output/playwright/draft-home-1440.png",
+          "h1": 1,
+          "overflow": false,
+          "text": "Flow control, specified clearly.\n\nHARBOR VALVE / INDUSTRIAL FLOW CONTROL\n\nStart with the operating conditions.\n\nCompare ball and check valve options, then share the medium, connection size, pressure and temperature your application needs.\n\nExplore the product range\nTwo functions. A clearer selection.\nHV-B1 / Ball valve\n\nA fictional stainless steel body with manual lever operation. Discuss the required shut-off duty with the sales team.\n\nHV-C1 / Check valve\n\nA fictional stainless steel body for a check-valve selection exercise. Confirm the installation and process conditions before specification.\n\nMake your enquiry specific.\n\nInclude a drawing or connection standard and the operating range. Product suitability, ratings and availability require confirmation.\n\nPrepare an enquiry\n\nDemonstration only. Harbor Valve and the products on this site are fictional acceptance-test data.",
+          "links": [
+            {
+              "text": "Explore the product range",
+              "url": "http://127.0.0.1:9462/?page_id=6"
+            },
+            {
+              "text": "Prepare an enquiry",
+              "url": "http://127.0.0.1:9462/?page_id=8"
+            }
+          ],
+          "images": []
+        },
+        {
+          "width": 390,
+          "screenshot": "output/playwright/draft-home-390.png",
+          "h1": 1,
+          "overflow": false,
+          "text": "Flow control, specified clearly.\n\nHARBOR VALVE / INDUSTRIAL FLOW CONTROL\n\nStart with the operating conditions.\n\nCompare ball and check valve options, then share the medium, connection size, pressure and temperature your application needs.\n\nExplore the product range\nTwo functions. A clearer selection.\nHV-B1 / Ball valve\n\nA fictional stainless steel body with manual lever operation. Discuss the required shut-off duty with the sales team.\n\nHV-C1 / Check valve\n\nA fictional stainless steel body for a check-valve selection exercise. Confirm the installation and process conditions before specification.\n\nMake your enquiry specific.\n\nInclude a drawing or connection standard and the operating range. Product suitability, ratings and availability require confirmation.\n\nPrepare an enquiry\n\nDemonstration only. Harbor Valve and the products on this site are fictional acceptance-test data.",
+          "links": [
+            {
+              "text": "Explore the product range",
+              "url": "http://127.0.0.1:9462/?page_id=6"
+            },
+            {
+              "text": "Prepare an enquiry",
+              "url": "http://127.0.0.1:9462/?page_id=8"
+            }
+          ],
+          "images": []
+        }
+      ]
+    },
+    {
+      "key": "products",
+      "id": 6,
+      "editor": {
+        "blockCount": 12,
+        "invalid": []
+      },
+      "views": [
+        {
+          "width": 1440,
+          "screenshot": "output/playwright/draft-products-1440.png",
+          "h1": 1,
+          "overflow": false,
+          "text": "Select by function.\n\nA concise comparison for an initial enquiry. The products and specifications below are fictional test data.\n\nProduct comparison\nModel\tType\tBody\tOperation\nHV-B1\tBall valve\tStainless steel\tManual lever\nHV-C1\tCheck valve\tStainless steel\tConfirm with sales\nBefore a quotation\n\nProvide the process medium, connection size, working pressure and operating temperature. No pressure rating or certification is claimed by this demonstration.\n\nCan these examples be used for procurement?\nView enquiry details\nBack to home",
+          "links": [
+            {
+              "text": "View enquiry details",
+              "url": "http://127.0.0.1:9462/?page_id=8"
+            },
+            {
+              "text": "Back to home",
+              "url": "http://127.0.0.1:9462/?page_id=5"
+            }
+          ],
+          "images": []
+        },
+        {
+          "width": 390,
+          "screenshot": "output/playwright/draft-products-390.png",
+          "h1": 1,
+          "overflow": false,
+          "text": "Select by function.\n\nA concise comparison for an initial enquiry. The products and specifications below are fictional test data.\n\nProduct comparison\nModel\tType\tBody\tOperation\nHV-B1\tBall valve\tStainless steel\tManual lever\nHV-C1\tCheck valve\tStainless steel\tConfirm with sales\nBefore a quotation\n\nProvide the process medium, connection size, working pressure and operating temperature. No pressure rating or certification is claimed by this demonstration.\n\nCan these examples be used for procurement?\nView enquiry details\nBack to home",
+          "links": [
+            {
+              "text": "View enquiry details",
+              "url": "http://127.0.0.1:9462/?page_id=8"
+            },
+            {
+              "text": "Back to home",
+              "url": "http://127.0.0.1:9462/?page_id=5"
+            }
+          ],
+          "images": []
+        }
+      ]
+    },
+    {
+      "key": "about",
+      "id": 7,
+      "editor": {
+        "blockCount": 11,
+        "invalid": []
+      },
+      "views": [
+        {
+          "width": 1440,
+          "screenshot": "output/playwright/draft-about-1440.png",
+          "h1": 1,
+          "overflow": false,
+          "text": "Clarity before commitment.\nA demonstration built around buyer questions.\n\nHarbor Valve is a fictional company. This website demonstrates how a small industrial product range can be presented with transparent information and a clear enquiry route.\n\nWhat this site tells you\n\nIt distinguishes the two example product functions, shows the available example material data and explains which operating details are needed for a specification discussion.\n\nWhat still requires confirmation\n\nPressure ratings, certifications, delivery dates, origin, commercial terms and application suitability are not supplied. No customer references or manufacturing credentials are implied.\n\nCompare the examples\nContact details",
+          "links": [
+            {
+              "text": "Compare the examples",
+              "url": "http://127.0.0.1:9462/?page_id=6"
+            },
+            {
+              "text": "Contact details",
+              "url": "http://127.0.0.1:9462/?page_id=8"
+            }
+          ],
+          "images": []
+        },
+        {
+          "width": 390,
+          "screenshot": "output/playwright/draft-about-390.png",
+          "h1": 1,
+          "overflow": false,
+          "text": "Clarity before commitment.\nA demonstration built around buyer questions.\n\nHarbor Valve is a fictional company. This website demonstrates how a small industrial product range can be presented with transparent information and a clear enquiry route.\n\nWhat this site tells you\n\nIt distinguishes the two example product functions, shows the available example material data and explains which operating details are needed for a specification discussion.\n\nWhat still requires confirmation\n\nPressure ratings, certifications, delivery dates, origin, commercial terms and application suitability are not supplied. No customer references or manufacturing credentials are implied.\n\nCompare the examples\nContact details",
+          "links": [
+            {
+              "text": "Compare the examples",
+              "url": "http://127.0.0.1:9462/?page_id=6"
+            },
+            {
+              "text": "Contact details",
+              "url": "http://127.0.0.1:9462/?page_id=8"
+            }
+          ],
+          "images": []
+        }
+      ]
+    },
+    {
+      "key": "contact",
+      "id": 8,
+      "editor": {
+        "blockCount": 10,
+        "invalid": []
+      },
+      "views": [
+        {
+          "width": 1440,
+          "screenshot": "output/playwright/draft-contact-1440.png",
+          "h1": 1,
+          "overflow": false,
+          "text": "A useful enquiry starts here.\n\nDemonstration contact page. The example address below is not a working sales inbox. Do not send an actual enquiry.\n\nInformation for a specification request\nDetail\tWhat to include\nProduct\tBall valve or check valve\nMedium\tFluid and relevant process conditions\nConnection\tSize and connection standard\nOperating range\tWorking pressure and temperature\nExample email\n\nsales@example.com — reserved example address. No enquiry form or email delivery is configured on this test site.\n\nReview product information\nReturn to home",
+          "links": [
+            {
+              "text": "Review product information",
+              "url": "http://127.0.0.1:9462/?page_id=6"
+            },
+            {
+              "text": "Return to home",
+              "url": "http://127.0.0.1:9462/?page_id=5"
+            }
+          ],
+          "images": []
+        },
+        {
+          "width": 390,
+          "screenshot": "output/playwright/draft-contact-390.png",
+          "h1": 1,
+          "overflow": false,
+          "text": "A useful enquiry starts here.\n\nDemonstration contact page. The example address below is not a working sales inbox. Do not send an actual enquiry.\n\nInformation for a specification request\nDetail\tWhat to include\nProduct\tBall valve or check valve\nMedium\tFluid and relevant process conditions\nConnection\tSize and connection standard\nOperating range\tWorking pressure and temperature\nExample email\n\nsales@example.com — reserved example address. No enquiry form or email delivery is configured on this test site.\n\nReview product information\nReturn to home",
+          "links": [
+            {
+              "text": "Review product information",
+              "url": "http://127.0.0.1:9462/?page_id=6"
+            },
+            {
+              "text": "Return to home",
+              "url": "http://127.0.0.1:9462/?page_id=5"
+            }
+          ],
+          "images": []
+        }
+      ]
+    }
+  ]
+}

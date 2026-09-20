@@ -1,0 +1,518 @@
+{
+  "checkedAt": "2026-09-19T13:49:45.496Z",
+  "head": "a49821fa88311b5fa59f4d0298b8a6f5b71bd7a1",
+  "environment": {
+    "wp": "7.1",
+    "theme": "terralift-ui",
+    "isBlockTheme": true,
+    "fixture": true
+  },
+  "pages": [
+    {
+      "id": 126,
+      "slug": "terralift-case-studies",
+      "status": "publish",
+      "template": "page-cases-v1.php"
+    },
+    {
+      "id": 98,
+      "slug": "terralift-faq",
+      "status": "publish",
+      "template": "page-landing-v1.php"
+    },
+    {
+      "id": 97,
+      "slug": "terralift-support",
+      "status": "publish",
+      "template": "page-landing-v1.php"
+    },
+    {
+      "id": 96,
+      "slug": "terralift-payment-delivery",
+      "status": "publish",
+      "template": "page-landing-v1.php"
+    },
+    {
+      "id": 95,
+      "slug": "terralift-dealer",
+      "status": "publish",
+      "template": "page-landing-v1.php"
+    },
+    {
+      "id": 94,
+      "slug": "terralift-oem",
+      "status": "publish",
+      "template": "page-landing-v1.php"
+    },
+    {
+      "id": 93,
+      "slug": "terralift-quality",
+      "status": "publish",
+      "template": "page-landing-v1.php"
+    },
+    {
+      "id": 74,
+      "slug": "terralift-contact",
+      "status": "publish",
+      "template": "page-contact-v1.php"
+    },
+    {
+      "id": 73,
+      "slug": "terralift-company",
+      "status": "publish",
+      "template": "page-landing-v1.php"
+    },
+    {
+      "id": 72,
+      "slug": "terralift-industries",
+      "status": "publish",
+      "template": "page-landing-v1.php"
+    },
+    {
+      "id": 71,
+      "slug": "terralift-skid-steer",
+      "status": "publish",
+      "template": ""
+    },
+    {
+      "id": 70,
+      "slug": "terralift-loaders",
+      "status": "publish",
+      "template": ""
+    },
+    {
+      "id": 69,
+      "slug": "terralift-excavators",
+      "status": "publish",
+      "template": ""
+    },
+    {
+      "id": 68,
+      "slug": "terralift-equipment",
+      "status": "publish",
+      "template": "page-landing-v1.php"
+    },
+    {
+      "id": 67,
+      "slug": "terralift-home",
+      "status": "publish",
+      "template": "page-home-v1.php"
+    },
+    {
+      "id": 39,
+      "slug": "terradig-contact",
+      "status": "publish",
+      "template": ""
+    },
+    {
+      "id": 38,
+      "slug": "terradig-process",
+      "status": "publish",
+      "template": ""
+    },
+    {
+      "id": 37,
+      "slug": "terradig-products",
+      "status": "publish",
+      "template": ""
+    },
+    {
+      "id": 36,
+      "slug": "terradig-home",
+      "status": "publish",
+      "template": ""
+    },
+    {
+      "id": 26,
+      "slug": "demo-product-catalog",
+      "status": "publish",
+      "template": ""
+    },
+    {
+      "id": 8,
+      "slug": "harbor-contact",
+      "status": "publish",
+      "template": ""
+    },
+    {
+      "id": 7,
+      "slug": "harbor-about",
+      "status": "publish",
+      "template": ""
+    },
+    {
+      "id": 6,
+      "slug": "harbor-products",
+      "status": "publish",
+      "template": ""
+    },
+    {
+      "id": 5,
+      "slug": "harbor-home",
+      "status": "publish",
+      "template": ""
+    },
+    {
+      "id": 2,
+      "slug": "sample-page",
+      "status": "publish",
+      "template": ""
+    }
+  ],
+  "products": [
+    {
+      "id": 60,
+      "slug": "tl-s50",
+      "template": "",
+      "cta": "/contact/"
+    },
+    {
+      "id": 58,
+      "slug": "tl-l10",
+      "template": "",
+      "cta": "/contact/"
+    },
+    {
+      "id": 57,
+      "slug": "tl-e35",
+      "template": "",
+      "cta": "/contact/"
+    },
+    {
+      "id": 56,
+      "slug": "tl-e20",
+      "template": "",
+      "cta": "/contact/"
+    },
+    {
+      "id": 55,
+      "slug": "tl-e08",
+      "template": "",
+      "cta": "/contact/"
+    },
+    {
+      "id": 59,
+      "slug": "tl-b30",
+      "template": "",
+      "cta": "/contact/"
+    }
+  ],
+  "plugins": [
+    {
+      "plugin": "advanced-custom-fields/acf",
+      "status": "active",
+      "version": "6.8.9"
+    },
+    {
+      "plugin": "akismet/akismet",
+      "status": "inactive",
+      "version": "5.7.2"
+    },
+    {
+      "plugin": "hello",
+      "status": "inactive",
+      "version": "1.7.2"
+    },
+    {
+      "plugin": "octopus-site/octopus-site",
+      "status": "active",
+      "version": "0.2.0"
+    }
+  ],
+  "dbOverrides": [],
+  "acfHeroImage": {
+    "light": 29,
+    "standard": "http://127.0.0.1:9462/wp-content/uploads/2026/09/hero-excavator.jpg"
+  },
+  "themeSourceDrift": [],
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "title": "TerraLift Machinery — Demo &#8211; Original compact machinery export enquiry demo built with native WordPress blocks",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/contact/",
+      "status": 404,
+      "title": "Page not found &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-case-studies/",
+      "status": 200,
+      "title": "Application case library. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-faq/",
+      "status": 200,
+      "title": "Compact machinery FAQ framework. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-support/",
+      "status": 200,
+      "title": "After-sales and warranty questions. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-payment-delivery/",
+      "status": 200,
+      "title": "Payment and delivery checklist. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-dealer/",
+      "status": 200,
+      "title": "Dealer programme framework. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-oem/",
+      "status": 200,
+      "title": "OEM and configuration requests. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-quality/",
+      "status": 200,
+      "title": "Production and quality review. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-contact/",
+      "status": 200,
+      "title": "Send a scoped machinery enquiry. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-company/",
+      "status": 200,
+      "title": "About TerraLift Machinery. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-industries/",
+      "status": 200,
+      "title": "Applications and project types. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-skid-steer/",
+      "status": 200,
+      "title": "Skid steer enquiry support. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-loaders/",
+      "status": 200,
+      "title": "Loader and backhoe enquiries. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-excavators/",
+      "status": 200,
+      "title": "Compact excavator enquiries. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terralift-equipment/",
+      "status": 200,
+      "title": "Equipment enquiry catalogue. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terradig-contact/",
+      "status": 200,
+      "title": "Start a scoped excavator enquiry. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terradig-process/",
+      "status": 200,
+      "title": "A safer export enquiry. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terradig-products/",
+      "status": 200,
+      "title": "Excavator enquiry profiles. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/terradig-home/",
+      "status": 200,
+      "title": "Excavator export enquiries, scoped correctly. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/demo-product-catalog/",
+      "status": 200,
+      "title": "Demo Product Catalog &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/harbor-contact/",
+      "status": 200,
+      "title": "A useful enquiry starts here. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/harbor-about/",
+      "status": 200,
+      "title": "Clarity before commitment. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/harbor-products/",
+      "status": 200,
+      "title": "Select by function. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/harbor-home/",
+      "status": 200,
+      "title": "Flow control, specified clearly. &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/sample-page/",
+      "status": 200,
+      "title": "Sample Page &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": true,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/products/tl-s50/",
+      "status": 200,
+      "title": "TL-S50 Skid Steer Loader &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/products/tl-l10/",
+      "status": 200,
+      "title": "TL-L10 Compact Wheel Loader &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/products/tl-e35/",
+      "status": 200,
+      "title": "TL-E35 Compact Excavator &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/products/tl-e20/",
+      "status": 200,
+      "title": "TL-E20 Compact Excavator &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/products/tl-e08/",
+      "status": 200,
+      "title": "TL-E08 Compact Excavator &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    },
+    {
+      "path": "/products/tl-b30/",
+      "status": 200,
+      "title": "TL-B30 Backhoe Loader &#8211; TerraLift Machinery — Demo",
+      "h1Count": 1,
+      "hasImportMap": false,
+      "hasNavigationModule": true,
+      "hasForm": false
+    }
+  ]
+}

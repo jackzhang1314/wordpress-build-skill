@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-09-08T03:58:30.367Z",
+  "previews": [
+    {
+      "width": 1440,
+      "status": 200,
+      "h1": 1,
+      "overflow": false,
+      "adminToolbar": false,
+      "products": [
+        {
+          "title": "Demo Valve, compact",
+          "url": "http://127.0.0.1:9462/products/import-oct-product-84924b7c2f4c3dd70447/"
+        },
+        {
+          "title": "Sample Control Valve — CMS Test",
+          "url": "http://127.0.0.1:9462/products/sample-control-valve-cms-test/"
+        }
+      ],
+      "links": [
+        {
+          "url": "http://127.0.0.1:9462/products/import-oct-product-84924b7c2f4c3dd70447/",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:9462/products/sample-control-valve-cms-test/",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "status": 200,
+      "h1": 1,
+      "overflow": false,
+      "adminToolbar": false,
+      "products": [
+        {
+          "title": "Demo Valve, compact",
+          "url": "http://127.0.0.1:9462/products/import-oct-product-84924b7c2f4c3dd70447/"
+        },
+        {
+          "title": "Sample Control Valve — CMS Test",
+          "url": "http://127.0.0.1:9462/products/sample-control-valve-cms-test/"
+        }
+      ],
+      "links": [
+        {
+          "url": "http://127.0.0.1:9462/products/import-oct-product-84924b7c2f4c3dd70447/",
+          "status": 200
+        },
+        {
+          "url": "http://127.0.0.1:9462/products/sample-control-valve-cms-test/",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,1 @@
+{"requiredErrors":4,"invalidProduct":{"status":423,"body":{"errors":{"product_id":["Choose a valid published machine, or leave the reference empty."]}}}}

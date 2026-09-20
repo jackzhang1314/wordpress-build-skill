@@ -1,0 +1,526 @@
+[
+  {
+    "name": "wordpress-block-pages",
+    "version": "23ed8309ec25ca5d3bcc749cbc5b205756a95148fe650af8ff8cdc5561defaa3",
+    "description": "根据企业资料创建可编辑的产品页、案例页、FAQ 和广告落地页。",
+    "source": "builtin",
+    "enabled": true,
+    "diagnostics": [],
+    "product": {
+      "title": "WordPress 原生区块建页",
+      "category": "website",
+      "summary": "根据企业资料创建可编辑的产品页、案例页、FAQ 和广告落地页。",
+      "inputs": [
+        "企业资料、页面用途与语言"
+      ],
+      "outputs": [
+        "原生区块页面草稿和预览检查"
+      ],
+      "tags": [
+        "WordPress",
+        "独立站",
+        "Gutenberg"
+      ],
+      "example": "请帮我完成WordPress 原生区块建页，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+      "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+      "connections": [
+        "wordpress"
+      ]
+    },
+    "body": "# WordPress 原生区块建页\n\n先读取 references/wordpress-api.md。凭据在设置 → 连接器 → WordPress统一配置，Skill不存密码。\n\n1. 读取企业资料，保留参数来源，不编造认证或案例；明确页面用途、目标语言和询盘入口。\n2. wpRead site 检测连接，wpRead list（type=page）查重。更新先 wpRead content，读取证据原文取得 modified_gmt；不能覆盖用户已改内容。\n3. 先保存页面方案、文案和 blocks JSON 到任务文件。支持 heading、paragraph、image、button、section、form。页面标题由 title 提供；正文从 H2 开始。section 仅含叶节点；不支持任意HTML、脚本或第三方编辑器。\n4. 图片先 wpUploadMedia；以真实媒体ID构建 image。表单用现有WPForms ID，必要时遵循表单Skill流程创建。按钮仅使用已核实链接。\n5. wpWriteContent type=page、blocks、status=draft；更新带id与expectedModified。明确要求上线时使用publish。检查所有Matches回执，不一致列为未完成。\n6. 在已登录用户浏览器打开WordPress草稿预览，检查桌面/窄屏标题、图片、按钮、表单和原生区块编辑器是否报无效块。未访问不能声称视觉验收通过。交付实际ID、状态、URL、证据与待验项。\n\n交付前核验实际回执和任务文件。网络未知结果不自动重发；插件版本/权限不足明确报告，不把计划写成已完成。",
+    "files": [
+      {
+        "path": "LICENSE.txt",
+        "data": "TUlUIExpY2Vuc2UKCkNvcHlyaWdodCAoYykgMjAyNiBCcm93c2VyIEFnZW50IGNvbnRyaWJ1dG9ycwoKUGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBjaGFyZ2UsIHRvIGFueSBwZXJzb24gb2J0YWluaW5nIGEgY29weQpvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24gZmlsZXMgKHRoZSAiU29mdHdhcmUiKSwgdG8gZGVhbAppbiB0aGUgU29mdHdhcmUgd2l0aG91dCByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzCnRvIHVzZSwgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwgZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yIHNlbGwKY29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1pdCBwZXJzb25zIHRvIHdob20gdGhlIFNvZnR3YXJlIGlzCmZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnM6CgpUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZSBpbmNsdWRlZCBpbiBhbGwKY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS4KClRIRSBTT0ZUV0FSRSBJUyBQUk9WSURFRCAiQVMgSVMiLCBXSVRIT1VUIFdBUlJBTlRZIE9GIEFOWSBLSU5ELCBFWFBSRVNTIE9SCklNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJRVMgT0YgTUVSQ0hBTlRBQklMSVRZLApGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBUSEUKQVVUSE9SUyBPUiBDT1BZUklHSFQgSE9MREVSUyBCRSBMSUFCTEUgRk9SIEFOWSBDTEFJTSwgREFNQUdFUyBPUiBPVEhFUgpMSUFCSUxJVFksIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORyBGUk9NLApPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBUSEUgVVNFIE9SIE9USEVSIERFQUxJTkdTIElOIFRIRQpTT0ZUV0FSRS4K"
+      },
+      {
+        "path": "references/wordpress-api.md",
+        "data": "IyBXb3JkUHJlc3Mg5rWP6KeI5Zmo5bel5L2c5rWB57qm5a6aCgrov5nmmK/mnKzkuqflk4Hljp/liJvlnLrmma/mtYHnqIvvvIzov5DooYzkuo7mtY/op4jlmahBZ2VudO+8jOS4jemcgOimgUNvZGV4IENMSeOAgU5vZGXmiJZQSFDmiafooYzjgIJXb3JkUHJlc3Plh63mja7nu5/kuIDkv53lrZjlnKjmnKzlnLDov57mjqXlmajvvJtBUEnlj6rlj5HpgIHoh7PphY3nva7nq5nngrnjgILlhYh3cFJlYWQgc2l0Ze+8m+WujOaVtOWPquivu+e7k+aenOS/neWtmOWcqOi/lOWbnueahOivgeaNruaWh+S7tu+8jOS9v+eUqHJlYWRGaWxl5a6e6ZmF6K+75Y+W44CCCgrlt6XlhbfvvJp3cFJlYWTvvIhzaXRlL2NvbnRlbnQvbGlzdC9zY2hlbWEvbWVkaWEvdGVybXMvYWJpbGl0aWVzL2FiaWxpdHnvvInvvJt3cFdyaXRlQ29udGVudO+8m3dwVXBsb2FkTWVkaWHvvJt3cFJlYWRBYmlsaXR577ybd3BXcml0ZUFiaWxpdHnvvJt3cFByZXZpZXdQcm9kdWN0c++8m3dwSW1wb3J0UHJvZHVjdHPvvJt3cFdvcmtmbG93U3RhdHVz44CC5YaZ5bel5YW36L+b5YWl5Lqn5ZOB57uf5LiA56Gu6K6k55WM6Z2i44CC5om56YeP5Lu75Yqh5Lya5YiG5om556Gu6K6k77yb5pyq55+lUE9TVOS4jemHjeWPke+8jOW3suefpUlE5Zue6K+75aSx6LSl5Y+v5oGi5aSN5Zue6K+744CC5ZCM5Lu75Yqh55u45ZCM5pON5L2c5aSN55So5Zue5omn44CCCgpBQ0bkvb/nlKjnjrDmnIlDUFTlkoxSRVNU5a2X5q61c2NoZW1h44CCV1BGb3Jtc+S9v+eUqOWumOaWuUFiaWxpdGllcyBSRVNU77yM5LiN6ZyA6KaB5Li65rWP6KeI5Zmo5Y+m5ZCvTUNQ6L+b56iL77ybV29yZFByZXNzNi45K+OAgVdQRm9ybXMxLjEwLjIr77yMV1BGb3JtcyDihpIgVG9vbHMg4oaSIEFJIE1DUCDihpIgRW5hYmxlIE1DUCBXcml0ZSBBY2Nlc3PjgILlj6ror7tzY2hlbWHkuI7lrp7pmYXmnYPpmZDkuLrlh4bvvJvpgJrnn6XkuI7nrKzkuInmlrnpm4bmiJDkuI3lnKjlronlhajorr7nva7mjqXlj6PlhoXjgIJSYW5rIE1hdGjog73lipvku6Xnq5nngrnlhazlvIDlo7DmmI7kuLrlh4bvvIzkuI3kv53or4HmiYDmnInniYjmnKwv5aWX6aSQ5byA5pS+44CCCgrmlofnq6DlkozpobXpnaLpu5jorqTojYnnqL/vvIzkuLvliqjlj5HluIPopoHmnInnlKjmiLfmmI7noa7nm67moIfjgILojYnnqL9VUkzlj6/og73lj6rog73nmbvlvZXmn6XnnIvjgILlqpLkvZPlm57miafjgIHlrZfmrrXlm57or7vjgIHmtY/op4jlmajop4bop4nmo4Dmn6XjgIHnnJ/lrp7pgq7ku7bpgIHovr7mmK/kuI3lkIzor4Hmja7vvIzkuI3lj6/mt7flkIzjgILpobXpnaLku4XmlK/mjIHpgILphY3nmoTljp/nlJ/moLjlv4PljLrlnZfvvIzkuI3mlK/mjIHlhajnq5nkuLvpopjmqKHmnb/nvJbovpHjgIIKCuWumOaWueWPguiAg++8iOeglOeptuaXpeacnzIwMjYtMDktMDjvvInvvJoKLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL3Jlc3QtYXBpL3JlZmVyZW5jZS9wYWdlcy8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL3Jlc3QtYXBpL3JlZmVyZW5jZS9tZWRpYS8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL2Jsb2NrLWVkaXRvci9nZXR0aW5nLXN0YXJ0ZWQvZnVuZGFtZW50YWxzL21hcmt1cC1yZXByZXNlbnRhdGlvbi1ibG9jay8KLSBodHRwczovL3d3dy5hZHZhbmNlZGN1c3RvbWZpZWxkcy5jb20vcmVzb3VyY2VzL3dwLXJlc3QtYXBpLWludGVncmF0aW9uLwotIGh0dHBzOi8vd3Bmb3Jtcy5jb20vZGV2ZWxvcGVycy93cGZvcm1zLXJlc3QtYXBpLwotIGh0dHBzOi8vcmFua21hdGguY29tL2tiL21jcC10b29scy8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL2FwaXMvYWJpbGl0aWVzLWFwaS9yZXN0LWFwaS1lbmRwb2ludHMvCg=="
+      },
+      {
+        "path": "skill.json",
+        "data": "eyJ0aXRsZSI6IldvcmRQcmVzcyDljp/nlJ/ljLrlnZflu7rpobUiLCJjYXRlZ29yeSI6IndlYnNpdGUiLCJzdW1tYXJ5Ijoi5qC55o2u5LyB5Lia6LWE5paZ5Yib5bu65Y+v57yW6L6R55qE5Lqn5ZOB6aG144CB5qGI5L6L6aG144CBRkFRIOWSjOW5v+WRiuiQveWcsOmhteOAgiIsImlucHV0cyI6WyLkvIHkuJrotYTmlpnjgIHpobXpnaLnlKjpgJTkuI7or63oqIAiXSwib3V0cHV0cyI6WyLljp/nlJ/ljLrlnZfpobXpnaLojYnnqL/lkozpooTop4jmo4Dmn6UiXSwidGFncyI6WyJXb3JkUHJlc3MiLCLni6znq4vnq5kiLCJHdXRlbmJlcmciXSwiZXhhbXBsZSI6Iuivt+W4ruaIkeWujOaIkFdvcmRQcmVzcyDljp/nlJ/ljLrlnZflu7rpobXvvIzkvb/nlKjlt7LmnInkvIHkuJrotYTmlpnlkoxXb3JkUHJlc3Pov57mjqXlmajvvIzlhYjmo4DmtYvnq5nngrnog73lipvvvIzlho3nlJ/miJDlj6/moLjlr7nnmoTojYnnqL/miJbkv67mlLnorqHliJLjgIIiLCJyZXF1aXJlbWVudHMiOiLorr7nva4g4oaSIOi/nuaOpeWZqCDihpIgV29yZFByZXNzIOmFjee9ruS4gOasoe+8m+ebuOWFs+aPkuS7tumhu+WcqOermeeCueWuieijheW5tuW8gOaUvuaJgOmcgOadg+mZkOOAgiIsImNvbm5lY3Rpb25zIjpbIndvcmRwcmVzcyJdfQ=="
+      },
+      {
+        "path": "SKILL.md",
+        "data": "LS0tCm5hbWU6IHdvcmRwcmVzcy1ibG9jay1wYWdlcwpkZXNjcmlwdGlvbjog5qC55o2u5LyB5Lia6LWE5paZ5Yib5bu65Y+v57yW6L6R55qE5Lqn5ZOB6aG144CB5qGI5L6L6aG144CBRkFRIOWSjOW5v+WRiuiQveWcsOmhteOAggotLS0KCiMgV29yZFByZXNzIOWOn+eUn+WMuuWdl+W7uumhtQoK5YWI6K+75Y+WIHJlZmVyZW5jZXMvd29yZHByZXNzLWFwaS5tZOOAguWHreaNruWcqOiuvue9riDihpIg6L+e5o6l5ZmoIOKGkiBXb3JkUHJlc3Pnu5/kuIDphY3nva7vvIxTa2lsbOS4jeWtmOWvhueggeOAggoKMS4g6K+75Y+W5LyB5Lia6LWE5paZ77yM5L+d55WZ5Y+C5pWw5p2l5rqQ77yM5LiN57yW6YCg6K6k6K+B5oiW5qGI5L6L77yb5piO56Gu6aG16Z2i55So6YCU44CB55uu5qCH6K+t6KiA5ZKM6K+i55uY5YWl5Y+j44CCCjIuIHdwUmVhZCBzaXRlIOajgOa1i+i/nuaOpe+8jHdwUmVhZCBsaXN077yIdHlwZT1wYWdl77yJ5p+l6YeN44CC5pu05paw5YWIIHdwUmVhZCBjb250ZW5077yM6K+75Y+W6K+B5o2u5Y6f5paH5Y+W5b6XIG1vZGlmaWVkX2dtdO+8m+S4jeiDveimhueblueUqOaIt+W3suaUueWGheWuueOAggozLiDlhYjkv53lrZjpobXpnaLmlrnmoYjjgIHmlofmoYjlkowgYmxvY2tzIEpTT04g5Yiw5Lu75Yqh5paH5Lu244CC5pSv5oyBIGhlYWRpbmfjgIFwYXJhZ3JhcGjjgIFpbWFnZeOAgWJ1dHRvbuOAgXNlY3Rpb27jgIFmb3Jt44CC6aG16Z2i5qCH6aKY55SxIHRpdGxlIOaPkOS+m++8m+ato+aWh+S7jiBIMiDlvIDlp4vjgIJzZWN0aW9uIOS7heWQq+WPtuiKgueCue+8m+S4jeaUr+aMgeS7u+aEj0hUTUzjgIHohJrmnKzmiJbnrKzkuInmlrnnvJbovpHlmajjgIIKNC4g5Zu+54mH5YWIIHdwVXBsb2FkTWVkaWHvvJvku6XnnJ/lrp7lqpLkvZNJROaehOW7uiBpbWFnZeOAguihqOWNleeUqOeOsOaciVdQRm9ybXMgSUTvvIzlv4XopoHml7bpgbXlvqrooajljZVTa2lsbOa1geeoi+WIm+W7uuOAguaMiemSruS7heS9v+eUqOW3suaguOWunumTvuaOpeOAggo1LiB3cFdyaXRlQ29udGVudCB0eXBlPXBhZ2XjgIFibG9ja3PjgIFzdGF0dXM9ZHJhZnTvvJvmm7TmlrDluKZpZOS4jmV4cGVjdGVkTW9kaWZpZWTjgILmmI7noa7opoHmsYLkuIrnur/ml7bkvb/nlKhwdWJsaXNo44CC5qOA5p+l5omA5pyJTWF0Y2hlc+WbnuaJp++8jOS4jeS4gOiHtOWIl+S4uuacquWujOaIkOOAggo2LiDlnKjlt7LnmbvlvZXnlKjmiLfmtY/op4jlmajmiZPlvIBXb3JkUHJlc3PojYnnqL/pooTop4jvvIzmo4Dmn6XmoYzpnaIv56qE5bGP5qCH6aKY44CB5Zu+54mH44CB5oyJ6ZKu44CB6KGo5Y2V5ZKM5Y6f55Sf5Yy65Z2X57yW6L6R5Zmo5piv5ZCm5oql5peg5pWI5Z2X44CC5pyq6K6/6Zeu5LiN6IO95aOw56ew6KeG6KeJ6aqM5pS26YCa6L+H44CC5Lqk5LuY5a6e6ZmFSUTjgIHnirbmgIHjgIFVUkzjgIHor4Hmja7kuI7lvoXpqozpobnjgIIKCuS6pOS7mOWJjeaguOmqjOWunumZheWbnuaJp+WSjOS7u+WKoeaWh+S7tuOAgue9kee7nOacquefpee7k+aenOS4jeiHquWKqOmHjeWPke+8m+aPkuS7tueJiOacrC/mnYPpmZDkuI3otrPmmI7noa7miqXlkYrvvIzkuI3miororqHliJLlhpnmiJDlt7LlrozmiJDjgIIK"
+      }
+    ],
+    "metadata": {
+      "name": "wordpress-block-pages",
+      "description": "根据企业资料创建可编辑的产品页、案例页、FAQ 和广告落地页。"
+    }
+  },
+  {
+    "name": "wordpress-acf-products",
+    "version": "af7a85a26330ac7bf250ba66fd6ace6271b336acddd04757cb8cce4dd4870105",
+    "description": "读取 Excel 或 CSV，映射已有 ACF 字段并分批创建产品草稿。",
+    "source": "builtin",
+    "enabled": true,
+    "diagnostics": [],
+    "product": {
+      "title": "ACF 产品批量导入",
+      "category": "website",
+      "summary": "读取 Excel 或 CSV，映射已有 ACF 字段并分批创建产品草稿。",
+      "inputs": [
+        "产品表格、唯一编号、已有ACF内容类型"
+      ],
+      "outputs": [
+        "字段映射预览、产品草稿和逐行回执"
+      ],
+      "tags": [
+        "WordPress",
+        "独立站",
+        "运营"
+      ],
+      "example": "请帮我完成ACF 产品批量导入，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+      "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+      "connections": [
+        "wordpress"
+      ]
+    },
+    "body": "# ACF 产品批量导入\n\n先读取 references/wordpress-api.md。凭据在设置 → 连接器 → WordPress统一配置，Skill不存密码。\n\n1. wpRead site 查内容类型，wpRead schema（type=实际CPT名）读取OPTIONS。站点必须已建产品CPT且REST开放；ACF字段组需Show in REST API。不要假设存在products端点，不创建PHP或WooCommerce商品。\n2. 从任务文件读取固定版本CSV/TSV；XLSX通过附件导入会转换工作表。列从0开始，第1条是表头。选择稳定唯一产品编号与标题列；一字段映射一列，类型按实时ACF schema选择text/number/boolean/json。\n3. 图片/PDF先按媒体Skill上传，把真实媒体ID填入新版本表格的图片字段或特色图列。禁止将本地路径、假ID写入ACF。\n4. wpPreviewProducts验证全表并保存当前批次（默认5，最多20）预览。readFile检查映射、总数、首批内容。未公开字段、重号、空标题、错误值先修正文件并重新预览。\n5. wpImportProducts使用完全相同固定版本、映射、offset和limit；只创建草稿。每下一批须再次预览。遇已存在稳定键停止，不覆盖；未知提交先wpWorkflowStatus和后台核对，不改键绕过防重。\n6. 读逐行report并核对acfMatches、草稿状态、ID和实际数量。失败按nextOffset恢复；不能只报processed即当成功。前台产品呈现依赖站点已有模板，实际预览后报告。\n\n交付前核验实际回执和任务文件。网络未知结果不自动重发；插件版本/权限不足明确报告，不把计划写成已完成。",
+    "files": [
+      {
+        "path": "LICENSE.txt",
+        "data": "TUlUIExpY2Vuc2UKCkNvcHlyaWdodCAoYykgMjAyNiBCcm93c2VyIEFnZW50IGNvbnRyaWJ1dG9ycwoKUGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBjaGFyZ2UsIHRvIGFueSBwZXJzb24gb2J0YWluaW5nIGEgY29weQpvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24gZmlsZXMgKHRoZSAiU29mdHdhcmUiKSwgdG8gZGVhbAppbiB0aGUgU29mdHdhcmUgd2l0aG91dCByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzCnRvIHVzZSwgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwgZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yIHNlbGwKY29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1pdCBwZXJzb25zIHRvIHdob20gdGhlIFNvZnR3YXJlIGlzCmZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnM6CgpUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZSBpbmNsdWRlZCBpbiBhbGwKY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS4KClRIRSBTT0ZUV0FSRSBJUyBQUk9WSURFRCAiQVMgSVMiLCBXSVRIT1VUIFdBUlJBTlRZIE9GIEFOWSBLSU5ELCBFWFBSRVNTIE9SCklNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJRVMgT0YgTUVSQ0hBTlRBQklMSVRZLApGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBUSEUKQVVUSE9SUyBPUiBDT1BZUklHSFQgSE9MREVSUyBCRSBMSUFCTEUgRk9SIEFOWSBDTEFJTSwgREFNQUdFUyBPUiBPVEhFUgpMSUFCSUxJVFksIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORyBGUk9NLApPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBUSEUgVVNFIE9SIE9USEVSIERFQUxJTkdTIElOIFRIRQpTT0ZUV0FSRS4K"
+      },
+      {
+        "path": "references/wordpress-api.md",
+        "data": "IyBXb3JkUHJlc3Mg5rWP6KeI5Zmo5bel5L2c5rWB57qm5a6aCgrov5nmmK/mnKzkuqflk4Hljp/liJvlnLrmma/mtYHnqIvvvIzov5DooYzkuo7mtY/op4jlmahBZ2VudO+8jOS4jemcgOimgUNvZGV4IENMSeOAgU5vZGXmiJZQSFDmiafooYzjgIJXb3JkUHJlc3Plh63mja7nu5/kuIDkv53lrZjlnKjmnKzlnLDov57mjqXlmajvvJtBUEnlj6rlj5HpgIHoh7PphY3nva7nq5nngrnjgILlhYh3cFJlYWQgc2l0Ze+8m+WujOaVtOWPquivu+e7k+aenOS/neWtmOWcqOi/lOWbnueahOivgeaNruaWh+S7tu+8jOS9v+eUqHJlYWRGaWxl5a6e6ZmF6K+75Y+W44CCCgrlt6XlhbfvvJp3cFJlYWTvvIhzaXRlL2NvbnRlbnQvbGlzdC9zY2hlbWEvbWVkaWEvdGVybXMvYWJpbGl0aWVzL2FiaWxpdHnvvInvvJt3cFdyaXRlQ29udGVudO+8m3dwVXBsb2FkTWVkaWHvvJt3cFJlYWRBYmlsaXR577ybd3BXcml0ZUFiaWxpdHnvvJt3cFByZXZpZXdQcm9kdWN0c++8m3dwSW1wb3J0UHJvZHVjdHPvvJt3cFdvcmtmbG93U3RhdHVz44CC5YaZ5bel5YW36L+b5YWl5Lqn5ZOB57uf5LiA56Gu6K6k55WM6Z2i44CC5om56YeP5Lu75Yqh5Lya5YiG5om556Gu6K6k77yb5pyq55+lUE9TVOS4jemHjeWPke+8jOW3suefpUlE5Zue6K+75aSx6LSl5Y+v5oGi5aSN5Zue6K+744CC5ZCM5Lu75Yqh55u45ZCM5pON5L2c5aSN55So5Zue5omn44CCCgpBQ0bkvb/nlKjnjrDmnIlDUFTlkoxSRVNU5a2X5q61c2NoZW1h44CCV1BGb3Jtc+S9v+eUqOWumOaWuUFiaWxpdGllcyBSRVNU77yM5LiN6ZyA6KaB5Li65rWP6KeI5Zmo5Y+m5ZCvTUNQ6L+b56iL77ybV29yZFByZXNzNi45K+OAgVdQRm9ybXMxLjEwLjIr77yMV1BGb3JtcyDihpIgVG9vbHMg4oaSIEFJIE1DUCDihpIgRW5hYmxlIE1DUCBXcml0ZSBBY2Nlc3PjgILlj6ror7tzY2hlbWHkuI7lrp7pmYXmnYPpmZDkuLrlh4bvvJvpgJrnn6XkuI7nrKzkuInmlrnpm4bmiJDkuI3lnKjlronlhajorr7nva7mjqXlj6PlhoXjgIJSYW5rIE1hdGjog73lipvku6Xnq5nngrnlhazlvIDlo7DmmI7kuLrlh4bvvIzkuI3kv53or4HmiYDmnInniYjmnKwv5aWX6aSQ5byA5pS+44CCCgrmlofnq6DlkozpobXpnaLpu5jorqTojYnnqL/vvIzkuLvliqjlj5HluIPopoHmnInnlKjmiLfmmI7noa7nm67moIfjgILojYnnqL9VUkzlj6/og73lj6rog73nmbvlvZXmn6XnnIvjgILlqpLkvZPlm57miafjgIHlrZfmrrXlm57or7vjgIHmtY/op4jlmajop4bop4nmo4Dmn6XjgIHnnJ/lrp7pgq7ku7bpgIHovr7mmK/kuI3lkIzor4Hmja7vvIzkuI3lj6/mt7flkIzjgILpobXpnaLku4XmlK/mjIHpgILphY3nmoTljp/nlJ/moLjlv4PljLrlnZfvvIzkuI3mlK/mjIHlhajnq5nkuLvpopjmqKHmnb/nvJbovpHjgIIKCuWumOaWueWPguiAg++8iOeglOeptuaXpeacnzIwMjYtMDktMDjvvInvvJoKLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL3Jlc3QtYXBpL3JlZmVyZW5jZS9wYWdlcy8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL3Jlc3QtYXBpL3JlZmVyZW5jZS9tZWRpYS8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL2Jsb2NrLWVkaXRvci9nZXR0aW5nLXN0YXJ0ZWQvZnVuZGFtZW50YWxzL21hcmt1cC1yZXByZXNlbnRhdGlvbi1ibG9jay8KLSBodHRwczovL3d3dy5hZHZhbmNlZGN1c3RvbWZpZWxkcy5jb20vcmVzb3VyY2VzL3dwLXJlc3QtYXBpLWludGVncmF0aW9uLwotIGh0dHBzOi8vd3Bmb3Jtcy5jb20vZGV2ZWxvcGVycy93cGZvcm1zLXJlc3QtYXBpLwotIGh0dHBzOi8vcmFua21hdGguY29tL2tiL21jcC10b29scy8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL2FwaXMvYWJpbGl0aWVzLWFwaS9yZXN0LWFwaS1lbmRwb2ludHMvCg=="
+      },
+      {
+        "path": "skill.json",
+        "data": "eyJ0aXRsZSI6IkFDRiDkuqflk4Hmibnph4/lr7zlhaUiLCJjYXRlZ29yeSI6IndlYnNpdGUiLCJzdW1tYXJ5Ijoi6K+75Y+WIEV4Y2VsIOaIliBDU1bvvIzmmKDlsITlt7LmnIkgQUNGIOWtl+auteW5tuWIhuaJueWIm+W7uuS6p+WTgeiNieeov+OAgiIsImlucHV0cyI6WyLkuqflk4HooajmoLzjgIHllK/kuIDnvJblj7fjgIHlt7LmnIlBQ0blhoXlrrnnsbvlnosiXSwib3V0cHV0cyI6WyLlrZfmrrXmmKDlsITpooTop4jjgIHkuqflk4HojYnnqL/lkozpgJDooYzlm57miaciXSwidGFncyI6WyJXb3JkUHJlc3MiLCLni6znq4vnq5kiLCLov5DokKUiXSwiZXhhbXBsZSI6Iuivt+W4ruaIkeWujOaIkEFDRiDkuqflk4Hmibnph4/lr7zlhaXvvIzkvb/nlKjlt7LmnInkvIHkuJrotYTmlpnlkoxXb3JkUHJlc3Pov57mjqXlmajvvIzlhYjmo4DmtYvnq5nngrnog73lipvvvIzlho3nlJ/miJDlj6/moLjlr7nnmoTojYnnqL/miJbkv67mlLnorqHliJLjgIIiLCJyZXF1aXJlbWVudHMiOiLorr7nva4g4oaSIOi/nuaOpeWZqCDihpIgV29yZFByZXNzIOmFjee9ruS4gOasoe+8m+ebuOWFs+aPkuS7tumhu+WcqOermeeCueWuieijheW5tuW8gOaUvuaJgOmcgOadg+mZkOOAgiIsImNvbm5lY3Rpb25zIjpbIndvcmRwcmVzcyJdfQ=="
+      },
+      {
+        "path": "SKILL.md",
+        "data": "LS0tCm5hbWU6IHdvcmRwcmVzcy1hY2YtcHJvZHVjdHMKZGVzY3JpcHRpb246IOivu+WPliBFeGNlbCDmiJYgQ1NW77yM5pig5bCE5bey5pyJIEFDRiDlrZfmrrXlubbliIbmibnliJvlu7rkuqflk4HojYnnqL/jgIIKLS0tCgojIEFDRiDkuqflk4Hmibnph4/lr7zlhaUKCuWFiOivu+WPliByZWZlcmVuY2VzL3dvcmRwcmVzcy1hcGkubWTjgILlh63mja7lnKjorr7nva4g4oaSIOi/nuaOpeWZqCDihpIgV29yZFByZXNz57uf5LiA6YWN572u77yMU2tpbGzkuI3lrZjlr4bnoIHjgIIKCjEuIHdwUmVhZCBzaXRlIOafpeWGheWuueexu+Wei++8jHdwUmVhZCBzY2hlbWHvvIh0eXBlPeWunumZhUNQVOWQje+8ieivu+WPlk9QVElPTlPjgILnq5nngrnlv4Xpobvlt7Llu7rkuqflk4FDUFTkuJRSRVNU5byA5pS+77ybQUNG5a2X5q6157uE6ZyAU2hvdyBpbiBSRVNUIEFQSeOAguS4jeimgeWBh+iuvuWtmOWcqHByb2R1Y3Rz56uv54K577yM5LiN5Yib5bu6UEhQ5oiWV29vQ29tbWVyY2XllYblk4HjgIIKMi4g5LuO5Lu75Yqh5paH5Lu26K+75Y+W5Zu65a6a54mI5pysQ1NWL1RTVu+8m1hMU1jpgJrov4fpmYTku7blr7zlhaXkvJrovazmjaLlt6XkvZzooajjgILliJfku44w5byA5aeL77yM56ysMeadoeaYr+ihqOWktOOAgumAieaLqeeos+WumuWUr+S4gOS6p+WTgee8luWPt+S4juagh+mimOWIl++8m+S4gOWtl+auteaYoOWwhOS4gOWIl++8jOexu+Wei+aMieWunuaXtkFDRiBzY2hlbWHpgInmi6l0ZXh0L251bWJlci9ib29sZWFuL2pzb27jgIIKMy4g5Zu+54mHL1BERuWFiOaMieWqkuS9k1NraWxs5LiK5Lyg77yM5oqK55yf5a6e5aqS5L2TSUTloavlhaXmlrDniYjmnKzooajmoLznmoTlm77niYflrZfmrrXmiJbnibnoibLlm77liJfjgILnpoHmraLlsIbmnKzlnLDot6/lvoTjgIHlgYdJROWGmeWFpUFDRuOAggo0LiB3cFByZXZpZXdQcm9kdWN0c+mqjOivgeWFqOihqOW5tuS/neWtmOW9k+WJjeaJueasoe+8iOm7mOiupDXvvIzmnIDlpJoyMO+8iemihOiniOOAgnJlYWRGaWxl5qOA5p+l5pig5bCE44CB5oC75pWw44CB6aaW5om55YaF5a6544CC5pyq5YWs5byA5a2X5q6144CB6YeN5Y+344CB56m65qCH6aKY44CB6ZSZ6K+v5YC85YWI5L+u5q2j5paH5Lu25bm26YeN5paw6aKE6KeI44CCCjUuIHdwSW1wb3J0UHJvZHVjdHPkvb/nlKjlrozlhajnm7jlkIzlm7rlrprniYjmnKzjgIHmmKDlsITjgIFvZmZzZXTlkoxsaW1pdO+8m+WPquWIm+W7uuiNieeov+OAguavj+S4i+S4gOaJuemhu+WGjeasoemihOiniOOAgumBh+W3suWtmOWcqOeos+WumumUruWBnOatou+8jOS4jeimhueblu+8m+acquefpeaPkOS6pOWFiHdwV29ya2Zsb3dTdGF0dXPlkozlkI7lj7DmoLjlr7nvvIzkuI3mlLnplK7nu5Xov4fpmLLph43jgIIKNi4g6K+76YCQ6KGMcmVwb3J05bm25qC45a+5YWNmTWF0Y2hlc+OAgeiNieeov+eKtuaAgeOAgUlE5ZKM5a6e6ZmF5pWw6YeP44CC5aSx6LSl5oyJbmV4dE9mZnNldOaBouWkje+8m+S4jeiDveWPquaKpXByb2Nlc3NlZOWNs+W9k+aIkOWKn+OAguWJjeWPsOS6p+WTgeWRiOeOsOS+nei1luermeeCueW3suacieaooeadv++8jOWunumZhemihOiniOWQjuaKpeWRiuOAggoK5Lqk5LuY5YmN5qC46aqM5a6e6ZmF5Zue5omn5ZKM5Lu75Yqh5paH5Lu244CC572R57uc5pyq55+l57uT5p6c5LiN6Ieq5Yqo6YeN5Y+R77yb5o+S5Lu254mI5pysL+adg+mZkOS4jei2s+aYjuehruaKpeWRiu+8jOS4jeaKiuiuoeWIkuWGmeaIkOW3suWujOaIkOOAggo="
+      }
+    ],
+    "metadata": {
+      "name": "wordpress-acf-products",
+      "description": "读取 Excel 或 CSV，映射已有 ACF 字段并分批创建产品草稿。"
+    }
+  },
+  {
+    "name": "wordpress-media",
+    "version": "208ce366e96946b48aa3b37e2b0182ff757d315997aabd9319d6d5ff1e6965e5",
+    "description": "上传图片或 PDF，设置图片说明、特色图并插入文章。",
+    "source": "builtin",
+    "enabled": true,
+    "diagnostics": [],
+    "product": {
+      "title": "WordPress 图文素材与发布",
+      "category": "website",
+      "summary": "上传图片或 PDF，设置图片说明、特色图并插入文章。",
+      "inputs": [
+        "原始图片/PDF、正文与说明"
+      ],
+      "outputs": [
+        "媒体回执、图文文章草稿或发布结果"
+      ],
+      "tags": [
+        "WordPress",
+        "独立站",
+        "运营"
+      ],
+      "example": "请帮我完成WordPress 图文素材与发布，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+      "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+      "connections": [
+        "wordpress"
+      ]
+    },
+    "body": "# WordPress 图文素材与发布\n\n先读取 references/wordpress-api.md。凭据在设置 → 连接器 → WordPress统一配置，Skill不存密码。\n\n1. 用户通过附件选择原始PNG/JPEG/WebP/GIF/PDF，单个不超过10MB。任务中的提取文本不能代替原文件。读取文件列表取得path与固定version。\n2. 为图片写真实alt、标题和caption；装饰图alt可为空。wpUploadMedia返回真实媒体ID、URL、altMatches及证据；失败先wpWorkflowStatus，禁止重复上传。\n3. 需要关键词文章时，先加载SEO内容工作室，沿用DataForSEO连接器、预算/范围和证据流程。文章由当前模型结合企业事实写作，API只提供数据。\n4. wpWriteContent type=post：原生blocks方式插入图片，featuredMedia设置特色图。PDF作为已上传URL的button链接；caption保存于媒体库，正文需要显示说明时显式加paragraph。文章分类/标签先wpRead terms。\n5. 草稿默认draft；用户明确发布才publish；更新先wpRead content得到expectedModified。对照内容/标题/状态/特色图Matches及媒体证据，浏览器检查呈现后交付。\n\n交付前核验实际回执和任务文件。网络未知结果不自动重发；插件版本/权限不足明确报告，不把计划写成已完成。",
+    "files": [
+      {
+        "path": "LICENSE.txt",
+        "data": "TUlUIExpY2Vuc2UKCkNvcHlyaWdodCAoYykgMjAyNiBCcm93c2VyIEFnZW50IGNvbnRyaWJ1dG9ycwoKUGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBjaGFyZ2UsIHRvIGFueSBwZXJzb24gb2J0YWluaW5nIGEgY29weQpvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24gZmlsZXMgKHRoZSAiU29mdHdhcmUiKSwgdG8gZGVhbAppbiB0aGUgU29mdHdhcmUgd2l0aG91dCByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzCnRvIHVzZSwgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwgZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yIHNlbGwKY29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1pdCBwZXJzb25zIHRvIHdob20gdGhlIFNvZnR3YXJlIGlzCmZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnM6CgpUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZSBpbmNsdWRlZCBpbiBhbGwKY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS4KClRIRSBTT0ZUV0FSRSBJUyBQUk9WSURFRCAiQVMgSVMiLCBXSVRIT1VUIFdBUlJBTlRZIE9GIEFOWSBLSU5ELCBFWFBSRVNTIE9SCklNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJRVMgT0YgTUVSQ0hBTlRBQklMSVRZLApGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBUSEUKQVVUSE9SUyBPUiBDT1BZUklHSFQgSE9MREVSUyBCRSBMSUFCTEUgRk9SIEFOWSBDTEFJTSwgREFNQUdFUyBPUiBPVEhFUgpMSUFCSUxJVFksIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORyBGUk9NLApPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBUSEUgVVNFIE9SIE9USEVSIERFQUxJTkdTIElOIFRIRQpTT0ZUV0FSRS4K"
+      },
+      {
+        "path": "references/wordpress-api.md",
+        "data": "IyBXb3JkUHJlc3Mg5rWP6KeI5Zmo5bel5L2c5rWB57qm5a6aCgrov5nmmK/mnKzkuqflk4Hljp/liJvlnLrmma/mtYHnqIvvvIzov5DooYzkuo7mtY/op4jlmahBZ2VudO+8jOS4jemcgOimgUNvZGV4IENMSeOAgU5vZGXmiJZQSFDmiafooYzjgIJXb3JkUHJlc3Plh63mja7nu5/kuIDkv53lrZjlnKjmnKzlnLDov57mjqXlmajvvJtBUEnlj6rlj5HpgIHoh7PphY3nva7nq5nngrnjgILlhYh3cFJlYWQgc2l0Ze+8m+WujOaVtOWPquivu+e7k+aenOS/neWtmOWcqOi/lOWbnueahOivgeaNruaWh+S7tu+8jOS9v+eUqHJlYWRGaWxl5a6e6ZmF6K+75Y+W44CCCgrlt6XlhbfvvJp3cFJlYWTvvIhzaXRlL2NvbnRlbnQvbGlzdC9zY2hlbWEvbWVkaWEvdGVybXMvYWJpbGl0aWVzL2FiaWxpdHnvvInvvJt3cFdyaXRlQ29udGVudO+8m3dwVXBsb2FkTWVkaWHvvJt3cFJlYWRBYmlsaXR577ybd3BXcml0ZUFiaWxpdHnvvJt3cFByZXZpZXdQcm9kdWN0c++8m3dwSW1wb3J0UHJvZHVjdHPvvJt3cFdvcmtmbG93U3RhdHVz44CC5YaZ5bel5YW36L+b5YWl5Lqn5ZOB57uf5LiA56Gu6K6k55WM6Z2i44CC5om56YeP5Lu75Yqh5Lya5YiG5om556Gu6K6k77yb5pyq55+lUE9TVOS4jemHjeWPke+8jOW3suefpUlE5Zue6K+75aSx6LSl5Y+v5oGi5aSN5Zue6K+744CC5ZCM5Lu75Yqh55u45ZCM5pON5L2c5aSN55So5Zue5omn44CCCgpBQ0bkvb/nlKjnjrDmnIlDUFTlkoxSRVNU5a2X5q61c2NoZW1h44CCV1BGb3Jtc+S9v+eUqOWumOaWuUFiaWxpdGllcyBSRVNU77yM5LiN6ZyA6KaB5Li65rWP6KeI5Zmo5Y+m5ZCvTUNQ6L+b56iL77ybV29yZFByZXNzNi45K+OAgVdQRm9ybXMxLjEwLjIr77yMV1BGb3JtcyDihpIgVG9vbHMg4oaSIEFJIE1DUCDihpIgRW5hYmxlIE1DUCBXcml0ZSBBY2Nlc3PjgILlj6ror7tzY2hlbWHkuI7lrp7pmYXmnYPpmZDkuLrlh4bvvJvpgJrnn6XkuI7nrKzkuInmlrnpm4bmiJDkuI3lnKjlronlhajorr7nva7mjqXlj6PlhoXjgIJSYW5rIE1hdGjog73lipvku6Xnq5nngrnlhazlvIDlo7DmmI7kuLrlh4bvvIzkuI3kv53or4HmiYDmnInniYjmnKwv5aWX6aSQ5byA5pS+44CCCgrmlofnq6DlkozpobXpnaLpu5jorqTojYnnqL/vvIzkuLvliqjlj5HluIPopoHmnInnlKjmiLfmmI7noa7nm67moIfjgILojYnnqL9VUkzlj6/og73lj6rog73nmbvlvZXmn6XnnIvjgILlqpLkvZPlm57miafjgIHlrZfmrrXlm57or7vjgIHmtY/op4jlmajop4bop4nmo4Dmn6XjgIHnnJ/lrp7pgq7ku7bpgIHovr7mmK/kuI3lkIzor4Hmja7vvIzkuI3lj6/mt7flkIzjgILpobXpnaLku4XmlK/mjIHpgILphY3nmoTljp/nlJ/moLjlv4PljLrlnZfvvIzkuI3mlK/mjIHlhajnq5nkuLvpopjmqKHmnb/nvJbovpHjgIIKCuWumOaWueWPguiAg++8iOeglOeptuaXpeacnzIwMjYtMDktMDjvvInvvJoKLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL3Jlc3QtYXBpL3JlZmVyZW5jZS9wYWdlcy8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL3Jlc3QtYXBpL3JlZmVyZW5jZS9tZWRpYS8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL2Jsb2NrLWVkaXRvci9nZXR0aW5nLXN0YXJ0ZWQvZnVuZGFtZW50YWxzL21hcmt1cC1yZXByZXNlbnRhdGlvbi1ibG9jay8KLSBodHRwczovL3d3dy5hZHZhbmNlZGN1c3RvbWZpZWxkcy5jb20vcmVzb3VyY2VzL3dwLXJlc3QtYXBpLWludGVncmF0aW9uLwotIGh0dHBzOi8vd3Bmb3Jtcy5jb20vZGV2ZWxvcGVycy93cGZvcm1zLXJlc3QtYXBpLwotIGh0dHBzOi8vcmFua21hdGguY29tL2tiL21jcC10b29scy8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL2FwaXMvYWJpbGl0aWVzLWFwaS9yZXN0LWFwaS1lbmRwb2ludHMvCg=="
+      },
+      {
+        "path": "skill.json",
+        "data": "eyJ0aXRsZSI6IldvcmRQcmVzcyDlm77mlofntKDmnZDkuI7lj5HluIMiLCJjYXRlZ29yeSI6IndlYnNpdGUiLCJzdW1tYXJ5Ijoi5LiK5Lyg5Zu+54mH5oiWIFBERu+8jOiuvue9ruWbvueJh+ivtOaYjuOAgeeJueiJsuWbvuW5tuaPkuWFpeaWh+eroOOAgiIsImlucHV0cyI6WyLljp/lp4vlm77niYcvUERG44CB5q2j5paH5LiO6K+05piOIl0sIm91dHB1dHMiOlsi5aqS5L2T5Zue5omn44CB5Zu+5paH5paH56ug6I2J56i/5oiW5Y+R5biD57uT5p6cIl0sInRhZ3MiOlsiV29yZFByZXNzIiwi54us56uL56uZIiwi6L+Q6JClIl0sImV4YW1wbGUiOiLor7fluK7miJHlrozmiJBXb3JkUHJlc3Mg5Zu+5paH57Sg5p2Q5LiO5Y+R5biD77yM5L2/55So5bey5pyJ5LyB5Lia6LWE5paZ5ZKMV29yZFByZXNz6L+e5o6l5Zmo77yM5YWI5qOA5rWL56uZ54K56IO95Yqb77yM5YaN55Sf5oiQ5Y+v5qC45a+555qE6I2J56i/5oiW5L+u5pS56K6h5YiS44CCIiwicmVxdWlyZW1lbnRzIjoi6K6+572uIOKGkiDov57mjqXlmagg4oaSIFdvcmRQcmVzcyDphY3nva7kuIDmrKHvvJvnm7jlhbPmj5Lku7bpobvlnKjnq5nngrnlronoo4XlubblvIDmlL7miYDpnIDmnYPpmZDjgIIiLCJjb25uZWN0aW9ucyI6WyJ3b3JkcHJlc3MiXX0="
+      },
+      {
+        "path": "SKILL.md",
+        "data": "LS0tCm5hbWU6IHdvcmRwcmVzcy1tZWRpYQpkZXNjcmlwdGlvbjog5LiK5Lyg5Zu+54mH5oiWIFBERu+8jOiuvue9ruWbvueJh+ivtOaYjuOAgeeJueiJsuWbvuW5tuaPkuWFpeaWh+eroOOAggotLS0KCiMgV29yZFByZXNzIOWbvuaWh+e0oOadkOS4juWPkeW4gwoK5YWI6K+75Y+WIHJlZmVyZW5jZXMvd29yZHByZXNzLWFwaS5tZOOAguWHreaNruWcqOiuvue9riDihpIg6L+e5o6l5ZmoIOKGkiBXb3JkUHJlc3Pnu5/kuIDphY3nva7vvIxTa2lsbOS4jeWtmOWvhueggeOAggoKMS4g55So5oi36YCa6L+H6ZmE5Lu26YCJ5oup5Y6f5aeLUE5HL0pQRUcvV2ViUC9HSUYvUERG77yM5Y2V5Liq5LiN6LaF6L+HMTBNQuOAguS7u+WKoeS4reeahOaPkOWPluaWh+acrOS4jeiDveS7o+abv+WOn+aWh+S7tuOAguivu+WPluaWh+S7tuWIl+ihqOWPluW+l3BhdGjkuI7lm7rlrpp2ZXJzaW9u44CCCjIuIOS4uuWbvueJh+WGmeecn+WunmFsdOOAgeagh+mimOWSjGNhcHRpb27vvJvoo4XppbDlm75hbHTlj6/kuLrnqbrjgIJ3cFVwbG9hZE1lZGlh6L+U5Zue55yf5a6e5aqS5L2TSUTjgIFVUkzjgIFhbHRNYXRjaGVz5Y+K6K+B5o2u77yb5aSx6LSl5YWId3BXb3JrZmxvd1N0YXR1c++8jOemgeatoumHjeWkjeS4iuS8oOOAggozLiDpnIDopoHlhbPplK7or43mlofnq6Dml7bvvIzlhYjliqDovb1TRU/lhoXlrrnlt6XkvZzlrqTvvIzmsr/nlKhEYXRhRm9yU0VP6L+e5o6l5Zmo44CB6aKE566XL+iMg+WbtOWSjOivgeaNrua1geeoi+OAguaWh+eroOeUseW9k+WJjeaooeWei+e7k+WQiOS8geS4muS6i+WunuWGmeS9nO+8jEFQSeWPquaPkOS+m+aVsOaNruOAggo0LiB3cFdyaXRlQ29udGVudCB0eXBlPXBvc3TvvJrljp/nlJ9ibG9ja3PmlrnlvI/mj5LlhaXlm77niYfvvIxmZWF0dXJlZE1lZGlh6K6+572u54m56Imy5Zu+44CCUERG5L2c5Li65bey5LiK5LygVVJM55qEYnV0dG9u6ZO+5o6l77ybY2FwdGlvbuS/neWtmOS6juWqkuS9k+W6k++8jOato+aWh+mcgOimgeaYvuekuuivtOaYjuaXtuaYvuW8j+WKoHBhcmFncmFwaOOAguaWh+eroOWIhuexuy/moIfnrb7lhYh3cFJlYWQgdGVybXPjgIIKNS4g6I2J56i/6buY6K6kZHJhZnTvvJvnlKjmiLfmmI7noa7lj5HluIPmiY1wdWJsaXNo77yb5pu05paw5YWId3BSZWFkIGNvbnRlbnTlvpfliLBleHBlY3RlZE1vZGlmaWVk44CC5a+554Wn5YaF5a65L+agh+mimC/nirbmgIEv54m56Imy5Zu+TWF0Y2hlc+WPiuWqkuS9k+ivgeaNru+8jOa1j+iniOWZqOajgOafpeWRiOeOsOWQjuS6pOS7mOOAggoK5Lqk5LuY5YmN5qC46aqM5a6e6ZmF5Zue5omn5ZKM5Lu75Yqh5paH5Lu244CC572R57uc5pyq55+l57uT5p6c5LiN6Ieq5Yqo6YeN5Y+R77yb5o+S5Lu254mI5pysL+adg+mZkOS4jei2s+aYjuehruaKpeWRiu+8jOS4jeaKiuiuoeWIkuWGmeaIkOW3suWujOaIkOOAggo="
+      }
+    ],
+    "metadata": {
+      "name": "wordpress-media",
+      "description": "上传图片或 PDF，设置图片说明、特色图并插入文章。"
+    }
+  },
+  {
+    "name": "wordpress-forms",
+    "version": "d77dc9b88c0a9234df9270b926465dee6e88fbe3e8c5c3b030e76aac928542f5",
+    "description": "设计询盘字段，创建表单并嵌入 WordPress 原生区块页面。",
+    "source": "builtin",
+    "enabled": true,
+    "diagnostics": [],
+    "product": {
+      "title": "WPForms 询盘表单",
+      "category": "website",
+      "summary": "设计询盘字段，创建表单并嵌入 WordPress 原生区块页面。",
+      "inputs": [
+        "询盘目标、字段和已有页面"
+      ],
+      "outputs": [
+        "表单ID、字段回读和嵌入页面"
+      ],
+      "tags": [
+        "WordPress",
+        "独立站",
+        "运营"
+      ],
+      "example": "请帮我完成WPForms 询盘表单，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+      "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+      "connections": [
+        "wordpress"
+      ]
+    },
+    "body": "# WPForms 询盘表单\n\n先读取 references/wordpress-api.md。凭据在设置 → 连接器 → WordPress统一配置，Skill不存密码。\n\n1. wpRead site，然后wpRead ability读取wpforms/describe-editing-schema声明，再wpReadAbility获取站点真实编辑schema。需要WordPress6.9+、WPForms1.10.2+写能力和站点启用写权限；入口说明见references/wordpress-api.md。\n2. 围绕询盘设计最少字段，如姓名、公司、商务邮箱、产品需求、数量。字段类型和选项依据schema与实际许可证，不假设有文件上传或高级字段。\n3. wpReadAbility wpforms/list-forms查重。读取create-form、add-field、update-field、update-form-settings各自声明，按真实input_schema逐步wpWriteAbility。每步检查回读证据再继续；创建回执取实际form_id，不编造。\n4. 设置只限安全开放字段。邮件通知、确认页、第三方集成并不由这组接口开放；需用户在WPForms后台配置，不能声称通知已设置或邮件已送达。\n5. wpWriteContent blocks含{type:\"form\",formId:实际ID}，保留其他页面区块。通过原生shortcode区块嵌入。浏览器预览必填提示、样式及移动布局；真实提交测试会产生询盘，只在授权范围执行并核对接收结果。\n\n交付前核验实际回执和任务文件。网络未知结果不自动重发；插件版本/权限不足明确报告，不把计划写成已完成。",
+    "files": [
+      {
+        "path": "LICENSE.txt",
+        "data": "TUlUIExpY2Vuc2UKCkNvcHlyaWdodCAoYykgMjAyNiBCcm93c2VyIEFnZW50IGNvbnRyaWJ1dG9ycwoKUGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBjaGFyZ2UsIHRvIGFueSBwZXJzb24gb2J0YWluaW5nIGEgY29weQpvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24gZmlsZXMgKHRoZSAiU29mdHdhcmUiKSwgdG8gZGVhbAppbiB0aGUgU29mdHdhcmUgd2l0aG91dCByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzCnRvIHVzZSwgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwgZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yIHNlbGwKY29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1pdCBwZXJzb25zIHRvIHdob20gdGhlIFNvZnR3YXJlIGlzCmZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnM6CgpUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZSBpbmNsdWRlZCBpbiBhbGwKY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS4KClRIRSBTT0ZUV0FSRSBJUyBQUk9WSURFRCAiQVMgSVMiLCBXSVRIT1VUIFdBUlJBTlRZIE9GIEFOWSBLSU5ELCBFWFBSRVNTIE9SCklNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJRVMgT0YgTUVSQ0hBTlRBQklMSVRZLApGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBUSEUKQVVUSE9SUyBPUiBDT1BZUklHSFQgSE9MREVSUyBCRSBMSUFCTEUgRk9SIEFOWSBDTEFJTSwgREFNQUdFUyBPUiBPVEhFUgpMSUFCSUxJVFksIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORyBGUk9NLApPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBUSEUgVVNFIE9SIE9USEVSIERFQUxJTkdTIElOIFRIRQpTT0ZUV0FSRS4K"
+      },
+      {
+        "path": "references/wordpress-api.md",
+        "data": "IyBXb3JkUHJlc3Mg5rWP6KeI5Zmo5bel5L2c5rWB57qm5a6aCgrov5nmmK/mnKzkuqflk4Hljp/liJvlnLrmma/mtYHnqIvvvIzov5DooYzkuo7mtY/op4jlmahBZ2VudO+8jOS4jemcgOimgUNvZGV4IENMSeOAgU5vZGXmiJZQSFDmiafooYzjgIJXb3JkUHJlc3Plh63mja7nu5/kuIDkv53lrZjlnKjmnKzlnLDov57mjqXlmajvvJtBUEnlj6rlj5HpgIHoh7PphY3nva7nq5nngrnjgILlhYh3cFJlYWQgc2l0Ze+8m+WujOaVtOWPquivu+e7k+aenOS/neWtmOWcqOi/lOWbnueahOivgeaNruaWh+S7tu+8jOS9v+eUqHJlYWRGaWxl5a6e6ZmF6K+75Y+W44CCCgrlt6XlhbfvvJp3cFJlYWTvvIhzaXRlL2NvbnRlbnQvbGlzdC9zY2hlbWEvbWVkaWEvdGVybXMvYWJpbGl0aWVzL2FiaWxpdHnvvInvvJt3cFdyaXRlQ29udGVudO+8m3dwVXBsb2FkTWVkaWHvvJt3cFJlYWRBYmlsaXR577ybd3BXcml0ZUFiaWxpdHnvvJt3cFByZXZpZXdQcm9kdWN0c++8m3dwSW1wb3J0UHJvZHVjdHPvvJt3cFdvcmtmbG93U3RhdHVz44CC5YaZ5bel5YW36L+b5YWl5Lqn5ZOB57uf5LiA56Gu6K6k55WM6Z2i44CC5om56YeP5Lu75Yqh5Lya5YiG5om556Gu6K6k77yb5pyq55+lUE9TVOS4jemHjeWPke+8jOW3suefpUlE5Zue6K+75aSx6LSl5Y+v5oGi5aSN5Zue6K+744CC5ZCM5Lu75Yqh55u45ZCM5pON5L2c5aSN55So5Zue5omn44CCCgpBQ0bkvb/nlKjnjrDmnIlDUFTlkoxSRVNU5a2X5q61c2NoZW1h44CCV1BGb3Jtc+S9v+eUqOWumOaWuUFiaWxpdGllcyBSRVNU77yM5LiN6ZyA6KaB5Li65rWP6KeI5Zmo5Y+m5ZCvTUNQ6L+b56iL77ybV29yZFByZXNzNi45K+OAgVdQRm9ybXMxLjEwLjIr77yMV1BGb3JtcyDihpIgVG9vbHMg4oaSIEFJIE1DUCDihpIgRW5hYmxlIE1DUCBXcml0ZSBBY2Nlc3PjgILlj6ror7tzY2hlbWHkuI7lrp7pmYXmnYPpmZDkuLrlh4bvvJvpgJrnn6XkuI7nrKzkuInmlrnpm4bmiJDkuI3lnKjlronlhajorr7nva7mjqXlj6PlhoXjgIJSYW5rIE1hdGjog73lipvku6Xnq5nngrnlhazlvIDlo7DmmI7kuLrlh4bvvIzkuI3kv53or4HmiYDmnInniYjmnKwv5aWX6aSQ5byA5pS+44CCCgrmlofnq6DlkozpobXpnaLpu5jorqTojYnnqL/vvIzkuLvliqjlj5HluIPopoHmnInnlKjmiLfmmI7noa7nm67moIfjgILojYnnqL9VUkzlj6/og73lj6rog73nmbvlvZXmn6XnnIvjgILlqpLkvZPlm57miafjgIHlrZfmrrXlm57or7vjgIHmtY/op4jlmajop4bop4nmo4Dmn6XjgIHnnJ/lrp7pgq7ku7bpgIHovr7mmK/kuI3lkIzor4Hmja7vvIzkuI3lj6/mt7flkIzjgILpobXpnaLku4XmlK/mjIHpgILphY3nmoTljp/nlJ/moLjlv4PljLrlnZfvvIzkuI3mlK/mjIHlhajnq5nkuLvpopjmqKHmnb/nvJbovpHjgIIKCuWumOaWueWPguiAg++8iOeglOeptuaXpeacnzIwMjYtMDktMDjvvInvvJoKLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL3Jlc3QtYXBpL3JlZmVyZW5jZS9wYWdlcy8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL3Jlc3QtYXBpL3JlZmVyZW5jZS9tZWRpYS8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL2Jsb2NrLWVkaXRvci9nZXR0aW5nLXN0YXJ0ZWQvZnVuZGFtZW50YWxzL21hcmt1cC1yZXByZXNlbnRhdGlvbi1ibG9jay8KLSBodHRwczovL3d3dy5hZHZhbmNlZGN1c3RvbWZpZWxkcy5jb20vcmVzb3VyY2VzL3dwLXJlc3QtYXBpLWludGVncmF0aW9uLwotIGh0dHBzOi8vd3Bmb3Jtcy5jb20vZGV2ZWxvcGVycy93cGZvcm1zLXJlc3QtYXBpLwotIGh0dHBzOi8vcmFua21hdGguY29tL2tiL21jcC10b29scy8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL2FwaXMvYWJpbGl0aWVzLWFwaS9yZXN0LWFwaS1lbmRwb2ludHMvCg=="
+      },
+      {
+        "path": "skill.json",
+        "data": "eyJ0aXRsZSI6IldQRm9ybXMg6K+i55uY6KGo5Y2VIiwiY2F0ZWdvcnkiOiJ3ZWJzaXRlIiwic3VtbWFyeSI6IuiuvuiuoeivouebmOWtl+aute+8jOWIm+W7uuihqOWNleW5tuW1jOWFpSBXb3JkUHJlc3Mg5Y6f55Sf5Yy65Z2X6aG16Z2i44CCIiwiaW5wdXRzIjpbIuivouebmOebruagh+OAgeWtl+auteWSjOW3suaciemhtemdoiJdLCJvdXRwdXRzIjpbIuihqOWNlUlE44CB5a2X5q615Zue6K+75ZKM5bWM5YWl6aG16Z2iIl0sInRhZ3MiOlsiV29yZFByZXNzIiwi54us56uL56uZIiwi6L+Q6JClIl0sImV4YW1wbGUiOiLor7fluK7miJHlrozmiJBXUEZvcm1zIOivouebmOihqOWNle+8jOS9v+eUqOW3suacieS8geS4mui1hOaWmeWSjFdvcmRQcmVzc+i/nuaOpeWZqO+8jOWFiOajgOa1i+ermeeCueiDveWKm++8jOWGjeeUn+aIkOWPr+aguOWvueeahOiNieeov+aIluS/ruaUueiuoeWIkuOAgiIsInJlcXVpcmVtZW50cyI6Iuiuvue9riDihpIg6L+e5o6l5ZmoIOKGkiBXb3JkUHJlc3Mg6YWN572u5LiA5qyh77yb55u45YWz5o+S5Lu26aG75Zyo56uZ54K55a6J6KOF5bm25byA5pS+5omA6ZyA5p2D6ZmQ44CCIiwiY29ubmVjdGlvbnMiOlsid29yZHByZXNzIl19"
+      },
+      {
+        "path": "SKILL.md",
+        "data": "LS0tCm5hbWU6IHdvcmRwcmVzcy1mb3JtcwpkZXNjcmlwdGlvbjog6K6+6K6h6K+i55uY5a2X5q6177yM5Yib5bu66KGo5Y2V5bm25bWM5YWlIFdvcmRQcmVzcyDljp/nlJ/ljLrlnZfpobXpnaLjgIIKLS0tCgojIFdQRm9ybXMg6K+i55uY6KGo5Y2VCgrlhYjor7vlj5YgcmVmZXJlbmNlcy93b3JkcHJlc3MtYXBpLm1k44CC5Yet5o2u5Zyo6K6+572uIOKGkiDov57mjqXlmagg4oaSIFdvcmRQcmVzc+e7n+S4gOmFjee9ru+8jFNraWxs5LiN5a2Y5a+G56CB44CCCgoxLiB3cFJlYWQgc2l0Ze+8jOeEtuWQjndwUmVhZCBhYmlsaXR56K+75Y+Wd3Bmb3Jtcy9kZXNjcmliZS1lZGl0aW5nLXNjaGVtYeWjsOaYju+8jOWGjXdwUmVhZEFiaWxpdHnojrflj5bnq5nngrnnnJ/lrp7nvJbovpFzY2hlbWHjgILpnIDopoFXb3JkUHJlc3M2Ljkr44CBV1BGb3JtczEuMTAuMivlhpnog73lipvlkoznq5nngrnlkK/nlKjlhpnmnYPpmZDvvJvlhaXlj6Por7TmmI7op4FyZWZlcmVuY2VzL3dvcmRwcmVzcy1hcGkubWTjgIIKMi4g5Zu057uV6K+i55uY6K6+6K6h5pyA5bCR5a2X5q6177yM5aaC5aeT5ZCN44CB5YWs5Y+444CB5ZWG5Yqh6YKu566x44CB5Lqn5ZOB6ZyA5rGC44CB5pWw6YeP44CC5a2X5q6157G75Z6L5ZKM6YCJ6aG55L6d5o2uc2NoZW1h5LiO5a6e6ZmF6K645Y+v6K+B77yM5LiN5YGH6K6+5pyJ5paH5Lu25LiK5Lyg5oiW6auY57qn5a2X5q6144CCCjMuIHdwUmVhZEFiaWxpdHkgd3Bmb3Jtcy9saXN0LWZvcm1z5p+l6YeN44CC6K+75Y+WY3JlYXRlLWZvcm3jgIFhZGQtZmllbGTjgIF1cGRhdGUtZmllbGTjgIF1cGRhdGUtZm9ybS1zZXR0aW5nc+WQhOiHquWjsOaYju+8jOaMieecn+WunmlucHV0X3NjaGVtYemAkOatpXdwV3JpdGVBYmlsaXR544CC5q+P5q2l5qOA5p+l5Zue6K+76K+B5o2u5YaN57un57ut77yb5Yib5bu65Zue5omn5Y+W5a6e6ZmFZm9ybV9pZO+8jOS4jee8lumAoOOAggo0LiDorr7nva7lj6rpmZDlronlhajlvIDmlL7lrZfmrrXjgILpgq7ku7bpgJrnn6XjgIHnoa7orqTpobXjgIHnrKzkuInmlrnpm4bmiJDlubbkuI3nlLHov5nnu4TmjqXlj6PlvIDmlL7vvJvpnIDnlKjmiLflnKhXUEZvcm1z5ZCO5Y+w6YWN572u77yM5LiN6IO95aOw56ew6YCa55+l5bey6K6+572u5oiW6YKu5Lu25bey6YCB6L6+44CCCjUuIHdwV3JpdGVDb250ZW50IGJsb2Nrc+WQq3t0eXBlOiJmb3JtIixmb3JtSWQ65a6e6ZmFSUR977yM5L+d55WZ5YW25LuW6aG16Z2i5Yy65Z2X44CC6YCa6L+H5Y6f55Sfc2hvcnRjb2Rl5Yy65Z2X5bWM5YWl44CC5rWP6KeI5Zmo6aKE6KeI5b+F5aGr5o+Q56S644CB5qC35byP5Y+K56e75Yqo5biD5bGA77yb55yf5a6e5o+Q5Lqk5rWL6K+V5Lya5Lqn55Sf6K+i55uY77yM5Y+q5Zyo5o6I5p2D6IyD5Zu05omn6KGM5bm25qC45a+55o6l5pS257uT5p6c44CCCgrkuqTku5jliY3moLjpqozlrp7pmYXlm57miaflkozku7vliqHmlofku7bjgILnvZHnu5zmnKrnn6Xnu5PmnpzkuI3oh6rliqjph43lj5HvvJvmj5Lku7bniYjmnKwv5p2D6ZmQ5LiN6Laz5piO56Gu5oql5ZGK77yM5LiN5oqK6K6h5YiS5YaZ5oiQ5bey5a6M5oiQ44CCCg=="
+      }
+    ],
+    "metadata": {
+      "name": "wordpress-forms",
+      "description": "设计询盘字段，创建表单并嵌入 WordPress 原生区块页面。"
+    }
+  },
+  {
+    "name": "wordpress-seo-settings",
+    "version": "fdbbbceea025de1cba938317a2363ce13f14aedb517d65ff2033ceb09dee67ae",
+    "description": "依据实时站点能力检查并修改 SEO 设置，保留变更前后证据。",
+    "source": "builtin",
+    "enabled": true,
+    "diagnostics": [],
+    "product": {
+      "title": "Rank Math 站点 SEO 设置",
+      "category": "website",
+      "summary": "依据实时站点能力检查并修改 SEO 设置，保留变更前后证据。",
+      "inputs": [
+        "站点SEO问题与修改目标"
+      ],
+      "outputs": [
+        "设置差异、回读证据和页面核验"
+      ],
+      "tags": [
+        "WordPress",
+        "独立站",
+        "运营"
+      ],
+      "example": "请帮我完成Rank Math 站点 SEO 设置，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+      "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+      "connections": [
+        "wordpress"
+      ]
+    },
+    "body": "# Rank Math 站点 SEO 设置\n\n先读取 references/wordpress-api.md。凭据在设置 → 连接器 → WordPress统一配置，Skill不存密码。\n\n1. wpRead site检测能力，再wpReadAbility rank-math/get-system-status、get-settings了解启用模块和设置。能力未开放就说明站点需配置，不假设安装Rank Math即支持。\n2. 使用浏览器inspectPage/readSeoResource检查title、description、canonical、robots、结构化数据。SEO数据分析继续使用DataForSEO，持续监测沿用已有有限次数监测工具，不能承诺后台永久抓取。\n3. 生成原值→建议值→影响页面的计划。仅适配set-website-identity、set-global-seo-settings、set-homepage-seo、set-link-settings、set-sitemap-settings、set-post-type-seo-settings、set-breadcrumb-settings。\n4. 对目标能力用wpRead ability取得实时input_schema，wpWriteAbility按schema提交；只改用户要求的设置。全站索引、链接、站点地图等说明实际影响。没有开放字段就记录未支持，不能伪造通用meta写接口。\n5. 核对自动get-settings回读证据中的变更字段，再访问实际页面/robots/sitemap验证。接口成功不代表Google已重新索引。保留前值，恢复须重新核对当前值并按明确目标操作。\n\n交付前核验实际回执和任务文件。网络未知结果不自动重发；插件版本/权限不足明确报告，不把计划写成已完成。",
+    "files": [
+      {
+        "path": "LICENSE.txt",
+        "data": "TUlUIExpY2Vuc2UKCkNvcHlyaWdodCAoYykgMjAyNiBCcm93c2VyIEFnZW50IGNvbnRyaWJ1dG9ycwoKUGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBjaGFyZ2UsIHRvIGFueSBwZXJzb24gb2J0YWluaW5nIGEgY29weQpvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24gZmlsZXMgKHRoZSAiU29mdHdhcmUiKSwgdG8gZGVhbAppbiB0aGUgU29mdHdhcmUgd2l0aG91dCByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzCnRvIHVzZSwgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwgZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yIHNlbGwKY29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1pdCBwZXJzb25zIHRvIHdob20gdGhlIFNvZnR3YXJlIGlzCmZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnM6CgpUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZSBpbmNsdWRlZCBpbiBhbGwKY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS4KClRIRSBTT0ZUV0FSRSBJUyBQUk9WSURFRCAiQVMgSVMiLCBXSVRIT1VUIFdBUlJBTlRZIE9GIEFOWSBLSU5ELCBFWFBSRVNTIE9SCklNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJRVMgT0YgTUVSQ0hBTlRBQklMSVRZLApGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBUSEUKQVVUSE9SUyBPUiBDT1BZUklHSFQgSE9MREVSUyBCRSBMSUFCTEUgRk9SIEFOWSBDTEFJTSwgREFNQUdFUyBPUiBPVEhFUgpMSUFCSUxJVFksIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORyBGUk9NLApPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBUSEUgVVNFIE9SIE9USEVSIERFQUxJTkdTIElOIFRIRQpTT0ZUV0FSRS4K"
+      },
+      {
+        "path": "references/wordpress-api.md",
+        "data": "IyBXb3JkUHJlc3Mg5rWP6KeI5Zmo5bel5L2c5rWB57qm5a6aCgrov5nmmK/mnKzkuqflk4Hljp/liJvlnLrmma/mtYHnqIvvvIzov5DooYzkuo7mtY/op4jlmahBZ2VudO+8jOS4jemcgOimgUNvZGV4IENMSeOAgU5vZGXmiJZQSFDmiafooYzjgIJXb3JkUHJlc3Plh63mja7nu5/kuIDkv53lrZjlnKjmnKzlnLDov57mjqXlmajvvJtBUEnlj6rlj5HpgIHoh7PphY3nva7nq5nngrnjgILlhYh3cFJlYWQgc2l0Ze+8m+WujOaVtOWPquivu+e7k+aenOS/neWtmOWcqOi/lOWbnueahOivgeaNruaWh+S7tu+8jOS9v+eUqHJlYWRGaWxl5a6e6ZmF6K+75Y+W44CCCgrlt6XlhbfvvJp3cFJlYWTvvIhzaXRlL2NvbnRlbnQvbGlzdC9zY2hlbWEvbWVkaWEvdGVybXMvYWJpbGl0aWVzL2FiaWxpdHnvvInvvJt3cFdyaXRlQ29udGVudO+8m3dwVXBsb2FkTWVkaWHvvJt3cFJlYWRBYmlsaXR577ybd3BXcml0ZUFiaWxpdHnvvJt3cFByZXZpZXdQcm9kdWN0c++8m3dwSW1wb3J0UHJvZHVjdHPvvJt3cFdvcmtmbG93U3RhdHVz44CC5YaZ5bel5YW36L+b5YWl5Lqn5ZOB57uf5LiA56Gu6K6k55WM6Z2i44CC5om56YeP5Lu75Yqh5Lya5YiG5om556Gu6K6k77yb5pyq55+lUE9TVOS4jemHjeWPke+8jOW3suefpUlE5Zue6K+75aSx6LSl5Y+v5oGi5aSN5Zue6K+744CC5ZCM5Lu75Yqh55u45ZCM5pON5L2c5aSN55So5Zue5omn44CCCgpBQ0bkvb/nlKjnjrDmnIlDUFTlkoxSRVNU5a2X5q61c2NoZW1h44CCV1BGb3Jtc+S9v+eUqOWumOaWuUFiaWxpdGllcyBSRVNU77yM5LiN6ZyA6KaB5Li65rWP6KeI5Zmo5Y+m5ZCvTUNQ6L+b56iL77ybV29yZFByZXNzNi45K+OAgVdQRm9ybXMxLjEwLjIr77yMV1BGb3JtcyDihpIgVG9vbHMg4oaSIEFJIE1DUCDihpIgRW5hYmxlIE1DUCBXcml0ZSBBY2Nlc3PjgILlj6ror7tzY2hlbWHkuI7lrp7pmYXmnYPpmZDkuLrlh4bvvJvpgJrnn6XkuI7nrKzkuInmlrnpm4bmiJDkuI3lnKjlronlhajorr7nva7mjqXlj6PlhoXjgIJSYW5rIE1hdGjog73lipvku6Xnq5nngrnlhazlvIDlo7DmmI7kuLrlh4bvvIzkuI3kv53or4HmiYDmnInniYjmnKwv5aWX6aSQ5byA5pS+44CCCgrmlofnq6DlkozpobXpnaLpu5jorqTojYnnqL/vvIzkuLvliqjlj5HluIPopoHmnInnlKjmiLfmmI7noa7nm67moIfjgILojYnnqL9VUkzlj6/og73lj6rog73nmbvlvZXmn6XnnIvjgILlqpLkvZPlm57miafjgIHlrZfmrrXlm57or7vjgIHmtY/op4jlmajop4bop4nmo4Dmn6XjgIHnnJ/lrp7pgq7ku7bpgIHovr7mmK/kuI3lkIzor4Hmja7vvIzkuI3lj6/mt7flkIzjgILpobXpnaLku4XmlK/mjIHpgILphY3nmoTljp/nlJ/moLjlv4PljLrlnZfvvIzkuI3mlK/mjIHlhajnq5nkuLvpopjmqKHmnb/nvJbovpHjgIIKCuWumOaWueWPguiAg++8iOeglOeptuaXpeacnzIwMjYtMDktMDjvvInvvJoKLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL3Jlc3QtYXBpL3JlZmVyZW5jZS9wYWdlcy8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL3Jlc3QtYXBpL3JlZmVyZW5jZS9tZWRpYS8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL2Jsb2NrLWVkaXRvci9nZXR0aW5nLXN0YXJ0ZWQvZnVuZGFtZW50YWxzL21hcmt1cC1yZXByZXNlbnRhdGlvbi1ibG9jay8KLSBodHRwczovL3d3dy5hZHZhbmNlZGN1c3RvbWZpZWxkcy5jb20vcmVzb3VyY2VzL3dwLXJlc3QtYXBpLWludGVncmF0aW9uLwotIGh0dHBzOi8vd3Bmb3Jtcy5jb20vZGV2ZWxvcGVycy93cGZvcm1zLXJlc3QtYXBpLwotIGh0dHBzOi8vcmFua21hdGguY29tL2tiL21jcC10b29scy8KLSBodHRwczovL2RldmVsb3Blci53b3JkcHJlc3Mub3JnL2FwaXMvYWJpbGl0aWVzLWFwaS9yZXN0LWFwaS1lbmRwb2ludHMvCg=="
+      },
+      {
+        "path": "skill.json",
+        "data": "eyJ0aXRsZSI6IlJhbmsgTWF0aCDnq5nngrkgU0VPIOiuvue9riIsImNhdGVnb3J5Ijoid2Vic2l0ZSIsInN1bW1hcnkiOiLkvp3mja7lrp7ml7bnq5nngrnog73lipvmo4Dmn6Xlubbkv67mlLkgU0VPIOiuvue9ru+8jOS/neeVmeWPmOabtOWJjeWQjuivgeaNruOAgiIsImlucHV0cyI6WyLnq5nngrlTRU/pl67popjkuI7kv67mlLnnm67moIciXSwib3V0cHV0cyI6WyLorr7nva7lt67lvILjgIHlm57or7vor4Hmja7lkozpobXpnaLmoLjpqowiXSwidGFncyI6WyJXb3JkUHJlc3MiLCLni6znq4vnq5kiLCLov5DokKUiXSwiZXhhbXBsZSI6Iuivt+W4ruaIkeWujOaIkFJhbmsgTWF0aCDnq5nngrkgU0VPIOiuvue9ru+8jOS9v+eUqOW3suacieS8geS4mui1hOaWmeWSjFdvcmRQcmVzc+i/nuaOpeWZqO+8jOWFiOajgOa1i+ermeeCueiDveWKm++8jOWGjeeUn+aIkOWPr+aguOWvueeahOiNieeov+aIluS/ruaUueiuoeWIkuOAgiIsInJlcXVpcmVtZW50cyI6Iuiuvue9riDihpIg6L+e5o6l5ZmoIOKGkiBXb3JkUHJlc3Mg6YWN572u5LiA5qyh77yb55u45YWz5o+S5Lu26aG75Zyo56uZ54K55a6J6KOF5bm25byA5pS+5omA6ZyA5p2D6ZmQ44CCIiwiY29ubmVjdGlvbnMiOlsid29yZHByZXNzIl19"
+      },
+      {
+        "path": "SKILL.md",
+        "data": "LS0tCm5hbWU6IHdvcmRwcmVzcy1zZW8tc2V0dGluZ3MKZGVzY3JpcHRpb246IOS+neaNruWunuaXtuermeeCueiDveWKm+ajgOafpeW5tuS/ruaUuSBTRU8g6K6+572u77yM5L+d55WZ5Y+Y5pu05YmN5ZCO6K+B5o2u44CCCi0tLQoKIyBSYW5rIE1hdGgg56uZ54K5IFNFTyDorr7nva4KCuWFiOivu+WPliByZWZlcmVuY2VzL3dvcmRwcmVzcy1hcGkubWTjgILlh63mja7lnKjorr7nva4g4oaSIOi/nuaOpeWZqCDihpIgV29yZFByZXNz57uf5LiA6YWN572u77yMU2tpbGzkuI3lrZjlr4bnoIHjgIIKCjEuIHdwUmVhZCBzaXRl5qOA5rWL6IO95Yqb77yM5YaNd3BSZWFkQWJpbGl0eSByYW5rLW1hdGgvZ2V0LXN5c3RlbS1zdGF0dXPjgIFnZXQtc2V0dGluZ3Pkuobop6PlkK/nlKjmqKHlnZflkozorr7nva7jgILog73lipvmnKrlvIDmlL7lsLHor7TmmI7nq5nngrnpnIDphY3nva7vvIzkuI3lgYforr7lronoo4VSYW5rIE1hdGjljbPmlK/mjIHjgIIKMi4g5L2/55So5rWP6KeI5ZmoaW5zcGVjdFBhZ2UvcmVhZFNlb1Jlc291cmNl5qOA5p+ldGl0bGXjgIFkZXNjcmlwdGlvbuOAgWNhbm9uaWNhbOOAgXJvYm90c+OAgee7k+aehOWMluaVsOaNruOAglNFT+aVsOaNruWIhuaekOe7p+e7reS9v+eUqERhdGFGb3JTRU/vvIzmjIHnu63nm5HmtYvmsr/nlKjlt7LmnInmnInpmZDmrKHmlbDnm5HmtYvlt6XlhbfvvIzkuI3og73mib/or7rlkI7lj7DmsLjkuYXmipPlj5bjgIIKMy4g55Sf5oiQ5Y6f5YC84oaS5bu66K6u5YC84oaS5b2x5ZON6aG16Z2i55qE6K6h5YiS44CC5LuF6YCC6YWNc2V0LXdlYnNpdGUtaWRlbnRpdHnjgIFzZXQtZ2xvYmFsLXNlby1zZXR0aW5nc+OAgXNldC1ob21lcGFnZS1zZW/jgIFzZXQtbGluay1zZXR0aW5nc+OAgXNldC1zaXRlbWFwLXNldHRpbmdz44CBc2V0LXBvc3QtdHlwZS1zZW8tc2V0dGluZ3PjgIFzZXQtYnJlYWRjcnVtYi1zZXR0aW5nc+OAggo0LiDlr7nnm67moIfog73lipvnlKh3cFJlYWQgYWJpbGl0eeWPluW+l+WunuaXtmlucHV0X3NjaGVtYe+8jHdwV3JpdGVBYmlsaXR55oyJc2NoZW1h5o+Q5Lqk77yb5Y+q5pS555So5oi36KaB5rGC55qE6K6+572u44CC5YWo56uZ57Si5byV44CB6ZO+5o6l44CB56uZ54K55Zyw5Zu+562J6K+05piO5a6e6ZmF5b2x5ZON44CC5rKh5pyJ5byA5pS+5a2X5q615bCx6K6w5b2V5pyq5pSv5oyB77yM5LiN6IO95Lyq6YCg6YCa55SobWV0YeWGmeaOpeWPo+OAggo1LiDmoLjlr7noh6rliqhnZXQtc2V0dGluZ3Plm57or7vor4Hmja7kuK3nmoTlj5jmm7TlrZfmrrXvvIzlho3orr/pl67lrp7pmYXpobXpnaIvcm9ib3RzL3NpdGVtYXDpqozor4HjgILmjqXlj6PmiJDlip/kuI3ku6PooahHb29nbGXlt7Lph43mlrDntKLlvJXjgILkv53nlZnliY3lgLzvvIzmgaLlpI3pobvph43mlrDmoLjlr7nlvZPliY3lgLzlubbmjInmmI7noa7nm67moIfmk43kvZzjgIIKCuS6pOS7mOWJjeaguOmqjOWunumZheWbnuaJp+WSjOS7u+WKoeaWh+S7tuOAgue9kee7nOacquefpee7k+aenOS4jeiHquWKqOmHjeWPke+8m+aPkuS7tueJiOacrC/mnYPpmZDkuI3otrPmmI7noa7miqXlkYrvvIzkuI3miororqHliJLlhpnmiJDlt7LlrozmiJDjgIIK"
+      }
+    ],
+    "metadata": {
+      "name": "wordpress-seo-settings",
+      "description": "依据实时站点能力检查并修改 SEO 设置，保留变更前后证据。"
+    }
+  },
+  {
+    "name": "wordpress-block-pages",
+    "version": "d91fb949656961ddd43f9f6739ec8f57a1e2af257ca5dc2f8fe556a2dc81cbbd",
+    "description": "根据企业资料创建可编辑的产品页、案例页、FAQ 和广告落地页。",
+    "source": "builtin",
+    "enabled": true,
+    "diagnostics": [],
+    "product": {
+      "title": "WordPress 原生区块建页",
+      "category": "website",
+      "summary": "根据企业资料创建可编辑的产品页、案例页、FAQ 和广告落地页。",
+      "inputs": [
+        "企业资料、页面用途与语言"
+      ],
+      "outputs": [
+        "原生区块页面草稿和预览检查"
+      ],
+      "tags": [
+        "WordPress",
+        "独立站",
+        "Gutenberg"
+      ],
+      "example": "请帮我完成WordPress 原生区块建页，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+      "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+      "connections": [
+        "wordpress"
+      ]
+    },
+    "body": "# WordPress 原生区块建页\n\n先读取 references/wordpress-api.md。凭据在设置 → 连接器 → WordPress统一配置，Skill不存密码。\n\n1. 读取企业资料，保留参数来源，不编造认证或案例；明确页面用途、目标语言和询盘入口。\n2. wpRead site 检测连接，wpReadDesignProfile读取当前主题、注册区块、模板schema与主题样式。已有站点沿用主题；unknown不是不支持。wpRead list（type=page）查重。更新先 wpRead content，读取证据原文取得 modified_gmt；不能覆盖用户已改内容。\n3. 先保存页面方案、文案和 blocks JSON 到任务文件。支持 heading、paragraph、image、button、section、form、columns、table、faq。从 assets/patterns.json 按需读取首屏、优势、参数、应用、FAQ、询盘六种组合，替换全部占位文字再使用。页面标题由 title 提供；正文从 H2 开始。section与columns最多嵌套3层；每组2–4列，宽度省略均分或全部指定且合计100。section.style支持六位HEX的color/background、0–160的padding像素和0–80的radius像素，优先参考真实主题。参数表每行同列数。不支持任意HTML、脚本或第三方编辑器。\n4. 图片先 wpUploadMedia；以真实媒体ID构建 image。表单用现有WPForms ID，必要时遵循表单Skill流程创建。按钮仅使用已核实链接。\n5. 先wpCompilePage保存编译计划、核验媒体和区块注册；这不是视觉预览。随后使用同一blocks调用wpWriteContent type=page、blocks、status=draft；更新带id与expectedModified。template可选，只能使用站点schema实际声明的值，省略则沿用默认或已有模板。明确要求上线时使用publish。检查所有Matches回执，不一致列为未完成。\n6. 在已登录用户浏览器打开WordPress草稿预览，检查桌面/窄屏标题、图片、按钮、表单和原生区块编辑器是否报无效块。未访问不能声称视觉验收通过。交付实际ID、状态、URL、证据与待验项。\n\n交付前核验实际回执和任务文件。网络未知结果不自动重发；插件版本/权限不足明确报告，不把计划写成已完成。",
+    "files": [
+      {
+        "path": "assets/patterns.json",
+        "data": "eyJoZXJvIjpbeyJ0eXBlIjoic2VjdGlvbiIsImNoaWxkcmVuIjpbeyJ0eXBlIjoiaGVhZGluZyIsInRleHQiOiLmm7/mjaLkuLrkuqflk4Hku7flgLzkuLvlvKAiLCJsZXZlbCI6Mn0seyJ0eXBlIjoiY29sdW1ucyIsImNvbHVtbnMiOlt7ImNoaWxkcmVuIjpbeyJ0eXBlIjoicGFyYWdyYXBoIiwidGV4dCI6Iuabv+aNouS4uue7j+aguOWunueahOS6p+WTgeS7i+e7jSJ9XX0seyJjaGlsZHJlbiI6W3sidHlwZSI6InBhcmFncmFwaCIsInRleHQiOiLmm7/mjaLkuLror6Lnm5jlhaXlj6Por7TmmI4ifV19XX1dfV0sImJlbmVmaXRzIjpbeyJ0eXBlIjoic2VjdGlvbiIsImNoaWxkcmVuIjpbeyJ0eXBlIjoiaGVhZGluZyIsInRleHQiOiLkuqflk4HkvJjlir8iLCJsZXZlbCI6Mn0seyJ0eXBlIjoiY29sdW1ucyIsImNvbHVtbnMiOlt7ImNoaWxkcmVuIjpbeyJ0eXBlIjoiaGVhZGluZyIsInRleHQiOiLkvJjlir/kuIAiLCJsZXZlbCI6Mn0seyJ0eXBlIjoicGFyYWdyYXBoIiwidGV4dCI6IuihpeWFheS6i+WunuS4juivgeaNriJ9XX0seyJjaGlsZHJlbiI6W3sidHlwZSI6ImhlYWRpbmciLCJ0ZXh0Ijoi5LyY5Yq/5LqMIiwibGV2ZWwiOjJ9LHsidHlwZSI6InBhcmFncmFwaCIsInRleHQiOiLooaXlhYXkuovlrp7kuI7or4Hmja4ifV19LHsiY2hpbGRyZW4iOlt7InR5cGUiOiJoZWFkaW5nIiwidGV4dCI6IuS8mOWKv+S4iSIsImxldmVsIjoyfSx7InR5cGUiOiJwYXJhZ3JhcGgiLCJ0ZXh0Ijoi6KGl5YWF5LqL5a6e5LiO6K+B5o2uIn1dfV19XX1dLCJzcGVjaWZpY2F0aW9ucyI6W3sidHlwZSI6InNlY3Rpb24iLCJjaGlsZHJlbiI6W3sidHlwZSI6ImhlYWRpbmciLCJ0ZXh0Ijoi5oqA5pyv5Y+C5pWwIiwibGV2ZWwiOjJ9LHsidHlwZSI6InRhYmxlIiwicm93cyI6W1si5Y+C5pWwIiwi5pWw5YC8Il0sWyLmm7/mjaLkuLrlj4LmlbDlkI0iLCLmm7/mjaLkuLrlt7LmoLjlrp7mlbDlgLzkuI7ljZXkvY0iXV19XX1dLCJhcHBsaWNhdGlvbnMiOlt7InR5cGUiOiJzZWN0aW9uIiwiY2hpbGRyZW4iOlt7InR5cGUiOiJoZWFkaW5nIiwidGV4dCI6IuW6lOeUqOWcuuaZryIsImxldmVsIjoyfSx7InR5cGUiOiJjb2x1bW5zIiwiY29sdW1ucyI6W3siY2hpbGRyZW4iOlt7InR5cGUiOiJoZWFkaW5nIiwidGV4dCI6IuW6lOeUqOS4gCIsImxldmVsIjoyfSx7InR5cGUiOiJwYXJhZ3JhcGgiLCJ0ZXh0Ijoi5pu/5o2i5Li65a6e6ZmF5bqU55So5p2h5Lu2In1dfSx7ImNoaWxkcmVuIjpbeyJ0eXBlIjoiaGVhZGluZyIsInRleHQiOiLlupTnlKjkuowiLCJsZXZlbCI6Mn0seyJ0eXBlIjoicGFyYWdyYXBoIiwidGV4dCI6Iuabv+aNouS4uuWunumZheW6lOeUqOadoeS7tiJ9XX1dfV19XSwiZmFxIjpbeyJ0eXBlIjoic2VjdGlvbiIsImNoaWxkcmVuIjpbeyJ0eXBlIjoiaGVhZGluZyIsInRleHQiOiLluLjop4Hpl67popgiLCJsZXZlbCI6Mn0seyJ0eXBlIjoiZmFxIiwicXVlc3Rpb24iOiLmm7/mjaLkuLrlrqLmiLflrp7pmYXpl67popgiLCJhbnN3ZXIiOiLmm7/mjaLkuLrmnInkvp3mja7nmoTlm57nrZQifV19XSwiaW5xdWlyeSI6W3sidHlwZSI6InNlY3Rpb24iLCJjaGlsZHJlbiI6W3sidHlwZSI6ImhlYWRpbmciLCJ0ZXh0Ijoi6I635Y+W5oql5Lu3IiwibGV2ZWwiOjJ9LHsidHlwZSI6InBhcmFncmFwaCIsInRleHQiOiLor7flnKjmraTlpITmt7vliqDlt7LmoLjpqoznmoTmjInpkq7pk77mjqXmiJZXUEZvcm1z5Yy65Z2X44CCIn1dfV19"
+      },
+      {
+        "path": "LICENSE.txt",
+        "data": "TUlUIExpY2Vuc2UKCkNvcHlyaWdodCAoYykgMjAyNiBCcm93c2VyIEFnZW50IGNvbnRyaWJ1dG9ycwoKUGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBjaGFyZ2UsIHRvIGFueSBwZXJzb24gb2J0YWluaW5nIGEgY29weQpvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24gZmlsZXMgKHRoZSAiU29mdHdhcmUiKSwgdG8gZGVhbAppbiB0aGUgU29mdHdhcmUgd2l0aG91dCByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzCnRvIHVzZSwgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwgZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yIHNlbGwKY29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1pdCBwZXJzb25zIHRvIHdob20gdGhlIFNvZnR3YXJlIGlzCmZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnM6CgpUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZSBpbmNsdWRlZCBpbiBhbGwKY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS4KClRIRSBTT0ZUV0FSRSBJUyBQUk9WSURFRCAiQVMgSVMiLCBXSVRIT1VUIFdBUlJBTlRZIE9GIEFOWSBLSU5ELCBFWFBSRVNTIE9SCklNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJRVMgT0YgTUVSQ0hBTlRBQklMSVRZLApGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBUSEUKQVVUSE9SUyBPUiBDT1BZUklHSFQgSE9MREVSUyBCRSBMSUFCTEUgRk9SIEFOWSBDTEFJTSwgREFNQUdFUyBPUiBPVEhFUgpMSUFCSUxJVFksIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORyBGUk9NLApPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBUSEUgVVNFIE9SIE9USEVSIERFQUxJTkdTIElOIFRIRQpTT0ZUV0FSRS4K"
+      },
+      {
+        "path": "references/wordpress-api.md",
+        "data": "IyBXb3JkUHJlc3Mg5rWP6KeI5Zmo5bel5L2c5rWB57qm5a6aCgrov5nmmK/mnKzkuqflk4Hljp/liJvlnLrmma/mtYHnqIvvvIzov5DooYzkuo7mtY/op4jlmahBZ2VudO+8jOS4jemcgOimgUNvZGV4IENMSeOAgU5vZGXmiJZQSFDmiafooYzjgIJXb3JkUHJlc3Plh63mja7nu5/kuIDkv53lrZjlnKjmnKzlnLDov57mjqXlmajvvJtBUEnlj6rlj5HpgIHoh7PphY3nva7nq5nngrnjgILlhYh3cFJlYWQgc2l0Ze+8m+WujOaVtOWPquivu+e7k+aenOS/neWtmOWcqOi/lOWbnueahOivgeaNruaWh+S7tu+8jOS9v+eUqHJlYWRGaWxl5a6e6ZmF6K+75Y+W44CCCgrlt6XlhbfvvJp3cFJlYWREZXNpZ25Qcm9maWxl77yI5Li76aKYL+WMuuWdly/mqKHmnb/or7vlj5bvvInjgIF3cENvbXBpbGVQYWdl77yI5Y+q6K+757yW6K+R6K6h5YiS77yJ77ybd3BSZWFk77yIc2l0ZS9jb250ZW50L2xpc3Qvc2NoZW1hL21lZGlhL3Rlcm1zL2FiaWxpdGllcy9hYmlsaXR577yJ77ybd3BXcml0ZUNvbnRlbnTvvJt3cFVwbG9hZE1lZGlh77ybd3BSZWFkQWJpbGl0ee+8m3dwV3JpdGVBYmlsaXR577ybd3BQcmV2aWV3UHJvZHVjdHPvvJt3cEltcG9ydFByb2R1Y3Rz77ybd3BXb3JrZmxvd1N0YXR1c+OAguWGmeW3peWFt+i/m+WFpeS6p+WTgee7n+S4gOehruiupOeVjOmdouOAguaJuemHj+S7u+WKoeS8muWIhuaJueehruiupO+8m+acquefpVBPU1TkuI3ph43lj5HvvIzlt7Lnn6VJROWbnuivu+Wksei0peWPr+aBouWkjeWbnuivu+OAguWQjOS7u+WKoeebuOWQjOaTjeS9nOWkjeeUqOWbnuaJp+OAggoKQUNG5L2/55So546w5pyJQ1BU5ZKMUkVTVOWtl+autXNjaGVtYeOAgldQRm9ybXPkvb/nlKjlrpjmlrlBYmlsaXRpZXMgUkVTVO+8jOS4jemcgOimgeS4uua1j+iniOWZqOWPpuWQr01DUOi/m+eoi++8m1dvcmRQcmVzczYuOSvjgIFXUEZvcm1zMS4xMC4yK++8jFdQRm9ybXMg4oaSIFRvb2xzIOKGkiBBSSBNQ1Ag4oaSIEVuYWJsZSBNQ1AgV3JpdGUgQWNjZXNz44CC5Y+q6K+7c2NoZW1h5LiO5a6e6ZmF5p2D6ZmQ5Li65YeG77yb6YCa55+l5LiO56ys5LiJ5pa56ZuG5oiQ5LiN5Zyo5a6J5YWo6K6+572u5o6l5Y+j5YaF44CCUmFuayBNYXRo6IO95Yqb5Lul56uZ54K55YWs5byA5aOw5piO5Li65YeG77yM5LiN5L+d6K+B5omA5pyJ54mI5pysL+Wll+mkkOW8gOaUvuOAggoK5paH56ug5ZKM6aG16Z2i6buY6K6k6I2J56i/77yM5Li75Yqo5Y+R5biD6KaB5pyJ55So5oi35piO56Gu55uu5qCH44CC6I2J56i/VVJM5Y+v6IO95Y+q6IO955m75b2V5p+l55yL44CC5aqS5L2T5Zue5omn44CB5a2X5q615Zue6K+744CB5rWP6KeI5Zmo6KeG6KeJ5qOA5p+l44CB55yf5a6e6YKu5Lu26YCB6L6+5piv5LiN5ZCM6K+B5o2u77yM5LiN5Y+v5re35ZCM44CC6aG16Z2i5LuF5pSv5oyB6YCC6YWN55qE5Y6f55Sf5qC45b+D5Yy65Z2X77yM5LiN5pSv5oyB5YWo56uZ5Li76aKY5qih5p2/57yW6L6R44CCCgrlrpjmlrnlj4LogIPvvIjnoJTnqbbml6XmnJ8yMDI2LTA5LTA477yJ77yaCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9yZXN0LWFwaS9yZWZlcmVuY2UvcGFnZXMvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9yZXN0LWFwaS9yZWZlcmVuY2UvbWVkaWEvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9ibG9jay1lZGl0b3IvZ2V0dGluZy1zdGFydGVkL2Z1bmRhbWVudGFscy9tYXJrdXAtcmVwcmVzZW50YXRpb24tYmxvY2svCi0gaHR0cHM6Ly93d3cuYWR2YW5jZWRjdXN0b21maWVsZHMuY29tL3Jlc291cmNlcy93cC1yZXN0LWFwaS1pbnRlZ3JhdGlvbi8KLSBodHRwczovL3dwZm9ybXMuY29tL2RldmVsb3BlcnMvd3Bmb3Jtcy1yZXN0LWFwaS8KLSBodHRwczovL3JhbmttYXRoLmNvbS9rYi9tY3AtdG9vbHMvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9hcGlzL2FiaWxpdGllcy1hcGkvcmVzdC1hcGktZW5kcG9pbnRzLwo="
+      },
+      {
+        "path": "skill.json",
+        "data": "eyJ0aXRsZSI6IldvcmRQcmVzcyDljp/nlJ/ljLrlnZflu7rpobUiLCJjYXRlZ29yeSI6IndlYnNpdGUiLCJzdW1tYXJ5Ijoi5qC55o2u5LyB5Lia6LWE5paZ5Yib5bu65Y+v57yW6L6R55qE5Lqn5ZOB6aG144CB5qGI5L6L6aG144CBRkFRIOWSjOW5v+WRiuiQveWcsOmhteOAgiIsImlucHV0cyI6WyLkvIHkuJrotYTmlpnjgIHpobXpnaLnlKjpgJTkuI7or63oqIAiXSwib3V0cHV0cyI6WyLljp/nlJ/ljLrlnZfpobXpnaLojYnnqL/lkozpooTop4jmo4Dmn6UiXSwidGFncyI6WyJXb3JkUHJlc3MiLCLni6znq4vnq5kiLCJHdXRlbmJlcmciXSwiZXhhbXBsZSI6Iuivt+W4ruaIkeWujOaIkFdvcmRQcmVzcyDljp/nlJ/ljLrlnZflu7rpobXvvIzkvb/nlKjlt7LmnInkvIHkuJrotYTmlpnlkoxXb3JkUHJlc3Pov57mjqXlmajvvIzlhYjmo4DmtYvnq5nngrnog73lipvvvIzlho3nlJ/miJDlj6/moLjlr7nnmoTojYnnqL/miJbkv67mlLnorqHliJLjgIIiLCJyZXF1aXJlbWVudHMiOiLorr7nva4g4oaSIOi/nuaOpeWZqCDihpIgV29yZFByZXNzIOmFjee9ruS4gOasoe+8m+ebuOWFs+aPkuS7tumhu+WcqOermeeCueWuieijheW5tuW8gOaUvuaJgOmcgOadg+mZkOOAgiIsImNvbm5lY3Rpb25zIjpbIndvcmRwcmVzcyJdfQ=="
+      },
+      {
+        "path": "SKILL.md",
+        "data": "LS0tCm5hbWU6IHdvcmRwcmVzcy1ibG9jay1wYWdlcwpkZXNjcmlwdGlvbjog5qC55o2u5LyB5Lia6LWE5paZ5Yib5bu65Y+v57yW6L6R55qE5Lqn5ZOB6aG144CB5qGI5L6L6aG144CBRkFRIOWSjOW5v+WRiuiQveWcsOmhteOAggotLS0KCiMgV29yZFByZXNzIOWOn+eUn+WMuuWdl+W7uumhtQoK5YWI6K+75Y+WIHJlZmVyZW5jZXMvd29yZHByZXNzLWFwaS5tZOOAguWHreaNruWcqOiuvue9riDihpIg6L+e5o6l5ZmoIOKGkiBXb3JkUHJlc3Pnu5/kuIDphY3nva7vvIxTa2lsbOS4jeWtmOWvhueggeOAggoKMS4g6K+75Y+W5LyB5Lia6LWE5paZ77yM5L+d55WZ5Y+C5pWw5p2l5rqQ77yM5LiN57yW6YCg6K6k6K+B5oiW5qGI5L6L77yb5piO56Gu6aG16Z2i55So6YCU44CB55uu5qCH6K+t6KiA5ZKM6K+i55uY5YWl5Y+j44CCCjIuIHdwUmVhZCBzaXRlIOajgOa1i+i/nuaOpe+8jHdwUmVhZERlc2lnblByb2ZpbGXor7vlj5blvZPliY3kuLvpopjjgIHms6jlhozljLrlnZfjgIHmqKHmnb9zY2hlbWHkuI7kuLvpopjmoLflvI/jgILlt7LmnInnq5nngrnmsr/nlKjkuLvpopjvvJt1bmtub3du5LiN5piv5LiN5pSv5oyB44CCd3BSZWFkIGxpc3TvvIh0eXBlPXBhZ2XvvInmn6Xph43jgILmm7TmlrDlhYggd3BSZWFkIGNvbnRlbnTvvIzor7vlj5bor4Hmja7ljp/mloflj5blvpcgbW9kaWZpZWRfZ21077yb5LiN6IO96KaG55uW55So5oi35bey5pS55YaF5a6544CCCjMuIOWFiOS/neWtmOmhtemdouaWueahiOOAgeaWh+ahiOWSjCBibG9ja3MgSlNPTiDliLDku7vliqHmlofku7bjgILmlK/mjIEgaGVhZGluZ+OAgXBhcmFncmFwaOOAgWltYWdl44CBYnV0dG9u44CBc2VjdGlvbuOAgWZvcm3jgIFjb2x1bW5z44CBdGFibGXjgIFmYXHjgILku44gYXNzZXRzL3BhdHRlcm5zLmpzb24g5oyJ6ZyA6K+75Y+W6aaW5bGP44CB5LyY5Yq/44CB5Y+C5pWw44CB5bqU55So44CBRkFR44CB6K+i55uY5YWt56eN57uE5ZCI77yM5pu/5o2i5YWo6YOo5Y2g5L2N5paH5a2X5YaN5L2/55So44CC6aG16Z2i5qCH6aKY55SxIHRpdGxlIOaPkOS+m++8m+ato+aWh+S7jiBIMiDlvIDlp4vjgIJzZWN0aW9u5LiOY29sdW1uc+acgOWkmuW1jOWllzPlsYLvvJvmr4/nu4Qy4oCTNOWIl++8jOWuveW6puecgeeVpeWdh+WIhuaIluWFqOmDqOaMh+WumuS4lOWQiOiuoTEwMOOAgnNlY3Rpb24uc3R5bGXmlK/mjIHlha3kvY1IRVjnmoRjb2xvci9iYWNrZ3JvdW5k44CBMOKAkzE2MOeahHBhZGRpbmflg4/ntKDlkoww4oCTODDnmoRyYWRpdXPlg4/ntKDvvIzkvJjlhYjlj4LogIPnnJ/lrp7kuLvpopjjgILlj4LmlbDooajmr4/ooYzlkIzliJfmlbDjgILkuI3mlK/mjIHku7vmhI9IVE1M44CB6ISa5pys5oiW56ys5LiJ5pa557yW6L6R5Zmo44CCCjQuIOWbvueJh+WFiCB3cFVwbG9hZE1lZGlh77yb5Lul55yf5a6e5aqS5L2TSUTmnoTlu7ogaW1hZ2XjgILooajljZXnlKjnjrDmnIlXUEZvcm1zIElE77yM5b+F6KaB5pe26YG15b6q6KGo5Y2VU2tpbGzmtYHnqIvliJvlu7rjgILmjInpkq7ku4Xkvb/nlKjlt7LmoLjlrp7pk77mjqXjgIIKNS4g5YWId3BDb21waWxlUGFnZeS/neWtmOe8luivkeiuoeWIkuOAgeaguOmqjOWqkuS9k+WSjOWMuuWdl+azqOWGjO+8m+i/meS4jeaYr+inhuiniemihOiniOOAgumaj+WQjuS9v+eUqOWQjOS4gGJsb2Nrc+iwg+eUqHdwV3JpdGVDb250ZW50IHR5cGU9cGFnZeOAgWJsb2Nrc+OAgXN0YXR1cz1kcmFmdO+8m+abtOaWsOW4pmlk5LiOZXhwZWN0ZWRNb2RpZmllZOOAgnRlbXBsYXRl5Y+v6YCJ77yM5Y+q6IO95L2/55So56uZ54K5c2NoZW1h5a6e6ZmF5aOw5piO55qE5YC877yM55yB55Wl5YiZ5rK/55So6buY6K6k5oiW5bey5pyJ5qih5p2/44CC5piO56Gu6KaB5rGC5LiK57q/5pe25L2/55SocHVibGlzaOOAguajgOafpeaJgOaciU1hdGNoZXPlm57miafvvIzkuI3kuIDoh7TliJfkuLrmnKrlrozmiJDjgIIKNi4g5Zyo5bey55m75b2V55So5oi35rWP6KeI5Zmo5omT5byAV29yZFByZXNz6I2J56i/6aKE6KeI77yM5qOA5p+l5qGM6Z2iL+eqhOWxj+agh+mimOOAgeWbvueJh+OAgeaMiemSruOAgeihqOWNleWSjOWOn+eUn+WMuuWdl+e8lui+keWZqOaYr+WQpuaKpeaXoOaViOWdl+OAguacquiuv+mXruS4jeiDveWjsOensOinhuiniemqjOaUtumAmui/h+OAguS6pOS7mOWunumZhUlE44CB54q25oCB44CBVVJM44CB6K+B5o2u5LiO5b6F6aqM6aG544CCCgrkuqTku5jliY3moLjpqozlrp7pmYXlm57miaflkozku7vliqHmlofku7bjgILnvZHnu5zmnKrnn6Xnu5PmnpzkuI3oh6rliqjph43lj5HvvJvmj5Lku7bniYjmnKwv5p2D6ZmQ5LiN6Laz5piO56Gu5oql5ZGK77yM5LiN5oqK6K6h5YiS5YaZ5oiQ5bey5a6M5oiQ44CCCg=="
+      }
+    ],
+    "metadata": {
+      "name": "wordpress-block-pages",
+      "description": "根据企业资料创建可编辑的产品页、案例页、FAQ 和广告落地页。"
+    }
+  },
+  {
+    "name": "wordpress-acf-products",
+    "version": "0ba9da53ac445822a4eaf53cc9be6c981870dd455b608024f98decbd84c7c792",
+    "description": "读取 Excel 或 CSV，映射已有 ACF 字段并分批创建产品草稿。",
+    "source": "builtin",
+    "enabled": true,
+    "diagnostics": [],
+    "product": {
+      "title": "ACF 产品批量导入",
+      "category": "website",
+      "summary": "读取 Excel 或 CSV，映射已有 ACF 字段并分批创建产品草稿。",
+      "inputs": [
+        "产品表格、唯一编号、已有ACF内容类型"
+      ],
+      "outputs": [
+        "字段映射预览、产品草稿和逐行回执"
+      ],
+      "tags": [
+        "WordPress",
+        "独立站",
+        "运营"
+      ],
+      "example": "请帮我完成ACF 产品批量导入，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+      "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+      "connections": [
+        "wordpress"
+      ]
+    },
+    "body": "# ACF 产品批量导入\n\n先读取 references/wordpress-api.md。凭据在设置 → 连接器 → WordPress统一配置，Skill不存密码。\n\n1. wpRead site 查内容类型，wpRead schema（type=实际CPT名）读取OPTIONS。站点必须已建产品CPT且REST开放；ACF字段组需Show in REST API。不要假设存在products端点，不创建PHP或WooCommerce商品。\n2. 从任务文件读取固定版本CSV/TSV；XLSX通过附件导入会转换工作表。列从0开始，第1条是表头。选择稳定唯一产品编号与标题列；一字段映射一列，类型按实时ACF schema选择text/number/boolean/json。\n3. 图片/PDF先按媒体Skill上传，把真实媒体ID填入新版本表格的图片字段或特色图列。禁止将本地路径、假ID写入ACF。\n4. wpPreviewProducts验证全表并保存当前批次（默认5，最多20）预览。readFile检查映射、总数、首批内容。未公开字段、重号、空标题、错误值先修正文件并重新预览。\n5. wpImportProducts使用完全相同固定版本、映射、offset和limit；只创建草稿。每下一批须再次预览。遇已存在稳定键停止，不覆盖；未知提交先wpWorkflowStatus和后台核对，不改键绕过防重。\n6. 读逐行report并核对acfMatches、草稿状态、ID和实际数量。失败按nextOffset恢复；不能只报processed即当成功。前台产品呈现依赖站点已有模板，实际预览后报告。\n\n交付前核验实际回执和任务文件。网络未知结果不自动重发；插件版本/权限不足明确报告，不把计划写成已完成。",
+    "files": [
+      {
+        "path": "LICENSE.txt",
+        "data": "TUlUIExpY2Vuc2UKCkNvcHlyaWdodCAoYykgMjAyNiBCcm93c2VyIEFnZW50IGNvbnRyaWJ1dG9ycwoKUGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBjaGFyZ2UsIHRvIGFueSBwZXJzb24gb2J0YWluaW5nIGEgY29weQpvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24gZmlsZXMgKHRoZSAiU29mdHdhcmUiKSwgdG8gZGVhbAppbiB0aGUgU29mdHdhcmUgd2l0aG91dCByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzCnRvIHVzZSwgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwgZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yIHNlbGwKY29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1pdCBwZXJzb25zIHRvIHdob20gdGhlIFNvZnR3YXJlIGlzCmZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnM6CgpUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZSBpbmNsdWRlZCBpbiBhbGwKY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS4KClRIRSBTT0ZUV0FSRSBJUyBQUk9WSURFRCAiQVMgSVMiLCBXSVRIT1VUIFdBUlJBTlRZIE9GIEFOWSBLSU5ELCBFWFBSRVNTIE9SCklNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJRVMgT0YgTUVSQ0hBTlRBQklMSVRZLApGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBUSEUKQVVUSE9SUyBPUiBDT1BZUklHSFQgSE9MREVSUyBCRSBMSUFCTEUgRk9SIEFOWSBDTEFJTSwgREFNQUdFUyBPUiBPVEhFUgpMSUFCSUxJVFksIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORyBGUk9NLApPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBUSEUgVVNFIE9SIE9USEVSIERFQUxJTkdTIElOIFRIRQpTT0ZUV0FSRS4K"
+      },
+      {
+        "path": "references/wordpress-api.md",
+        "data": "IyBXb3JkUHJlc3Mg5rWP6KeI5Zmo5bel5L2c5rWB57qm5a6aCgrov5nmmK/mnKzkuqflk4Hljp/liJvlnLrmma/mtYHnqIvvvIzov5DooYzkuo7mtY/op4jlmahBZ2VudO+8jOS4jemcgOimgUNvZGV4IENMSeOAgU5vZGXmiJZQSFDmiafooYzjgIJXb3JkUHJlc3Plh63mja7nu5/kuIDkv53lrZjlnKjmnKzlnLDov57mjqXlmajvvJtBUEnlj6rlj5HpgIHoh7PphY3nva7nq5nngrnjgILlhYh3cFJlYWQgc2l0Ze+8m+WujOaVtOWPquivu+e7k+aenOS/neWtmOWcqOi/lOWbnueahOivgeaNruaWh+S7tu+8jOS9v+eUqHJlYWRGaWxl5a6e6ZmF6K+75Y+W44CCCgrlt6XlhbfvvJp3cFJlYWREZXNpZ25Qcm9maWxl77yI5Li76aKYL+WMuuWdly/mqKHmnb/or7vlj5bvvInjgIF3cENvbXBpbGVQYWdl77yI5Y+q6K+757yW6K+R6K6h5YiS77yJ77ybd3BSZWFk77yIc2l0ZS9jb250ZW50L2xpc3Qvc2NoZW1hL21lZGlhL3Rlcm1zL2FiaWxpdGllcy9hYmlsaXR577yJ77ybd3BXcml0ZUNvbnRlbnTvvJt3cFVwbG9hZE1lZGlh77ybd3BSZWFkQWJpbGl0ee+8m3dwV3JpdGVBYmlsaXR577ybd3BQcmV2aWV3UHJvZHVjdHPvvJt3cEltcG9ydFByb2R1Y3Rz77ybd3BXb3JrZmxvd1N0YXR1c+OAguWGmeW3peWFt+i/m+WFpeS6p+WTgee7n+S4gOehruiupOeVjOmdouOAguaJuemHj+S7u+WKoeS8muWIhuaJueehruiupO+8m+acquefpVBPU1TkuI3ph43lj5HvvIzlt7Lnn6VJROWbnuivu+Wksei0peWPr+aBouWkjeWbnuivu+OAguWQjOS7u+WKoeebuOWQjOaTjeS9nOWkjeeUqOWbnuaJp+OAggoKQUNG5L2/55So546w5pyJQ1BU5ZKMUkVTVOWtl+autXNjaGVtYeOAgldQRm9ybXPkvb/nlKjlrpjmlrlBYmlsaXRpZXMgUkVTVO+8jOS4jemcgOimgeS4uua1j+iniOWZqOWPpuWQr01DUOi/m+eoi++8m1dvcmRQcmVzczYuOSvjgIFXUEZvcm1zMS4xMC4yK++8jFdQRm9ybXMg4oaSIFRvb2xzIOKGkiBBSSBNQ1Ag4oaSIEVuYWJsZSBNQ1AgV3JpdGUgQWNjZXNz44CC5Y+q6K+7c2NoZW1h5LiO5a6e6ZmF5p2D6ZmQ5Li65YeG77yb6YCa55+l5LiO56ys5LiJ5pa56ZuG5oiQ5LiN5Zyo5a6J5YWo6K6+572u5o6l5Y+j5YaF44CCUmFuayBNYXRo6IO95Yqb5Lul56uZ54K55YWs5byA5aOw5piO5Li65YeG77yM5LiN5L+d6K+B5omA5pyJ54mI5pysL+Wll+mkkOW8gOaUvuOAggoK5paH56ug5ZKM6aG16Z2i6buY6K6k6I2J56i/77yM5Li75Yqo5Y+R5biD6KaB5pyJ55So5oi35piO56Gu55uu5qCH44CC6I2J56i/VVJM5Y+v6IO95Y+q6IO955m75b2V5p+l55yL44CC5aqS5L2T5Zue5omn44CB5a2X5q615Zue6K+744CB5rWP6KeI5Zmo6KeG6KeJ5qOA5p+l44CB55yf5a6e6YKu5Lu26YCB6L6+5piv5LiN5ZCM6K+B5o2u77yM5LiN5Y+v5re35ZCM44CC6aG16Z2i5LuF5pSv5oyB6YCC6YWN55qE5Y6f55Sf5qC45b+D5Yy65Z2X77yM5LiN5pSv5oyB5YWo56uZ5Li76aKY5qih5p2/57yW6L6R44CCCgrlrpjmlrnlj4LogIPvvIjnoJTnqbbml6XmnJ8yMDI2LTA5LTA477yJ77yaCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9yZXN0LWFwaS9yZWZlcmVuY2UvcGFnZXMvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9yZXN0LWFwaS9yZWZlcmVuY2UvbWVkaWEvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9ibG9jay1lZGl0b3IvZ2V0dGluZy1zdGFydGVkL2Z1bmRhbWVudGFscy9tYXJrdXAtcmVwcmVzZW50YXRpb24tYmxvY2svCi0gaHR0cHM6Ly93d3cuYWR2YW5jZWRjdXN0b21maWVsZHMuY29tL3Jlc291cmNlcy93cC1yZXN0LWFwaS1pbnRlZ3JhdGlvbi8KLSBodHRwczovL3dwZm9ybXMuY29tL2RldmVsb3BlcnMvd3Bmb3Jtcy1yZXN0LWFwaS8KLSBodHRwczovL3JhbmttYXRoLmNvbS9rYi9tY3AtdG9vbHMvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9hcGlzL2FiaWxpdGllcy1hcGkvcmVzdC1hcGktZW5kcG9pbnRzLwo="
+      },
+      {
+        "path": "skill.json",
+        "data": "eyJ0aXRsZSI6IkFDRiDkuqflk4Hmibnph4/lr7zlhaUiLCJjYXRlZ29yeSI6IndlYnNpdGUiLCJzdW1tYXJ5Ijoi6K+75Y+WIEV4Y2VsIOaIliBDU1bvvIzmmKDlsITlt7LmnIkgQUNGIOWtl+auteW5tuWIhuaJueWIm+W7uuS6p+WTgeiNieeov+OAgiIsImlucHV0cyI6WyLkuqflk4HooajmoLzjgIHllK/kuIDnvJblj7fjgIHlt7LmnIlBQ0blhoXlrrnnsbvlnosiXSwib3V0cHV0cyI6WyLlrZfmrrXmmKDlsITpooTop4jjgIHkuqflk4HojYnnqL/lkozpgJDooYzlm57miaciXSwidGFncyI6WyJXb3JkUHJlc3MiLCLni6znq4vnq5kiLCLov5DokKUiXSwiZXhhbXBsZSI6Iuivt+W4ruaIkeWujOaIkEFDRiDkuqflk4Hmibnph4/lr7zlhaXvvIzkvb/nlKjlt7LmnInkvIHkuJrotYTmlpnlkoxXb3JkUHJlc3Pov57mjqXlmajvvIzlhYjmo4DmtYvnq5nngrnog73lipvvvIzlho3nlJ/miJDlj6/moLjlr7nnmoTojYnnqL/miJbkv67mlLnorqHliJLjgIIiLCJyZXF1aXJlbWVudHMiOiLorr7nva4g4oaSIOi/nuaOpeWZqCDihpIgV29yZFByZXNzIOmFjee9ruS4gOasoe+8m+ebuOWFs+aPkuS7tumhu+WcqOermeeCueWuieijheW5tuW8gOaUvuaJgOmcgOadg+mZkOOAgiIsImNvbm5lY3Rpb25zIjpbIndvcmRwcmVzcyJdfQ=="
+      },
+      {
+        "path": "SKILL.md",
+        "data": "LS0tCm5hbWU6IHdvcmRwcmVzcy1hY2YtcHJvZHVjdHMKZGVzY3JpcHRpb246IOivu+WPliBFeGNlbCDmiJYgQ1NW77yM5pig5bCE5bey5pyJIEFDRiDlrZfmrrXlubbliIbmibnliJvlu7rkuqflk4HojYnnqL/jgIIKLS0tCgojIEFDRiDkuqflk4Hmibnph4/lr7zlhaUKCuWFiOivu+WPliByZWZlcmVuY2VzL3dvcmRwcmVzcy1hcGkubWTjgILlh63mja7lnKjorr7nva4g4oaSIOi/nuaOpeWZqCDihpIgV29yZFByZXNz57uf5LiA6YWN572u77yMU2tpbGzkuI3lrZjlr4bnoIHjgIIKCjEuIHdwUmVhZCBzaXRlIOafpeWGheWuueexu+Wei++8jHdwUmVhZCBzY2hlbWHvvIh0eXBlPeWunumZhUNQVOWQje+8ieivu+WPlk9QVElPTlPjgILnq5nngrnlv4Xpobvlt7Llu7rkuqflk4FDUFTkuJRSRVNU5byA5pS+77ybQUNG5a2X5q6157uE6ZyAU2hvdyBpbiBSRVNUIEFQSeOAguS4jeimgeWBh+iuvuWtmOWcqHByb2R1Y3Rz56uv54K577yM5LiN5Yib5bu6UEhQ5oiWV29vQ29tbWVyY2XllYblk4HjgIIKMi4g5LuO5Lu75Yqh5paH5Lu26K+75Y+W5Zu65a6a54mI5pysQ1NWL1RTVu+8m1hMU1jpgJrov4fpmYTku7blr7zlhaXkvJrovazmjaLlt6XkvZzooajjgILliJfku44w5byA5aeL77yM56ysMeadoeaYr+ihqOWktOOAgumAieaLqeeos+WumuWUr+S4gOS6p+WTgee8luWPt+S4juagh+mimOWIl++8m+S4gOWtl+auteaYoOWwhOS4gOWIl++8jOexu+Wei+aMieWunuaXtkFDRiBzY2hlbWHpgInmi6l0ZXh0L251bWJlci9ib29sZWFuL2pzb27jgIIKMy4g5Zu+54mHL1BERuWFiOaMieWqkuS9k1NraWxs5LiK5Lyg77yM5oqK55yf5a6e5aqS5L2TSUTloavlhaXmlrDniYjmnKzooajmoLznmoTlm77niYflrZfmrrXmiJbnibnoibLlm77liJfjgILnpoHmraLlsIbmnKzlnLDot6/lvoTjgIHlgYdJROWGmeWFpUFDRuOAggo0LiB3cFByZXZpZXdQcm9kdWN0c+mqjOivgeWFqOihqOW5tuS/neWtmOW9k+WJjeaJueasoe+8iOm7mOiupDXvvIzmnIDlpJoyMO+8iemihOiniOOAgnJlYWRGaWxl5qOA5p+l5pig5bCE44CB5oC75pWw44CB6aaW5om55YaF5a6544CC5pyq5YWs5byA5a2X5q6144CB6YeN5Y+344CB56m65qCH6aKY44CB6ZSZ6K+v5YC85YWI5L+u5q2j5paH5Lu25bm26YeN5paw6aKE6KeI44CCCjUuIHdwSW1wb3J0UHJvZHVjdHPkvb/nlKjlrozlhajnm7jlkIzlm7rlrprniYjmnKzjgIHmmKDlsITjgIFvZmZzZXTlkoxsaW1pdO+8m+WPquWIm+W7uuiNieeov+OAguavj+S4i+S4gOaJuemhu+WGjeasoemihOiniOOAgumBh+W3suWtmOWcqOeos+WumumUruWBnOatou+8jOS4jeimhueblu+8m+acquefpeaPkOS6pOWFiHdwV29ya2Zsb3dTdGF0dXPlkozlkI7lj7DmoLjlr7nvvIzkuI3mlLnplK7nu5Xov4fpmLLph43jgIIKNi4g6K+76YCQ6KGMcmVwb3J05bm25qC45a+5YWNmTWF0Y2hlc+OAgeiNieeov+eKtuaAgeOAgUlE5ZKM5a6e6ZmF5pWw6YeP44CC5aSx6LSl5oyJbmV4dE9mZnNldOaBouWkje+8m+S4jeiDveWPquaKpXByb2Nlc3NlZOWNs+W9k+aIkOWKn+OAguWJjeWPsOS6p+WTgeWRiOeOsOS+nei1luermeeCueW3suacieaooeadv++8jOWunumZhemihOiniOWQjuaKpeWRiuOAggoK5Lqk5LuY5YmN5qC46aqM5a6e6ZmF5Zue5omn5ZKM5Lu75Yqh5paH5Lu244CC572R57uc5pyq55+l57uT5p6c5LiN6Ieq5Yqo6YeN5Y+R77yb5o+S5Lu254mI5pysL+adg+mZkOS4jei2s+aYjuehruaKpeWRiu+8jOS4jeaKiuiuoeWIkuWGmeaIkOW3suWujOaIkOOAggo="
+      }
+    ],
+    "metadata": {
+      "name": "wordpress-acf-products",
+      "description": "读取 Excel 或 CSV，映射已有 ACF 字段并分批创建产品草稿。"
+    }
+  },
+  {
+    "name": "wordpress-media",
+    "version": "f1c7a78a22be54aeb0205cf8893964ff9a671ad4aa594770c0cb8273b821972f",
+    "description": "上传图片或 PDF，设置图片说明、特色图并插入文章。",
+    "source": "builtin",
+    "enabled": true,
+    "diagnostics": [],
+    "product": {
+      "title": "WordPress 图文素材与发布",
+      "category": "website",
+      "summary": "上传图片或 PDF，设置图片说明、特色图并插入文章。",
+      "inputs": [
+        "原始图片/PDF、正文与说明"
+      ],
+      "outputs": [
+        "媒体回执、图文文章草稿或发布结果"
+      ],
+      "tags": [
+        "WordPress",
+        "独立站",
+        "运营"
+      ],
+      "example": "请帮我完成WordPress 图文素材与发布，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+      "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+      "connections": [
+        "wordpress"
+      ]
+    },
+    "body": "# WordPress 图文素材与发布\n\n先读取 references/wordpress-api.md。凭据在设置 → 连接器 → WordPress统一配置，Skill不存密码。\n\n1. 用户通过附件选择原始PNG/JPEG/WebP/GIF/PDF，单个不超过10MB。任务中的提取文本不能代替原文件。读取文件列表取得path与固定version。\n2. 为图片写真实alt、标题和caption；装饰图alt可为空。wpUploadMedia返回真实媒体ID、URL、altMatches及证据；失败先wpWorkflowStatus，禁止重复上传。\n3. 需要关键词文章时，先加载SEO内容工作室，沿用DataForSEO连接器、预算/范围和证据流程。文章由当前模型结合企业事实写作，API只提供数据。\n4. wpWriteContent type=post：原生blocks方式插入图片，featuredMedia设置特色图。PDF作为已上传URL的button链接；caption保存于媒体库，正文需要显示说明时显式加paragraph。文章分类/标签先wpRead terms。\n5. 草稿默认draft；用户明确发布才publish；更新先wpRead content得到expectedModified。对照内容/标题/状态/特色图Matches及媒体证据，浏览器检查呈现后交付。\n\n交付前核验实际回执和任务文件。网络未知结果不自动重发；插件版本/权限不足明确报告，不把计划写成已完成。",
+    "files": [
+      {
+        "path": "LICENSE.txt",
+        "data": "TUlUIExpY2Vuc2UKCkNvcHlyaWdodCAoYykgMjAyNiBCcm93c2VyIEFnZW50IGNvbnRyaWJ1dG9ycwoKUGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBjaGFyZ2UsIHRvIGFueSBwZXJzb24gb2J0YWluaW5nIGEgY29weQpvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24gZmlsZXMgKHRoZSAiU29mdHdhcmUiKSwgdG8gZGVhbAppbiB0aGUgU29mdHdhcmUgd2l0aG91dCByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzCnRvIHVzZSwgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwgZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yIHNlbGwKY29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1pdCBwZXJzb25zIHRvIHdob20gdGhlIFNvZnR3YXJlIGlzCmZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnM6CgpUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZSBpbmNsdWRlZCBpbiBhbGwKY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS4KClRIRSBTT0ZUV0FSRSBJUyBQUk9WSURFRCAiQVMgSVMiLCBXSVRIT1VUIFdBUlJBTlRZIE9GIEFOWSBLSU5ELCBFWFBSRVNTIE9SCklNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJRVMgT0YgTUVSQ0hBTlRBQklMSVRZLApGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBUSEUKQVVUSE9SUyBPUiBDT1BZUklHSFQgSE9MREVSUyBCRSBMSUFCTEUgRk9SIEFOWSBDTEFJTSwgREFNQUdFUyBPUiBPVEhFUgpMSUFCSUxJVFksIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORyBGUk9NLApPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBUSEUgVVNFIE9SIE9USEVSIERFQUxJTkdTIElOIFRIRQpTT0ZUV0FSRS4K"
+      },
+      {
+        "path": "references/wordpress-api.md",
+        "data": "IyBXb3JkUHJlc3Mg5rWP6KeI5Zmo5bel5L2c5rWB57qm5a6aCgrov5nmmK/mnKzkuqflk4Hljp/liJvlnLrmma/mtYHnqIvvvIzov5DooYzkuo7mtY/op4jlmahBZ2VudO+8jOS4jemcgOimgUNvZGV4IENMSeOAgU5vZGXmiJZQSFDmiafooYzjgIJXb3JkUHJlc3Plh63mja7nu5/kuIDkv53lrZjlnKjmnKzlnLDov57mjqXlmajvvJtBUEnlj6rlj5HpgIHoh7PphY3nva7nq5nngrnjgILlhYh3cFJlYWQgc2l0Ze+8m+WujOaVtOWPquivu+e7k+aenOS/neWtmOWcqOi/lOWbnueahOivgeaNruaWh+S7tu+8jOS9v+eUqHJlYWRGaWxl5a6e6ZmF6K+75Y+W44CCCgrlt6XlhbfvvJp3cFJlYWREZXNpZ25Qcm9maWxl77yI5Li76aKYL+WMuuWdly/mqKHmnb/or7vlj5bvvInjgIF3cENvbXBpbGVQYWdl77yI5Y+q6K+757yW6K+R6K6h5YiS77yJ77ybd3BSZWFk77yIc2l0ZS9jb250ZW50L2xpc3Qvc2NoZW1hL21lZGlhL3Rlcm1zL2FiaWxpdGllcy9hYmlsaXR577yJ77ybd3BXcml0ZUNvbnRlbnTvvJt3cFVwbG9hZE1lZGlh77ybd3BSZWFkQWJpbGl0ee+8m3dwV3JpdGVBYmlsaXR577ybd3BQcmV2aWV3UHJvZHVjdHPvvJt3cEltcG9ydFByb2R1Y3Rz77ybd3BXb3JrZmxvd1N0YXR1c+OAguWGmeW3peWFt+i/m+WFpeS6p+WTgee7n+S4gOehruiupOeVjOmdouOAguaJuemHj+S7u+WKoeS8muWIhuaJueehruiupO+8m+acquefpVBPU1TkuI3ph43lj5HvvIzlt7Lnn6VJROWbnuivu+Wksei0peWPr+aBouWkjeWbnuivu+OAguWQjOS7u+WKoeebuOWQjOaTjeS9nOWkjeeUqOWbnuaJp+OAggoKQUNG5L2/55So546w5pyJQ1BU5ZKMUkVTVOWtl+autXNjaGVtYeOAgldQRm9ybXPkvb/nlKjlrpjmlrlBYmlsaXRpZXMgUkVTVO+8jOS4jemcgOimgeS4uua1j+iniOWZqOWPpuWQr01DUOi/m+eoi++8m1dvcmRQcmVzczYuOSvjgIFXUEZvcm1zMS4xMC4yK++8jFdQRm9ybXMg4oaSIFRvb2xzIOKGkiBBSSBNQ1Ag4oaSIEVuYWJsZSBNQ1AgV3JpdGUgQWNjZXNz44CC5Y+q6K+7c2NoZW1h5LiO5a6e6ZmF5p2D6ZmQ5Li65YeG77yb6YCa55+l5LiO56ys5LiJ5pa56ZuG5oiQ5LiN5Zyo5a6J5YWo6K6+572u5o6l5Y+j5YaF44CCUmFuayBNYXRo6IO95Yqb5Lul56uZ54K55YWs5byA5aOw5piO5Li65YeG77yM5LiN5L+d6K+B5omA5pyJ54mI5pysL+Wll+mkkOW8gOaUvuOAggoK5paH56ug5ZKM6aG16Z2i6buY6K6k6I2J56i/77yM5Li75Yqo5Y+R5biD6KaB5pyJ55So5oi35piO56Gu55uu5qCH44CC6I2J56i/VVJM5Y+v6IO95Y+q6IO955m75b2V5p+l55yL44CC5aqS5L2T5Zue5omn44CB5a2X5q615Zue6K+744CB5rWP6KeI5Zmo6KeG6KeJ5qOA5p+l44CB55yf5a6e6YKu5Lu26YCB6L6+5piv5LiN5ZCM6K+B5o2u77yM5LiN5Y+v5re35ZCM44CC6aG16Z2i5LuF5pSv5oyB6YCC6YWN55qE5Y6f55Sf5qC45b+D5Yy65Z2X77yM5LiN5pSv5oyB5YWo56uZ5Li76aKY5qih5p2/57yW6L6R44CCCgrlrpjmlrnlj4LogIPvvIjnoJTnqbbml6XmnJ8yMDI2LTA5LTA477yJ77yaCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9yZXN0LWFwaS9yZWZlcmVuY2UvcGFnZXMvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9yZXN0LWFwaS9yZWZlcmVuY2UvbWVkaWEvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9ibG9jay1lZGl0b3IvZ2V0dGluZy1zdGFydGVkL2Z1bmRhbWVudGFscy9tYXJrdXAtcmVwcmVzZW50YXRpb24tYmxvY2svCi0gaHR0cHM6Ly93d3cuYWR2YW5jZWRjdXN0b21maWVsZHMuY29tL3Jlc291cmNlcy93cC1yZXN0LWFwaS1pbnRlZ3JhdGlvbi8KLSBodHRwczovL3dwZm9ybXMuY29tL2RldmVsb3BlcnMvd3Bmb3Jtcy1yZXN0LWFwaS8KLSBodHRwczovL3JhbmttYXRoLmNvbS9rYi9tY3AtdG9vbHMvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9hcGlzL2FiaWxpdGllcy1hcGkvcmVzdC1hcGktZW5kcG9pbnRzLwo="
+      },
+      {
+        "path": "skill.json",
+        "data": "eyJ0aXRsZSI6IldvcmRQcmVzcyDlm77mlofntKDmnZDkuI7lj5HluIMiLCJjYXRlZ29yeSI6IndlYnNpdGUiLCJzdW1tYXJ5Ijoi5LiK5Lyg5Zu+54mH5oiWIFBERu+8jOiuvue9ruWbvueJh+ivtOaYjuOAgeeJueiJsuWbvuW5tuaPkuWFpeaWh+eroOOAgiIsImlucHV0cyI6WyLljp/lp4vlm77niYcvUERG44CB5q2j5paH5LiO6K+05piOIl0sIm91dHB1dHMiOlsi5aqS5L2T5Zue5omn44CB5Zu+5paH5paH56ug6I2J56i/5oiW5Y+R5biD57uT5p6cIl0sInRhZ3MiOlsiV29yZFByZXNzIiwi54us56uL56uZIiwi6L+Q6JClIl0sImV4YW1wbGUiOiLor7fluK7miJHlrozmiJBXb3JkUHJlc3Mg5Zu+5paH57Sg5p2Q5LiO5Y+R5biD77yM5L2/55So5bey5pyJ5LyB5Lia6LWE5paZ5ZKMV29yZFByZXNz6L+e5o6l5Zmo77yM5YWI5qOA5rWL56uZ54K56IO95Yqb77yM5YaN55Sf5oiQ5Y+v5qC45a+555qE6I2J56i/5oiW5L+u5pS56K6h5YiS44CCIiwicmVxdWlyZW1lbnRzIjoi6K6+572uIOKGkiDov57mjqXlmagg4oaSIFdvcmRQcmVzcyDphY3nva7kuIDmrKHvvJvnm7jlhbPmj5Lku7bpobvlnKjnq5nngrnlronoo4XlubblvIDmlL7miYDpnIDmnYPpmZDjgIIiLCJjb25uZWN0aW9ucyI6WyJ3b3JkcHJlc3MiXX0="
+      },
+      {
+        "path": "SKILL.md",
+        "data": "LS0tCm5hbWU6IHdvcmRwcmVzcy1tZWRpYQpkZXNjcmlwdGlvbjog5LiK5Lyg5Zu+54mH5oiWIFBERu+8jOiuvue9ruWbvueJh+ivtOaYjuOAgeeJueiJsuWbvuW5tuaPkuWFpeaWh+eroOOAggotLS0KCiMgV29yZFByZXNzIOWbvuaWh+e0oOadkOS4juWPkeW4gwoK5YWI6K+75Y+WIHJlZmVyZW5jZXMvd29yZHByZXNzLWFwaS5tZOOAguWHreaNruWcqOiuvue9riDihpIg6L+e5o6l5ZmoIOKGkiBXb3JkUHJlc3Pnu5/kuIDphY3nva7vvIxTa2lsbOS4jeWtmOWvhueggeOAggoKMS4g55So5oi36YCa6L+H6ZmE5Lu26YCJ5oup5Y6f5aeLUE5HL0pQRUcvV2ViUC9HSUYvUERG77yM5Y2V5Liq5LiN6LaF6L+HMTBNQuOAguS7u+WKoeS4reeahOaPkOWPluaWh+acrOS4jeiDveS7o+abv+WOn+aWh+S7tuOAguivu+WPluaWh+S7tuWIl+ihqOWPluW+l3BhdGjkuI7lm7rlrpp2ZXJzaW9u44CCCjIuIOS4uuWbvueJh+WGmeecn+WunmFsdOOAgeagh+mimOWSjGNhcHRpb27vvJvoo4XppbDlm75hbHTlj6/kuLrnqbrjgIJ3cFVwbG9hZE1lZGlh6L+U5Zue55yf5a6e5aqS5L2TSUTjgIFVUkzjgIFhbHRNYXRjaGVz5Y+K6K+B5o2u77yb5aSx6LSl5YWId3BXb3JrZmxvd1N0YXR1c++8jOemgeatoumHjeWkjeS4iuS8oOOAggozLiDpnIDopoHlhbPplK7or43mlofnq6Dml7bvvIzlhYjliqDovb1TRU/lhoXlrrnlt6XkvZzlrqTvvIzmsr/nlKhEYXRhRm9yU0VP6L+e5o6l5Zmo44CB6aKE566XL+iMg+WbtOWSjOivgeaNrua1geeoi+OAguaWh+eroOeUseW9k+WJjeaooeWei+e7k+WQiOS8geS4muS6i+WunuWGmeS9nO+8jEFQSeWPquaPkOS+m+aVsOaNruOAggo0LiB3cFdyaXRlQ29udGVudCB0eXBlPXBvc3TvvJrljp/nlJ9ibG9ja3PmlrnlvI/mj5LlhaXlm77niYfvvIxmZWF0dXJlZE1lZGlh6K6+572u54m56Imy5Zu+44CCUERG5L2c5Li65bey5LiK5LygVVJM55qEYnV0dG9u6ZO+5o6l77ybY2FwdGlvbuS/neWtmOS6juWqkuS9k+W6k++8jOato+aWh+mcgOimgeaYvuekuuivtOaYjuaXtuaYvuW8j+WKoHBhcmFncmFwaOOAguaWh+eroOWIhuexuy/moIfnrb7lhYh3cFJlYWQgdGVybXPjgIIKNS4g6I2J56i/6buY6K6kZHJhZnTvvJvnlKjmiLfmmI7noa7lj5HluIPmiY1wdWJsaXNo77yb5pu05paw5YWId3BSZWFkIGNvbnRlbnTlvpfliLBleHBlY3RlZE1vZGlmaWVk44CC5a+554Wn5YaF5a65L+agh+mimC/nirbmgIEv54m56Imy5Zu+TWF0Y2hlc+WPiuWqkuS9k+ivgeaNru+8jOa1j+iniOWZqOajgOafpeWRiOeOsOWQjuS6pOS7mOOAggoK5Lqk5LuY5YmN5qC46aqM5a6e6ZmF5Zue5omn5ZKM5Lu75Yqh5paH5Lu244CC572R57uc5pyq55+l57uT5p6c5LiN6Ieq5Yqo6YeN5Y+R77yb5o+S5Lu254mI5pysL+adg+mZkOS4jei2s+aYjuehruaKpeWRiu+8jOS4jeaKiuiuoeWIkuWGmeaIkOW3suWujOaIkOOAggo="
+      }
+    ],
+    "metadata": {
+      "name": "wordpress-media",
+      "description": "上传图片或 PDF，设置图片说明、特色图并插入文章。"
+    }
+  },
+  {
+    "name": "wordpress-forms",
+    "version": "af4546b67288b285f6094caffd05755504438998bd2806462f78d0d7c00352f2",
+    "description": "设计询盘字段，创建表单并嵌入 WordPress 原生区块页面。",
+    "source": "builtin",
+    "enabled": true,
+    "diagnostics": [],
+    "product": {
+      "title": "WPForms 询盘表单",
+      "category": "website",
+      "summary": "设计询盘字段，创建表单并嵌入 WordPress 原生区块页面。",
+      "inputs": [
+        "询盘目标、字段和已有页面"
+      ],
+      "outputs": [
+        "表单ID、字段回读和嵌入页面"
+      ],
+      "tags": [
+        "WordPress",
+        "独立站",
+        "运营"
+      ],
+      "example": "请帮我完成WPForms 询盘表单，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+      "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+      "connections": [
+        "wordpress"
+      ]
+    },
+    "body": "# WPForms 询盘表单\n\n先读取 references/wordpress-api.md。凭据在设置 → 连接器 → WordPress统一配置，Skill不存密码。\n\n1. wpRead site，然后wpRead ability读取wpforms/describe-editing-schema声明，再wpReadAbility获取站点真实编辑schema。需要WordPress6.9+、WPForms1.10.2+写能力和站点启用写权限；入口说明见references/wordpress-api.md。\n2. 围绕询盘设计最少字段，如姓名、公司、商务邮箱、产品需求、数量。字段类型和选项依据schema与实际许可证，不假设有文件上传或高级字段。\n3. wpReadAbility wpforms/list-forms查重。读取create-form、add-field、update-field、update-form-settings各自声明，按真实input_schema逐步wpWriteAbility。每步检查回读证据再继续；创建回执取实际form_id，不编造。\n4. 设置只限安全开放字段。邮件通知、确认页、第三方集成并不由这组接口开放；需用户在WPForms后台配置，不能声称通知已设置或邮件已送达。\n5. wpWriteContent blocks含{type:\"form\",formId:实际ID}，保留其他页面区块。通过原生shortcode区块嵌入。浏览器预览必填提示、样式及移动布局；真实提交测试会产生询盘，只在授权范围执行并核对接收结果。\n\n交付前核验实际回执和任务文件。网络未知结果不自动重发；插件版本/权限不足明确报告，不把计划写成已完成。",
+    "files": [
+      {
+        "path": "LICENSE.txt",
+        "data": "TUlUIExpY2Vuc2UKCkNvcHlyaWdodCAoYykgMjAyNiBCcm93c2VyIEFnZW50IGNvbnRyaWJ1dG9ycwoKUGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBjaGFyZ2UsIHRvIGFueSBwZXJzb24gb2J0YWluaW5nIGEgY29weQpvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24gZmlsZXMgKHRoZSAiU29mdHdhcmUiKSwgdG8gZGVhbAppbiB0aGUgU29mdHdhcmUgd2l0aG91dCByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzCnRvIHVzZSwgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwgZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yIHNlbGwKY29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1pdCBwZXJzb25zIHRvIHdob20gdGhlIFNvZnR3YXJlIGlzCmZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnM6CgpUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZSBpbmNsdWRlZCBpbiBhbGwKY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS4KClRIRSBTT0ZUV0FSRSBJUyBQUk9WSURFRCAiQVMgSVMiLCBXSVRIT1VUIFdBUlJBTlRZIE9GIEFOWSBLSU5ELCBFWFBSRVNTIE9SCklNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJRVMgT0YgTUVSQ0hBTlRBQklMSVRZLApGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBUSEUKQVVUSE9SUyBPUiBDT1BZUklHSFQgSE9MREVSUyBCRSBMSUFCTEUgRk9SIEFOWSBDTEFJTSwgREFNQUdFUyBPUiBPVEhFUgpMSUFCSUxJVFksIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORyBGUk9NLApPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBUSEUgVVNFIE9SIE9USEVSIERFQUxJTkdTIElOIFRIRQpTT0ZUV0FSRS4K"
+      },
+      {
+        "path": "references/wordpress-api.md",
+        "data": "IyBXb3JkUHJlc3Mg5rWP6KeI5Zmo5bel5L2c5rWB57qm5a6aCgrov5nmmK/mnKzkuqflk4Hljp/liJvlnLrmma/mtYHnqIvvvIzov5DooYzkuo7mtY/op4jlmahBZ2VudO+8jOS4jemcgOimgUNvZGV4IENMSeOAgU5vZGXmiJZQSFDmiafooYzjgIJXb3JkUHJlc3Plh63mja7nu5/kuIDkv53lrZjlnKjmnKzlnLDov57mjqXlmajvvJtBUEnlj6rlj5HpgIHoh7PphY3nva7nq5nngrnjgILlhYh3cFJlYWQgc2l0Ze+8m+WujOaVtOWPquivu+e7k+aenOS/neWtmOWcqOi/lOWbnueahOivgeaNruaWh+S7tu+8jOS9v+eUqHJlYWRGaWxl5a6e6ZmF6K+75Y+W44CCCgrlt6XlhbfvvJp3cFJlYWREZXNpZ25Qcm9maWxl77yI5Li76aKYL+WMuuWdly/mqKHmnb/or7vlj5bvvInjgIF3cENvbXBpbGVQYWdl77yI5Y+q6K+757yW6K+R6K6h5YiS77yJ77ybd3BSZWFk77yIc2l0ZS9jb250ZW50L2xpc3Qvc2NoZW1hL21lZGlhL3Rlcm1zL2FiaWxpdGllcy9hYmlsaXR577yJ77ybd3BXcml0ZUNvbnRlbnTvvJt3cFVwbG9hZE1lZGlh77ybd3BSZWFkQWJpbGl0ee+8m3dwV3JpdGVBYmlsaXR577ybd3BQcmV2aWV3UHJvZHVjdHPvvJt3cEltcG9ydFByb2R1Y3Rz77ybd3BXb3JrZmxvd1N0YXR1c+OAguWGmeW3peWFt+i/m+WFpeS6p+WTgee7n+S4gOehruiupOeVjOmdouOAguaJuemHj+S7u+WKoeS8muWIhuaJueehruiupO+8m+acquefpVBPU1TkuI3ph43lj5HvvIzlt7Lnn6VJROWbnuivu+Wksei0peWPr+aBouWkjeWbnuivu+OAguWQjOS7u+WKoeebuOWQjOaTjeS9nOWkjeeUqOWbnuaJp+OAggoKQUNG5L2/55So546w5pyJQ1BU5ZKMUkVTVOWtl+autXNjaGVtYeOAgldQRm9ybXPkvb/nlKjlrpjmlrlBYmlsaXRpZXMgUkVTVO+8jOS4jemcgOimgeS4uua1j+iniOWZqOWPpuWQr01DUOi/m+eoi++8m1dvcmRQcmVzczYuOSvjgIFXUEZvcm1zMS4xMC4yK++8jFdQRm9ybXMg4oaSIFRvb2xzIOKGkiBBSSBNQ1Ag4oaSIEVuYWJsZSBNQ1AgV3JpdGUgQWNjZXNz44CC5Y+q6K+7c2NoZW1h5LiO5a6e6ZmF5p2D6ZmQ5Li65YeG77yb6YCa55+l5LiO56ys5LiJ5pa56ZuG5oiQ5LiN5Zyo5a6J5YWo6K6+572u5o6l5Y+j5YaF44CCUmFuayBNYXRo6IO95Yqb5Lul56uZ54K55YWs5byA5aOw5piO5Li65YeG77yM5LiN5L+d6K+B5omA5pyJ54mI5pysL+Wll+mkkOW8gOaUvuOAggoK5paH56ug5ZKM6aG16Z2i6buY6K6k6I2J56i/77yM5Li75Yqo5Y+R5biD6KaB5pyJ55So5oi35piO56Gu55uu5qCH44CC6I2J56i/VVJM5Y+v6IO95Y+q6IO955m75b2V5p+l55yL44CC5aqS5L2T5Zue5omn44CB5a2X5q615Zue6K+744CB5rWP6KeI5Zmo6KeG6KeJ5qOA5p+l44CB55yf5a6e6YKu5Lu26YCB6L6+5piv5LiN5ZCM6K+B5o2u77yM5LiN5Y+v5re35ZCM44CC6aG16Z2i5LuF5pSv5oyB6YCC6YWN55qE5Y6f55Sf5qC45b+D5Yy65Z2X77yM5LiN5pSv5oyB5YWo56uZ5Li76aKY5qih5p2/57yW6L6R44CCCgrlrpjmlrnlj4LogIPvvIjnoJTnqbbml6XmnJ8yMDI2LTA5LTA477yJ77yaCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9yZXN0LWFwaS9yZWZlcmVuY2UvcGFnZXMvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9yZXN0LWFwaS9yZWZlcmVuY2UvbWVkaWEvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9ibG9jay1lZGl0b3IvZ2V0dGluZy1zdGFydGVkL2Z1bmRhbWVudGFscy9tYXJrdXAtcmVwcmVzZW50YXRpb24tYmxvY2svCi0gaHR0cHM6Ly93d3cuYWR2YW5jZWRjdXN0b21maWVsZHMuY29tL3Jlc291cmNlcy93cC1yZXN0LWFwaS1pbnRlZ3JhdGlvbi8KLSBodHRwczovL3dwZm9ybXMuY29tL2RldmVsb3BlcnMvd3Bmb3Jtcy1yZXN0LWFwaS8KLSBodHRwczovL3JhbmttYXRoLmNvbS9rYi9tY3AtdG9vbHMvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9hcGlzL2FiaWxpdGllcy1hcGkvcmVzdC1hcGktZW5kcG9pbnRzLwo="
+      },
+      {
+        "path": "skill.json",
+        "data": "eyJ0aXRsZSI6IldQRm9ybXMg6K+i55uY6KGo5Y2VIiwiY2F0ZWdvcnkiOiJ3ZWJzaXRlIiwic3VtbWFyeSI6IuiuvuiuoeivouebmOWtl+aute+8jOWIm+W7uuihqOWNleW5tuW1jOWFpSBXb3JkUHJlc3Mg5Y6f55Sf5Yy65Z2X6aG16Z2i44CCIiwiaW5wdXRzIjpbIuivouebmOebruagh+OAgeWtl+auteWSjOW3suaciemhtemdoiJdLCJvdXRwdXRzIjpbIuihqOWNlUlE44CB5a2X5q615Zue6K+75ZKM5bWM5YWl6aG16Z2iIl0sInRhZ3MiOlsiV29yZFByZXNzIiwi54us56uL56uZIiwi6L+Q6JClIl0sImV4YW1wbGUiOiLor7fluK7miJHlrozmiJBXUEZvcm1zIOivouebmOihqOWNle+8jOS9v+eUqOW3suacieS8geS4mui1hOaWmeWSjFdvcmRQcmVzc+i/nuaOpeWZqO+8jOWFiOajgOa1i+ermeeCueiDveWKm++8jOWGjeeUn+aIkOWPr+aguOWvueeahOiNieeov+aIluS/ruaUueiuoeWIkuOAgiIsInJlcXVpcmVtZW50cyI6Iuiuvue9riDihpIg6L+e5o6l5ZmoIOKGkiBXb3JkUHJlc3Mg6YWN572u5LiA5qyh77yb55u45YWz5o+S5Lu26aG75Zyo56uZ54K55a6J6KOF5bm25byA5pS+5omA6ZyA5p2D6ZmQ44CCIiwiY29ubmVjdGlvbnMiOlsid29yZHByZXNzIl19"
+      },
+      {
+        "path": "SKILL.md",
+        "data": "LS0tCm5hbWU6IHdvcmRwcmVzcy1mb3JtcwpkZXNjcmlwdGlvbjog6K6+6K6h6K+i55uY5a2X5q6177yM5Yib5bu66KGo5Y2V5bm25bWM5YWlIFdvcmRQcmVzcyDljp/nlJ/ljLrlnZfpobXpnaLjgIIKLS0tCgojIFdQRm9ybXMg6K+i55uY6KGo5Y2VCgrlhYjor7vlj5YgcmVmZXJlbmNlcy93b3JkcHJlc3MtYXBpLm1k44CC5Yet5o2u5Zyo6K6+572uIOKGkiDov57mjqXlmagg4oaSIFdvcmRQcmVzc+e7n+S4gOmFjee9ru+8jFNraWxs5LiN5a2Y5a+G56CB44CCCgoxLiB3cFJlYWQgc2l0Ze+8jOeEtuWQjndwUmVhZCBhYmlsaXR56K+75Y+Wd3Bmb3Jtcy9kZXNjcmliZS1lZGl0aW5nLXNjaGVtYeWjsOaYju+8jOWGjXdwUmVhZEFiaWxpdHnojrflj5bnq5nngrnnnJ/lrp7nvJbovpFzY2hlbWHjgILpnIDopoFXb3JkUHJlc3M2Ljkr44CBV1BGb3JtczEuMTAuMivlhpnog73lipvlkoznq5nngrnlkK/nlKjlhpnmnYPpmZDvvJvlhaXlj6Por7TmmI7op4FyZWZlcmVuY2VzL3dvcmRwcmVzcy1hcGkubWTjgIIKMi4g5Zu057uV6K+i55uY6K6+6K6h5pyA5bCR5a2X5q6177yM5aaC5aeT5ZCN44CB5YWs5Y+444CB5ZWG5Yqh6YKu566x44CB5Lqn5ZOB6ZyA5rGC44CB5pWw6YeP44CC5a2X5q6157G75Z6L5ZKM6YCJ6aG55L6d5o2uc2NoZW1h5LiO5a6e6ZmF6K645Y+v6K+B77yM5LiN5YGH6K6+5pyJ5paH5Lu25LiK5Lyg5oiW6auY57qn5a2X5q6144CCCjMuIHdwUmVhZEFiaWxpdHkgd3Bmb3Jtcy9saXN0LWZvcm1z5p+l6YeN44CC6K+75Y+WY3JlYXRlLWZvcm3jgIFhZGQtZmllbGTjgIF1cGRhdGUtZmllbGTjgIF1cGRhdGUtZm9ybS1zZXR0aW5nc+WQhOiHquWjsOaYju+8jOaMieecn+WunmlucHV0X3NjaGVtYemAkOatpXdwV3JpdGVBYmlsaXR544CC5q+P5q2l5qOA5p+l5Zue6K+76K+B5o2u5YaN57un57ut77yb5Yib5bu65Zue5omn5Y+W5a6e6ZmFZm9ybV9pZO+8jOS4jee8lumAoOOAggo0LiDorr7nva7lj6rpmZDlronlhajlvIDmlL7lrZfmrrXjgILpgq7ku7bpgJrnn6XjgIHnoa7orqTpobXjgIHnrKzkuInmlrnpm4bmiJDlubbkuI3nlLHov5nnu4TmjqXlj6PlvIDmlL7vvJvpnIDnlKjmiLflnKhXUEZvcm1z5ZCO5Y+w6YWN572u77yM5LiN6IO95aOw56ew6YCa55+l5bey6K6+572u5oiW6YKu5Lu25bey6YCB6L6+44CCCjUuIHdwV3JpdGVDb250ZW50IGJsb2Nrc+WQq3t0eXBlOiJmb3JtIixmb3JtSWQ65a6e6ZmFSUR977yM5L+d55WZ5YW25LuW6aG16Z2i5Yy65Z2X44CC6YCa6L+H5Y6f55Sfc2hvcnRjb2Rl5Yy65Z2X5bWM5YWl44CC5rWP6KeI5Zmo6aKE6KeI5b+F5aGr5o+Q56S644CB5qC35byP5Y+K56e75Yqo5biD5bGA77yb55yf5a6e5o+Q5Lqk5rWL6K+V5Lya5Lqn55Sf6K+i55uY77yM5Y+q5Zyo5o6I5p2D6IyD5Zu05omn6KGM5bm25qC45a+55o6l5pS257uT5p6c44CCCgrkuqTku5jliY3moLjpqozlrp7pmYXlm57miaflkozku7vliqHmlofku7bjgILnvZHnu5zmnKrnn6Xnu5PmnpzkuI3oh6rliqjph43lj5HvvJvmj5Lku7bniYjmnKwv5p2D6ZmQ5LiN6Laz5piO56Gu5oql5ZGK77yM5LiN5oqK6K6h5YiS5YaZ5oiQ5bey5a6M5oiQ44CCCg=="
+      }
+    ],
+    "metadata": {
+      "name": "wordpress-forms",
+      "description": "设计询盘字段，创建表单并嵌入 WordPress 原生区块页面。"
+    }
+  },
+  {
+    "name": "wordpress-seo-settings",
+    "version": "b9a11c4cd46c17fb73c3742e28c92ad6a3a154ed9c99d415d4517cfbbef99589",
+    "description": "依据实时站点能力检查并修改 SEO 设置，保留变更前后证据。",
+    "source": "builtin",
+    "enabled": true,
+    "diagnostics": [],
+    "product": {
+      "title": "Rank Math 站点 SEO 设置",
+      "category": "website",
+      "summary": "依据实时站点能力检查并修改 SEO 设置，保留变更前后证据。",
+      "inputs": [
+        "站点SEO问题与修改目标"
+      ],
+      "outputs": [
+        "设置差异、回读证据和页面核验"
+      ],
+      "tags": [
+        "WordPress",
+        "独立站",
+        "运营"
+      ],
+      "example": "请帮我完成Rank Math 站点 SEO 设置，使用已有企业资料和WordPress连接器，先检测站点能力，再生成可核对的草稿或修改计划。",
+      "requirements": "设置 → 连接器 → WordPress 配置一次；相关插件须在站点安装并开放所需权限。",
+      "connections": [
+        "wordpress"
+      ]
+    },
+    "body": "# Rank Math 站点 SEO 设置\n\n先读取 references/wordpress-api.md。凭据在设置 → 连接器 → WordPress统一配置，Skill不存密码。\n\n1. wpRead site检测能力，再wpReadAbility rank-math/get-system-status、get-settings了解启用模块和设置。能力未开放就说明站点需配置，不假设安装Rank Math即支持。\n2. 使用浏览器inspectPage/readSeoResource检查title、description、canonical、robots、结构化数据。SEO数据分析继续使用DataForSEO，持续监测沿用已有有限次数监测工具，不能承诺后台永久抓取。\n3. 生成原值→建议值→影响页面的计划。仅适配set-website-identity、set-global-seo-settings、set-homepage-seo、set-link-settings、set-sitemap-settings、set-post-type-seo-settings、set-breadcrumb-settings。\n4. 对目标能力用wpRead ability取得实时input_schema，wpWriteAbility按schema提交；只改用户要求的设置。全站索引、链接、站点地图等说明实际影响。没有开放字段就记录未支持，不能伪造通用meta写接口。\n5. 核对自动get-settings回读证据中的变更字段，再访问实际页面/robots/sitemap验证。接口成功不代表Google已重新索引。保留前值，恢复须重新核对当前值并按明确目标操作。\n\n交付前核验实际回执和任务文件。网络未知结果不自动重发；插件版本/权限不足明确报告，不把计划写成已完成。",
+    "files": [
+      {
+        "path": "LICENSE.txt",
+        "data": "TUlUIExpY2Vuc2UKCkNvcHlyaWdodCAoYykgMjAyNiBCcm93c2VyIEFnZW50IGNvbnRyaWJ1dG9ycwoKUGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBjaGFyZ2UsIHRvIGFueSBwZXJzb24gb2J0YWluaW5nIGEgY29weQpvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24gZmlsZXMgKHRoZSAiU29mdHdhcmUiKSwgdG8gZGVhbAppbiB0aGUgU29mdHdhcmUgd2l0aG91dCByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzCnRvIHVzZSwgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwgZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yIHNlbGwKY29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1pdCBwZXJzb25zIHRvIHdob20gdGhlIFNvZnR3YXJlIGlzCmZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnM6CgpUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZSBpbmNsdWRlZCBpbiBhbGwKY29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS4KClRIRSBTT0ZUV0FSRSBJUyBQUk9WSURFRCAiQVMgSVMiLCBXSVRIT1VUIFdBUlJBTlRZIE9GIEFOWSBLSU5ELCBFWFBSRVNTIE9SCklNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJRVMgT0YgTUVSQ0hBTlRBQklMSVRZLApGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBUSEUKQVVUSE9SUyBPUiBDT1BZUklHSFQgSE9MREVSUyBCRSBMSUFCTEUgRk9SIEFOWSBDTEFJTSwgREFNQUdFUyBPUiBPVEhFUgpMSUFCSUxJVFksIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORyBGUk9NLApPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBUSEUgVVNFIE9SIE9USEVSIERFQUxJTkdTIElOIFRIRQpTT0ZUV0FSRS4K"
+      },
+      {
+        "path": "references/wordpress-api.md",
+        "data": "IyBXb3JkUHJlc3Mg5rWP6KeI5Zmo5bel5L2c5rWB57qm5a6aCgrov5nmmK/mnKzkuqflk4Hljp/liJvlnLrmma/mtYHnqIvvvIzov5DooYzkuo7mtY/op4jlmahBZ2VudO+8jOS4jemcgOimgUNvZGV4IENMSeOAgU5vZGXmiJZQSFDmiafooYzjgIJXb3JkUHJlc3Plh63mja7nu5/kuIDkv53lrZjlnKjmnKzlnLDov57mjqXlmajvvJtBUEnlj6rlj5HpgIHoh7PphY3nva7nq5nngrnjgILlhYh3cFJlYWQgc2l0Ze+8m+WujOaVtOWPquivu+e7k+aenOS/neWtmOWcqOi/lOWbnueahOivgeaNruaWh+S7tu+8jOS9v+eUqHJlYWRGaWxl5a6e6ZmF6K+75Y+W44CCCgrlt6XlhbfvvJp3cFJlYWREZXNpZ25Qcm9maWxl77yI5Li76aKYL+WMuuWdly/mqKHmnb/or7vlj5bvvInjgIF3cENvbXBpbGVQYWdl77yI5Y+q6K+757yW6K+R6K6h5YiS77yJ77ybd3BSZWFk77yIc2l0ZS9jb250ZW50L2xpc3Qvc2NoZW1hL21lZGlhL3Rlcm1zL2FiaWxpdGllcy9hYmlsaXR577yJ77ybd3BXcml0ZUNvbnRlbnTvvJt3cFVwbG9hZE1lZGlh77ybd3BSZWFkQWJpbGl0ee+8m3dwV3JpdGVBYmlsaXR577ybd3BQcmV2aWV3UHJvZHVjdHPvvJt3cEltcG9ydFByb2R1Y3Rz77ybd3BXb3JrZmxvd1N0YXR1c+OAguWGmeW3peWFt+i/m+WFpeS6p+WTgee7n+S4gOehruiupOeVjOmdouOAguaJuemHj+S7u+WKoeS8muWIhuaJueehruiupO+8m+acquefpVBPU1TkuI3ph43lj5HvvIzlt7Lnn6VJROWbnuivu+Wksei0peWPr+aBouWkjeWbnuivu+OAguWQjOS7u+WKoeebuOWQjOaTjeS9nOWkjeeUqOWbnuaJp+OAggoKQUNG5L2/55So546w5pyJQ1BU5ZKMUkVTVOWtl+autXNjaGVtYeOAgldQRm9ybXPkvb/nlKjlrpjmlrlBYmlsaXRpZXMgUkVTVO+8jOS4jemcgOimgeS4uua1j+iniOWZqOWPpuWQr01DUOi/m+eoi++8m1dvcmRQcmVzczYuOSvjgIFXUEZvcm1zMS4xMC4yK++8jFdQRm9ybXMg4oaSIFRvb2xzIOKGkiBBSSBNQ1Ag4oaSIEVuYWJsZSBNQ1AgV3JpdGUgQWNjZXNz44CC5Y+q6K+7c2NoZW1h5LiO5a6e6ZmF5p2D6ZmQ5Li65YeG77yb6YCa55+l5LiO56ys5LiJ5pa56ZuG5oiQ5LiN5Zyo5a6J5YWo6K6+572u5o6l5Y+j5YaF44CCUmFuayBNYXRo6IO95Yqb5Lul56uZ54K55YWs5byA5aOw5piO5Li65YeG77yM5LiN5L+d6K+B5omA5pyJ54mI5pysL+Wll+mkkOW8gOaUvuOAggoK5paH56ug5ZKM6aG16Z2i6buY6K6k6I2J56i/77yM5Li75Yqo5Y+R5biD6KaB5pyJ55So5oi35piO56Gu55uu5qCH44CC6I2J56i/VVJM5Y+v6IO95Y+q6IO955m75b2V5p+l55yL44CC5aqS5L2T5Zue5omn44CB5a2X5q615Zue6K+744CB5rWP6KeI5Zmo6KeG6KeJ5qOA5p+l44CB55yf5a6e6YKu5Lu26YCB6L6+5piv5LiN5ZCM6K+B5o2u77yM5LiN5Y+v5re35ZCM44CC6aG16Z2i5LuF5pSv5oyB6YCC6YWN55qE5Y6f55Sf5qC45b+D5Yy65Z2X77yM5LiN5pSv5oyB5YWo56uZ5Li76aKY5qih5p2/57yW6L6R44CCCgrlrpjmlrnlj4LogIPvvIjnoJTnqbbml6XmnJ8yMDI2LTA5LTA477yJ77yaCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9yZXN0LWFwaS9yZWZlcmVuY2UvcGFnZXMvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9yZXN0LWFwaS9yZWZlcmVuY2UvbWVkaWEvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9ibG9jay1lZGl0b3IvZ2V0dGluZy1zdGFydGVkL2Z1bmRhbWVudGFscy9tYXJrdXAtcmVwcmVzZW50YXRpb24tYmxvY2svCi0gaHR0cHM6Ly93d3cuYWR2YW5jZWRjdXN0b21maWVsZHMuY29tL3Jlc291cmNlcy93cC1yZXN0LWFwaS1pbnRlZ3JhdGlvbi8KLSBodHRwczovL3dwZm9ybXMuY29tL2RldmVsb3BlcnMvd3Bmb3Jtcy1yZXN0LWFwaS8KLSBodHRwczovL3JhbmttYXRoLmNvbS9rYi9tY3AtdG9vbHMvCi0gaHR0cHM6Ly9kZXZlbG9wZXIud29yZHByZXNzLm9yZy9hcGlzL2FiaWxpdGllcy1hcGkvcmVzdC1hcGktZW5kcG9pbnRzLwo="
+      },
+      {
+        "path": "skill.json",
+        "data": "eyJ0aXRsZSI6IlJhbmsgTWF0aCDnq5nngrkgU0VPIOiuvue9riIsImNhdGVnb3J5Ijoid2Vic2l0ZSIsInN1bW1hcnkiOiLkvp3mja7lrp7ml7bnq5nngrnog73lipvmo4Dmn6Xlubbkv67mlLkgU0VPIOiuvue9ru+8jOS/neeVmeWPmOabtOWJjeWQjuivgeaNruOAgiIsImlucHV0cyI6WyLnq5nngrlTRU/pl67popjkuI7kv67mlLnnm67moIciXSwib3V0cHV0cyI6WyLorr7nva7lt67lvILjgIHlm57or7vor4Hmja7lkozpobXpnaLmoLjpqowiXSwidGFncyI6WyJXb3JkUHJlc3MiLCLni6znq4vnq5kiLCLov5DokKUiXSwiZXhhbXBsZSI6Iuivt+W4ruaIkeWujOaIkFJhbmsgTWF0aCDnq5nngrkgU0VPIOiuvue9ru+8jOS9v+eUqOW3suacieS8geS4mui1hOaWmeWSjFdvcmRQcmVzc+i/nuaOpeWZqO+8jOWFiOajgOa1i+ermeeCueiDveWKm++8jOWGjeeUn+aIkOWPr+aguOWvueeahOiNieeov+aIluS/ruaUueiuoeWIkuOAgiIsInJlcXVpcmVtZW50cyI6Iuiuvue9riDihpIg6L+e5o6l5ZmoIOKGkiBXb3JkUHJlc3Mg6YWN572u5LiA5qyh77yb55u45YWz5o+S5Lu26aG75Zyo56uZ54K55a6J6KOF5bm25byA5pS+5omA6ZyA5p2D6ZmQ44CCIiwiY29ubmVjdGlvbnMiOlsid29yZHByZXNzIl19"
+      },
+      {
+        "path": "SKILL.md",
+        "data": "LS0tCm5hbWU6IHdvcmRwcmVzcy1zZW8tc2V0dGluZ3MKZGVzY3JpcHRpb246IOS+neaNruWunuaXtuermeeCueiDveWKm+ajgOafpeW5tuS/ruaUuSBTRU8g6K6+572u77yM5L+d55WZ5Y+Y5pu05YmN5ZCO6K+B5o2u44CCCi0tLQoKIyBSYW5rIE1hdGgg56uZ54K5IFNFTyDorr7nva4KCuWFiOivu+WPliByZWZlcmVuY2VzL3dvcmRwcmVzcy1hcGkubWTjgILlh63mja7lnKjorr7nva4g4oaSIOi/nuaOpeWZqCDihpIgV29yZFByZXNz57uf5LiA6YWN572u77yMU2tpbGzkuI3lrZjlr4bnoIHjgIIKCjEuIHdwUmVhZCBzaXRl5qOA5rWL6IO95Yqb77yM5YaNd3BSZWFkQWJpbGl0eSByYW5rLW1hdGgvZ2V0LXN5c3RlbS1zdGF0dXPjgIFnZXQtc2V0dGluZ3Pkuobop6PlkK/nlKjmqKHlnZflkozorr7nva7jgILog73lipvmnKrlvIDmlL7lsLHor7TmmI7nq5nngrnpnIDphY3nva7vvIzkuI3lgYforr7lronoo4VSYW5rIE1hdGjljbPmlK/mjIHjgIIKMi4g5L2/55So5rWP6KeI5ZmoaW5zcGVjdFBhZ2UvcmVhZFNlb1Jlc291cmNl5qOA5p+ldGl0bGXjgIFkZXNjcmlwdGlvbuOAgWNhbm9uaWNhbOOAgXJvYm90c+OAgee7k+aehOWMluaVsOaNruOAglNFT+aVsOaNruWIhuaekOe7p+e7reS9v+eUqERhdGFGb3JTRU/vvIzmjIHnu63nm5HmtYvmsr/nlKjlt7LmnInmnInpmZDmrKHmlbDnm5HmtYvlt6XlhbfvvIzkuI3og73mib/or7rlkI7lj7DmsLjkuYXmipPlj5bjgIIKMy4g55Sf5oiQ5Y6f5YC84oaS5bu66K6u5YC84oaS5b2x5ZON6aG16Z2i55qE6K6h5YiS44CC5LuF6YCC6YWNc2V0LXdlYnNpdGUtaWRlbnRpdHnjgIFzZXQtZ2xvYmFsLXNlby1zZXR0aW5nc+OAgXNldC1ob21lcGFnZS1zZW/jgIFzZXQtbGluay1zZXR0aW5nc+OAgXNldC1zaXRlbWFwLXNldHRpbmdz44CBc2V0LXBvc3QtdHlwZS1zZW8tc2V0dGluZ3PjgIFzZXQtYnJlYWRjcnVtYi1zZXR0aW5nc+OAggo0LiDlr7nnm67moIfog73lipvnlKh3cFJlYWQgYWJpbGl0eeWPluW+l+WunuaXtmlucHV0X3NjaGVtYe+8jHdwV3JpdGVBYmlsaXR55oyJc2NoZW1h5o+Q5Lqk77yb5Y+q5pS555So5oi36KaB5rGC55qE6K6+572u44CC5YWo56uZ57Si5byV44CB6ZO+5o6l44CB56uZ54K55Zyw5Zu+562J6K+05piO5a6e6ZmF5b2x5ZON44CC5rKh5pyJ5byA5pS+5a2X5q615bCx6K6w5b2V5pyq5pSv5oyB77yM5LiN6IO95Lyq6YCg6YCa55SobWV0YeWGmeaOpeWPo+OAggo1LiDmoLjlr7noh6rliqhnZXQtc2V0dGluZ3Plm57or7vor4Hmja7kuK3nmoTlj5jmm7TlrZfmrrXvvIzlho3orr/pl67lrp7pmYXpobXpnaIvcm9ib3RzL3NpdGVtYXDpqozor4HjgILmjqXlj6PmiJDlip/kuI3ku6PooahHb29nbGXlt7Lph43mlrDntKLlvJXjgILkv53nlZnliY3lgLzvvIzmgaLlpI3pobvph43mlrDmoLjlr7nlvZPliY3lgLzlubbmjInmmI7noa7nm67moIfmk43kvZzjgIIKCuS6pOS7mOWJjeaguOmqjOWunumZheWbnuaJp+WSjOS7u+WKoeaWh+S7tuOAgue9kee7nOacquefpee7k+aenOS4jeiHquWKqOmHjeWPke+8m+aPkuS7tueJiOacrC/mnYPpmZDkuI3otrPmmI7noa7miqXlkYrvvIzkuI3miororqHliJLlhpnmiJDlt7LlrozmiJDjgIIK"
+      }
+    ],
+    "metadata": {
+      "name": "wordpress-seo-settings",
+      "description": "依据实时站点能力检查并修改 SEO 设置，保留变更前后证据。"
+    }
+  }
+]

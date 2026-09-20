@@ -1,0 +1,522 @@
+[
+  {
+    "path": ".github/workflows/discovery-index.yml",
+    "sha256": "0ee15c34ca1666c6debd2b0b0236ea1ff01379f769546c48acfb68a307e5b0f3",
+    "bytes": 1470
+  },
+  {
+    "path": ".github/workflows/mirror-plugin.yml",
+    "sha256": "4a54c3890b2c1aea69cf7423bce6e11e2bee438a4f216c04e5da12d717c5a383",
+    "bytes": 1827
+  },
+  {
+    "path": ".gitignore",
+    "sha256": "0f90814fd1b569d696519201f8608d6e376594920b0223d04d2e684eda7e493b",
+    "bytes": 70
+  },
+  {
+    "path": ".markdownlint.json",
+    "sha256": "c77ee0a218a27f2957e7680b935a304c2576761e920cb36325511cb4a02543a1",
+    "bytes": 131
+  },
+  {
+    "path": ".well-known/agent-skills/add-apim-api.tar.gz",
+    "sha256": "4b64f55d08e2828acfa5a9844d182574de0b4f0872b84d6c0051d2cb8fc550c6",
+    "bytes": 3991
+  },
+  {
+    "path": ".well-known/agent-skills/browser-native.tar.gz",
+    "sha256": "f31da659acbc63ae4cb0e532cb659d653ca8670ff1f9483e3a3a261ac3752f4b",
+    "bytes": 23743
+  },
+  {
+    "path": ".well-known/agent-skills/bump/SKILL.md",
+    "sha256": "48d5849112f282620ca4d82efb91ea668084eda4dabb62795498f33c23a00b6a",
+    "bytes": 10524
+  },
+  {
+    "path": ".well-known/agent-skills/document-architecture.tar.gz",
+    "sha256": "75c87f392b68dd42c5d7e8f9c99f711b53f2da647dcc98db0ca23bf523748161",
+    "bytes": 4245
+  },
+  {
+    "path": ".well-known/agent-skills/index.json",
+    "sha256": "70956cccad6a3c6de316f6a5dc606e3cda14195698e209d61f490b16a27c97f9",
+    "bytes": 6592
+  },
+  {
+    "path": ".well-known/agent-skills/pre-launch-security-audit.tar.gz",
+    "sha256": "f472346ffb420dce12855aa92617b580eb6ff8efd6367515e1e8cbf2300badb4",
+    "bytes": 4736
+  },
+  {
+    "path": ".well-known/agent-skills/wp-ability-auth.tar.gz",
+    "sha256": "ac56e06be659213bedf8c38260201bc9bab5d735f947e9f95acc251ef835ba01",
+    "bytes": 4101
+  },
+  {
+    "path": ".well-known/agent-skills/wp-bump/SKILL.md",
+    "sha256": "e2d019f5a8670be20bca0bc7697609d73f6fde387c3d59884b840a220097e06d",
+    "bytes": 8340
+  },
+  {
+    "path": ".well-known/agent-skills/wp-cli-local.tar.gz",
+    "sha256": "8432f021ac85b9b8ba18c77d9d94b16080489a1b24f2468146d2c9d3d84ce55f",
+    "bytes": 6296
+  },
+  {
+    "path": ".well-known/agent-skills/wp-mutate.tar.gz",
+    "sha256": "7704bdbfa9bf7e19b4f169f3a73f8628749fe55d168f2fb0f402508fdfd74cdb",
+    "bytes": 22886
+  },
+  {
+    "path": ".well-known/agent-skills/wp-org-review.tar.gz",
+    "sha256": "e493c242662c5d5a48be64841d7f2cadf587b2b027ab9bed3583d304e6fd6fc6",
+    "bytes": 8911
+  },
+  {
+    "path": ".well-known/agent-skills/wp-pcp-local.tar.gz",
+    "sha256": "62514e8f7042ef255badf5e514be34fb3a22d69bfdadb9fc6bee604d046f6f95",
+    "bytes": 6711
+  },
+  {
+    "path": ".well-known/agent-skills/wp-prepare.tar.gz",
+    "sha256": "6bbf08a22527320e2c2b2dcb27eb0c72c2eeccff5141690d0fbc9a196de85655",
+    "bytes": 17653
+  },
+  {
+    "path": "CHANGELOG.md",
+    "sha256": "f2056cc35d3216ff1256947a2268e9f50fdabae09556ac89ccd206a2785f2ec8",
+    "bytes": 5650
+  },
+  {
+    "path": "README.md",
+    "sha256": "2b9317c49cdafa01c2b0c4e6aba97d65a6763c9852211f3e9cf067044081e6ad",
+    "bytes": 19689
+  },
+  {
+    "path": "plugins/wordpress-skills/CHANGELOG.md",
+    "sha256": "c9354e4fc779f462ba095597e7777a7326ad210286b8be3e35c9dbd7ffca1f16",
+    "bytes": 3026
+  },
+  {
+    "path": "plugins/wordpress-skills/README.md",
+    "sha256": "5d8e4bdd77dcc415e58dd42a535fa0b987f7d716871aacc0d5b5628628c82a80",
+    "bytes": 3393
+  },
+  {
+    "path": "plugins/wordpress-skills/plugin.json",
+    "sha256": "361fe91a83e21986cb0f5f7356b0ce7114bd84e7db24508f004c83e6dfdbb348",
+    "bytes": 509
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-ability-auth/SKILL.md",
+    "sha256": "c246b5a8a7f250d78528b152a8bf583953f609c353b472f9f108c616fc992ecd",
+    "bytes": 4171
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-ability-auth/references/audit-playbook.md",
+    "sha256": "3f6f9741fa11075ad8cce851bec0748f6922669f6cf705020c29b406c0b3aeeb",
+    "bytes": 7866
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-bump/SKILL.md",
+    "sha256": "e2d019f5a8670be20bca0bc7697609d73f6fde387c3d59884b840a220097e06d",
+    "bytes": 8340
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-cli-local/SKILL.md",
+    "sha256": "0d2ff3e2d678347b78b39adf2a769d33be575f53c7da019d8d0109269b1ca249",
+    "bytes": 4795
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-cli-local/scripts/local_paths.py",
+    "sha256": "170cd5fbbffb1bdf7517060122c4268187c8e3e98906e3f6b77825becc480967",
+    "bytes": 499
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-cli-local/scripts/setup-direnv",
+    "sha256": "e1d6852a8aa4dc50f633087983738cfc8ece90082d7d9468e6e9cd331be26711",
+    "bytes": 5546
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-cli-local/scripts/test_local_paths.py",
+    "sha256": "86eac751391675bcbd1323bfb265c21eac0f4aed922bb3d50819d748c80de4ba",
+    "bytes": 1660
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-cli-local/scripts/wp",
+    "sha256": "0f0e52e9a2f07712a29132db7cae2aa37c9b6344cd649975d9e936d30d440bb2",
+    "bytes": 7335
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-mutate/SKILL.md",
+    "sha256": "d2f8587365d9d3400689adf0e6d9a1259f77ca598425f81ce2b02e9ddbedb1a0",
+    "bytes": 19132
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-mutate/references/glossary.md",
+    "sha256": "b18dc0efeec898acd8dc559b38ac922d50ec7b5b7129cc2469c4153a40f4053c",
+    "bytes": 3158
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-mutate/references/php-setup.md",
+    "sha256": "6f3170794ac3e25cc41973e1ed2d7f372d541835fcfcb48015e79b313e5a8bc5",
+    "bytes": 11109
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-mutate/references/stryker-setup.md",
+    "sha256": "e84de3857965a943502337ba2136d56720227403d8c3be968be59681c416a599",
+    "bytes": 5010
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-mutate/references/triage-playbook.md",
+    "sha256": "fc7e46bf2e400b4c6c13712ccb236952914a6b9ffa93a430ef324e53d22b1337",
+    "bytes": 6730
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-mutate/scripts/detect_mutation_setup.mjs",
+    "sha256": "f3bc7b316c18df98cff3d8147389e89587a2302444b94168511c2e7152296bb7",
+    "bytes": 16233
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-org-review/SKILL.md",
+    "sha256": "c6f86e531f7766ea215539b922356949b29fa38b828d0c3e3054d4adeef4b081",
+    "bytes": 7526
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-org-review/references/reviewer-findings.md",
+    "sha256": "a601b7107ef031dc06c70eea7d58e3deaad60e079728662651bba71fc76935cc",
+    "bytes": 15286
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-pcp-local/SKILL.md",
+    "sha256": "a8b953469854735313b6cfbf9670dd1eaab3fb11ca92662dc1a7b99aa4f68a79",
+    "bytes": 8236
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-pcp-local/scripts/local_paths.py",
+    "sha256": "170cd5fbbffb1bdf7517060122c4268187c8e3e98906e3f6b77825becc480967",
+    "bytes": 499
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-pcp-local/scripts/pcp",
+    "sha256": "0325dc380df38c56b751fcb13d73a13302f26311478bdf3b8b6a6909091c49b7",
+    "bytes": 11829
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-prepare/SKILL.md",
+    "sha256": "9b31669f99bd9c9b623c93d825564c53e42ec74ca8e1f90ab6c8545686163ada",
+    "bytes": 17797
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-prepare/references/composer-setup.md",
+    "sha256": "0e193cb62afeb48e36bfba08768b48175574120bb132600568eeb68c305a999e",
+    "bytes": 2309
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-prepare/references/config-files.md",
+    "sha256": "5deb40e406e5d40663ee1f4882317b50312413c5b8696d894c125f532fd344af",
+    "bytes": 946
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-prepare/references/copilot-instructions.md",
+    "sha256": "4ff9ac395a3e4c88a150230ce699e68ae22cd6923a62a243a234cbc3cecfcc54",
+    "bytes": 4281
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-prepare/references/i18n-setup.md",
+    "sha256": "d28262b1b83801281c6481697e6e1acc64fc032d23087310c99a3f2c0677b789",
+    "bytes": 1898
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-prepare/references/linting-setup.md",
+    "sha256": "af3eca0f2660d04bf061764eb8bc9037eeecce8e856252e8822b2839b37087f2",
+    "bytes": 1785
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-prepare/references/php-testing.md",
+    "sha256": "871adc7cfd8d65cb80358765cb4baed43e32a0e806736f89dd6ad26a83009afe",
+    "bytes": 2891
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-prepare/references/plugin-bootstrap.md",
+    "sha256": "053a417ee61d074eed7828da7b96f7c045c52447eff71f08d20cdef2f0329a82",
+    "bytes": 1271
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-prepare/references/readme-txt.md",
+    "sha256": "d87db85848cbca659beb7d663c0469d1fc531707fd893bf74f3df1caf33a3de9",
+    "bytes": 1255
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-prepare/references/vitest-setup.md",
+    "sha256": "a05b2b796d8ab87b28626a8456cddf1751bac3c4968aecfc47247e26278617f2",
+    "bytes": 1024
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-prepare/scripts/detect_project.mjs",
+    "sha256": "5250cae646054c974a5145f8b7b397de24cac4d7010fa5c65b1a89164b793e2b",
+    "bytes": 9605
+  },
+  {
+    "path": "plugins/wordpress-skills/skills/wp-prepare/scripts/plan_setup.mjs",
+    "sha256": "437d25058929133841b12cbe0a4bf656ff2377f8b6dca88d3040547d98b52052",
+    "bytes": 11223
+  },
+  {
+    "path": "scripts/build-agent-plugin.mjs",
+    "sha256": "a8171a647777e5f2e4393288988a33baf52a7b95bdad6805dafbe23310852765",
+    "bytes": 10759
+  },
+  {
+    "path": "scripts/build-agent-skills-index.mjs",
+    "sha256": "785d4ab7617a381d62ff852fa5a491ff459a30dd09b89324b05fb93858e89444",
+    "bytes": 6262
+  },
+  {
+    "path": "skills.sh.json",
+    "sha256": "4447029d8db9ebc31d9e85bd5a20295f40b0135c7f118753e3d275787b8301e0",
+    "bytes": 1255
+  },
+  {
+    "path": "skills/add-apim-api/SKILL.md",
+    "sha256": "0bbdca4ad9c0625d82a71da7aeadde3d8ffa1de78377b3325d4d8da8541dcdfd",
+    "bytes": 3112
+  },
+  {
+    "path": "skills/add-apim-api/references/bicep-patterns.md",
+    "sha256": "d1100e9e6115f2d2fbaff97302a1dc05c493b94814b4487d0d3cbbaf3e40b78b",
+    "bytes": 9437
+  },
+  {
+    "path": "skills/browser-native/SKILL.md",
+    "sha256": "df6db381bd3feeff1203804fe74db375b3fdb9c76566ce2f1eb9019cf92c1cfd",
+    "bytes": 8059
+  },
+  {
+    "path": "skills/browser-native/references/replacements-guide.md",
+    "sha256": "5a0373bee53d843ef1ec7bc4e02d642cd7cb415e2c45303fa696377c15c792b5",
+    "bytes": 17329
+  },
+  {
+    "path": "skills/browser-native/scripts/cli.js",
+    "sha256": "680ba8345df8df84a4aa603fe5304d757c5b33b4013eb2fbfdcc591a081789cc",
+    "bytes": 3210
+  },
+  {
+    "path": "skills/browser-native/scripts/formatters/json.js",
+    "sha256": "2ca75e5ccc1b4f339d94e2cc584a5773d6302ba117819d90709fafd52b830e73",
+    "bytes": 1152
+  },
+  {
+    "path": "skills/browser-native/scripts/formatters/markdown.js",
+    "sha256": "55378aa9c6d4160025693f35daa3faafe1e43addaf7ee6693fa30732bda100de",
+    "bytes": 4033
+  },
+  {
+    "path": "skills/browser-native/scripts/formatters/table.js",
+    "sha256": "0b437bb54a547681b2454f4ecb8f154a0055a6c0a44cc74bcf52e09f8916b639",
+    "bytes": 3928
+  },
+  {
+    "path": "skills/browser-native/scripts/replacements.js",
+    "sha256": "4f7161906777944b5f69f6bb40d6bb06359f6e9e940bc477622905d4bd4574ba",
+    "bytes": 55157
+  },
+  {
+    "path": "skills/browser-native/scripts/scanner.js",
+    "sha256": "32f22c41c9af558bbbacc8090da115a34f7b25e25361ab174d9d2506cbe404f0",
+    "bytes": 2970
+  },
+  {
+    "path": "skills/bump/SKILL.md",
+    "sha256": "48d5849112f282620ca4d82efb91ea668084eda4dabb62795498f33c23a00b6a",
+    "bytes": 10524
+  },
+  {
+    "path": "skills/document-architecture/SKILL.md",
+    "sha256": "15e5dc619f63f3d7dfdf622e3a1a1d6af93dd2adac06de13e33fcdee99555939",
+    "bytes": 6125
+  },
+  {
+    "path": "skills/document-architecture/agents/openai.yaml",
+    "sha256": "d4b64d92a20bf36ede6f8531fc550a7c235b0b78f6939ee424c85821feaec7b8",
+    "bytes": 244
+  },
+  {
+    "path": "skills/document-architecture/references/templates.md",
+    "sha256": "cbedf2c8e2987395754e0495dbb795c3dc342383a18953196cd70195c6002897",
+    "bytes": 3479
+  },
+  {
+    "path": "skills/pre-launch-security-audit/SKILL.md",
+    "sha256": "8c57519ba8a4d7c141b6f0b6d57943f600da84410b1db7b48399d875e17221dd",
+    "bytes": 6238
+  },
+  {
+    "path": "skills/pre-launch-security-audit/agents/openai.yaml",
+    "sha256": "c221b6acb2e68a651e3dd1f3ada36fc370e980a32f32650e4517dad5ce5fb236",
+    "bytes": 271
+  },
+  {
+    "path": "skills/pre-launch-security-audit/references/checklist.md",
+    "sha256": "61477662dbe1ca44c3ed9a3e1e2a124fd9777a5ccdb5ddb03c654b0140728eaa",
+    "bytes": 4277
+  },
+  {
+    "path": "skills/wp-ability-auth/SKILL.md",
+    "sha256": "c246b5a8a7f250d78528b152a8bf583953f609c353b472f9f108c616fc992ecd",
+    "bytes": 4171
+  },
+  {
+    "path": "skills/wp-ability-auth/references/audit-playbook.md",
+    "sha256": "3f6f9741fa11075ad8cce851bec0748f6922669f6cf705020c29b406c0b3aeeb",
+    "bytes": 7866
+  },
+  {
+    "path": "skills/wp-bump/SKILL.md",
+    "sha256": "e2d019f5a8670be20bca0bc7697609d73f6fde387c3d59884b840a220097e06d",
+    "bytes": 8340
+  },
+  {
+    "path": "skills/wp-cli-local/SKILL.md",
+    "sha256": "0d2ff3e2d678347b78b39adf2a769d33be575f53c7da019d8d0109269b1ca249",
+    "bytes": 4795
+  },
+  {
+    "path": "skills/wp-cli-local/scripts/local_paths.py",
+    "sha256": "170cd5fbbffb1bdf7517060122c4268187c8e3e98906e3f6b77825becc480967",
+    "bytes": 499
+  },
+  {
+    "path": "skills/wp-cli-local/scripts/setup-direnv",
+    "sha256": "e1d6852a8aa4dc50f633087983738cfc8ece90082d7d9468e6e9cd331be26711",
+    "bytes": 5546
+  },
+  {
+    "path": "skills/wp-cli-local/scripts/test_local_paths.py",
+    "sha256": "86eac751391675bcbd1323bfb265c21eac0f4aed922bb3d50819d748c80de4ba",
+    "bytes": 1660
+  },
+  {
+    "path": "skills/wp-cli-local/scripts/wp",
+    "sha256": "0f0e52e9a2f07712a29132db7cae2aa37c9b6344cd649975d9e936d30d440bb2",
+    "bytes": 7335
+  },
+  {
+    "path": "skills/wp-mutate/SKILL.md",
+    "sha256": "d2f8587365d9d3400689adf0e6d9a1259f77ca598425f81ce2b02e9ddbedb1a0",
+    "bytes": 19132
+  },
+  {
+    "path": "skills/wp-mutate/references/glossary.md",
+    "sha256": "b18dc0efeec898acd8dc559b38ac922d50ec7b5b7129cc2469c4153a40f4053c",
+    "bytes": 3158
+  },
+  {
+    "path": "skills/wp-mutate/references/php-setup.md",
+    "sha256": "6f3170794ac3e25cc41973e1ed2d7f372d541835fcfcb48015e79b313e5a8bc5",
+    "bytes": 11109
+  },
+  {
+    "path": "skills/wp-mutate/references/stryker-setup.md",
+    "sha256": "e84de3857965a943502337ba2136d56720227403d8c3be968be59681c416a599",
+    "bytes": 5010
+  },
+  {
+    "path": "skills/wp-mutate/references/triage-playbook.md",
+    "sha256": "fc7e46bf2e400b4c6c13712ccb236952914a6b9ffa93a430ef324e53d22b1337",
+    "bytes": 6730
+  },
+  {
+    "path": "skills/wp-mutate/scripts/detect_mutation_setup.mjs",
+    "sha256": "f3bc7b316c18df98cff3d8147389e89587a2302444b94168511c2e7152296bb7",
+    "bytes": 16233
+  },
+  {
+    "path": "skills/wp-org-review/SKILL.md",
+    "sha256": "c6f86e531f7766ea215539b922356949b29fa38b828d0c3e3054d4adeef4b081",
+    "bytes": 7526
+  },
+  {
+    "path": "skills/wp-org-review/references/reviewer-findings.md",
+    "sha256": "a601b7107ef031dc06c70eea7d58e3deaad60e079728662651bba71fc76935cc",
+    "bytes": 15286
+  },
+  {
+    "path": "skills/wp-pcp-local/SKILL.md",
+    "sha256": "a8b953469854735313b6cfbf9670dd1eaab3fb11ca92662dc1a7b99aa4f68a79",
+    "bytes": 8236
+  },
+  {
+    "path": "skills/wp-pcp-local/scripts/local_paths.py",
+    "sha256": "170cd5fbbffb1bdf7517060122c4268187c8e3e98906e3f6b77825becc480967",
+    "bytes": 499
+  },
+  {
+    "path": "skills/wp-pcp-local/scripts/pcp",
+    "sha256": "0325dc380df38c56b751fcb13d73a13302f26311478bdf3b8b6a6909091c49b7",
+    "bytes": 11829
+  },
+  {
+    "path": "skills/wp-prepare/SKILL.md",
+    "sha256": "9b31669f99bd9c9b623c93d825564c53e42ec74ca8e1f90ab6c8545686163ada",
+    "bytes": 17797
+  },
+  {
+    "path": "skills/wp-prepare/references/composer-setup.md",
+    "sha256": "0e193cb62afeb48e36bfba08768b48175574120bb132600568eeb68c305a999e",
+    "bytes": 2309
+  },
+  {
+    "path": "skills/wp-prepare/references/config-files.md",
+    "sha256": "5deb40e406e5d40663ee1f4882317b50312413c5b8696d894c125f532fd344af",
+    "bytes": 946
+  },
+  {
+    "path": "skills/wp-prepare/references/copilot-instructions.md",
+    "sha256": "4ff9ac395a3e4c88a150230ce699e68ae22cd6923a62a243a234cbc3cecfcc54",
+    "bytes": 4281
+  },
+  {
+    "path": "skills/wp-prepare/references/i18n-setup.md",
+    "sha256": "d28262b1b83801281c6481697e6e1acc64fc032d23087310c99a3f2c0677b789",
+    "bytes": 1898
+  },
+  {
+    "path": "skills/wp-prepare/references/linting-setup.md",
+    "sha256": "af3eca0f2660d04bf061764eb8bc9037eeecce8e856252e8822b2839b37087f2",
+    "bytes": 1785
+  },
+  {
+    "path": "skills/wp-prepare/references/php-testing.md",
+    "sha256": "871adc7cfd8d65cb80358765cb4baed43e32a0e806736f89dd6ad26a83009afe",
+    "bytes": 2891
+  },
+  {
+    "path": "skills/wp-prepare/references/plugin-bootstrap.md",
+    "sha256": "053a417ee61d074eed7828da7b96f7c045c52447eff71f08d20cdef2f0329a82",
+    "bytes": 1271
+  },
+  {
+    "path": "skills/wp-prepare/references/readme-txt.md",
+    "sha256": "d87db85848cbca659beb7d663c0469d1fc531707fd893bf74f3df1caf33a3de9",
+    "bytes": 1255
+  },
+  {
+    "path": "skills/wp-prepare/references/vitest-setup.md",
+    "sha256": "a05b2b796d8ab87b28626a8456cddf1751bac3c4968aecfc47247e26278617f2",
+    "bytes": 1024
+  },
+  {
+    "path": "skills/wp-prepare/scripts/detect_project.mjs",
+    "sha256": "5250cae646054c974a5145f8b7b397de24cac4d7010fa5c65b1a89164b793e2b",
+    "bytes": 9605
+  },
+  {
+    "path": "skills/wp-prepare/scripts/plan_setup.mjs",
+    "sha256": "437d25058929133841b12cbe0a4bf656ff2377f8b6dca88d3040547d98b52052",
+    "bytes": 11223
+  }
+]

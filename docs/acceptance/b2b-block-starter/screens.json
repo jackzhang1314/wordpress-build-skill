@@ -1,0 +1,61 @@
+[
+  {
+    "name": "home",
+    "width": 1440,
+    "overflow": false,
+    "brokenImages": [],
+    "h1": 1
+  },
+  {
+    "name": "category",
+    "width": 1440,
+    "overflow": false,
+    "brokenImages": [],
+    "h1": 1
+  },
+  {
+    "name": "product",
+    "width": 1440,
+    "overflow": false,
+    "brokenImages": [],
+    "h1": 1
+  },
+  {
+    "name": "contact",
+    "width": 1440,
+    "overflow": false,
+    "brokenImages": [],
+    "h1": 1
+  },
+  {
+    "name": "home",
+    "width": 390,
+    "overflow": false,
+    "brokenImages": [],
+    "h1": 1
+  },
+  {
+    "name": "category",
+    "width": 390,
+    "overflow": false,
+    "brokenImages": [],
+    "h1": 1
+  },
+  {
+    "name": "product",
+    "width": 390,
+    "overflow": false,
+    "brokenImages": [],
+    "h1": 1
+  },
+  {
+    "name": "contact",
+    "width": 390,
+    "overflow": false,
+    "brokenImages": [],
+    "h1": 1
+  },
+  {
+    "mobileNavigation": true
+  }
+]

@@ -1,0 +1,655 @@
+{
+  "recordedAt": "2026-09-19T14:42:30.724Z",
+  "environment": {
+    "wp": "7.1",
+    "theme": "terralift-ui",
+    "isBlockTheme": true,
+    "php": "8.5.8",
+    "fixture": true
+  },
+  "routes": [
+    {
+      "url": "http://127.0.0.1:9462/",
+      "finalUrl": "http://127.0.0.1:9462/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Compact machinery catalogue — TerraLift demo - Original compact machinery export enquiry demo built with native WordPress blocks",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/products/",
+      "finalUrl": "http://127.0.0.1:9462/products/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Archives: Products - TerraLift Machinery — Demo",
+      "description": false,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-equipment/",
+      "finalUrl": "http://127.0.0.1:9462/products/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Archives: Products - TerraLift Machinery — Demo",
+      "description": false,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-case-studies/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-case-studies/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Application case library. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-faq/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-faq/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Compact machinery FAQ framework. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-support/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-support/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "After-sales and warranty questions. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-payment-delivery/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-payment-delivery/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Payment and delivery checklist. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-dealer/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-dealer/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Dealer programme framework. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-oem/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-oem/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "OEM and configuration requests. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-quality/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-quality/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Production and quality review. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-contact/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-contact/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Equipment enquiry — TerraLift demo - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-company/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-company/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "About TerraLift Machinery. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-industries/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-industries/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Applications and project types. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-skid-steer/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-skid-steer/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Skid steer enquiry support. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-loaders/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-loaders/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Loader and backhoe enquiries. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terralift-excavators/",
+      "finalUrl": "http://127.0.0.1:9462/terralift-excavators/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Compact excavator enquiries. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terradig-contact/",
+      "finalUrl": "http://127.0.0.1:9462/terradig-contact/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Start a scoped excavator enquiry. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terradig-process/",
+      "finalUrl": "http://127.0.0.1:9462/terradig-process/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "A safer export enquiry. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terradig-products/",
+      "finalUrl": "http://127.0.0.1:9462/terradig-products/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Excavator enquiry profiles. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/terradig-home/",
+      "finalUrl": "http://127.0.0.1:9462/terradig-home/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Excavator export enquiries, scoped correctly. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/demo-product-catalog/",
+      "finalUrl": "http://127.0.0.1:9462/demo-product-catalog/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Demo Product Catalog - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/harbor-contact/",
+      "finalUrl": "http://127.0.0.1:9462/harbor-contact/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "A useful enquiry starts here. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/harbor-about/",
+      "finalUrl": "http://127.0.0.1:9462/harbor-about/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Clarity before commitment. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/harbor-products/",
+      "finalUrl": "http://127.0.0.1:9462/harbor-products/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Select by function. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/harbor-home/",
+      "finalUrl": "http://127.0.0.1:9462/harbor-home/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Flow control, specified clearly. - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/sample-page/",
+      "finalUrl": "http://127.0.0.1:9462/sample-page/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Sample Page - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/products/tl-s50/",
+      "finalUrl": "http://127.0.0.1:9462/products/tl-s50/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "TL-S50 Skid Steer Loader - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/products/tl-l10/",
+      "finalUrl": "http://127.0.0.1:9462/products/tl-l10/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "TL-L10 Compact Wheel Loader - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/products/tl-e35/",
+      "finalUrl": "http://127.0.0.1:9462/products/tl-e35/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "TL-E35 Compact Excavator - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/products/tl-e20/",
+      "finalUrl": "http://127.0.0.1:9462/products/tl-e20/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "TL-E20 Compact Excavator - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/products/tl-e08/",
+      "finalUrl": "http://127.0.0.1:9462/products/tl-e08/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "TL-E08 Compact Excavator - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/products/tl-b30/",
+      "finalUrl": "http://127.0.0.1:9462/products/tl-b30/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "TL-B30 Backhoe Loader - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/cases/snow-application-profile/",
+      "finalUrl": "http://127.0.0.1:9462/cases/snow-application-profile/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Snow removal application profile - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/cases/agriculture-application-profile/",
+      "finalUrl": "http://127.0.0.1:9462/cases/agriculture-application-profile/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Agriculture application profile - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/cases/construction-application-profile/",
+      "finalUrl": "http://127.0.0.1:9462/cases/construction-application-profile/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Construction application profile - TerraLift Machinery — Demo",
+      "description": true,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/product-category/mini-excavator/",
+      "finalUrl": "http://127.0.0.1:9462/product-category/mini-excavator/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Product categories: Mini Excavator - TerraLift Machinery — Demo",
+      "description": false,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/product-category/skid-steer/",
+      "finalUrl": "http://127.0.0.1:9462/product-category/skid-steer/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Product categories: Skid Steer Loader - TerraLift Machinery — Demo",
+      "description": false,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    },
+    {
+      "url": "http://127.0.0.1:9462/product-category/wheel-loader/",
+      "finalUrl": "http://127.0.0.1:9462/product-category/wheel-loader/",
+      "status": 200,
+      "h1": 1,
+      "importMap": true,
+      "navigation": true,
+      "title": "Product categories: Wheel Loader - TerraLift Machinery — Demo",
+      "description": false,
+      "canonical": true,
+      "openGraph": true,
+      "noindex": true
+    }
+  ],
+  "internalLinksChecked": 55,
+  "brokenLinks": [],
+  "sourceDrift": [],
+  "files": [
+    {
+      "path": "examples/terralift-ui-theme/archive-oct_product.php",
+      "sha256": "2ef869d38891a1f745ca70da3355bb85c24e7563874919f67866a089a7ffaab9"
+    },
+    {
+      "path": "examples/terralift-ui-theme/front-page.php",
+      "sha256": "195b553b7a511d963e1934d2f9c4e3292105834533d60848b89ac70a86ec40fc"
+    },
+    {
+      "path": "examples/terralift-ui-theme/functions.php",
+      "sha256": "6c3bf7308ac16ea624aadd5231dfa614341e536c4f70ac1a2dca82ab85d2c115"
+    },
+    {
+      "path": "examples/terralift-ui-theme/page-cases-v1.php",
+      "sha256": "9b03a343e2771614e2b2085bee8e3b1e70877e22938885b882bd9a55f73d3503"
+    },
+    {
+      "path": "examples/terralift-ui-theme/page-contact-v1.php",
+      "sha256": "a2cc81108548fb3fa8fa580bcb2ea37f4531fd172b0d43a83ae6569f020481a4"
+    },
+    {
+      "path": "examples/terralift-ui-theme/page-home-v1.php",
+      "sha256": "24b008e2b05bcd31082361dd9a0b308bfa66294d98a0f4fece79d45f6605fd7d"
+    },
+    {
+      "path": "examples/terralift-ui-theme/page-landing-v1.php",
+      "sha256": "5a34ab9d0886f6bbcdc52180d7c284c2a32510c48e5880e22b1e4979995857cd"
+    },
+    {
+      "path": "examples/terralift-ui-theme/patterns.php",
+      "sha256": "e574ea087060849e0f42673fb67b135307e0402279a30b8f3fdc1a3f01f16ac8"
+    },
+    {
+      "path": "examples/terralift-ui-theme/single-oct_case.php",
+      "sha256": "b95016ae5a53172d8808043e1493a3b7e3a0a107058093aad5eec674da51426a"
+    },
+    {
+      "path": "examples/terralift-ui-theme/single-oct_product.php",
+      "sha256": "eeb44dbf632de9c35473b043defdd2b5cd08b0d49e669243c6ac595efa20c9c9"
+    },
+    {
+      "path": "examples/terralift-ui-theme/style.css",
+      "sha256": "07fc0bfaf26c450402f709d30e8bd14fca061f851c62e41339cf2e53e463a4e9"
+    },
+    {
+      "path": "examples/terralift-ui-theme/taxonomy-oct_product_category.php",
+      "sha256": "44ea26b800bc3eca76e4a1a7a1cbe413a953b444428096414eb45b61b670e9aa"
+    },
+    {
+      "path": "examples/terralift-ui-theme/theme.json",
+      "sha256": "9d993c50e8b6ab7a88c323eff625eb090f852e56fa60c27136617277d485ca45"
+    },
+    {
+      "path": "examples/terralift-ui-theme/templates/404.html",
+      "sha256": "0fe694f2d2ef94538092ff8bda82176b8ffc93dce2ef95fc4ce51c29693b1a11"
+    },
+    {
+      "path": "examples/terralift-ui-theme/templates/index.html",
+      "sha256": "344897e82f19b41330ad40c4b7b75b66c2468a1b273b504c708ba6071cc9ddd2"
+    },
+    {
+      "path": "examples/terralift-ui-theme/templates/page.html",
+      "sha256": "344897e82f19b41330ad40c4b7b75b66c2468a1b273b504c708ba6071cc9ddd2"
+    },
+    {
+      "path": "examples/terralift-ui-theme/templates/product-dynamic.html",
+      "sha256": "df92c6387818f766579d09fd3c0b81423b914e416e1e6eaa387ada2056131a88"
+    },
+    {
+      "path": "examples/terralift-ui-theme/templates/search.html",
+      "sha256": "d9067155e2ca1281716341707f6fda9c5f2e2ae47f5f6b813a2e47e7d7976b7c"
+    },
+    {
+      "path": "examples/terralift-ui-theme/templates/single.html",
+      "sha256": "344897e82f19b41330ad40c4b7b75b66c2468a1b273b504c708ba6071cc9ddd2"
+    },
+    {
+      "path": "examples/terralift-ui-theme/parts/footer.html",
+      "sha256": "ce2df5522584c381acc00c3475f7d2fed1d18ef2a0e420f85b831df28ee80d7f"
+    },
+    {
+      "path": "examples/terralift-ui-theme/parts/header.html",
+      "sha256": "a8b2ba63795cd65df9589d1c3e73d8c10ddf549cfedc79a9e0068f3832ce5998"
+    },
+    {
+      "path": "examples/terralift-ui-theme/assets/fonts/ysabeau-office/LICENSE.txt",
+      "sha256": "a3ad1a4190d6aa39686f820d472477f290d3264118e7a25ba58fe4fa6ff7e4d3"
+    },
+    {
+      "path": "examples/terralift-ui-theme/assets/fonts/ysabeau-office/YsabeauOffice-VariableFont_wght.woff2",
+      "sha256": "a4af4da9ee40ce3010b64215c2caaa00a6770b86e28ef41a3eac337a34bbce51"
+    },
+    {
+      "path": "examples/terralift-ui-theme/assets/fonts/fira-sans/FiraSans-Bold.woff2",
+      "sha256": "7dff4e2351ca54fae96180e79ab1d1fdeb74ebb6e6cba53a7d9d7b4941600ada"
+    },
+    {
+      "path": "examples/terralift-ui-theme/assets/fonts/fira-sans/FiraSans-Medium.woff2",
+      "sha256": "14d421d4fb35d56b40e958cc9b64eb1528d1822bb75251623955c873a9a175d3"
+    },
+    {
+      "path": "examples/terralift-ui-theme/assets/fonts/fira-sans/FiraSans-Regular.woff2",
+      "sha256": "51000d3cc8a601427bdb88625275e0eefc00570f4f2ab7a926fa336abee7098f"
+    },
+    {
+      "path": "examples/terralift-ui-theme/assets/fonts/fira-sans/FiraSans-SemiBold.woff2",
+      "sha256": "01ca0c4a1f02dd4324721cf8766bcbb2edca4dee0fb8884a66e58e231ed62d55"
+    },
+    {
+      "path": "examples/terralift-ui-theme/assets/fonts/fira-sans/LICENSE.txt",
+      "sha256": "38f4475ae3edff1b2afeff1f21da794928a2e503ab13c9793b03dc679ffa5317"
+    },
+    {
+      "path": "examples/terralift-ui-theme/assets/fonts/fira-code/FiraCode-VariableFont_wght.woff2",
+      "sha256": "b6e7adca884c51549c66384fec54747fa2967ac6ad5655ed02c5da5b682a9ba2"
+    },
+    {
+      "path": "examples/terralift-ui-theme/assets/fonts/fira-code/LICENSE.txt",
+      "sha256": "4e592c34930a73862059dcc5fed7d068998c763e4046f227f8bb4065a4c687b4"
+    },
+    {
+      "path": "examples/terralift-ui-theme/acf/page-cases-v1.php",
+      "sha256": "85ad2d0fdca611bcbbbf281eff1370795f168b0d0c7628a4c61351e2dce7ec0b"
+    },
+    {
+      "path": "examples/terralift-ui-theme/acf/page-contact-v1.php",
+      "sha256": "6dd02f224814f843ffeff5310db58feebd77242c4acaecf839c73ab1eea5448e"
+    },
+    {
+      "path": "examples/terralift-ui-theme/acf/page-home-v1.php",
+      "sha256": "74dfb6a607317bb4c6b62b76d8a9551144ba965da23749b77ff7ee3877b473cb"
+    },
+    {
+      "path": "examples/terralift-ui-theme/acf/page-landing-v1.php",
+      "sha256": "73714a0307b3831ca9104e2d32cadcb7d8edf5351aba0944f2b80fd8b2800936"
+    },
+    {
+      "path": "examples/octopus-site/LICENSE.txt",
+      "sha256": "d2f31793387722083537d91ebf9b9e0fac0e85147d15099d58010cf8469eea33"
+    },
+    {
+      "path": "examples/octopus-site/octopus-site.php",
+      "sha256": "a7b975c57085bac20d032b01130d798f72d8981bc3b55a83f249438c0a215222"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+  "version": 3,
+  "settings": {
+    "layout": { "contentSize": "780px", "wideSize": "1160px" },
+    "color": { "palette": [
+      { "slug": "ink", "name": "Ink", "color": "#22372c" },
+      { "slug": "paper", "name": "Paper", "color": "#f5f4ec" },
+      { "slug": "accent", "name": "Accent", "color": "#345b40" }
+    ] }
+  }
+}

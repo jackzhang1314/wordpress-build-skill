@@ -1,0 +1,65 @@
+{
+  "recordedAt": "2026-09-19T03:55:00+08:00",
+  "scope": "original industrial UI refactor; not a pixel-level clone of the reference site",
+  "theme": {
+    "name": "TerraLift UI",
+    "slug": "terralift-ui",
+    "type": "WordPress block theme",
+    "active": true,
+    "copiedReferenceAssets": false,
+    "copiedReferenceCSS": false
+  },
+  "designSystem": {
+    "palette": {
+      "base": "#F4F6F7",
+      "surface": "#FFFFFF",
+      "ink": "#10222A",
+      "steel": "#455A64",
+      "signal": "#F26B21",
+      "safety": "#FFC629",
+      "concrete": "#E1E7E8",
+      "line": "#C3CFD2"
+    },
+    "typography": {
+      "display": "Ysabeau Office variable",
+      "body": "Fira Sans",
+      "technical": "Fira Code"
+    },
+    "layout": {
+      "contentSize": "1080px",
+      "wideSize": "1360px",
+      "rootPadding": "24px"
+    },
+    "signature": "square-edged industrial panels, signal-orange offset buttons, title tick marks, and technical table headers"
+  },
+  "compilerChange": {
+    "catalog": "Query Loop now emits core/post-featured-image before title and excerpt",
+    "typecheck": "pass",
+    "lint": "pass",
+    "tests": {"total":22,"passed":22,"failed":0},
+    "build": "pass"
+  },
+  "contentChanges": [
+    "Home catalog refreshed to use featured-image cards",
+    "Equipment catalog refreshed to use featured-image cards",
+    "Products 55-60 assigned varied CC0 featured images",
+    "Three oct_case records published: IDs 119-121",
+    "Dedicated single-oct_case template created",
+    "Case-library page published: ID 126",
+    "Header and footer navigation updated to include Cases"
+  ],
+  "anonymousChecks": {
+    "activeThemeMarkup": true,
+    "singleH1OnCheckedPages": true,
+    "desktopHorizontalOverflow": false,
+    "mobileHorizontalOverflow": false,
+    "darkSectionParagraphContrast": "white",
+    "mobileNavigationButtonPresent": true,
+    "caseLibraryFeaturedImages": 3,
+    "productCatalogFeaturedImages": 6,
+    "internalUniqueUrlsChecked": 74,
+    "internalUniqueUrlsPassed": 74,
+    "httpFailures": 0,
+    "redirects": 0
+  }
+}

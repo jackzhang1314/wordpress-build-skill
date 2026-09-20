@@ -1,0 +1,50 @@
+{
+  "startedAt": "2026-09-19T20:58:10.288Z",
+  "scope": "local-native-php-mysql-smtp",
+  "project": "hongda-native-ff313ea7",
+  "checks": {
+    "installedFiles": 20,
+    "site": true,
+    "inquiry": true,
+    "smtp": {
+      "received": 1,
+      "containsSubmittedEmail": true,
+      "expectedRecipient": true,
+      "transport": "PHPMailer -> SMTP -> Mailpit"
+    },
+    "recovery": {
+      "tables": [
+        "posts",
+        "postmeta",
+        "terms",
+        "term_taxonomy",
+        "term_relationships",
+        "fluentform_submissions"
+      ],
+      "uploads": 30,
+      "enquiries": 1,
+      "configuration": true,
+      "logicalHashesMatch": true,
+      "dumpUnchanged": true
+    },
+    "containerRecreate": true,
+    "recreatedAndRestoredRoutes": 14
+  },
+  "externalInbox": "not-tested",
+  "publicDnsTls": "not-tested",
+  "visualApproval": "pending",
+  "runtime": {
+    "wordpress": "7.1",
+    "php": "8.3.33",
+    "database": "8.4.11",
+    "smtp": true,
+    "mailIntercept": false
+  },
+  "images": [
+    "sha256:74103f21d460e96abdee0dc304852a00823950bef3cb343ba855e19b6983c31d",
+    "sha256:85b9bf2e29cf836ecb8c2a15a935d4ba0c606631dff1dd79531a11983c638f2a",
+    "sha256:37a38e48e9338cd7e89dfeb487f37b02ebfcd9cb23111bed2d345e79d37d6dd6"
+  ],
+  "status": "passed",
+  "finishedAt": "2026-09-19T20:59:20.364Z"
+}

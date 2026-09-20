@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-09-08T03:33:06.154Z",
+  "unpackedWithoutNodeModules": true,
+  "standaloneHelpPassed": true,
+  "commands": [
+    "doctor",
+    "read-page --id ID",
+    "build --plan FILE [--publish]",
+    "status",
+    "template-parts",
+    "navigation-plan --plan FILE",
+    "navigation-apply --id PLAN_HASH",
+    "page-edit-plan --plan FILE",
+    "page-edit-apply --id PLAN_HASH",
+    "upload-media --plan FILE"
+  ],
+  "sha256": "8b66e37e249502157edc331d299293feba3e222bacf473f816bad5341783ec12"
+}

@@ -1,0 +1,21 @@
+{
+    "checks": {
+        "theme PHP syntax": true,
+        "business types registered": true,
+        "ACF product update readback": true,
+        "specific PHP wins over generic block index": true,
+        "field change renders in actual product template": true,
+        "one document shell": true,
+        "navigation import map exists": true,
+        "product enquiry has context": true,
+        "category ACF is editable": true,
+        "category field renders": true,
+        "article creation": true,
+        "article block content remains editable": true,
+        "non-product block single preserved": true,
+        "page image field schema loaded": true,
+        "page image edit readback": true
+    },
+    "wp": "7.1",
+    "php": "8.5.8"
+}

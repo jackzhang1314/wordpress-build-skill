@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "site": "http://127.0.0.1:9415",
+  "templatePart": "twentytwentyfive//header",
+  "before": "<!-- wp:group {\"align\":\"full\",\"layout\":{\"type\":\"default\"}} -->\n<div class=\"wp-block-group alignfull\">\n\t<!-- wp:group {\"layout\":{\"type\":\"constrained\"}} -->\n\t<div class=\"wp-block-group\">\n\t\t<!-- wp:group {\"align\":\"wide\",\"style\":{\"spacing\":{\"padding\":{\"top\":\"var:preset|spacing|30\",\"bottom\":\"var:preset|spacing|30\"}}},\"layout\":{\"type\":\"flex\",\"flexWrap\":\"nowrap\",\"justifyContent\":\"space-between\"}} -->\n\t\t<div class=\"wp-block-group alignwide\" style=\"padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)\">\n\t\t\t<!-- wp:site-title {\"level\":0} /-->\n\t\t\t<!-- wp:group {\"style\":{\"spacing\":{\"blockGap\":\"var:preset|spacing|10\"}},\"layout\":{\"type\":\"flex\",\"flexWrap\":\"nowrap\",\"justifyContent\":\"right\"}} -->\n\t\t\t<div class=\"wp-block-group\">\n\t\t\t\t<!-- wp:navigation {\"overlayBackgroundColor\":\"base\",\"overlayTextColor\":\"contrast\",\"layout\":{\"type\":\"flex\",\"justifyContent\":\"right\",\"flexWrap\":\"wrap\"}} /-->\n\t\t\t</div>\n\t\t\t<!-- /wp:group -->\n\t\t</div>\n\t\t<!-- /wp:group -->\n\t</div>\n\t<!-- /wp:group -->\n</div>\n<!-- /wp:group -->\n\n",
+  "after": "<!-- wp:group {\"align\":\"full\",\"layout\":{\"type\":\"default\"}} -->\n<div class=\"wp-block-group alignfull\">\n\t<!-- wp:group {\"layout\":{\"type\":\"constrained\"}} -->\n\t<div class=\"wp-block-group\">\n\t\t<!-- wp:group {\"align\":\"wide\",\"style\":{\"spacing\":{\"padding\":{\"top\":\"var:preset|spacing|30\",\"bottom\":\"var:preset|spacing|30\"}}},\"layout\":{\"type\":\"flex\",\"flexWrap\":\"nowrap\",\"justifyContent\":\"space-between\"}} -->\n\t\t<div class=\"wp-block-group alignwide\" style=\"padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)\">\n\t\t\t<!-- wp:site-title {\"level\":0} /-->\n\t\t\t<!-- wp:group {\"style\":{\"spacing\":{\"blockGap\":\"var:preset|spacing|10\"}},\"layout\":{\"type\":\"flex\",\"flexWrap\":\"nowrap\",\"justifyContent\":\"right\"}} -->\n\t\t\t<div class=\"wp-block-group\">\n\t\t\t\t<!-- wp:navigation {\"overlayBackgroundColor\":\"base\",\"overlayTextColor\":\"contrast\",\"layout\":{\"type\":\"flex\",\"justifyContent\":\"right\",\"flexWrap\":\"wrap\"}} -->\n<!-- wp:navigation-link {\"label\":\"home\",\"type\":\"page\",\"id\":15,\"url\":\"http://127.0.0.1:9415/nav-fixture-home/\",\"kind\":\"post-type\"} /-->\n<!-- wp:navigation-link {\"label\":\"product\",\"type\":\"page\",\"id\":16,\"url\":\"http://127.0.0.1:9415/nav-fixture-product/\",\"kind\":\"post-type\"} /-->\n<!-- wp:navigation-link {\"label\":\"about\",\"type\":\"page\",\"id\":17,\"url\":\"http://127.0.0.1:9415/nav-fixture-about/\",\"kind\":\"post-type\"} /-->\n<!-- wp:navigation-link {\"label\":\"contact\",\"type\":\"page\",\"id\":18,\"url\":\"http://127.0.0.1:9415/nav-fixture-contact/\",\"kind\":\"post-type\"} /-->\n<!-- /wp:navigation -->\n\t\t\t</div>\n\t\t\t<!-- /wp:group -->\n\t\t</div>\n\t\t<!-- /wp:group -->\n\t</div>\n\t<!-- /wp:group -->\n</div>\n<!-- /wp:group -->\n\n",
+  "links": [
+    {
+      "label": "home",
+      "pageId": 15,
+      "url": "http://127.0.0.1:9415/nav-fixture-home/"
+    },
+    {
+      "label": "product",
+      "pageId": 16,
+      "url": "http://127.0.0.1:9415/nav-fixture-product/"
+    },
+    {
+      "label": "about",
+      "pageId": 17,
+      "url": "http://127.0.0.1:9415/nav-fixture-about/"
+    },
+    {
+      "label": "contact",
+      "pageId": 18,
+      "url": "http://127.0.0.1:9415/nav-fixture-contact/"
+    }
+  ],
+  "blocks": [
+    {
+      "isValid": true,
+      "name": "core/group"
+    },
+    {
+      "isValid": true,
+      "name": "core/group"
+    },
+    {
+      "isValid": true,
+      "name": "core/group"
+    },
+    {
+      "isValid": true,
+      "name": "core/site-title"
+    },
+    {
+      "isValid": true,
+      "name": "core/group"
+    },
+    {
+      "isValid": true,
+      "name": "core/navigation"
+    },
+    {
+      "isValid": true,
+      "name": "core/navigation-link"
+    },
+    {
+      "isValid": true,
+      "name": "core/navigation-link"
+    },
+    {
+      "isValid": true,
+      "name": "core/navigation-link"
+    },
+    {
+      "isValid": true,
+      "name": "core/navigation-link"
+    }
+  ],
+  "checks": [
+    {
+      "hasTitle": true,
+      "links": [
+        "http://127.0.0.1:9415/nav-fixture-home/",
+        "http://127.0.0.1:9415/nav-fixture-product/",
+        "http://127.0.0.1:9415/nav-fixture-about/",
+        "http://127.0.0.1:9415/nav-fixture-contact/"
+      ],
+      "scroll": 1440,
+      "width": 1440
+    },
+    {
+      "hasTitle": true,
+      "links": [
+        "http://127.0.0.1:9415/nav-fixture-home/",
+        "http://127.0.0.1:9415/nav-fixture-product/",
+        "http://127.0.0.1:9415/nav-fixture-about/",
+        "http://127.0.0.1:9415/nav-fixture-contact/"
+      ],
+      "scroll": 390,
+      "width": 390
+    }
+  ],
+  "mobileInteraction": {
+    "open": true,
+    "close": true,
+    "productLink": "http://127.0.0.1:9415/nav-fixture-product/",
+    "evidence": "agent-browser真实点击与URL回读"
+  },
+  "scope": "Real isolated WordPress with production fragment transformer; not extension authentication or real model end-to-end."
+}

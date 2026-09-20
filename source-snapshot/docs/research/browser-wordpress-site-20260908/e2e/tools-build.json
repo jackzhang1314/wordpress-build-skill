@@ -1,0 +1,19 @@
+{
+  "createdAt": "2026-09-07T19:44:00.377Z",
+  "candidate": "output/builds/wp-tools-0908",
+  "loadedExtension": "output/playwright/wp-e2e-0908/extension",
+  "artifacts": [
+    {
+      "path": "background.js",
+      "sha256": "3db4d6bd05a74b157f6fbe814caeb7399d5666bd7172d581801d0bf75efea90a"
+    },
+    {
+      "path": "sidepanel.js",
+      "sha256": "35eb9b7f214c7818d83dd262c4b21195c5bd749a89e9eb4358932ceaaee67adf"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "3d2aaa268c6c63ada720686f942531e0b037adfe24c602070fe33cfc7ab39240"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-09-07T19:57:34.017Z",
+  "scope": "Authorized precise staging foundation for R01; not a full product snapshot or validation",
+  "files": {
+    "src/lib/product-error.ts": "22b01d678a5dc5c35e7ae34176fdf170720025f31230fe2b7ca8c014776caac7",
+    "src/agent/connections/ids.ts": "82e99fe8c4fa7d439c5ca3eb7110ecf9a08b54fc96c430ddfc00e594158a947f",
+    "src/agent/sync-status-messages.ts": "f84d297308e2ac9275320181fea2617c25d5bb5d219b800d7932b64f58eb39a7",
+    "src/i18n/catalog.ts": "8179d2324156e43d6979a8653014bfb4c2133162048dd44489f3a3be8bee60a4",
+    "src/i18n/client.ts": "ec81816abc46710d4df29120a35164aab75364ed5f64e6747ce8b76eda56a38d",
+    "src/i18n/dom.ts": "e4371d1ea18d72753b052ab96b666e62bb01eb58c778924118e9034d6c2fc39b",
+    "src/i18n/injected.ts": "b8e11821b3dc79a4d9ca650c7b19079b88d4c20ec2418f480fbcd5e030f18fec",
+    "src/i18n/preference.ts": "7b3a563de8a8be2fcf49b5593997bdf8ea7da34795285c44bd03c4be8f1f9c46",
+    "src/i18n/protocol.ts": "701c3e3bf86af63c1366efa0507d5db02ec5fb1f7c7988b9dd07120a51f7ba9f",
+    "src/i18n/runtime.ts": "9bb1cdc0ce009f1bdf00e95418ff1acf79dd4a4083e46e3da2e2a26a16dd34ad",
+    "src/i18n/service.ts": "30f4c2de0bf2d7bc982374b648f7805634383e5b801c37cc41d1d83f3c5a0ca2",
+    "src/design/components.css": "b0c3aeeeed290f4292a8b93b51e7026c4b12d08d05a7ed77ad17471e3263b9d2",
+    "src/design/system.ts": "f341bb200177fec2c1e87ead90676cf81fc9569fbf7e18583877647f822db7ad",
+    "src/design/tokens.css": "aa5f39b4a1375b6bce306fbb3f98d280ab420c831b502e7d2433fc6c98bf1be6",
+    "public/_locales/en/messages.json": "ea560105191444d789e812034687441d4b8a7fdb6d1cf8c5279d16afcdbb8b0a",
+    "public/_locales/zh_CN/messages.json": "6b80af1b9c3cf22f91ba89f133fc7bf6b8316a6ebfc1e9a2141ad95f26a2ea56",
+    "public/_locales/zh_TW/messages.json": "6b80af1b9c3cf22f91ba89f133fc7bf6b8316a6ebfc1e9a2141ad95f26a2ea56"
+  },
+  "package": {
+    "i18next": "26.4.2",
+    "note": "Keep matching package-lock entries. gifenc belongs to R01. zod and @tabler/icons are existing dependencies."
+  },
+  "wiring": [
+    "src/background.ts import installLanguageService and one invocation",
+    "manifest __MSG_/default_locale requires public/_locales entries",
+    "build copy _locales and i18next license; do not stage other build mutations wholesale"
+  ],
+  "tests": [
+    "tests/i18n.test.ts",
+    "tests/i18n-bridge.test.ts",
+    "tests/i18n-catalog.test.ts",
+    "tests/design-system.test.ts"
+  ],
+  "additionalTestDependency": "design-system.test imports src/capture/icons.ts; check target baseline before using this test",
+  "excluded": [
+    "Agent runtime",
+    "WordPress implementation",
+    "page driver/recovery",
+    "unrelated settings/connector UI"
+  ]
+}

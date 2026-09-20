@@ -1,0 +1,45 @@
+// Read-only theme comparison through the official Hostinger CLI.
+import {execFile} from 'node:child_process';
+import {promisify} from 'node:util';
+import {createHash} from 'node:crypto';
+import {writeFile,readFile} from 'node:fs/promises';
+import {join} from 'node:path';
+import {themeInventory} from '../../examples/b2b-block-starter/scripts/release/theme-diff.mjs';
+import assert from 'node:assert/strict';
+const [user,domain,theme,candidate,output]=process.argv.slice(2);
+assert.ok(user&&/^[a-z0-9]+$/.test(user)&&domain&&/^[a-z0-9.-]+$/.test(domain)&&theme&&/^[a-z0-9_-]+$/.test(theme)&&candidate&&output,'Usage: USER DOMAIN THEME CANDIDATE_DIR REPORT.json');
+const run=promisify(execFile),root='wp-content/themes/'+theme;
+const cli=async(args)=>JSON.parse((await run('hostinger',['hosting','files',...args,'--format','json'],{timeout:60000,maxBuffer:8*1024*1024})).stdout);
+async function listing(){
+ const entries=[];let total;
+ do{
+  const r=await cli(['list-website-and-directories',user,domain,'--directory',root,'--max-depth','10','--max-items','1000','--offset',String(entries.length)]);
+  assert.equal(r.path,root);assert.ok(Array.isArray(r.items));assert.ok(Number.isSafeInteger(r.total_items));
+  total??=r.total_items;assert.equal(total,r.total_items,'Directory changed while paginating');
+  assert.ok(r.items.length||entries.length===total,'Incomplete listing');entries.push(...r.items);
+ }while(entries.length<total);
+ assert.equal(entries.length,total);assert.equal(new Set(entries.map(e=>e.path)).size,total);
+ for(const e of entries){assert.ok(typeof e.path==='string'&&!e.path.startsWith('/')&&!e.path.split('/').some(p=>['','..','.'].includes(p)));assert.ok(['file','directory'].includes(e.type),'Unsupported remote entry');assert.ok(e.type!=='directory'||e.path.split('/').length<10,'Listing depth limit reached');}
+ return entries.sort((a,b)=>a.path.localeCompare(b.path));
+}
+const entries=await listing(),local=await themeInventory(candidate),remote={},unverified=[],normalized=[];
+const files=entries.filter(e=>e.type==='file');
+for(let offset=0;offset<files.length;offset+=4){
+ await Promise.all(files.slice(offset,offset+4).map(async e=>{
+  // The content endpoint refuses binary files; retain an explicit coverage gap.
+  if(!/\.(php|html|css|js|json|txt|md)$/i.test(e.path)){unverified.push(e.path);return;}
+  const r=await cli(['website-content',user,domain,'--path',root+'/'+e.path,'--from-line','0','--max-lines','5000']);
+  assert.equal(r.path,root+'/'+e.path);assert.equal(Number(r.from_line),0);
+  const bytes=Buffer.from(r.content);assert.equal(Number(r.size_bytes),e.size_bytes);
+  if(bytes.length!==e.size_bytes){
+   const source=await readFile(join(candidate,e.path));
+   assert.ok(bytes.length+1===e.size_bytes && source.length===e.size_bytes && source.at(-1)===10 && source.subarray(0,-1).equals(bytes),'Incomplete or unexplained normalized content: '+e.path);
+   normalized.push(e.path);
+  }
+  remote[e.path]=createHash('sha256').update(bytes).digest('hex');
+ }));
+}
+assert.deepEqual(await listing(),entries,'Remote directory changed during read');
+const changes=[...new Set([...Object.keys(local),...files.map(e=>e.path)])].sort().filter(p=>!unverified.includes(p)&&!normalized.includes(p)&&local[p]!==remote[p]).map(path=>({path,kind:!remote[path]?'candidate-added':!local[path]?'candidate-deleted':'modified'}));
+const report={testedAt:new Date().toISOString(),domain,theme,scope:'read-only-remote-text-files-vs-local-candidate',remoteFiles:files.length,verifiedTextFiles:Object.keys(remote).length,changes,unverified:unverified.sort(),remoteResponseHashes:remote,normalizedFinalNewlineMatches:normalized.sort(),releaseApproval:false,limitations:['No atomic filesystem snapshot; same-size concurrent edits may evade directory consistency check','Endpoint may strip final newline; normalized matches are not byte-exact remote file verification','Binary files not downloaded','Database overrides and plugin files not covered']};
+await writeFile(output,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({verifiedTextFiles:report.verifiedTextFiles,changes,unverified:report.unverified,releaseApproval:false}));

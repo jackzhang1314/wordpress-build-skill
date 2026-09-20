@@ -1,0 +1,1 @@
+{"title":"国际 SEO 检查","seoGroup":"技术审计","category":"seo","summary":"核对多语言版本的 hreflang、canonical、语言和跨页回链，定位区域配置问题。","inputs":["目标国家语言与对应 URL","页面清单或 sitemap"],"outputs":["多语言版本矩阵","跨页问题与修复清单"],"tags":["SEO","技术审计","独立站"],"example":"请帮我做国际 SEO 检查，先确认资料和覆盖范围，再根据实际证据交付结果。","requirements":"按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。","connections":[]}

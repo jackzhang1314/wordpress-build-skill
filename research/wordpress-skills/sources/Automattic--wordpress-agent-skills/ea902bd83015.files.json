@@ -1,0 +1,287 @@
+[
+  {
+    "path": ".claude-plugin/marketplace.json",
+    "sha256": "e3c50a8296c0ba14e14ff56cfaf3c86e1e6467a7786b249641aff9c4cbb35ef7",
+    "bytes": 1003
+  },
+  {
+    "path": ".gitignore",
+    "sha256": "1e112ea5a92bc9611f217ecc58eceb47bc6b403362b7d2a8fa048cd18e3b29b2",
+    "bytes": 33
+  },
+  {
+    "path": "README.md",
+    "sha256": "66564a6b39fd1433ab280efdda62fbc7615e2bf481a473f7f04e4d8a18b640ce",
+    "bytes": 5229
+  },
+  {
+    "path": "claude-code/wp-site-creator/.claude-plugin/plugin.json",
+    "sha256": "4434229303cfd6bc9c57f4ff586bfe7e6a4a839c2c19762a16c06f520899e00f",
+    "bytes": 382
+  },
+  {
+    "path": "claude-code/wp-site-creator/CONNECTORS.md",
+    "sha256": "ffe6048ee7f9f85296bea51ac5a98ea399597483e314ae32328f259741563a31",
+    "bytes": 1611
+  },
+  {
+    "path": "claude-code/wp-site-creator/README.md",
+    "sha256": "792ab4dbffddd3a777ce95e534cd7b2ef05bd894bfec194523887d347566536e",
+    "bytes": 2595
+  },
+  {
+    "path": "claude-code/wp-site-creator/commands/design-site.md",
+    "sha256": "d3a53918bc2812889338557ba709ea2cce58d0dd66f019e34cf676b31557f227",
+    "bytes": 30020
+  },
+  {
+    "path": "claude-code/wp-site-creator/commands/preview-designs.md",
+    "sha256": "630635fa337552b5a038228dd4fd886733eb8a3495b4257d8e99b4953543f091",
+    "bytes": 13629
+  },
+  {
+    "path": "claude-code/wp-site-creator/commands/quick-build.md",
+    "sha256": "4e2c2b05f757643dca399c9477fbbc8da327613b4d094bbb921079ae3e12d664",
+    "bytes": 17714
+  },
+  {
+    "path": "claude-code/wp-site-creator/references/design-system-core.md",
+    "sha256": "c1ee87c9cbc754027bb1f51f55c0e2ee28c94d75b72ba49a5e83648e47273f1f",
+    "bytes": 9764
+  },
+  {
+    "path": "claude-code/wp-site-creator/references/design-system-phase2.md",
+    "sha256": "8ad832e932a8b94fb1e6b85c6d8128528b4ff862abbaf32ff89ee852eb6c16a4",
+    "bytes": 14646
+  },
+  {
+    "path": "claude-code/wp-site-creator/references/design-system-phase3.md",
+    "sha256": "a86355458274c9b7de1984c42d090e007de4da1b8e1199531e5f148768b5cf2f",
+    "bytes": 8668
+  },
+  {
+    "path": "claude-code/wp-site-creator/references/gallery.md",
+    "sha256": "91af33ab89a7243d1e0158437318d2d56cb4e7c8e53f92eb5bb2433a3f30e174",
+    "bytes": 6960
+  },
+  {
+    "path": "claude-code/wp-site-creator/references/simple-design-system.md",
+    "sha256": "f141a9fd00434e8eed04dde405fef064d63559dcd94f7c4bd213297d962edcfc",
+    "bytes": 15339
+  },
+  {
+    "path": "claude-code/wp-site-creator/references/wordpress-block-theming.md",
+    "sha256": "94ceecf39f5254160fefb94c7f739797be6753200bee7a313719b66f2696bd0a",
+    "bytes": 28951
+  },
+  {
+    "path": "claude-code/wp-site-creator/scripts/block-fixer/cli.js",
+    "sha256": "eac5c1d7b3e44ad787220617f936e2c5a286f09af2f11e7199af27285327540c",
+    "bytes": 9983814
+  },
+  {
+    "path": "claude-code/wp-site-creator/scripts/block-fixer/xhr-sync-worker.js",
+    "sha256": "9b3bb0816dfcba1cec2b469e08dea4a24b6561c1c2b758b880bc0ce6f0841ffe",
+    "bytes": 69
+  },
+  {
+    "path": "claude-code/wp-site-creator/scripts/track.sh",
+    "sha256": "e351905fd8fdb38a7241703902307d812805bae9eedc4902b5c6b3dacbd0694a",
+    "bytes": 457
+  },
+  {
+    "path": "claude-code/wp-site-creator/skills/site-specification/SKILL.md",
+    "sha256": "8f23ecdd249a57f5bba502a058aaff1d87943fb26ee8487458ef7630fb5fe8a1",
+    "bytes": 10977
+  },
+  {
+    "path": "claude-code/wp-site-creator/templates/design-gallery.php",
+    "sha256": "23c7f4f21d488b43f7f37da7a5744ef4acf82611a9b79741cb956bb5436dd7de",
+    "bytes": 16189
+  },
+  {
+    "path": "claude-cowork/wp-site-creator/.claude-plugin/plugin.json",
+    "sha256": "5fb3263851e5e6c0bf74af11377d0ce1d8c32a8a3b7a12a03204746ca5975fa3",
+    "bytes": 380
+  },
+  {
+    "path": "claude-cowork/wp-site-creator/CONNECTORS.md",
+    "sha256": "67372208c7ab29911241d074342a442ee20485fe6933cd08cbae57c6605180de",
+    "bytes": 1385
+  },
+  {
+    "path": "claude-cowork/wp-site-creator/README.md",
+    "sha256": "a93f3a8447614671a012af358a2e2e82f5e6139083c5626eb2945a40307c1619",
+    "bytes": 1505
+  },
+  {
+    "path": "claude-cowork/wp-site-creator/commands/create-site.md",
+    "sha256": "034cf5e453f0a8d5eb520501a79dbf1d263aa8f2fe37a27e8784b62f372ac5ad",
+    "bytes": 13978
+  },
+  {
+    "path": "claude-cowork/wp-site-creator/commands/preview-designs.md",
+    "sha256": "bcaa1aae68e281c282a3859e54b043be41bbd9b75a17240663eb805f92f249f2",
+    "bytes": 10221
+  },
+  {
+    "path": "claude-cowork/wp-site-creator/skills/design-systems/SKILL.md",
+    "sha256": "c235a42fcc5b25ef317cfa94104ce79c6dcb16bbbfe611445f748a461c2b5595",
+    "bytes": 10106
+  },
+  {
+    "path": "claude-cowork/wp-site-creator/skills/site-specification/SKILL.md",
+    "sha256": "50900bcabaefe2d393931210206826398350b7ebc19a31263160f646b331097b",
+    "bytes": 10916
+  },
+  {
+    "path": "claude-cowork/wp-site-creator/skills/wordpress-block-theming/SKILL.md",
+    "sha256": "4feab7d0e333dc37abcc0ac56bbfc016349a8d737b9c292046c4b8662d2d4337",
+    "bytes": 19187
+  },
+  {
+    "path": "docs/images/add-link.png",
+    "sha256": "039c2ca02e4a7b8d3cb29c118024a996c0a72aeeb29ec0d39a1a98ef21ae1c20",
+    "bytes": 100254
+  },
+  {
+    "path": "docs/images/add-to-marketplace.png",
+    "sha256": "c63dd570cf907cee9cc1c0e5c965c880717ac3f363a9363ec33a7461b9d54854",
+    "bytes": 180896
+  },
+  {
+    "path": "docs/images/create-site.png",
+    "sha256": "579e8096f73448a1dbc1efa82ba007493a83b22f128ab8301472c990c047f32a",
+    "bytes": 109012
+  },
+  {
+    "path": "docs/images/install-plugin.png",
+    "sha256": "d1adf4175e77cc52525b579093c38a50009891abfffc42a4321cd537e2eaf8c2",
+    "bytes": 88609
+  },
+  {
+    "path": "docs/images/plugins-menu.png",
+    "sha256": "e52c1acd731e9d0f1dbeb074b974d56f7a9ed69d837f940f885960e51cd0ae1e",
+    "bytes": 6072
+  },
+  {
+    "path": "studio-mcp/.gitignore",
+    "sha256": "4d56952b0fb13bf8f9b6c13a6d4c34a075bac3af447636a1df4335d7576e2f97",
+    "bytes": 14
+  },
+  {
+    "path": "studio-mcp/README.md",
+    "sha256": "e6f21f3508fdf6c4ebf02a7bfbdc128ce4cf7e487f9be1adb4457ef89925e8f9",
+    "bytes": 3935
+  },
+  {
+    "path": "studio-mcp/dist/index.js",
+    "sha256": "b030bfe4276c2425a553e525cd5e3ccc899ce0de82326981143648ca32a521e8",
+    "bytes": 1132371
+  },
+  {
+    "path": "studio-mcp/package-lock.json",
+    "sha256": "196fbcf29304e3e450bd919608a63408be36e1d3454fdc318898757b7e1060d1",
+    "bytes": 208306
+  },
+  {
+    "path": "studio-mcp/package.json",
+    "sha256": "56ce9088e9f6f516034f2d9278378415dbce168331685e22f3f1c64153a4c6f7",
+    "bytes": 901
+  },
+  {
+    "path": "studio-mcp/src/index.ts",
+    "sha256": "12bdd0b0375680537e2131b05b75f5ded83162598b0711e492ac066e8808311c",
+    "bytes": 725
+  },
+  {
+    "path": "studio-mcp/src/lib/appdata.ts",
+    "sha256": "e68ce10f4a56af95bfe4140f5f77fcab2a5fa39dfa785f93026570aed95784c4",
+    "bytes": 987
+  },
+  {
+    "path": "studio-mcp/src/lib/block-fixer/block-fixer.ts",
+    "sha256": "1e499bd91ed88fbd64c23a84fba181702b02454ec1aeafca9ba6bc347681195d",
+    "bytes": 4245
+  },
+  {
+    "path": "studio-mcp/src/lib/block-fixer/index.ts",
+    "sha256": "3132bdf0ba638cc8c99f7d13420951ce544a2c2cf4540d39dbf5dafbe13055a7",
+    "bytes": 2844
+  },
+  {
+    "path": "studio-mcp/src/lib/block-fixer/paragraph-fixer.ts",
+    "sha256": "44a7870e96edecb0cdbd4fc7016e652e94c9ed0281b34f30474269f977e52a7e",
+    "bytes": 5169
+  },
+  {
+    "path": "studio-mcp/src/lib/fs-utils.ts",
+    "sha256": "d5898918c73c072850bc3f97116f3a4372b6d96c944133a4e84e49aea7dbd1ee",
+    "bytes": 1915
+  },
+  {
+    "path": "studio-mcp/src/lib/studio-cli.ts",
+    "sha256": "041408844bff21a733e0bbc3919ac3a8da284f61437d454a465a51e3595055a5",
+    "bytes": 1329
+  },
+  {
+    "path": "studio-mcp/src/prompts/index.ts",
+    "sha256": "cbe69cba2136e5db2fe555e393548851da3c5e6de095046b025df3cf47c17cd0",
+    "bytes": 233
+  },
+  {
+    "path": "studio-mcp/src/prompts/inspect-site.ts",
+    "sha256": "61a8091c5da52b88973f0366d822a1de229cbca1cc3aaf1073f49c9a1f88b65f",
+    "bytes": 1421
+  },
+  {
+    "path": "studio-mcp/src/resources/appdata.ts",
+    "sha256": "638de84efd8378bbb399050486a1d80ced2b4f4f82def1837a0aa157d03ea9d5",
+    "bytes": 1141
+  },
+  {
+    "path": "studio-mcp/src/resources/index.ts",
+    "sha256": "05d7c025a1bbc5e87df3f3d5834350116f6629191b83a22c8737e7052a916e7f",
+    "bytes": 225
+  },
+  {
+    "path": "studio-mcp/src/tools/auth.ts",
+    "sha256": "0cdfcb2b31245859d924dbe16b2a7428ce0e24b52b8569c5a04b0a0fefffe555",
+    "bytes": 1145
+  },
+  {
+    "path": "studio-mcp/src/tools/block-fix.ts",
+    "sha256": "d777699b500802be21a89ef22a2f862c3459603694e521c5ff3e9827c3cefb78",
+    "bytes": 4336
+  },
+  {
+    "path": "studio-mcp/src/tools/fs.ts",
+    "sha256": "3b8b67dab88ebf0307949e04f5d8f988f97027d3f85125a619651044c009ef97",
+    "bytes": 8107
+  },
+  {
+    "path": "studio-mcp/src/tools/index.ts",
+    "sha256": "3a117bdc415636424bbecd51b98dfa4201807e131e0998ffeb0e1480bd52f5ce",
+    "bytes": 594
+  },
+  {
+    "path": "studio-mcp/src/tools/preview.ts",
+    "sha256": "f3a789d0cadd55bc743c5883ea5f2b67398d9ebbeafbbe2ede6b7fe60ea2d5cd",
+    "bytes": 4589
+  },
+  {
+    "path": "studio-mcp/src/tools/site.ts",
+    "sha256": "580fecdf3986b17f0560ed1e58e52f7ccc2085130bbe535a32ef7bcb1f940999",
+    "bytes": 9349
+  },
+  {
+    "path": "studio-mcp/src/tools/wp-cli.ts",
+    "sha256": "7811221ea3d2d97520fb073bf2799a2ca1691fb0adc9701d554bf46341afd888",
+    "bytes": 2504
+  },
+  {
+    "path": "studio-mcp/tsconfig.json",
+    "sha256": "ecec2ce1b4eb30dc6670c511f59403295d5cc016d56877e9b6d0ddecd8a4efc0",
+    "bytes": 318
+  }
+]

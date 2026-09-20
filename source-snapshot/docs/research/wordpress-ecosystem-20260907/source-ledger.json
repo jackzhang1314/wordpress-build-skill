@@ -1,0 +1,407 @@
+[
+  {
+    "title": "NASA 案例",
+    "url": "https://wordpress.org/showcase/nasa/",
+    "publisher": "wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "将「常用、用户量大的 WordPress 网站」理解为主流 WordPress 建站生态，同时补充真实大型网站案例。WordPress.org 是开源软件生态；WordPress.com 是托管服务，认证和接口不能混用。NASA 与白宫均出现在官方 Showcase，可作为复杂内容、媒体和发布流程的案例；本次没有核验其访问人数，也不据此推导它们使用某个页面构建器。NASA 案例 · 白宫案例",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "白宫案例",
+    "url": "https://wordpress.org/showcase/the-white-house/",
+    "publisher": "wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "将「常用、用户量大的 WordPress 网站」理解为主流 WordPress 建站生态，同时补充真实大型网站案例。WordPress.org 是开源软件生态；WordPress.com 是托管服务，认证和接口不能混用。NASA 与白宫均出现在官方 Showcase，可作为复杂内容、媒体和发布流程的案例；本次没有核验其访问人数，也不据此推导它们使用某个页面构建器。NASA 案例 · 白宫案例",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "10M+ 活跃安装",
+    "url": "https://wordpress.org/plugins/elementor/",
+    "publisher": "wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "Elementor\n10M+ 活跃安装\n高优先级页面构建适配对象",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "10M+ 活跃安装",
+    "url": "https://en-au.wordpress.org/plugins/wordpress-seo/",
+    "publisher": "en-au.wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "Yoast SEO\n10M+ 活跃安装\nSEO 检查覆盖面广，写入需另外确认接口",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "10M+ 活跃安装",
+    "url": "https://wordpress.org/plugins/contact-form-7/",
+    "publisher": "wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "Contact Form 7\n10M+ 活跃安装\n询盘表单检测与已有站点兼容",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "7M+ 活跃安装",
+    "url": "https://wordpress.org/plugins/woocommerce/",
+    "publisher": "wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "WooCommerce\n7M+ 活跃安装\n商品目录、产品资料和商城运营",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "5M+ 活跃安装",
+    "url": "https://wordpress.org/plugins/wpforms-lite/",
+    "publisher": "wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "WPForms Lite\n5M+ 活跃安装\n新建询盘表单与询盘数据整理",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "4M+ 活跃安装",
+    "url": "https://wordpress.org/plugins/seo-by-rank-math/",
+    "publisher": "wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "Rank Math\n4M+ 活跃安装\n已有 AI 能力，适合 SEO 实际操作",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "800K+ 活跃安装",
+    "url": "https://wordpress.org/plugins/polylang/",
+    "publisher": "wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "Polylang\n800K+ 活跃安装\n多语言站点的翻译关联与发布",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "600K+ 活跃安装",
+    "url": "https://wordpress.org/plugins/kadence-blocks/",
+    "publisher": "wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "Kadence Blocks\n600K+ 活跃安装\n原生区块扩展，需要识别具体块",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "1M+ 活跃安装",
+    "url": "https://wordpress.org/plugins/ultimate-addons-for-gutenberg/",
+    "publisher": "wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "Spectra Legacy\n1M+ 活跃安装\n旧站兼容对象",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "40K+ 活跃安装",
+    "url": "https://wordpress.org/plugins/spectra-blocks/",
+    "publisher": "wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "Spectra Blocks 新版\n40K+ 活跃安装\n不可套用 Legacy 的百万安装量",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Divi 厂商客户口径",
+    "url": "https://www.elegantthemes.com/gallery/divi/",
+    "publisher": "www.elegantthemes.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "Divi / Beaver Builder\nDivi 厂商客户口径 / Beaver 厂商站点口径\n是重要商业生态，但不与目录活跃安装量直接排序",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Beaver 厂商站点口径",
+    "url": "https://www.wpbeaverbuilder.com/pricing-features/",
+    "publisher": "www.wpbeaverbuilder.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "Divi / Beaver Builder\nDivi 厂商客户口径 / Beaver 厂商站点口径\n是重要商业生态，但不与目录活跃安装量直接排序",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "WordPress REST 资源目录",
+    "url": "https://developer.wordpress.org/rest-api/reference/",
+    "publisher": "developer.wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "原生 REST API 已覆盖文章、页面、媒体、分类、标签、修订等资源；这些是可供开发的官方能力，不代表我们现在已全部接入。WordPress REST 资源目录",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "媒体接口",
+    "url": "https://developer.wordpress.org/rest-api/reference/media/",
+    "publisher": "developer.wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "媒体接口可读写 alt、caption、description 等；文章与页面接口支持特色图。上传需要扩展当前只发送 JSON 的连接器，并把媒体 ID 与后续页面操作关联。媒体接口 · 文章接口",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "文章接口",
+    "url": "https://developer.wordpress.org/rest-api/reference/posts/",
+    "publisher": "developer.wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "媒体接口可读写 alt、caption、description 等；文章与页面接口支持特色图。上传需要扩展当前只发送 JSON 的连接器，并把媒体 ID 与后续页面操作关联。媒体接口 · 文章接口",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "WP-Cron 官方说明",
+    "url": "https://developer.wordpress.org/plugins/cron/",
+    "publisher": "developer.wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "定时文章依赖站点调度。WP-Cron 通常由页面访问触发，不能承诺在任意主机环境下精确到秒；验收时检查未来状态及到期结果。WP-Cron 官方说明",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "导入说明",
+    "url": "https://www.wpallimport.com/documentation/",
+    "publisher": "www.wpallimport.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "WP All Import 的文档支持 CSV/XML、图片、字段映射；其 Action API 主要是 PHP hooks，定时执行使用 trigger/processing URL。不能把它当现成的通用远程 CRUD API。对已经使用它的客户，可以生成匹配导入模板或执行已配置任务；不为普通文章发布新增强制依赖。导入说明 · 调度接口",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "调度接口",
+    "url": "https://www.wpallimport.com/documentation/cron/",
+    "publisher": "www.wpallimport.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "WP All Import 的文档支持 CSV/XML、图片、字段映射；其 Action API 主要是 PHP hooks，定时执行使用 trigger/processing URL。不能把它当现成的通用远程 CRUD API。对已经使用它的客户，可以生成匹配导入模板或执行已配置任务；不为普通文章发布新增强制依赖。导入说明 · 调度接口",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Pages API",
+    "url": "https://developer.wordpress.org/rest-api/reference/pages/",
+    "publisher": "developer.wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "依据：Pages API · 区块数据表示 · Elementor 数据结构 · Divi 迁移说明 · Bricks AI · Beaver 导入导出",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "区块数据表示",
+    "url": "https://developer.wordpress.org/block-editor/getting-started/fundamentals/markup-representation-block/",
+    "publisher": "developer.wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "依据：Pages API · 区块数据表示 · Elementor 数据结构 · Divi 迁移说明 · Bricks AI · Beaver 导入导出",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Elementor 数据结构",
+    "url": "https://developers.elementor.com/docs/data-structure/index.html",
+    "publisher": "developers.elementor.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "依据：Pages API · 区块数据表示 · Elementor 数据结构 · Divi 迁移说明 · Bricks AI · Beaver 导入导出",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Divi 迁移说明",
+    "url": "https://help.elegantthemes.com/en/articles/12767407-how-to-safely-migrate-from-divi-4-to-divi-5",
+    "publisher": "help.elegantthemes.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "依据：Pages API · 区块数据表示 · Elementor 数据结构 · Divi 迁移说明 · Bricks AI · Beaver 导入导出",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Bricks AI",
+    "url": "https://academy.bricksbuilder.io/builder/features/ai-abilities-and-skills/",
+    "publisher": "academy.bricksbuilder.io",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "依据：Pages API · 区块数据表示 · Elementor 数据结构 · Divi 迁移说明 · Bricks AI · Beaver 导入导出",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Beaver 导入导出",
+    "url": "https://docs.wpbeaverbuilder.com/beaver-builder/settings/export-import/",
+    "publisher": "docs.wpbeaverbuilder.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "依据：Pages API · 区块数据表示 · Elementor 数据结构 · Divi 迁移说明 · Bricks AI · Beaver 导入导出",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "官方 blocks 包",
+    "url": "https://developer.wordpress.org/block-editor/reference-guides/packages/packages-blocks/",
+    "publisher": "developer.wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "创建页面和改主题不是一个层级。首批不自动改全站 header/footer、导航、全局样式；这些变更影响范围更大，应作为单独操作。/wp/v2/blocks 也不是任意文章内部块的 CRUD 接口。原生块可研究使用官方 parse/serialize/validate 能力，但要在扩展适合的宿主中运行，不能假设 service worker 有 DOM。官方 blocks 包",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "WPForms 能力接口",
+    "url": "https://wpforms.com/developers/wpforms-rest-api/",
+    "publisher": "wpforms.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "来源：WPForms 能力接口 · Rank Math 官方工具 · Yoast REST · WooCommerce REST · ACF REST",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Rank Math 官方工具",
+    "url": "https://rankmath.com/kb/mcp-tools/",
+    "publisher": "rankmath.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "来源：WPForms 能力接口 · Rank Math 官方工具 · Yoast REST · WooCommerce REST · ACF REST",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Yoast REST",
+    "url": "https://developer.yoast.com/customization/apis/rest-api/",
+    "publisher": "developer.yoast.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "来源：WPForms 能力接口 · Rank Math 官方工具 · Yoast REST · WooCommerce REST · ACF REST",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "WooCommerce REST",
+    "url": "https://developer.woocommerce.com/docs/apis/rest-api/",
+    "publisher": "developer.woocommerce.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "来源：WPForms 能力接口 · Rank Math 官方工具 · Yoast REST · WooCommerce REST · ACF REST",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "ACF REST",
+    "url": "https://www.advancedcustomfields.com/resources/wp-rest-api-integration/",
+    "publisher": "www.advancedcustomfields.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "来源：WPForms 能力接口 · Rank Math 官方工具 · Yoast REST · WooCommerce REST · ACF REST",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "ACF Abilities",
+    "url": "https://www.advancedcustomfields.com/resources/abilities-api/",
+    "publisher": "www.advancedcustomfields.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "新增能力交叉核验：ACF Abilities · Woo MCP 开发者预览 · Polylang Pro REST · WPML Woo 翻译 · Gravity Forms 认证。ACF 的 Show in REST API 与 Allow AI Access 是两种开关；旧站可继续走传统 REST，无需为普通字段更新强制升级。Rank Math 所读官方教程没有确认统一最低版本，因此由站点工具发现决定启用。",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Woo MCP 开发者预览",
+    "url": "https://developer.woocommerce.com/docs/features/mcp/",
+    "publisher": "developer.woocommerce.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "新增能力交叉核验：ACF Abilities · Woo MCP 开发者预览 · Polylang Pro REST · WPML Woo 翻译 · Gravity Forms 认证。ACF 的 Show in REST API 与 Allow AI Access 是两种开关；旧站可继续走传统 REST，无需为普通字段更新强制升级。Rank Math 所读官方教程没有确认统一最低版本，因此由站点工具发现决定启用。",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Polylang Pro REST",
+    "url": "https://polylang.pro/documentation/support/developers/rest-api/",
+    "publisher": "polylang.pro",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "新增能力交叉核验：ACF Abilities · Woo MCP 开发者预览 · Polylang Pro REST · WPML Woo 翻译 · Gravity Forms 认证。ACF 的 Show in REST API 与 Allow AI Access 是两种开关；旧站可继续走传统 REST，无需为普通字段更新强制升级。Rank Math 所读官方教程没有确认统一最低版本，因此由站点工具发现决定启用。",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "WPML Woo 翻译",
+    "url": "https://wpml.org/documentation/related-projects/woocommerce-multilingual/using-wordpress-rest-api-woocommerce-multilingual/",
+    "publisher": "wpml.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "新增能力交叉核验：ACF Abilities · Woo MCP 开发者预览 · Polylang Pro REST · WPML Woo 翻译 · Gravity Forms 认证。ACF 的 Show in REST API 与 Allow AI Access 是两种开关；旧站可继续走传统 REST，无需为普通字段更新强制升级。Rank Math 所读官方教程没有确认统一最低版本，因此由站点工具发现决定启用。",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Gravity Forms 认证",
+    "url": "https://docs.gravityforms.com/rest-api-v2-authentication/",
+    "publisher": "docs.gravityforms.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "新增能力交叉核验：ACF Abilities · Woo MCP 开发者预览 · Polylang Pro REST · WPML Woo 翻译 · Gravity Forms 认证。ACF 的 Show in REST API 与 Allow AI Access 是两种开关；旧站可继续走传统 REST，无需为普通字段更新强制升级。Rank Math 所读官方教程没有确认统一最低版本，因此由站点工具发现决定启用。",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "官方 Skill 仓库",
+    "url": "https://github.com/WordPress/agent-skills",
+    "publisher": "github.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "来源：官方 Skill 仓库 · Bricks Skill 仓库 · 官方 MCP Adapter · WordPress.com MCP",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Bricks Skill 仓库",
+    "url": "https://github.com/codeerhq/bricks-skills",
+    "publisher": "github.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "来源：官方 Skill 仓库 · Bricks Skill 仓库 · 官方 MCP Adapter · WordPress.com MCP",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "官方 MCP Adapter",
+    "url": "https://github.com/WordPress/mcp-adapter",
+    "publisher": "github.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "来源：官方 Skill 仓库 · Bricks Skill 仓库 · 官方 MCP Adapter · WordPress.com MCP",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "WordPress.com MCP",
+    "url": "https://developer.wordpress.com/docs/mcp/",
+    "publisher": "developer.wordpress.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "来源：官方 Skill 仓库 · Bricks Skill 仓库 · 官方 MCP Adapter · WordPress.com MCP",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "wp-rest-api 原文",
+    "url": "https://github.com/WordPress/agent-skills/blob/trunk/skills/wp-rest-api/SKILL.md",
+    "publisher": "github.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "官方 wp-rest-api Skill 面向开发者，明确包含文件系统、bash/Node 和部分 WP-CLI 工作流。不能因为仓库很知名就把其开发流程放进运营用户的 Skill 列表。wp-rest-api 原文",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "Abilities REST 官方契约",
+    "url": "https://developer.wordpress.org/apis/abilities-api/rest-api-endpoints/",
+    "publisher": "developer.wordpress.org",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "自建站继续使用 HTTPS + 应用密码；增加站点能力发现和受控 Abilities HTTP 适配。官方 Abilities 提供 HTTP 发现/执行接口，但只有显式 show_in_rest 的能力可通过 REST 访问，并且需要认证与能力权限检查。因此「安装了插件」不等于「Agent 能调用它」。Abilities REST 官方契约",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "自定义客户端接入",
+    "url": "https://developer.wordpress.com/docs/mcp/connect-custom-mcp-client/",
+    "publisher": "developer.wordpress.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "WordPress.com 的官方 MCP 使用 OAuth 2.1、PKCE 和动态客户端注册，无需嵌入客户端密钥。它提供明确的 HTTP MCP 端点，架构上适合另做浏览器连接模式；实际 Chrome 回调 URI、令牌刷新、站点范围、传输生命周期和授权仍需联调。自定义客户端接入",
+    "confidence": "官方来源；适配建议为研究判断"
+  },
+  {
+    "title": "工具目录",
+    "url": "https://developer.wordpress.com/docs/mcp/tools-reference/",
+    "publisher": "developer.wordpress.com",
+    "accessed": "2026-09-07",
+    "published": "见来源页面；未标明者不推定",
+    "claim": "WordPress.com 官方工具目录覆盖内容/媒体写入和页面设计上下文读取；可借鉴先读主题 tokens、patterns、blocks 再组装页面，以及保存后检查内容警告的做法。其服务权限与可用计划以官方配置页为准，不能把 WordPress.com 工具名字当成自建站通用端点。工具目录",
+    "confidence": "官方来源；适配建议为研究判断"
+  }
+]

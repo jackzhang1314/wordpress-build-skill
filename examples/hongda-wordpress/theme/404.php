@@ -1,0 +1,1 @@
+<?php namespace Hongda\Theme;get_header(); ?><section class="section wrap"><span class="eyebrow">404</span><h1>That page is not here.</h1><p>Find a machine in the equipment range or get in touch.</p><a class="button" href="<?php echo esc_url(get_post_type_archive_link('hd_product')); ?>">Explore equipment ↗</a></section><?php get_footer(); ?>

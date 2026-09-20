@@ -1,0 +1,123 @@
+{
+  "checkedAt": "2026-09-20T18:42:22.715833+00:00",
+  "scope": "authenticated-REST-resolved-templates-and-parts",
+  "items": [
+    {
+      "id": "b2b-equipment//page",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//company",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//index",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//taxonomy-hd_category-editorial",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//single-hd_product",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//enquiry",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//product-editorial",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//home",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//single",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//search",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//product-standard",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//404",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//single-hd_solution",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//front-page",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//archive-hd_product",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//archive-hd_solution",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//taxonomy-hd_category",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//footer",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    },
+    {
+      "id": "b2b-equipment//header",
+      "source": "theme",
+      "origin": null,
+      "hasThemeFile": true
+    }
+  ],
+  "customCount": 0,
+  "globalStyles": "not-covered-by-this-check",
+  "releaseApproval": false
+}

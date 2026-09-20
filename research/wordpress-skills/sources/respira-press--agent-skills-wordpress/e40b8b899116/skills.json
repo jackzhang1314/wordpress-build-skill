@@ -1,0 +1,1727 @@
+{
+  "version": "1.15.0",
+  "updated_at": "2026-09-13",
+  "skills": [
+    {
+      "slug": "respira-setup-assistant",
+      "name": "Respira Setup Assistant",
+      "description": "Diagnose your Respira MCP connection, walk through first-time setup, and fix common connection problems (timeouts, 401s, 403s, version mismatches).",
+      "category": "onboarding",
+      "author": "Respira for WordPress",
+      "version": "1.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/respira-setup-assistant",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/respira-setup-assistant/SKILL.md",
+      "details": {
+        "hero_subtitle": "Diagnose your MCP connection, walk through first-time setup, and fix common problems. Works even when Respira is broken — it is the skill you run first.",
+        "capabilities": [
+          {
+            "title": "Doctor Diagnostics",
+            "desc": "9 checks in one pass — Node.js version, MCP config, connectivity, plugin version, API negotiation, and npm update availability."
+          },
+          {
+            "title": "Version Compatibility",
+            "desc": "Detects version mismatches between MCP server and plugin. Tells you exactly what to update and why."
+          },
+          {
+            "title": "Guided Setup",
+            "desc": "Walks through first-time connection step by step — plugin install, API key creation, MCP configuration."
+          },
+          {
+            "title": "Troubleshooting",
+            "desc": "Resolves timeouts, 401s, 403s, staging auth issues, and REST API blocks with plain-language instructions."
+          }
+        ],
+        "freshly_updated_until": "2026-05-31",
+        "v1_1_0_changes": "Swapped deprecated wordpress_* tool names to respira_*. Picked up v7.0.x backend fixes (Bricks settings normalisation, Beaver Box mappings + font-field stdClass + column size default, Oxygen Classic root wrapper + try/catch, Breakdance content path nesting + append unwrap, Divi 4 multi-tool bundle, Divi 5 _nodeId fallback + children-aliases fold, WPBakery + Uncode adapter pack). v7.1 Elementor 4 atomic-write surface referenced where relevant."
+      }
+    },
+    {
+      "slug": "site-onboarding",
+      "name": "Site Onboarding",
+      "description": "First-run primer for AI coding tools. Verifies MCP connectivity, discovers site architecture (theme, builders, plugins, content types), maps all available capabilities, and produces a site briefing.",
+      "category": "onboarding",
+      "author": "Respira for WordPress",
+      "version": "1.0.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/site-onboarding",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/site-onboarding/SKILL.md",
+      "details": {
+        "hero_subtitle": "First-run primer for AI coding tools. Verify your MCP connection, discover your site architecture, and get a complete briefing on everything your AI agent can do.",
+        "capabilities": [
+          {
+            "title": "Connection Verification",
+            "desc": "Confirms MCP is live, authenticated, and communicating with your WordPress site before doing anything else."
+          },
+          {
+            "title": "Architecture Discovery",
+            "desc": "Maps your theme, page builders, plugins, post types, taxonomies, and menus in a single pass."
+          },
+          {
+            "title": "Capability Mapping",
+            "desc": "Lists every action the AI can take on your specific site based on active plugins and add-ons."
+          },
+          {
+            "title": "Site Briefing",
+            "desc": "Produces a concise reference document with connection status, architecture, and suggested next steps."
+          }
+        ]
+      }
+    },
+    {
+      "slug": "wordpress-site-dna",
+      "name": "WordPress Site DNA",
+      "description": "Archaeological analysis of WordPress sites. Detects all page builders, audits plugins (active vs dead weight), maps content structure, finds orphaned shortcodes, measures performance, and assesses security posture.",
+      "category": "audit",
+      "author": "Respira for WordPress",
+      "version": "1.3.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/wordpress-site-dna",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/wordpress-site-dna/SKILL.md",
+      "details": {
+        "hero_subtitle": "Archaeological analysis of your WordPress installation. Find technical debt, optimization opportunities, and hidden issues — in about 60 seconds.",
+        "capabilities": [
+          {
+            "title": "Core WordPress Health",
+            "desc": "Version, PHP compatibility, debug mode, memory limits"
+          },
+          {
+            "title": "Builder Archaeology",
+            "desc": "Detect all builders: Elementor, Divi, Bricks, WPBakery, and 7 more"
+          },
+          {
+            "title": "Plugin Analysis",
+            "desc": "Active vs dead weight, outdated, security risks, performance hogs"
+          },
+          {
+            "title": "Theme Inspection",
+            "desc": "Active theme, parent/child structure, framework detection"
+          },
+          {
+            "title": "Content Structure",
+            "desc": "Orphaned shortcodes, media library, database bloat"
+          },
+          {
+            "title": "Performance Metrics",
+            "desc": "Page weight, unused assets, image optimization opportunities"
+          },
+          {
+            "title": "Security Posture",
+            "desc": "Runs the Respira security audit: core checksums, administrators, compromise indicators and coverage, plus known vulnerabilities on plugin 9.0. Says when a check did not run instead of calling the site clean."
+          },
+          {
+            "title": "Technical Debt Score",
+            "desc": "Health score 0–100 with category breakdown and trend tracking"
+          }
+        ],
+        "expected_findings": [
+          "3 page builders installed, only actively using 1",
+          "14 plugins you forgot about that slow every page load",
+          "Orphaned shortcodes breaking layout on 8 pages",
+          "PHP 7.4 running end-of-life with known vulnerabilities",
+          " as your WordPress username (a gift to attackers)",
+          "2.3GB of unoptimized images killing Core Web Vitals"
+        ],
+        "freshly_updated_until": "2026-05-31",
+        "v1_1_0_changes": "Swapped deprecated wordpress_* tool names to respira_*. Picked up v7.0.x backend fixes (Bricks settings normalisation, Beaver Box mappings + font-field stdClass + column size default, Oxygen Classic root wrapper + try/catch, Breakdance content path nesting + append unwrap, Divi 4 multi-tool bundle, Divi 5 _nodeId fallback + children-aliases fold, WPBakery + Uncode adapter pack). v7.1 Elementor 4 atomic-write surface referenced where relevant.",
+        "v1_3_0_changes": "The security step runs respira_run_security_audit instead of guessing from security plugin names, reads indicators, coverage and known vulnerabilities, and scores security only on what was checked."
+      }
+    },
+    {
+      "slug": "technical-debt-audit",
+      "name": "Technical Debt Audit",
+      "description": "Identifies technical debt in WordPress sites — orphaned shortcodes from deleted plugins, unused plugins, database bloat, unused media, builder data from inactive builders.",
+      "category": "audit",
+      "author": "Respira for WordPress",
+      "version": "1.2.1",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/technical-debt-audit",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/technical-debt-audit/SKILL.md",
+      "details": {
+        "hero_subtitle": "Orphaned shortcodes, forgotten plugins, database bloat, unused media. Technical Debt Audit finds it all and gives you a safe, prioritized cleanup plan.",
+        "capabilities": [
+          {
+            "title": "Orphaned Shortcodes",
+            "desc": "Finds shortcodes in content pointing to deleted or inactive plugins"
+          },
+          {
+            "title": "Plugin Graveyard",
+            "desc": "Identifies plugins installed but never used, activated then abandoned"
+          },
+          {
+            "title": "Builder Archaeology",
+            "desc": "Dormant page builders with zero pages using them, still bloating disk"
+          },
+          {
+            "title": "Database Bloat",
+            "desc": "Revisions, expired transients, orphaned postmeta, spam comment backlog"
+          },
+          {
+            "title": "Unused Media",
+            "desc": "Images uploaded but referenced nowhere — wasted disk and bandwidth"
+          },
+          {
+            "title": "Long Inactive Plugins",
+            "desc": "Plugins deactivated 6+ months ago that are attack surface for nothing"
+          },
+          {
+            "title": "Debt Score 0–100",
+            "desc": "Composite cleanliness score with breakdown by category"
+          },
+          {
+            "title": "Safe Cleanup Roadmap",
+            "desc": "Prioritized week-by-week plan with Respira duplicate-first workflows"
+          }
+        ],
+        "expected_findings": [
+          "23 orphaned shortcodes breaking layout across 8 pages",
+          "14 plugins installed ",
+          " — never activated, never removed",
+          "Elementor and Divi both installed, only one ever used",
+          "2.1GB of database bloat from 8 years of unlimited revisions",
+          "800+ images in the media library, only 200 referenced anywhere",
+          "Deactivated security plugin still sitting there with known CVEs"
+        ],
+        "freshly_updated_until": "2026-05-31",
+        "v1_1_0_changes": "Swapped deprecated wordpress_* tool names to respira_*. Picked up v7.0.x backend fixes (Bricks settings normalisation, Beaver Box mappings + font-field stdClass + column size default, Oxygen Classic root wrapper + try/catch, Breakdance content path nesting + append unwrap, Divi 4 multi-tool bundle, Divi 5 _nodeId fallback + children-aliases fold, WPBakery + Uncode adapter pack). v7.1 Elementor 4 atomic-write surface referenced where relevant."
+      }
+    },
+    {
+      "slug": "woocommerce-health-check",
+      "name": "WooCommerce Health Check",
+      "description": "WooCommerce configuration diagnostics — identifies checkout problems, cart errors, AJAX mismatches, caching issues, payment gateway setup, SSL enforcement. Revenue-impacting diagnostics.",
+      "category": "audit",
+      "author": "Respira for WordPress",
+      "version": "1.2.1",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": "woocommerce",
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/woocommerce-health-check",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/woocommerce-health-check/SKILL.md",
+      "details": {
+        "hero_subtitle": "URL mismatches, uncached cart pages, broken payment gateways. WooCommerce Health Check finds the exact issues causing cart abandonment — before your next lost order.",
+        "capabilities": [
+          {
+            "title": "URL Mismatch Detection",
+            "desc": "WordPress Address vs Site Address mismatch breaks AJAX on checkout"
+          },
+          {
+            "title": "SSL Verification",
+            "desc": "HTTP store detected — payment gateways require HTTPS"
+          },
+          {
+            "title": "Cart & Checkout Pages",
+            "desc": "Verifies pages exist, are published, and assigned in WooCommerce settings"
+          },
+          {
+            "title": "Caching Exclusions",
+            "desc": "Cart and checkout cached = sessions broken, empty carts, lost orders"
+          },
+          {
+            "title": "Payment Gateways",
+            "desc": "Detects active gateways, flags inactive plugins, SSL requirements"
+          },
+          {
+            "title": "Mobile Checkout",
+            "desc": "Column stacking, tap targets, Place Order button off-screen"
+          },
+          {
+            "title": "Checkout Performance",
+            "desc": "Load time, unnecessary scripts, JS blocking payment forms"
+          },
+          {
+            "title": "Health Score 0–100",
+            "desc": "Store-specific score with immediate action items by revenue impact"
+          }
+        ],
+        "expected_findings": [
+          "WordPress Address and Site Address don\\",
+          "WP Rocket caching cart and checkout — customers lose their cart every page reload",
+          "SSL expired last week — Stripe and PayPal refuse to process payments",
+          "Place Order",
+          "WooCommerce Stripe plugin installed but deactivated — no payment method available",
+          "Checkout page loads 4.2 seconds — 40% of mobile users abandon before it renders"
+        ],
+        "freshly_updated_until": "2026-05-31",
+        "v1_1_0_changes": "Swapped deprecated wordpress_* tool names to respira_*. Picked up v7.0.x backend fixes (Bricks settings normalisation, Beaver Box mappings + font-field stdClass + column size default, Oxygen Classic root wrapper + try/catch, Breakdance content path nesting + append unwrap, Divi 4 multi-tool bundle, Divi 5 _nodeId fallback + children-aliases fold, WPBakery + Uncode adapter pack). v7.1 Elementor 4 atomic-write surface referenced where relevant."
+      }
+    },
+    {
+      "slug": "mobile-experience-report",
+      "name": "Mobile Experience Report",
+      "description": "Mobile layout diagnostics — identifies responsive breakpoint problems, text sizing issues, column stacking failures, element visibility issues, navigation menu behavior. Device-by-device breakdown.",
+      "category": "audit",
+      "author": "Respira for WordPress",
+      "version": "1.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/mobile-experience-report",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/mobile-experience-report/SKILL.md",
+      "details": {
+        "hero_subtitle": "60% of your visitors are on phones. This skill shows you exactly what they experience — broken columns, squished text, menus that don't work on touch.",
+        "capabilities": [
+          {
+            "title": "Breakpoint Analysis",
+            "desc": "Tests all device sizes from 320px iPhone SE to 1024px tablet landscape"
+          },
+          {
+            "title": "Column Stacking",
+            "desc": "Finds multi-column layouts that squish side-by-side on phones"
+          },
+          {
+            "title": "Typography Scaling",
+            "desc": "Catches 72px headings that eat the entire mobile screen"
+          },
+          {
+            "title": "Horizontal Scroll",
+            "desc": "Detects elements wider than the viewport causing sideways scrolling"
+          },
+          {
+            "title": "Mobile Navigation",
+            "desc": "Verifies hamburger menu, tap targets ≥ 44px, touch-friendly dropdowns"
+          },
+          {
+            "title": "Media Responsiveness",
+            "desc": "Images, videos, maps — flags anything without max-width: 100%"
+          },
+          {
+            "title": "Spacing on Mobile",
+            "desc": "80px desktop padding that wastes the entire phone viewport"
+          },
+          {
+            "title": "Mobile Score 0–100",
+            "desc": "Composite score with per-page breakdown and fix priority roadmap"
+          }
+        ],
+        "expected_findings": [
+          "Three-column hero squished into tiny slivers on every phone",
+          "72px H1 headings that take the full screen on iPhone SE",
+          "Hamburger menu never configured — desktop menu on mobile",
+          "Place Order",
+          "80px section padding eating 160px of mobile viewport real estate",
+          "Videos and embedded maps with no responsive wrappers"
+        ],
+        "freshly_updated_until": "2026-05-31",
+        "v1_1_0_changes": "Swapped deprecated wordpress_* tool names to respira_*. Picked up v7.0.x backend fixes (Bricks settings normalisation, Beaver Box mappings + font-field stdClass + column size default, Oxygen Classic root wrapper + try/catch, Breakdance content path nesting + append unwrap, Divi 4 multi-tool bundle, Divi 5 _nodeId fallback + children-aliases fold, WPBakery + Uncode adapter pack). v7.1 Elementor 4 atomic-write surface referenced where relevant."
+      }
+    },
+    {
+      "slug": "seo-aeo-amplifier",
+      "name": "SEO & AEO Amplifier",
+      "description": "Comprehensive on-page SEO and Answer Engine Optimization audit with automated duplicate creation and intelligent schema markup generation.",
+      "category": "performance",
+      "author": "Respira for WordPress",
+      "version": "1.3.1",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/seo-aeo-amplifier",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/seo-aeo-amplifier/SKILL.md",
+      "details": {
+        "hero_subtitle": "Comprehensive on-page SEO and Answer Engine Optimization for WordPress. Scan everything, detect high-impact gaps, and auto-create optimized duplicates for safe review.",
+        "capabilities": [
+          {
+            "title": "Comprehensive SEO Audit",
+            "desc": "Scans all pages and posts for title/meta issues, heading problems, missing alt text, thin content, weak slugs, and internal link gaps."
+          },
+          {
+            "title": "AEO Opportunity Detection",
+            "desc": "Finds answer-engine opportunities including FAQ/HowTo patterns, snippet candidates, and People Also Ask structuring gaps."
+          },
+          {
+            "title": "Schema Markup Generation",
+            "desc": "Builds intelligent JSON-LD for Article, FAQ, HowTo, Product, Event, Video, Review, Breadcrumb, and Organization contexts."
+          },
+          {
+            "title": "Duplicate-First Auto Fixes",
+            "desc": "Creates optimized duplicates, applies fixes safely, and gives before/after comparisons so you approve before publishing."
+          }
+        ],
+        "expected_findings": [
+          "Missing or weak title tags",
+          "Missing or weak meta descriptions",
+          "Multiple H1 tags and skipped heading levels",
+          "Missing image alt text",
+          "Thin content pages",
+          "Broken internal links",
+          "Orphaned pages",
+          "Non-descriptive URL slugs"
+        ],
+        "freshly_updated_until": "2026-05-31",
+        "v1_1_0_changes": "Swapped deprecated wordpress_* tool names to respira_*. Picked up v7.0.x backend fixes (Bricks settings normalisation, Beaver Box mappings + font-field stdClass + column size default, Oxygen Classic root wrapper + try/catch, Breakdance content path nesting + append unwrap, Divi 4 multi-tool bundle, Divi 5 _nodeId fallback + children-aliases fold, WPBakery + Uncode adapter pack). v7.1 Elementor 4 atomic-write surface referenced where relevant."
+      }
+    },
+    {
+      "slug": "wordpress-ai-image-optimizer",
+      "name": "WordPress AI Image Optimizer",
+      "description": "AI-powered image optimization that downloads images from WordPress, processes locally (compress, WebP conversion, resize, rename), uploads optimized versions, and updates all content references.",
+      "category": "performance",
+      "author": "Respira for WordPress",
+      "version": "1.2.1",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/wordpress-ai-image-optimizer",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/wordpress-ai-image-optimizer/SKILL.md",
+      "details": {
+        "hero_subtitle": "Optimize your entire image footprint with AI-powered local processing. Compress, convert, resize, rename, and update references in duplicate-first mode.",
+        "capabilities": [
+          {
+            "title": "Comprehensive Image Audit",
+            "desc": "Scans media library, posts, pages, featured images, builders, and WooCommerce product images for optimization opportunities."
+          },
+          {
+            "title": "AI-Powered Local Processing",
+            "desc": "Downloads and processes images locally with ImageMagick, Sharp, or Pillow for compression, conversion, resizing, and renaming."
+          },
+          {
+            "title": "Automated Upload & URL Updates",
+            "desc": "Uploads optimized files as new media entries and updates references across duplicates of affected pages/posts/builders."
+          },
+          {
+            "title": "Safe & Reversible",
+            "desc": "Original files remain intact and flagged as deprecated, enabling low-risk rollout and rollback support."
+          }
+        ],
+        "expected_findings": [
+          "Oversized images (5000px originals where 2000px max is enough)",
+          "Inefficient formats (PNG photos, oversized JPGs)",
+          "Missing or weak alt text",
+          "Non-SEO filenames (IMG_1234.jpg, screenshot.png)",
+          "Missing responsive sizes and srcset gaps",
+          "Suboptimal compression quality settings",
+          "Missing lazy loading or width/height attributes",
+          "Orphaned media not referenced by content"
+        ],
+        "freshly_updated_until": "2026-05-31",
+        "v1_1_0_changes": "Swapped deprecated wordpress_* tool names to respira_*. Picked up v7.0.x backend fixes (Bricks settings normalisation, Beaver Box mappings + font-field stdClass + column size default, Oxygen Classic root wrapper + try/catch, Breakdance content path nesting + append unwrap, Divi 4 multi-tool bundle, Divi 5 _nodeId fallback + children-aliases fold, WPBakery + Uncode adapter pack). v7.1 Elementor 4 atomic-write surface referenced where relevant."
+      }
+    },
+    {
+      "slug": "internal-link-builder",
+      "name": "Internal Link Builder",
+      "description": "Strategic internal link building for WordPress sites. Analyzes all published content, maps topic relationships, identifies high-value linking opportunities between pages, and presents a clear plan for approval before making any changes.",
+      "category": "performance",
+      "author": "Respira for WordPress",
+      "version": "1.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/internal-link-builder",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/internal-link-builder/SKILL.md",
+      "details": {
+        "hero_subtitle": "Strategic internal link building for WordPress. Scan all content, map topic relationships, find high-value linking opportunities, and apply with plan-first, duplicate-first safety.",
+        "capabilities": [
+          {
+            "title": "Content Relationship Mapping",
+            "desc": "Scans all pages and posts, extracts topics and keywords, and builds a complete map of how your content relates to each other."
+          },
+          {
+            "title": "Opportunity Detection",
+            "desc": "Finds orphaned pages, missing contextual links, weak topic clusters, and hub pages that should link to sub-pages but don\\"
+          },
+          {
+            "title": "Plan-First Approach",
+            "desc": "Presents every recommended link with source, target, anchor text, placement context, and reasoning — then waits for your approval."
+          },
+          {
+            "title": "Duplicate-First Application",
+            "desc": "Creates optimized duplicates with links inserted, respecting your page builder format. Review before publishing."
+          }
+        ],
+        "freshly_updated_until": "2026-05-31",
+        "v1_1_0_changes": "Swapped deprecated wordpress_* tool names to respira_*. Picked up v7.0.x backend fixes (Bricks settings normalisation, Beaver Box mappings + font-field stdClass + column size default, Oxygen Classic root wrapper + try/catch, Breakdance content path nesting + append unwrap, Divi 4 multi-tool bundle, Divi 5 _nodeId fallback + children-aliases fold, WPBakery + Uncode adapter pack). v7.1 Elementor 4 atomic-write surface referenced where relevant."
+      }
+    },
+    {
+      "slug": "content-portability",
+      "name": "Content Portability",
+      "description": "Export WordPress pages, posts, and custom posts to portable local packages with builder data and media, then import to another site with smart ID remapping and auto-backup safety.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "1.0.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/content-portability",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/content-portability/SKILL.md",
+      "details": {
+        "hero_subtitle": "Back up your WordPress content to portable local packages. Migrate to another site with smart ID remapping. Auto-backup before AI edits.",
+        "capabilities": [
+          {
+            "title": "Portable Content Export",
+            "desc": "Export pages, posts, and custom post types with full builder data, meta, and hashes to a structured local package."
+          },
+          {
+            "title": "Smart Import & Migration",
+            "desc": "Import content to another site with automatic ID remapping for media, posts, and builder JSON references."
+          },
+          {
+            "title": "Auto-Backup Before Edits",
+            "desc": "Quick local backup mode saves a timestamped snapshot before any AI edit — zero-friction insurance."
+          },
+          {
+            "title": "Diff Against Live Site",
+            "desc": "Compare local exports against current site state to see exactly what changed since your last backup."
+          }
+        ],
+        "expected_findings": [
+          "Machine-Readable JSON — Full content, builder payload, allowlisted meta, and computed hashes for every page and post.",
+          "Human-Readable Markdown — Browse your backup in any text editor or GitHub — heading structure, text, and image references.",
+          "Optional Media Download — Download referenced images locally for fully portable offline packages.",
+          "Builder Data Preservation — Elementor, Bricks, Divi builder JSON exported alongside standard WordPress content.",
+          "Hash Verification — Content, builder, and meta hashes for every item — verify import fidelity automatically.",
+          "Package Manifest — Complete metadata: source site, WordPress version, content counts, warnings, and skipped items."
+        ]
+      }
+    },
+    {
+      "slug": "migrate-elementor-to-bricks",
+      "name": "Migrate Elementor to Bricks",
+      "description": "Converts Elementor pages to Bricks Builder by reading Elementor JSON widget data, mapping each widget to its Bricks equivalent, and creating draft duplicates with clean Bricks JSON.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-elementor-to-bricks",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-elementor-to-bricks/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-elementor-to-gutenberg",
+      "name": "Migrate Elementor to Gutenberg",
+      "description": "Converts Elementor pages to native WordPress Gutenberg blocks by mapping widgets to core blocks and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-elementor-to-gutenberg",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-elementor-to-gutenberg/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-elementor-to-breakdance",
+      "name": "Migrate Elementor to Breakdance",
+      "description": "Converts Elementor pages to Breakdance Builder by mapping widgets to Breakdance elements and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-elementor-to-breakdance",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-elementor-to-breakdance/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-elementor-to-oxygen",
+      "name": "Migrate Elementor to Oxygen",
+      "description": "Converts Elementor pages to Oxygen Builder by mapping widgets to Oxygen components and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-elementor-to-oxygen",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-elementor-to-oxygen/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-divi-to-bricks",
+      "name": "Migrate Divi to Bricks",
+      "description": "Converts Divi pages to Bricks Builder by parsing shortcode content, mapping modules to Bricks elements, and generating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-divi-to-bricks",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-divi-to-bricks/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-divi-to-gutenberg",
+      "name": "Migrate Divi to Gutenberg",
+      "description": "Converts Divi pages to native Gutenberg blocks by parsing shortcodes, mapping modules to core blocks, and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-divi-to-gutenberg",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-divi-to-gutenberg/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-divi-to-breakdance",
+      "name": "Migrate Divi to Breakdance",
+      "description": "Converts Divi pages to Breakdance Builder by parsing shortcodes, mapping modules to Breakdance elements, and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-divi-to-breakdance",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-divi-to-breakdance/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-wpbakery-to-gutenberg",
+      "name": "Migrate WPBakery to Gutenberg",
+      "description": "Converts WPBakery pages to native Gutenberg blocks by parsing shortcodes, mapping elements to core blocks, and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-wpbakery-to-gutenberg",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-wpbakery-to-gutenberg/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-wpbakery-to-bricks",
+      "name": "Migrate WPBakery to Bricks",
+      "description": "Converts WPBakery pages to Bricks Builder by parsing shortcodes, mapping elements to Bricks equivalents, and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-wpbakery-to-bricks",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-wpbakery-to-bricks/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-beaver-builder-to-gutenberg",
+      "name": "Migrate Beaver Builder to Gutenberg",
+      "description": "Converts Beaver Builder pages to native Gutenberg blocks by reading the flat node map, mapping modules to core blocks, and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-beaver-builder-to-gutenberg",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-beaver-builder-to-gutenberg/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-beaver-builder-to-bricks",
+      "name": "Migrate Beaver Builder to Bricks",
+      "description": "Converts Beaver Builder pages to Bricks Builder by reading the flat node map, mapping modules to Bricks elements, and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-beaver-builder-to-bricks",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-beaver-builder-to-bricks/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-oxygen-to-bricks",
+      "name": "Migrate Oxygen to Bricks",
+      "description": "Converts Oxygen Builder pages to Bricks by mapping component trees to Bricks JSON elements and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-oxygen-to-bricks",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-oxygen-to-bricks/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-oxygen-to-breakdance",
+      "name": "Migrate Oxygen to Breakdance",
+      "description": "Converts Oxygen Builder pages to Breakdance by mapping component trees to Breakdance elements and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-oxygen-to-breakdance",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-oxygen-to-breakdance/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-brizy-to-gutenberg",
+      "name": "Migrate Brizy to Gutenberg",
+      "description": "Converts Brizy pages to native Gutenberg blocks by parsing Brizy JSON data, mapping elements to core blocks, and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-brizy-to-gutenberg",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-brizy-to-gutenberg/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-thrive-architect-to-gutenberg",
+      "name": "Migrate Thrive Architect to Gutenberg",
+      "description": "Converts Thrive Architect pages to native Gutenberg blocks by parsing Thrive content, mapping elements to core blocks, and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-thrive-architect-to-gutenberg",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-thrive-architect-to-gutenberg/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "migrate-visual-composer-to-gutenberg",
+      "name": "Migrate Visual Composer to Gutenberg",
+      "description": "Converts Visual Composer pages to native Gutenberg blocks by parsing VC data, mapping elements to core blocks, and creating draft duplicates for review.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "2.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/migrate-visual-composer-to-gutenberg",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/migrate-visual-composer-to-gutenberg/SKILL.md",
+      "details": {
+        "v2_1_0_changes": "v2.1.0 adds design-token awareness: conversion writes register the colors and typography they carry as named design tokens in the target builder's own global styles, and converted pages reference those tokens instead of carrying value copies. The skill now reuses registered tokens instead of re-inlining raw values and reports the registration in the migration summary.",
+        "freshly_updated_until": "2026-08-31",
+        "v2_2_0_changes": "Adds the review hand-off: a Murmur review link for the migrated drafts (a share link below the Builder plan), notes resolved with the snapshot id, and a site-wide cache purge once the owner publishes."
+      }
+    },
+    {
+      "slug": "activity-report-composer",
+      "name": "Activity Report Composer",
+      "description": "Turn the audit log of work done on a WordPress site into a polished written report. Wraps the v7.1 respira_generate_activity_report MCP tool with six framings: agency client report, case study, internal recap, testimonial draft, build-in-public, personal recap.",
+      "category": "reporting",
+      "author": "Respira for WordPress",
+      "version": "1.1.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/activity-report-composer",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/activity-report-composer/SKILL.md",
+      "details": {
+        "hero_subtitle": "End-of-month client reports, case studies, build-in-public posts, testimonials — all written from the same audit log of work that actually shipped. No invented numbers, no marketing varnish.",
+        "capabilities": [
+          {
+            "title": "Six framings",
+            "desc": "Agency client report, case study (with anonymize toggle), internal recap, testimonial draft, build-in-public, personal recap. One audit log, six narratives."
+          },
+          {
+            "title": "Real hours saved + cost saved",
+            "desc": "Numbers come from respira_generate_activity_report — totals.edits, totals.snapshots, hoursSaved, costSaved at the operator's stated rate. Never invented."
+          },
+          {
+            "title": "Three output formats",
+            "desc": "Markdown for Notion/docs, email-ready HTML for direct sending, social-shaped for LinkedIn / X."
+          },
+          {
+            "title": "Anonymize for case studies",
+            "desc": "Replaces client name with industry descriptor, redacts URLs and named team members, keeps the numbers exact."
+          }
+        ],
+        "freshly_updated_until": "2026-06-30",
+        "v1_0_0_changes": "Initial release in v7.1 Roots. Wraps the new respira_generate_activity_report MCP tool — the headline tool of Roots — with six prompting framings and three output formats.",
+        "v1_1_0_changes": "Calls respira_generate_activity_report as a first-class tool on plugin 9.0 and later, with the exact framing values, and falls back to respira_invoke_ability with respira/generate-activity-report on older plugins."
+      }
+    },
+    {
+      "slug": "brand-voice-synthesizer",
+      "name": "Brand Voice Synthesizer",
+      "description": "Read 5-10 published posts and extract the brand voice — tone, lexicon, sentence patterns, person used, formality, signature phrases, phrases the site never uses. Persist it so every future content-writing skill produces copy that sounds like the brand, not like generic AI.",
+      "category": "intelligence",
+      "author": "Respira for WordPress",
+      "version": "1.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/brand-voice-synthesizer",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/brand-voice-synthesizer/SKILL.md",
+      "details": {
+        "hero_subtitle": "Every blog post Claude writes, in your voice — not generic AI voice. The verbal counterpart to the Design System Synthesizer.",
+        "capabilities": [
+          {
+            "title": "Voice signal extraction",
+            "desc": "Person used (I / we / you), formality, sentence length (avg / median / p90), paragraph length, reading grade, tone descriptors."
+          },
+          {
+            "title": "Lexicon mapping",
+            "desc": "Preferred words the site reaches for, signature multi-word phrases used repeatedly, and the AVOIDED lexicon — words conspicuously absent that competitor sites would use."
+          },
+          {
+            "title": "Punctuation + structural patterns",
+            "desc": "Em dash usage, exclamation marks, oxford comma, opens-with-question habits, ends-with-CTA habits, bullet list and code block usage patterns."
+          },
+          {
+            "title": "Real-corpus examples",
+            "desc": "A 'this is your voice' paragraph quoted verbatim from your own corpus, plus a constructed counter-example showing what your voice is NOT."
+          }
+        ],
+        "freshly_updated_until": "2026-06-30",
+        "v1_0_0_changes": "Initial release in v7.1 Roots. Part of the brand-foundation trio: Design System Synthesizer, Brand Voice Synthesizer, Page Template Library Bootstrapper.",
+        "v1_2_0_changes": "Saves the voice to Site Memory with respira_remember as two short preference entries, so every later session reads it through respira_get_site_context. Plugins older than 8.3 keep the respira_brand_voice option."
+      }
+    },
+    {
+      "slug": "conversion-audit",
+      "name": "Conversion Audit",
+      "description": "Audit a WordPress site for conversion-rate friction across six dimensions: above-the-fold clarity, CTA hierarchy, form length, social proof placement, page speed, and trust signals. Prioritized fixes with expected impact — recommendations, not redesigns.",
+      "category": "audit",
+      "author": "Respira for WordPress",
+      "version": "1.0.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/conversion-audit",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/conversion-audit/SKILL.md",
+      "details": {
+        "hero_subtitle": "A CRO check, not a redesign. Prioritized fixes — each with what to change, why, and expected impact.",
+        "capabilities": [
+          {
+            "title": "Six-dimension scoring",
+            "desc": "Above-the-fold clarity, CTA hierarchy, form length, social proof placement, page speed (from SpeedScan), trust signals. Each scored 0–3 per page."
+          },
+          {
+            "title": "Prioritized fix list",
+            "desc": "Top 5–8 fixes ranked by expected impact. Each one names the current state, the change to make, and why."
+          },
+          {
+            "title": "What's working callouts",
+            "desc": "Tells you what NOT to change. Strong patterns get highlighted so the rebuild doesn't drop the parts already converting."
+          },
+          {
+            "title": "Native form parsing",
+            "desc": "For Gravity Forms, WPForms, Contact Form 7 — parses the form definition (not the rendered HTML) so the field count is accurate."
+          }
+        ],
+        "freshly_updated_until": "2026-06-30",
+        "v1_0_0_changes": "Initial release in v7.1 Roots."
+      }
+    },
+    {
+      "slug": "custom-post-type-architect",
+      "name": "Custom Post Type Architect",
+      "description": "Design and create WordPress custom post types end to end — CPT + supporting taxonomies + ACF field group + sample entries + builder-specific single template suggestion. Uses new v7.1 MCP tools: respira_create_post_type, respira_create_taxonomy, respira_create_acf_field_group.",
+      "category": "content-creation",
+      "author": "Respira for WordPress",
+      "version": "1.0.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/custom-post-type-architect",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/custom-post-type-architect/SKILL.md",
+      "details": {
+        "hero_subtitle": "Give the agent a brief — 'a portfolio with case studies' — and it designs the post type, picks the right taxonomies, defines the ACF field group, creates two sample entries, and suggests a single template for your active page builder.",
+        "capabilities": [
+          {
+            "title": "End-to-end CPT scaffolding",
+            "desc": "CPT shape (labels, supports, public/private, has_archive, REST exposure) + taxonomies + ACF field group + sample entries, all in one workflow."
+          },
+          {
+            "title": "Sensible defaults per content type",
+            "desc": "Knows the right field set for case studies, team members, events, podcast episodes, properties, recipes, FAQs, testimonials, courses, lessons. You override at the review step."
+          },
+          {
+            "title": "Builder-aware template suggestions",
+            "desc": "After creating the CPT, suggests where to build the single template — Bricks Templates, Elementor Theme Builder, Divi Theme Builder, Gutenberg/FSE, Oxygen, Breakdance."
+          },
+          {
+            "title": "Review-before-create gate",
+            "desc": "Outputs the proposed CPT shape, taxonomies, and ACF fields for your review before any create call. CPTs are forever — get it right the first time."
+          }
+        ],
+        "freshly_updated_until": "2026-06-30",
+        "v1_0_0_changes": "Initial release in v7.1 Roots. Wraps the new respira_create_post_type, respira_create_taxonomy, and respira_create_acf_field_group MCP tools — content-architecture tools that didn't exist before v7.1."
+      }
+    },
+    {
+      "slug": "design-system-synthesizer",
+      "name": "Design System Synthesizer",
+      "description": "Read your site's representative pages, theme files, and media library to extract a complete reusable design system — logo, colors, typography, spacing scale, component patterns. Persist it as machine data AND generate a visible style-guide page on your site that renders the tokens visually.",
+      "category": "intelligence",
+      "author": "Respira for WordPress",
+      "version": "1.4.2",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/design-system-synthesizer",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/design-system-synthesizer/SKILL.md",
+      "details": {
+        "hero_subtitle": "Every page you build, automatically on brand. Tell Respira your design system, and every new page Claude generates matches your logo, colors, fonts, and component patterns.",
+        "capabilities": [
+          {
+            "title": "Brand identity capture",
+            "desc": "Logo, dark logo, favicon, social card, wordmark — extracted from the media library and site identity settings."
+          },
+          {
+            "title": "Color palette synthesis",
+            "desc": "Primary, secondary, accent, 9-step neutral scale, and semantic colors (link / success / warning / error) — extracted from CSS variables, theme.json, and per-page observation."
+          },
+          {
+            "title": "Typography + spacing scales",
+            "desc": "Heading family + weights + sizes (H1–H6), body family + weight + line-height, mono family, spacing scale, section padding norms, container max width."
+          },
+          {
+            "title": "Component patterns",
+            "desc": "Button styles, card styles, hero patterns, section patterns — captured as named patterns future skills can reference."
+          },
+          {
+            "title": "Visible style-guide page (new in v1.1)",
+            "desc": "Renders the synthesized design system as a real page on your site (private by default) — color swatches with hex codes, typography samples in actual styles, spacing scale blocks, component previews. Built with your active page builder, editable like any other page."
+          },
+          {
+            "title": "Persistent — pairs with every content skill",
+            "desc": "Saved at the site level. Every Respira content-creation skill from that point on references the system, so new pages snap to your brand instead of guessing."
+          }
+        ],
+        "freshly_updated_until": "2026-08-31",
+        "v1_3_0_changes": "v1.3.0 catches up with the design-token surface. Builder global palettes and typography are written through the first-class token tools (respira_list_design_tokens, respira_create_design_token, respira_update_design_token, respira_delete_design_token). HTML/design conversions register tokens in the builder's global store automatically and converted pages reference them, so the synthesizer reads what is already registered first, reuses those names instead of re-inlining values, and reports token registration in its summary. Builders without a global store (Brizy, Thrive Architect, WPBakery, Visual Composer, Flatsome, SeedProd) register nothing.",
+        "v1_0_0_changes": "Initial release in v7.1 Roots. Flagship skill of the v7.1 brand-foundation suite (Design System + Brand Voice + Page Template Library). Together they form the explicit foundation that every future content-generation skill stands on.",
+        "v1_1_0_changes": "v1.1.0 adds the visible style-guide page output. The synthesizer now builds a real WordPress page on the site (private draft by default) that renders the synthesized tokens visually: color swatches with hex codes, typography samples in actual styles, spacing scale blocks, component previews. Built with the active page builder so it's editable in the user's normal workflow. Solves the 'where do I see the design system' question."
+      }
+    },
+    {
+      "slug": "art-direction",
+      "name": "Art Direction",
+      "description": "The taste layer for every page an agent builds. Loads the site's saved Art Direction before any visual work, plans tokens in two passes against the direction's donts and the known AI-default aesthetics, builds with tokens preserved, checks the result with respira_check_design (rendered mode on published pages), and mints a live preview so the human watches the real page. Also the import lane for Claude Design output and other design-system documents.",
+      "category": "intelligence",
+      "author": "Respira for WordPress",
+      "version": "1.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/art-direction",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/art-direction/SKILL.md",
+      "details": {
+        "hero_subtitle": "Your art direction, followed and checked on every build. The agent loads your saved direction before the first element is written, self-critiques its plan against your donts, and proves the result with a design check on the real rendered page.",
+        "capabilities": [
+          {
+            "title": "Direction first, always",
+            "desc": "No visual work starts without the site's Art Direction loaded. If none exists, the agent synthesizes one from the site or imports the one you bring, before building."
+          },
+          {
+            "title": "Two-pass token planning",
+            "desc": "The agent proposes palette, type, and spacing from your direction's tokens, then self-critiques the proposal against your donts and the three AI-default aesthetics (ai-purple gradient minimalism, warm-craft sameness, corporate-slop filler) before anything is built."
+          },
+          {
+            "title": "Builds that keep tokens",
+            "desc": "Pages reference the direction's tokens instead of copied values. Conversions preserve :root custom properties as builder global tokens, and respira_apply_design_direction pushes the direction into the builder's native store with a per-builder report."
+          },
+          {
+            "title": "Checked, not eyeballed",
+            "desc": "respira_check_design runs after every build. On published pages, rendered mode fetches the real page and checks contrast, layout, and type scale with screenshot evidence. Every unwaived fail gets fixed before the work is called done."
+          },
+          {
+            "title": "Figma and Claude Design import lanes",
+            "desc": "With Figma MCP access, read a file's variables (get_variable_defs), guess roles by name the same way the plugin does, and import as a DTCG dry run. Bring output from Claude Design or any design-system document the same way: tokens convert to DTCG with a dry run and readiness delta first; voice, imagery guidance, and donts land in the direction's guidance additively, on top of what is already saved. Guessed values carry inferred:true so the dashboard stays honest. Both lanes also run without an agent, on the dashboard's Import tokens panel."
+          },
+          {
+            "title": "Live receipts",
+            "desc": "A short-lived signed preview lets you watch the real page while work lands, and respira.press/dashboard/art-direction shows the saved direction, readiness, and apply reports."
+          }
+        ],
+        "freshly_updated_until": "2026-09-30",
+        "v1_2_0_changes": "Adds the review hand-off: a Murmur review link for the draft (a share link below the Builder plan), with each note applied on the draft and resolved with the snapshot id."
+      }
+    },
+    {
+      "slug": "html-to-bricks",
+      "name": "HTML to Bricks Builder",
+      "description": "Convert raw HTML/CSS into native Bricks Builder elements. Maps colors, typography, and spacing to your design system tokens so the result is drift-resistant. ACSS class mapping when ACSS is installed.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "1.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/html-to-bricks",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/html-to-bricks/SKILL.md",
+      "details": {
+        "hero_subtitle": "Designer hands you HTML from a Webflow or Figma export? Convert it into native Bricks elements — design system bound, ACSS aware, never inline HTML.",
+        "capabilities": [
+          {
+            "title": "Bricks-native conversion",
+            "desc": "Output is a tree of native Bricks elements (section, block, container, heading, text-basic, button, image) — never inline HTML."
+          },
+          {
+            "title": "Design system mapping",
+            "desc": "Raw CSS hex values map to your design system color tokens. Raw font sizes map to your typography scale. The converted page stays in sync when the design system updates."
+          },
+          {
+            "title": "ACSS class mapping",
+            "desc": "If ACSS is installed, common CSS patterns map to ACSS utility classes instead of inline settings."
+          },
+          {
+            "title": "Three input modes",
+            "desc": "Paste HTML, give a URL (external images flagged not silently mirrored), or reference a file."
+          }
+        ],
+        "freshly_updated_until": "2026-08-31",
+        "v1_1_0_changes": "v1.1.0 adds design-token awareness: the conversion registers the colors and typography it carries as named design tokens in Bricks' own global styles, and converted elements reference those tokens instead of carrying value copies. The skill reuses registered tokens when refining and reports the registration when done.",
+        "v1_0_0_changes": "Initial release in v7.1 Roots. Resolves the most-upvoted open feature request on the Respira board.",
+        "v1_2_0_changes": "Adds the review hand-off: a Murmur review link for the draft (a share link below the Builder plan), with each note applied on the draft and resolved with the snapshot id."
+      }
+    },
+    {
+      "slug": "html-to-breakdance",
+      "name": "HTML to Breakdance",
+      "description": "Convert raw HTML/CSS into native Breakdance elements in _breakdance_data. Emits fully qualified EssentialElements types so nothing gets skip-rendered, binds colors, typography and spacing to Breakdance Variables, and reports every CodeBlock fallback instead of hiding it.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "1.1.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/html-to-breakdance",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/html-to-breakdance/SKILL.md",
+      "details": {
+        "hero_subtitle": "Got HTML from a Webflow or Framer export and a Breakdance site to put it in? Convert it into real EssentialElements nodes, bound to your Breakdance Variables, with every raw-HTML fallback named rather than hidden.",
+        "capabilities": [
+          {
+            "title": "Breakdance-native conversion",
+            "desc": "Output is a tree of fully qualified EssentialElements types written into _breakdance_data. Lowercase generic types persist and then skip-render, so the skill checks every emitted type against the builder's own catalog before writing."
+          },
+          {
+            "title": "Variables instead of value copies",
+            "desc": "Raw hex colors, font sizes and spacing map onto registered Breakdance Variables, so changing a variable later moves the converted page with it."
+          },
+          {
+            "title": "Honest about the fallbacks",
+            "desc": "Forms and tables become CodeBlock, which is raw HTML in a box. The skill counts them and names the source elements rather than letting them pass as native conversion."
+          },
+          {
+            "title": "Meta-storage aware",
+            "desc": "Breakdance keeps the page in post meta, not post content, so the skill checks a duplicate's baseline snapshot is non-empty before converting into it, and never appends onto an empty extract."
+          }
+        ],
+        "freshly_updated_until": "2026-09-30",
+        "v1_0_0_changes": "Initial release. Requires plugin 8.6.32, which fixes the converter emitting an unregistered list class that made any document containing a list fail to convert to Breakdance at all.",
+        "v1_1_0_changes": "Adds the review hand-off: a Murmur review link for the draft (a share link below the Builder plan), with each note applied on the draft and resolved with the snapshot id."
+      }
+    },
+    {
+      "slug": "page-template-library",
+      "name": "Page Template Library Bootstrapper",
+      "description": "Capture canonical page patterns (case study, service page, landing page hero + 3-up + CTA) as re-usable playbooks. Uses new v7.1 MCP tools respira_create_playbook + respira_list_playbooks + respira_update_playbook. Future page-generation skills spawn new pages from playbooks in seconds.",
+      "category": "workflow",
+      "author": "Respira for WordPress",
+      "version": "1.0.3",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/page-template-library",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/page-template-library/SKILL.md",
+      "details": {
+        "hero_subtitle": "Build the case study layout once. Spawn 50 case studies from it, on-brand, in seconds.",
+        "capabilities": [
+          {
+            "title": "Two capture modes",
+            "desc": "From an existing page ('save this as a template') or from a pattern across multiple pages ('all our case studies follow this pattern — capture it')."
+          },
+          {
+            "title": "Section spine + slots",
+            "desc": "Identifies which parts of the page are structural (kept) vs which are variable content (turned into slots the user fills when spawning a new page from the playbook)."
+          },
+          {
+            "title": "Design system bound",
+            "desc": "Playbooks reference design system tokens (primary color, heading typography) by name — not by hex value — so they stay drift-resistant when the design system updates."
+          },
+          {
+            "title": "Builder-locked",
+            "desc": "Each playbook is locked to the builder it was captured from. A Bricks playbook won't accidentally be applied to an Elementor page and produce a broken result."
+          }
+        ],
+        "freshly_updated_until": "2026-06-30",
+        "v1_0_0_changes": "Initial release in v7.1 Roots. Uses the new respira_create_playbook + respira_list_playbooks + respira_update_playbook MCP tools introduced in 7.1."
+      }
+    },
+    {
+      "slug": "prime-the-agent",
+      "name": "Prime the Agent",
+      "description": "Fast 30-second session-starter. Loads the active site, identifies the page builder, loads inline schemas, and primes the agent on the do-not-write-raw-HTML rule before any work begins. v1.2 moves per-site memory to the first-class tools: the stored brief arrives automatically inside get_site_context under site_memory, and durable learnings are saved with respira_remember at the end, so context carries across sessions, teammates, and AI clients. Site rules found in memory are enforced server-side; a refusal is final.",
+      "category": "workflow",
+      "author": "Respira for WordPress",
+      "version": "1.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/prime-the-agent",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/prime-the-agent/SKILL.md",
+      "details": {
+        "hero_subtitle": "Run this at the top of any session before any editing. Identifies the active site, the page builder, and the working rules — so your agent stops writing raw HTML and starts using your builder's native modules.",
+        "capabilities": [
+          {
+            "title": "Site identification",
+            "desc": "Calls respira_get_active_site + respira_get_site_context to load WordPress version, PHP version, active theme, plugin count, multisite status."
+          },
+          {
+            "title": "Builder detection",
+            "desc": "Calls respira_get_builder_info to identify which of the 16 supported page builders is active (Elementor, Bricks, Divi 5, Gutenberg, Oxygen, Breakdance, Beaver, Brizy, WPBakery, Visual Composer, Thrive, Flatsome, Spectra, Kadence, GenerateBlocks, SeedProd)."
+          },
+          {
+            "title": "Schema preload",
+            "desc": "Loads respira_get_builder_inline_schemas so the agent has the active builder's module attribute shapes in working memory before any write."
+          },
+          {
+            "title": "Working rules briefing",
+            "desc": "Outputs the do-not-write-raw-HTML rule, the SafeEdit duplicate-before-edit rule, and the builder-native tool stack — so every subsequent edit goes through the right surface."
+          },
+          {
+            "title": "Persistent site memory",
+            "desc": "Reads the per-site brief that arrives automatically in get_site_context under site_memory and saves durable learnings at the end with respira_remember (pruning with respira_forget), so quirks and the division of labor survive across sessions, teammates, and AI clients. Site rules in memory are enforced server-side; a respira_protected_by_site_rule refusal is final."
+          }
+        ],
+        "freshly_updated_until": "2026-08-31",
+        "v1_2_0_changes": "Moves per-site memory to the first-class memory tools. The brief now arrives automatically in respira_get_site_context under site_memory (no extra option call), learnings are saved with respira_remember and pruned with respira_forget, and the old respira_site_memory option read/write pattern is legacy. Memory rules are enforced server-side: a respira_protected_by_site_rule refusal is final and is never retried or worked around. The ask-before-saving rule stays.",
+        "v1_1_0_changes": "Adds per-site memory. The skill now reads a stored brief (the respira_site_memory option) at the start of a session and offers to append what it learned at the end, so context persists across sessions and travels to teammates and other AI clients. Notes are treated as untrusted context, carry a confirmed date, and stay capped to a short brief.",
+        "v1_0_0_changes": "Initial release in v7.1 Roots. Promotes the canonical session-starter preamble (previously a copy-paste snippet shared in customer support) to a first-class triggerable skill. Designed to be run before any other skill or work in a new conversation about a WordPress site."
+      }
+    },
+    {
+      "slug": "stale-content-detector",
+      "name": "Stale Content Detector",
+      "description": "Find pages and posts that haven't been updated in a long time. Categorize as fresh / aging / stale / archive-candidate. Suggest refresh, redirect, or archive per item — based on age, traffic signal, and internal link count.",
+      "category": "audit",
+      "author": "Respira for WordPress",
+      "version": "1.0.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/stale-content-detector",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/stale-content-detector/SKILL.md",
+      "details": {
+        "hero_subtitle": "Find the content drag on your site in 30 seconds. What to refresh, what to redirect, what to archive — based on age, traffic, and internal link equity.",
+        "capabilities": [
+          {
+            "title": "Four-bucket categorization",
+            "desc": "Fresh (<6mo, leave alone) · Aging (6–12mo, review headline + opener) · Stale (12–24mo, refresh meaningfully) · Archive-candidate (24+mo, action depends on traffic + links)."
+          },
+          {
+            "title": "Evergreen pages skipped",
+            "desc": "About, contact, pricing, privacy, terms, legal, imprint, FAQ, support — opinionated default list, overridable."
+          },
+          {
+            "title": "Top-5 refresh priority",
+            "desc": "Ranked by traffic + internal link equity, so you know where to start. Not 'all old content equally' — 'this one will move the needle if you refresh it.'"
+          },
+          {
+            "title": "Never deletes",
+            "desc": "Archive-candidates get a recommendation, not a deletion. You decide. Pairs with the SEO & AEO Amplifier when you choose 'refresh'."
+          }
+        ],
+        "freshly_updated_until": "2026-06-30",
+        "v1_0_0_changes": "Initial release in v7.1 Roots."
+      }
+    },
+    {
+      "slug": "build-oxygen6-page",
+      "name": "Build an Oxygen 6 Page",
+      "description": "Build or rebuild pages on Oxygen 6 (Jenga) as native, editable elements instead of a single HTML block. Hands the agent Oxygen 6's structure: the element schemas, the header/footer/template post types, and the Template Content Area rule.",
+      "category": "workflow",
+      "author": "Respira for WordPress",
+      "version": "1.1.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/build-oxygen6-page",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/build-oxygen6-page/SKILL.md",
+      "details": {
+        "hero_subtitle": "Rebuilding a site into Oxygen 6? Build it as real, editable Oxygen elements, not a wall of HTML. The structure (header/footer/template post types, Template Content Area, the element vocabulary) is handed to the agent up front.",
+        "capabilities": [
+          {
+            "title": "Native Oxygen 6 elements",
+            "desc": "Author with simplified types (section, heading, text, button, image, and more) that Respira maps to the real OxygenElements and EssentialElements classes. The page stays editable in the Visual Builder."
+          },
+          {
+            "title": "Knows Oxygen's structure",
+            "desc": "The header, footer, and template post types and the element schemas are handed to the agent, so it stops rediscovering them every run and stops burning tokens."
+          },
+          {
+            "title": "Template Content Area rule",
+            "desc": "Templates use a Template Content Area element where the page body renders, never a Post Content element (which errors on Oxygen 6)."
+          },
+          {
+            "title": "No HTML-block dumps",
+            "desc": "Refuses the common failure where a whole page is dropped into one code block. Builds section by section and reads before it edits."
+          }
+        ],
+        "freshly_updated_until": "2026-07-31",
+        "v1_0_0_changes": "Initial release. Gives Oxygen 6 the native-build guidance that Divi and Bricks already had.",
+        "v1_1_0_changes": "Adds the review hand-off: a Murmur review link for the draft (a share link below the Builder plan), with each note applied on the draft and resolved with the snapshot id."
+      }
+    },
+    {
+      "slug": "figma-to-elementor",
+      "name": "Figma to Elementor",
+      "description": "Rebuilds a Figma frame as an editable Elementor page. Reads the Figma node tree (layers, auto-layout, text, color, images), maps each node to its Elementor widget or container, and writes clean Elementor JSON to a draft duplicate so nothing live is touched.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "1.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/figma-to-elementor",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/figma-to-elementor/SKILL.md",
+      "details": {
+        "hero_subtitle": "Hand a Figma frame to your agent and get a real, editable Elementor page. It reads layers, auto-layout, type, color, and images, and builds it on a safe draft.",
+        "capabilities": [
+          {
+            "title": "Auto-layout aware",
+            "desc": "Figma auto-layout becomes Elementor flex containers: direction, gap, padding, and alignment carried across."
+          },
+          {
+            "title": "Type and color fidelity",
+            "desc": "Fonts, sizes, weights, line-height, and the frame's palette map to Elementor typography and global colors."
+          },
+          {
+            "title": "Smart widgets",
+            "desc": "Recognises FAQ to Accordion, image rows to Gallery or Carousel, number plus label to Counter, icon rows to Social Icons."
+          },
+          {
+            "title": "Safe by default",
+            "desc": "Builds on a draft duplicate with a snapshot first, so your live pages are never touched."
+          }
+        ],
+        "freshly_updated_until": "2026-09-30",
+        "v1_1_0_changes": "v1.1.0 adds design-token awareness: conversion writes register the frame's colors and typography as named design tokens in Elementor's own global styles, and the built page references those tokens instead of carrying value copies. The skill reuses registered tokens when refining and reports the registration in its summary.",
+        "v1_2_0_changes": "Adds the review hand-off: a Murmur review link for the draft (a share link below the Builder plan), with each note applied on the draft and resolved with the snapshot id."
+      }
+    },
+    {
+      "slug": "woo-agent-storefront",
+      "name": "Woo Agent Storefront",
+      "description": "Make a WooCommerce store discoverable and shoppable for AI assistants — set up product feeds in six formats, serve a store llms.txt, register with Google Merchant Center / OpenAI / Meta / Pinterest / TikTok, and hand out attributed cart links.",
+      "category": "commerce",
+      "author": "Respira for WordPress",
+      "version": "1.0.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": "woocommerce",
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/woo-agent-storefront",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/woo-agent-storefront/SKILL.md",
+      "details": {
+        "hero_subtitle": "AI assistants recommend products to millions of shoppers, and they can only sell what they can read. This skill walks the whole path from invisible store to agent-ready storefront.",
+        "capabilities": [
+          {
+            "title": "Feeds in Six Formats",
+            "desc": "Google Shopping XML, OpenAI JSONL, Meta, Pinterest, TikTok, CSV — configured, generated, verified"
+          },
+          {
+            "title": "Store llms.txt",
+            "desc": "A machine-readable store summary at the site root, the file AI assistants look for first"
+          },
+          {
+            "title": "Spec Validation First",
+            "desc": "Every format validated against its platform spec before you register anything"
+          },
+          {
+            "title": "Enrollment Walkthrough",
+            "desc": "Merchant Center, OpenAI product discovery, Meta, Pinterest, TikTok — exact steps per platform"
+          },
+          {
+            "title": "AI Crawler Check",
+            "desc": "Flags robots.txt lines that block GPTBot, Google-Extended or PerplexityBot"
+          },
+          {
+            "title": "Attributed Cart Links",
+            "desc": "Signed links that fill a cart on your own checkout, with orders attributed to their agent source"
+          }
+        ],
+        "freshly_updated_until": "2026-10-31",
+        "v1_0_0_changes": "First release, built on the WooCommerce Add-on v3.1 agent-ready commerce surface (feeds, llms.txt, cart links, attribution)."
+      }
+    },
+    {
+      "slug": "woo-catalog-perfection",
+      "name": "Woo Catalog Perfection",
+      "description": "Drive a WooCommerce catalog to an AI-readiness score of 90+ — an ordered fixlist loop that writes the missing image alt text, descriptions, brands, GTINs and category mappings, with a snapshot before every change.",
+      "category": "commerce",
+      "author": "Respira for WordPress",
+      "version": "1.0.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": "woocommerce",
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/woo-catalog-perfection",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/woo-catalog-perfection/SKILL.md",
+      "details": {
+        "hero_subtitle": "From \"your catalog scores 43\" to \"your catalog scores 90+\", product by product, with every change snapshotted and reversible.",
+        "capabilities": [
+          {
+            "title": "Ordered Fixlist Loop",
+            "desc": "Score → fixlist → fix → re-score, in reviewable batches of 10"
+          },
+          {
+            "title": "Identifiers Done Right",
+            "desc": "Real GTINs when you have them, brand + SKU when you don't — never fabricated"
+          },
+          {
+            "title": "Descriptions From Facts",
+            "desc": "40-80 words drafted from the product's own attributes and categories, no invented specs"
+          },
+          {
+            "title": "Alt Text and Galleries",
+            "desc": "Descriptive alt text and gallery assignment from existing media only"
+          },
+          {
+            "title": "Category Mapping",
+            "desc": "Store categories mapped to the Google product taxonomy"
+          },
+          {
+            "title": "Snapshot Safety",
+            "desc": "Every write snapshotted by the add-on, reversible for 90 days"
+          }
+        ],
+        "freshly_updated_until": "2026-10-31",
+        "v1_0_0_changes": "First release, pairs with woo-agent-storefront: this skill fixes what the feed checks flag."
+      }
+    },
+    {
+      "slug": "respira-builder-edits",
+      "name": "Respira Builder Edits",
+      "description": "Use for any in-page content edit on a WordPress site with a page builder. Covers finding elements, applying surgical edits, duplicating before large changes, and verifying the result. Works across Elementor 3 + 4, Divi 4 + 5, Beaver Builder, Bricks, Oxygen Classic, Oxygen 6, Breakdance, WPBakery, Uncode, and Gutenberg.",
+      "category": "editing",
+      "author": "Respira for WordPress",
+      "version": "1.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/respira-builder-edits",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/respira-builder-edits/SKILL.md",
+      "details": {
+        "hero_subtitle": "The core discipline for editing a live page builder site without breaking it: find the right element, duplicate before you touch anything real, apply the surgical edit, then verify it actually landed.",
+        "capabilities": [
+          {
+            "title": "Builder-Aware Editing",
+            "desc": "Detects the active builder first so every edit uses the correct field names and write path, not a guess."
+          },
+          {
+            "title": "Find Before You Write",
+            "desc": "Locates the exact element by selector, text, class, or ID before any change, instead of editing blind."
+          },
+          {
+            "title": "Snapshot Before Multi-Element Edits",
+            "desc": "Duplicates the page before touching more than one element, so every change has an undo path."
+          },
+          {
+            "title": "Cross-Builder Coverage",
+            "desc": "One workflow across Elementor, Divi 4 and 5, Beaver Builder, Bricks, Oxygen Classic and 6, Breakdance, WPBakery, Uncode, and Gutenberg."
+          },
+          {
+            "title": "Read-Back Verification",
+            "desc": "Re-reads the element after every write and confirms the change is actually reflected, not just reported."
+          },
+          {
+            "title": "Known Gotcha Table",
+            "desc": "A maintained table of common builder-specific mistakes and the correct approach for each, updated as the plugin ships fixes."
+          }
+        ],
+        "freshly_updated_until": "2026-11-30",
+        "v1_0_0_changes": "Actively maintained since 2025; tracks builder-specific fixes as they ship (Divi 5 node-id fallbacks, Bricks CSS regen, Beaver Builder column defaults, and more)."
+      }
+    },
+    {
+      "slug": "respira-site-audit",
+      "name": "Respira Site Audit",
+      "description": "Use when asked to audit, score, or health-check a WordPress site or page. Runs SEO, AEO, readability, accessibility, performance, RankMath, and Core Web Vitals analyzers and presents a unified report with prioritised fixes. On site-wide runs it adds the Respira security audit.",
+      "category": "audit",
+      "author": "Respira for WordPress",
+      "version": "1.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/respira-site-audit",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/respira-site-audit/SKILL.md",
+      "details": {
+        "hero_subtitle": "One unified health check across eight analyzers instead of running them one at a time and losing track of what matters most.",
+        "capabilities": [
+          {
+            "title": "Eight Analyzers, One Report",
+            "desc": "SEO, AEO, readability, accessibility, performance, RankMath, Core Web Vitals, and structured data, run together and prioritised."
+          },
+          {
+            "title": "Severity-Ranked Findings",
+            "desc": "Groups results into critical, warning, and suggestion so the quick wins surface first, not buried in raw output."
+          },
+          {
+            "title": "Builder-Aware Fix Paths",
+            "desc": "Checks the active builder before recommending element-level fixes, since Elementor, Divi, Bricks, and Beaver each fix differently."
+          },
+          {
+            "title": "Site-Wide or Single-Page",
+            "desc": "Runs against one page or the whole site's public pages, same workflow either way."
+          },
+          {
+            "title": "SEO vs AEO Distinction",
+            "desc": "Treats search-ranking signals and AI-answer signals as genuinely different checks instead of conflating them."
+          }
+        ],
+        "freshly_updated_until": "2026-11-30",
+        "v1_0_0_changes": "Actively maintained; aligned with the current analyzer set (respira_analyze_seo, respira_analyze_aeo, respira_analyze_readability, respira_analyze_images, respira_analyze_rankmath, respira_get_core_web_vitals, respira_check_structured_data).",
+        "v1_2_0_changes": "Adds a security section: respira_run_security_audit once per site, with indicators, coverage and known vulnerabilities reported without calling a partial scan clean. Uses respira_run_pagespeed_audit for real Core Web Vitals instead of the heuristic estimate."
+      }
+    },
+    {
+      "slug": "respira-woocommerce",
+      "name": "Respira WooCommerce",
+      "description": "Use for WooCommerce operations on a WordPress site. Listing, reading, creating, updating, and duplicating products. Managing categories and tags. Reading orders and updating order status. Stock management. Sales reports. Storefront layout edits. Builder-aware throughout. Requires the Respira WooCommerce add-on (paid).",
+      "category": "commerce",
+      "author": "Respira for WordPress",
+      "version": "1.2.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": "woocommerce",
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/respira-woocommerce",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/respira-woocommerce/SKILL.md",
+      "details": {
+        "hero_subtitle": "The 21 core WooCommerce abilities plus builder-aware storefront layout edits, so a product, order, or shop template gets edited through the right path instead of a raw page update.",
+        "capabilities": [
+          {
+            "title": "Full Product Lifecycle",
+            "desc": "List, read, create, update, and duplicate products through the canonical WooCommerce data layer, not post meta guesses."
+          },
+          {
+            "title": "Categories, Tags, Orders, Stock",
+            "desc": "Complete CRUD on categories and tags, order status updates, and stock management, each through its dedicated ability."
+          },
+          {
+            "title": "Storefront Layout Surface",
+            "desc": "Analyzes and edits builder-managed product card layouts across Elementor, Divi, Flatsome, Bricks, and Gutenberg shop templates."
+          },
+          {
+            "title": "Sales Reporting",
+            "desc": "Pulls sales reports without needing separate WC admin access."
+          },
+          {
+            "title": "Clean Failure When Unlicensed",
+            "desc": "Every Woo tool returns a structured error pointing to the add-on page when WooCommerce or the add-on isn't active, instead of a confusing generic failure."
+          }
+        ],
+        "freshly_updated_until": "2026-11-30",
+        "v1_0_0_changes": "Actively maintained alongside the WooCommerce add-on's 21-ability surface and storefront layout tools."
+      }
+    },
+    {
+      "slug": "figma-to-divi",
+      "name": "Figma to Divi",
+      "description": "Rebuilds a Figma frame as an editable Divi page. Reads the Figma node tree and maps each node to native Divi sections, rows, columns and modules (Divi 5 blocks or Divi 4 shortcodes, auto-detected), writing to a draft so nothing live is touched.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "1.1.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/figma-to-divi",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/figma-to-divi/SKILL.md",
+      "details": {
+        "hero_subtitle": "Hand a Figma frame to your agent and get a real, editable Divi page. Auto-layout becomes sections, rows and columns; text, color and images carry across; everything lands on a safe draft.",
+        "capabilities": [
+          {
+            "title": "Divi-native output",
+            "desc": "Real sections, rows, columns and modules in the generation your site runs — Divi 5 blocks or Divi 4 shortcodes — never pasted HTML."
+          },
+          {
+            "title": "Smart module recognition",
+            "desc": "FAQ stacks become Accordions, number+label pairs become Counters, icon cards become Blurbs, image rows become Galleries."
+          },
+          {
+            "title": "Panel-faithful styling",
+            "desc": "Inset rounded panels, framed images and shadows — the signatures of modern SaaS designs — carried via section styling and page CSS."
+          },
+          {
+            "title": "Screenshot-verified",
+            "desc": "The build is compared against the Figma frame visually before it is handed over, and drifted elements are fixed, not shipped."
+          }
+        ],
+        "freshly_updated_until": "2026-10-15",
+        "v1_1_0_changes": "Adds the review hand-off: a Murmur review link for the draft (a share link below the Builder plan), with each note applied on the draft and resolved with the snapshot id."
+      }
+    },
+    {
+      "slug": "figma-to-bricks",
+      "name": "Figma to Bricks",
+      "description": "Rebuilds a Figma frame as an editable Bricks page with BEM global classes and the frame's palette imported into the Bricks design system. Writes to a draft so nothing live is touched.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "1.1.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/figma-to-bricks",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/figma-to-bricks/SKILL.md",
+      "details": {
+        "hero_subtitle": "Hand a Figma frame to your agent and get a class-based, token-bound Bricks page — the kind a maintainer wants to inherit, not a pile of inline styles.",
+        "capabilities": [
+          {
+            "title": "BEM classes, not inline styles",
+            "desc": "Every Figma section becomes a scaffolded BEM block with styling on reusable global classes."
+          },
+          {
+            "title": "Palette into the design system",
+            "desc": "The frame's colors import into the Bricks color palette and CSS variables, with one-call rollback."
+          },
+          {
+            "title": "ACSS aware",
+            "desc": "When Automatic.css is installed, spacing and typography map onto ACSS utilities instead of raw values."
+          },
+          {
+            "title": "Health-checked",
+            "desc": "The Bricks health check runs after the build: orphans, duplicate ids, broken refs and empty containers get fixed before handover."
+          }
+        ],
+        "freshly_updated_until": "2026-10-15",
+        "v1_1_0_changes": "Adds the review hand-off: a Murmur review link for the draft (a share link below the Builder plan), with each note applied on the draft and resolved with the snapshot id."
+      }
+    },
+    {
+      "slug": "figma-to-gutenberg",
+      "name": "Figma to Gutenberg",
+      "description": "Rebuilds a Figma frame as core Gutenberg blocks on any WordPress 6.6+ site — no page builder required. Registers the frame's palette in Global Styles and writes to a draft so nothing live is touched.",
+      "category": "migration",
+      "author": "Respira for WordPress",
+      "version": "1.1.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/figma-to-gutenberg",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/figma-to-gutenberg/SKILL.md",
+      "details": {
+        "hero_subtitle": "Hand a Figma frame to your agent and get a page of plain core blocks any WordPress user can keep editing — with the design's palette registered in Global Styles.",
+        "capabilities": [
+          {
+            "title": "Core blocks only",
+            "desc": "Groups with flex layout, headings, paragraphs, images, buttons, details — a page that works on any theme with nothing extra installed."
+          },
+          {
+            "title": "Palette into Global Styles",
+            "desc": "The frame's colors register as named design tokens the whole site can reuse; blocks reference tokens, not hex copies."
+          },
+          {
+            "title": "Round-trip friendly",
+            "desc": "Prefers groups over columns for row layouts, so the page survives later agent reads and human edits faithfully."
+          },
+          {
+            "title": "Screenshot-verified",
+            "desc": "The build is compared against the Figma frame visually before handover."
+          }
+        ],
+        "freshly_updated_until": "2026-10-15",
+        "v1_1_0_changes": "Adds the review hand-off: a Murmur review link for the draft (a share link below the Builder plan), with each note applied on the draft and resolved with the snapshot id."
+      }
+    },
+    {
+      "slug": "woo-pricing-promotions",
+      "name": "Woo Pricing and Promotions",
+      "description": "Run a sale, reprice a category, or set up a coupon on a live WooCommerce store. Every change is previewed in money before it happens, snapshotted when it does, and reversible afterwards.",
+      "category": "commerce",
+      "author": "Respira for WordPress",
+      "version": "1.0.1",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": "woocommerce",
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/woo-pricing-promotions",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/woo-pricing-promotions/SKILL.md",
+      "example_prompts": [
+        "run a sale",
+        "discount this category",
+        "set up a coupon",
+        "what would 20% off cost me"
+      ],
+      "details": {
+        "hero_subtitle": "A misplaced decimal is not a broken layout somebody reports. It is orders at the wrong price, and by the time it surfaces the orders exist. This previews the change in money first.",
+        "capabilities": [
+          {
+            "title": "Preview before every write",
+            "desc": "Runs the repricing as a dry run and shows each product's old and new price, so a percentage is seen as the money it actually is."
+          },
+          {
+            "title": "Scheduled sales",
+            "desc": "Sets start and end dates so a sale ends by itself, instead of running until somebody remembers it."
+          },
+          {
+            "title": "Coupons with a limit",
+            "desc": "Fixed, percentage or free shipping, defaulting to a usage cap, because an uncapped code is a liability."
+          },
+          {
+            "title": "A named way back",
+            "desc": "Every price change carries a snapshot id, and woocommerce_revert_pricing puts it back."
+          }
+        ],
+        "expected_findings": [
+          "Products already on sale that a new category-wide discount would stack on, taking them twice as deep as intended.",
+          "A repricing that would cross the safety guardrails, such as a set-value that drops a product two decimal places.",
+          "Variable products where the parent was repriced and the variations, which carry their own prices, were not."
+        ]
+      }
+    },
+    {
+      "slug": "woo-marketing-campaigns",
+      "name": "Woo Marketing Campaigns",
+      "description": "Plan and draft a campaign from what your store actually sells. Reads sales, stock and catalogue quality first, then drafts copy against real products at real prices, staged for approval.",
+      "category": "commerce",
+      "author": "Respira for WordPress",
+      "version": "1.0.1",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": "woocommerce",
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/woo-marketing-campaigns",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/woo-marketing-campaigns/SKILL.md",
+      "example_prompts": [
+        "plan a campaign",
+        "promote this product",
+        "what should we push this month",
+        "draft the launch for this collection"
+      ],
+      "details": {
+        "hero_subtitle": "Most campaign copy for a store is written without looking at the store. It names discontinued products and promises stock that is not there. The fix is not better prose, it is reading the shop first.",
+        "capabilities": [
+          {
+            "title": "Picks from data, not plausibility",
+            "desc": "Chooses what to promote from sales history and stock on hand, so the hero product is not one that has sold four units all year."
+          },
+          {
+            "title": "Stops the wasted traffic",
+            "desc": "Flags promoted products with no image or a twelve-word description, because driving attention to a page that cannot convert is spending it badly."
+          },
+          {
+            "title": "Drafts, never publishes",
+            "desc": "Landing and category copy goes to a duplicate. Approval stays a human step."
+          },
+          {
+            "title": "Sends nothing",
+            "desc": "No email, no ads, no posts. It writes the campaign; a person decides to run it."
+          }
+        ],
+        "expected_findings": [
+          "A planned hero product with only days of stock at the promoted volume, which would end the campaign early.",
+          "Promoted products missing the images and descriptions the campaign depends on to convert.",
+          "Claims in draft copy that the store's own shipping or stock settings do not support."
+        ]
+      }
+    },
+    {
+      "slug": "murmur-review-loop",
+      "name": "Murmur Review Loop",
+      "description": "Send a page to the people who sign off on it with a Murmur review link, bring their notes back pinned to the element they point at, reply, apply each change on a duplicate, and resolve every note with the snapshot of the change.",
+      "category": "workflow",
+      "author": "Respira for WordPress",
+      "version": "1.0.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/murmur-review-loop",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/murmur-review-loop/SKILL.md",
+      "example_prompts": [
+        "send this page to my client for review",
+        "what did the client say about the homepage",
+        "work through the open review notes"
+      ],
+      "details": {
+        "hero_subtitle": "The client taps the spot and types the note. The agent gets the page, the quoted text and the element under it, applies the change on a duplicate, and resolves the note with the snapshot.",
+        "capabilities": [
+          {
+            "title": "A link, not a login",
+            "desc": "The reviewer opens the page on any device with no WordPress account and leaves notes pinned to the exact spot. Murmur is on the Builder plan and up."
+          },
+          {
+            "title": "Triage before writing",
+            "desc": "Sorts the notes into changes, questions and decisions that belong to the owner, and shows the sort before anything changes."
+          },
+          {
+            "title": "Changes on a duplicate",
+            "desc": "Each change lands on a duplicate, on the element the note points at, never on the live page."
+          },
+          {
+            "title": "Resolved with the snapshot",
+            "desc": "Every note closes with what changed and the snapshot id of the write, so any change can be undone from the note."
+          }
+        ],
+        "expected_findings": [
+          "Two reviewers asking for opposite changes, held for the owner.",
+          "Notes whose anchor no longer matches because the page changed after the review started.",
+          "Questions that need a reply rather than a write."
+        ],
+        "v1_0_0_changes": "First release for Respira 9.0: the full Murmur loop over the seven review tools, with a share link as the fallback below the Builder plan."
+      }
+    },
+    {
+      "slug": "wordpress-security-review",
+      "name": "WordPress Security Review",
+      "description": "Run the Respira security audit, read its indicators, coverage and known vulnerabilities honestly, and fix what it finds one approved update at a time. Never calls a site clean when a check did not run.",
+      "category": "audit",
+      "author": "Respira for WordPress",
+      "version": "1.0.0",
+      "mcp_server": "respira-wordpress",
+      "requires_addon": null,
+      "github_url": "https://github.com/respira-press/agent-skills-wordpress/tree/main/skills/wordpress-security-review",
+      "raw_url": "https://raw.githubusercontent.com/respira-press/agent-skills-wordpress/main/skills/wordpress-security-review/SKILL.md",
+      "example_prompts": [
+        "is my site secure",
+        "check my plugins for known vulnerabilities",
+        "fix the vulnerable plugins"
+      ],
+      "details": {
+        "hero_subtitle": "Most security checks grade a site on whether a security plugin is installed. This one checks core files, administrators, credentials and known vulnerabilities, and says what it could not see.",
+        "capabilities": [
+          {
+            "title": "Evidence, not plugin names",
+            "desc": "Core checksums against WordPress.org, every administrator and application password, executable files where they should not be, and compromise indicators, each with a note."
+          },
+          {
+            "title": "Known vulnerabilities",
+            "desc": "Installed core, plugin and theme versions matched against the Wordfence vulnerability database, each with the version that fixes it (plugin 9.0 and later)."
+          },
+          {
+            "title": "Honest coverage",
+            "desc": "A partial scan is reported as partial and an unreachable vulnerability database as not checked. The report never rounds either up to clean."
+          },
+          {
+            "title": "Fixes behind approval",
+            "desc": "Plugin, theme and core security updates one at a time, each approval-gated, with a home-page check between steps. Nothing is deleted or revoked without an explicit yes."
+          }
+        ],
+        "expected_findings": [
+          "A plugin with a known vulnerability whose fix is one update away.",
+          "An administrator account created recently that the owner should confirm.",
+          "An application password on an administrator account nobody recognises.",
+          "An uploads scan that reached its limit, reported as partial rather than clean."
+        ],
+        "v1_0_0_changes": "First release for Respira 9.0: run_security_audit with deep_scan, the uploads probe only with consent, known vulnerabilities from the Wordfence database, and approval-gated fixes including update_theme and revoke_application_password."
+      }
+    }
+  ],
+  "last_updated": "2026-09-13"
+}

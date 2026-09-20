@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-09-08T03:30:07.688Z",
+  "editors": [
+    {
+      "id": 6,
+      "count": 20,
+      "invalid": []
+    },
+    {
+      "id": 20,
+      "count": 2,
+      "invalid": []
+    }
+  ],
+  "media": {
+    "overflow": false,
+    "images": [
+      {
+        "src": "http://127.0.0.1:9462/wp-content/uploads/2026/09/published-home-1440.png",
+        "width": 390,
+        "height": 484,
+        "alt": "Screenshot of the Harbor Valve fictional demonstration homepage",
+        "loaded": true
+      }
+    ]
+  },
+  "passed": true
+}

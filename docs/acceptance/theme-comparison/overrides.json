@@ -1,0 +1,12 @@
+{
+  "testedAt": "2026-09-19T21:35:08.054Z",
+  "php": {
+    "sourceChangeVisible": true,
+    "databaseTemplateOverride": "not offered by classic template UI"
+  },
+  "block": {
+    "databaseOverrideMasksFileChange": true,
+    "overrideDetected": "custom",
+    "explicitMergePreservesBothChanges": true
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "testedAt": "2026-09-19T21:46:53.990Z",
+  "scope": "same-host paired prototype",
+  "candidates": {
+    "a": {
+      "runtime": {
+        "wordpress": "7.1",
+        "php": "8.3.33",
+        "mysql": "8.4.11",
+        "block": false,
+        "templates": {
+          "product-editorial.php": "Product — Editorial",
+          "product-standard.php": "Product — Standard"
+        },
+        "theme": "site-reference"
+      },
+      "checks": {
+        "routes": 6,
+        "productTemplateSwitch": {
+          "templates": [
+            "product-standard.php",
+            "product-editorial.php"
+          ],
+          "contentAndUrlPreserved": true,
+          "inquiryContextPreserved": true
+        },
+        "missingTemplateFallback": true,
+        "categoryLayoutSwitch": true,
+        "queryAndPaging": true
+      },
+      "htmlFetch": [
+        {
+          "path": "/",
+          "htmlBytes": 41660,
+          "samplesMs": [
+            63,
+            82.7,
+            60.3,
+            56.3,
+            56.1
+          ],
+          "medianMs": 60.3
+        },
+        {
+          "path": "/equipment/",
+          "htmlBytes": 40190,
+          "samplesMs": [
+            43.8,
+            41.2,
+            40.9,
+            42.1,
+            40.3
+          ],
+          "medianMs": 41.2
+        },
+        {
+          "path": "/equipment/model/yhd08/",
+          "htmlBytes": 38709,
+          "samplesMs": [
+            41.7,
+            51.5,
+            45.9,
+            55.8,
+            42.4
+          ],
+          "medianMs": 45.9
+        }
+      ]
+    },
+    "b": {
+      "runtime": {
+        "wordpress": "7.1",
+        "php": "8.3.33",
+        "mysql": "8.4.11",
+        "block": true,
+        "templates": {
+          "taxonomy-hd_category-editorial": "taxonomy-hd_category-editorial",
+          "taxonomy-hd_category": "taxonomy-hd_category",
+          "single-hd_product": "single-hd_product",
+          "product-editorial": "Product — Editorial",
+          "archive-hd_product": "archive-hd_product",
+          "product-standard": "Product — Standard"
+        },
+        "theme": "site-blocks"
+      },
+      "checks": {
+        "routes": 6,
+        "productTemplateSwitch": {
+          "templates": [
+            "product-standard",
+            "product-editorial"
+          ],
+          "contentAndUrlPreserved": true,
+          "inquiryContextPreserved": true
+        },
+        "missingTemplateFallback": true,
+        "categoryLayoutSwitch": true,
+        "queryAndPaging": true
+      },
+      "htmlFetch": [
+        {
+          "path": "/",
+          "htmlBytes": 76458,
+          "samplesMs": [
+            64.2,
+            62.3,
+            64,
+            64.6,
+            60.3
+          ],
+          "medianMs": 64
+        },
+        {
+          "path": "/equipment/",
+          "htmlBytes": 78172,
+          "samplesMs": [
+            50.6,
+            49,
+            51,
+            57.2,
+            68.1
+          ],
+          "medianMs": 51
+        },
+        {
+          "path": "/equipment/model/yhd08/",
+          "htmlBytes": 68807,
+          "samplesMs": [
+            56.3,
+            46.1,
+            55.4,
+            47.6,
+            45.1
+          ],
+          "medianMs": 47.6
+        }
+      ]
+    }
+  }
+}

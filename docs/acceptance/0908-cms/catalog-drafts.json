@@ -1,0 +1,177 @@
+{
+  "checkedAt": "2026-09-08T03:56:53.210Z",
+  "editors": [
+    {
+      "id": 24,
+      "blocks": [
+        {
+          "name": "core/paragraph",
+          "valid": true
+        },
+        {
+          "name": "core/heading",
+          "valid": true
+        },
+        {
+          "name": "core/paragraph",
+          "valid": true
+        },
+        {
+          "name": "core/heading",
+          "valid": true
+        },
+        {
+          "name": "core/paragraph",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "blocks": [
+        {
+          "name": "core/paragraph",
+          "valid": true
+        },
+        {
+          "name": "core/heading",
+          "valid": true
+        },
+        {
+          "name": "core/paragraph",
+          "valid": true
+        },
+        {
+          "name": "core/heading",
+          "valid": true
+        },
+        {
+          "name": "core/paragraph",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "blocks": [
+        {
+          "name": "core/paragraph",
+          "valid": true
+        },
+        {
+          "name": "core/query",
+          "valid": true
+        },
+        {
+          "name": "core/post-template",
+          "valid": true
+        },
+        {
+          "name": "core/post-title",
+          "valid": true
+        },
+        {
+          "name": "core/post-excerpt",
+          "valid": true
+        },
+        {
+          "name": "core/query-pagination",
+          "valid": true
+        },
+        {
+          "name": "core/query-pagination-previous",
+          "valid": true
+        },
+        {
+          "name": "core/query-pagination-numbers",
+          "valid": true
+        },
+        {
+          "name": "core/query-pagination-next",
+          "valid": true
+        }
+      ]
+    }
+  ],
+  "previews": [
+    {
+      "id": 24,
+      "width": 1440,
+      "h1": 1,
+      "text": "Demo Valve, compact\n\nWritten by\n\nin\n\nFictional product imported from a sample CSV. Specifications are not verified.\n\nModel\n\n001\n\nMaterial\n\nSample brass\n\n←Sample Control Valve — CMS Test\nMORE POSTS\nHello world!\nSeptember 8, 2026",
+      "overflow": false,
+      "products": [
+        {
+          "label": "Hello world!",
+          "url": "http://127.0.0.1:9462/2026/09/08/hello-world/"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "width": 390,
+      "h1": 1,
+      "text": "Demo Valve, compact\n\nWritten by\n\nin\n\nFictional product imported from a sample CSV. Specifications are not verified.\n\nModel\n\n001\n\nMaterial\n\nSample brass\n\n←Sample Control Valve — CMS Test\nMORE POSTS\nHello world!\nSeptember 8, 2026",
+      "overflow": false,
+      "products": [
+        {
+          "label": "Hello world!",
+          "url": "http://127.0.0.1:9462/2026/09/08/hello-world/"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "width": 1440,
+      "h1": 1,
+      "text": "Demo Valve “standard”\n\nWritten by\n\nin\n\nFictional product imported from a sample CSV. Specifications are not verified.\n\nModel\n\n002\n\nMaterial\n\nSample stainless steel\n\n←Sample Control Valve — CMS Test\nMORE POSTS\nHello world!\nSeptember 8, 2026",
+      "overflow": false,
+      "products": [
+        {
+          "label": "Hello world!",
+          "url": "http://127.0.0.1:9462/2026/09/08/hello-world/"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "width": 390,
+      "h1": 1,
+      "text": "Demo Valve “standard”\n\nWritten by\n\nin\n\nFictional product imported from a sample CSV. Specifications are not verified.\n\nModel\n\n002\n\nMaterial\n\nSample stainless steel\n\n←Sample Control Valve — CMS Test\nMORE POSTS\nHello world!\nSeptember 8, 2026",
+      "overflow": false,
+      "products": [
+        {
+          "label": "Hello world!",
+          "url": "http://127.0.0.1:9462/2026/09/08/hello-world/"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "width": 1440,
+      "h1": 1,
+      "text": "Demo Product Catalog\n\nFictional catalog for testing dynamic product listings.\n\nSample Control Valve — CMS Test\n\nFictional product for verifying the CMS workflow. Specifications are test data.",
+      "overflow": false,
+      "products": [
+        {
+          "label": "Sample Control Valve — CMS Test",
+          "url": "http://127.0.0.1:9462/products/sample-control-valve-cms-test/"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "width": 390,
+      "h1": 1,
+      "text": "Demo Product Catalog\n\nFictional catalog for testing dynamic product listings.\n\nSample Control Valve — CMS Test\n\nFictional product for verifying the CMS workflow. Specifications are test data.",
+      "overflow": false,
+      "products": [
+        {
+          "label": "Sample Control Valve — CMS Test",
+          "url": "http://127.0.0.1:9462/products/sample-control-valve-cms-test/"
+        }
+      ]
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,205 @@
+{
+  "testedAt": "2026-09-20T11:10:00.517Z",
+  "base": "https://mediumblue-quail-505146.hostingersite.com",
+  "assets": [
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/plugins/fluentform/assets/css/fluent-forms-public.css?ver=6.2.9",
+      "status": 200,
+      "type": "text/css",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/plugins/fluentform/assets/css/fluentform-public-default.css?ver=6.2.9",
+      "status": 200,
+      "type": "text/css",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/plugins/fluentform/assets/js/form-submission.js?ver=6.2.9",
+      "status": 200,
+      "type": "application/x-javascript",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/themes/b2b-equipment/assets/site.js?ver=1789860058",
+      "status": 200,
+      "type": "application/x-javascript",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/themes/b2b-equipment/style.css?ver=1789861066",
+      "status": 200,
+      "type": "text/css",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/backhoe-loader-1024x682.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/backhoe-loader-300x200.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/backhoe-loader-768x512.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/backhoe-loader.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/construction-excavator-1024x682.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/construction-excavator-300x200.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/construction-excavator-768x512.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/construction-excavator.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/heroMiniExcavator-1024x766.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/heroMiniExcavator-300x224.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/heroMiniExcavator-768x574.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/heroMiniExcavator.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/mini-excavator-1024x864.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/mini-excavator-300x253.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/mini-excavator-768x648.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/mini-excavator.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/skid-steer-loader-1024x739.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/skid-steer-loader-300x217.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/skid-steer-loader-768x554.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/skid-steer-loader.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/wheel-loader-1024x768.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/wheel-loader-300x225.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/wheel-loader-768x576.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-content/uploads/2026/09/wheel-loader.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-includes/js/dist/script-modules/block-library/navigation/view.min.js?ver=1bf28ded04f9f188bdcb",
+      "status": 200,
+      "type": "application/x-javascript",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=efaa5193bbad9c60ffd1",
+      "status": 200,
+      "type": "application/x-javascript",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+      "status": 200,
+      "type": "application/x-javascript",
+      "pass": true
+    },
+    {
+      "url": "https://mediumblue-quail-505146.hostingersite.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+      "status": 200,
+      "type": "application/x-javascript",
+      "pass": true
+    }
+  ],
+  "pass": true
+}

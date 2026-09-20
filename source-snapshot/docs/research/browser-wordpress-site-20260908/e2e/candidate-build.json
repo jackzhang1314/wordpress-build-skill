@@ -1,0 +1,23 @@
+{
+  "id": "lhhldkedccmfjclcfjdajlgolnmdjdnc",
+  "extension": "/Users/Zhuanz1/Documents/ChatGPT/浏览器网页批注插件/output/playwright/wp-e2e-0908/extension",
+  "createdAt": "2026-09-07T19:02:09.748Z",
+  "artifacts": [
+    {
+      "path": "background.js",
+      "sha256": "37c2c131f5bc50d427803c22a38ae764eecd6dde82915f821d98025d9fa9d6bc"
+    },
+    {
+      "path": "sidepanel.js",
+      "sha256": "801e645207b03658ecc8696c3155760d625358b07a47add713f5dee090b15c2e"
+    },
+    {
+      "path": "wp-acceptance.js",
+      "sha256": "b75b4a7a7ef3d5725db109a372f87f5befa070dd743ccdf878f4addb1ee7a3fe"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "3d2aaa268c6c63ada720686f942531e0b037adfe24c602070fe33cfc7ab39240"
+    }
+  ]
+}

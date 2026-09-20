@@ -1,0 +1,324 @@
+{
+  "passed": true,
+  "scope": "Isolated fixture, real Gutenberg editor and draft previews; not a model or extension-auth end-to-end test.",
+  "checks": [
+    {
+      "key": "contact",
+      "id": 4,
+      "editor": {
+        "blocks": [
+          {
+            "isValid": true,
+            "name": "core/heading"
+          },
+          {
+            "isValid": true,
+            "name": "core/paragraph"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          }
+        ],
+        "status": "draft"
+      },
+      "views": [
+        {
+          "headings": 1,
+          "links": [
+            "mailto:sales@example.com",
+            "http://127.0.0.1:9415/?page_id=5",
+            "http://127.0.0.1:9415/?page_id=6",
+            "http://127.0.0.1:9415/?page_id=7"
+          ],
+          "scroll": 1440,
+          "text": "Contact — fixture\nDiscuss your requirements\n\nIsolated test content. No message is sent by this test.\n\nEmail the test company\nproduct\nabout\nhome",
+          "title": "Contact — fixture",
+          "width": 1440
+        },
+        {
+          "headings": 1,
+          "links": [
+            "mailto:sales@example.com",
+            "http://127.0.0.1:9415/?page_id=5",
+            "http://127.0.0.1:9415/?page_id=6",
+            "http://127.0.0.1:9415/?page_id=7"
+          ],
+          "scroll": 390,
+          "text": "Contact — fixture\nDiscuss your requirements\n\nIsolated test content. No message is sent by this test.\n\nEmail the test company\nproduct\nabout\nhome",
+          "title": "Contact — fixture",
+          "width": 390
+        }
+      ]
+    },
+    {
+      "key": "product",
+      "id": 5,
+      "editor": {
+        "blocks": [
+          {
+            "isValid": true,
+            "name": "core/heading"
+          },
+          {
+            "isValid": true,
+            "name": "core/table"
+          },
+          {
+            "isValid": true,
+            "name": "core/details"
+          },
+          {
+            "isValid": true,
+            "name": "core/paragraph"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          }
+        ],
+        "status": "draft"
+      },
+      "views": [
+        {
+          "headings": 1,
+          "links": [
+            "http://127.0.0.1:9415/?page_id=4",
+            "http://127.0.0.1:9415/?page_id=6",
+            "http://127.0.0.1:9415/?page_id=7"
+          ],
+          "scroll": 1440,
+          "text": "Product — fixture\nSample valve\nParameter\tTest value\nModel\tFIXTURE-1\nMaterial\tStainless steel\nAre these real product specifications?\ncontact\nabout\nhome",
+          "title": "Product — fixture",
+          "width": 1440
+        },
+        {
+          "headings": 1,
+          "links": [
+            "http://127.0.0.1:9415/?page_id=4",
+            "http://127.0.0.1:9415/?page_id=6",
+            "http://127.0.0.1:9415/?page_id=7"
+          ],
+          "scroll": 390,
+          "text": "Product — fixture\nSample valve\nParameter\tTest value\nModel\tFIXTURE-1\nMaterial\tStainless steel\nAre these real product specifications?\ncontact\nabout\nhome",
+          "title": "Product — fixture",
+          "width": 390
+        }
+      ]
+    },
+    {
+      "key": "about",
+      "id": 6,
+      "editor": {
+        "blocks": [
+          {
+            "isValid": true,
+            "name": "core/heading"
+          },
+          {
+            "isValid": true,
+            "name": "core/columns"
+          },
+          {
+            "isValid": true,
+            "name": "core/column"
+          },
+          {
+            "isValid": true,
+            "name": "core/heading"
+          },
+          {
+            "isValid": true,
+            "name": "core/paragraph"
+          },
+          {
+            "isValid": true,
+            "name": "core/column"
+          },
+          {
+            "isValid": true,
+            "name": "core/heading"
+          },
+          {
+            "isValid": true,
+            "name": "core/paragraph"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          }
+        ],
+        "status": "draft"
+      },
+      "views": [
+        {
+          "headings": 1,
+          "links": [
+            "http://127.0.0.1:9415/?page_id=4",
+            "http://127.0.0.1:9415/?page_id=5",
+            "http://127.0.0.1:9415/?page_id=7"
+          ],
+          "scroll": 1440,
+          "text": "About — fixture\nAbout this demonstration\nCompany facts\n\nDemonstration company for testing editable content.\n\nEvidence\n\nNo certification or customer claim is made.\n\ncontact\nproduct\nhome",
+          "title": "About — fixture",
+          "width": 1440
+        },
+        {
+          "headings": 1,
+          "links": [
+            "http://127.0.0.1:9415/?page_id=4",
+            "http://127.0.0.1:9415/?page_id=5",
+            "http://127.0.0.1:9415/?page_id=7"
+          ],
+          "scroll": 390,
+          "text": "About — fixture\nAbout this demonstration\nCompany facts\n\nDemonstration company for testing editable content.\n\nEvidence\n\nNo certification or customer claim is made.\n\ncontact\nproduct\nhome",
+          "title": "About — fixture",
+          "width": 390
+        }
+      ]
+    },
+    {
+      "key": "home",
+      "id": 7,
+      "editor": {
+        "blocks": [
+          {
+            "isValid": true,
+            "name": "core/group"
+          },
+          {
+            "isValid": true,
+            "name": "core/heading"
+          },
+          {
+            "isValid": true,
+            "name": "core/paragraph"
+          },
+          {
+            "isValid": true,
+            "name": "core/paragraph"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          },
+          {
+            "isValid": true,
+            "name": "core/buttons"
+          },
+          {
+            "isValid": true,
+            "name": "core/button"
+          }
+        ],
+        "status": "draft"
+      },
+      "views": [
+        {
+          "headings": 1,
+          "links": [
+            "http://127.0.0.1:9415/?page_id=4",
+            "http://127.0.0.1:9415/?page_id=5",
+            "http://127.0.0.1:9415/?page_id=6"
+          ],
+          "scroll": 1440,
+          "text": "Home — fixture\nEditable trade website\n\nFour draft pages built using the existing WordPress theme.\n\nThis is an isolated acceptance site, not a customer website.\n\ncontact\nproduct\nabout",
+          "title": "Home — fixture",
+          "width": 1440
+        },
+        {
+          "headings": 1,
+          "links": [
+            "http://127.0.0.1:9415/?page_id=4",
+            "http://127.0.0.1:9415/?page_id=5",
+            "http://127.0.0.1:9415/?page_id=6"
+          ],
+          "scroll": 390,
+          "text": "Home — fixture\nEditable trade website\n\nFour draft pages built using the existing WordPress theme.\n\nThis is an isolated acceptance site, not a customer website.\n\ncontact\nproduct\nabout",
+          "title": "Home — fixture",
+          "width": 390
+        }
+      ]
+    }
+  ]
+}

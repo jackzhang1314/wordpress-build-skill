@@ -1,0 +1,6 @@
+{
+  "name": "wordpress-official-agent-skills",
+  "description": "Expert-level WordPress knowledge for AI coding agents — blocks, themes, REST API, WP-CLI, performance, PHPStan, Playground, Interactivity API, Abilities API, and more.",
+  "version": "1.0.0",
+  "contextFileName": "GEMINI.md"
+}

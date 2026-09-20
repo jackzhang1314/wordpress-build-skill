@@ -1,0 +1,229 @@
+{
+  "checkedAt": "2026-09-07T19:06:20.683Z",
+  "hasModelKey": false,
+  "modelRun": false,
+  "pages": [
+    {
+      "contentMatches": true,
+      "id": 6,
+      "key": "contact",
+      "status": "draft",
+      "statusMatches": true,
+      "titleMatches": true,
+      "url": "https://wp-agent.test/?page_id=6"
+    },
+    {
+      "contentMatches": true,
+      "id": 7,
+      "key": "product",
+      "status": "draft",
+      "statusMatches": true,
+      "titleMatches": true,
+      "url": "https://wp-agent.test/?page_id=7"
+    },
+    {
+      "contentMatches": true,
+      "id": 8,
+      "key": "about",
+      "status": "draft",
+      "statusMatches": true,
+      "titleMatches": true,
+      "url": "https://wp-agent.test/?page_id=8"
+    },
+    {
+      "contentMatches": true,
+      "id": 9,
+      "key": "home",
+      "status": "draft",
+      "statusMatches": true,
+      "titleMatches": true,
+      "url": "https://wp-agent.test/?page_id=9"
+    }
+  ],
+  "profile": {
+    "activeTheme": {
+      "is_block_theme": true,
+      "name": {
+        "raw": "Twenty Twenty-Five",
+        "rendered": "Twenty Twenty-Five"
+      },
+      "stylesheet": "twentytwentyfive"
+    },
+    "adaptation": {
+      "accountStatus": "available",
+      "contentTypes": [
+        {
+          "contentFieldExposed": true,
+          "createPermission": true,
+          "label": "Pages",
+          "metaFields": [
+            {
+              "name": "footnotes",
+              "readOnly": false,
+              "type": "string"
+            }
+          ],
+          "name": "page",
+          "namespace": "wp/v2",
+          "nextStep": "复用现有模板编译页面，先创建草稿并回读。",
+          "publishPermission": true,
+          "restBase": "pages",
+          "schemaStatus": "available",
+          "status": "ready_to_attempt_draft",
+          "templateSelection": "default_only",
+          "writeTool": "wpWriteContent"
+        }
+      ],
+      "coverage": {
+        "discovered": 11,
+        "fieldLimit": 12,
+        "limit": 8,
+        "scanned": [
+          "page"
+        ],
+        "templateLimit": 50
+      },
+      "frontendStatus": "needs_preview",
+      "notes": [
+        "权限值来自当前账号与类型声明；OPTIONS存在不证明可写，站点执行时仍可能拒绝。",
+        "字段公开不证明当前模板展示或动态绑定；保存草稿后必须检查真实页面。",
+        "没有模板枚举时当前写工具须省略template，沿用默认/已有模板；不能自行猜测模板标识。",
+        "普通建页不需要配套插件；复用用户现有主题和内容模型。"
+      ],
+      "typesStatus": "available",
+      "uploadPermission": true
+    },
+    "blocks": {
+      "names": [
+        "core/legacy-widget",
+        "core/widget-group",
+        "core/accordion",
+        "core/accordion-item",
+        "core/archives",
+        "core/avatar",
+        "core/block",
+        "core/button",
+        "core/calendar",
+        "core/categories",
+        "core/comment-author-name",
+        "core/comment-content",
+        "core/comment-date",
+        "core/comment-edit-link",
+        "core/comment-reply-link",
+        "core/comment-template",
+        "core/comments",
+        "core/comments-pagination",
+        "core/comments-pagination-next",
+        "core/comments-pagination-numbers",
+        "core/comments-pagination-previous",
+        "core/comments-title",
+        "core/cover",
+        "core/file",
+        "core/footnotes",
+        "core/gallery",
+        "core/heading",
+        "core/home-link",
+        "core/image",
+        "core/latest-comments",
+        "core/latest-posts",
+        "core/list",
+        "core/loginout",
+        "core/media-text",
+        "core/navigation",
+        "core/navigation-link",
+        "core/navigation-submenu",
+        "core/page-list",
+        "core/page-list-item",
+        "core/pattern",
+        "core/post-author",
+        "core/post-author-biography",
+        "core/post-author-name",
+        "core/post-comments-count",
+        "core/post-comments-form",
+        "core/post-comments-link",
+        "core/post-content",
+        "core/post-date",
+        "core/post-excerpt",
+        "core/post-featured-image",
+        "core/post-navigation-link",
+        "core/post-template",
+        "core/post-terms",
+        "core/post-time-to-read",
+        "core/post-title",
+        "core/query",
+        "core/query-no-results",
+        "core/query-pagination",
+        "core/query-pagination-next",
+        "core/query-pagination-numbers",
+        "core/query-pagination-previous",
+        "core/query-title",
+        "core/query-total",
+        "core/read-more",
+        "core/rss",
+        "core/search",
+        "core/shortcode",
+        "core/site-logo",
+        "core/site-tagline",
+        "core/site-title",
+        "core/social-link",
+        "core/tag-cloud",
+        "core/template-part",
+        "core/term-count",
+        "core/term-description",
+        "core/term-name",
+        "core/term-template",
+        "core/video",
+        "core/accordion-heading",
+        "core/accordion-panel",
+        "core/audio",
+        "core/buttons",
+        "core/code",
+        "core/column",
+        "core/columns",
+        "core/details",
+        "core/embed",
+        "core/freeform",
+        "core/group",
+        "core/html",
+        "core/list-item",
+        "core/math",
+        "core/missing",
+        "core/more",
+        "core/nextpage",
+        "core/paragraph",
+        "core/preformatted",
+        "core/pullquote",
+        "core/quote",
+        "core/separator",
+        "core/social-links",
+        "core/spacer",
+        "core/table",
+        "core/terms-query",
+        "core/text-columns",
+        "core/verse",
+        "core/post-comments"
+      ],
+      "status": "available"
+    },
+    "checkedAt": "2026-09-07T19:06:01.745Z",
+    "coverage": "主题提供的样式；不包含用户全局样式覆盖，也不证明编辑器上下文允许所有注册区块。权限不足标记unknown；现有主题不会被切换。",
+    "evidence": {
+      "bytes": 679733,
+      "note": "用 readFile 回读实际数据与覆盖范围后再分析。",
+      "path": "seo/wordpress-design-profile/8c2035c2-8235-4354-88e3-536e74aab460.json",
+      "version": 1
+    },
+    "pages": {
+      "status": "available"
+    },
+    "site": "https://wp-agent.test",
+    "themeStyles": {
+      "status": "available"
+    },
+    "themes": {
+      "status": "available"
+    }
+  },
+  "site": "https://wp-agent.test",
+  "transport": "Production HTTPS fetch and real WordPress Application Password; local DNS and certificate trust are isolated to this test browser."
+}

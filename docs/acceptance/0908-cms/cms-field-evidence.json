@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-09-08T03:50:44.590Z",
+  "id": 22,
+  "url": "http://127.0.0.1:9462/products/sample-control-valve-cms-test/",
+  "before": {
+    "oct_model": "DEMO-CV-01",
+    "oct_material": "Sample stainless steel",
+    "oct_moq": "Confirm with supplier",
+    "oct_lead_time": "Confirm before ordering"
+  },
+  "after": {
+    "oct_model": "DEMO-CV-01",
+    "oct_material": "Sample brass — updated through ACF",
+    "oct_moq": "Confirm with supplier",
+    "oct_lead_time": "Confirm before ordering"
+  },
+  "rawContentUnchanged": true,
+  "rawHash": "b2e027dd928fd06db65c4c82b2d32443287ca8a58d494efc04b46b50b08c20c2",
+  "status": "publish"
+}

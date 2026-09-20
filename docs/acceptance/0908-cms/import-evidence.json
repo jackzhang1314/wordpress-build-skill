@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-09-08T03:52:09.380Z",
+  "first": {
+    "planId": "271c2cb9796229c05a9eb0f43a94469edddf39d603d18f378649cf403e0c882f",
+    "records": [
+      {
+        "key": "001",
+        "id": 24,
+        "type": "oct_product",
+        "url": "http://127.0.0.1:9462/?post_type=oct_product&p=24",
+        "status": "draft",
+        "version": "7507b9186dfe538110bdc80d08ada032f08ee8944ff0f3c31b3af41863950499"
+      },
+      {
+        "key": "002",
+        "id": 25,
+        "type": "oct_product",
+        "url": "http://127.0.0.1:9462/?post_type=oct_product&p=25",
+        "status": "draft",
+        "version": "756fa6648ba8b808ca998f62e3fdb1303c41ded691b19d37682ef98a5be28040"
+      }
+    ],
+    "frontendVerified": false,
+    "evidenceDirectory": "/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill/.lab/import-01"
+  },
+  "second": {
+    "planId": "271c2cb9796229c05a9eb0f43a94469edddf39d603d18f378649cf403e0c882f",
+    "records": [
+      {
+        "key": "001",
+        "id": 24,
+        "type": "oct_product",
+        "url": "http://127.0.0.1:9462/?post_type=oct_product&p=24",
+        "status": "draft",
+        "version": "7507b9186dfe538110bdc80d08ada032f08ee8944ff0f3c31b3af41863950499"
+      },
+      {
+        "key": "002",
+        "id": 25,
+        "type": "oct_product",
+        "url": "http://127.0.0.1:9462/?post_type=oct_product&p=25",
+        "status": "draft",
+        "version": "756fa6648ba8b808ca998f62e3fdb1303c41ded691b19d37682ef98a5be28040"
+      }
+    ],
+    "frontendVerified": false,
+    "evidenceDirectory": "/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill/.lab/import-01"
+  },
+  "beforeCount": 1,
+  "afterCount": 3,
+  "sameIds": true
+}

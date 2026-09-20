@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-09-17T18:04:11.578Z",
+  "rows": [
+    {
+      "id": 55,
+      "url": "http://127.0.0.1:9462/products/tl-e08/",
+      "expectedImage": "mini-excavator.jpg",
+      "imageRendered": true,
+      "h1": "TL-E08 Compact Excavator",
+      "overflowApprox": null
+    },
+    {
+      "id": 56,
+      "url": "http://127.0.0.1:9462/products/tl-e20/",
+      "expectedImage": "mini-excavator.jpg",
+      "imageRendered": true,
+      "h1": "TL-E20 Compact Excavator",
+      "overflowApprox": null
+    },
+    {
+      "id": 57,
+      "url": "http://127.0.0.1:9462/products/tl-e35/",
+      "expectedImage": "mini-excavator.jpg",
+      "imageRendered": true,
+      "h1": "TL-E35 Compact Excavator",
+      "overflowApprox": null
+    },
+    {
+      "id": 58,
+      "url": "http://127.0.0.1:9462/products/tl-l10/",
+      "expectedImage": "wheel-loader.jpg",
+      "imageRendered": true,
+      "h1": "TL-L10 Compact Wheel Loader",
+      "overflowApprox": null
+    },
+    {
+      "id": 59,
+      "url": "http://127.0.0.1:9462/products/tl-b30/",
+      "expectedImage": "backhoe-loader.jpg",
+      "imageRendered": true,
+      "h1": "TL-B30 Backhoe Loader",
+      "overflowApprox": null
+    },
+    {
+      "id": 60,
+      "url": "http://127.0.0.1:9462/products/tl-s50/",
+      "expectedImage": "skid-steer.jpg",
+      "imageRendered": true,
+      "h1": "TL-S50 Skid Steer Loader",
+      "overflowApprox": null
+    }
+  ]
+}

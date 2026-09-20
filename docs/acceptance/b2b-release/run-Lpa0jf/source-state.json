@@ -1,0 +1,11 @@
+{
+  "head": "a49821fa88311b5fa59f4d0298b8a6f5b71bd7a1",
+  "dirty": true,
+  "files": {
+    "examples/b2b-block-starter/scripts/release.mjs": "8d7864a005a7ba7c8649c1a00a191a6de643199179f51767f250958205c8e814",
+    "examples/b2b-block-starter/scripts/release/files.mjs": "70378a131686aae4da25c6f35d024ff533330434b08b76e77d62faa08cc81074",
+    "examples/b2b-block-starter/scripts/release/sanitize.php": "455f838c594686b8f7596ea1770d16745c25010f09ebf34e8e3c7456f97c12a8",
+    "config/wordpress-plugins.json": "eaf5571abf17bdcbb3f1c1e09b6c07b5809c540b252f8574d51465ff287f2c69",
+    "tests/release-package.test.mjs": "89403d2c3e2e05f83acbea38c020558f54aaec29e7dfecbb960acaeb09530d05"
+  }
+}

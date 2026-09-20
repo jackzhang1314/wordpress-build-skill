@@ -1,0 +1,61 @@
+{
+  "testedAt": "2026-09-20T11:50:53.053570+00:00",
+  "status": "passed-isolated-cli-recovery",
+  "scope": "current-online-snapshot-to-separate-database-and-nonpublic-directory",
+  "runtime": {
+    "theme": "b2b-equipment",
+    "products": 19,
+    "forms": true,
+    "acf": true
+  },
+  "filesVerified": 8879,
+  "tables": {
+    "posts": {
+      "count": 72,
+      "hash": "4f1f02a629bd43aafa0eb9e9bc906c89e75ccadc029bec6e0cbdb18d2ae020f3"
+    },
+    "postmeta": {
+      "count": 340,
+      "hash": "565d2b238c69af1a68537fe74f95b2a19bfa732b42508cd73df1c69ede93177a"
+    },
+    "terms": {
+      "count": 8,
+      "hash": "300998edd0cd64f81bce3e824806532c5ce787116cdc1e1a96c4d7117c4ffe29"
+    },
+    "term_taxonomy": {
+      "count": 8,
+      "hash": "56228e4f88bbaa46a7332637b668ec7441fd46871986c4e8403d05ce5248355f"
+    },
+    "term_relationships": {
+      "count": 34,
+      "hash": "0f25d6ed92ea640ab6ea0320d775351e6f805b8cae6f42807d99bc19717d9b2b"
+    },
+    "termmeta": {
+      "count": 3,
+      "hash": "ff2bed04a6604dde2672eeabafb8411805e9a191f345ef7c06fc12cc83b0b9e1"
+    },
+    "fluentform_forms": {
+      "count": 1,
+      "hash": "56af8b980991885d37dbdddb2b86ab0cf5ef2695d44c8bb6ab28c4f272829128"
+    },
+    "fluentform_form_meta": {
+      "count": 3,
+      "hash": "5d159eed687463329998bd44fb19239d5080cc6d59d3e31af14662925a730dd0"
+    },
+    "fluentform_submissions": {
+      "count": 2,
+      "hash": "a7c07b91f1febd22544eedd62fae2d7ef4bc9dbf2f777d842cc32047033c2f4f"
+    },
+    "fluentform_entry_details": {
+      "count": 9,
+      "hash": "13ece01fa03f6214d7cd57c8f38d4b3b3642a5123169422e07ed99edba99a87d"
+    },
+    "fluentform_submission_meta": {
+      "count": 4,
+      "hash": "9e066f0366209d1cbb812c7bf1b9bf450dcdf7a2b5d5848509b27622ab786b62"
+    }
+  },
+  "liveDatabaseOverwritten": false,
+  "browserOnRestoredClone": "not-tested",
+  "temporaryExecutablesRemoved": true
+}

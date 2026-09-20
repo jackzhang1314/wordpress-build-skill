@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-09-20T05:08:09.335801+08:00",
+  "scope": "source audit; no feature implemented",
+  "files": [
+    {
+      "path": "examples/hongda-wordpress/plugin/site-model.php",
+      "sha256": "70b7b13b071eb8336143f0341586dd28456bb9a69b16b19572f5a90fb2b1b72b"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/functions.php",
+      "sha256": "6350c3dbb8518039f8aaa16eecd91aef9c5214f8fa32abc5b81f584234f5e91e"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/single-hd_product.php",
+      "sha256": "daceeb76839b43e1c048c27c8892981a52ff9f6c4730c02f449dee3c32ebafa0"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/taxonomy-hd_category.php",
+      "sha256": "34322ce7cef995b32dd2abeed5f2cc28f0e345b7ed0ae0408f03460b1137d35e"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/page-about.php",
+      "sha256": "db2e82b959d0beffafaa16e652c7a36f939c4380dcb67ca7c0d120d75f1d0ebd"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/page-contact.php",
+      "sha256": "9f6de6584de506453c1634e9c6c2cbd5f22732020f34b001e6227fded500e75f"
+    },
+    {
+      "path": "src/content.ts",
+      "sha256": "6b4232161c0835e5b9d432abec5cfa0fe2b0f3049b37cd0b7f876574e11d328e"
+    }
+  ],
+  "conclusions": {
+    "productNamedTemplates": false,
+    "categoryLayoutSelector": false,
+    "pageNamedTemplates": [
+      "Company story",
+      "Enquiry"
+    ],
+    "contentPlanAcceptsTemplate": false
+  }
+}

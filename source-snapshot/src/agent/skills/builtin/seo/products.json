@@ -1,0 +1,525 @@
+{
+  "seo-keyword-research": {
+    "title": "关键词研究与机会筛选",
+    "category": "seo",
+    "summary": "从产品种子词扩展目标市场关键词，按真实需求、意图和业务相关性筛选。",
+    "inputs": [
+      "产品与种子词、目标国家和语言"
+    ],
+    "outputs": [
+      "关键词表与机会优先级",
+      "查询来源与范围记录"
+    ],
+    "tags": [
+      "SEO",
+      "DataForSEO",
+      "独立站",
+      "内容",
+      "关键词"
+    ],
+    "example": "请帮我做关键词研究与机会筛选，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+    "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "关键词"
+  },
+  "seo-serp-analysis": {
+    "title": "Google 搜索结果分析",
+    "category": "seo",
+    "summary": "读取目标市场实时 SERP，比较排名页面类型、内容覆盖和可切入问题。",
+    "inputs": [
+      "目标词、国家、语言与可选目标页"
+    ],
+    "outputs": [
+      "SERP 样本表与页面规划",
+      "查询来源与范围记录"
+    ],
+    "tags": [
+      "SEO",
+      "DataForSEO",
+      "独立站",
+      "内容",
+      "关键词"
+    ],
+    "example": "请帮我做Google 搜索结果分析，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+    "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "关键词"
+  },
+  "seo-content-brief": {
+    "title": "SEO 文章简报",
+    "category": "seo",
+    "summary": "结合关键词指标和搜索结果，为新文章或现有页面制定有依据的大纲。",
+    "inputs": [
+      "主题或目标词、产品事实、国家与语言"
+    ],
+    "outputs": [
+      "写作简报、大纲与资料缺口",
+      "查询来源与范围记录"
+    ],
+    "tags": [
+      "SEO",
+      "DataForSEO",
+      "独立站",
+      "内容",
+      "关键词"
+    ],
+    "example": "请帮我做SEO 文章简报，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+    "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "关键词"
+  },
+  "seo-data-article": {
+    "title": "数据驱动 SEO 文章",
+    "category": "seo",
+    "summary": "把市场数据、企业资料与 SEO 证据组织成有来源的原创文章。",
+    "inputs": [
+      "主题、业务数据或报告、目标市场、品牌资料"
+    ],
+    "outputs": [
+      "文章草稿、元信息与来源表",
+      "查询来源与范围记录"
+    ],
+    "tags": [
+      "SEO",
+      "DataForSEO",
+      "独立站",
+      "内容",
+      "关键词"
+    ],
+    "example": "请帮我做数据驱动 SEO 文章，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+    "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "关键词"
+  },
+  "seo-keyword-article": {
+    "title": "关键词驱动 SEO 文章",
+    "category": "seo",
+    "summary": "从指定关键词的搜索数据和意图出发，完成简报、全文与页面元信息。",
+    "inputs": [
+      "主关键词、国家、语言、产品与受众"
+    ],
+    "outputs": [
+      "完整文章草稿、元信息与证据",
+      "查询来源与范围记录"
+    ],
+    "tags": [
+      "SEO",
+      "DataForSEO",
+      "独立站",
+      "内容",
+      "关键词"
+    ],
+    "example": "请帮我做关键词驱动 SEO 文章，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+    "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "关键词"
+  },
+  "seo-domain-analysis": {
+    "title": "网站 SEO 数据分析",
+    "category": "seo",
+    "summary": "分析域名自然排名、关键词与估算流量，结合页面样本确定改进重点。",
+    "inputs": [
+      "网站域名、国家与语言"
+    ],
+    "outputs": [
+      "域名报告、排名词表和改进计划",
+      "查询来源与范围记录"
+    ],
+    "tags": [
+      "SEO",
+      "DataForSEO",
+      "独立站",
+      "内容",
+      "关键词"
+    ],
+    "example": "请帮我做网站 SEO 数据分析，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+    "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "关键词"
+  },
+  "seo-competitor-research": {
+    "title": "SEO 竞争对手研究",
+    "category": "seo",
+    "summary": "发现搜索竞争对手，对比自然排名与关键词布局并提出行动建议。",
+    "inputs": [
+      "自家域名、国家语言与可选竞品"
+    ],
+    "outputs": [
+      "竞品对比表和行动计划",
+      "查询来源与范围记录"
+    ],
+    "tags": [
+      "SEO",
+      "DataForSEO",
+      "独立站",
+      "内容",
+      "关键词"
+    ],
+    "example": "请帮我做SEO 竞争对手研究，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+    "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "关键词"
+  },
+  "seo-content-gap": {
+    "title": "竞争关键词与内容缺口",
+    "category": "seo",
+    "summary": "找出竞品有排名而自家站没有排名的关键词，再核实值得补齐的内容。",
+    "inputs": [
+      "自家域名、竞品域名、国家与语言"
+    ],
+    "outputs": [
+      "缺口关键词表与内容优先级",
+      "查询来源与范围记录"
+    ],
+    "tags": [
+      "SEO",
+      "DataForSEO",
+      "独立站",
+      "内容",
+      "关键词",
+      "竞争分析"
+    ],
+    "example": "请帮我做竞争关键词与内容缺口，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+    "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "竞争分析"
+  },
+  "seo-topic-clusters": {
+    "title": "关键词聚类与内容地图",
+    "category": "seo",
+    "summary": "结合关键词指标和 SERP 重叠规划主题页、子页面与内链。",
+    "inputs": [
+      "关键词或种子词、目标市场、站点页面清单"
+    ],
+    "outputs": [
+      "主题分组、页面地图与内链计划",
+      "查询来源与范围记录"
+    ],
+    "tags": [
+      "SEO",
+      "DataForSEO",
+      "独立站",
+      "内容",
+      "关键词"
+    ],
+    "example": "请帮我做关键词聚类与内容地图，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+    "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "关键词"
+  },
+  "seo-content-refresh": {
+    "title": "旧文章数据诊断与更新",
+    "category": "seo",
+    "summary": "对照当前搜索意图和原文证据，更新已有文章并保留可复核修改记录。",
+    "inputs": [
+      "原文 URL 或文件、关键词与市场"
+    ],
+    "outputs": [
+      "更新稿、修改记录与资料缺口",
+      "查询来源与范围记录"
+    ],
+    "tags": [
+      "SEO",
+      "DataForSEO",
+      "独立站",
+      "内容",
+      "关键词",
+      "内容生产"
+    ],
+    "example": "请帮我做旧文章数据诊断与更新，使用 DataForSEO 的数据；先确认我的目标国家、语言和需要的资料。",
+    "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "内容生产"
+  },
+  "seo-content-studio": {
+    "title": "SEO 文章工作室",
+    "category": "seo",
+    "summary": "从关键词或企业数据出发，按需生成简报、大纲或完整文章。",
+    "inputs": [
+      "主题或关键词、国家与语言",
+      "产品事实、受众和交付目标"
+    ],
+    "outputs": [
+      "简报、大纲或完整文章",
+      "元信息与来源记录"
+    ],
+    "tags": [
+      "SEO",
+      "DataForSEO",
+      "独立站",
+      "文章",
+      "简报",
+      "大纲",
+      "内容生产"
+    ],
+    "example": "请做SEO 文章工作室，使用我的目标国家和语言，保留数据来源和分析范围。",
+    "requirements": "研究模式使用 DataForSEO；文章由当前模型生成。需要保存到 WordPress 时再配置该连接器。默认草稿，发布须明确请求并确认。",
+    "connections": [
+      "dataforseo",
+      "wordpress"
+    ],
+    "seoGroup": "内容生产"
+  },
+  "seo-competitor-analysis": {
+    "title": "竞品与域名分析",
+    "category": "seo",
+    "summary": "分析单个网站或比较同行的自然排名、关键词与估算流量。",
+    "inputs": [
+      "域名、国家与语言",
+      "可选竞争对手与分析范围"
+    ],
+    "outputs": [
+      "域名或竞品报告",
+      "关键词与机会表"
+    ],
+    "tags": [
+      "SEO",
+      "DataForSEO",
+      "独立站",
+      "竞品",
+      "域名",
+      "关键词",
+      "竞争分析"
+    ],
+    "example": "请做竞品与域名分析，使用我的目标国家和语言，保留数据来源和分析范围。",
+    "requirements": "在设置 → 连接器中连接 DataForSEO。付费查询逐次确认；成功数据在当前任务复用。文章由当前模型生成，交付草稿文件。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "竞争分析"
+  },
+  "seo-performance-review": {
+    "title": "SEO 数据复盘",
+    "category": "seo",
+    "summary": "比较同口径的自然搜索表现，结合真实站点数据或定时快照形成复盘。",
+    "inputs": [
+      "两个时间段与国家/设备口径",
+      "站点授权、历史数据或监测目标"
+    ],
+    "outputs": [
+      "变化归因与待验证假设",
+      "快照对照表与后续行动"
+    ],
+    "tags": [
+      "SEO",
+      "竞争分析",
+      "独立站"
+    ],
+    "example": "请帮我做SEO 数据复盘，先确认资料和覆盖范围，再根据实际证据交付结果。",
+    "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+    "connections": [
+      "google",
+      "dataforseo"
+    ],
+    "seoGroup": "竞争分析"
+  },
+  "seo-content-plan": {
+    "title": "内容计划与本地化",
+    "category": "seo",
+    "summary": "将研究结果变成按目标市场组织的内容日历、页面类型和本地化简报。",
+    "inputs": [
+      "产品事实、市场与语言",
+      "研究数据、产能与时间范围"
+    ],
+    "outputs": [
+      "内容日历",
+      "本地化关键词和页面简报"
+    ],
+    "tags": [
+      "SEO",
+      "内容生产",
+      "独立站"
+    ],
+    "example": "请帮我做内容计划与本地化，先确认资料和覆盖范围，再根据实际证据交付结果。",
+    "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "内容生产"
+  },
+  "seo-backlink-audit": {
+    "title": "外链画像与变化",
+    "category": "seo",
+    "summary": "分析引用域、外链、锚文本及供应商索引中的新增丢失，保留样本证据。",
+    "inputs": [
+      "目标域名与日期范围",
+      "分析数量与已知问题"
+    ],
+    "outputs": [
+      "外链画像报告",
+      "新增丢失及核实清单"
+    ],
+    "tags": [
+      "SEO",
+      "外链",
+      "独立站"
+    ],
+    "example": "请帮我做外链画像与变化，先确认资料和覆盖范围，再根据实际证据交付结果。",
+    "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "外链"
+  },
+  "seo-link-prospecting": {
+    "title": "外链机会发现",
+    "category": "seo",
+    "summary": "从同行外链和行业内容中找到相关来源页，现场核实引用或合作机会。",
+    "inputs": [
+      "我方域名、产品和真实内容资产",
+      "同行域名与目标市场"
+    ],
+    "outputs": [
+      "核实过的外链候选表",
+      "联系切入点与未验证项"
+    ],
+    "tags": [
+      "SEO",
+      "外链",
+      "独立站"
+    ],
+    "example": "请帮我做外链机会发现，先确认资料和覆盖范围，再根据实际证据交付结果。",
+    "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "外链"
+  },
+  "seo-link-outreach": {
+    "title": "外链联系与跟进",
+    "category": "seo",
+    "summary": "基于已核实的来源页生成个性化联系内容，管理发送、跟进和停止联系记录。",
+    "inputs": [
+      "候选来源页与真实联系人",
+      "我方可引用资产和联系目标"
+    ],
+    "outputs": [
+      "个性化邮件草稿",
+      "发送回执与联系状态表"
+    ],
+    "tags": [
+      "SEO",
+      "外链",
+      "独立站"
+    ],
+    "example": "请帮我做外链联系与跟进，先确认资料和覆盖范围，再根据实际证据交付结果。",
+    "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+    "connections": [
+      "google"
+    ],
+    "seoGroup": "外链"
+  },
+  "seo-internal-links": {
+    "title": "内链与页面结构",
+    "category": "seo",
+    "summary": "基于实际页面和抓取图给出内链建议，定位深度、断链与可能的孤立页面。",
+    "inputs": [
+      "站点或内容清单",
+      "可用抓取任务、sitemap 或页面证据"
+    ],
+    "outputs": [
+      "内链建议表",
+      "站点结构问题与范围说明"
+    ],
+    "tags": [
+      "SEO",
+      "页面优化",
+      "独立站"
+    ],
+    "example": "请帮我做内链与页面结构，先确认资料和覆盖范围，再根据实际证据交付结果。",
+    "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+    "connections": [
+      "dataforseo"
+    ],
+    "seoGroup": "页面优化"
+  },
+  "seo-schema": {
+    "title": "结构化数据检查",
+    "category": "seo",
+    "summary": "检查页面实际 JSON-LD 与 Microdata 属性，或根据真实内容生成结构化数据草稿。",
+    "inputs": [
+      "页面与业务类型",
+      "实际产品、文章或企业字段"
+    ],
+    "outputs": [
+      "结构化数据问题表",
+      "JSON-LD 草稿及验证步骤"
+    ],
+    "tags": [
+      "SEO",
+      "页面优化",
+      "独立站"
+    ],
+    "example": "请帮我做结构化数据检查，先确认资料和覆盖范围，再根据实际证据交付结果。",
+    "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+    "connections": [],
+    "seoGroup": "页面优化"
+  },
+  "seo-international": {
+    "title": "国际 SEO 检查",
+    "category": "seo",
+    "summary": "核对多语言版本的 hreflang、canonical、语言和跨页回链，定位区域配置问题。",
+    "inputs": [
+      "目标国家语言与对应 URL",
+      "页面清单或 sitemap"
+    ],
+    "outputs": [
+      "多语言版本矩阵",
+      "跨页问题与修复清单"
+    ],
+    "tags": [
+      "SEO",
+      "技术审计",
+      "独立站"
+    ],
+    "example": "请帮我做国际 SEO 检查，先确认资料和覆盖范围，再根据实际证据交付结果。",
+    "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+    "connections": [],
+    "seoGroup": "技术审计"
+  },
+  "seo-performance": {
+    "title": "性能与体验诊断",
+    "category": "seo",
+    "summary": "结合云端 Lighthouse 实验室检测与 CrUX 现场数据，给出有证据的优化清单。",
+    "inputs": [
+      "公开 URL、移动或桌面目标",
+      "性能问题及可选 CrUX 配置"
+    ],
+    "outputs": [
+      "性能报告",
+      "开发修复优先级与复测条件"
+    ],
+    "tags": [
+      "SEO",
+      "技术审计",
+      "独立站"
+    ],
+    "example": "请帮我做性能与体验诊断，先确认资料和覆盖范围，再根据实际证据交付结果。",
+    "requirements": "按模式使用现有网页/任务文件或对应连接器。API 付费、发信与发布遵循实际审批；缺数据明确说明，不编造结果。",
+    "connections": [
+      "dataforseo",
+      "google"
+    ],
+    "seoGroup": "技术审计"
+  }
+}

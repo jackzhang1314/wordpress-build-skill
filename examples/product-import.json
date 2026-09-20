@@ -1,0 +1,18 @@
+{
+  "file": "examples/products.csv",
+  "type": "oct_product",
+  "keyColumn": "SKU",
+  "titleColumn": "Name",
+  "excerptColumn": "Summary",
+  "fields": [
+    {"column": "SKU", "group": "acf", "key": "oct_model"},
+    {"column": "Material", "group": "acf", "key": "oct_material"}
+  ],
+  "blocks": [
+    {"type": "paragraph", "text": "Fictional product imported from a sample CSV. Specifications are not verified."},
+    {"type": "heading", "text": "Model", "level": 2},
+    {"type": "meta", "key": "oct_model", "fallback": "Model pending"},
+    {"type": "heading", "text": "Material", "level": 2},
+    {"type": "meta", "key": "oct_material", "fallback": "Material pending"}
+  ]
+}

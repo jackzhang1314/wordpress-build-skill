@@ -1,0 +1,10 @@
+[
+  {
+    "path": "/",
+    "status": 200
+  },
+  {
+    "path": "/equipment/model/yhd08/",
+    "status": 200
+  }
+]

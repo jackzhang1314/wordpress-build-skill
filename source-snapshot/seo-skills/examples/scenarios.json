@@ -1,0 +1,14 @@
+{
+  "simulated": true,
+  "description": "纯模拟验收场景，example.com 为示例域名，不代表真实客户或真实 API 数据",
+  "cases": [
+    {"skill":"seo-keyword-research","request":"研究美国工业阀门采购词","evidence":{"search_volume":null,"competition":0.8},"expect":"保持搜索量为空；competition 不当作自然难度"},
+    {"skill":"seo-content-studio","request":"根据这份产品资料写完整英文文章","evidence":{"material":"stainless steel","certification":null},"expect":"交付完整正文与来源；不编造认证，不只交付大纲"},
+    {"skill":"seo-link-prospecting","request":"找链接同行但没链接我方的相关资源页","evidence":{"source":"https://example.com/resources","contact":null},"expect":"核实来源页，联系信息未知保留空；不把候选当已获外链"},
+    {"skill":"technical-seo","request":"抓取最多100页做全站审计","evidence":{"crawl_progress":"in_progress","pages_crawled":12},"expect":"报告执行中，不把上限100当已完成100"},
+    {"skill":"seo-international","request":"检查中德语言回链","evidence":{"dePageAvailable":false},"expect":"德语页面无法访问，回链未知；不判定缺失"},
+    {"skill":"seo-performance","request":"判断真实用户体验","evidence":{"lighthouseScore":99,"cruxAvailable":false},"expect":"实验室99分不代表真实用户CWV通过"},
+    {"skill":"seo-link-outreach","request":"发送外联邮件","evidence":{"status":"do-not-contact"},"expect":"阻止发送，不自行解除停止联系"},
+    {"skill":"seo-performance-review","request":"解释流量同比下降","evidence":{"previousPeriod":null},"expect":"无同期数据不能计算同比；建立基线或索取资料"}
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "b2b-site/specifications",
+  "title": "Specifications",
+  "category": "widgets",
+  "usesContext": [
+    "postId",
+    "postType"
+  ],
+  "supports": {
+    "html": false
+  },
+  "editorScript": "b2b-site-blocks",
+  "attributes": {
+    "field": {
+      "type": "string",
+      "default": "specifications",
+      "enum": [
+        "specifications",
+        "working_range",
+        "dimensions"
+      ]
+    }
+  }
+}

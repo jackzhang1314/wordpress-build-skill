@@ -1,0 +1,42 @@
+{
+  "testedAt": "2026-09-19T20:39:38.604Z",
+  "scope": "local-sqlite-restore-only",
+  "wordpress": "7.1.1",
+  "php": "8.3.32",
+  "objectsPreserved": 58,
+  "acfFieldsPreserved": 95,
+  "uploadsVerified": 30,
+  "enquiriesPreserved": 1,
+  "snapshotDatabaseUnchanged": true,
+  "routes": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd08/",
+      "status": 200
+    },
+    {
+      "path": "/industry/agriculture/",
+      "status": 200
+    },
+    {
+      "path": "/our-story/",
+      "status": 200
+    },
+    {
+      "path": "/contact-us/",
+      "status": 200
+    },
+    {
+      "path": "/not-a-page/",
+      "status": 404
+    }
+  ],
+  "productionMysqlRecovery": "not-tested"
+}

@@ -1,0 +1,198 @@
+{
+  "testedAt": "2026-09-20T00:09:17.265Z",
+  "scope": "public-index settings simulation on loopback only",
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "canonical": [
+        "<link rel=\"canonical\" href=\"http://127.0.0.1:9490/\" />"
+      ],
+      "robots": [
+        "<meta name=\"robots\" content=\"follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large\"/>"
+      ],
+      "description": [
+        "<meta name=\"description\" content=\"Explore excavators and loaders by application, compare configurations and send an equipment enquiry.\"/>"
+      ],
+      "schemaCount": 1
+    },
+    {
+      "path": "/equipment/",
+      "status": 200,
+      "canonical": [
+        "<link rel=\"canonical\" href=\"http://127.0.0.1:9490/equipment/\" />"
+      ],
+      "robots": [
+        "<meta name=\"robots\" content=\"follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large\"/>"
+      ],
+      "description": [
+        "<meta name=\"description\" content=\"Equipment Archive - HONGDA\"/>"
+      ],
+      "schemaCount": 1
+    },
+    {
+      "path": "/equipment/page/2/",
+      "status": 200,
+      "canonical": [
+        "<link rel=\"canonical\" href=\"http://127.0.0.1:9490/equipment/page/2/\" />"
+      ],
+      "robots": [
+        "<meta name=\"robots\" content=\"follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large\"/>"
+      ],
+      "description": [
+        "<meta name=\"description\" content=\"Equipment Archive - Page 2 of 3 - HONGDA\"/>"
+      ],
+      "schemaCount": 1
+    },
+    {
+      "path": "/equipment/model/yhd08/",
+      "status": 200,
+      "canonical": [
+        "<link rel=\"canonical\" href=\"http://127.0.0.1:9490/equipment/model/yhd08/\" />"
+      ],
+      "robots": [
+        "<meta name=\"robots\" content=\"follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large\"/>"
+      ],
+      "description": [
+        "<meta name=\"description\" content=\"A starting point for your equipment shortlist. Compare access width, turning space and required digging depth, then confirm the final configuration for your project.\"/>"
+      ],
+      "schemaCount": 0
+    },
+    {
+      "path": "/equipment/family/mini-excavator/",
+      "status": 200,
+      "canonical": [
+        "<link rel=\"canonical\" href=\"http://127.0.0.1:9490/equipment/family/mini-excavator/\" />"
+      ],
+      "robots": [
+        "<meta name=\"robots\" content=\"follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large\"/>"
+      ],
+      "description": [
+        "<meta name=\"description\" content=\"For access-constrained digging, landscaping and utility work. Compare the operating envelope, transport dimensions and attachment requirements before choosing a model.\"/>"
+      ],
+      "schemaCount": 1
+    },
+    {
+      "path": "/industry/",
+      "status": 200,
+      "canonical": [
+        "<link rel=\"canonical\" href=\"http://127.0.0.1:9490/industry/\" />"
+      ],
+      "robots": [
+        "<meta name=\"robots\" content=\"follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large\"/>"
+      ],
+      "description": [
+        "<meta name=\"description\" content=\"Industries Archive - HONGDA\"/>"
+      ],
+      "schemaCount": 1
+    },
+    {
+      "path": "/industry/construction/",
+      "status": 200,
+      "canonical": [
+        "<link rel=\"canonical\" href=\"http://127.0.0.1:9490/industry/construction/\" />"
+      ],
+      "robots": [
+        "<meta name=\"robots\" content=\"follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large\"/>"
+      ],
+      "description": [
+        "<meta name=\"description\" content=\"Match the machine to excavation, loading and access requirements.\"/>"
+      ],
+      "schemaCount": 0
+    },
+    {
+      "path": "/contact-us/",
+      "status": 200,
+      "canonical": [
+        "<link rel=\"canonical\" href=\"http://127.0.0.1:9490/contact-us/\" />"
+      ],
+      "robots": [
+        "<meta name=\"robots\" content=\"follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large\"/>"
+      ],
+      "description": [
+        "<meta name=\"description\" content=\"Send an equipment enquiry with your application, quantity and destination.\"/>"
+      ],
+      "schemaCount": 0
+    },
+    {
+      "path": "/equipment/?max_weight=1",
+      "status": 200,
+      "canonical": [],
+      "robots": [
+        "<meta name=\"robots\" content=\"follow, noindex\"/>"
+      ],
+      "description": [
+        "<meta name=\"description\" content=\"Equipment Archive - HONGDA\"/>"
+      ],
+      "schemaCount": 1
+    },
+    {
+      "path": "/?s=excavator",
+      "status": 200,
+      "canonical": [],
+      "robots": [
+        "<meta name=\"robots\" content=\"follow, noindex\"/>"
+      ],
+      "description": [],
+      "schemaCount": 1
+    },
+    {
+      "path": "/author/admin/",
+      "status": 200,
+      "canonical": [],
+      "robots": [
+        "<meta name=\"robots\" content=\"follow, noindex\"/>"
+      ],
+      "description": [],
+      "schemaCount": 1
+    }
+  ],
+  "robotsTxt": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: http://127.0.0.1:9490/sitemap_index.xml\n",
+  "sitemaps": [
+    {
+      "url": "http://127.0.0.1:9490/sitemap_index.xml",
+      "status": 200,
+      "hasProducts": false,
+      "hasCategories": false,
+      "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"//127.0.0.1:9490/main-sitemap.xsl\"?>\n<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n\t<sitemap>\n\t\t<loc>http://127.0.0.1:9490/post-sitemap.xml</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</sitemap>\n\t<sitemap>\n\t\t<loc>http://127.0.0.1:9490/page-sitemap.xml</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</sitemap>\n\t<sitemap>\n\t\t<loc>http://127.0.0.1:9490/hd_product-sitemap.xml</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</sitemap>\n\t<sitemap>\n\t\t<loc>http://127.0.0.1:9490/hd_solution-sitemap.xml</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</sitemap>\n\t<sitemap>\n\t\t<loc>http://127.0.0.1:9490/category-sitemap.xml</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</sitemap>\n\t<sitemap>\n\t\t<loc>http://127.0.0.1:9490/hd_category-sitemap.xml</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</sitemap>\n</sitemapindex>\n<!-- XML Sitemap generated by Rank Math SEO Plugin (c) Rank Math - rankmath.com -->"
+    }
+  ],
+  "children": [
+    {
+      "url": "http://127.0.0.1:9490/post-sitemap.xml",
+      "hasProducts": false,
+      "hasCategories": false,
+      "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"//127.0.0.1:9490/main-sitemap.xsl\"?>\n<urlset xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd\" xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/blog/</loc>\n\t\t<lastmod>2026-09-19T22:55:37+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/journal/mini-excavator-cost-2026/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/journal/mini-skid-steer-weight-guide/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/journal/wheel-loader-brake-systems/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/journal/excavator-overheating-guide/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/journal/gradall-vs-excavator/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/journal/import-excavator-from-china-case/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/journal/9-types-excavator-buckets/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/journal/start-landscaping-business-equipment/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/journal/what-is-a-backhoe-guide/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n</urlset>\n<!-- XML Sitemap generated by Rank Math SEO Plugin (c) Rank Math - rankmath.com -->"
+    },
+    {
+      "url": "http://127.0.0.1:9490/page-sitemap.xml",
+      "hasProducts": false,
+      "hasCategories": false,
+      "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"//127.0.0.1:9490/main-sitemap.xsl\"?>\n<urlset xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd\" xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t\t<image:image>\n\t\t\t<image:loc>http://127.0.0.1:9490/wp-content/uploads/2026/09/backhoe-loader-1024x682.jpg</image:loc>\n\t\t</image:image>\n\t\t<image:image>\n\t\t\t<image:loc>http://127.0.0.1:9490/wp-content/uploads/2026/09/mini-excavator-1024x864.jpg</image:loc>\n\t\t</image:image>\n\t\t<image:image>\n\t\t\t<image:loc>http://127.0.0.1:9490/wp-content/uploads/2026/09/construction-excavator-1024x682.jpg</image:loc>\n\t\t</image:image>\n\t\t<image:image>\n\t\t\t<image:loc>http://127.0.0.1:9490/wp-content/uploads/2026/09/skid-steer-loader-1024x739.jpg</image:loc>\n\t\t</image:image>\n\t\t<image:image>\n\t\t\t<image:loc>http://127.0.0.1:9490/wp-content/uploads/2026/09/wheel-loader-1024x768.jpg</image:loc>\n\t\t</image:image>\n\t\t<image:image>\n\t\t\t<image:loc>http://127.0.0.1:9490/wp-content/uploads/2026/09/mini-excavator-1024x864.jpg</image:loc>\n\t\t</image:image>\n\t\t<image:image>\n\t\t\t<image:loc>http://127.0.0.1:9490/wp-content/uploads/2026/09/mini-excavator-1024x864.jpg</image:loc>\n\t\t</image:image>\n\t\t<image:image>\n\t\t\t<image:loc>http://127.0.0.1:9490/wp-content/uploads/2026/09/construction-excavator-1024x682.jpg</image:loc>\n\t\t</image:image>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/our-story/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/contact-us/exchange-refund/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/contact-us/faqs/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/contact-us/after-sales-service/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/contact-us/maintenance/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/contact-us/payment-delivery/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/contact-us/dealer-opportunity/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/contact-us/oem-solution/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/contact-us/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/our-story/warranty/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/our-story/production-quality/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/our-story/parts-components/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/our-story/team/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/our-story/certifications/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/our-story/about/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/our-story/group/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/image-credits/</loc>\n\t\t<lastmod>2026-09-19T22:55:38+00:00</lastmod>\n\t</url>\n</urlset>\n<!-- XML Sitemap generated by Rank Math SEO Plugin (c) Rank Math - rankmath.com -->"
+    },
+    {
+      "url": "http://127.0.0.1:9490/hd_product-sitemap.xml",
+      "hasProducts": true,
+      "hasCategories": false,
+      "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"//127.0.0.1:9490/main-sitemap.xsl\"?>\n<urlset xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd\" xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhd120/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhdss25/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhdss15/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhdss10/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhdss05/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhdb20/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhdb10/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhdw30/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhdw10/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhdw08/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhd08/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhd80/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhd60/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhd30/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhd25/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhd20/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhd18/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhd15/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/model/yhd12/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n</urlset>\n<!-- XML Sitemap generated by Rank Math SEO Plugin (c) Rank Math - rankmath.com -->"
+    },
+    {
+      "url": "http://127.0.0.1:9490/hd_solution-sitemap.xml",
+      "hasProducts": false,
+      "hasCategories": false,
+      "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"//127.0.0.1:9490/main-sitemap.xsl\"?>\n<urlset xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd\" xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/industry/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/industry/agriculture/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/industry/construction/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/industry/demolition/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/industry/excavation/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/industry/landscaping/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/industry/surface-mining/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/industry/snow-removal/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/industry/forestry-logging/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/industry/waste-solutions/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/industry/utility-work/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/industry/material-handling/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n</urlset>\n<!-- XML Sitemap generated by Rank Math SEO Plugin (c) Rank Math - rankmath.com -->"
+    },
+    {
+      "url": "http://127.0.0.1:9490/category-sitemap.xml",
+      "hasProducts": false,
+      "hasCategories": false,
+      "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"//127.0.0.1:9490/main-sitemap.xsl\"?>\n<urlset xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd\" xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/journal/category/uncategorized/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n</urlset>\n<!-- XML Sitemap generated by Rank Math SEO Plugin (c) Rank Math - rankmath.com -->"
+    },
+    {
+      "url": "http://127.0.0.1:9490/hd_category-sitemap.xml",
+      "hasProducts": false,
+      "hasCategories": true,
+      "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"//127.0.0.1:9490/main-sitemap.xsl\"?>\n<urlset xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd\" xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/family/mini-excavator/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/family/construction-excavator/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/family/wheel-loader/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/family/backhoe-loader/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n\t<url>\n\t\t<loc>http://127.0.0.1:9490/equipment/family/skid-steer-loader/</loc>\n\t\t<lastmod>2026-09-19T23:41:12+00:00</lastmod>\n\t</url>\n</urlset>\n<!-- XML Sitemap generated by Rank Math SEO Plugin (c) Rank Math - rankmath.com -->"
+    }
+  ]
+}

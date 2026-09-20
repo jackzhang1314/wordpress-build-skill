@@ -1,0 +1,73 @@
+{
+  "at": "2026-09-07T20:02:22.961Z",
+  "base": "9dfa0476bb7e6785812e4d08c5ec7cf5d73dda6d",
+  "branch": "codex/i05-executor-recovery-20260908",
+  "delivery": "Fixed complete source baseline plus this branch delta. No package dependency change; npm ci uses baseline lock.",
+  "files": {
+    "src/browser/driver.ts": {
+      "sha256": "acc7c9d37b53ffcec8aac07162e39fb58b05b88cc012fcdd8b7af0deb9011a7a",
+      "i05SourceMatch": true
+    },
+    "src/browser/channel.ts": {
+      "sha256": "029a79614ac2029233043daa2b7b6761e911ba86f00ff07a66fd5013221c3d0c",
+      "i05SourceMatch": true
+    },
+    "src/browser/page-agent.ts": {
+      "sha256": "3ead61bf95ae0107b993d9df77efa9d46f3bd263b9150df6bd4c27738009110a",
+      "i05SourceMatch": true
+    },
+    "src/browser/connection-diagnostics.ts": {
+      "sha256": "e3be8548b4ad7ca2a15282be83827f3bfa4af48e0ad51a6f613343f8564e2dd1",
+      "i05SourceMatch": true
+    },
+    "src/agent-content.ts": {
+      "sha256": "23c96cc2c24018eb5c716b10b409a2618f02ced779f5eddbf4f72ad32b79de4b",
+      "i05SourceMatch": true
+    },
+    "src/browser/task-group.ts": {
+      "sha256": "988b47ba7c0e2eca7dc37bd0932a1807649321c423281a5acd42ba576ef5a474",
+      "i05SourceMatch": null
+    },
+    "src/browser/protocol.ts": {
+      "sha256": "2b5826c4e03a2f12637ff41d682b8c0cc3ba0255491ebfef29df4b0f78036df8",
+      "i05SourceMatch": null
+    },
+    "scripts/build-paths.mjs": {
+      "sha256": "0845c07820f8c48d54a8a4b0956d0db70b839e079896d91a9ca39caf95295fa5",
+      "i05SourceMatch": null
+    },
+    "scripts/build.mjs": {
+      "sha256": "754df187f783528722c8ce8bd939c0365f952585d8519ba0627e4918ff38fe25",
+      "i05SourceMatch": null
+    },
+    "scripts/audit-store-build.mjs": {
+      "sha256": "53ba16148400219c89bbd1cbdbe08b943b634a5e0ee8e9714c0eca637dda7367",
+      "i05SourceMatch": null
+    },
+    "package.json": {
+      "sha256": "47cef4eef6c3ac4bff1d3187bc9537fcb582807631ac523e1cf29270a975a6f9",
+      "i05SourceMatch": null
+    },
+    "package-lock.json": {
+      "sha256": "ca01c345d8dea897bae6a5ed96f7484eb5c9211f8dd83d04b712b431942adf49",
+      "i05SourceMatch": null
+    }
+  },
+  "excluded": [
+    "I05 panel/29 UI tests: not needed by browser executor",
+    "I03 QuickSurface/QuickService: not dependencies of BrowserDriver",
+    "Newer main i18n/WordPress/Harness changes"
+  ],
+  "validation": {
+    "componentTests": "13 files / 105 tests",
+    "native": "actual worker restart + missing session binding + same document/group + raw protocol + explicit release",
+    "baselineHarness": "Full Agent fixture failed at existing 64k fixed budget; retained separately, not fixed or claimed accepted."
+  },
+  "commit": "ab10c607cf9397c5082b6957e5045b4c34c72362",
+  "worktree": "/Users/Zhuanz1/.codex/worktrees/i05-executor-recovery-20260908/浏览器网页批注插件",
+  "patch": "/Users/Zhuanz1/.codex/worktrees/i05-executor-recovery-20260908/浏览器网页批注插件/output/validation/i06/executor-recovery.patch",
+  "patchSha256": "2c05097254234b923f16427e4233f5a291c2471655e83813b76a4add335f9ad7",
+  "status": "dependency-closed executor component input; ready for BX02 integration verification; not merged into main/Pi/Vercel",
+  "lockChanged": false,
+  "mainProductSourceChanged": false
+}

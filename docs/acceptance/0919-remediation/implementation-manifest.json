@@ -1,0 +1,177 @@
+{
+  "recordedAt": "2026-09-19T14:43:00.130262+00:00",
+  "baseHEAD": "a49821fa88311b5fa59f4d0298b8a6f5b71bd7a1",
+  "uncommitted": true,
+  "checks": {
+    "typecheck": "pass",
+    "lint": "pass",
+    "unitTests": {
+      "passed": 27,
+      "failed": 0
+    },
+    "build": "pass",
+    "wordpressIntegrationAssertions": 15,
+    "missingAcfTemplates": 8,
+    "responsiveCases": 12,
+    "routes": 38,
+    "internalLinks": 55,
+    "brokenLinks": 0,
+    "releaseWithoutEvidence": "rejected before writes",
+    "restore": "pass",
+    "snapshotIntegrity": "2 pre-existing mismatches, unchanged from HEAD"
+  },
+  "files": [
+    {
+      "path": ".agents/skills/wordpress-builder/SKILL.md",
+      "sha256": "1ac83ac4fe10e227e4a8462fcfbe423c1814fa195c35ad06f8c33cff9adfdb1a"
+    },
+    {
+      "path": ".agents/skills/wordpress-builder/references/architecture.md",
+      "sha256": "52cea1154d515134489e5d589d9f27fe4631becfbb080bcb1b7a11da787ced0f"
+    },
+    {
+      "path": ".agents/skills/wordpress-builder/references/design.md",
+      "sha256": "e078449118c2180fba90cae7767339c1aa16882ba7b22080856aa087c761724f"
+    },
+    {
+      "path": ".agents/skills/wordpress-builder/references/release.md",
+      "sha256": "4b8ab85ec02be9a082036a3c02cffe8819dc6bd2a90fae18d23f83599113f3ad"
+    },
+    {
+      "path": ".agents/skills/wordpress-builder/references/runtime.md",
+      "sha256": "f20e39c63c391f1b1772526000a45d3137b4ded7868fcb2d286bc121040e14d2"
+    },
+    {
+      "path": ".agents/skills/wordpress-builder/references/theme-code.md",
+      "sha256": "d770ac3a33f9d3afad1673674849d7be6f4ac618f02495eb41ee939a003d3879"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "4750440043b40396699cd5269aa1e1144f2737acc280377db6f97849fee82c46"
+    },
+    {
+      "path": "examples/octopus-site/LICENSE.txt",
+      "sha256": "d2f31793387722083537d91ebf9b9e0fac0e85147d15099d58010cf8469eea33"
+    },
+    {
+      "path": "examples/octopus-site/octopus-site.php",
+      "sha256": "a7b975c57085bac20d032b01130d798f72d8981bc3b55a83f249438c0a215222"
+    },
+    {
+      "path": "examples/terralift-ui-theme/archive-oct_product.php",
+      "sha256": "2ef869d38891a1f745ca70da3355bb85c24e7563874919f67866a089a7ffaab9"
+    },
+    {
+      "path": "examples/terralift-ui-theme/functions.php",
+      "sha256": "6c3bf7308ac16ea624aadd5231dfa614341e536c4f70ac1a2dca82ab85d2c115"
+    },
+    {
+      "path": "examples/terralift-ui-theme/page-cases-v1.php",
+      "sha256": "9b03a343e2771614e2b2085bee8e3b1e70877e22938885b882bd9a55f73d3503"
+    },
+    {
+      "path": "examples/terralift-ui-theme/page-contact-v1.php",
+      "sha256": "a2cc81108548fb3fa8fa580bcb2ea37f4531fd172b0d43a83ae6569f020481a4"
+    },
+    {
+      "path": "examples/terralift-ui-theme/page-home-v1.php",
+      "sha256": "24b008e2b05bcd31082361dd9a0b308bfa66294d98a0f4fece79d45f6605fd7d"
+    },
+    {
+      "path": "examples/terralift-ui-theme/page-landing-v1.php",
+      "sha256": "5a34ab9d0886f6bbcdc52180d7c284c2a32510c48e5880e22b1e4979995857cd"
+    },
+    {
+      "path": "examples/terralift-ui-theme/parts/footer.html",
+      "sha256": "ce2df5522584c381acc00c3475f7d2fed1d18ef2a0e420f85b831df28ee80d7f"
+    },
+    {
+      "path": "examples/terralift-ui-theme/parts/header.html",
+      "sha256": "a8b2ba63795cd65df9589d1c3e73d8c10ddf549cfedc79a9e0068f3832ce5998"
+    },
+    {
+      "path": "examples/terralift-ui-theme/patterns.php",
+      "sha256": "e574ea087060849e0f42673fb67b135307e0402279a30b8f3fdc1a3f01f16ac8"
+    },
+    {
+      "path": "examples/terralift-ui-theme/single-oct_case.php",
+      "sha256": "b95016ae5a53172d8808043e1493a3b7e3a0a107058093aad5eec674da51426a"
+    },
+    {
+      "path": "examples/terralift-ui-theme/single-oct_product.php",
+      "sha256": "eeb44dbf632de9c35473b043defdd2b5cd08b0d49e669243c6ac595efa20c9c9"
+    },
+    {
+      "path": "examples/terralift-ui-theme/style.css",
+      "sha256": "07fc0bfaf26c450402f709d30e8bd14fca061f851c62e41339cf2e53e463a4e9"
+    },
+    {
+      "path": "examples/terralift-ui-theme/taxonomy-oct_product_category.php",
+      "sha256": "44ea26b800bc3eca76e4a1a7a1cbe413a953b444428096414eb45b61b670e9aa"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "46c7d216114eb4296adfd9207edcc0f8e8bc1fd0b8afe4fe720efc03e08d7a9a"
+    },
+    {
+      "path": "package.json",
+      "sha256": "ab4536174dc7092429df4be379ee35f458b53ad29776506c9884bb004ed8ed27"
+    },
+    {
+      "path": "scripts/audit-lab.mjs",
+      "sha256": "3d83d66bfbfa687bd6ee24c9ed0277f03d782d4901e15ae10cc01d5d63b285fb"
+    },
+    {
+      "path": "scripts/deploy-lab.mjs",
+      "sha256": "5099819fa71916403a600f3f395596bfb9db158f88ad551685aad7f68239f323"
+    },
+    {
+      "path": "scripts/fixtures/capture-mail.php",
+      "sha256": "3a63123feed0ae73c156f3055a33fc402bb3474eb1146afbaf9c20b66f80c42e"
+    },
+    {
+      "path": "scripts/fixtures/integration-test.php",
+      "sha256": "cd61b7ca71573a231b8229c8e766f036269660ca201a8249fa4dac9a54d70e9a"
+    },
+    {
+      "path": "scripts/fixtures/missing-acf-test.php",
+      "sha256": "c43e1d953a69f5a5379eb3ce72cac2c3c8daf7ddbab9e119d19196f16dec3604"
+    },
+    {
+      "path": "scripts/fixtures/setup-demo-form.php",
+      "sha256": "e4107e9aa97114e83d5da673b92a1d309b3e2d58028a2bb5883e321fabeed980"
+    },
+    {
+      "path": "scripts/fixtures/setup-demo-seo.php",
+      "sha256": "6e159f3f36aa2fe13c0a272bce3c4c938612236369abf05084270e2aa3aff4c7"
+    },
+    {
+      "path": "scripts/lab.mjs",
+      "sha256": "a7d8d1c7ce0eba6ae5c11505def97f54aa24c77adad1b0928f4aaad6dce01516"
+    },
+    {
+      "path": "scripts/migrate-demo.mjs",
+      "sha256": "809abedd39e2276c2c27005c28b1e7c5acf85fca7b58c4027cb2d22e1ac7089c"
+    },
+    {
+      "path": "scripts/test-theme.mjs",
+      "sha256": "a25ec79bdfc92af60292ccbddf5479deff9f0b4818dbc40b1a21bc46192a16a2"
+    },
+    {
+      "path": "src/cli.ts",
+      "sha256": "1314ffaded4f07ba69345b999cb7607eee0f443eb077f07c3f61b26301a9f467"
+    },
+    {
+      "path": "src/release.ts",
+      "sha256": "722543e8e0ae3ea74c12c1642045a546f3b4f2ebb277cc9add78837e30a0783f"
+    },
+    {
+      "path": "tests/deployment.test.mjs",
+      "sha256": "fab63bd34bf32aeb9a01943336b98199d80450a27e1f672958342742669f67a7"
+    },
+    {
+      "path": "tests/release.test.ts",
+      "sha256": "6b725910296d343a00db0a294622554586b32d94a1998cd010b1678faae5a5e8"
+    }
+  ]
+}

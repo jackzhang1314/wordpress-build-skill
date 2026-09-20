@@ -1,0 +1,86 @@
+[
+  {
+    "path": "/",
+    "h1": 1,
+    "importMap": true,
+    "scrollWidth": 360,
+    "width": 360
+  },
+  {
+    "path": "/products/tl-e08/",
+    "h1": 1,
+    "importMap": true,
+    "scrollWidth": 360,
+    "width": 360
+  },
+  {
+    "path": "/terralift-contact/?product=55",
+    "h1": 1,
+    "importMap": true,
+    "scrollWidth": 360,
+    "width": 360
+  },
+  {
+    "path": "/",
+    "h1": 1,
+    "importMap": true,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "path": "/products/tl-e08/",
+    "h1": 1,
+    "importMap": true,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "path": "/terralift-contact/?product=55",
+    "h1": 1,
+    "importMap": true,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "path": "/",
+    "h1": 1,
+    "importMap": true,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "path": "/products/tl-e08/",
+    "h1": 1,
+    "importMap": true,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "path": "/terralift-contact/?product=55",
+    "h1": 1,
+    "importMap": true,
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "path": "/",
+    "h1": 1,
+    "importMap": true,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "path": "/products/tl-e08/",
+    "h1": 1,
+    "importMap": true,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "path": "/terralift-contact/?product=55",
+    "h1": 1,
+    "importMap": true,
+    "scrollWidth": 1440,
+    "width": 1440
+  }
+]

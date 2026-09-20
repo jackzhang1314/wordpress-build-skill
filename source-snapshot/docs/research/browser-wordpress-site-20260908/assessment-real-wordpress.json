@@ -1,0 +1,70 @@
+{
+  "wordpress": "6.9.7",
+  "source": "Official Playground REST responses; no companion plugin installed",
+  "summary": {
+    "accountStatus": "available",
+    "typesStatus": "available",
+    "uploadPermission": true,
+    "contentTypes": [
+      {
+        "name": "page",
+        "label": "Pages",
+        "restBase": "pages",
+        "namespace": "wp/v2",
+        "createPermission": true,
+        "publishPermission": true,
+        "schemaStatus": "available",
+        "contentFieldExposed": true,
+        "metaFields": [
+          {
+            "name": "footnotes",
+            "type": "string",
+            "readOnly": false
+          }
+        ],
+        "templateSelection": "default_only",
+        "status": "ready_to_attempt_draft",
+        "writeTool": "wpWriteContent",
+        "nextStep": "复用现有模板编译页面，先创建草稿并回读。"
+      },
+      {
+        "name": "post",
+        "label": "Posts",
+        "restBase": "posts",
+        "namespace": "wp/v2",
+        "createPermission": true,
+        "publishPermission": true,
+        "schemaStatus": "available",
+        "contentFieldExposed": true,
+        "metaFields": [
+          {
+            "name": "footnotes",
+            "type": "string",
+            "readOnly": false
+          }
+        ],
+        "templateSelection": "default_only",
+        "status": "ready_to_attempt_draft",
+        "writeTool": "wpWriteContent",
+        "nextStep": "复用现有模板编译页面，先创建草稿并回读。"
+      }
+    ],
+    "coverage": {
+      "scanned": [
+        "page",
+        "post"
+      ],
+      "discovered": 11,
+      "limit": 8,
+      "fieldLimit": 12,
+      "templateLimit": 50
+    },
+    "frontendStatus": "needs_preview",
+    "notes": [
+      "权限值来自当前账号与类型声明；OPTIONS存在不证明可写，站点执行时仍可能拒绝。",
+      "字段公开不证明当前模板展示或动态绑定；保存草稿后必须检查真实页面。",
+      "没有模板枚举时当前写工具须省略template，沿用默认/已有模板；不能自行猜测模板标识。",
+      "普通建页不需要配套插件；复用用户现有主题和内容模型。"
+    ]
+  }
+}

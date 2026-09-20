@@ -1,0 +1,496 @@
+{
+  "testedAt": "2026-09-20T00:09:12.337Z",
+  "sites": {
+    "primary": {
+      "version": "1.0.278",
+      "pro": false,
+      "active": [
+        "advanced-custom-fields/acf.php",
+        "fluentform/fluentform.php",
+        "seo-by-rank-math/rank-math.php",
+        "site-model/site-model.php"
+      ],
+      "modules": [
+        "sitemap",
+        "rich-snippet",
+        "acf",
+        "redirections",
+        "404-monitor"
+      ],
+      "skipAccount": "1",
+      "frontend": true,
+      "preview": "0",
+      "sitemap": {
+        "items_per_page": 200,
+        "include_images": "on",
+        "include_featured_image": "off",
+        "exclude_roles": [
+          "contributor",
+          "subscriber"
+        ],
+        "html_sitemap": "on",
+        "html_sitemap_display": "shortcode",
+        "html_sitemap_sort": "published",
+        "html_sitemap_seo_titles": "titles",
+        "authors_sitemap": "off",
+        "pt_post_sitemap": "on",
+        "pt_page_sitemap": "on",
+        "pt_attachment_sitemap": "off",
+        "pt_hd_product_sitemap": "on",
+        "pt_hd_solution_sitemap": "on",
+        "pt_product_sitemap": "on",
+        "pt_web-story_sitemap": "off",
+        "tax_category_sitemap": "on",
+        "tax_post_tag_sitemap": "off",
+        "tax_hd_category_sitemap": "on"
+      },
+      "titles": {
+        "noindex_empty_taxonomies": "on",
+        "title_separator": "-",
+        "capitalize_titles": "off",
+        "twitter_card_type": "summary_large_image",
+        "knowledgegraph_type": "company",
+        "knowledgegraph_name": "HONGDA",
+        "website_name": "HONGDA",
+        "local_business_type": "Organization",
+        "local_address_format": "{address} {locality}, {region} {postalcode}",
+        "opening_hours": [
+          {
+            "day": "Monday",
+            "time": "09:00-17:00"
+          },
+          {
+            "day": "Tuesday",
+            "time": "09:00-17:00"
+          },
+          {
+            "day": "Wednesday",
+            "time": "09:00-17:00"
+          },
+          {
+            "day": "Thursday",
+            "time": "09:00-17:00"
+          },
+          {
+            "day": "Friday",
+            "time": "09:00-17:00"
+          },
+          {
+            "day": "Saturday",
+            "time": "09:00-17:00"
+          },
+          {
+            "day": "Sunday",
+            "time": "09:00-17:00"
+          }
+        ],
+        "opening_hours_format": "off",
+        "homepage_title": "%sitename% %page% %sep% %sitedesc%",
+        "homepage_description": "",
+        "homepage_custom_robots": "off",
+        "disable_author_archives": "off",
+        "url_author_base": "author",
+        "author_custom_robots": "on",
+        "author_robots": [
+          "noindex"
+        ],
+        "author_archive_title": "%name% %sep% %sitename% %page%",
+        "author_add_meta_box": "on",
+        "disable_date_archives": "on",
+        "date_archive_title": "%date% %page% %sep% %sitename%",
+        "search_title": "%search_query% %page% %sep% %sitename%",
+        "404_title": "Page Not Found %sep% %sitename%",
+        "date_archive_robots": [
+          "noindex"
+        ],
+        "noindex_search": "on",
+        "noindex_archive_subpages": "off",
+        "noindex_password_protected": "off",
+        "pt_download_default_rich_snippet": "product",
+        "author_slack_enhanced_sharing": "on",
+        "pt_post_title": "%title% %sep% %sitename%",
+        "pt_post_description": "%excerpt%",
+        "pt_post_robots": [
+          "index"
+        ],
+        "pt_post_custom_robots": "on",
+        "pt_post_default_rich_snippet": "article",
+        "pt_post_default_article_type": "BlogPosting",
+        "pt_post_default_snippet_name": "%seo_title%",
+        "pt_post_default_snippet_desc": "%seo_description%",
+        "pt_post_slack_enhanced_sharing": "on",
+        "pt_post_ls_use_fk": "titles",
+        "pt_post_add_meta_box": "on",
+        "pt_post_bulk_editing": "editing",
+        "pt_post_link_suggestions": "on",
+        "pt_post_primary_taxonomy": "category",
+        "pt_page_title": "%title% %sep% %sitename%",
+        "pt_page_description": "%excerpt%",
+        "pt_page_robots": [
+          "index"
+        ],
+        "pt_page_custom_robots": "on",
+        "pt_page_default_rich_snippet": "off",
+        "pt_page_default_article_type": "Article",
+        "pt_page_default_snippet_name": "%seo_title%",
+        "pt_page_default_snippet_desc": "%seo_description%",
+        "pt_page_slack_enhanced_sharing": "on",
+        "pt_page_ls_use_fk": "titles",
+        "pt_page_add_meta_box": "on",
+        "pt_page_bulk_editing": "editing",
+        "pt_page_link_suggestions": "on",
+        "pt_attachment_title": "%title% %sep% %sitename%",
+        "pt_attachment_description": "%excerpt%",
+        "pt_attachment_robots": [
+          "noindex"
+        ],
+        "pt_attachment_custom_robots": "on",
+        "pt_attachment_default_rich_snippet": "off",
+        "pt_attachment_default_article_type": "Article",
+        "pt_attachment_default_snippet_name": "%seo_title%",
+        "pt_attachment_default_snippet_desc": "%seo_description%",
+        "pt_attachment_slack_enhanced_sharing": "off",
+        "pt_attachment_add_meta_box": "off",
+        "pt_hd_product_title": "%title% %sep% %sitename%",
+        "pt_hd_product_description": "%excerpt%",
+        "pt_hd_product_robots": [
+          "index"
+        ],
+        "pt_hd_product_custom_robots": "on",
+        "pt_hd_product_default_rich_snippet": "off",
+        "pt_hd_product_default_article_type": "Article",
+        "pt_hd_product_default_snippet_name": "%seo_title%",
+        "pt_hd_product_default_snippet_desc": "%seo_description%",
+        "pt_hd_product_archive_title": "%title% %page% %sep% %sitename%",
+        "pt_hd_product_slack_enhanced_sharing": "off",
+        "pt_hd_product_ls_use_fk": "titles",
+        "pt_hd_product_add_meta_box": "on",
+        "pt_hd_product_bulk_editing": "editing",
+        "pt_hd_product_link_suggestions": "on",
+        "pt_hd_solution_title": "%title% %sep% %sitename%",
+        "pt_hd_solution_description": "%excerpt%",
+        "pt_hd_solution_robots": [
+          "index"
+        ],
+        "pt_hd_solution_custom_robots": "on",
+        "pt_hd_solution_default_rich_snippet": "off",
+        "pt_hd_solution_default_article_type": "Article",
+        "pt_hd_solution_default_snippet_name": "%seo_title%",
+        "pt_hd_solution_default_snippet_desc": "%seo_description%",
+        "pt_hd_solution_archive_title": "%title% %page% %sep% %sitename%",
+        "pt_hd_solution_slack_enhanced_sharing": "off",
+        "pt_hd_solution_ls_use_fk": "titles",
+        "pt_hd_solution_add_meta_box": "on",
+        "pt_hd_solution_bulk_editing": "editing",
+        "pt_hd_solution_link_suggestions": "on",
+        "pt_product_title": "%title% %sep% %sitename%",
+        "pt_product_description": "%excerpt%",
+        "pt_product_robots": [
+          "index"
+        ],
+        "pt_product_custom_robots": "off",
+        "pt_product_default_rich_snippet": "product",
+        "pt_product_default_article_type": "Article",
+        "pt_product_default_snippet_name": "%seo_title%",
+        "pt_product_default_snippet_desc": "%seo_description%",
+        "pt_product_slack_enhanced_sharing": "on",
+        "pt_product_ls_use_fk": "titles",
+        "pt_product_add_meta_box": "on",
+        "pt_product_bulk_editing": "editing",
+        "pt_product_link_suggestions": "on",
+        "pt_product_primary_taxonomy": "product_cat",
+        "pt_web-story_title": "%title% %sep% %sitename%",
+        "pt_web-story_description": "%excerpt%",
+        "pt_web-story_robots": [
+          "index"
+        ],
+        "pt_web-story_custom_robots": "off",
+        "pt_web-story_default_rich_snippet": "article",
+        "pt_web-story_default_article_type": "Article",
+        "pt_web-story_default_snippet_name": "%seo_title%",
+        "pt_web-story_default_snippet_desc": "%seo_description%",
+        "pt_web-story_slack_enhanced_sharing": "off",
+        "pt_web-story_add_meta_box": "off",
+        "tax_category_title": "%term% %sep% %sitename%",
+        "tax_category_robots": [
+          "index"
+        ],
+        "tax_category_add_meta_box": "on",
+        "tax_category_custom_robots": "off",
+        "tax_category_description": "%term_description%",
+        "tax_category_slack_enhanced_sharing": "on",
+        "tax_category_bulk_editing": 0,
+        "tax_post_tag_title": "%term% %sep% %sitename%",
+        "tax_post_tag_robots": [
+          "noindex"
+        ],
+        "tax_post_tag_add_meta_box": "off",
+        "tax_post_tag_custom_robots": "on",
+        "tax_post_tag_description": "%term_description%",
+        "tax_post_tag_slack_enhanced_sharing": "on",
+        "tax_post_tag_bulk_editing": 0,
+        "tax_hd_category_title": "%term% %sep% %sitename%",
+        "tax_hd_category_robots": [
+          "index"
+        ],
+        "tax_hd_category_add_meta_box": "on",
+        "tax_hd_category_custom_robots": "on",
+        "tax_hd_category_description": "%term_description%",
+        "tax_hd_category_slack_enhanced_sharing": "on",
+        "tax_hd_category_bulk_editing": 0,
+        "remove_product_cat_snippet_data": "on",
+        "remove_product_tag_snippet_data": "on"
+      },
+      "syntax": true
+    },
+    "reuse": {
+      "version": "1.0.278",
+      "pro": false,
+      "active": [
+        "advanced-custom-fields/acf.php",
+        "fluentform/fluentform.php",
+        "seo-by-rank-math/rank-math.php",
+        "site-model/site-model.php"
+      ],
+      "modules": [
+        "sitemap",
+        "rich-snippet",
+        "acf",
+        "redirections",
+        "404-monitor"
+      ],
+      "skipAccount": "1",
+      "frontend": true,
+      "preview": "0",
+      "sitemap": {
+        "items_per_page": 200,
+        "include_images": "on",
+        "include_featured_image": "off",
+        "exclude_roles": [
+          "contributor",
+          "subscriber"
+        ],
+        "html_sitemap": "on",
+        "html_sitemap_display": "shortcode",
+        "html_sitemap_sort": "published",
+        "html_sitemap_seo_titles": "titles",
+        "authors_sitemap": "off",
+        "pt_post_sitemap": "on",
+        "pt_page_sitemap": "on",
+        "pt_attachment_sitemap": "off",
+        "pt_hd_product_sitemap": "on",
+        "pt_hd_solution_sitemap": "on",
+        "pt_product_sitemap": "on",
+        "pt_web-story_sitemap": "off",
+        "tax_category_sitemap": "on",
+        "tax_post_tag_sitemap": "off",
+        "tax_hd_category_sitemap": "on"
+      },
+      "titles": {
+        "noindex_empty_taxonomies": "on",
+        "title_separator": "-",
+        "capitalize_titles": "off",
+        "twitter_card_type": "summary_large_image",
+        "knowledgegraph_type": "company",
+        "knowledgegraph_name": "FLOWLINE Pump Preview",
+        "website_name": "FLOWLINE Pump Preview",
+        "local_business_type": "Organization",
+        "local_address_format": "{address} {locality}, {region} {postalcode}",
+        "opening_hours": [
+          {
+            "day": "Monday",
+            "time": "09:00-17:00"
+          },
+          {
+            "day": "Tuesday",
+            "time": "09:00-17:00"
+          },
+          {
+            "day": "Wednesday",
+            "time": "09:00-17:00"
+          },
+          {
+            "day": "Thursday",
+            "time": "09:00-17:00"
+          },
+          {
+            "day": "Friday",
+            "time": "09:00-17:00"
+          },
+          {
+            "day": "Saturday",
+            "time": "09:00-17:00"
+          },
+          {
+            "day": "Sunday",
+            "time": "09:00-17:00"
+          }
+        ],
+        "opening_hours_format": "off",
+        "homepage_title": "%sitename% %page% %sep% %sitedesc%",
+        "homepage_description": "",
+        "homepage_custom_robots": "off",
+        "disable_author_archives": "off",
+        "url_author_base": "author",
+        "author_custom_robots": "on",
+        "author_robots": [
+          "noindex"
+        ],
+        "author_archive_title": "%name% %sep% %sitename% %page%",
+        "author_add_meta_box": "on",
+        "disable_date_archives": "on",
+        "date_archive_title": "%date% %page% %sep% %sitename%",
+        "search_title": "%search_query% %page% %sep% %sitename%",
+        "404_title": "Page Not Found %sep% %sitename%",
+        "date_archive_robots": [
+          "noindex"
+        ],
+        "noindex_search": "on",
+        "noindex_archive_subpages": "off",
+        "noindex_password_protected": "off",
+        "pt_download_default_rich_snippet": "product",
+        "author_slack_enhanced_sharing": "on",
+        "pt_post_title": "%title% %sep% %sitename%",
+        "pt_post_description": "%excerpt%",
+        "pt_post_robots": [
+          "index"
+        ],
+        "pt_post_custom_robots": "on",
+        "pt_post_default_rich_snippet": "article",
+        "pt_post_default_article_type": "BlogPosting",
+        "pt_post_default_snippet_name": "%seo_title%",
+        "pt_post_default_snippet_desc": "%seo_description%",
+        "pt_post_slack_enhanced_sharing": "on",
+        "pt_post_ls_use_fk": "titles",
+        "pt_post_add_meta_box": "on",
+        "pt_post_bulk_editing": "editing",
+        "pt_post_link_suggestions": "on",
+        "pt_post_primary_taxonomy": "category",
+        "pt_page_title": "%title% %sep% %sitename%",
+        "pt_page_description": "%excerpt%",
+        "pt_page_robots": [
+          "index"
+        ],
+        "pt_page_custom_robots": "on",
+        "pt_page_default_rich_snippet": "off",
+        "pt_page_default_article_type": "Article",
+        "pt_page_default_snippet_name": "%seo_title%",
+        "pt_page_default_snippet_desc": "%seo_description%",
+        "pt_page_slack_enhanced_sharing": "on",
+        "pt_page_ls_use_fk": "titles",
+        "pt_page_add_meta_box": "on",
+        "pt_page_bulk_editing": "editing",
+        "pt_page_link_suggestions": "on",
+        "pt_attachment_title": "%title% %sep% %sitename%",
+        "pt_attachment_description": "%excerpt%",
+        "pt_attachment_robots": [
+          "noindex"
+        ],
+        "pt_attachment_custom_robots": "on",
+        "pt_attachment_default_rich_snippet": "off",
+        "pt_attachment_default_article_type": "Article",
+        "pt_attachment_default_snippet_name": "%seo_title%",
+        "pt_attachment_default_snippet_desc": "%seo_description%",
+        "pt_attachment_slack_enhanced_sharing": "off",
+        "pt_attachment_add_meta_box": "off",
+        "pt_hd_product_title": "%title% %sep% %sitename%",
+        "pt_hd_product_description": "%excerpt%",
+        "pt_hd_product_robots": [
+          "index"
+        ],
+        "pt_hd_product_custom_robots": "on",
+        "pt_hd_product_default_rich_snippet": "off",
+        "pt_hd_product_default_article_type": "Article",
+        "pt_hd_product_default_snippet_name": "%seo_title%",
+        "pt_hd_product_default_snippet_desc": "%seo_description%",
+        "pt_hd_product_archive_title": "%title% %page% %sep% %sitename%",
+        "pt_hd_product_slack_enhanced_sharing": "off",
+        "pt_hd_product_ls_use_fk": "titles",
+        "pt_hd_product_add_meta_box": "on",
+        "pt_hd_product_bulk_editing": "editing",
+        "pt_hd_product_link_suggestions": "on",
+        "pt_hd_solution_title": "%title% %sep% %sitename%",
+        "pt_hd_solution_description": "%excerpt%",
+        "pt_hd_solution_robots": [
+          "index"
+        ],
+        "pt_hd_solution_custom_robots": "on",
+        "pt_hd_solution_default_rich_snippet": "off",
+        "pt_hd_solution_default_article_type": "Article",
+        "pt_hd_solution_default_snippet_name": "%seo_title%",
+        "pt_hd_solution_default_snippet_desc": "%seo_description%",
+        "pt_hd_solution_archive_title": "%title% %page% %sep% %sitename%",
+        "pt_hd_solution_slack_enhanced_sharing": "off",
+        "pt_hd_solution_ls_use_fk": "titles",
+        "pt_hd_solution_add_meta_box": "on",
+        "pt_hd_solution_bulk_editing": "editing",
+        "pt_hd_solution_link_suggestions": "on",
+        "pt_product_title": "%title% %sep% %sitename%",
+        "pt_product_description": "%excerpt%",
+        "pt_product_robots": [
+          "index"
+        ],
+        "pt_product_custom_robots": "off",
+        "pt_product_default_rich_snippet": "product",
+        "pt_product_default_article_type": "Article",
+        "pt_product_default_snippet_name": "%seo_title%",
+        "pt_product_default_snippet_desc": "%seo_description%",
+        "pt_product_slack_enhanced_sharing": "on",
+        "pt_product_ls_use_fk": "titles",
+        "pt_product_add_meta_box": "on",
+        "pt_product_bulk_editing": "editing",
+        "pt_product_link_suggestions": "on",
+        "pt_product_primary_taxonomy": "product_cat",
+        "pt_web-story_title": "%title% %sep% %sitename%",
+        "pt_web-story_description": "%excerpt%",
+        "pt_web-story_robots": [
+          "index"
+        ],
+        "pt_web-story_custom_robots": "off",
+        "pt_web-story_default_rich_snippet": "article",
+        "pt_web-story_default_article_type": "Article",
+        "pt_web-story_default_snippet_name": "%seo_title%",
+        "pt_web-story_default_snippet_desc": "%seo_description%",
+        "pt_web-story_slack_enhanced_sharing": "off",
+        "pt_web-story_add_meta_box": "off",
+        "tax_category_title": "%term% %sep% %sitename%",
+        "tax_category_robots": [
+          "index"
+        ],
+        "tax_category_add_meta_box": "on",
+        "tax_category_custom_robots": "off",
+        "tax_category_description": "%term_description%",
+        "tax_category_slack_enhanced_sharing": "on",
+        "tax_category_bulk_editing": 0,
+        "tax_post_tag_title": "%term% %sep% %sitename%",
+        "tax_post_tag_robots": [
+          "noindex"
+        ],
+        "tax_post_tag_add_meta_box": "off",
+        "tax_post_tag_custom_robots": "on",
+        "tax_post_tag_description": "%term_description%",
+        "tax_post_tag_slack_enhanced_sharing": "on",
+        "tax_post_tag_bulk_editing": 0,
+        "tax_hd_category_title": "%term% %sep% %sitename%",
+        "tax_hd_category_robots": [
+          "index"
+        ],
+        "tax_hd_category_add_meta_box": "on",
+        "tax_hd_category_custom_robots": "on",
+        "tax_hd_category_description": "%term_description%",
+        "tax_hd_category_slack_enhanced_sharing": "on",
+        "tax_hd_category_bulk_editing": 0,
+        "remove_product_cat_snippet_data": "on",
+        "remove_product_tag_snippet_data": "on"
+      },
+      "syntax": true
+    }
+  },
+  "metadataReadback": {
+    "title": true,
+    "description": true,
+    "productSchemaNotFabricated": true,
+    "writeMethod": "WP post meta API; frontend readback"
+  },
+  "packageVerified": true
+}

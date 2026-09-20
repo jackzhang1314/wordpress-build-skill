@@ -1,0 +1,63 @@
+{
+  "testedAt": "2026-09-20T11:40:34.395Z",
+  "scope": "preview-only-fresh-network-not-existing-browser-cache",
+  "pages": [
+    {
+      "requested": "https://mediumblue-quail-505146.hostingersite.com/",
+      "final": "https://mediumblue-quail-505146.hostingersite.com/",
+      "status": 200,
+      "cacheControl": "no-store, no-cache, must-revalidate, max-age=0",
+      "cdnCache": "BYPASS",
+      "checks": {
+        "status": true,
+        "identity": true,
+        "content": true,
+        "htmlNotStored": true,
+        "pass": true
+      }
+    },
+    {
+      "requested": "https://mediumblue-quail-505146.hostingersite.com/equipment/",
+      "final": "https://mediumblue-quail-505146.hostingersite.com/equipment/",
+      "status": 200,
+      "cacheControl": "no-store, no-cache, must-revalidate, max-age=0",
+      "cdnCache": "BYPASS",
+      "checks": {
+        "status": true,
+        "identity": true,
+        "content": true,
+        "htmlNotStored": true,
+        "pass": true
+      }
+    },
+    {
+      "requested": "https://mediumblue-quail-505146.hostingersite.com/equipment/model/yhd08/",
+      "final": "https://mediumblue-quail-505146.hostingersite.com/equipment/model/yhd08/",
+      "status": 200,
+      "cacheControl": "no-store, no-cache, must-revalidate, max-age=0",
+      "cdnCache": "BYPASS",
+      "checks": {
+        "status": true,
+        "identity": true,
+        "content": true,
+        "htmlNotStored": true,
+        "pass": true
+      }
+    },
+    {
+      "requested": "https://mediumblue-quail-505146.hostingersite.com/contact-us/",
+      "final": "https://mediumblue-quail-505146.hostingersite.com/contact-us/",
+      "status": 200,
+      "cacheControl": "no-store, no-cache, must-revalidate, max-age=0",
+      "cdnCache": "BYPASS",
+      "checks": {
+        "status": true,
+        "identity": true,
+        "content": true,
+        "htmlNotStored": true,
+        "pass": true
+      }
+    }
+  ],
+  "pass": true
+}

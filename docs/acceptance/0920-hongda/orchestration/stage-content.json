@@ -1,0 +1,27 @@
+{
+  "projectHash": "5c1d2735a4023bdc93aee353253dfdca23c45dc57dbdff1fb4f5648c574731b9",
+  "stage": "content",
+  "outcome": "verified",
+  "summary": "Preview content imported; native body, featured image and editor field changes render",
+  "checks": [
+    {
+      "name": "Preview content imported; native body, featured image and editor field changes render",
+      "status": "pass"
+    }
+  ],
+  "evidence": [
+    "runtime.json",
+    "editor.json"
+  ],
+  "recordedAt": "2026-09-19T19:06:38.847Z",
+  "files": [
+    {
+      "path": "runtime.json",
+      "sha256": "20d9b8fbb601118f88337ffa033b78d7e995a3a9151c2f2e6000b417205c223b"
+    },
+    {
+      "path": "editor.json",
+      "sha256": "0a7d062901418c067292b2233db807db79e74c53768b7e229d66acd4e4b7697a"
+    }
+  ]
+}

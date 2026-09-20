@@ -1,0 +1,69 @@
+name: Sync Upstream Skills
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"  # Mondays 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run — show diff only, do not open PR"
+        type: boolean
+        default: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout mirror
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/WordPress/agent-skills.git || true
+          git fetch upstream trunk
+
+      - name: Detect skills changes
+        id: diff
+        run: |
+          CHANGED=$(git diff HEAD upstream/trunk -- skills/ shared/ README.md --name-only | head -100)
+          if [ -z "$CHANGED" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No skill changes detected."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changed files:"
+            echo "$CHANGED"
+          fi
+
+      - name: Apply upstream skills and refresh upstream README
+        if: steps.diff.outputs.changed == 'true' && inputs.dry_run != 'true'
+        run: |
+          # Sync skills and shared refs from upstream; keep our additions
+          git checkout upstream/trunk -- skills/ shared/
+          # Refresh upstream README (stored separately so our README.md is untouched)
+          git show upstream/trunk:README.md > README.upstream.md
+
+      - name: Create PR
+        if: steps.diff.outputs.changed == 'true' && inputs.dry_run != 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: sync skills from WordPress/agent-skills"
+          title: "chore: sync skills from WordPress/agent-skills"
+          body: |
+            Automated sync of `skills/`, `shared/`, and `README.upstream.md` from [WordPress/agent-skills](https://github.com/WordPress/agent-skills) trunk.
+
+            **Review checklist:**
+            - [ ] No new skills conflict with `mralaminahamed/wp-dev-skills` trigger descriptions
+            - [ ] Skill descriptions still correctly defer to our skills where boundaries were set
+            - [ ] `.claude-plugin/plugin.json` version bumped if skill set changed substantially
+            - [ ] New skills added to the skills table in `README.md` if any appeared
+          branch: chore/sync-upstream-skills
+          delete-branch: true
+          labels: upstream-sync
