@@ -1,0 +1,22 @@
+{
+  "testedAt": "2026-09-21T15:09:33.256Z",
+  "scope": "local-reuse-baseline-derived-preflight-not-full-deployment",
+  "slug": "harness-baseline-d6ecc68030",
+  "checks": {
+    "overrideCreated": true,
+    "snapshotExported": true,
+    "conflictDetected": true,
+    "derivedOverridePath": true,
+    "derivedKind": true,
+    "operatorContentPreservedAfterConflict": true,
+    "noConflictWithoutFile": true,
+    "operatorContentPreservedAfterCleanRun": true,
+    "cleanup": true
+  },
+  "notCovered": [
+    "hostinger-remote-baseline-live-run",
+    "conflict-resolution-and-backup",
+    "new-enquiry-during-deployment",
+    "binary-and-plugin-incremental-transport"
+  ]
+}

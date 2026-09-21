@@ -1,19 +1,19 @@
 {
-  "testedAt": "2026-09-19T23:36:50.867Z",
+  "testedAt": "2026-09-21T17:12:51.384Z",
   "checks": [
     {
       "path": "/",
       "product": "",
       "status": 200,
       "success": true,
-      "entryId": 3
+      "entryId": 5
     },
     {
       "path": "/equipment/model/yhd08/",
       "product": "13",
       "status": 200,
       "success": true,
-      "entryId": 4
+      "entryId": 6
     }
   ],
   "entriesAdded": 2,

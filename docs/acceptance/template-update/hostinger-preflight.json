@@ -1,0 +1,26 @@
+{
+  "testedAt": "2026-09-21T17:28:23.294Z",
+  "scope": "read-only-remote-preflight-cli-baseline-plus-rest-overrides",
+  "domain": "mediumblue-quail-505146.hostingersite.com",
+  "theme": "b2b-equipment",
+  "candidate": "/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill/examples/b2b-block-starter/theme",
+  "remoteFiles": 33,
+  "verifiedTextFiles": 31,
+  "derivedChanges": [],
+  "derivedOverridePaths": [],
+  "unverifiedPaths": [
+    "assets/fonts/body.ttf",
+    "assets/fonts/display.ttf"
+  ],
+  "requiresPageRegression": false,
+  "dbOverridePaths": [],
+  "conflicts": [],
+  "blocked": false,
+  "globalStylesViaRest": false,
+  "releaseApproval": false,
+  "limitations": [
+    "No writes performed; blocking only signals required conflict resolution",
+    "Binary files and database content overrides beyond templates/parts/global-styles are not covered",
+    "Baseline reflects read time; remote may change afterwards"
+  ]
+}

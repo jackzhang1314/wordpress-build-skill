@@ -9,7 +9,8 @@ function harness_template_overrides($changed) {
  return ['theme'=>$theme,'scope'=>'active-theme-published-overrides','overrides'=>$items,'blocked'=>count(array_filter($items,static fn($item)=>$item['changedFileConflict']))>0];
 }
 `;
+export const OVERRIDE_PATH_PATTERN=/^(theme\.json|(?:templates|parts)\/[a-zA-Z0-9_-]+\.html)$/;
 export function validateChangedPaths(paths) {
- if(!Array.isArray(paths)||!paths.every(p=>typeof p==='string'&& /^(theme\.json|(?:templates|parts)\/[a-zA-Z0-9_-]+\.html)$/.test(p)))throw new Error('Expected theme-relative theme.json, templates/SLUG.html or parts/SLUG.html paths');
+ if(!Array.isArray(paths)||!paths.every(p=>typeof p==='string'&&OVERRIDE_PATH_PATTERN.test(p)))throw new Error('Expected theme-relative theme.json, templates/SLUG.html or parts/SLUG.html paths');
  return [...new Set(paths)];
 }

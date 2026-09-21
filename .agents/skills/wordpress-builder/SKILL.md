@@ -24,7 +24,7 @@ description: 编排官方 WordPress 专业 Skill 和项目工具，从干净环�
 
 1. **规划新站**：读取企业事实与已有授权，明确内容、语言、编辑方式、询盘入口和目标环境。先按 [搜索质量规划](references/search-quality.md) 确定买家任务、页面独立价值和事实来源，再看 [architecture.md](references/architecture.md)，默认采用原生区块主题，组合 CPT/ACF、原生模板和必要 PHP 动态块；经典 PHP 基线或特殊整页 PHP 按明确场景保留，再看 [site-workflow.md](references/site-workflow.md)。代表页区块骨架已随包提供，但完整客户站仍需按 Brief 实施；适用条件与可运行参考见 [reference-site.md](references/reference-site.md)，不把默认选择说成普适最优。
 2. **执行专业工作**：完整 B2B 外贸站先读 [逐页实施策略](references/b2b-pages.md)，明确每页的买家任务、数据来源与实现方式。按能力表选择模块，交付目标、文件/数据范围、实际版本和前置成果。专业模块使用所需工具完成工作；主编排检查结果与跨模块业务链。
-3. **维护本方案建成的站点**：读取已有契约和远端状态，只完成本次变更及相关验证；不要为改一个字段重走整站流程。已完成发布的迭代保留原任务，使用独立迭代目录与新的基线。
+3. **维护本方案建成的站点**：读取已有契约和远端状态，只完成本次变更及相关验证；不要为改一个字段重走整站流程。主题增量更新前按 [release.md](references/release.md) 的模板覆盖预检（本地 `starter:update-preflight` 或远端 `hostinger:remote-preflight`，均只读）核对冲突后再处置。已完成发布的迭代保留原任务，使用独立迭代目录与新的基线。
 4. **审计/研究**：只收集证据和输出结论，除非任务同时授权修改。不能把研究计划写成通过记录。
 
 ## 工作分工

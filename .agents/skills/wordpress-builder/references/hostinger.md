@@ -147,6 +147,33 @@ npm run hostinger:preflight -- .wordpress-builder/hostinger/target.json --connec
 
 实测文件内容接口可能去掉末尾 LF：此时仅在本地完整字节数相同、仅末尾 LF 差异且余下内容完全一致时标记 normalizedFinalNewlineMatches，不能声称远端字节哈希完全一致。未知截断直接失败；字体等二进制明确 unverified。结果只检查主题文本，不包括插件、数据库覆盖或自动发布授权；releaseApproval 始终 false。
 
+### 远端只读冲突预检（真实验证）
+
+`npm run hostinger:remote-preflight [CANDIDATE_THEME_DIR]` 串联远端冲突检测的只读部分：CLI 基线 → 离线派生变更路径 → 登录后 REST 盘点已发布模板/部件/全局样式覆盖 → 求交集出冲突。全程零写入，凭据只从项目私有目录读取，报告必须 grep 校验不含凭据、密码、nonce 与私有用户标识；旧基线报告按日期归档，不静默覆盖。
+
+- CLI 只读调用加有界重试（至多 3 次、指数退避），仅匹配瞬态网络错误（deadline exceeded、TLS handshake timeout、connection reset、EOF 等）；认证被拒或接口拒绝不是瞬态，不得重试掩盖。
+- 后台 REST 会话：wp-login.php 先 GET 拿 testcookie，再 POST `log/pwd/testcookie=1`（302 即成功），用 `admin-ajax.php?action=rest-nonce` 取 REST nonce；nonce 12–24 小时过期，过期重新登录，不把旧 nonce 或缓存 HTML 当证据。
+- 覆盖判定语义：REST 模板项 `source==='custom'` 且 `status==='publish'` 才是数据库覆盖；`source==='theme'` 且 origin 为空表示解析到主题文件，不构成冲突。用户自建模板 source=custom、无主题文件，同样参与冲突交集。
+- 当前参考站 `/wp/v2/global-styles` 列表路由不可用：theme.json 数据库覆盖的远端检测是明确缺口，报告以 globalStylesViaRest=false 记录，不冒充已覆盖。
+- 错误输出禁止回显私有状态字段（用户名、域名路径、凭据键名）：一次调试把 hpanel 用户名打进错误日志，此后私有状态值一律不进异常信息。
+- 预检冲突是只读信号，不等于处置完成；远端处置（备份/reset/restore 写路径）须另行设计授权、备份落点与失败回退后单独验收。
+
+### 远端冲突处置：REST 写路径（真实验证）
+
+`npm run hostinger:remote-resolve`：`reset --backup OUT.json PATH...` 与 `restore BACKUP.json`，语义与本地 `starter:template-resolve` 一致，通道为后台 REST 写接口（cookie+nonce）。远端特有语义：
+
+- 备份先写本地私有目录并读回校验，之后才允许远端删除；删除用 `?force=true`，响应 `previous.content.raw` 哈希与备份逐条核对，再 GET 确认 404。删除前重读远端内容哈希，拦截「预检到处置之间覆盖被编辑」的并发写入（本地同语义）。
+- restore 前置检查：目标 id 必须不存在（404）才允许 POST 重建；重建后 GET 哈希与备份一致才记成功。备份带 domain 字段，跨站恢复拒绝。template-parts 重建时回填 `area`。
+- REST 只触模板/部件文章表，询盘表在结构上不可达；DB 层询盘哈希核对留给 WP-CLI 通道，不冒称已验。
+- REST 写接口的前提与边界：站点已设 noindex、操作者拥有站点、操作窗口内无真实业务写入；正式域名或已接真实询盘后，写路径要走维护窗口与备份流程，不得直接套用本节命令。
+- 演练脚本 `test:hostinger:remote-resolve` 创建唯一 `harness-rresolve-*` 夹具走完 backup→reset→404→restore→哈希一致→负路径拒绝→清理，finally 与 CLI 均使用同一重试会话；一次清理阶段网络断连曾使夹具短暂残留（DELETE 已成功、验证 GET 失败），重试加固后三轮通过、零残留。教训：演练脚本的清理路径本身也要走带重试的会话，且「验证键失败」与「操作失败」必须区分——连接未建立可安全重试，已发出请求的失败按结果未知处理，先查证再补偿。
+
+### 真实增量发布：文件传输（真实验证）
+
+`node scripts/hostinger/incremental-deploy.mjs [CANDIDATE_THEME_DIR]` 把增量链路串成一次真实发布：新鲜预检（有数据库覆盖冲突即退出 2，须先处置）→ 远端变更文件备份到私有目录 → 官方 CLI generate-upload-url + TUS（POST create 201 → PATCH 204）逐文件上传 → website-content 读回哈希核对（归一化末尾 LF 后逐字节一致）→ `cache clear-website` 清站点与 CDN 缓存 → 复检收敛（变更归零）。仅传输文本模板/部件文件；二进制与删除类变更明确拒绝。
+
+实测教训（2026-09-22 首次真实发布，6 文件）：**基线工具的末尾 LF 归一化兜底曾隐含「远端≈候选」假设**——候选真有变更（基线工具的本职场景）时断言崩溃。修正语义：远端哈希按「剥掉末尾 LF 的字节」记录并标记 normalized；派生层对称比较（候选剥 LF 或补 LF 后与远端一致都算未变），数学上精确且不掩盖真变更。该教训适用于一切「读接口有已知截断、用比对工具判断差异」的场景：截断补丁必须在**差异判定层**实现，不能依赖与候选的巧合相等。
+
 ## 新电脑按需引导（先于部署预检）
 
 首次进入已授权的部署任务时执行 Skill 随包 `scripts/hostinger-setup.mjs`；完整仓库可用 `npm run hostinger:setup`。无 CLI 时运行 `npm run hostinger:setup -- --install`，在 macOS/Linux 且已有 Homebrew 的机器安装官方 `hostinger/tap/hostinger`，不升级或覆盖已有可用版本。再运行 `npm run hostinger:setup -- --connect`，以只读 hosting orders list 验证账户访问；不打印订单内容。当前 CLI 无 auth/login 子命令，首次账户命令会触发官方浏览器登录，用户本人完成授权后重新检查。登录失败也可能是网络/API 或旧环境 Token 优先级问题，不直接断言无账户。

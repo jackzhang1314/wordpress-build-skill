@@ -1,5 +1,5 @@
 // Explicit local lab target; a conflict exits 2 without modifying WordPress.
-import {readFile} from 'node:fs/promises';
+import {readFile,writeFile} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import {join} from 'node:path';
 import assert from 'node:assert/strict';
@@ -11,6 +11,17 @@ if(args[0]==='--compare'){
  assert.equal(args.length,3,'Usage: --compare BEFORE_THEME AFTER_THEME');
  const {themeDiff}=await import('./release/theme-diff.mjs');
  diff=await themeDiff(args[1],args[2]);paths=diff.overridePaths;
+}else if(args[0]==='--baseline'){
+ assert.equal(args.length,3,'Usage: --baseline BASELINE_REPORT.json CANDIDATE_THEME_DIR');
+ const {deriveBaselineChanges}=await import('./release/baseline.mjs');
+ diff=await deriveBaselineChanges(JSON.parse(await readFile(args[1],'utf8')),args[2]);paths=diff.overridePaths;
+}else if(args[0]==='--snapshot'){
+ assert.equal(args.length,3,'Usage: --snapshot THEME_DIR OUT.json');
+ const {themeInventory}=await import('./release/theme-diff.mjs');
+ const files=await themeInventory(args[1]);
+ await writeFile(args[2],JSON.stringify({shape:'local-inventory',savedAt:new Date().toISOString(),files},null,2)+'\n');
+ console.log(JSON.stringify({savedTo:args[2],files:Object.keys(files).length,releaseApproval:false}));
+ process.exit(0);
 }else{
  paths=validateChangedPaths(args);
  assert.ok(paths.length,'Supply changed theme-relative paths; empty input is not release approval');

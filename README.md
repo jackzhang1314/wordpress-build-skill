@@ -81,10 +81,6 @@ node .agents/skills/wordpress-builder/scripts/wp.mjs doctor --task .wordpress-bu
 
 本地原生主机验证：`npm run hongda:native` 在独立 Docker PHP/Apache、MySQL 和 Mailpit 环境验证部署、SMTP 收件、数据库恢复与容器重建持久性。[实测结果与复现方法](docs/acceptance/hongda-native/README.md)。这些能力可以在本地验证，不必等正式上线；真实公网服务和外部邮箱投递另行检查。
 
-## 私人经验仓库快照
-
-包含 harness、AGENTS.md、Skills、references/playbook、源码、测试及研究和验收文字记录。不包含凭据、数据库、浏览器会话和验收截图；历史截图链接需回原工作区查看。示例产品图片和上游许可证保留。执行 `npm ci` 和 `npm run build` 构建工具；Docker 实验需另行初始化。当前验证边界见 docs/ARCHITECTURE.md。
-
 ## 可运行的 WordPress 模板站
 
 仓库包含完整区块主题、业务插件、页面/产品演示数据和图片，按 [Starter 快速开始](docs/STARTER-QUICKSTART.md) 可创建新的 WordPress/MySQL 实例，进入后台体验并改造。WordPress 核心使用官方 Docker 镜像安装，不携带线上数据库和账户。
