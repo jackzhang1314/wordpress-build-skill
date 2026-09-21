@@ -206,6 +206,8 @@ WordPress 5.6+ 的 REST API **不接受管理员密码做 Basic Auth**——必�
 
 路由规则：**知道每一步做什么 → CLI；需要 AI 看返回值决定下一步 → MCP**。两者互补，不竞争。批量部署前用 MCP 探索确认状态，确认后用 CLI 脚本执行。
 
+**WP-CLI via SSH 实测确认（2026-09-22）**：SSH + WP-CLI 可完成 REST API 的全部内容管理功能，且无需 Application Password、无 Cloudflare 限制。已实测通过：发布文章（wp post create）、创建页面、管理导航（wp_navigation）、上传图片（wp media import）、修改 CSS。对于 Codex + SSH 场景，WP-CLI 是内容管理的首选通道。REST API 保留给外部系统集成使用。
+
 ### 部署架构决策（2026-09-22 全面复盘）
 
 **核心教训：第二次部署（brightdozer）比第一次（mediumblue-quail）出了更多问题，根因是没有复用已验证的整包流程，而是在目标站上现场发明了新路径。**
@@ -292,3 +294,14 @@ CLI 是默认路径；已有可用官方 Hostinger MCP 时可以复用，但无�
 6. 错误信息可能在 stdout 或 stderr——分类检查必须覆盖两者。
 7. no-op（0 变更）是收敛成功，不得当作异常退出。
 8. 部署完成输出必须包含唯一标记（如 DEPLOY_DONE），供轮询检测。
+
+#### hPanel 快捷链接
+
+需要用户在浏览器操作时，自动打开对应 hPanel 页面（从域名可直接推导）：
+
+- SSH 设置：`https://hpanel.hostinger.com/websites/{domain}/advanced/ssh-access`（已从截图确认）
+- 文件管理、数据库、SSL 等其他页面按 hPanel 侧边栏结构推导，未逐个验证
+
+#### SSH 启用限制（2026-09-22 确认）
+
+共享主机的 SSH 启用/禁用**没有 API/CLI 端点**，只能通过 hPanel UI 操作。Hostinger API 的 SSH key 管理仅限 VPS。 harness 应在首次部署时检测 SSH 可用性，不可用则自动打开 hPanel SSH 页面引导用户启用（一次性操作，启用后永久生效）。
