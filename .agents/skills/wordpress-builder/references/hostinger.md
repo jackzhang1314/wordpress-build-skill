@@ -184,6 +184,16 @@ npm run hostinger:preflight -- .wordpress-builder/hostinger/target.json --connec
 
 适用场景：交互式排错、配置核对、状态查询。批量部署仍用 CLI 脚本（确定性+可预演）。
 
+### WordPress REST API 认证（2026-09-22 实测教训）
+
+WordPress 5.6+ 的 REST API **不接受管理员密码做 Basic Auth**——必须使用 Application Passwords。且 Application Passwords 要求服务器将 Authorization 头传递给 PHP。
+
+**Hostinger 共享主机的限制**：部分配置不传递 Authorization 头到 PHP，导致 REST API 始终返回 401。.htaccess 修复（`RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]`）在部分配置下有效但不保证所有环境生效。此为服务器级限制，不可由用户禁用。
+
+**正确架构：Application Password 的创建必须包含在 deploy.php 内**——部署完成时自动产出凭据，Codex 立刻获得 REST 管理权限。不得部署后单独补创建（会反复遇到权限和安全策略障碍）。
+
+**注意**：SQL 导入会覆盖整个用户表（包括 Application Passwords）。因此 Application Password 必须在 SQL 导入**之后**创建，不能在导入之前。
+
 ### CLI vs MCP：场景路由（2026-09-22 确认）
 
 | 场景 | 工具 | 理由 |
@@ -195,6 +205,24 @@ npm run hostinger:preflight -- .wordpress-builder/hostinger/target.json --connec
 | 定时/自动化 | CLI（cron 触发脚本） | 确定性执行，不依赖 AI 会话存活 |
 
 路由规则：**知道每一步做什么 → CLI；需要 AI 看返回值决定下一步 → MCP**。两者互补，不竞争。批量部署前用 MCP 探索确认状态，确认后用 CLI 脚本执行。
+
+### 部署架构决策（2026-09-22 全面复盘）
+
+**核心教训：第二次部署（brightdozer）比第一次（mediumblue-quail）出了更多问题，根因是没有复用已验证的整包流程，而是在目标站上现场发明了新路径。**
+
+正确流程（0920 已验证）：
+1. 本地环境录入全部内容并验收 → 2. 导出发布包（SQL + wp-content tar）→ 3. TUS 上传 3 个大文件 → 4. 一次性 cron 执行 bash 脚本（解压 + SQL 导入 + URL 替换 + 缓存清）→ 5. 线上逐页验收
+
+第二次部署的错误路径：
+- 逐个上传 85 个小文件（触发 Cloudflare 挑战 + 速率限制）
+- 现场编写 deploy.php 内嵌 base64 内容（转义翻倍 bug）
+- 用 cookie session 而非 Application Password（额外的复杂度）
+
+**修正后的统一规范**：
+- 新站部署和增量更新都使用同一套发布管线（打包→上传→执行→验收）
+- 交互式排错用 MCP（401 工具），批量操作用 CLI
+- 部署脚本写入项目 `scripts/hostinger-release.mjs`，可重复执行
+- 所有经验回写到本文件对应段落
 
 ### 部署前置清单（2026-09-22 实测教训）
 
@@ -227,3 +255,40 @@ Windows/无 Homebrew：当前脚本返回 official-release-required，并非安�
 CLI 是默认路径；已有可用官方 Hostinger MCP 时可以复用，但无需两套都安装。配置 MCP 要按当前 Codex 客户端支持方式完成连接/授权验证，不把配置文件存在称为连接成功。读取 Skill 本身不触发安装、登录或资源创建。账户能读取也不证明套餐支持 WordPress、目标可覆盖或发布已通过。
 
 官方认证依据：https://www.hostinger.com/support/11679133-how-to-use-hostinger-api-cli/ 。本机实测与缺工具模拟分开报告；客户端未授权时需要用户官方登录这一步，不应代用户购买或索取密码。
+
+### 2026-09-22 全面复盘：Hostinger 自动化部署完整经验
+
+#### 已验证的工具组合
+| 操作 | 工具 | 状态 |
+| --- | --- | --- |
+| 站点创建 | CLI websites create | ✅ 两次实测 |
+| WP 安装 | CLI wordpress install | ✅ 两次实测 |
+| 文件上传 | CLI files generate-upload-url + TUS | ✅ 多次实测 |
+| 文件读取 | CLI files website-content | ✅（文本文件）|
+| 目录列表 | CLI files list-website-and-directories | ✅ |
+| 缓存清除 | CLI cache clear-website | ✅ |
+| 定时执行 | CLI cron-jobs create/delete/output | ✅ |
+| 主题切换 | WP-CLI / PHP theme activate | ✅ |
+| SQL 导入 | mysql CLI（读 wp-config 凭据）| ✅ 两次实测 |
+| REST 管理 | Application Password + Basic Auth | ⏳ 待完整验证 |
+| MCP 交互 | @hostinger/mcp 401 tools | ✅ 已安装 OAuth |
+
+#### API 限制与对策
+| 限制 | 值 | 对策 |
+| --- | --- | --- |
+| 速率限制 | 90 req/min | 批量操作打包为 ZIP，减少调用次数 |
+| Cloudflare 挑战 | 快速连续小请求触发 | 退避重试 + 文件间隔 ≥2s |
+| 内容 API 文件类型 | 仅 php/html/css/js/json/txt/md | 二进制标记为 unverified |
+| 凭据文件拒读 | settings.php 等被拒绝 | 标记 unverified，不冒充已验证 |
+| 末尾 LF 剥离 | 归一化处理 | 派生层对称比较 |
+| 网络抖动 | socket/TLS 断连 | 有界退避重试（内置非事后）|
+
+#### 脚本编写规范
+1. 所有 Hostinger API 调用的重试逻辑在函数定义时内置，不事后补。
+2. 正则表达式中的反斜杠：RegExp 构造器字符串中每个字面反斜杠需要双写（BS.repeat(N)），不得手动拼接。
+3. async 回调（Promise.all map）内没有 continue，用 return。
+4. 语义重命名后用全仓 grep 核对调用点，500 fatal 看 debug.log。
+5. PHP 变量在 shell 命令中必须转义或使用文件中转，不得直接内嵌。
+6. 错误信息可能在 stdout 或 stderr——分类检查必须覆盖两者。
+7. no-op（0 变更）是收敛成功，不得当作异常退出。
+8. 部署完成输出必须包含唯一标记（如 DEPLOY_DONE），供轮询检测。
