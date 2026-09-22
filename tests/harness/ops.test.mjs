@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {mkdirSync, mkdtempSync, rmSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {backupProject, seedContent} from '../../harness/lib/ops.mjs';
+import {backupProject, importMedia, seedContent} from '../../harness/lib/ops.mjs';
 
 test('seed contract passes staged media map and site data as explicit arguments', async () => {
   const root = mkdtempSync(join(tmpdir(), 'harness-seed-'));
@@ -61,6 +61,32 @@ test('backup retries a fresh installation whose plugin files change during tar',
     const result = backupProject(root, project, ssh);
     assert.equal(result.manifest.files.size, buffer.length);
     assert.equal(runCommands.filter(item => item.includes('tar -cf -')).length, 2);
+  } finally {
+    rmSync(root, {recursive: true, force: true});
+  }
+});
+
+test('forced media import is idempotent and only uploads keys missing from the map', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'harness-media-'));
+  mkdirSync(join(root, 'docs/media/products'), {recursive: true});
+  mkdirSync(join(root, 'content'), {recursive: true});
+  writeFileSync(join(root, 'docs/media/products/a.png'), 'a');
+  writeFileSync(join(root, 'docs/media/products/b.png'), 'b');
+  writeFileSync(join(root, 'content/media-map.json'), JSON.stringify({a: 5}));
+  const imports = [];
+  const ssh = {
+    run: () => '',
+    rsync: () => {},
+    wp: args => {
+      imports.push(args[2]);
+      return '201';
+    },
+  };
+  const project = {slug: 'demo', media: {sources: [{name: 'products', path: 'docs/media/products'}]}};
+  try {
+    const map = await importMedia(root, project, ssh, {force: true});
+    assert.deepEqual(imports, ['/tmp/demo-media/products/b.png']);
+    assert.deepEqual(map, {a: 5, b: 201});
   } finally {
     rmSync(root, {recursive: true, force: true});
   }

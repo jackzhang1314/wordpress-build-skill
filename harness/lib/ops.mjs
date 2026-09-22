@@ -121,13 +121,15 @@ export async function syncRemotePlugins(project, ssh, logger = () => {}) {
 
 export async function importMedia(projectRoot, project, ssh, {force = false, logger = () => {}} = {}) {
   const mapPath = join(projectRoot, 'content', 'media-map.json');
-  if (existsSync(mapPath) && !force) {
+  const hasMap = existsSync(mapPath);
+  if (hasMap && !force) {
     logger('  ✅ Media map already exists');
     return JSON.parse(readFileSync(mapPath, 'utf8'));
   }
+  // --with-media refreshes missing entries; existing keys are never re-imported (no duplicate attachments).
+  const map = hasMap ? JSON.parse(readFileSync(mapPath, 'utf8')) : {};
   const staging = `/tmp/${project.slug}-media`;
   ssh.run(`rm -rf ${shellQuote(staging)} && mkdir -p ${shellQuote(staging)}`);
-  const map = {};
   const extensions = /\.(jpe?g|png|webp|gif|pdf)$/i;
   for (const source of project.media.sources) {
     const local = projectFile(projectRoot, source.path);
@@ -135,6 +137,10 @@ export async function importMedia(projectRoot, project, ssh, {force = false, log
     ssh.rsync(local, staging + '/' + source.name);
     for (const file of readdirSync(local).filter(file => extensions.test(file)).sort()) {
       const key = basename(file, extname(file));
+      if (map[key]) {
+        logger(`    ${key}: already imported (${map[key]})`);
+        continue;
+      }
       const output = ssh.wp(['media', 'import', `${staging}/${source.name}/${safeName(file)}`, '--title=' + key, '--porcelain']).trim();
       const id = Number(output.split('\n').pop());
       if (!Number.isInteger(id) || id <= 0) throw new Error(`Media import failed for ${file}: ${output}`);
