@@ -155,3 +155,13 @@
 ### SMTP 命令化完成
 
 - `harness smtp configure/test` 落地（eval-file 暂存方式，避免内联引号问题）；Brevo 凭据配置与测试发信均实测通过（测试邮件已发往 1314jackzhang@gmail.com 待确认收件）。规范 #26 补充命令用法。
+
+### 第八轮：视觉与体验层 v4 打磨（2026-09-23）
+
+- 范围：仅 theme/（style.css 全量重写 v3→v4.0.1 + 全部模板/页头页脚重排 + assets/fonts + assets/js + favicon.svg），不改 site-data.json、不动 FF 表单逻辑；`deploy --skip-content` 两次全绿（22/22 + 计数）。
+- 设计系统：9 档亮色 token、自托管 InterVariable（wp_head preload）、卡片 hover/阴影两档、统计带卡片化、CTA band 渐变化、规格表/面包屑/分页/404/搜索全面精修；移动端汉堡菜单（aria 状态 + Escape/外部点击关闭 + 滚动锁）与 3 档断点。
+- 主题层解决的内容侧问题：无缩略图条目的内联 SVG 兜底（products/industries/guides/hero/page 五种图标）、摘要拼接丢空格、About 模板 `class="eyebrow>Quality` 属性残缺。
+- 导航：`nav_menu_css_class` 过滤器让 CPT 单页/分类/归档正确高亮 Products/Industries/Knowledge；页脚重排为 4 列并加认证 chips 与转化列。
+- FF 表单样式统一到主题 token；提交按钮 label 为空（表单配置缺陷，不在本次范围）→ 主题层 `.ff-btn-submit::before` 提供 "Send specifications" 文案，v4.0.1 单独部署验证。
+- 验收截图（before/after）：home、products、product detail、category、industry、guide、about、contact、404、search、移动端 home+menu+contact；懒加载与 LiteSpeed 缓存造成的两类截图假象已记录规避方法。
+- 沉淀：新增 `references/design-classic.md`（经典 PHP 主题视觉规范，Block 主题规则仍见 design.md）。
