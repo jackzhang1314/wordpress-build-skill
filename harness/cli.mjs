@@ -10,6 +10,7 @@ import {provisionHostinger} from './lib/hostinger.mjs';
 import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
+import {assignTemplate, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
 import {
   backupProject,
   clearHostingerCache,
@@ -44,6 +45,10 @@ Project commands:
   provision [options]     Create Hostinger site/WP, then deploy
   configure-seo           Back up DB and configure Rank Math Free
   setup                   Configure core WP, plugins and Rank Math
+  edit-page <slug>        Push one page body (--file <html>, --adopt-remote on conflict)
+  post push <article>     Create/update a single post from JSON (--adopt-remote on conflict)
+  nav add|remove          Surgical menu item operations (no full rebuild)
+  template assign         Assign a page template after validating it renders the body
   wp <args...>            Run WP-CLI through SSH
   ssh                     Open an SSH session
   open                    Open the Hostinger SSH-access page
@@ -176,7 +181,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
 
     const site = context(options);
     const {root, project, ssh} = site;
-    const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open'];
+    const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template'];
     if (remoteCommands.includes(command) && !ssh) throw new Error('Complete project.json ssh before running remote commands');
     const base = `https://${project.domain}`;
 
@@ -206,6 +211,28 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       configureWordPress(project, ssh, logger);
       await syncRemotePlugins(project, ssh, logger);
       configureRankMath(project, ssh, {logger});
+      return 0;
+    }
+    if (command === 'edit-page') {
+      await editPage(site, args, logger);
+      return 0;
+    }
+    if (command === 'post') {
+      if (firstValue(args) !== 'push') throw new Error('usage: harness post push <article.json>');
+      await pushPost(site, args.slice(1), logger);
+      return 0;
+    }
+    if (command === 'nav') {
+      const sub = firstValue(args);
+      const rest = args.slice(1);
+      if (sub === 'add') await navAdd(site, rest, logger);
+      else if (sub === 'remove') await navRemove(site, rest, logger);
+      else throw new Error('usage: harness nav add|remove ...');
+      return 0;
+    }
+    if (command === 'template') {
+      if (firstValue(args) !== 'assign') throw new Error('usage: harness template assign <slug> --template <file.php>');
+      await assignTemplate(site, args.slice(1), logger);
       return 0;
     }
     if (command === 'config') {
