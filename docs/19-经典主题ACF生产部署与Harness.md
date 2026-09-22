@@ -4,14 +4,14 @@
 
 ## 结论
 
-新 WordPress 外贸 B2B 项目默认改为：**最小经典 PHP 主题 + ACF 本地字段 + 业务插件 CPT/taxonomy/RFQ + SSH/WP-CLI 部署**。不再要求新站从 Block Theme 起步。
+新 WordPress 外贸 B2B 项目默认改为：**最小经典 PHP 主题 + ACF 本地字段 + 业务插件 CPT/taxonomy + Fluent Forms 询盘 + SSH/WP-CLI 部署**。不再要求新站从 Block Theme 起步。
 
 ## 分工
 
 | 层 | 归属 |
 | --- | --- |
 | 视觉与模板 | 经典主题：`header.php`、`footer.php`、`front-page.php`、页面模板、CPT/taxonomy 模板 |
-| 业务模型 | 业务插件：CPT、分类、ACF local fields、RFQ 捕获、SEO 默认值 |
+| 业务模型 | 业务插件：CPT、分类、ACF local fields、SEO 默认值；询盘捕获由 Fluent Forms 负责 |
 | 内容 | `content/site-data.json` 种子 + ACF 后台编辑 |
 | 平台 | Hostinger CLI：网站创建、安装 WordPress、缓存清理 |
 | 管理 | SSH + WP-CLI：文件、数据库、插件、媒体、内容、验收 |
