@@ -134,3 +134,7 @@
 - 维护层冲突检测再次正确工作：seed 重跑使 edit-page journal 过期 → 拒绝覆盖 → --adopt-remote 接管。沉淀"一页一主人"规则（#18）。
 - 状态文件卫生：init .gitignore 补齐三个运行状态文件并加回归断言（#19）。
 - `deploy --skip-content` 全绿（22/22 + 6 项计数）；About 页截屏核验。测试项目同步提交。
+
+### 补充：凭据交付与轮换（应用户要求）
+
+- `harness credentials show|rotate` 落地：交付 = 一条命令打印登录地址/账号/密码；轮换 = 重新随机生成并经 wp_set_password 生效（旧会话失效），私有文件同步更新且保持 0600。密码生成器与 provision 同源（21 字节 base64url）。测试 111/111。
