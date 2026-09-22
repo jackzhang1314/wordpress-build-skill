@@ -1,4 +1,4 @@
-import {argValue, hasFlag} from './maintenance.mjs';
+import {argValue} from './maintenance.mjs';
 
 const API = 'https://api.cloudflare.com/client/v4';
 

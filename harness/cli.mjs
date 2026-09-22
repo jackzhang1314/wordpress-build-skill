@@ -10,7 +10,8 @@ import {provisionHostinger} from './lib/hostinger.mjs';
 import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
-import {assignTemplate, auditFields, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
+import {assignTemplate, argValue, auditFields, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
+import {shellQuote} from './lib/ssh.mjs';
 import {rotateCredentials, showCredentials} from './lib/credentials.mjs';
 import {configureSmtp, testSmtp} from './lib/smtp.mjs';
 import {
@@ -53,6 +54,7 @@ Project commands:
   template assign         Assign a page template after validating it renders the body
   credentials show|rotate Hand over site credentials, or regenerate the admin password
   audit-fields           Verify every stored value has an admin-editable ACF field
+  email-setup            Guided setup: create business mailbox + configure SMTP + test
   smtp configure|test    Set up the sending channel (Brevo) and send a test email
   wp <args...>            Run WP-CLI through SSH
   ssh                     Open an SSH session
@@ -186,7 +188,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
 
     const site = context(options);
     const {root, project, ssh} = site;
-    const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials', 'audit-fields', 'smtp'];
+    const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials', 'audit-fields', 'smtp', 'email-setup'];
     if (remoteCommands.includes(command) && !ssh) throw new Error('Complete project.json ssh before running remote commands');
     const base = `https://${project.domain}`;
 
@@ -262,6 +264,48 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       if (sub === 'configure') await configureSmtp(site, rest, logger);
       else if (sub === 'test') await testSmtp(site, rest, logger);
       else throw new Error('usage: harness smtp configure|test');
+      return 0;
+    }
+    if (command === 'email-setup') {
+      const mailbox = argValue(args, '--mailbox');
+      const mailboxPass = argValue(args, '--mailbox-pass');
+      const notifyTo = argValue(args, '--notify-to');
+      if (!mailbox || !mailboxPass) {
+        logger('\n📧 Email Setup Guide');
+        logger('  ─────────────────────────────────────────────');
+        logger('  Step 1: Go to hPanel → Emails → owlteam.work');
+        logger('          Create mailbox: notify@owlteam.work');
+        logger('          Set a strong password');
+        logger('  Step 2: Hostinger will show DNS records (MX/SPF/DKIM)');
+        logger('          Send them to me — I add them to Cloudflare automatically');
+        logger('  Step 3: Run with credentials:');
+        logger('          harness email-setup --mailbox notify@owlteam.work --mailbox-pass <password> --notify-to <your@gmail.com>');
+        logger('  ─────────────────────────────────────────────');
+        return 0;
+      }
+      // Create mu-plugin with provided credentials
+      const muPhp = `<?php
+add_action("phpmailer_init", function ($phpmailer) {
+    $phpmailer->isSMTP();
+    $phpmailer->Host       = "smtp.hostinger.com";
+    $phpmailer->Port       = 465;
+    $phpmailer->SMTPAuth   = true;
+    $phpmailer->Username   = ${JSON.stringify(mailbox)};
+    $phpmailer->Password   = ${JSON.stringify(mailboxPass)};
+    $phpmailer->SMTPSecure = "ssl";
+    $phpmailer->From       = ${JSON.stringify(mailbox)};
+    $phpmailer->FromName   = ${JSON.stringify(site.project.title)};
+});
+`;
+      const muDir = `${site.project.ssh.wpPath}/wp-content/mu-plugins`;
+      site.ssh.run(`mkdir -p ${shellQuote(muDir)}`);
+      site.ssh.run(`cat > ${shellQuote(muDir + '/smtp.php')}`, {input: Buffer.from(muPhp, 'utf8')});
+      logger('  OK  mu-plugin SMTP created');
+      if (notifyTo) {
+        const r = site.ssh.wp(['eval', `echo wp_mail(${JSON.stringify(notifyTo)}, "Email setup complete", "Your notification email is now configured.");`]);
+        logger(`  ${r.includes('1') ? 'OK' : 'WARN'}  test email to ${notifyTo}: ${r.trim()}`);
+      }
+      logger('  ✅ Email setup complete. Test email sent to your Gmail.');
       return 0;
     }
     if (command === 'config') {

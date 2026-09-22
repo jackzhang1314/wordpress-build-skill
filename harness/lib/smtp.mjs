@@ -1,4 +1,4 @@
-import {argValue, hasFlag} from './maintenance.mjs';
+import {argValue} from './maintenance.mjs';
 import {shellQuote} from './ssh.mjs';
 
 /**
