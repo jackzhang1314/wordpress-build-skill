@@ -1,7 +1,5 @@
 # Codex 首轮真实 WordPress 验收
 
-> 历史资料：本文件保留当时方案与验收，不是当前执行规范。当前仅支持新站，入口见 [系统架构](ARCHITECTURE.md) 与 [新站总编排](../.agents/skills/wordpress-builder/SKILL.md)。
-
 2026-09-08，隔离本机环境；这是整体目标中的标准页面主链路验收，不是所有业务能力验收。
 
 ## 已完成

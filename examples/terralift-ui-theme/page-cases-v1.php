@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 $pid       = get_the_ID();
-$g         = static fn( string $key, string $default = '' ): string => trim( (string) tl_field( $key, $pid ) ) ?: $default;
+$g         = static fn( string $key, string $default = '' ): string => trim( (string) get_field( $key, $pid ) ) ?: $default;
 $eyebrow   = $g( 'hero_eyebrow', 'Application cases' );
 $hero_t    = $g( 'hero_title', 'Proven in the field' );
 $hero_sub  = $g( 'hero_intro', 'How TerraLift machines perform on real job sites — construction, agriculture and municipal work.' );
@@ -27,7 +27,17 @@ $cases = new WP_Query(
 	)
 );
 ?>
-<?php ob_start(); ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
+<?php block_template_part( 'header' ); ?>
 
 <main id="tl-main" class="tl-fx tl-fx-cat">
 	<section class="tl-fx-hero tl-fx-cat-hero">
@@ -47,7 +57,7 @@ $cases = new WP_Query(
 				<?php
 				while ( $cases->have_posts() ) :
 					$cases->the_post();
-					$industry = trim( (string) tl_field( 'oct_industry' ) );
+					$industry = trim( (string) get_field( 'oct_industry' ) );
 					?>
 					<a class="tl-fx-cat-card" href="<?php the_permalink(); ?>">
 						<figure class="tl-fx-cat-card-media">
@@ -99,9 +109,14 @@ $cases = new WP_Query(
 		<div class="tl-fx-cta-inner">
 			<h2 class="tl-fx-cta-title">Your application could be next</h2>
 			<p class="tl-fx-cta-sub">Send the job site conditions — we recommend machine, attachments and transport plan in one reply.</p>
-			<a class="tl-fx-btn tl-fx-btn--dark" href="<?php echo esc_url( tl_page_url( 'terralift-contact' ) ); ?>">Request a quote</a>
+			<a class="tl-fx-btn tl-fx-btn--dark" href="/terralift-contact/">Request a quote</a>
 		</div>
 	</section>
 </main>
 
-<?php tl_render_document( (string) ob_get_clean() ); ?>
+<?php
+block_template_part( 'footer' );
+wp_footer();
+?>
+</body>
+</html>

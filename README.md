@@ -1,86 +1,75 @@
-# Codex WordPress 新站编排
+# Codex WordPress 建站工具与研究资料
 
-整套方案由项目 AGENTS.md、总编排 Skill、官方专业 Skills、按需规范、项目工具和验收证据共同组成。[仓库开发约定](AGENTS.md) 管理本方案开发；每个新客户站按 [项目指令规范](.agents/skills/wordpress-builder/references/project-instructions.md) 建立自己的 AGENTS.md，记录站点事实、代码归属、Skill 路由和实际验证命令。当前由 Codex 适配模板生成，`project-init` 尚未自动生成该文件。
+## 正在开发的 Codex 入口
 
-从干净且可控制的 WordPress 环境建立企业/产品/询盘网站。总入口整合官方专业 Skill、项目内容工具和统一验证记录；ACF 为本方案要求。支持本方案创建站点的后续维护，**暂不接管旧主题、Elementor 或其他既有 builder**。
-
-## 当前入口
-
-新用户先读 [建站上手、页面维护与模板能力说明](docs/GETTING-STARTED.md)。其中区分现有 PHP 基线、区块实验已验证能力与完整骨架待办。
-
-- [新站总编排 Skill](.agents/skills/wordpress-builder/SKILL.md)：任务范围、专业模块选择与交付。
-- [搜索质量与内容规划](.agents/skills/wordpress-builder/references/search-quality.md)、[WordPress SEO 工程规范](.agents/skills/wordpress-builder/references/seo.md)：从需求到交付贯穿执行。
-- [系统架构与实现边界](docs/ARCHITECTURE.md)：当前代码分工、实际接口、尚未实现能力。
-- [统一架构决策与官方依据](docs/TARGET-ARCHITECTURE.md)：区块主题、ACF、原生模板与 PHP 模块共生；服务端 HTML 与 SEO 标准。
-- [早期生态研究](docs/18-WordPress与Codex调研及架构重规划.md)：保留原研究阶段结论，当前决策以前项为准。
-- [官方/开源研究库](research/wordpress-skills/README.md)：9 个固定版本来源；研究目录不自动启用。
-
-## 新区块样板
-
-[代表页项目](examples/b2b-block-starter/README.md) 已用独立数据库验证首页、分类和两套产品模板；[验收记录](docs/acceptance/b2b-block-starter/README.md) 说明覆盖范围。`npm run build` 将其主题/业务插件同步到 Skill 的 `assets/block-starter` 并生成哈希清单，独立分发时包含该资产目录。
-
-## 使用
-
-需要 Node.js 22+。安装仓库依赖后：
+用户最新目标是用 Codex 完成自动 WordPress 建站并开发对应 Skill。新增独立工具位于 `src/`，项目 Skill 位于 [.agents/skills/wordpress-builder](.agents/skills/wordpress-builder/SKILL.md)。原始资料保留在下方目录；当前进展见 [实施与验收路线](docs/05-Codex实施与验收路线.md)。完整自主建站目标仍在进行。
 
 ```bash
 npm ci
-npm run typecheck
-npm run lint
-npm test
+npm run typecheck && npm run lint && npm test
 npm run build
-node .agents/skills/wordpress-builder/scripts/wp.mjs capabilities
+node .agents/skills/wordpress-builder/scripts/wp.mjs --help
 ```
 
-build 打包内容工具并校验 10 个随包官方模块的完整性。分发时复制整个 `.agents/skills/wordpress-builder/`，包括 vendor、capabilities.json、references、scripts 和许可证，不仅复制 SKILL.md。
+运行需要 Node.js 22+。构建后的 Skill 内执行文件包含运行依赖，可与 Skill 目录一起复制；Playground 只用于开发。项目内自动发现使用 `.agents/skills/wordpress-builder`，全局安装可将构建后的整个目录复制到个人 Codex skills 目录，避免覆盖已有同名 Skill。
 
-先准备新站项目文件（完整格式见 [执行接口](.agents/skills/wordpress-builder/references/runtime.md)），sourceRoot 指向新站源码目录：
+连接凭据通过环境变量配置：`WP_URL`、`WP_USERNAME`、`WP_APP_PASSWORD`；特殊 REST 根用 `WP_REST_URL`。不在命令参数、文稿或 Git 文件中放密码。
 
 ```bash
-node .agents/skills/wordpress-builder/scripts/wp.mjs project-init --plan project.json --task .wordpress-builder/new-site
-node .agents/skills/wordpress-builder/scripts/wp.mjs project-inspect --task .wordpress-builder/new-site
-node .agents/skills/wordpress-builder/scripts/wp.mjs project-status --task .wordpress-builder/new-site
+node .agents/skills/wordpress-builder/scripts/wp.mjs doctor --task .wordpress-builder/my-site
+node .agents/skills/wordpress-builder/scripts/wp.mjs build --plan my-site.json --task .wordpress-builder/my-site
+# 在实际草稿预览完成，且已有发布授权后：
+node .agents/skills/wordpress-builder/scripts/wp.mjs build --plan my-site.json --task .wordpress-builder/my-site --publish
 ```
 
-project-inspect 实际运行官方项目识别；项目初始化只保存契约，**不会自动创建 WordPress 或安装主题/插件**。按总编排加载对应专业模块，在实际环境执行，再通过 project-record 保存带证据的阶段结果。
+当前工具支持新页面建站、保留原文发布、首页设置、简单区块导航、带前后稿的页面编辑及图片/PDF上传。新增实际 CPT/ACF schema 发现、字段更新、原生文本字段绑定和 CSV 草稿导入，已在隔离 WordPress 实测。复杂内容局部编辑、产品模板适配、表单送达与 SEO 插件仍待实现；特色图参数已接入但尚需实测。不要将阶段能力当作整套验收通过。
 
-WordPress 内容工具另需环境变量 `WP_URL`、`WP_USERNAME`、`WP_APP_PASSWORD`，可选 `WP_REST_URL`。不要将凭据放进项目 JSON、Git 或公开证据。
+隔离测试：`npm run lab` 启动保存到 `.lab/` 的真实 WordPress；另一终端用 `npm run lab:wp -- doctor --task .lab/run-01`。`examples/` 是虚构企业资料，仅用于隔离测试。凭据和数据库不提交。实际 WP/PHP 版本须读运行证据；启动参数并非安装版本证明。
 
-```bash
-node .agents/skills/wordpress-builder/scripts/wp.mjs doctor --task .wordpress-builder/new-site
-```
+## 交接资料说明
 
-`build` 是有限原生区块页面适配器；PHP 主题由专业工作流生成与部署。整站验收和发布规则见 [release.md](.agents/skills/wordpress-builder/references/release.md)。项目回执不替代实际发布操作，也不会自动验证外部工具完成的工作。
+从「章鱼外贸 AI 工具箱」项目及当前会话整理，2026-09-08 同步。
 
-## 验证与边界
+产品目标：**用户只使用浏览器 AI Agent，就能完成标准外贸网站建设和运营。** 用户已有 WordPress 站点、主题与授权；域名、主机和任意复杂定制不是已实现能力。
 
-- `npm test`：内容工具、恢复语义、模块完整性和编排行为。
-- `npm run test:new-site`：全新临时 WordPress 数据库、独立 PHP 主题和 ACF 模型集成；默认复用本机 `.lab` 中的 ACF 插件文件，可用 `WP_TEST_ACF_PATH` 指定。不复制演示站数据库，不向生产写入。
-- `npm run reference:serve`：启动独立空白数据库的完整参考站，端口 9463；需本地 ACF、Fluent Forms、The SEO Framework，可用 `WP_TEST_PLUGINS_PATH` 指定插件根。
-- `npm run test:reference`：在上述本地站实际验证 CLI 字段/图片更新、页面/分类/文章、分页、搜索和 404。会修改此测试站内容。
-- `npm run test:theme`：历史 TerraLift 演示站隔离副本回归；依赖已有 `.lab`。
-- `npm run lab`：历史持久化实验站，实际版本以运行证据为准，不等同于新站测试。
+当前采用原生区块（Gutenberg）＋共享 WordPress 连接器＋场景 Skill。沿用用户现有主题，区块主题优先适配；ACF 与自定义内容类型按站点实际能力使用。**不把 WordPress 主题捆绑进浏览器扩展。**
 
-当前 PHP 基线的随包源码、适用条件与复现方法见 [参考站说明](.agents/skills/wordpress-builder/references/reference-site.md)。它是可改造的功能参考，不是已经完成客户品牌设计与生产验收的网站。
+## 从这里开始
 
-官方模块随包接入不代表所有工具和工作流均已行为验收。当前自动执行的是本地 triage；插件/主题/REST/运维等模块由 Codex 按需加载，核对依赖后执行。Studio、第三方 builder、任意主机自动部署、完整生产邮件送达尚不属于已交付能力。
+1. [会话决策与研究经验](docs/01-会话决策与经验.md)：为什么选择这条路线、哪些旧方案已撤回。
+2. [架构、场景与当前状态](docs/02-架构场景与当前状态.md)：能力边界、执行接口、通过及未通过的验收。
+3. [Skill 清单与迁移说明](docs/03-Skill清单与迁移.md)：5 个 WordPress Skill、21 个相关 Skill，以及接入要求。
+4. [新项目研究与实施路线](docs/04-新项目研究与实施路线.md)：接下来按什么顺序验证和开发。
+5. [原始资料索引](docs/原始资料索引.md)：逐份查阅已复制的研究、方案、源码和过程记录。
 
-新站规划默认原生区块主题 + CPT/ACF + 可选原生模板 + 必要 PHP 动态模块，允许按模块需求组合。参考源码仍是 PHP 基线；区块原型的代表性实测见 [对照报告](docs/acceptance/theme-comparison/README.md)，尚未完成完整骨架交付，不宣称生成成本或性能普遍更优。现有 `examples/terralift-ui-theme/` 是历史混搭演示，不是通用新站 starter。
+## 资料组织
 
-## 历史资料
+| 路径 | 内容 |
+| --- | --- |
+| `docs/` | 本次整合说明、原始资料索引、历史参考链接 |
+| `skills/wordpress/` | 5 个按当前运行时实际导出的 WordPress Skill 包 |
+| `skills/related/` | SEO、内容写作、网站规划、落地页等 21 个相关 Skill 包 |
+| `skills/manifest.json` | Skill 名称、内容版本、产品元数据和文件列表 |
+| `source-snapshot/docs/` | 原项目研究报告、架构方案、模块说明、截图与验收证据 |
+| `source-snapshot/process_docs/` | 历史过程记录，保留成功、失败和方案变更 |
+| `source-snapshot/src/` | 连接器、Skill 打包及关键执行代码参考 |
+| `source-snapshot/tests/` | WordPress 与工具选择、审批等测试参考 |
+| `source-snapshot/wordpress-site/` | 可选站点能力插件、开发测试夹具及已撤回主题实验源码 |
+| `archive/skill-package-versions.json` | 55 个相关历史/当前包版本记录，用于追踪，不是全部启用清单 |
+| `SYNC-MANIFEST.json` | 复制来源、逐文件 SHA-256、源分支与快照时间 |
 
-`source-snapshot/`、`skills/wordpress/`、`skills/related/`、`archive/` 和早期编号文档是原浏览器扩展与前期实验的历史快照，不是当前自动启用入口。来源索引见 [原始资料索引](docs/原始资料索引.md)，既有修复证据见 [17 号报告](docs/17-OpenAI系统审计与重构决策.md)。不运行快照内宿主构建脚本。
+以下交接内容是一次资料快照，不是自动双向同步。`source-snapshot` 本身不是独立应用，其中 TypeScript 依赖原扩展宿主和未全部复制的通用模块；不要运行快照内原项目的构建脚本。根目录新增工具使用自己的构建和测试命令。
 
-`npm run verify:snapshot` 用于原始快照校验；两个已记录的历史哈希偏差没有通过本轮重构改写或隐藏。各上游文件保持原有许可，本仓库不为全部历史资料统一重新授权。
+## 交接快照中的历史验收结论
 
-### HONGDA B2B WordPress 实施示例
+真实 WordPress API、原生区块、四页草稿、原生首页设置和简单导航分别有阶段验证；**完整真实模型自主建站尚未通过**。最后三轮模型测试已暂停，四页发布、首页与导航的完整自主执行没有完成。模型凭据已成功复用，阻塞不是用户没有配置 API。
 
-[HONGDA 新站源码与运行说明](examples/hongda-wordpress/README.md) 将用户指定参考站的信息架构和布局重新实现为 PHP 混合主题、独立业务插件、ACF 免费字段及原生 WordPress 内容。运行 `npm run hongda:serve`，预览地址为 `http://127.0.0.1:9464/`；运行 `npm run test:hongda` 验证当前隔离实例。内容和照片为待审核预览，生产发布能力不能从本地验收推导。[验收范围](docs/acceptance/0920-hongda/README.md)。
+最新边界见 [最后一轮结果](source-snapshot/docs/research/browser-wordpress-site-20260908/e2e/current-result.json)。历史文档中的“待配置模型”“已安装主题”“集成完成”等表述必须结合日期和阶段阅读，不能覆盖本说明。
 
-从交付包验证完整本地流程：`npm run hongda:e2e`。它会生成可安装主题/业务插件 ZIP，在 9466 空白实例安装，验证页面、内容维护和询盘，再恢复至独立 9467 实例比对；结束后停止本次启动的服务。每轮证据独立保存，依赖、范围和复现说明见上述 HONGDA 文档。此命令不操作现有 9464/9465，也不发布生产站。
+上段属于原浏览器扩展交接状态。当前 Codex 独立工具的新进展见 [实施与验收路线](docs/05-Codex实施与验收路线.md)、[四页真实验收](docs/06-Codex首轮真实验收.md) 和 [CMS 验收](docs/07-CMS字段与导入验收.md)。
 
-本地原生主机验证：`npm run hongda:native` 在独立 Docker PHP/Apache、MySQL 和 Mailpit 环境验证部署、SMTP 收件、数据库恢复与容器重建持久性。[实测结果与复现方法](docs/acceptance/hongda-native/README.md)。这些能力可以在本地验证，不必等正式上线；真实公网服务和外部邮箱投递另行检查。
+源工作区为 `codex/agent-workspace-sandbox`，核对 HEAD `44bf53176ef5fb3ec119046bb9fea660e1935d05`，包含大量未提交工作区内容；该 SHA 不代表已经提交了所有复制文件。目标仓库沿用现有 `main`，本次未提交、未推送、未发布 GitHub。
 
-## 可运行的 WordPress 模板站
+资料包不包含模型密钥、WordPress 应用密码、浏览器 Profile、登录 Cookie 或本地私有证书。各 Skill 和站点插件保留其原有许可证；没有为整个资料包重新授予统一许可证。第三方链接、安装量、版本与接口可用性均是历史研究信息，正式实施前重新核实。
 
-仓库包含完整区块主题、业务插件、页面/产品演示数据和图片，按 [Starter 快速开始](docs/STARTER-QUICKSTART.md) 可创建新的 WordPress/MySQL 实例，进入后台体验并改造。WordPress 核心使用官方 Docker 镜像安装，不携带线上数据库和账户。
+校验复制文件：`node scripts/verify-snapshot.mjs`。

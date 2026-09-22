@@ -1,21 +1,18 @@
 {
-  "testedAt": "2026-09-21T17:28:23.327Z",
-  "scope": "real-incremental-release-files-only-not-full-deployment",
+  "testedAt": "2026-09-21T18:27:19.900Z",
+  "scope": "real-incremental-release-theme-files-only-not-full-deployment",
+  "kind": "theme",
   "domain": "mediumblue-quail-505146.hostingersite.com",
-  "uploaded": [
-    "templates/archive-hd_product.html",
-    "templates/archive-hd_solution.html",
-    "templates/home.html",
-    "templates/index.html",
-    "templates/search.html",
-    "templates/taxonomy-hd_category.html"
-  ],
-  "backupDir": "/.wordpress-builder/hostinger/backups/incremental-1790011564031",
+  "uploaded": [],
+  "backupDir": null,
   "converged": true,
-  "postOverrides": [],
+  "verifiedBinaries": [
+    "assets/fonts/body.ttf",
+    "assets/fonts/display.ttf"
+  ],
+  "dbOverridePaths": [],
   "limitations": [
     "No database writes: enquiries untouched by construction",
-    "Binary files not transported",
     "Rendered-page verification is a separate live check"
   ],
   "releaseApproval": false

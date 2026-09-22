@@ -1,7 +1,5 @@
 # 视觉设计系统与 Pattern 库方案
 
-> 历史资料：本文件保留当时方案与验收，不是当前执行规范。当前仅支持新站，入口见 [系统架构](ARCHITECTURE.md) 与 [新站总编排](../.agents/skills/wordpress-builder/SKILL.md)。
-
 研究日期：2026-09-19（Asia/Shanghai / CST）。
 
 触发原因：延续《12-WordPress-AI建站生态研究》的结论，把 AI 建站方案缺失的设计层落成可执行规格。本文展开 12 层方案中的第 1-9 层；第 10-12 层只在路线图中作为后续方向提及。

@@ -1,5 +1,4 @@
 <?php
-if (!defined('ABSPATH')) { exit; }
 require_once get_theme_file_path( 'patterns.php' );
 
 add_action('after_setup_theme', function () {
@@ -62,80 +61,3 @@ add_action('after_setup_theme', function () {
 });
 
 
-
-/** PHP pages render their content before this shell, like template-canvas.php.
- * Never render a part twice: block rendering can enqueue modules or run filters.
- */
-function tl_render_document(string $content): void {
-    ob_start();
-    block_template_part('header');
-    $header = (string) ob_get_clean();
-    ob_start();
-    block_template_part('footer');
-    $footer = (string) ob_get_clean();
-    ?>
-    <!DOCTYPE html>
-    <html <?php language_attributes(); ?>>
-    <head>
-        <meta charset="<?php bloginfo('charset'); ?>">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <?php wp_head(); ?>
-    </head>
-    <body <?php body_class(); ?>>
-    <?php wp_body_open(); ?>
-    <a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
-    <div class="wp-site-blocks">
-        <?php echo $header, $content, $footer; // Already rendered/escaped by templates and WordPress. ?>
-    </div>
-    <?php wp_footer(); ?>
-    </body>
-    </html>
-    <?php
-}
-
-function tl_term_url(WP_Term $term): string {
-    $url = get_term_link($term);
-    return is_wp_error($url) ? (string) get_post_type_archive_link('oct_product') : $url;
-}
-
-/** Preserve explicitly configured external enquiry channels; add context locally. */
-function tl_enquiry_url(int $product_id, string $configured = ''): string {
-    $contact = tl_page_url('terralift-contact');
-    if ($configured === '' || $configured === '/contact/' || $configured === '/terralift-contact/') {
-        $configured = $contact;
-    }
-    if (str_starts_with($configured, '/') && !str_starts_with($configured, '//')) {
-        $configured = home_url($configured);
-    }
-    if (untrailingslashit($configured) === untrailingslashit($contact)) {
-        return add_query_arg('product', $product_id, $contact);
-    }
-    return $configured;
-}
-
-/** Normalize theme block links without writing over editor-owned block content. */
-add_filter('render_block', static function (string $html): string {
-    if (!class_exists('WP_HTML_Tag_Processor')) { return $html; }
-    $tags = new WP_HTML_Tag_Processor($html);
-    while ($tags->next_tag('a')) {
-        $href = $tags->get_attribute('href');
-        if (!is_string($href) || !str_starts_with($href, '/') || str_starts_with($href, '//')) { continue; }
-        if ($href === '/terralift-equipment/' || $href === '/products/') {
-            $url = get_post_type_archive_link('oct_product');
-        } elseif ($href === '/contact/' || $href === '/terralift-contact/') {
-            $url = tl_page_url('terralift-contact');
-        } else {
-            $url = home_url($href);
-        }
-        $tags->set_attribute('href', $url);
-    }
-    return $tags->get_updated_html();
-}, 20);
-
-// The previous catalogue page remains in the CMS; its public URL is an alias.
-add_action('template_redirect', static function (): void {
-    if (is_page('terralift-equipment') && !is_preview()) {
-        $archive = get_post_type_archive_link('oct_product');
-        if ($archive) { wp_safe_redirect($archive, 301); exit; }
-    }
-});

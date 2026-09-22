@@ -1,49 +1,73 @@
 ---
 name: wordpress-builder
-description: 编排官方 WordPress 专业 Skill 和项目工具，从干净环境新建 ACF 驱动的企业网站，并维护本方案创建的网站。用于新站规划、主题与业务插件开发、内容录入、验收和发布；暂不接管旧主题或 Elementor 等既有编辑器站点。
+description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 阶段管线，把企业资料建成原生区块页面与 ACF 驱动的自由 HTML 模板，HTML 预览门先行，预览、修订后发布并配置首页与导航，支持任务恢复、分层部署和改动核验。
 ---
 
-# WordPress 新站总编排
+# Codex WordPress 建站：8 阶段设计工程管线
 
-用当前 Codex 完成编排。官方专业模块承担具体工作流，项目工具承担内容写入与状态记录。先读 [能力接入与交接](references/orchestration.md)，只加载当前任务所需专业模块，不一次读取全部 Skill。
+使用本 Skill 目录的 `scripts/wp.mjs` 调用独立 WordPress 工具。命令为 `node "<本 Skill 绝对目录>/scripts/wp.mjs" ...`。若文件缺失，在本项目根目录执行 `npm ci && npm run build`；不要调用资料快照中的扩展构建脚本。
 
-## 新环境依赖
+先阅读 [执行接口](references/runtime.md)。需要整站任务时阅读 [建站与验收](references/site-workflow.md)。设计 token、Pattern、评分卡与反 AI 味规则见 [设计系统与视觉 QA](references/design.md)。历史 `selectTools/wpRead/wpWriteContent` 是另一个宿主的接口，不在 Codex 里直接调用。
 
-完整仓库按根 AGENTS.md 执行 harness:doctor / harness:setup；Node 缺失时先按实际系统配置官方 Node.js 22+。仅安装当前任务需要的工具，避免将全部专业 Skill 的可选依赖都变成必装项。独立 Skill 包不包含仓库 Docker 启动器，按 references/runtime.md 和专业模块前置条件核对，不能调用不存在的仓库脚本。Hostinger 初始化脚本随 Skill 提供，见下文。
+按顺序执行 8 个阶段。阶段结论写入任务目录；恢复任务时先读取已有阶段文件、`status` 和远端状态，再从下一项未完成操作继续，不重复已确认的写入。
 
-## 范围与入口
+生成或修改主题模板与 PHP 代码时，必读 [自由模板与主题代码工程规范](references/theme-code.md)——模板优先级、文档壳、ACF REST 细节、CSS 纪律、部署坑全部来自隔离站实测。
 
-- 项目 `AGENTS.md` 是日常开发入口。新站 Discover 按 [项目指令规范](references/project-instructions.md) 建立或合并客户源码根的 AGENTS.md，记录真实目录、环境、命令及 Skill/质量规范路由；不把本工具仓库约定直接复制给客户。
+## 阶段 1：Brief
 
-- 新站从可控制的干净 WordPress 环境开始，ACF 为本方案要求。支持后续修改和升级本方案创建的站点；旧站接管、第三方 builder 迁移不在当前范围。
-- 新站必须有源码与运行环境控制能力。只有 REST 凭据不能完成主题/插件部署，准确指出缺少的能力，不擅自把其他网站清空为“新站”。
-- `wp` 表示 `node "<本 Skill 绝对目录>/scripts/wp.mjs"`。完整接口见 [runtime.md](references/runtime.md)。运行文件缺失时，在本工具仓库执行 `npm ci && npm run build`；独立分发包缺文件时报告包不完整。
-- `wp capabilities` 校验固定版本模块。`project-init` 保存新站契约，`project-inspect` 实际调用官方本地项目识别，`project-status` 恢复进度。下载、校验通过、工具可用、工作验收通过是不同状态。
+1. 从当前用户任务确定建站范围、目标语言、企业事实、素材、询盘入口和发布授权。会话已有授权持续有效，不按每页重复确认；缺失业务事实标记待补，不编造认证、客户或性能参数。测试企业必须明确标注为示例。
+2. 记录资料路径、参数来源、图片来源、语言、转化目标、已授权/未授权范围和缺失项。来源文件要列入后续计划的 `sourceFiles`。
+3. 连接从环境读取 `WP_URL`、`WP_USERNAME`、`WP_APP_PASSWORD`，可选 `WP_REST_URL`。不要输出密码、读取无关应用凭据或写入计划。
 
-## 按目标选择流程
+## 阶段 2：Sitemap
 
-1. **规划新站**：读取企业事实与已有授权，明确内容、语言、编辑方式、询盘入口和目标环境。先按 [搜索质量规划](references/search-quality.md) 确定买家任务、页面独立价值和事实来源，再看 [architecture.md](references/architecture.md)，默认采用原生区块主题，组合 CPT/ACF、原生模板和必要 PHP 动态块；经典 PHP 基线或特殊整页 PHP 按明确场景保留，再看 [site-workflow.md](references/site-workflow.md)。代表页区块骨架已随包提供，但完整客户站仍需按 Brief 实施；适用条件与可运行参考见 [reference-site.md](references/reference-site.md)，不把默认选择说成普适最优。
-2. **执行专业工作**：完整 B2B 外贸站先读 [逐页实施策略](references/b2b-pages.md)，明确每页的买家任务、数据来源与实现方式。按能力表选择模块，交付目标、文件/数据范围、实际版本和前置成果。专业模块使用所需工具完成工作；主编排检查结果与跨模块业务链。
-3. **维护本方案建成的站点**：读取已有契约和远端状态，只完成本次变更及相关验证；不要为改一个字段重走整站流程。主题增量更新前按 [release.md](references/release.md) 的模板覆盖预检（本地 `starter:update-preflight` 或远端 `hostinger:remote-preflight`，均只读）核对冲突后再处置。已完成发布的迭代保留原任务，使用独立迭代目录与新的基线。
-4. **审计/研究**：只收集证据和输出结论，除非任务同时授权修改。不能把研究计划写成通过记录。
+1. 根据采购者动作列出页面清单：至少明确首页、产品、关于、联系；按业务补充案例、服务和详情入口。四页是标准起点，不是完成定义。
+2. 为每页定义唯一主转化目标和次级动作（询盘、规格下载、电话、表单、产品入口）。排除没有企业事实支撑的页面。
+3. 输出导航层级：一级导航、页脚入口、产品/案例归类和跨页互链关系。原生页面标题由主题处理，正文标题从 H2 开始。
 
-## 工作分工
+## 阶段 3：内容模型
 
-- CPT、分类、业务字段和升级逻辑归业务插件；模板与展示配置归主题。ACF/正文/原生主图不重复保存同一数据。见 [content.md](references/content.md)。
-- 主题实现读 [theme-code.md](references/theme-code.md)：默认加载官方区块主题流程，按需组合 Patterns、动态块与插件模块。一个产物明确所有者，允许模块协作，不让多个流程相互覆盖同一模板。PHP 动态渲染不要求改用经典主题。
-- 搜索质量从 Discover 开始执行 [search-quality.md](references/search-quality.md)，不等页面完成才补关键词或插件；公开页面工程读取 [SEO 规范](references/seo.md)：服务端 HTML、真实链接、分页/筛选、canonical、结构化数据与性能；不要求静态导出，也不承诺收录。
-- 设计与素材按 [design.md](references/design.md)、[media.md](references/media.md) 执行。HTML 预览按需要使用，真实 WordPress 预览是验收对象。
-- 插件安装与配置先读 [插件基线](references/plugins.md)，使用随包机器清单明确必装、按环境配置和仅测试依赖；安装、激活、配置、业务验收分别记录。
-- 本方案新站统一使用 Rank Math Free 作为唯一 SEO 输出负责人，按 [SEO 规范](references/seo.md) 初始化并验收，不做历史 SEO 数据/旧插件兼容。表单按项目需求选定；ACF PRO 专属能力必须先核对授权。
+1. 用 `doctor --task <目录>` 读取实际账号权限、主题、区块及内容模型；用 `content-type --type <实际类型>` 读取 `/wp/v2/types` 声明和真实写入 schema。不能把 unknown 当成不支持。
+2. 产品、案例或批量导入任务阅读 [内容模型与导入](references/content.md)。先用实际 CPT/ACF 字段建立产品与案例结构，再 `content-plan/content-apply`；字段更新可保留完整原文。不要为使用工具擅自重注册客户内容模型或安装测试插件。ACF 必装；字段组开启 `show_in_rest` + `allow_in_bindings`；REST 写图片字段传附件 ID（GET 返回的也是 ID，前台渲染自动转 URL）。
+3. 映射每个页面的文字、图片、参数表和内部引用；素材使用 `upload-media` 上传已确认的本地图片/PDF，再用实际 mediaId 建图像块。不要把测试截图或生成图冒充企业实拍。参考 [素材说明](references/media.md)。
 
-## 写入、交接与交付
+## 阶段 4：设计系统
 
-- 实际执行接口、权限、字段 schema 先确认，再写入。保留无关内容，不编造企业认证、客户或产品参数。
-- 内容写入沿用 plan → apply → readback。未知结果先协调日志与远端状态，不换一个工具重复写入。官方工具执行的写操作也要保存回执；项目 Journal 不会自动拦截所有外部工具。
-- 已有授权持续有效。无关的上游安装、遥测、通知或发布动作不因读取 Skill 自动获得授权。
-- 专业模块返回变更、检查结果、证据和缺口。阶段 `project-record` 只记录有文件证据的声明；不能替代真实验收或作为发布授权。
-- 进入 Hostinger 部署任务时先执行 `node "<本 Skill 绝对目录>/scripts/hostinger-setup.mjs"` 检查工具；缺少 CLI 且已有部署/配置授权时加 `--install`，再用 `--connect` 验证只读账户访问。首次官方浏览器登录由用户完成；不索取聊天 Token，不因 CLI 可用就跳过目标/备份/发布验收。只加载 Skill 或做本地设计时不主动安装主机工具，MCP 可选。无 Homebrew/Windows 的官方二进制路径按 hostinger reference 执行，不能把提示当安装成功。
-- 当前唯一公网部署目标为 Hostinger Managed WordPress，先读 [Hostinger 部署规范](references/hostinger.md)，再按需使用官方 wp-wpcli-and-ops。CLI/API 管托管资源，SSH/WP-CLI 管文件与 WordPress；MCP 可选，不新增必装 AI 插件。当前参考站已验证 CLI TUS + 一次性 cron/WP-CLI 的首次部署；通用远程执行器和 SSH 路径尚未验收，不把本地成功或 build --publish 当成主机部署成功。
-- 发布前读 [release.md](references/release.md)。验证后台修改字段/图片/正文后的回显、菜单、链接、询盘、移动端和恢复；代码检查或 API 成功不足以证明整站完成。
-- 整站验证或修复后，按 [验证与经验沉淀](references/verification.md) 核对询盘、编辑和恢复证据；已验证的通用做法回写相应 reference，版本特例保留边界。
-- 交付区分已完成、部分验证和未覆盖。保存实际核心/PHP/插件版本、源码状态与证据；实验站启动参数不能代替实测版本。
+1. 读取实际主题 `theme.json`、模板和已注册区块；确认色板、字号、间距、行高、圆角和阴影 token。默认保留当前主题；注册区块存在不代表任意设计属性可用。
+2. 优先使用主题已注册 block pattern。没有合适主题时，仅在授权范围内按 [设计系统与视觉 QA](references/design.md) 生成 token 化 Block Theme，并保留证据与恢复方式。
+3. 显式加载本地 `frontend-design` skill 获取美学方向；再按 `references/design.md` 把方向落到 WordPress token、Pattern、类名和视觉 QA。两者互补：frontend-design 管方向与自批评，design.md 管工程落地。
+4. 先完成一页视觉验证，再批量扩展。每个页面只保留一个签名视觉焦点，其余区块服从统一节奏。
+5. 复杂视觉页面（首页、详情页、分类页、专题页）先过 HTML 预览门：产出 `design/preview-[page]-v{n}.html` 静态预览（复用主题 token 的类名与视觉、每个待编辑元素带 `data-field="acf字段名"`），浏览器桌面 + 390px QA 通过并经用户确认后再转 WordPress 模板；`data-field` 与 ACF 字段名一一对应，转模板时不允许改名或遗漏。
+
+## 阶段 5：页面生成
+
+1. 按现有计划文件执行 `build --plan <文件> --task <目录>` 创建草稿，并用实际 ID 补齐内部链接。`page:key` 只用于计划内页面引用；全部 ID 返回后必须看到最终互链，临时内容不可进入验收。
+2. 新任务先读取现有页面以避免覆盖。当前批量 build 面向新页面；已有同 slug 页面会拒绝创建，不能换 slug 偷绕。计划一经执行固定，恢复使用相同文件和目录；不能删任务目录重建。
+3. 改稿先 `read-page` 取得指纹，使用 `page-edit-plan` 生成完整前后稿并审阅，再 `page-edit-apply`。编辑计划替换整个正文，输入需保留无关内容；局部包含未适配区块的复杂页面先研究保留方法。
+4. 结果未知时读取操作记录和远端状态，不重复 POST；已收到响应但回读失败，重复相同命令只继续回读。锁冲突须先核对 owner.json 中的真实进程，不能仅凭文件时间删锁。
+5. 复用型视觉页面（产品/案例详情、产品分类等）默认走 D 模式自由模板：主题根目录 `single-{cpt}.php` / `taxonomy-{tax}.php`，完整文档壳 + `block_template_part()` + `get_field()` 读 ACF，自由 HTML 复用主题 token；同时删除同层级 `.html` 区块模板（区块模板优先级更高，会压过 PHP）。模板选择规则与实测优先级见 docs/14。需要后台逐篇切换时再注册 `templates/*.html` customTemplates + Block Bindings（B 模式）。
+6. 页面级 ACF 字段组跟随模板成对输出（`page-*.php` + `acf-*.php`，location 绑定 `page_template`），CPT 字段组集中注册并全部开启 `show_in_rest` + `allow_in_bindings`；图片字段 `return_format: url`，REST 写入传附件 ID。询盘表单优先 Fluent Forms 短代码，不手写表单处理。
+7. 页面级自由模板命名带版本号（`page-contact-v1.php`），迭代出 v2 而非覆盖 v1；新版本页面切换并验证通过后再删旧文件。模板层级模板（single/taxonomy）由 git 管版本，不加版本号。
+8. 自由模板必须过 [主题代码工程规范](references/theme-code.md) 的基线：完整文档壳（禁 `get_header()`，用 `block_template_part()` + `wp_head()/wp_footer()`）、ABSPATH 守卫、`title-tag` 支持、skip link、可移植路由 helper、ACF 安全读取 helper。站点首页用 `front-page.php` 委托（自定义页面模板对首页无效，实测）。
+9. 部署模板后按 [theme-code 规范](references/theme-code.md) 第 7 节验证：隔离站模板部件改动必须整进程重启 Playground 再验；交付前跑第 8 节检查清单。
+
+## 阶段 6：视觉 QA
+
+1. 使用可用浏览器工具登录并检查真实草稿；桌面与 390px 都截图并保存到任务目录。API 成功不能替代截图和编辑器检查。
+2. 读取原生编辑器有效块、单一 H1、图片真实加载、按钮状态、焦点、横向溢出和链接目标。按 [设计系统与视觉 QA](references/design.md) 的 6 维×4 分评分卡打分。
+3. 评分低于 20/24 时按评分卡定位问题，只做定点修改后复测；每轮记录截图路径、各维得分、问题、修改和复测结果。最多 3 轮；仍未通过如实报告阻塞，不降标交付。
+
+## 阶段 7：修订
+
+1. 评分卡通过后做最后文案与结构微调：检查首屏具体性、禁用词、行业语调、段落长度和标题表达，遵循 `references/design.md` 反 AI 味规则。
+2. 补齐或修正图片 alt、外链 rel/target、内链锚点与按钮文字；保留企业事实来源，不借修订新增未授权声明。
+3. 文案改动进入真实页面后复核关键首屏和移动端版式；改动超过微调范围时回到阶段 5 的改稿流程。
+
+## 阶段 8：发布
+
+1. 已授权发布时执行同一命令加 `--publish`。工具只改变状态、保留正文，并设置站点标题、描述和首页。
+2. 导航使用 `template-parts` 中的真实 ID 和唯一导航原文生成 `navigation-plan`；审阅影响后在既有授权范围执行 `navigation-apply`。它影响所有引用该模板部件的页面。
+3. 检查已发布前台、首页、导航的实际链接与手机菜单开关；核对 `<title>`、无 theme-compat 兜底标记、REST 无 `source: custom` 模板覆盖（[theme-code 检查清单](references/theme-code.md) 第 8 节）。交付真实 URL、ID、状态、评分卡、截图证据目录，以及仍未验证的业务要求。表单创建不等于邮件送达，静态产品表格不等于 ACF 动态绑定。
+4. 发布写入结果未知时，先读操作记录、远端状态和前台证据，再决定是否只回读或继续；不要凭猜测重复 POST。
+
+当前工具完成度以本仓库验收记录为准。CMS/ACF 文本字段、原生字段绑定与 CSV 草稿导入已有隔离站实测；复杂 ACF 字段、产品模板设计、复杂页面局部编辑、表单送达和 SEO 插件写入仍需后续实现或具体适配。继续推进完整任务，同时明确具体缺口。

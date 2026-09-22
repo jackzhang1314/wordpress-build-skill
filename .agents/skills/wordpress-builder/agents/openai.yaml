@@ -1,4 +1,4 @@
 interface:
-  display_name: "WordPress 新站编排"
-  short_description: "整合官方专业 Skill，从干净环境构建 ACF 网站并验证交付"
-  default_prompt: "使用 $wordpress-builder，按新站范围选择官方专业模块，完成内容模型、主题、内容录入和真实验收。"
+  display_name: "WordPress 建站"
+  short_description: "用 Codex 创建原生 WordPress 页面、核验发布与导航，并从保存的任务进度继续"
+  default_prompt: "使用 $wordpress-builder，根据企业资料完成 WordPress 建站，并验证真实页面、发布结果和任务恢复。"

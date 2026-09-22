@@ -42,7 +42,7 @@ add_action( 'init', function () {
 <h1 class="wp-block-heading tl-hero-title" style="font-size:clamp(2.6rem, 5.4vw, 4.4rem);font-weight:800;line-height:.95;letter-spacing:-.035em;text-transform:uppercase">Compact machinery sourced around your project</h1>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"style":{"typography":{"fontSize":"var:preset|font-size|large","lineHeight":"1.55"},"color":{"text":"rgba(255,255,255,.74)"},"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
-<p style="color:rgba(255,255,255,.74);font-size:var(--wp--preset--font-size--large);line-height:1.55;margin-top:var(--wp--preset--spacing--40)">Tell us the working width, tonnage and site conditions. Use this demonstration to explore model profiles and enquiry structure.</p>
+<p style="color:rgba(255,255,255,.74);font-size:var(--wp--preset--font-size--large);line-height:1.55;margin-top:var(--wp--preset--spacing--40)">Tell us the working width, tonnage and site conditions. We match verified stock and specification before you commit a budget.</p>
 <!-- /wp:paragraph -->
 <!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}}} -->
 <div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--50)">
@@ -73,30 +73,30 @@ add_action( 'init', function () {
 <!-- wp:group {"className":"tl-stat","style":{"border":{"width":"1px","color":"rgba(255,255,255,.14)","radius":"var:preset|custom|radius|sm"},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}}} -->
 <div class="wp-block-group tl-stat has-border-color" style="border-color:rgba(255,255,255,.14);border-width:1px;border-radius:var(--wp--custom--radius--sm);padding:var(--wp--preset--spacing--40)">
 <!-- wp:paragraph {"style":{"typography":{"fontFamily":"var:preset|font-family|mono","fontSize":"1.6rem","fontWeight":"700","lineHeight":"1"},"color":{"text":"var:preset|color|safety"}}} -->
-<p class="has-text-color" style="color:var(--wp--preset--color--safety);font-family:var(--wp--preset--font-family--mono);font-size:1.6rem;font-weight:700;line-height:1">Enquiry</p>
+<p class="has-text-color" style="color:var(--wp--preset--color--safety);font-family:var(--wp--preset--font-family--mono);font-size:1.6rem;font-weight:700;line-height:1">72 h</p>
 <!-- /wp:paragraph -->
 <!-- wp:paragraph {"style":{"typography":{"fontSize":".82rem"},"color":{"text":"rgba(255,255,255,.66)"},"spacing":{"margin":{"top":"var:preset|spacing|20"}}}} -->
-<p style="color:rgba(255,255,255,.66);font-size:.82rem;margin-top:var(--wp--preset--spacing--20)">Share your requirements</p>
+<p style="color:rgba(255,255,255,.66);font-size:.82rem;margin-top:var(--wp--preset--spacing--20)">Quote turnaround</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"tl-stat","style":{"border":{"width":"1px","color":"rgba(255,255,255,.14)","radius":"var:preset|custom|radius|sm"},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}}} -->
 <div class="wp-block-group tl-stat has-border-color" style="border-color:rgba(255,255,255,.14);border-width:1px;border-radius:var(--wp--custom--radius--sm);padding:var(--wp--preset--spacing--40)">
 <!-- wp:paragraph {"style":{"typography":{"fontFamily":"var:preset|font-family|mono","fontSize":"1.6rem","fontWeight":"700","lineHeight":"1"},"color":{"text":"var:preset|color|safety"}}} -->
-<p class="has-text-color" style="color:var(--wp--preset--color--safety);font-family:var(--wp--preset--font-family--mono);font-size:1.6rem;font-weight:700;line-height:1">Review</p>
+<p class="has-text-color" style="color:var(--wp--preset--color--safety);font-family:var(--wp--preset--font-family--mono);font-size:1.6rem;font-weight:700;line-height:1">CE / EPA</p>
 <!-- /wp:paragraph -->
 <!-- wp:paragraph {"style":{"typography":{"fontSize":".82rem"},"color":{"text":"rgba(255,255,255,.66)"},"spacing":{"margin":{"top":"var:preset|spacing|20"}}}} -->
-<p style="color:rgba(255,255,255,.66);font-size:.82rem;margin-top:var(--wp--preset--spacing--20)">Confirm destination requirements</p>
+<p style="color:rgba(255,255,255,.66);font-size:.82rem;margin-top:var(--wp--preset--spacing--20)">Market-ready options</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"tl-stat","style":{"border":{"width":"1px","color":"rgba(255,255,255,.14)","radius":"var:preset|custom|radius|sm"},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}}} -->
 <div class="wp-block-group tl-stat has-border-color" style="border-color:rgba(255,255,255,.14);border-width:1px;border-radius:var(--wp--custom--radius--sm);padding:var(--wp--preset--spacing--40)">
 <!-- wp:paragraph {"style":{"typography":{"fontFamily":"var:preset|font-family|mono","fontSize":"1.6rem","fontWeight":"700","lineHeight":"1"},"color":{"text":"var:preset|color|safety"}}} -->
-<p class="has-text-color" style="color:var(--wp--preset--color--safety);font-family:var(--wp--preset--font-family--mono);font-size:1.6rem;font-weight:700;line-height:1">Compare</p>
+<p class="has-text-color" style="color:var(--wp--preset--color--safety);font-family:var(--wp--preset--font-family--mono);font-size:1.6rem;font-weight:700;line-height:1">1:1</p>
 <!-- /wp:paragraph -->
 <!-- wp:paragraph {"style":{"typography":{"fontSize":".82rem"},"color":{"text":"rgba(255,255,255,.66)"},"spacing":{"margin":{"top":"var:preset|spacing|20"}}}} -->
-<p style="color:rgba(255,255,255,.66);font-size:.82rem;margin-top:var(--wp--preset--spacing--20)">Example model profiles</p>
+<p style="color:rgba(255,255,255,.66);font-size:.82rem;margin-top:var(--wp--preset--spacing--20)">Spec reviewed before offer</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
@@ -245,7 +245,7 @@ HTML,
 <h3 class="wp-block-heading" style="font-size:1.1rem;font-weight:700">Match and compare</h3>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"style":{"typography":{"fontSize":".92rem","lineHeight":"1.6"},"color":{"text":"rgba(255,255,255,.72)"}}} -->
-<p style="color:rgba(255,255,255,.72);font-size:.92rem;line-height:1.6">Compare example candidates and the information needed for a real quotation.</p>
+<p style="color:rgba(255,255,255,.72);font-size:.92rem;line-height:1.6">Two or three verified candidates with spec sheets side by side.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->
@@ -309,7 +309,7 @@ HTML,
 <!-- wp:details -->
 <details class="wp-block-details"><summary>Do machines meet CE or EPA rules?</summary>
 <!-- wp:paragraph -->
-<p>This demonstration does not represent certification. Obtain model-specific documentation from the supplier before purchasing.</p>
+<p>CE-marked and EPA-tier options exist on selected models; availability is confirmed per unit before quotation.</p>
 <!-- /wp:paragraph -->
 </details>
 <!-- /wp:details -->
@@ -333,7 +333,7 @@ HTML,
 <h2 class="wp-block-heading" style="font-size:clamp(1.6rem, 2.8vw, 2.2rem);font-weight:800;line-height:1.05;letter-spacing:-.02em">Send the working width and tonnage today</h2>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"style":{"typography":{"fontSize":"var:preset|font-size|medium"},"color":{"text":"rgba(255,255,255,.86)"}}} -->
-<p style="color:rgba(255,255,255,.86);font-size:var(--wp--preset--font-size--medium)">Build an enquiry around your application, equipment size and destination.</p>
+<p style="color:rgba(255,255,255,.86);font-size:var(--wp--preset--font-size--medium)">A sourced shortlist with verified specification within 72 hours.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->
@@ -377,7 +377,7 @@ HTML,
 <!-- wp:column {"className":"tl-trust-item"} -->
 <div class="wp-block-column tl-trust-item">
 <!-- wp:paragraph {"style":{"typography":{"fontFamily":"var:preset|font-family|mono","fontSize":"1.4rem","fontWeight":"700","lineHeight":"1"},"color":{"text":"var:preset|color|safety"}}} -->
-<p class="has-text-color" style="color:var(--wp--preset--color--safety);font-family:var(--wp--preset--font-family--mono);font-size:1.4rem;font-weight:700;line-height:1">Enquiry</p>
+<p class="has-text-color" style="color:var(--wp--preset--color--safety);font-family:var(--wp--preset--font-family--mono);font-size:1.4rem;font-weight:700;line-height:1">72 h</p>
 <!-- /wp:paragraph -->
 <!-- wp:paragraph {"style":{"typography":{"fontSize":".85rem"},"color":{"text":"rgba(255,255,255,.7)"}}} -->
 <p style="color:rgba(255,255,255,.7);font-size:.85rem">Shortlist turnaround</p>

@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Free-HTML product detail template (D mode).
  *
- * Data: ACF fields via tl_field(). Layout: free HTML/CSS using theme tokens.
+ * Data: ACF fields via get_field(). Layout: free HTML/CSS using theme tokens.
  * Shell: full document skeleton with wp_head()/wp_footer() and block template
  * parts. get_header() does NOT resolve parts/*.html in block themes; calling it
  * falls back to wp-includes/theme-compat/header.php and breaks the design.
@@ -16,14 +16,24 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 ?>
-<?php ob_start(); ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
+<?php block_template_part( 'header' ); ?>
 
 <?php
 
 while ( have_posts() ) :
 	the_post();
 
-	$f = static fn( string $key ): string => trim( (string) tl_field( $key ) );
+	$f = static fn( string $key ): string => trim( (string) get_field( $key ) );
 	$model       = $f( 'oct_model' );
 	$material    = $f( 'oct_material' );
 	$moq         = $f( 'oct_moq' );
@@ -35,7 +45,7 @@ while ( have_posts() ) :
 	$gallery_img = $f( 'oct_gallery_image' );
 	$gallery_alt = $f( 'oct_gallery_alt' ) ?: get_the_title();
 	$cta_text    = $f( 'oct_cta_text' ) ?: 'Request a quote';
-	$cta_url     = tl_enquiry_url( get_the_ID(), $f( 'oct_cta_url' ) );
+	$cta_url     = $f( 'oct_cta_url' ) ?: tl_page_url( 'terralift-contact' );
 
 	$specs = array_values(
 		array_filter(
@@ -55,7 +65,6 @@ while ( have_posts() ) :
 	?>
 
 	<main id="tl-main" class="tl-fx">
-        <p class="tl-demo-notice">Demonstration model. Images and specifications are illustrative; availability and certification are not represented.</p>
 		<!-- Hero -->
 		<section class="tl-fx-hero">
 			<div class="tl-fx-hero-inner">
@@ -87,8 +96,8 @@ while ( have_posts() ) :
 						<?php the_post_thumbnail( 'large', array( 'class' => 'tl-fx-hero-img' ) ); ?>
 					<?php endif; ?>
 					<figcaption class="tl-fx-hero-badge">
-						<span>Illustrative model</span>
-						<span>Demo specifications</span>
+						<span>CE · EPA</span>
+						<span>Export ready</span>
 					</figcaption>
 				</figure>
 			</div>
@@ -114,6 +123,7 @@ while ( have_posts() ) :
 				<div class="tl-fx-highlights-inner">
 					<?php foreach ( $highlights as $i => $text ) : ?>
 						<article class="tl-fx-highlight">
+							<p class="tl-fx-highlight-num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></p>
 							<p class="tl-fx-highlight-text"><?php echo esc_html( $text ); ?></p>
 						</article>
 					<?php endforeach; ?>
@@ -141,7 +151,7 @@ while ( have_posts() ) :
 		<section class="tl-fx-cta">
 			<div class="tl-fx-cta-inner">
 				<h2 class="tl-fx-cta-title">Ready to source this machine?</h2>
-				<p class="tl-fx-cta-sub">Include your target specifications, quantity and destination in your enquiry.</p>
+				<p class="tl-fx-cta-sub">Send us your target specs and destination port — we reply within one business day.</p>
 				<a class="tl-fx-btn tl-fx-btn--dark" href="<?php echo esc_url( $cta_url ); ?>"><?php echo esc_html( $cta_text ); ?></a>
 			</div>
 		</section>
@@ -149,4 +159,7 @@ while ( have_posts() ) :
 
 <?php endwhile; ?>
 
-<?php tl_render_document( (string) ob_get_clean() ); ?>
+<?php block_template_part( 'footer' ); ?>
+<?php wp_footer(); ?>
+</body>
+</html>

@@ -1,7 +1,5 @@
 # Codex WordPress 建站实施与验收
 
-> 历史资料：本文件保留当时方案与验收，不是当前执行规范。当前仅支持新站，入口见 [系统架构](ARCHITECTURE.md) 与 [新站总编排](../.agents/skills/wordpress-builder/SKILL.md)。
-
 2026-09-08。用户新目标：用 Codex 结合交接方案摸索完整自动建站，并开发对应 Skill。此目标更新原先“不默认依赖 Codex”的宿主约束；原始快照保持不变。
 
 ## 交付范围

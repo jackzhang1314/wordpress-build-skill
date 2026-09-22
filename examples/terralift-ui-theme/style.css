@@ -6,7 +6,7 @@ Description: Token-driven industrial design system for native WordPress block si
 Requires at least: 6.7
 Tested up to: 7.1
 Requires PHP: 8.0
-Version: 0.4.1
+Version: 0.4.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: terralift-ui
@@ -89,7 +89,7 @@ img { height: auto; }
    ============================================================ */
 .tl-site-header {
   background: rgba(255, 255, 255, .94);
-  /* No backdrop-filter: it traps the fixed navigation overlay in the header. */
+  backdrop-filter: blur(14px);
   position: sticky;
   top: 0;
   z-index: 999;
@@ -546,7 +546,6 @@ body.home .entry-content > .wp-block-group:first-child {
    ========================================================================== */
 
 .tl-fx { padding-bottom: 0; }
-.tl-fx, .tl-fx *, .tl-fx *::before, .tl-fx *::after { box-sizing: border-box; }
 .tl-fx-hero {
   /* Panel gradient + signal glow; brand colors come from theme.json presets.
      White/ink rgba() overlays are contextual alpha values (glass badges). */
@@ -569,13 +568,13 @@ body.home .entry-content > .wp-block-group:first-child {
 .tl-fx-eyebrow { color: var(--tl-safety); margin: 0; }
 .tl-fx-title {
   font-family: var(--tl-display);
-  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+  font-size: clamp(2.4rem, 5.2vw, 4rem);
   font-weight: 800;
-  line-height: 1.08;
+  line-height: .96;
   letter-spacing: -.035em;
-  text-transform: none;
+  text-transform: uppercase;
   margin: 0;
-  color: var(--tl-base);
+  color: #fff;
 }
 .tl-fx-lead { font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.65; color: rgba(241, 242, 240, .82); margin: 0; max-width: 56ch; }
 .tl-fx-chips { display: flex; flex-wrap: wrap; gap: .6rem; list-style: none; margin: 0; padding: 0; }
@@ -1071,27 +1070,3 @@ body.home .entry-content > .wp-block-group:first-child {
 @media (max-width: 640px) {
   .tl-fx-home-stats { grid-template-columns: 1fr; }
 }
-
-/* Full-screen navigation must escape the sticky header and remain readable. */
-.tl-site-header .wp-block-navigation__responsive-container.is-menu-open {
-  background: var(--tl-ink);
-  color: var(--tl-base);
-  padding: 2rem;
-}
-.tl-site-header .is-menu-open a { color: var(--tl-base); font-size: 1.25rem; }
-.tl-site-header .is-menu-open .wp-block-navigation__responsive-container-content { align-items: flex-start; }
-.tl-site-header .is-menu-open .wp-block-navigation__container { align-items: flex-start; gap: .75rem; }
-.tl-fx a:focus-visible, .tl-site-header button:focus-visible { outline: 3px solid var(--tl-safety); outline-offset: 4px; }
-.tl-fx-contact-form-panel input, .tl-fx-contact-form-panel textarea, .tl-fx-contact-form-panel select { max-width: 100%; }
-@media (max-width: 600px) {
-  .tl-fx-actions { width: 100%; }
-  .tl-fx-home .tl-fx-hero-copy { order: 0; }
-  .tl-fx-home .tl-fx-hero-media { order: 1; }
-}
-
-.tl-demo-notice { margin: 0; padding: .8rem 1.5rem; color: var(--tl-steel); background: var(--tl-base); font-size: .85rem; text-align: center; }
-.tl-fx-home-heading, .tl-fx-cta-title { text-transform: none; letter-spacing: -.02em; }
-.tl-fx-btn { text-transform: none; letter-spacing: .01em; }
-
-.tl-fx-contact .tl-fx-hero-inner { padding-block: 2.5rem; }
-.tl-fx-contact .tl-fx-title { font-size: clamp(2rem, 3.6vw, 3rem); }

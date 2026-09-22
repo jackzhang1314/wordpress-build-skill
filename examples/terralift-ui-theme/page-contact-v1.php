@@ -13,22 +13,29 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 $pid          = get_the_ID();
-$g            = static fn( string $key, string $default = '' ): string => trim( (string) tl_field( $key, $pid ) ) ?: $default;
+$g            = static fn( string $key, string $default = '' ): string => trim( (string) get_field( $key, $pid ) ) ?: $default;
 $hero_title   = $g( 'hero_title', 'Get a factory-direct quotation' );
 $hero_intro   = $g( 'hero_intro', 'Tell us the model, quantity and destination port — our export desk replies within one business day.' );
 $email        = $g( 'email', 'sales@example.com' );
-$phone        = $g( 'phone' );
+$phone        = $g( 'phone', '+86 000 0000 0000' );
 $whatsapp     = $g( 'whatsapp' );
 $address      = $g( 'address', 'Demo Industrial Park, China' );
 $hours        = $g( 'hours', 'Mon–Sat, 8:30–18:00 (GMT+8)' );
 $form_title   = $g( 'form_title', 'Request a quote' );
-$form_id      = (int) ( tl_field( 'form_id', $pid ) ?: 1 );
-$has_ff       = shortcode_exists( 'fluentform' ) && class_exists( '\FluentForm\App\Models\Form' ) && \FluentForm\App\Models\Form::where('id', $form_id)->where('status', 'published')->exists();
-$product_id   = isset($_GET['product']) ? absint($_GET['product']) : 0;
-$product      = get_post($product_id);
-$product      = $product && $product->post_type === 'oct_product' && $product->post_status === 'publish' ? $product : null;
+$form_id      = (int) ( get_field( 'form_id', $pid ) ?: 1 );
+$has_ff       = shortcode_exists( 'fluentform' );
 ?>
-<?php ob_start(); ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
+<?php block_template_part( 'header' ); ?>
 
 <main id="tl-main" class="tl-fx tl-fx-contact">
 	<section class="tl-fx-hero tl-fx-cat-hero">
@@ -47,7 +54,7 @@ $product      = $product && $product->post_type === 'oct_product' && $product->p
 				<h2 class="tl-fx-contact-heading">Direct channels</h2>
 				<ul class="tl-fx-contact-list">
 					<li><strong>Email</strong><a href="<?php echo esc_url( 'mailto:' . $email ); ?>"><?php echo esc_html( $email ); ?></a></li>
-					<?php if ( $phone ) : ?><li><strong>Phone</strong><a href="<?php echo esc_url( 'tel:' . preg_replace( '/\s+/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></li><?php endif; ?>
+					<li><strong>Phone</strong><a href="<?php echo esc_url( 'tel:' . preg_replace( '/\s+/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></li>
 					<?php if ( $whatsapp ) : ?>
 						<?php $wa_digits = preg_replace( '/\D+/', '', $whatsapp ); ?>
 						<li><strong>WhatsApp</strong><a href="<?php echo esc_url( 'https://wa.me/' . $wa_digits ); ?>"><?php echo esc_html( $whatsapp ); ?></a></li>
@@ -59,18 +66,20 @@ $product      = $product && $product->post_type === 'oct_product' && $product->p
 
 			<div class="tl-fx-contact-form-panel">
 				<h2 class="tl-fx-contact-heading"><?php echo esc_html( $form_title ); ?></h2>
-				<?php if ( $product ) : ?><p>Selected model: <strong><?php echo esc_html($product->post_title); ?></strong></p><?php endif; ?>
 				<?php if ( $has_ff ) : ?>
 					<div class="tl-fx-contact-form">
 						<?php echo do_shortcode( '[fluentform id="' . absint( $form_id ) . '"]' ); ?>
 					</div>
 				<?php else : ?>
-					<p class="tl-fx-contact-fallback-note">The enquiry form is currently unavailable. This demonstration does not send real quotations.</p>
-					<a class="tl-fx-btn" href="mailto:<?php echo esc_attr( $email ); ?>?subject=Quotation%20request">Email enquiry</a>
+					<p class="tl-fx-contact-fallback-note">Our quotation form is being set up. Email us directly and we reply within one business day.</p>
+					<a class="tl-fx-btn" href="mailto:<?php echo esc_attr( $email ); ?>?subject=Quotation%20request">Email the export desk</a>
 				<?php endif; ?>
 			</div>
 		</div>
 	</section>
 </main>
 
-<?php tl_render_document( (string) ob_get_clean() ); ?>
+<?php block_template_part( 'footer' ); ?>
+<?php wp_footer(); ?>
+</body>
+</html>

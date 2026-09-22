@@ -26,3 +26,22 @@ AGENTS.md 是项目约定入口，Skill 是可复用工作方法，playbook/refe
 - 跨项目验证有效的建站方法 → 自有 Skill 的对应 reference。
 - 实测结果和遗留问题 → 项目验收与过程记录。
 - 官方能力更新 → 固定版本接入流程；不直接修改 vendor Skill。
+
+## 新项目落地：复制适配 starter 的实测清单（2026-09-22 首次实测）
+
+用 starter 主题/插件复制适配新客户站（而非从零手写）时，机械重命名之外还有一组必踩的坑。以下为首次实测沉淀：
+
+1. **块命名空间两处分离**：`blocks/*/block.json` 的 `"name"` 与 `blocks.php` 的 `wp_register_script` 句柄（如 `b2b-site-blocks`）是两个独立字符串，且句柄名不含斜杠——正则替换 `b2b-site/` 不会覆盖 `b2b-site-blocks`，必须单独替换，否则编辑器脚本静默失联。
+2. **块名正则必须允许连字符**：解析块注释时 `[a-z0-9]+` 匹配不到 `query-title`/`post-title`/`template-part`，会全部漏检（静默假阴性）。用 `[a-z0-9-]+(?:\/[a-z0-9-]+)*`。
+3. **业务插件版本钉扎**：插件 profile（config/wordpress-plugins.json）的 `version` 必须与项目插件头部的 Version 一致，否则安装器拒绝激活。新项目应在**项目内**放自己的 profile（版本与头部对齐），不改工具仓库配置。
+4. **installRequiredPlugins 的 projectPlugin 参数**：profile 含 `source:"project"` 插件时必须传 `projectPlugin`，否则安装器按 `undefined` 路径拷贝崩溃。
+5. **WP-CLI 细节**：`wp term create` 的父级参数是 `--parent=<id>`（无 `--by`）；`wp post list --name=X --field=ID` 返回纯 ID 文本而非 JSON（不要 JSON.parse）；`wp post create --porcelain` 偶发返回 `0`——创建后必须用 `post list --name` 复读确认，不要信任 porcelain 输出；async 回调（Promise.all map）里没有 `continue`，用 `return`。
+6. **块主题首页**：`show_on_front` 默认 latest posts 时首页渲染 `home.html`；`front-page.html` 仅在静态首页模式下接管。空壳 front-page.html（只有 header/footer/post-content）会渲染成只有页脚的首页——首页模板必须自带完整内容，且至少含一个 h1。
+7. **审计检测器先自校准**：对“属性引号风格（单/双）、嵌套结构、懒加载属性”做检测前，先在已知正确的真实页面上校准，否则单引号 label、嵌套标题这类误报会把注意力带偏。
+8. **docker cp 目录嵌套**：目标目录已存在时 `docker cp dir container:/dst` 会把 dir 塞进 dst 内部（dst/dir），同步永远不生效且无报错。同步脚本用 `dir/.` 后缀复制内容，并定期核对容器内文件字节数与本地一致。
+9. **动态块 kind 提取禁用偏移量硬编码**：渲染回调里 `substr($block->name, 9)` 这类按旧命名空间长度写死的偏移，在命名空间改名后全部失配且渲染为空（无报错的静默故障）。用 `explode('/', $block->name)[1]` 取尾段。
+10. **语义重命名必须覆盖调用点**：函数定义改名（如 product_grid→part_grid）时用全仓 grep 核对调用点；500 fatal 直接看 debug.log 定位（新环境先开 WP_DEBUG_LOG）。
+11. **本地通知链前置常量**：SMTP 捕获 MU 插件依赖 `NEW_SITE_REFERENCE_LAB` 常量，compose 缺该 define 时 wp_mail 静默走 mail() 失败且无报错——本地询盘验收前先发一封探针邮件核对捕获通道。
+12. **Fluent Forms 提交数据在 response JSON**：询盘上下文字段（如 part_id）存于 submissions.response 与 submission_meta.value，核对用 response/`value` 列，不是 meta_value。
+
+主题/插件的功能性适配（CPT 语义、ACF 字段组、文案语气、设计 token）按 Brief 正常执行，不属于本清单。

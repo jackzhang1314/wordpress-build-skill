@@ -174,6 +174,80 @@ npm run hostinger:preflight -- .wordpress-builder/hostinger/target.json --connec
 
 实测教训（2026-09-22 首次真实发布，6 文件）：**基线工具的末尾 LF 归一化兜底曾隐含「远端≈候选」假设**——候选真有变更（基线工具的本职场景）时断言崩溃。修正语义：远端哈希按「剥掉末尾 LF 的字节」记录并标记 normalized；派生层对称比较（候选剥 LF 或补 LF 后与远端一致都算未变），数学上精确且不掩盖真变更。该教训适用于一切「读接口有已知截断、用比对工具判断差异」的场景：截断补丁必须在**差异判定层**实现，不能依赖与候选的巧合相等。
 
+### @hostinger/mcp 接入（2026-09-22 已完成）
+
+`@hostinger/mcp` 官方 MCP 服务器（npm 包，401 工具）已安装并 OAuth 授权。接入步骤：
+
+1. `npx @hostinger/mcp --login` → 浏览器授权（一次即可，凭据持久化）。
+2. Codex 设置 → MCP Servers → 添加：command=`npx`, args=[`-y`,`@hostinger/mcp`,`--stdio`]。
+3. 添加后 AI 可直接用自然语言操作 Hostinger 全部 API 端点（372+ 工具），无需脚本调 CLI。
+
+适用场景：交互式排错、配置核对、状态查询。批量部署仍用 CLI 脚本（确定性+可预演）。
+
+### WordPress REST API 认证（2026-09-22 实测教训）
+
+WordPress 5.6+ 的 REST API **不接受管理员密码做 Basic Auth**——必须使用 Application Passwords。且 Application Passwords 要求服务器将 Authorization 头传递给 PHP。
+
+**Hostinger 共享主机的限制**：部分配置不传递 Authorization 头到 PHP，导致 REST API 始终返回 401。.htaccess 修复（`RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]`）在部分配置下有效但不保证所有环境生效。此为服务器级限制，不可由用户禁用。
+
+**正确架构：Application Password 的创建必须包含在 deploy.php 内**——部署完成时自动产出凭据，Codex 立刻获得 REST 管理权限。不得部署后单独补创建（会反复遇到权限和安全策略障碍）。
+
+**注意**：SQL 导入会覆盖整个用户表（包括 Application Passwords）。因此 Application Password 必须在 SQL 导入**之后**创建，不能在导入之前。
+
+### CLI vs MCP：场景路由（2026-09-22 确认）
+
+| 场景 | 工具 | 理由 |
+| --- | --- | --- |
+| 批量部署（文件/SQL/插件） | CLI（TUS + cron） | 确定性、可重试、可脚本化预演 |
+| 交互式管理（查状态/排错/配置） | MCP | AI 读返回值→推理→决定下一步 |
+| 文件传输 | CLI（TUS） | 可靠、支持 override、有进度 |
+| 内容读写 | MCP 或 REST | 取决于一次性脚本还是持续维护 |
+| 定时/自动化 | CLI（cron 触发脚本） | 确定性执行，不依赖 AI 会话存活 |
+
+路由规则：**知道每一步做什么 → CLI；需要 AI 看返回值决定下一步 → MCP**。两者互补，不竞争。批量部署前用 MCP 探索确认状态，确认后用 CLI 脚本执行。
+
+**WP-CLI via SSH 实测确认（2026-09-22）**：SSH + WP-CLI 可完成 REST API 的全部内容管理功能，且无需 Application Password、无 Cloudflare 限制。已实测通过：发布文章（wp post create）、创建页面、管理导航（wp_navigation）、上传图片（wp media import）、修改 CSS。对于 Codex + SSH 场景，WP-CLI 是内容管理的首选通道。REST API 保留给外部系统集成使用。
+
+### 部署架构决策（2026-09-22 全面复盘）
+
+**核心教训：第二次部署（brightdozer）比第一次（mediumblue-quail）出了更多问题，根因是没有复用已验证的整包流程，而是在目标站上现场发明了新路径。**
+
+正确流程（0920 已验证）：
+1. 本地环境录入全部内容并验收 → 2. 导出发布包（SQL + wp-content tar）→ 3. TUS 上传 3 个大文件 → 4. 一次性 cron 执行 bash 脚本（解压 + SQL 导入 + URL 替换 + 缓存清）→ 5. 线上逐页验收
+
+第二次部署的错误路径：
+- 逐个上传 85 个小文件（触发 Cloudflare 挑战 + 速率限制）
+- 现场编写 deploy.php 内嵌 base64 内容（转义翻倍 bug）
+- 用 cookie session 而非 Application Password（额外的复杂度）
+
+**修正后的统一规范**：
+- 新站部署和增量更新都使用同一套发布管线（打包→上传→执行→验收）
+- 交互式排错用 MCP（401 工具），批量操作用 CLI
+- 部署脚本写入项目 `scripts/hostinger-release.mjs`，可重复执行
+- 所有经验回写到本文件对应段落
+
+### 部署前置清单（2026-09-22 实测教训）
+
+任何对 Hostinger 的部署执行前，逐项回答：
+
+1. **API 速率**：确认调用次数在 90/min 以内。多文件部署必须打包为 ZIP 少量上传，不得逐个小文件密集调用（触发 Cloudflare 挑战 + IP 临时封禁）。
+2. **脚本排练**：新部署脚本必须在本地 reuse 站或隔离环境完整排练通过后才能触达目标站。禁止在生产目标上首跑新脚本。
+3. **重试内置**：所有 API 调用的重试逻辑在写脚本时就内置（指数退避 + 瞬态错误匹配），不得事后补。
+4. **错误通道**：Hostinger CLI/API 错误信息可能在 stdout 或 stderr——分类检查必须覆盖两者。
+5. **前置常量**：SMTP 捕获 MU 插件依赖 `NEW_SITE_REFERENCE_LAB` 常量。compose 缺该 define 时 wp_mail 静默失败且无报错——本地询盘验收前先发探针邮件核对。
+6. **命名空间偏移**：渲染回调里的块类型提取禁用 `substr(name,N)` 硬编码偏移——命名空间改名后全部静默渲染为空。用 `explode('/', name)[1]`。
+7. **docker cp 嵌套**：目标目录已存在时 `docker cp dir container:/dst` 嵌套拷贝，同步静默失效。用 `dir/.` 后缀。
+8. **语义重命名调用点**：函数定义改名后用全仓 grep 核对调用点，500 fatal 先看 debug.log。
+
+
+### 增量传输泛化：插件目录与二进制（真实验证）
+
+`incremental-deploy.mjs --plugin` 把同一门禁链用于业务插件（远端根 wp-content/plugins/site-model，身份标记 site-model.php）。主题模式的未验二进制在收敛后经**公网 URL 哈希核对**（字体等静态资源可公开读取，读回哈希与候选一致即关闭未验状态）。两类新的远端读取边界按「unverified」处理、不进变更集：凭据类文件被托管 API 明确拒绝读取（settings.php 实测，托管侧安全策略）；内容接口偶发返回空 path 的 JSON 异常响应（退出码 0 的服务端抖动）。
+
+- CLI 错误信息可能打在 stdout 而非 stderr：错误分类必须同时检查 stdout/stderr/message 三个通道，否则敏感拒绝分类失效。
+- API 响应形状异常（空 path、缺字段）按瞬态处理加有界重试，持续异常才失败；async 回调内禁用 continue（迭代语义），用 return。
+- settings.php 等凭据文件无法经任何通道读取/备份，其变更对管道不可见——这是明确接受的覆盖缺口，站点凭据轮换须走托管后台人工流程。
+
 ## 新电脑按需引导（先于部署预检）
 
 首次进入已授权的部署任务时执行 Skill 随包 `scripts/hostinger-setup.mjs`；完整仓库可用 `npm run hostinger:setup`。无 CLI 时运行 `npm run hostinger:setup -- --install`，在 macOS/Linux 且已有 Homebrew 的机器安装官方 `hostinger/tap/hostinger`，不升级或覆盖已有可用版本。再运行 `npm run hostinger:setup -- --connect`，以只读 hosting orders list 验证账户访问；不打印订单内容。当前 CLI 无 auth/login 子命令，首次账户命令会触发官方浏览器登录，用户本人完成授权后重新检查。登录失败也可能是网络/API 或旧环境 Token 优先级问题，不直接断言无账户。
@@ -183,3 +257,51 @@ Windows/无 Homebrew：当前脚本返回 official-release-required，并非安�
 CLI 是默认路径；已有可用官方 Hostinger MCP 时可以复用，但无需两套都安装。配置 MCP 要按当前 Codex 客户端支持方式完成连接/授权验证，不把配置文件存在称为连接成功。读取 Skill 本身不触发安装、登录或资源创建。账户能读取也不证明套餐支持 WordPress、目标可覆盖或发布已通过。
 
 官方认证依据：https://www.hostinger.com/support/11679133-how-to-use-hostinger-api-cli/ 。本机实测与缺工具模拟分开报告；客户端未授权时需要用户官方登录这一步，不应代用户购买或索取密码。
+
+### 2026-09-22 全面复盘：Hostinger 自动化部署完整经验
+
+#### 已验证的工具组合
+| 操作 | 工具 | 状态 |
+| --- | --- | --- |
+| 站点创建 | CLI websites create | ✅ 两次实测 |
+| WP 安装 | CLI wordpress install | ✅ 两次实测 |
+| 文件上传 | CLI files generate-upload-url + TUS | ✅ 多次实测 |
+| 文件读取 | CLI files website-content | ✅（文本文件）|
+| 目录列表 | CLI files list-website-and-directories | ✅ |
+| 缓存清除 | CLI cache clear-website | ✅ |
+| 定时执行 | CLI cron-jobs create/delete/output | ✅ |
+| 主题切换 | WP-CLI / PHP theme activate | ✅ |
+| SQL 导入 | mysql CLI（读 wp-config 凭据）| ✅ 两次实测 |
+| REST 管理 | Application Password + Basic Auth | ⏳ 待完整验证 |
+| MCP 交互 | @hostinger/mcp 401 tools | ✅ 已安装 OAuth |
+
+#### API 限制与对策
+| 限制 | 值 | 对策 |
+| --- | --- | --- |
+| 速率限制 | 90 req/min | 批量操作打包为 ZIP，减少调用次数 |
+| Cloudflare 挑战 | 快速连续小请求触发 | 退避重试 + 文件间隔 ≥2s |
+| 内容 API 文件类型 | 仅 php/html/css/js/json/txt/md | 二进制标记为 unverified |
+| 凭据文件拒读 | settings.php 等被拒绝 | 标记 unverified，不冒充已验证 |
+| 末尾 LF 剥离 | 归一化处理 | 派生层对称比较 |
+| 网络抖动 | socket/TLS 断连 | 有界退避重试（内置非事后）|
+
+#### 脚本编写规范
+1. 所有 Hostinger API 调用的重试逻辑在函数定义时内置，不事后补。
+2. 正则表达式中的反斜杠：RegExp 构造器字符串中每个字面反斜杠需要双写（BS.repeat(N)），不得手动拼接。
+3. async 回调（Promise.all map）内没有 continue，用 return。
+4. 语义重命名后用全仓 grep 核对调用点，500 fatal 看 debug.log。
+5. PHP 变量在 shell 命令中必须转义或使用文件中转，不得直接内嵌。
+6. 错误信息可能在 stdout 或 stderr——分类检查必须覆盖两者。
+7. no-op（0 变更）是收敛成功，不得当作异常退出。
+8. 部署完成输出必须包含唯一标记（如 DEPLOY_DONE），供轮询检测。
+
+#### hPanel 快捷链接
+
+需要用户在浏览器操作时，自动打开对应 hPanel 页面（从域名可直接推导）：
+
+- SSH 设置：`https://hpanel.hostinger.com/websites/{domain}/advanced/ssh-access`（已从截图确认）
+- 文件管理、数据库、SSL 等其他页面按 hPanel 侧边栏结构推导，未逐个验证
+
+#### SSH 启用限制（2026-09-22 确认）
+
+共享主机的 SSH 启用/禁用**没有 API/CLI 端点**，只能通过 hPanel UI 操作。Hostinger API 的 SSH key 管理仅限 VPS。 harness 应在首次部署时检测 SSH 可用性，不可用则自动打开 hPanel SSH 页面引导用户启用（一次性操作，启用后永久生效）。

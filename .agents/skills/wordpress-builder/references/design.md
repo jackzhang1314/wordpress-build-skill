@@ -1,22 +1,20 @@
 # 设计系统与视觉 QA
 
-页面设计同时按 [搜索质量](search-quality.md) 检查主要内容是否完成买家任务；精美外观不能替代参数、证据和有效询盘路径。移动端弹窗、浮动 CTA 和动画不得遮挡关键内容。
-
-本文档规定 WordPress 工程落地规则：token、Pattern、评分卡与反 AI 味文案。可选加载本机已可用的 `frontend-design` 获取方向；不可用时按本文继续，不隐式安装。静态 HTML 预览按需使用，验收以真实 WordPress 为准。
+本文档规定 WordPress 工程落地规则：token、Pattern、评分卡与反 AI 味文案。阶段 4 先加载本地 `frontend-design` skill 获取美学方向，再把方向映射到本文件规则；两者互补，不重复维护。
 
 ## 设计 token 规则
 
-`theme.json` 管理全局设计 token；组件 CSS 管理具体布局。品牌色、重复字号/间距应复用 token；媒体查询、比例、边框、网格和必要 fallback 可写有依据的具体值，避免把所有 CSS 强塞进 JSON。
+`theme.json` 是唯一设计真源。色、字、距、形状只允许先定义 token，再由样式和 Pattern 引用；禁止在 `style.css`、区块内联样式或页面计划里散装硬编码。
 
 ### 基础档位
 
-| 类别 | 参考档位 | 示例命名 |
+| 类别 | 最低档位 | 示例命名 |
 | --- | --- | --- |
 | 色板 | 8 档 | `base`、`surface`、`ink`、`steel`、`signal`、`safety`、`concrete`、`line` |
 | 字号 | 6 档 | `x-small`、`small`、`body`、`large`、`heading`、`display` |
 | 间距 | 8 档 | 按 8px 系命名，例如 `space-1` 到 `space-8` |
 
-行高、圆角、阴影放入 `settings.custom`。命名必须表达用途或档位，不使用 `blue`、`big` 这类实现值命名。企业项目可按需增减档位，重复设计值复用 token，结构性 CSS 数值按组件管理。
+行高、圆角、阴影放入 `settings.custom`。命名必须表达用途或档位，不使用 `blue`、`big` 这类实现值命名。企业项目可增补档位，但不得绕过档位直接写裸值。
 
 `settings.custom` 示例：
 
@@ -38,10 +36,10 @@
 - 字号：只写 `var:preset|font-size|token`，例如 `var:preset|font-size|body`。
 - 间距：只写 `var:preset|spacing|token`，例如 `var:preset|spacing|40` 或项目定义的实际 token。
 - 自定义值：只写 `var:custom|lineHeight.body`、`var:custom|radius.md` 等真实路径。
-- 区块属性采用 WordPress 的 token 表达；CSS 使用 var(--wp--preset--...) 等实际变量，不能把 var:preset|... 当成 CSS。结构性尺寸可写明确值，品牌 token 不重复散落。
+- 块样式、`style.css` 和 Pattern 不出现裸 HEX、RGB、HSL、px、rem 或 em；装饰值和常规布局值一律走 `var:` 引用。
 - 图表、地图等第三方组件不能直接用 `var:` 时，先在构建层注入 token 值，不把裸色值复制进内容。
 
-创建新主题只在现主题没有合适基础时进行；按编辑目标决定 PHP 混合或区块主题。必须使用主题 slug 作为命名空间，保留可回退方式，并记录生成文件、激活状态和视觉验证。
+生成 token 化 Block Theme 只在现主题没有合适基础时进行。必须使用主题 slug 作为命名空间，保留可回退方式，并记录生成文件、激活状态和视觉验证。
 
 ## Pattern 库规范
 
@@ -53,12 +51,12 @@ register_block_pattern(
     [
         'title'       => __( 'Industrial hero', 'theme-slug' ),
         'description' => __( 'Product model, measurable fact and RFQ action.', 'theme-slug' ),
-        'content'     => '<!-- wp:group {"backgroundColor":"surface"} --> ... <!-- /wp:group -->',
+        'content'     => '<!-- wp:group {"className":"tl-hero"} --> ... <!-- /wp:group -->',
     ]
 );
 ```
 
-选择区块路线时，按实际页面需要建立 Pattern 库；PHP 路线建立相应共享组件。以下是候选项，不为凑数量机械生成：
+基础 Pattern 库包含 10–15 个可组合项，最少覆盖：
 
 1. `hero-industrial`
 2. `section-intro`
@@ -75,21 +73,20 @@ register_block_pattern(
 
 要求：
 
-- 交给官方 wp-patterns 的产物遵循其 markup-only 约束：使用原生块属性与已存在的 preset，不要求自定义 CSS 类、任意 HTML 或内联样式。上面的注册片段仅展示结构，省略号不是可直接发布的区块。
-- 需要定制 CSS、组件类或动态交互的部分交给主题/区块开发流程；不再同时要求官方 Pattern 产物具有语义根类。主题 CSS 可使用明确组件选择器或注册的块样式，不依赖 `h2 + p` 等脆弱关系。
+- Pattern HTML 只引用 token 和语义 className；不允许散装硬编码颜色、字号、间距、阴影或圆角。
+- 每个 Pattern 必须有语义根类名，如 `tl-hero`、`tl-product-grid`、`tl-contact-rfq`。CSS 按类选择，不依赖 `h2 + p` 这类脆弱结构选择器。
 - 内容保持原生区块；文本占位必须可替换，图片位置只引用已上传且授权的媒体。
 - 交互状态（hover、focus、active、disabled）由主题 CSS 和 token 控制，不写进重复的 Pattern 内联样式。
 - Pattern 可在移动端自然堆叠；复杂列在 390px 必须降为单列或可横向滚动的数据表，不允许页面横向溢出。
 
 ## 视觉 QA 评分卡
 
-每次 QA 对桌面和 390px 各检查一遍，取同一页面最差表现计分。满分 24 分，≥20 分才可交付；低于 20 分定点修后复测，三轮后重新审查根因与设计方向，继续修复；硬功能失败不得被分数抵消。
+每次 QA 对桌面和 390px 各检查一遍，取同一页面最差表现计分。满分 24 分，≥20 分才可交付；低于 20 分定点修后复测，最多 3 轮。
 
 | 维度 | 分值 | 判定要点 |
 | --- | ---: | --- |
 | 视觉层级 | 0–4 | 首屏 3 秒内能识别主信息与 CTA；H1/H2/正文比例清晰；次级内容不抢主动作。 |
 | 排版纪律 | 0–4 | 使用至少 3 档字号层级；正文行高 1.5–1.75，标题 1.0–1.2；主流文行宽约 45–75ch。 |
-| 标题顺序 | 硬规则 | 全页标题级别升幅不超一级（`npm run test:starter:headings` 归零 + 浏览器审计复核）；列表条目标题遵循「页面 h1 → 条目 h2」或「分区 h2 → 条目 h3」，样式挂在块 class 不得依赖标题标签。 |
 | 色彩系统 | 0–4 | ≤3 个主色加中性档；主色只用于 CTA 与关键强调；文本/组件对比满足 AA。 |
 | 布局节奏 | 0–4 | 间距来自 8px 系且有节奏；同类区块留白一致；桌面与移动端无横向溢出。 |
 | 细节完成度 | 0–4 | 图片比例统一且真实加载；按钮 hover/focus/active/disabled 完整；焦点可见；无孤立元素和死链。 |
@@ -138,7 +135,7 @@ register_block_pattern(
 
 ## 与 frontend-design skill 的组合
 
-若本机可用，按需加载 `frontend-design` 获取美学方向，包括字体角色、版式概念、签名元素和自批评；本文件负责工程落地规则：`theme.json` token、Pattern 命名、原生区块约束、视觉 QA 和文案红线。若两者冲突，以企业事实、可访问性和本文件工程约束为底线，再在不越界前提下采纳美学方向。
+阶段 4 加载 `frontend-design` 获取美学方向，包括字体角色、版式概念、签名元素和自批评；本文件负责工程落地规则：`theme.json` token、Pattern 命名、原生区块约束、视觉 QA 和文案红线。若两者冲突，以企业事实、可访问性和本文件工程约束为底线，再在不越界前提下采纳美学方向。
 
 ## 视觉避免清单
 
@@ -164,13 +161,3 @@ register_block_pattern(
 | v1 | token 档位、Pattern 库、6×4 评分卡、反 AI 味规则 | 首版工程落地规范 |
 | v2 | 增补视觉避免清单与版本历史节；吸收 wpagent 设计系统「避免事项 + 演进记录」纪律 | 用户确认融合外部项目优点（docs/15） |
 | v3 | 新增自由模板工程规范引用（[theme-code.md](theme-code.md)）；对比度实测修正（品牌亮橙仅限大装饰，按钮/小字用深一档 token）；卡片图 lazy 属性、无图占位、reduced-motion、fontDisplay swap 纳入避免清单执行项 | 全站自由模板重构与架构审计实测（docs/16） |
-
-## B2B 导航与询盘的浏览器验收
-
-- 主导航至少形成产品范围、应用、企业信息与询盘之间的清晰路径。用原生 Navigation 的真实链接、子菜单和移动弹层；不能仅在截图里画菜单。
-- 页面结构按任务分配：产品列表便于比较，产品详情集中规格与询盘，应用页组织工况与相关产品，指南采用文章阅读结构。没有足够差异化图片时用清晰的文字目录，避免重复图片卡片墙。
-- 首页直接提供可填写询盘；导航和产品 CTA 可打开当前页弹窗，并保留真实联系页 href 作为渐进增强退路。不得以空按钮或仅滚动到不存在的表单交付。
-- 同一页内嵌与弹窗共享表单时，优先移动同一个已初始化节点，避免重复 ID、重复事件绑定和丢失草稿。确认第三方插件实际 fieldset/容器结构再写布局选择器，不假设字段是 form 的直接子元素。
-- 真实检查桌面/手机菜单、弹窗焦点与 Escape、关闭后恢复、型号上下文、必填/失败/成功状态、数据库条目和邮件通知。截图等待字体与菜单动画结束；测试文字恢复后再取最终截图。
-
-这组做法在本仓库原生区块样板中验证；具体插件与当前版本的证据见项目验收，不能推导所有表单插件均兼容节点移动。

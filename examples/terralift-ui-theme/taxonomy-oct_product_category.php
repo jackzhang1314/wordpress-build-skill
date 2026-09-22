@@ -11,14 +11,23 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 ?>
-<?php ob_start(); ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
+<?php block_template_part( 'header' ); ?>
 
 <?php
 
 $term        = get_queried_object();
 $term_name   = $term instanceof WP_Term ? $term->name : '';
 $term_desc   = $term instanceof WP_Term ? term_description( $term ) : '';
-$term_desc   = $term instanceof WP_Term ? tl_field('oct_category_intro', $term, (string) $term_desc) : $term_desc;
 $term_count  = $term instanceof WP_Term ? (int) $term->count : 0;
 
 // Sibling categories for a sub-nav rail.
@@ -41,9 +50,9 @@ $siblings    = is_array( $siblings ) ? $siblings : array();
 				<?php if ( $term_desc ) : ?>
 					<p class="tl-fx-lead"><?php echo esc_html( wp_strip_all_tags( $term_desc ) ); ?></p>
 				<?php else : ?>
-					<p class="tl-fx-lead">Explore example models, specifications and applications in this category.</p>
+					<p class="tl-fx-lead">Browse verified export machines in this category, complete with specification sheets and factory-direct lead times.</p>
 				<?php endif; ?>
-				<p class="tl-fx-cat-count"><?php echo esc_html( sprintf( _n( '%d model in this category', '%d models in this category', $term_count, 'terralift-ui' ), $term_count ) ); ?></p>
+				<p class="tl-fx-cat-count"><?php echo esc_html( sprintf( _n( '%d machine in stock', '%d machines in stock', $term_count, 'terralift-ui' ), $term_count ) ); ?></p>
 			</div>
 		</div>
 	</section>
@@ -54,7 +63,7 @@ $siblings    = is_array( $siblings ) ? $siblings : array();
 			<?php foreach ( $siblings as $sib ) : ?>
 				<a
 					class="tl-fx-cat-rail-link<?php echo $sib->term_id === ( $term->term_id ?? 0 ) ? ' is-active' : ''; ?>"
-					href="<?php echo esc_url( tl_term_url( $sib ) ); ?>"
+					href="<?php echo esc_url( (string) get_term_link( $sib ) ); ?>"
 					<?php echo $sib->term_id === ( $term->term_id ?? 0 ) ? 'aria-current="page"' : ''; ?>
 				><?php echo esc_html( $sib->name ); ?></a>
 			<?php endforeach; ?>
@@ -101,7 +110,7 @@ $siblings    = is_array( $siblings ) ? $siblings : array();
 		<?php else : ?>
 			<div class="tl-fx-cat-empty">
 				<h2 class="tl-fx-cat-card-title">Products are being loaded</h2>
-				<p class="tl-fx-lead">No models are listed in this category yet. Browse the full catalogue for other options.</p>
+				<p class="tl-fx-lead">New stock for this category is being photographed and verified. Contact us for the current availability list.</p>
 			</div>
 		<?php endif; ?>
 	</section>
@@ -111,9 +120,14 @@ $siblings    = is_array( $siblings ) ? $siblings : array();
 		<div class="tl-fx-cta-inner">
 			<h2 class="tl-fx-cta-title">Not sure which model fits your job site?</h2>
 			<p class="tl-fx-cta-sub">Tell us your application and budget — our engineers recommend the right configuration, free of charge.</p>
-			<a class="tl-fx-btn tl-fx-btn--dark" href="<?php echo esc_url( tl_page_url( 'terralift-contact' ) ); ?>">Talk to an engineer</a>
+			<a class="tl-fx-btn tl-fx-btn--dark" href="/contact/">Talk to an engineer</a>
 		</div>
 	</section>
 </main>
 
-<?php tl_render_document( (string) ob_get_clean() ); ?>
+<?php
+block_template_part( 'footer' );
+wp_footer();
+?>
+</body>
+</html>

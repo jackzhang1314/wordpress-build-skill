@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 $pid        = get_the_ID();
-$g          = static fn( string $key, string $default = '' ): string => trim( (string) tl_field( $key, $pid ) ) ?: $default;
+$g          = static fn( string $key, string $default = '' ): string => trim( (string) get_field( $key, $pid ) ) ?: $default;
 $eyebrow    = $g( 'hero_eyebrow', 'Compact machinery · factory direct export' );
 $hero_title = $g( 'hero_title', get_bloginfo( 'name' ) );
 $hero_intro = $g( 'hero_intro', 'Mini excavators, loaders and skid steers built for distributors and rental fleets — verified spec sheets, stable lead times, export-grade packaging.' );
@@ -21,7 +21,7 @@ $hero_img_raw = tl_field( 'hero_image', $pid, '', false ); // raw attachment ID
 $hero_alt     = $hero_img_raw ? (string) get_post_meta( (int) $hero_img_raw, '_wp_attachment_image_alt', true ) : '';
 $hero_img     = $hero_img_raw ? (string) wp_get_attachment_image_url( (int) $hero_img_raw, 'large' ) : '';
 $cta_text   = $g( 'cta_text', 'Browse the catalogue' );
-$cta_url    = $g( 'cta_url', (string) get_post_type_archive_link( 'oct_product' ) );
+$cta_url    = $g( 'cta_url', '/products/' );
 
 $stats = array(
 	array( $g( 'stat_1_value' ), $g( 'stat_1_label', 'machines shipped' ) ),
@@ -88,7 +88,17 @@ $cases = new WP_Query(
 	)
 );
 ?>
-<?php ob_start(); ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
+<?php block_template_part( 'header' ); ?>
 
 <main id="tl-main" class="tl-fx tl-fx-home">
 	<!-- Hero -->
@@ -100,7 +110,7 @@ $cases = new WP_Query(
 				<p class="tl-fx-lead"><?php echo esc_html( $hero_intro ); ?></p>
 				<div class="tl-fx-actions">
 					<a class="tl-fx-btn" href="<?php echo esc_url( $cta_url ); ?>"><?php echo esc_html( $cta_text ); ?></a>
-					<a class="tl-fx-btn tl-fx-btn--ghost" href="<?php echo esc_url( tl_page_url( 'terralift-contact' ) ); ?>">Talk to an engineer</a>
+					<a class="tl-fx-btn tl-fx-btn--ghost" href="/terralift-contact/">Talk to an engineer</a>
 				</div>
 			</div>
 			<figure class="tl-fx-hero-media">
@@ -110,8 +120,8 @@ $cases = new WP_Query(
 					<?php echo get_the_post_thumbnail( $pid, 'large', array( 'class' => 'tl-fx-hero-img' ) ); ?>
 				<?php endif; ?>
 				<figcaption class="tl-fx-hero-badge">
-					<span>Illustrative model</span>
-					<span>Demonstration site</span>
+					<span>CE · EPA</span>
+					<span>Factory direct</span>
 				</figcaption>
 			</figure>
 		</div>
@@ -136,12 +146,10 @@ $cases = new WP_Query(
 			</div>
 			<div class="tl-fx-cat-grid tl-fx-home-cats">
 				<?php foreach ( $categories as $cat ) : ?>
-					<?php $cat_post = $cat_products[ $cat->term_id ] ?? null; $cat_image = (int) tl_field('oct_category_image', $cat, '', false); ?>
-					<a class="tl-fx-cat-card" href="<?php echo esc_url( tl_term_url( $cat ) ); ?>">
+					<?php $cat_post = $cat_products[ $cat->term_id ] ?? null; ?>
+					<a class="tl-fx-cat-card" href="<?php echo esc_url( (string) get_term_link( $cat ) ); ?>">
 						<figure class="tl-fx-cat-card-media">
-							<?php if ( $cat_image ) : ?>
-                                <?php echo wp_get_attachment_image($cat_image, 'medium_large', false, ['class' => 'tl-fx-cat-card-img', 'loading' => 'lazy']); ?>
-                            <?php elseif ( $cat_post && has_post_thumbnail( $cat_post ) ) : ?>
+							<?php if ( $cat_post && has_post_thumbnail( $cat_post ) ) : ?>
 								<?php echo get_the_post_thumbnail( $cat_post, 'medium_large', array( 'class' => 'tl-fx-cat-card-img', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
 							<?php else : ?>
 								<div class="tl-fx-media-placeholder">Photo coming soon</div>
@@ -150,7 +158,7 @@ $cases = new WP_Query(
 						</figure>
 						<div class="tl-fx-cat-card-body">
 							<h3 class="tl-fx-cat-card-title"><?php echo esc_html( $cat->name ); ?></h3>
-							<p class="tl-fx-cat-card-excerpt"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( term_description( $cat ) ) ?: 'Compare model specifications and intended applications.', 14 ) ); ?></p>
+							<p class="tl-fx-cat-card-excerpt"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( term_description( $cat ) ) ?: 'Verified export machines with full specification sheets.', 14 ) ); ?></p>
 							<span class="tl-fx-cat-card-link">Browse category →</span>
 						</div>
 					</a>
@@ -163,8 +171,8 @@ $cases = new WP_Query(
 	<?php if ( $featured->have_posts() ) : ?>
 		<section class="tl-fx-home-section tl-fx-home-section--alt">
 			<div class="tl-fx-home-section-head">
-				<p class="tl-eyebrow tl-fx-eyebrow">Selected models</p>
-				<h2 class="tl-fx-home-heading">Compare the range</h2>
+				<p class="tl-eyebrow tl-fx-eyebrow">In stock</p>
+				<h2 class="tl-fx-home-heading">Ready to ship</h2>
 			</div>
 			<div class="tl-fx-cat-grid">
 				<?php
@@ -195,7 +203,7 @@ $cases = new WP_Query(
 				?>
 			</div>
 			<div class="tl-fx-home-more">
-				<a class="tl-fx-btn tl-fx-btn--dark" href="<?php echo esc_url( get_post_type_archive_link( 'oct_product' ) ); ?>">View all machines</a>
+				<a class="tl-fx-btn tl-fx-btn--dark" href="/products/">View all machines</a>
 			</div>
 		</section>
 	<?php endif; ?>
@@ -205,13 +213,13 @@ $cases = new WP_Query(
 		<section class="tl-fx-home-section">
 			<div class="tl-fx-home-section-head">
 				<p class="tl-eyebrow tl-fx-eyebrow">Applications</p>
-				<h2 class="tl-fx-home-heading">Explore typical applications</h2>
+				<h2 class="tl-fx-home-heading">Proven in the field</h2>
 			</div>
 			<div class="tl-fx-home-cases">
 				<?php
 				while ( $cases->have_posts() ) :
 					$cases->the_post();
-					$industry = trim( (string) tl_field( 'oct_industry' ) );
+					$industry = trim( (string) get_field( 'oct_industry' ) );
 					?>
 					<a class="tl-fx-home-case" href="<?php the_permalink(); ?>">
 						<figure class="tl-fx-home-case-media">
@@ -238,11 +246,14 @@ $cases = new WP_Query(
 	<!-- CTA -->
 	<section class="tl-fx-cta">
 		<div class="tl-fx-cta-inner">
-			<h2 class="tl-fx-cta-title">Start with your application</h2>
-			<p class="tl-fx-cta-sub">Choose a model and tell us what the machine needs to do. This demonstration does not provide real quotations.</p>
-			<a class="tl-fx-btn tl-fx-btn--dark" href="<?php echo esc_url( tl_page_url( 'terralift-contact' ) ); ?>">Request a quote</a>
+			<h2 class="tl-fx-cta-title">Get your quotation this week</h2>
+			<p class="tl-fx-cta-sub">Send target specs and destination port — configuration advice, FOB pricing and lead time in one reply.</p>
+			<a class="tl-fx-btn tl-fx-btn--dark" href="/terralift-contact/">Request a quote</a>
 		</div>
 	</section>
 </main>
 
-<?php tl_render_document( (string) ob_get_clean() ); ?>
+<?php block_template_part( 'footer' ); ?>
+<?php wp_footer(); ?>
+</body>
+</html>

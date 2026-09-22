@@ -2,52 +2,6 @@
 
 `wp` 下文指 `node "<Skill绝对目录>/scripts/wp.mjs"`。Node.js 22+；构建后无需浏览器扩展或另一个模型 API。
 
-## 新站编排接口（不需要 REST 凭据）
-
-| 命令 | 实际行为 |
-| --- | --- |
-| `wp capabilities` | 校验随包 10 个官方模块的文件哈希，列出入口与依赖；不探测远端能力 |
-| `wp project-init --plan project.json --task run` | 创建不可静默改绑的新站契约；相同输入可恢复 |
-| `wp project-inspect --task run` | 在 sourceRoot 实际执行官方只读 triage，保存 triage.json |
-| `wp project-status --task run` | 检查阶段证据文件是否改变，返回下一未完成阶段；不是实时远端审计 |
-| `wp project-record --plan receipt.json --task run` | 校验前置阶段、检查状态和任务目录内的证据，记录阶段回执 |
-
-新站项目文件（sourceRoot 必须已存在，使用绝对路径；以下版本只是格式示例，不是支持矩阵）：
-
-```json
-{
-  "schemaVersion": 1,
-  "scope": "new-site",
-  "name": "企业产品网站",
-  "sourceRoot": "/absolute/path/to/new-site",
-  "theme": "php-hybrid",
-  "environment": "playground",
-  "targets": {"wordpress":"7.1", "php":"8.3", "acf":"free"},
-  "brief": "基于已核实企业资料，建立产品分类、详情和询盘网站。"
-}
-```
-
-主题可选 php-hybrid/block，环境可选 playground/wp-env/managed-host。project-init 只建立本地契约，不创建 WordPress、不自动安装插件、不证明远端是新站，也不授予发布权限。旧站接管不在当前产品范围。
-
-阶段回执（证据先保存到任务目录；实际完成后才写 verified/pass）：
-
-```json
-{
-  "projectHash": "project-init 返回的 64 位哈希",
-  "stage": "discover",
-  "outcome": "verified",
-  "summary": "已核对本地代码、干净站点和实际运行版本。",
-  "checks": [{"name":"新站与环境核验","status":"pass"}],
-  "evidence": ["triage.json", "environment.json"]
-}
-```
-
-阶段：discover/model/theme/content/verify/release；outcome 可选 verified/failed；check status 可选 pass/fail/not-tested。verified 要求检查全部通过且前置阶段已记录验证。证据指向任务目录内实际文件，不能使用目录外路径或逃逸符号链接。文件变动会使记录 stale；已有后续阶段时不改写前置回执，保留该轮并新建迭代任务。记录是有证据的声明，真实性仍需审核，不会替你发布站点。
-
-## WordPress 内容执行接口
-
-这些命令服务于新站及本方案建成站点的维护，不代表兼容任意旧站。build 是有限区块页面适配器，PHP 主题生成与部署走专业工作流。
-
 连接：私下配置环境变量 `WP_URL`（包含实际子目录）、`WP_USERNAME`、`WP_APP_PASSWORD`。非默认 REST 根可设置 `WP_REST_URL`，例如 `https://example.com/subdir/?rest_route=/`。当前不自动发现 REST 根；doctor 失败时读取网站公开 REST discovery 信息后明确指定，不能猜测外部 API 目的地。认证请求不跟随重定向。HTTP 只允许 `WP_ALLOW_LOCAL_HTTP=1` 的回环测试地址。
 
 | 命令 | 作用 |
@@ -55,7 +9,7 @@
 | `wp doctor --task run` | 真实连接与能力证据，保存 profile.json |
 | `wp read-page --id 123 --task run` | 读取完整原文与指纹，保存 read-page-123.json |
 | `wp build --plan site.json --task run` | 新页面草稿与实际地址补链，可恢复 |
-| `wp build --plan site.json --task run --publish --evidence release.json` | 原文保留发布，设置标题/描述/首页 |
+| `wp build --plan site.json --task run --publish` | 原文保留发布，设置标题/描述/首页 |
 | `wp status --task run` | 查看保存状态；不冒充实时状态 |
 | `wp template-parts --task run` | 当前可读的模板部件原文，最多100项 |
 | `wp navigation-plan --plan nav.json --task run` | 生成固定版本计划；不写远端 |
@@ -98,5 +52,3 @@
 改稿输入：`{"id":123,"expectedVersion":"read-page返回的version","blocks":[完整修改后的区块]}`，可选title。该接口替换完整正文而非局部补丁；先逐项核对旧稿、保留无关内容。所有按钮须使用实际URL，不接收page:key。已发布页面改稿会立即更新前台，需处于用户授权范围；对同一计划重跑不会重复写入。与build使用相同task目录时，后续整站恢复会保留改稿。
 
 任务目录包含固定计划、原始站点设置、每页完整回执、每次操作及导航计划。指纹包含原文，能发现同秒修改；仍是客户端写前检查，存在检查到写入之间的并发窗口，不宣称服务端原子锁。
-
-发布前先完成草稿与真实验收，并按 [发布证据](release.md) 提供版本绑定的 JSON。缺失或陈旧证据会在发布写入前拒绝。

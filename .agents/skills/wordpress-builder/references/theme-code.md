@@ -1,70 +1,91 @@
-# 新站主题工程
+# 自由模板与主题代码工程规范
 
-新站以原生区块主题组织页面，同时使用 CPT/ACF、定制样式和必要 PHP 动态模块；完整决策见 [architecture.md](architecture.md)。页面装配体系与模块渲染语言分别选择，不将 PHP 等同于必须采用经典主题。现有经典主题规则保留用于维护基线。
+本文件沉淀隔离站实测的模板架构与主题代码规则。阶段 5 生成 D 模式自由模板、阶段 4 生成/改主题时必读；规则来源全部标注实测状态，不写未验证内容。
 
-## 经典 PHP 基线与整页 PHP 例外
+## 1. 模板架构：四种页面生成模式
 
-使用标准经典模板层级：index、front-page、page、single、archive、taxonomy、search、404。按业务创建具体 CPT 模板，header/footer 及可复用模板片段集中管理。functions.php 仅启动和注册，复杂逻辑分模块。
+| 模式 | 载体 | 数据 | 适用 |
+| --- | --- | --- | --- |
+| A 组合页 | `post_content` + Pattern | 正文 | 首页、营销页 |
+| B 绑定页 | `templates/*.html` customTemplates + Block Bindings | ACF | 后台需逐篇切模板的页面 |
+| C 归档页 | Query Loop 归档模板 | Query Loop | 列表 |
+| D 自由页 | 主题根目录 PHP + `get_field()` 自由 HTML | ACF + 实时查询 | 像素级详情/分类/首页/落地页 |
 
-- 使用 get_header/get_footer 与完整标准 hooks：wp_head、wp_body_open、wp_footer。声明 title-tag、缩略图和必要编辑器样式；一个文档壳与一个主标题。
-- theme.json 管理共享样式配置，组件 CSS 管理布局，Gutenberg 管正文。区块/脚本资产须实测，不能通过主题类型推断加载正确。
-- 字段访问按实际类型校验；缺 ACF 时可控降级，输出按上下文转义。URL、HTML、纯文本不使用同一种处理方式。
-- get_term_link 等可能返回 WP_Error，先分支处理。内部链接用 WordPress 路由函数或实际对象，不写死演示 ID/域名。
-- 图片优先附件 ID 和 WordPress 图片函数，正确尺寸/alt；首屏主图不机械 lazy-load。
-- 搜索范围根据业务内容类型显式决定并测试，不假设 WordPress 默认只搜索文章。
-- 表单由选定插件渲染，显式核验存在、提交和通知；不以 shortcode 注册代表可用。
+**模板优先级（实测）**：区块模板（任意层级匹配）永远压过 PHP fallback（`resolve_block_template()`）。要让 PHP 自由模板生效，必须删除同层级或更泛化的 `.html`。已知特例：
 
-## 默认区块主题与 PHP 模块组合
+1. **站点首页**：`get_front_page_template()` 只认 `front-page.php`，完全忽略后台设置的自定义页面模板（REST 写入返回成功但前台不生效）。首页自由模板的正确形态是 `front-page.php` 委托（一行 require 页面模板文件）+ 删除 `templates/front-page.html`。
+2. **DB 覆盖**：后台 FSE 保存会把模板/部件存进数据库并优先于主题文件。AI 只写主题文件；交付前用 `/wp-json/wp/v2/templates` 和 `/template-parts` 检查 `source: custom` 记录，发现即报告并清理。
 
-加载官方 wp-block-themes；仅在有自定义块需求时加载 wp-block-development，Patterns 加载 wp-patterns。使用标准 templates/parts/theme.json。限制运营改布局时使用合适的 contentOnly/锁定策略；这不是服务端权限控制。
+## 2. 自由模板文档壳与安全基线
 
-动态块、Bindings、ACF 返回值按目标版本与 schema 验证。避免整页塞入一个不可编辑的 HTML 块。文件模板与后台自定义覆盖各自记录所有权，后续维护不自动清空数据库模板。
+每个根目录 PHP 自由模板必须满足：
 
-### 模板和模块契约
+1. **完整文档壳**：`<!DOCTYPE html>` + `language_attributes()` + `wp_head()` + `body_class()` + `wp_body_open()` + `wp_footer()`。**禁止 `get_header()`/`get_footer()`**——它们不解析 Block Theme 的 `parts/*.html`，会落到 theme-compat 兜底壳毁掉设计；头部页脚用 `block_template_part( 'header' )` / `( 'footer' )`。
+2. **ABSPATH 守卫**：文件顶部 `if ( ! defined( 'ABSPATH' ) ) { exit; }`（`<?php` 声明行之后、docblock 之后均可，但必须在任何输出前）。
+3. **`add_theme_support( 'title-tag' )` 必须显式声明**（主题 `functions.php`）。Block Theme 不会自动启用；漏掉则所有自由模板页无 `<title>`（实测 P0 级 SEO 缺陷）。同时声明 `automatic-feed-links`、`post-thumbnails`、`editor-styles`。
+4. **跳转链接**：`wp_body_open()` 后输出 skip link，`<main id="tl-main">`；配 `.skip-link` CSS。
+5. **可移植路由**：禁止硬编码域名、端口或页面路径。内部页面链接用 `get_page_by_path()` 解析 helper（静态缓存），归档用 `get_post_type_archive_link()`，导航部件用相对路径。`navigation-link` 块没有 `url` 属性时前台不渲染 href，必须回填相对 URL。
+6. **`get_term_link()` 可能返回 `WP_Error`**，输出前 `(string)` 转换或 `is_wp_error()` 分支。
 
-- 产品用 `theme.json` 的 customTemplates/postTypes 注册多套布局；分类仍走 taxonomy 主查询与受控 term 布局选择；首页明确 front-page 路由。
-- 模板只包含有效块标记；需要 PHP 的模块以 block.json 注册，使用 render.php 或 render_callback，明确 postId/postType 上下文和允许属性。核心块能合理完成的部分不重复开发。
-- 动态块以当前对象读取 ACF，校验返回类型并按文本/URL/HTML 转义；不让任意字段名、产品 ID 或文件路径成为无约束输入。公开渲染只读取允许公开的数据。
-- 每个模块注明编辑入口：原生正文、ACF 面板、块属性或绑定。前台 PHP 渲染不会自动生成编辑器预览/写回；编辑器资产、iframe、缺字段状态和保存回显分别验证。复杂模块用真实预览或有说明的编辑界面，不能把占位符称为所见即所得。
-- 全局 token 归 theme.json；自定义 CSS 按块/组件组织，并注册到需要的前台与编辑器环境。交互按需加载，不为一个效果让全站依赖大型前端运行时。PHP 动态块仍应在首个 HTML 响应输出重要内容；SEO 见 [seo.md](seo.md)。
-- 独立 PHP 整页仅在有具体必要时采用，记录路由、区块/PHP 候选优先级、页头页脚和资源加载，实测前台与后台选择。它不能因处于区块主题目录就被 Site Editor 可视化编辑。不要用全局 template_include 绕过全部区块模板。
+## 3. 主题 functions.php 标配 helper（实测模式）
 
-## 共同验证
+```php
+// ACF 安全读取：ACF 停用时返回默认值，模板永不 fatal
+function tl_field( string $key, $post_id = false, string $default = '', bool $format = true ) {
+    if ( ! function_exists( 'get_field' ) ) { return $default; }
+    $value = get_field( $key, $post_id, $format );
+    return ( $value === null || $value === '' ) ? $default : $value;
+}
 
-PHP 语法与项目类型分析；模板匹配、单一文档壳/H1；后台字段/图片/正文保存回显；文章与归档分页；菜单键盘/焦点/触屏；所有主 CTA；表单成功和失败路径；桌面与移动端无横向溢出；无 PHP fatal 和浏览器脚本错误。
+// 可移植内部页面 URL
+function tl_page_url( string $slug ): string { /* get_page_by_path + 静态缓存 */ }
+```
 
-以实际运行版本记录结果。历史 Block Theme 内整页 PHP 的预渲染、Playground 重启等经验只用于对应环境故障，不是新站统一实现要求。部署验证见 release.md。
+模板内一律经 helper 读字段，不做裸 `get_field()` 调用。字段组输出规则见阶段 5。
 
-## 需要后台多模板选择时
+**搜索范围**：默认搜索只覆盖 post；用 `pre_get_posts`（仅主查询且 `is_search()`）扩到 `['post','page','oct_product','oct_case']`，并在搜索模板加分页块。
 
-先分别确认“编辑内容”“选择已有模板”“设计新模板”的需求，逐对象核对实际注册与后台入口。存在 single/taxonomy 文件、theme.json 或 REST 的 template 属性，都不足以证明已经支持运营者选择多套模板。首页中硬编码的文字和模块顺序也不应宣传为全部后台可编辑。
+## 4. ACF 集成实测规则
 
-PHP 路线优先用 WordPress 原生命名模板及 Template Post Type 为产品等 CPT 提供选择；分类是 taxonomy term，不套用普通 Page 的模板选择器，需要主题拥有的布局字段和白名单分派，保留真实查询/分页。模板定义归主题，内容与字段值不随切换而复制；未知/移除布局有默认回退。首页 front-page 路由单独处理，不能假设选择普通 Page 模板会覆盖它。
+1. 图片字段 `return_format: url`：**REST GET 返回原始附件 ID（不是 URL），REST 写入校验要求整数 ID**；`get_field()` 前台与 Block Bindings 渲染层自动转 URL。REST 写图片字段传 mediaId。
+2. 模板要控尺寸时用第三参取原始值再转：`tl_field( 'hero_image', $pid, '', false )` + `wp_get_attachment_image_url( (int) $id, 'large' )`；alt 从 `_wp_attachment_image_alt` 取，缺省回退标题。
+3. 页面级字段组与模板成对（`page-x-v1.php` + `acf/page-x-v1.php`，location `page_template ==`）；CPT 字段组集中注册，全部 `show_in_rest` + `allow_in_bindings`。
+4. 新项目必装：ACF、Fluent Forms（全部表单走短代码，表单字段不建 ACF）、SEO 插件（meta description / OG 标签由插件承担，模板不手写）。
+5. 字段命名避免过于通用的 `hero_title` 类名字跨插件冲突——真实站点立项时即带模板前缀（如 `contact_v1_email`），存量数据迁移一起做。
 
-AI 创建并部署模板、用户在后台选择，与用户在后台可视化创建整页模板是不同能力。后一种需求按范围评估区块主题/Site Editor，不能仅加选择字段就宣称实现。首次交付至少实际验证两个布局的保存、切换、刷新后回显及内容/URL/询盘保留；AI 执行接口若不能写入模板选择，应明确缺口或增加经过验证的适配，不伪造工具支持。
+## 5. CSS 与可访问性纪律
 
+1. **token 纪律**：品牌色禁止裸 HEX。渐变色可用 `var(--token)`；`color-mix()` 需提供 fallback 字面量；`var()` 的 fallback 参数里允许字面量。上下文透明度（玻璃徽章 rgba）可保留但需注释说明。
+2. **对比度 WCAG AA**：小字号文本/按钮底色 ≥4.5:1。品牌亮橙（#E8570E 白字约 3.6:1）只能用于大标题装饰；按钮与小字用深一档 token（如 `--tl-signal-text: #C9430A`，约 4.9:1）。
+3. 卡片缩略图显式 `loading="lazy"` + `decoding="async"`；首屏 hero 保持默认 eager。
+4. 无图卡片输出占位组件（等 aspect-ratio + mono 标签），不允许空 `figure` 塌陷。
+5. 分页 `<nav>` 带 `aria-label`；当前分类/页码 `aria-current="page"`。
+6. 全局 `prefers-reduced-motion: reduce` 降级；`@font-face`/fontFace 声明 `fontDisplay: "swap"`。
+7. 已知特异性陷阱：`.entry-content h2.wp-block-heading` 是 0,3,0，深色面板标题需 ≥0,3,0；`.tl-main .wp-block-post-title` 类的宽选择器会污染 Query Loop 卡片标题，页面主标题一律收窄为 `>` 直接子级或专用 class。
+8. 区块列布局 `width:auto` 会塌陷，列宽用显式百分比（如 56/38、62/34）。
 
-## 代表性 A/B 验证后的实施约束
+## 6. 短代码与模板部件（WP 6.9 实测）
 
-2026-09-20 在同机 WordPress 7.1 / PHP 8.3 / MySQL 8.4 的 PHP 混合与区块原型中验证了以下做法。它们不代表所有版本或全站视觉验收通过。
+`render_block_core_shortcode()` 只做 `wpautop`，**不执行 `do_shortcode`**；模板部件输出不经过 `the_content` 的 shortcode 过滤器，部件内 shortcode 块会原样输出。生产修复一行：`add_filter( 'render_block_core_shortcode', 'do_shortcode' )`。能不用 shortcode 就不用——静态文案（如无年份版权行）永远比动态方案少一个故障点。
 
-- 用户同时要求 Codex 设计和原生布局维护时，优先评估区块主题；仅要求后台填字段、布局由代码维护时，PHP 混合仍是有效选项。模板选择本身不足以决定路线，两边都能实现。
-- 产品模板注册后实际打开 CPT 选择器，检查只出现适用模板。若目标版本暴露无关层级模板，按对象类型限制查询，不全局删除 Site Editor 中的模板。
-- Query Loop、Bindings 和动态块读取当前对象上下文，规格与询盘共享同一个产品 ID。换模板后核验字段、正文、图片和 URL，不能仅核验 template 字符串保存成功。
-- 页面正文已有表单 shortcode 时，模板不得再渲染第二份表单。真实提交验证单次入库及单次本地通知，再按需要验收外部送达。
-- 从 PHP 主题移植 CSS 时检查原生 Navigation、Query Loop 等组件的选择器冲突。移动端实际打开菜单、关闭并核验焦点恢复；截图无溢出不足以证明可用。
-- 编辑测试等候区块加载和字段实际保存，再用唯一标记及新的前台导航回读；结束后恢复测试内容。同一对象的模板/字段/首页测试顺序执行，避免互相污染。
-- 发版前检查 wp_template、wp_template_part 和全局样式的实际生效来源。源码更新遇到数据库覆盖时先比较和合并，不自动清除覆盖。恢复验收包含模板选择、term 布局、用户模板覆盖；只还原 SQL 并借用已有文件，不称为全新整站恢复。
-- 区块解析有效、功能跑通、设计合格、性能达标分别给出证据；不因选择区块主题就宣称更快或更美观。原型尚未注册并验证 Pattern 插入时，不宣称已有可用 Pattern 库。
+## 7. 部署与隔离实验室
 
-## 区块样板复验经验
+1. **分层部署**：单文件热更（日常改稿，秒级）/ 主题或插件目录同步 / 先备份再变更（含前台冒烟 4 路由）。本仓库 `scripts/deploy-lab.mjs`（file/theme/plugin/backup/all/smoke，Playground 环境专用）；生产 SSH 部署按 docs/15 §5 约定实现。
+2. **Playground 三个坑（实测）**：
+   - worker 文件系统是启动时快照：**模板/部件改动后必须整进程重启**，运行中 rsync 可能继续命中旧文件；
+   - 进程会静默退出（表现为连接 000）：用会话式启动（PTY）保活，`nohup &` 会被会话回收；
+   - SQLite 在 `wp-content/database/.ht.sqlite`，可直接 sqlite3 只读排查（注意复制后查询，避免锁）。
+3. 无 PHP CLI 的环境：改 PHP 后用前台状态码 + `debug.log` 定位语法错误；`foreach ( $arr as [ $a, $b ] )` 合法，`as array( $a, $b )` 非法。
 
-在 WordPress 7.1 / ACF 6.8.9 免费版中，官方 `acf/field` 已实测支持样板产品页及 Query Loop 中的型号输出；本样板移除了实验自定义绑定来源。字段后台编辑、服务端读取、编辑器预览、双向绑定仍为不同能力，不能由本结果推定全部字段/版本均支持。
+## 8. 交付前检查清单（自由模板任务）
 
-产品模板选择器在本次编辑器显示为 Template options → Change template；当前已选模板可能不出现在候选列表。后台分类布局用主题 ACF select 字段选择经批准的 taxonomy 模板，产品自定义模板与分类布局的机制不能混称。
-
-源码同步使用 docker cp 时明确目录内容路径 `folder/.`；路径 join 可能消掉尾部 `/.`，导致复制到重复子目录而旧文件继续生效。同步后对实际目标文件验 hash，不靠 cp 退出码判断部署成功。
-
-### 保持后台编辑与模板扩展契约
-
-允许编辑正文的内容模板必须消费 post-content 或明确的等价正文渲染，不能只显示固定主题文案；否则后台保存成功而前台不变。模板筛选遵循核心 post_types 与模板来源元数据，不能硬编码两三个初始 slug，排除未声明适用范围的层级文件时仍须允许用户创建的自定义模板。产品模板扩展须在真实 WordPress 验证声明产品、声明其他类型、用户自定义和未声明层级模板四种情况，再实际选择保存。
+- [ ] `<title>` 在每类模板页都存在
+- [ ] header/footer 为 `block_template_part()`，无 theme-compat 兜底标记（`id="headerimg"`）
+- [ ] 所有根目录 PHP + acf 文件有 ABSPATH 守卫
+- [ ] 无硬编码域名/端口/绝对路径；导航块有可渲染 href
+- [ ] `/wp-json/wp/v2/templates`、`/template-parts` 无 `source: custom` 覆盖
+- [ ] REST 写图片字段用附件 ID；前台渲染 URL/尺寸正确
+- [ ] ACF 停用模拟：模板不 fatal
+- [ ] 搜索覆盖 CPT 且有分页
+- [ ] 对比度、skip link、aria、reduced-motion 过检
+- [ ] 部件改动后整进程重启再验证

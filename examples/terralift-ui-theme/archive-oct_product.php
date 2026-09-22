@@ -18,16 +18,26 @@ $categories = get_terms(
 );
 $categories = is_array( $categories ) ? $categories : array();
 ?>
-<?php ob_start(); ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
+<?php block_template_part( 'header' ); ?>
 
 <main id="tl-main" class="tl-fx tl-fx-cat">
 	<section class="tl-fx-hero tl-fx-cat-hero">
 		<div class="tl-fx-hero-inner">
 			<div class="tl-fx-hero-copy">
 				<p class="tl-eyebrow tl-fx-eyebrow">Equipment catalogue</p>
-				<h1 class="tl-fx-title">Find the right machine for the job</h1>
+				<h1 class="tl-fx-title">Every machine, spec verified</h1>
 				<p class="tl-fx-lead">Compact excavators, loaders and skid steers prepared for export — each listing carries a full specification sheet, FOB price basis and real lead time.</p>
-				<p class="tl-fx-cat-count"><?php echo esc_html( sprintf( _n( '%d model in this category', '%d models in this category', (int) $GLOBALS['wp_query']->found_posts, 'terralift-ui' ), (int) $GLOBALS['wp_query']->found_posts ) ); ?></p>
+				<p class="tl-fx-cat-count"><?php echo esc_html( sprintf( _n( '%d machine in stock', '%d machines in stock', (int) $GLOBALS['wp_query']->found_posts, 'terralift-ui' ), (int) $GLOBALS['wp_query']->found_posts ) ); ?></p>
 			</div>
 		</div>
 	</section>
@@ -36,7 +46,7 @@ $categories = is_array( $categories ) ? $categories : array();
 		<nav class="tl-fx-cat-rail" aria-label="Product categories">
 			<a class="tl-fx-cat-rail-link is-active" href="<?php echo esc_url( get_post_type_archive_link( 'oct_product' ) ); ?>">All machines</a>
 			<?php foreach ( $categories as $cat ) : ?>
-				<a class="tl-fx-cat-rail-link" href="<?php echo esc_url( tl_term_url( $cat ) ); ?>"><?php echo esc_html( $cat->name ); ?></a>
+				<a class="tl-fx-cat-rail-link" href="<?php echo esc_url( (string) get_term_link( $cat ) ); ?>"><?php echo esc_html( $cat->name ); ?></a>
 			<?php endforeach; ?>
 		</nav>
 	<?php endif; ?>
@@ -89,9 +99,14 @@ $categories = is_array( $categories ) ? $categories : array();
 		<div class="tl-fx-cta-inner">
 			<h2 class="tl-fx-cta-title">Need help choosing a model?</h2>
 			<p class="tl-fx-cta-sub">Tell us your application and budget — our engineers recommend the right configuration, free of charge.</p>
-			<a class="tl-fx-btn tl-fx-btn--dark" href="<?php echo esc_url( tl_page_url( 'terralift-contact' ) ); ?>">Talk to an engineer</a>
+			<a class="tl-fx-btn tl-fx-btn--dark" href="/terralift-contact/">Talk to an engineer</a>
 		</div>
 	</section>
 </main>
 
-<?php tl_render_document( (string) ob_get_clean() ); ?>
+<?php
+block_template_part( 'footer' );
+wp_footer();
+?>
+</body>
+</html>

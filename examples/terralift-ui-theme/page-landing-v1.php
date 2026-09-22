@@ -13,13 +13,23 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 $pid      = get_the_ID();
-$g        = static fn( string $key, string $default = '' ): string => trim( (string) tl_field( $key, $pid ) ) ?: $default;
+$g        = static fn( string $key, string $default = '' ): string => trim( (string) get_field( $key, $pid ) ) ?: $default;
 $eyebrow  = $g( 'hero_eyebrow', 'TerraLift Machinery' );
 $hero_t   = get_the_title();
 $hero_sub = $g( 'hero_intro' );
-$cta_on   = tl_field( 'hide_cta', $pid );
+$cta_on   = get_field( 'hide_cta', $pid );
 ?>
-<?php ob_start(); ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
+<?php block_template_part( 'header' ); ?>
 
 <main id="tl-main" class="tl-fx">
 	<section class="tl-fx-hero tl-fx-cat-hero">
@@ -47,10 +57,15 @@ $cta_on   = tl_field( 'hide_cta', $pid );
 			<div class="tl-fx-cta-inner">
 				<h2 class="tl-fx-cta-title">Questions about this?</h2>
 				<p class="tl-fx-cta-sub">Our export desk answers within one business day — specs, pricing, lead times, compliance.</p>
-				<a class="tl-fx-btn tl-fx-btn--dark" href="<?php echo esc_url( tl_page_url( 'terralift-contact' ) ); ?>">Contact us</a>
+				<a class="tl-fx-btn tl-fx-btn--dark" href="/terralift-contact/">Contact us</a>
 			</div>
 		</section>
 	<?php endif; ?>
 </main>
 
-<?php tl_render_document( (string) ob_get_clean() ); ?>
+<?php
+block_template_part( 'footer' );
+wp_footer();
+?>
+</body>
+</html>

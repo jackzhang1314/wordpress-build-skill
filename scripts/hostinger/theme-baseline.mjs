@@ -4,11 +4,12 @@ import {promisify} from 'node:util';
 import {createHash} from 'node:crypto';
 import {writeFile} from 'node:fs/promises';
 import {setTimeout as delay} from 'node:timers/promises';
-import {themeInventory} from '../../examples/b2b-block-starter/scripts/release/theme-diff.mjs';
+import {dirInventory} from '../../examples/b2b-block-starter/scripts/release/theme-diff.mjs';
 import assert from 'node:assert/strict';
-const [user,domain,theme,candidate,output]=process.argv.slice(2);
-assert.ok(user&&/^[a-z0-9]+$/.test(user)&&domain&&/^[a-z0-9.-]+$/.test(domain)&&theme&&/^[a-z0-9_-]+$/.test(theme)&&candidate&&output,'Usage: USER DOMAIN THEME CANDIDATE_DIR REPORT.json');
-const run=promisify(execFile),root='wp-content/themes/'+theme;
+const [user,domain,theme,candidate,output,kind='theme']=process.argv.slice(2);
+assert.ok(user&&/^[a-z0-9]+$/.test(user)&&domain&&/^[a-z0-9.-]+$/.test(domain)&&theme&&/^[a-z0-9_-]+$/.test(theme)&&candidate&&output,'Usage: USER DOMAIN THEME CANDIDATE_DIR REPORT.json [KIND=theme|plugin]');
+assert.ok(kind==='theme'||kind==='plugin','KIND must be theme or plugin');
+const run=promisify(execFile),root=kind==='plugin'?'wp-content/plugins/'+theme:'wp-content/themes/'+theme;
 const transient=/deadline exceeded|TLS handshake timeout|connection reset|EOF|Client\.Timeout/i;
 const cli=async args=>{
  for(let attempt=1;;attempt++){
@@ -31,14 +32,29 @@ async function listing(){
  for(const e of entries){assert.ok(typeof e.path==='string'&&!e.path.startsWith('/')&&!e.path.split('/').some(p=>['','..','.'].includes(p)));assert.ok(['file','directory'].includes(e.type),'Unsupported remote entry');assert.ok(e.type!=='directory'||e.path.split('/').length<10,'Listing depth limit reached');}
  return entries.sort((a,b)=>a.path.localeCompare(b.path));
 }
-const entries=await listing(),local=await themeInventory(candidate),remote={},unverified=[],normalized=[];
+const entries=await listing(),local=await dirInventory(candidate,kind==='plugin'?['site-model.php']:['style.css','theme.json']),remote={},unverified=[],normalized=[];
 const files=entries.filter(e=>e.type==='file');
 for(let offset=0;offset<files.length;offset+=4){
  await Promise.all(files.slice(offset,offset+4).map(async e=>{
   // The content endpoint refuses binary files; retain an explicit coverage gap.
-  if(!/\.(php|html|css|js|json|txt|md)$/i.test(e.path)){unverified.push(e.path);return;}
-  const r=await cli(['website-content',user,domain,'--path',root+'/'+e.path,'--from-line','0','--max-lines','5000']);
-  assert.equal(r.path,root+'/'+e.path);assert.equal(Number(r.from_line),0);
+if(!/\.(php|html|css|js|json|txt|md)$/i.test(e.path)){unverified.push(e.path);return;}
+ let r;
+ for(let attempt=1;;attempt++){
+  try{
+   r=await cli(['website-content',user,domain,'--path',root+'/'+e.path,'--from-line','0','--max-lines','5000']);
+   assert.equal(r.path,root+'/'+e.path);
+   break;
+  }catch(error){
+   const text=String(error.stdout??'')+String(error.stderr??'')+String(error.message);
+   // Credential-bearing files are refused by the hosting API; they are as
+   // unverifiable as binaries and stay out of the change set.
+   if(/sensitive credentials/i.test(text)){unverified.push(e.path);break;}
+   if(attempt>=3)throw error;
+   await delay(2000*attempt);
+  }
+ }
+ if(!r)return;
+ assert.equal(Number(r.from_line),0);
   const bytes=Buffer.from(r.content);assert.equal(Number(r.size_bytes),e.size_bytes);
   if(bytes.length!==e.size_bytes){
  // The endpoint stripped exactly one byte (the final LF). Store the hash of the

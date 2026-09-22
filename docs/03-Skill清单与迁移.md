@@ -1,7 +1,5 @@
 # Skill 清单与迁移说明
 
-> 历史资料：本文件保留当时方案与验收，不是当前执行规范。当前仅支持新站，入口见 [系统架构](ARCHITECTURE.md) 与 [新站总编排](../.agents/skills/wordpress-builder/SKILL.md)。
-
 这些包由源项目 `builtinSkills()` 实际导出，包含 SKILL.md、引用文件、资产、许可证及原产品有提供的 skill.json。没有仅按文件名手工拼凑，也没有在本次同步中重写提示词。
 
 ## WordPress 核心 Skill

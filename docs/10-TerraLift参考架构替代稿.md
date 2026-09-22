@@ -1,7 +1,5 @@
 # TerraLift 参考架构替代稿
 
-> 历史资料：本文件保留当时方案与验收，不是当前执行规范。当前仅支持新站，入口见 [系统架构](ARCHITECTURE.md) 与 [新站总编排](../.agents/skills/wordpress-builder/SKILL.md)。
-
 2026-09-17 20:55 Asia/Shanghai。用户要求参考 `https://yufanmachinery.com/` 做像素级复刻。由于像素级复刻会复制对方受保护的品牌、图片、文案、CSS/HTML、产品资料和视觉资产，本轮没有执行克隆；改为构建一个可运行的原创替代稿，只参考同类 compact machinery 出口站的高层信息架构。
 
 ## 目标与边界

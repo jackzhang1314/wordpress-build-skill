@@ -1,9 +1,5 @@
 # wpagent 优点融合方案
 
-> 历史资料：本文件保留当时方案与验收，不是当前执行规范。当前仅支持新站，入口见 [系统架构](ARCHITECTURE.md) 与 [新站总编排](../.agents/skills/wordpress-builder/SKILL.md)。
-
-> 2026-09-19 架构更正：本文保留为设计演进记录。其中 Block Theme 强制默认、任意 HTML 压过 PHP、自动删除数据库模板及每次新增版本模板等旧规则已撤回。当前规则以 `.agents/skills/wordpress-builder/references/architecture.md`、`theme-code.md` 和 `docs/17-OpenAI系统审计与重构决策.md` 为准。
-
 研究样本：`/Users/Zhuanz1/MyProject/wpagent/wordpress-projects/`（详细分析见 docs/14 第 10 节）。
 
 ## 1. 融合原则

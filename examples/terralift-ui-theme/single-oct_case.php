@@ -13,13 +13,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 while ( have_posts() ) :
 	the_post();
 
-	$f         = static fn( string $key ): string => trim( (string) tl_field( $key ) );
+	$f         = static fn( string $key ): string => trim( (string) get_field( $key ) );
 	$industry  = $f( 'oct_industry' );
 	$outcome   = $f( 'oct_outcome' );
 	$cta_text  = 'Request a similar setup';
 	$cta_url   = tl_page_url( 'terralift-contact' );
 	?>
-<?php ob_start(); ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+<a class="skip-link screen-reader-text" href="#tl-main">Skip to content</a>
+<?php block_template_part( 'header' ); ?>
 
 <main id="tl-main" class="tl-fx">
 	<section class="tl-fx-hero">
@@ -32,7 +42,7 @@ while ( have_posts() ) :
 				<?php endif; ?>
 				<div class="tl-fx-actions">
 					<a class="tl-fx-btn" href="<?php echo esc_url( $cta_url ); ?>"><?php echo esc_html( $cta_text ); ?></a>
-					<a class="tl-fx-btn tl-fx-btn--ghost" href="<?php echo esc_url( tl_page_url( 'terralift-case-studies' ) ); ?>">All cases</a>
+					<a class="tl-fx-btn tl-fx-btn--ghost" href="/terralift-case-studies/">All cases</a>
 				</div>
 			</div>
 			<figure class="tl-fx-hero-media">
@@ -40,7 +50,7 @@ while ( have_posts() ) :
 					<?php the_post_thumbnail( 'large', array( 'class' => 'tl-fx-hero-img' ) ); ?>
 				<?php endif; ?>
 				<figcaption class="tl-fx-hero-badge">
-					<span>Illustrative application</span>
+					<span>Field verified</span>
 					<span><?php echo esc_html( get_the_date() ); ?></span>
 				</figcaption>
 			</figure>
@@ -66,4 +76,9 @@ while ( have_posts() ) :
 
 <?php endwhile; ?>
 
-<?php tl_render_document( (string) ob_get_clean() ); ?>
+<?php
+block_template_part( 'footer' );
+wp_footer();
+?>
+</body>
+</html>
