@@ -23,7 +23,9 @@
 - 用统一 CLI 驱动 `/Users/Zhuanz1/Documents/ChatGPT/wordpress-projects/irontrack-parts`：
   - `check` / `doctor` / `status` / `verify` 通过。
   - `content` 重建 terms/pages/products/guides/menus 后 7 个页面、10 parts、4 guides、1 RFQ 均通过。
-  - `deploy --skip-content` 完成备份、插件基线、同步、激活、缓存、7 URL 和数据库验收。
+  - `content` 完整重建后 7 个页面、10 parts、4 guides、1 RFQ 通过。
+  - `deploy --with-content` 完整执行备份、插件基线、同步、激活、媒体映射、seed、缓存、7 URL 和数据库验收。
+  - `rollback` 恢复最近部署前主题/插件后，7 个 URL 和数据库计数仍通过。
 - 部署失败路径有自动文件回滚；数据库仍要求人工批准，不覆盖询盘。
 
 ## 文件
