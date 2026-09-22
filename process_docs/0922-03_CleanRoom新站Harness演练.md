@@ -84,3 +84,16 @@
 - 流程事故：手写重写 project.json 丢失 provisioned `domain/ssh/hostinger` 字段 → 远程命令被正确拒绝；已恢复字段并记录教训。
 - 第 2 次部署成功：22/22 URL、6 项计数、7 个 sitemap 全过；新版 /contact/ 表单提交 RFQ（ID 83，302 → thank-you）。
 - 证据：`evidence/verify-b2b-final.json`、`status-b2b-final.json`、`b2b-rfq-rows.txt`、`.wordpress-builder/deploy-b2b-console.log`。
+
+## 第三轮：真实媒体素材替换（2026-09-22 21:50–22:20 +08:00）
+
+- 11 张 Unsplash 免费许可照片替换渐变占位图（6 产品 / 3 行业 / hero / factory），清理 v1 遗留 PNG；`--with-media` 重新导入 attachment 101–111，seed 刷新缩略图与 alt。
+- 部署期 Hostinger 共享主机 SSH/HTTP 持续抖动：第 3 次部署页面验证因单页 15s 超时失败→回滚；第 4 次部署 SSH 连接超时失败；`harness verify` 两次随机单请求失败（index/分类 sitemap fetch failed）。
+- 据此补两个验证层重试补丁并已提交：
+  - `71eacc3` verifyPages 对 status 0 传输失败重试 2 次；deploy 失败时逐页打印失败原因（否则只报 "remote verification failed" 无法定位）。
+  - `e432321` verifyRankMath sitemap 检查对 status 0 重试 2 次。
+  - `9a300b3` verifyDatabase 对 SSH 瞬时超时重试（第 4 次部署中数据库计数被 SSH 断连打断）。
+- 结论：SSH 层 `runWithRetry` 原本就覆盖 Connection timed out（3 次重试），第 4 次失败是主机持续 1 分钟以上不可达，属基础设施不稳定而非代码缺陷；当晚后续操作均以重试验证通过。
+- 最终验证全绿：22/22 页、6 项计数（RFQ=2）、7 个 sitemap 200/XML；产品页 img 指向真实上传 JPEG（200 / image/jpeg / 188KB），media-map 指向 attachment 101–111。
+- 证据：`evidence/verify-b2b-images-final.json`、`status-b2b-images-final.json`、`b2b-image-load-check.txt`、`.wordpress-builder/deploy-b2b-images-console.log`、`deploy-b2b-final-console.log`。
+- Harness 最终提交链：`102ea2e → d347414 → 71eacc3 → 9a300b3 → e432321`（全部 ff 到 `codex/classic-acf-v2`，测试 97/97）。
