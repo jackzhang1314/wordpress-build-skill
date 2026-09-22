@@ -65,3 +65,17 @@ test('verify pages retries transient transport failures but not HTTP failures', 
   assert.equal(httpResult.pass, false);
   assert.equal(attempts, 0);
 });
+
+test('database verification retries transient wp failures', async () => {
+  const project = {contentCounts: [{label: 'Guides', postType: 'cleanroom_guide', expected: 3, kind: 'post'}]};
+  let calls = 0;
+  const wp = () => {
+    calls += 1;
+    if (calls === 1) throw new Error('Command failed: Connection to host port 65002 timed out');
+    return '3';
+  };
+  const result = await verifyDatabase(project, {wp, wpRetryDelayMs: 1});
+  assert.equal(result.pass, true);
+  assert.equal(result.results[0].count, 3);
+  assert.equal(calls, 2);
+});

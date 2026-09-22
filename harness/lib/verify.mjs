@@ -56,13 +56,26 @@ export async function verifyPages(base, paths, markers = [], options = {}) {
   return {pass: results.every(result => result.pass), results};
 }
 
-export async function verifyDatabase(project, {wp} = {}) {
+export async function verifyDatabase(project, options = {}) {
+  const wp = options.wp ?? (() => '');
   const results = [];
   for (const item of project.contentCounts) {
     const countArgs = item.kind === 'term'
       ? ['term', 'list', item.postType, '--format=count']
       : ['post', 'list', '--post_type=' + item.postType, '--format=count'];
-    const output = wp(countArgs).trim();
+    let attemptsLeft = options.wpRetries ?? 2;
+    let output;
+    for (;;) {
+      try {
+        output = wp(countArgs).trim();
+        break;
+      } catch (error) {
+        // Shared-host SSH connections drop intermittently; counts are read-only and safe to retry.
+        if (attemptsLeft === 0 || !/timed out|connection|aborted/i.test(error.message)) throw error;
+        attemptsLeft -= 1;
+        if (options.wpRetryDelayMs) await new Promise(resolve => setTimeout(resolve, options.wpRetryDelayMs));
+      }
+    }
     const count = Number(output.split('\n').pop()) || 0;
     const pass = item.expected === undefined ? count >= 0 : count >= item.expected;
     results.push({label: item.label, postType: item.postType, kind: item.kind, count, expected: item.expected, pass});
