@@ -138,3 +138,7 @@
 ### 补充：凭据交付与轮换（应用户要求）
 
 - `harness credentials show|rotate` 落地：交付 = 一条命令打印登录地址/账号/密码；轮换 = 重新随机生成并经 wp_set_password 生效（旧会话失效），私有文件同步更新且保持 0600。密码生成器与 provision 同源（21 字节 base64url）。测试 111/111。
+
+### 第七轮补充：字段审计门禁
+
+- 新增 `harness audit-fields`：双向检查（存值无后台字段定义 / 字段类型在当前 ACF 版本未注册），接入部署验证链；首次运行即抓到 6 个孤儿 meta 并随 seed 清理，复审通过。npm test 111/111 + lint 通过。

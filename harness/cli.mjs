@@ -10,7 +10,7 @@ import {provisionHostinger} from './lib/hostinger.mjs';
 import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
-import {assignTemplate, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
+import {assignTemplate, auditFields, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
 import {rotateCredentials, showCredentials} from './lib/credentials.mjs';
 import {
   backupProject,
@@ -51,6 +51,7 @@ Project commands:
   nav add|remove          Surgical menu item operations (no full rebuild)
   template assign         Assign a page template after validating it renders the body
   credentials show|rotate Hand over site credentials, or regenerate the admin password
+  audit-fields           Verify every stored value has an admin-editable ACF field
   wp <args...>            Run WP-CLI through SSH
   ssh                     Open an SSH session
   open                    Open the Hostinger SSH-access page
@@ -183,7 +184,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
 
     const site = context(options);
     const {root, project, ssh} = site;
-    const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials'];
+    const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials', 'audit-fields'];
     if (remoteCommands.includes(command) && !ssh) throw new Error('Complete project.json ssh before running remote commands');
     const base = `https://${project.domain}`;
 
@@ -244,6 +245,10 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       else if (sub === 'rotate') await rotateCredentials(site, rest, logger);
       else throw new Error('usage: harness credentials show|rotate [--json]');
       return 0;
+    }
+    if (command === 'audit-fields') {
+      const report = await auditFields(site, args, logger);
+      return report.pass ? 0 : 1;
     }
     if (command === 'config') {
       logger(JSON.stringify({...project, ssh: {...project.ssh, keyPath: project.ssh ? '[redacted]' : undefined}}, null, 2));

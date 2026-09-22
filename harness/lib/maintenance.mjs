@@ -264,3 +264,53 @@ export async function assignTemplate(site, args, logger = () => {}) {
   logger(`  OK  template assigned: ${slug} -> ${template}`);
   return result;
 }
+
+const FIELDS_AUDIT_PHP = `<?php
+if (!defined('ABSPATH')) exit('CLI only');
+$config = json_decode(file_get_contents($args[0]), true);
+$known_types = acf_get_field_types();
+$problems = []; $checked = 0;
+foreach ($config['types'] as $type) {
+  $names = [];
+  foreach (acf_get_field_groups(['post_type' => $type]) as $group) {
+    foreach (acf_get_fields($group['key']) as $field) {
+      $names[$field['name']] = $field['type'];
+    }
+  }
+  foreach (get_posts(['post_type' => $type, 'post_status' => 'any', 'numberposts' => -1]) as $post) {
+    foreach (get_post_meta($post->ID) as $meta_key => $ignored) {
+      if ($meta_key[0] === '_' || str_starts_with($meta_key, 'rank_math')) continue;
+      $checked++;
+      if (isset($names[$meta_key])) continue;
+      $problems[] = ['post' => $post->post_name, 'type' => $type, 'field' => $meta_key, 'issue' => 'stored value has no admin-editable field definition'];
+    }
+    $checked++;
+    foreach ($names as $name => $field_type) {
+      if (!isset($known_types[$field_type])) {
+        $problems[] = ['post' => $post->post_name, 'type' => $type, 'field' => $name, 'fieldType' => $field_type, 'issue' => 'field type not available in the installed ACF edition'];
+      }
+    }
+  }
+}
+echo wp_json_encode(['checked' => $checked, 'problems' => $problems]);
+`;
+
+export async function auditFields(site, args, logger = console.log) {
+  const registered = new Set(site.ssh.wp(['post-type', 'list', '--field=name']).split('\n').map(line => line.trim()));
+  const types = ['page', 'post', ...(site.project.contentCounts ?? []).map(item => item.postType).filter(postType => registered.has(postType))];
+  const dir = `/tmp/fields-audit-${Date.now()}`;
+  site.ssh.run(`rm -rf ${shellQuote(dir)} && mkdir -p ${shellQuote(dir)}`);
+  site.ssh.run(`cat > ${shellQuote(dir + '/audit.php')}`, {input: Buffer.from(FIELDS_AUDIT_PHP, 'utf8')});
+  site.ssh.run(`cat > ${shellQuote(dir + '/config.json')}`, {input: Buffer.from(JSON.stringify({types}), 'utf8')});
+  const output = site.ssh.wp(['eval-file', `${dir}/audit.php`, `${dir}/config.json`]);
+  const report = JSON.parse(output.slice(output.indexOf('{')));
+  const pass = report.problems.length === 0;
+  if (!pass) {
+    for (const problem of report.problems.slice(0, 20)) {
+      logger(`    FAIL ${problem.type}:${problem.post} field "${problem.field}" — ${problem.issue}`);
+    }
+  } else {
+    logger(`  OK  field audit: ${report.checked} meta/field pairs, every stored value is admin-editable`);
+  }
+  return {...report, pass};
+}
