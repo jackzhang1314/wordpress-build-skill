@@ -1,0 +1,340 @@
+{
+  "copiedAt": "2026-09-19T21:18:09.258698+00:00",
+  "origin": "/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill",
+  "baseHead": "a49821fa88311b5fa59f4d0298b8a6f5b71bd7a1",
+  "includesUncommittedSource": true,
+  "files": [
+    {
+      "path": "examples/hongda-wordpress/BRIEF.md",
+      "sha256": "71eb995011adf6cff5f947aff324a3ea89cc490596ee2856fa3fa33661523671"
+    },
+    {
+      "path": "examples/hongda-wordpress/README.md",
+      "sha256": "f3407468dd6fbf1a0dd85cbcdf56ca73081971970707695d7a1e7458f7bcf781"
+    },
+    {
+      "path": "examples/hongda-wordpress/content/form.php",
+      "sha256": "4940e6cd74401bc0d0d23585ac0023d69939adca1adc9810e121afc72969630b"
+    },
+    {
+      "path": "examples/hongda-wordpress/content/media/backhoe-loader.jpg",
+      "sha256": "bb1163df742fb162c7b034cebfdecb023ed1e71a29f746b1909f4f693daa5723"
+    },
+    {
+      "path": "examples/hongda-wordpress/content/media/construction-excavator.jpg",
+      "sha256": "908b45b2a670232a9edb50972bbc099e65823386048d29f218f4611ee0eec887"
+    },
+    {
+      "path": "examples/hongda-wordpress/content/media/heroMiniExcavator.jpg",
+      "sha256": "7e17b92103da9a98d71070ce0aacb38d402077d5fa94748a7dafb2ca2f93ffb6"
+    },
+    {
+      "path": "examples/hongda-wordpress/content/media/mini-excavator.jpg",
+      "sha256": "784f9c1bc9ee75b7dbd62f3a7f88fe5a18ccefed531e727afe3729b767a58f92"
+    },
+    {
+      "path": "examples/hongda-wordpress/content/media/skid-steer-loader.jpg",
+      "sha256": "c682469d52f7579e8b12453494881262f79fa9eebe3303d49bd5996c60622a24"
+    },
+    {
+      "path": "examples/hongda-wordpress/content/media/wheel-loader.jpg",
+      "sha256": "6c4956a334b87d67fa84220eed19a4424490c22cda33bd3a6ef5942fd856b0bb"
+    },
+    {
+      "path": "examples/hongda-wordpress/content/media-manifest.json",
+      "sha256": "839eee1e165b18dd07ff5af3ddb45f1af0d9bccb1ad15ea1caa250cb205c1777"
+    },
+    {
+      "path": "examples/hongda-wordpress/content/reference.json",
+      "sha256": "9ee2f4a00504ba9ef1103773d2ee749ce67d62ca6739e428c178b189fa2e639b"
+    },
+    {
+      "path": "examples/hongda-wordpress/content/seed.php",
+      "sha256": "4133458bd41e64ac6274f37ce9ac0735612f4189344e29d371e8ec208a541a65"
+    },
+    {
+      "path": "examples/hongda-wordpress/plugin/site-model.php",
+      "sha256": "70b7b13b071eb8336143f0341586dd28456bb9a69b16b19572f5a90fb2b1b72b"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/404.php",
+      "sha256": "3f7928d244fedf00a19c49fca4e545dbff7bd515e3a553c0a61bab7406efaee2"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/archive-hd_product.php",
+      "sha256": "124e28ae519779a76d4fc8f4c1a1f2e86ad006c122a69331c2f53c8ee1912ad0"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/archive-hd_solution.php",
+      "sha256": "032b5cb50add59e6cb218836736ae8753e0e94a16eeb72db3c8bf8037d118d29"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/editor.css",
+      "sha256": "6d072179a7da4571f1abd5f8543b9ba4150b5d86526823c3a253a2740a6a78b5"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/footer.php",
+      "sha256": "19d03ebb8b11febfe5fae9b28cee29b07692d7fe577bd67bb7be78bafae22df0"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/front-page.php",
+      "sha256": "1909af6e35ffc0953f6b98a95977c813fb89a80053b61efbea2a1d4ddc6360a4"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/functions.php",
+      "sha256": "6350c3dbb8518039f8aaa16eecd91aef9c5214f8fa32abc5b81f584234f5e91e"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/header.php",
+      "sha256": "0bd95accdd196aa30c83c0b0a49e1a36e74eb55c44ad0cdbfa9c09b50b480546"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/inc/view.php",
+      "sha256": "1b22b944dbd15d7da1156fc5b637239e80ef9f30427e5723c2032705d9456a9e"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/index.php",
+      "sha256": "43a5b036b910890b9fae8a921a5ef9bba0bd13af11e1474c8e9e7e05b2eb843a"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/page-about.php",
+      "sha256": "db2e82b959d0beffafaa16e652c7a36f939c4380dcb67ca7c0d120d75f1d0ebd"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/page-contact.php",
+      "sha256": "9f6de6584de506453c1634e9c6c2cbd5f22732020f34b001e6227fded500e75f"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/page.php",
+      "sha256": "89b56c6f8ad517240037a1689cf502684c500c28d6ced687f8aae8e1e8a7eb82"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/single-hd_product.php",
+      "sha256": "daceeb76839b43e1c048c27c8892981a52ff9f6c4730c02f449dee3c32ebafa0"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/single-hd_solution.php",
+      "sha256": "a2cad01b8446ad174c194ec726a23ce1d110029b3a2628d975f1b169a5b3defb"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/single.php",
+      "sha256": "f61ca79acfe47baf1cab1850f98a67a223826abaa63df552e036f8533ff5a12a"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/style.css",
+      "sha256": "b89141f6b4e339f6f4fa98224438e6d01cd29ddeef92868753397b00ffa32f8f"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/taxonomy-hd_category.php",
+      "sha256": "34322ce7cef995b32dd2abeed5f2cc28f0e345b7ed0ae0408f03460b1137d35e"
+    },
+    {
+      "path": "examples/hongda-wordpress/theme/theme.json",
+      "sha256": "73ccfc391b14c9fa0a34b80d1efd85c35914722bba01319476e3ebe800e20284"
+    },
+    {
+      "path": "src/blocks.ts",
+      "sha256": "5901cf230c30276d872085f5173c27af1b515076bc984350ee52b83ece83243e"
+    },
+    {
+      "path": "src/build-site.ts",
+      "sha256": "1b8c1d24573f44f03f3a210d855ea8474aadc816c4d121d1ec43050d30762a78"
+    },
+    {
+      "path": "src/cli.ts",
+      "sha256": "446640d1c2a5c77bf1fbb8e5bff8b9516fb946988c734bec5cc69c9ad356b3dd"
+    },
+    {
+      "path": "src/client.ts",
+      "sha256": "b0b0ed8992b3e539edeb471e1aa07788d91be811ee5a892c945ae36dcd5739f9"
+    },
+    {
+      "path": "src/content-model.ts",
+      "sha256": "e2c7c11a95cecee311ef04462c5b5e53283fe41c0031332fac2120e84c2cc1a6"
+    },
+    {
+      "path": "src/content.ts",
+      "sha256": "6b4232161c0835e5b9d432abec5cfa0fe2b0f3049b37cd0b7f876574e11d328e"
+    },
+    {
+      "path": "src/edit-page.ts",
+      "sha256": "5fceeab874fa749a8201c5f638f657edbcf909637a93fee75fe806cc520419ee"
+    },
+    {
+      "path": "src/import-content.ts",
+      "sha256": "19b87395e6c9fe0be84e26ff83b7aec7dbe2c827c2908faa8c9e5fd3c1849ac5"
+    },
+    {
+      "path": "src/journal.ts",
+      "sha256": "27d024c16ba776685791ed7f30fa982dbf1d33090721e09e59850a264e5f11fc"
+    },
+    {
+      "path": "src/media.ts",
+      "sha256": "14b77d5d10b87db286cb9154cec128cf0df8586abfadcd6f56288a95711f673a"
+    },
+    {
+      "path": "src/navigation.ts",
+      "sha256": "4043945ed3d0670a41811635e08d824ce44d5646cd069fbe8c05f8a30f71b428"
+    },
+    {
+      "path": "src/orchestration.ts",
+      "sha256": "4f40465dfad29b7961c7ebf6c68999b4738e0beb3ff7e470bf67be7ddbc251a4"
+    },
+    {
+      "path": "src/pages.ts",
+      "sha256": "487d01b7db5343de80ce7bcfb0df58a637e8811296e77806511fe384e53d862d"
+    },
+    {
+      "path": "src/release.ts",
+      "sha256": "722543e8e0ae3ea74c12c1642045a546f3b4f2ebb277cc9add78837e30a0783f"
+    },
+    {
+      "path": "src/site.ts",
+      "sha256": "be646d009acef342c0997ee7baff272270bfcbec8a6627c10ca9c5d466df75d9"
+    },
+    {
+      "path": "src/templates.ts",
+      "sha256": "8e6d48efda79828d8c666ca96cac9224cf8b0dc6cd111cfc6075dbfa5bf38cf9"
+    },
+    {
+      "path": "scripts/audit-lab.mjs",
+      "sha256": "3d83d66bfbfa687bd6ee24c9ed0277f03d782d4901e15ae10cc01d5d63b285fb"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "sha256": "22f1b75e7c6afeb8501f0bbada2f5be53969be78a6ba0f6eca44bbcba2e4b95d"
+    },
+    {
+      "path": "scripts/deploy-lab.mjs",
+      "sha256": "5099819fa71916403a600f3f395596bfb9db158f88ad551685aad7f68239f323"
+    },
+    {
+      "path": "scripts/fixtures/capture-mail.php",
+      "sha256": "3a63123feed0ae73c156f3055a33fc402bb3474eb1146afbaf9c20b66f80c42e"
+    },
+    {
+      "path": "scripts/fixtures/hongda/receipts.php",
+      "sha256": "476d74da1077f6bcfb924ae5f24dc50ab4cc5aa83a289217357072490d67499b"
+    },
+    {
+      "path": "scripts/fixtures/hongda/route-compat.php",
+      "sha256": "62c8ba80b499d478c43f3daa2dd4168c57999f1551b4486cc96570be957b3bc0"
+    },
+    {
+      "path": "scripts/fixtures/hongda/snapshot.php",
+      "sha256": "89ab3dbe98f5337b7fddb63fecbc984ed057c7d83785fd3667ef7dace396b3eb"
+    },
+    {
+      "path": "scripts/fixtures/hongda-native/smtp.php",
+      "sha256": "588a22dfc346245a905d5823a2054b687280c310d3cfc2efaa244f6fb1b6562a"
+    },
+    {
+      "path": "scripts/fixtures/hongda-native/state.php",
+      "sha256": "2b13389e83068fa5406874b89760ab2526ed21c95006a6412dc8243bea2589c1"
+    },
+    {
+      "path": "scripts/fixtures/integration-test.php",
+      "sha256": "cd61b7ca71573a231b8229c8e766f036269660ca201a8249fa4dac9a54d70e9a"
+    },
+    {
+      "path": "scripts/fixtures/missing-acf-test.php",
+      "sha256": "c43e1d953a69f5a5379eb3ce72cac2c3c8daf7ddbab9e119d19196f16dec3604"
+    },
+    {
+      "path": "scripts/fixtures/new-site/lab-only.php",
+      "sha256": "44c4d3f33ac5b728ca84e64b999e02886e9269d2d4ca33a9b945acee42629b09"
+    },
+    {
+      "path": "scripts/fixtures/new-site/setup.php",
+      "sha256": "76efa2f411f9d72964c5347301e089dfa14b3635808b1bfb026969f415796087"
+    },
+    {
+      "path": "scripts/fixtures/setup-demo-form.php",
+      "sha256": "e4107e9aa97114e83d5da673b92a1d309b3e2d58028a2bb5883e321fabeed980"
+    },
+    {
+      "path": "scripts/fixtures/setup-demo-seo.php",
+      "sha256": "6e159f3f36aa2fe13c0a272bce3c4c938612236369abf05084270e2aa3aff4c7"
+    },
+    {
+      "path": "scripts/hongda-clean-site.mjs",
+      "sha256": "04ce71dd267700a01faf24df38a467e19bf02aa10c501008ed1834a7346b9bb4"
+    },
+    {
+      "path": "scripts/hongda-e2e.mjs",
+      "sha256": "67bb838164037af6e1473f02be6b4951dd1c6c01b5ab470b4999e5a0bf04cb08"
+    },
+    {
+      "path": "scripts/hongda-native.mjs",
+      "sha256": "4b093709c23c9f89f5403e223614a52017f50f6fd2aae1ede51694c1f68dde26"
+    },
+    {
+      "path": "scripts/hongda-package.mjs",
+      "sha256": "d76c8e34f83662fb34356d9ebdf43f8a271d8c69f8c77e2add10a80e96066949"
+    },
+    {
+      "path": "scripts/hongda-restore.mjs",
+      "sha256": "ad38fb8ff59d1c91ad2f14fa8f254b4773a726fb3d6323baa8218cd569438fa2"
+    },
+    {
+      "path": "scripts/hongda-site.mjs",
+      "sha256": "c0f755864b50ff012e94b602999c637e48e0c0476193da3df6474a7bdcc37fe1"
+    },
+    {
+      "path": "scripts/hongda-snapshot.mjs",
+      "sha256": "0fc2552f34e747d6a423fc72b2ebd32931bec9ae2bf40d5948f00c78ccd19ab8"
+    },
+    {
+      "path": "scripts/lab-bind.mjs",
+      "sha256": "a7b661016673bece2c47e251d77c0214bcc04fb5f27cf28fc328c4fa1da3d91d"
+    },
+    {
+      "path": "scripts/lab-wp.mjs",
+      "sha256": "70c239b0e942845fc0a22ae8aa3d42882170595bf0c91d5da6cc2165b326759e"
+    },
+    {
+      "path": "scripts/lab.mjs",
+      "sha256": "a7d8d1c7ce0eba6ae5c11505def97f54aa24c77adad1b0928f4aaad6dce01516"
+    },
+    {
+      "path": "scripts/migrate-demo.mjs",
+      "sha256": "809abedd39e2276c2c27005c28b1e7c5acf85fca7b58c4027cb2d22e1ac7089c"
+    },
+    {
+      "path": "scripts/reference-site.mjs",
+      "sha256": "c315dadd7771530d7b5c388361275792d6e6aed90c9a29265bf976976cfe44fc"
+    },
+    {
+      "path": "scripts/test-hongda-enquiry.mjs",
+      "sha256": "535bd004b3d41d1c7c2f0f016faf3ecc22c7ca10e2e12eafb442adf9747036d8"
+    },
+    {
+      "path": "scripts/test-hongda-recovery.mjs",
+      "sha256": "1eea5ab0b2b9b2d6f9ef0e5eacdd0eda41f04622423e6278d071131ecc70fbde"
+    },
+    {
+      "path": "scripts/test-hongda-site.mjs",
+      "sha256": "73024286eba6d28c20bff760450e4f77cad11230b4b1fd1ba0e61348d90d38ed"
+    },
+    {
+      "path": "scripts/test-new-site.mjs",
+      "sha256": "f9bf2842c397e1bc0637ed217821f46114933d1f9f15f7d107d908d382ad8b9b"
+    },
+    {
+      "path": "scripts/test-reference-site.mjs",
+      "sha256": "f083cc82b576d34e69871036b5f721d39501ef1cb0c7c6f3ccef3d5678790a47"
+    },
+    {
+      "path": "scripts/test-theme.mjs",
+      "sha256": "a25ec79bdfc92af60292ccbddf5479deff9f0b4818dbc40b1a21bc46192a16a2"
+    },
+    {
+      "path": "scripts/verify-snapshot.mjs",
+      "sha256": "2dd780e7f3a5c15c53436b97c9ce2435f4795c6ef62120a818ac87d793044b59"
+    },
+    {
+      "path": "scripts/wordpress-ready.mjs",
+      "sha256": "414da86e160463d63450419816d914b49314d806fc7995eb2a81aa8e60f732ae"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "saved": true,
+  "status": 302,
+  "model": "YHD08 UI VERIFIED",
+  "frontendReadback": true,
+  "warning": "WordPress editor emits global-styles-css-custom-properties-inline-css iframe warning; saving and rendering worked.",
+  "note": "Form POST returned 302 redirect; success is established by frontend readback, not HTTP ok alone.",
+  "restored": true
+}

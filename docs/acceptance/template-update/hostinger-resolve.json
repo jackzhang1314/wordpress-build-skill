@@ -1,0 +1,20 @@
+{
+  "testedAt": "2026-09-21T16:34:31.151Z",
+  "scope": "hostinger-rest-remote-conflict-resolution-not-full-deployment",
+  "slug": "harness-rresolve-1a0c4d17a5a",
+  "checks": {
+    "fixtureCreated": true,
+    "resetSucceeded": true,
+    "backupCapturesOperatorContent": true,
+    "overrideGoneAfterReset": true,
+    "restoreSucceeded": true,
+    "operatorEditRestored": true,
+    "resetRefusesMissingOverride": true,
+    "cleanup": true
+  },
+  "notCovered": [
+    "wp-cli-based-remote-resolution",
+    "enquiry-table-hash-during-remote-resolution-structurally-unreachable-via-rest",
+    "binary-and-plugin-incremental-transport"
+  ]
+}

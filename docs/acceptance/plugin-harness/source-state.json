@@ -1,0 +1,13 @@
+{
+  "at": "2026-09-20T00:17:45.256Z",
+  "workspace": "Uncommitted shared workspace; hashes identify this change",
+  "files": {
+    "config/wordpress-plugins.json": "eaf5571abf17bdcbb3f1c1e09b6c07b5809c540b252f8574d51465ff287f2c69",
+    "examples/b2b-block-starter/scripts/plugins.mjs": "bc7eab9a0d9f1b52efe1eb7bc944b89dc9325bbf25133940b25704ec8a00d2d3",
+    "examples/b2b-block-starter/scripts/plugins-check.mjs": "ea60e7fb2e40013f2e99fec8c0d8937efe43b04353a4281a3cce868113d56804",
+    "examples/b2b-block-starter/scripts/start.mjs": "40dcf3926dcb3af9461fb851757e2fbc724fcc9babd5a02a5be30a51a76a9825",
+    "tests/plugin-profile.test.mjs": "8130b2b555d06752db7848a71fb00e88ac16aecce9ff5b1e0fb1f13395fd4871",
+    "scripts/build-block-starter.mjs": "a25bf9b2d2dc41c275f5bb97df76eda92f60ab333b8bf9d0278007c5305c590d",
+    ".agents/skills/wordpress-builder/references/plugins.md": "f31afb0161b79c3df2efcdee1ef3eeee1f03b2deec370600e2c2247f100c9578"
+  }
+}

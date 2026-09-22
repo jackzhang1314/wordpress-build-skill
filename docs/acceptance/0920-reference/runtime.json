@@ -1,0 +1,266 @@
+{
+  "recordedAt": "2026-09-19T16:35:18.843Z",
+  "site": {
+    "wordpress": "7.1.1",
+    "php": "8.3.32",
+    "acf": "6.8.9",
+    "fluentform": "6.2.9",
+    "theme": "site-reference",
+    "isBlockTheme": false,
+    "products": [
+      8,
+      9,
+      10
+    ],
+    "collection": 2,
+    "articles": [
+      11,
+      12,
+      13
+    ],
+    "form": 3,
+    "pages": {
+      "home": 4,
+      "about": 5,
+      "journal": 6,
+      "contact": 7
+    },
+    "mailMode": "local-capture",
+    "scope": "isolated-fictional-reference"
+  },
+  "checks": {
+    "exact_versions_and_classic_theme": true,
+    "cli_field_update_and_safe_replay": true,
+    "unrelated_body_preserved": true,
+    "field_update_renders": true,
+    "native_body_edit_renders": true,
+    "featured_image_renders": true,
+    "taxonomy_field_edit_renders": true,
+    "product_search": true,
+    "seo_and_local_noindex": true,
+    "homepage_internal_links": true,
+    "pagination_distinct_products": true,
+    "contact_links_follow_page_identity": true,
+    "theme_renders_without_model": true,
+    "plugin_reactivation_preserves_content": true,
+    "permalinks_restored_after_activation": true
+  },
+  "routes": [
+    {
+      "path": "http://127.0.0.1:9463/products/linen-panel/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "http://127.0.0.1:9463/products/linen-panel/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "http://127.0.0.1:9463/products/linen-panel/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "http://127.0.0.1:9463/collections/surface-studies/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/products/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/products/page/2/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/journal/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/journal/page/2/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/contact/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "http://127.0.0.1:9463/products/clay-panel/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "http://127.0.0.1:9463/products/moss-panel/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "http://127.0.0.1:9463/choosing-a-surface/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "http://127.0.0.1:9463/working-with-samples/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "http://127.0.0.1:9463/notes-on-finish/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/?s=Linen",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/not-a-real-page/",
+      "status": 404,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/products/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/products/page/2/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "http://127.0.0.1:9463/products/linen-panel/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    },
+    {
+      "path": "http://127.0.0.1:9463/products/linen-panel/",
+      "status": 200,
+      "h1": 1,
+      "document": 1
+    }
+  ],
+  "internalLinks": 9,
+  "files": [
+    {
+      "path": "plugin/site-model.php",
+      "sha256": "2a35d90350262c18ffaa70be2d28fc1e648aed0ae59ec02508e4e7f33c8d7878"
+    },
+    {
+      "path": "theme/404.php",
+      "sha256": "ac3df9a1f151b7a6c67521e7b6ddd0847f45937cdae40368b3e64f421f536b0e"
+    },
+    {
+      "path": "theme/archive.php",
+      "sha256": "f87d71a52fab508fec2f1f2062b1e9fc5ba4659c80dcd06ae717a653f1138af7"
+    },
+    {
+      "path": "theme/footer.php",
+      "sha256": "a9e75fe8b99f11bed5ba5210ba7d1aabdaf77aba8f5a752682bed51827d716b8"
+    },
+    {
+      "path": "theme/front-page.php",
+      "sha256": "c2ffb2027ed3a3235f1c82bce49b0d783fcdba1dfe3bef600188e173a457f07a"
+    },
+    {
+      "path": "theme/functions.php",
+      "sha256": "b6a05df054e0723c5a879b9c270a019b3a8ac979a6bd15396edc3f95f09913dc"
+    },
+    {
+      "path": "theme/header.php",
+      "sha256": "c0a0172181d744f8ad9152ac6efb021c890aa1c86b458f0af308f4485b5b0600"
+    },
+    {
+      "path": "theme/index.php",
+      "sha256": "fd8e7962ba910207dffa76829ebf48c79bb87a39451667b609497dba94ce5b4d"
+    },
+    {
+      "path": "theme/page.php",
+      "sha256": "01ed9eea30c8187c2fcf0019891c41f70308628c7728a114224e6f241f2fcb39"
+    },
+    {
+      "path": "theme/parts/card.php",
+      "sha256": "9b8e13e6f95093143b6fc24531d6fd31733dbac9e8c321e3b7976fa0211ff49b"
+    },
+    {
+      "path": "theme/search.php",
+      "sha256": "95921119dc57074e88c162a1f6d36eb35a12f3756f64a710a60a2155529d8db3"
+    },
+    {
+      "path": "theme/single-site_product.php",
+      "sha256": "b3fa6249510ed60a49ebab76ce8e5a2bd40311c9385a7a753903cfa9dd49b46b"
+    },
+    {
+      "path": "theme/single.php",
+      "sha256": "01ed9eea30c8187c2fcf0019891c41f70308628c7728a114224e6f241f2fcb39"
+    },
+    {
+      "path": "theme/style.css",
+      "sha256": "cf09d26a4a6b0ae6921b0494486a916eb4cfc18592ccbf20792f5dfc83e19871"
+    },
+    {
+      "path": "theme/taxonomy-product_collection.php",
+      "sha256": "92624e7e5ed994155b10288fc2ddbdc3ce9b732d62defc863de2f7c00486ad7d"
+    },
+    {
+      "path": "theme/theme.json",
+      "sha256": "741a00b2307feb6f84462025cfd4b9206031417a416efdb0cbbebd7e046fc08a"
+    }
+  ],
+  "limitations": [
+    "Playground SQLite, not production MySQL",
+    "Form UI and real editor checked separately",
+    "Mail captured locally, no external delivery"
+  ]
+}

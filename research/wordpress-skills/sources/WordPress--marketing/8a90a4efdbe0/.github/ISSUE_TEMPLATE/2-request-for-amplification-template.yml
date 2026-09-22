@@ -1,0 +1,53 @@
+name: Request for Amplification
+description: Request amplification by the Marketing Team to various marketing channels
+title: "[AMPLIFY]: "
+labels: ["amplification-request"]
+assignees:
+  - bjmcsherry
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Need help spreading the news? The Marketing team can help amplify messages across the WordPress ecosystem of social platforms, emails, and more.
+  - type: dropdown
+    id: audience
+    attributes:
+      label: Who is the intended audience(s) for this content? (select all that apply)
+      multiple: true
+      options:
+        - Any/All/Don't know
+        - General WordPress community
+        - MakeWP community
+        - WordPress users (existing)
+        - WordPress users (new/potential)
+        - Builders/implementers
+        - Developers
+        - Designers
+        - Plugin community
+        - Theme community
+        - Agencies/Enterprise
+    validations:
+      required: true
+  - type: textarea
+    id: content
+    attributes:
+      label: Amplification request details
+      description: Please describe what you are looking to amplify or promote, and why. Include as many details as possible. If you have specific content that you would like to use, please note that here. If you would like additional help, please consult the [#marketing Slack](https://wordpress.slack.com/archives/C0GKJ7TFA).
+    validations:
+      required: true
+  - type: input
+    id: links
+    attributes:
+      label: Links
+      description: Are there any posts, articles, resources or other links that should be shared with this content? Please provide the link and any context.
+      placeholder: E.x. "https://wordpress.org/news - This is a link to the page we want people to go to"
+    validations:
+      required: false
+  - type: textarea
+    id: important-dates
+    attributes:
+      label: Desired date(s) of publication
+      description: Is there a desired poublication date or dates for this request? Posts to social platforms are scheduled at least one week in advance. For urgent requests, please post in the [#marketing Slack](https://wordpress.slack.com/archives/C0GKJ7TFA).
+      placeholder: E.x. 24 May 2024
+    validations:
+      required: false

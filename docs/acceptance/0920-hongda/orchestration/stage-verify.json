@@ -1,0 +1,37 @@
+{
+  "projectHash": "5c1d2735a4023bdc93aee353253dfdca23c45dc57dbdff1fb4f5648c574731b9",
+  "stage": "verify",
+  "outcome": "verified",
+  "summary": "Local functional, layout, editor and enquiry acceptance complete; production release not covered",
+  "checks": [
+    {
+      "name": "Local functional, layout, editor and enquiry acceptance complete; production release not covered",
+      "status": "pass"
+    }
+  ],
+  "evidence": [
+    "runtime.json",
+    "browser-layout.json",
+    "editor.json",
+    "enquiry.json"
+  ],
+  "recordedAt": "2026-09-19T19:06:38.928Z",
+  "files": [
+    {
+      "path": "runtime.json",
+      "sha256": "20d9b8fbb601118f88337ffa033b78d7e995a3a9151c2f2e6000b417205c223b"
+    },
+    {
+      "path": "browser-layout.json",
+      "sha256": "334801913a866360bac9ac15a21513a5976778b1af562476f3784c305f85c500"
+    },
+    {
+      "path": "editor.json",
+      "sha256": "0a7d062901418c067292b2233db807db79e74c53768b7e229d66acd4e4b7697a"
+    },
+    {
+      "path": "enquiry.json",
+      "sha256": "dd80f3e34d3188c60124fd1c2da3db1cfb75be769514a294f71f836dc41e9b7c"
+    }
+  ]
+}

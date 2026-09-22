@@ -1,0 +1,21 @@
+{
+  "recordedAt": "2026-09-19T21:53:15.587Z",
+  "candidates": {
+    "a": {
+      "theme": "site-reference",
+      "model": "YHD08",
+      "productTemplate": "product-standard.php",
+      "categoryLayout": "catalogue",
+      "overrides": 0,
+      "homeContainsTestMarker": false
+    },
+    "b": {
+      "theme": "site-blocks",
+      "model": "YHD08",
+      "productTemplate": "product-standard",
+      "categoryLayout": "catalogue",
+      "overrides": 0,
+      "homeContainsTestMarker": false
+    }
+  }
+}

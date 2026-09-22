@@ -1,0 +1,18 @@
+{
+  "projectHash": "5c1d2735a4023bdc93aee353253dfdca23c45dc57dbdff1fb4f5648c574731b9",
+  "stage": "verify",
+  "outcome": "verified",
+  "summary": "Local functional, layout, editor and enquiry acceptance complete; production release not covered",
+  "checks": [
+    {
+      "name": "Local functional, layout, editor and enquiry acceptance complete; production release not covered",
+      "status": "pass"
+    }
+  ],
+  "evidence": [
+    "runtime.json",
+    "browser-layout.json",
+    "editor.json",
+    "enquiry.json"
+  ]
+}

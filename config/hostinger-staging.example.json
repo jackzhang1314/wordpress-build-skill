@@ -1,0 +1,7 @@
+{
+  "provider": "hostinger",
+  "environment": "staging",
+  "sshAlias": "hostinger-staging",
+  "wordpressPath": "/home/REPLACE_ACCOUNT/domains/REPLACE_DOMAIN/public_html",
+  "expectedUrl": "https://staging.example.invalid"
+}

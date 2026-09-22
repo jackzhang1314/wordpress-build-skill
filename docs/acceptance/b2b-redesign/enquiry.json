@@ -1,0 +1,16 @@
+{
+  "testedAt": "2026-09-19T23:36:04.044Z",
+  "required": 4,
+  "contextHidden": "hidden",
+  "contextValue": "13",
+  "rejectedStatus": 423,
+  "invalidProductRejected": true,
+  "status": 200,
+  "success": true,
+  "entryId": 2,
+  "entriesAdded": 1,
+  "notificationsAdded": 1,
+  "mailTransport": "smtp-to-mailpit",
+  "externalDelivery": "not-tested",
+  "scope": "local-preview-only"
+}

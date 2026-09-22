@@ -1,0 +1,20 @@
+{
+  "testedAt": "2026-09-20T00:10:50.433Z",
+  "head": "a49821fa88311b5fa59f4d0298b8a6f5b71bd7a1",
+  "workspace": "Shared uncommitted workspace; file hashes identify this change",
+  "files": {
+    "examples/b2b-block-starter/plugin/seo.php": "c08eb2fc7cf91d1a712ae36bdf78cf0fb0ef0f7e341cf17c6240cecb22464913",
+    "examples/b2b-block-starter/plugin/site-model.php": "21bc618f2ccc3e0dcc6fbeb340f96744de8c9eeb3b5007b44160a1a0989a9ebd",
+    "examples/b2b-block-starter/content/rankmath.php": "e0c64e2fdb0c24a52c3f18b346f0fea508c86eca4007c0fcbd65188c33a23a0b",
+    "examples/b2b-block-starter/scripts/start.mjs": "f807baac7a878343fd5b5b2477f37d4be0aef1067736d0c20d9581003b80014c",
+    "examples/b2b-block-starter/scripts/seo.mjs": "4eee460c9d7bb471425b6d96f45e8bdbe1c3a93b0229cd7f0a098893a8575fd5",
+    "examples/b2b-block-starter/scripts/rankmath-check.mjs": "86440521305815b5fe672a400738c6f98a3e44c7d07ca707e48df035592cd52b",
+    "examples/b2b-block-starter/README.md": "0fba578a930b281cec53a179f97d80375cfe0ea608f8e2cff4ba8b37c5d3323f",
+    "examples/b2b-block-starter/AGENTS.md": "dcb816a94045810ffeed584dcb2c035460a79144b923bedaff7ae94b184eda05",
+    ".agents/skills/wordpress-builder/SKILL.md": "8e0343305ec0aed10163d0a4b6e077fa2158bcb4109ff6f9aedc786c3bd38406",
+    ".agents/skills/wordpress-builder/references/seo.md": "30fbfd0ff3de99422309894290691c27e7c838b6c8e83fd0729da77a16205007",
+    ".agents/skills/wordpress-builder/references/reference-site.md": "004ebe255ebd10b0c06e639ea8ff568ea8e11056c57d11a1a88319250ae4fbff",
+    ".agents/skills/wordpress-builder/assets/block-starter/README.md": "c5e65c2a041e689f5ab9ce87a0011a031c618c5204723ee6b963ba9ead9989db",
+    "package.json": "32bb584ed9aecf91711251678ccf5a1dd74ca2b13cef1e23f5093ec036508800"
+  }
+}

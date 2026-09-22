@@ -1,0 +1,24 @@
+{
+  "testedAt": "2026-09-21T17:12:51.384Z",
+  "checks": [
+    {
+      "path": "/",
+      "product": "",
+      "status": 200,
+      "success": true,
+      "entryId": 5
+    },
+    {
+      "path": "/equipment/model/yhd08/",
+      "product": "13",
+      "status": 200,
+      "success": true,
+      "entryId": 6
+    }
+  ],
+  "entriesAdded": 2,
+  "notificationsAdded": 2,
+  "mailTransport": "smtp-to-mailpit",
+  "externalDelivery": "not-tested",
+  "scope": "local-preview-only"
+}

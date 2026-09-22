@@ -1,0 +1,367 @@
+[
+  {
+    "path": ".claude-plugin/plugin.json",
+    "sha256": "8766c00b638222be82f6b76d5b2ef632ff9342dd453ba60732e0266fc1dfad2a",
+    "bytes": 1042
+  },
+  {
+    "path": ".github/CODEOWNERS",
+    "sha256": "b0a871b07ddd64b1b3ecf8ab6fba4549807c12739aa7ead6abf8705e6dddac5a",
+    "bytes": 291
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/bug-report.md",
+    "sha256": "f8ed8910811a01b846460724935a9ffd0d8e2292ab361ec9b23de1698c675bf8",
+    "bytes": 503
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/skill-submission.md",
+    "sha256": "a7930b27b92d79fe8d3ed3aebf4b6515e3d436d16defd6d127e7073fbc30bfd9",
+    "bytes": 1132
+  },
+  {
+    "path": ".github/pull_request_template.md",
+    "sha256": "b03f44d3f60ac6010a484c456919b73d58dfde79d81faaa8cac702be58f49ade",
+    "bytes": 643
+  },
+  {
+    "path": ".github/workflows/validate-skill.yml",
+    "sha256": "b34e39da42f0e7c24ec3236f3e4924946adf35a4bba99905b772b49779cdafa6",
+    "bytes": 2641
+  },
+  {
+    "path": ".github/workflows/validate-skills.yml",
+    "sha256": "a95cc03bda163149ef83e4a66e122349af66ae5d8dba6930809932cb46395b30",
+    "bytes": 1038
+  },
+  {
+    "path": ".gitignore",
+    "sha256": "1b5ded3ef66b7d3b9664eaafc426810d3d7d4854610cd0ed4b9d24d8c5ab9181",
+    "bytes": 59
+  },
+  {
+    "path": "CONTRIBUTING.md",
+    "sha256": "0b1007c73d588b00f69b27547e7842afe4d8eba6dbd2e3b8f5ee9fd4b8c1c3cb",
+    "bytes": 2364
+  },
+  {
+    "path": "LICENSE",
+    "sha256": "ffe13c4864ed425c25622c0851186903f45602dbb784bd6493a89e24bef45396",
+    "bytes": 1075
+  },
+  {
+    "path": "README.md",
+    "sha256": "999b3b3a014d8e3b9ddebd669d60035120d4ca9b394098a629aed10c95aef663",
+    "bytes": 8884
+  },
+  {
+    "path": "icon.png",
+    "sha256": "c57cdfb318fe520ea454cc194f018e7c6fdccf2174612b2691a78e7b0a041f2b",
+    "bytes": 421275
+  },
+  {
+    "path": "scripts/validate-skills.mjs",
+    "sha256": "8cd229e5dd9144394204b06ceb984a7fe58b3c09ad1c456aec3540976bb52a49",
+    "bytes": 6178
+  },
+  {
+    "path": "skills.json",
+    "sha256": "e3e5a8fbf4f85789b3f3ef77b809bf735af3454c433445d226efb09ac134ecb2",
+    "bytes": 114682
+  },
+  {
+    "path": "skills/activity-report-composer/SKILL.md",
+    "sha256": "154e368f3afc262098ec94a4a4a39541b2e01111559681b4d1bee9d0bf2d0f61",
+    "bytes": 8202
+  },
+  {
+    "path": "skills/art-direction/SKILL.md",
+    "sha256": "4f8dbbe1dfb7fe956f09edd676b9bad30616b067829b96f33e16cfcadd53b1ba",
+    "bytes": 17179
+  },
+  {
+    "path": "skills/brand-voice-synthesizer/SKILL.md",
+    "sha256": "2829418812191263f6030aab477bbe8f802399b8598242fe3f421b7703d708a1",
+    "bytes": 15800
+  },
+  {
+    "path": "skills/build-oxygen6-page/SKILL.md",
+    "sha256": "507faa5f6a8f7dc6eb3af07d7e5ce4a0469888a3e3d89af77f06d11af1bd8b49",
+    "bytes": 8324
+  },
+  {
+    "path": "skills/content-portability/SKILL.md",
+    "sha256": "5a91eae191bf5e38b4d1523fe682a7c9992b0f1335eb9c9da354f860d4b19bdc",
+    "bytes": 15458
+  },
+  {
+    "path": "skills/conversion-audit/SKILL.md",
+    "sha256": "39b8dfc253d47431e79e6f3796c4920b1ca568cf63fe9441511c3ddec08e62ad",
+    "bytes": 9002
+  },
+  {
+    "path": "skills/custom-post-type-architect/SKILL.md",
+    "sha256": "7ab8fd51e28edcf29434e90e273ee39ece9cd4be3981bbd3abc59818e53416e4",
+    "bytes": 8328
+  },
+  {
+    "path": "skills/design-system-synthesizer/SKILL.md",
+    "sha256": "657be5a01e9462cc8d773bce33b809030bca5bf4cf7f0d49bd6d33b9192c1c05",
+    "bytes": 24809
+  },
+  {
+    "path": "skills/figma-to-bricks/SKILL.md",
+    "sha256": "acd5e738afb9c0ac0dadd8b888c93ddadccbb17ade1ea992ca86d8c20cd759eb",
+    "bytes": 7942
+  },
+  {
+    "path": "skills/figma-to-divi/SKILL.md",
+    "sha256": "76b276e9dbbbe5fb1dfe971e2e68c1be235491d9989a136d7ab562f0d18afd34",
+    "bytes": 8660
+  },
+  {
+    "path": "skills/figma-to-elementor/SKILL.md",
+    "sha256": "0dc117372d0eedbdc865afede34b995713d5aecade500ec5b095d1cfd1dd1887",
+    "bytes": 14208
+  },
+  {
+    "path": "skills/figma-to-gutenberg/SKILL.md",
+    "sha256": "042d0750d647dfeaa0053755f390c217be69cb56d3015f59208363e818ab099b",
+    "bytes": 7481
+  },
+  {
+    "path": "skills/html-to-breakdance/SKILL.md",
+    "sha256": "ff2099adfbf66d41fedb48104ab8adc8a4becb0cb586ab9fa90db1d4271d7504",
+    "bytes": 16140
+  },
+  {
+    "path": "skills/html-to-bricks/SKILL.md",
+    "sha256": "a69a3589d44d531471b7e0bd39405f668ee71fdd6a59ef54e45e066122132ad6",
+    "bytes": 9090
+  },
+  {
+    "path": "skills/internal-link-builder/SKILL.md",
+    "sha256": "41936a0803b961b3946e22f2057e295159c0e95438ada191cab497b21cc65205",
+    "bytes": 13532
+  },
+  {
+    "path": "skills/migrate-beaver-builder-to-bricks/SKILL.md",
+    "sha256": "bcf464313073bd1ab52724b46fbec89dbb70b106ae02c54115eca72ae31bb3eb",
+    "bytes": 14589
+  },
+  {
+    "path": "skills/migrate-beaver-builder-to-gutenberg/SKILL.md",
+    "sha256": "68749d80772e3a81c333d51009bb6c3f85618f20c350e6cdda31466fa9d2f2cf",
+    "bytes": 14728
+  },
+  {
+    "path": "skills/migrate-brizy-to-gutenberg/SKILL.md",
+    "sha256": "89e3bad77d665125061882fecaaf122ef2621e9824b120e99be9e43aa48aa096",
+    "bytes": 13990
+  },
+  {
+    "path": "skills/migrate-divi-to-breakdance/SKILL.md",
+    "sha256": "d6cbbcc5232e603123f2b88449eefb6595df04e26ea969efc65a8dd914af3418",
+    "bytes": 16403
+  },
+  {
+    "path": "skills/migrate-divi-to-bricks/SKILL.md",
+    "sha256": "68586ffc2326b85f8bf91ac10804e5a439d28680ce4801f18f8729f33f37a1ca",
+    "bytes": 16762
+  },
+  {
+    "path": "skills/migrate-divi-to-gutenberg/SKILL.md",
+    "sha256": "2d726c42894b9ab734be6bdab98b2b9c7ae306ebd3f1a125110a298a7f717090",
+    "bytes": 17726
+  },
+  {
+    "path": "skills/migrate-elementor-to-breakdance/SKILL.md",
+    "sha256": "cf916292486d6376955db9a709a28219ec83bab59843b09df0fe6c1aab5d9364",
+    "bytes": 15905
+  },
+  {
+    "path": "skills/migrate-elementor-to-bricks/SKILL.md",
+    "sha256": "bf117448517f462ff491fe8203a51f6545e698c7e7fc7311f407d9908d739d59",
+    "bytes": 16668
+  },
+  {
+    "path": "skills/migrate-elementor-to-gutenberg/SKILL.md",
+    "sha256": "93b15b922cfa3c775e7ebc46e8c02719dc7226746ae677e9d0c7aaf351f177df",
+    "bytes": 18934
+  },
+  {
+    "path": "skills/migrate-elementor-to-oxygen/SKILL.md",
+    "sha256": "5a3da1cb6809c3cf4bbf20c9c92e76f66901443a0acb7a67a8a03c8d17268c5b",
+    "bytes": 16575
+  },
+  {
+    "path": "skills/migrate-oxygen-to-breakdance/SKILL.md",
+    "sha256": "113c0ba18e266ea46bfbcf738df4fd0974e1a64dc56afbf5ac5227d7cc6f92b1",
+    "bytes": 13346
+  },
+  {
+    "path": "skills/migrate-oxygen-to-bricks/SKILL.md",
+    "sha256": "98a0f749d18fc3450023e37d45e14e73316d92cd067af54b4b3f0f73eac65a9c",
+    "bytes": 13381
+  },
+  {
+    "path": "skills/migrate-thrive-architect-to-gutenberg/SKILL.md",
+    "sha256": "4878e31fabee0ac1a525dd7784228af21c49591b60a2c1c2e9072d556c372b44",
+    "bytes": 15174
+  },
+  {
+    "path": "skills/migrate-visual-composer-to-gutenberg/SKILL.md",
+    "sha256": "32722622c6bc94a48928ac4428162803736ba78eec4d6e8572f09f92aa17a887",
+    "bytes": 15720
+  },
+  {
+    "path": "skills/migrate-wpbakery-to-bricks/SKILL.md",
+    "sha256": "934136c6c99f3173dea3d5d467b3f7f4022ca2dc91456886f7b56322902eaade",
+    "bytes": 18014
+  },
+  {
+    "path": "skills/migrate-wpbakery-to-gutenberg/SKILL.md",
+    "sha256": "c8df970dfdf97b6974e4f56fd7e1e735ab070a5b2afe7025917fff059adaf634",
+    "bytes": 18570
+  },
+  {
+    "path": "skills/mobile-experience-report/SKILL.md",
+    "sha256": "3a666d65f84e5ef602ff51df5a952918d9343fb2a0842b3b7d83a5fc8c9838ba",
+    "bytes": 23672
+  },
+  {
+    "path": "skills/murmur-review-loop/SKILL.md",
+    "sha256": "821da5ece166d4635ec51fb66b1286051884a9d206d8f6f58398233ba36ca692",
+    "bytes": 8595
+  },
+  {
+    "path": "skills/murmur-review-loop/tests/trigger.json",
+    "sha256": "d2d7ffa72215045b14b26b90df03944a4a1d69db7d2d1b4e08bbabdc51ee5d83",
+    "bytes": 1517
+  },
+  {
+    "path": "skills/page-template-library/SKILL.md",
+    "sha256": "eb52abb73cea2285544f3ca174c92c0c795d673988158236d4d888dec4c6e1f9",
+    "bytes": 9240
+  },
+  {
+    "path": "skills/prime-the-agent/SKILL.md",
+    "sha256": "a0b8b178411919a36983101041c8a5f508101a03a8c5d73ff0254ee8647688d1",
+    "bytes": 14590
+  },
+  {
+    "path": "skills/respira-builder-edits/SKILL.md",
+    "sha256": "15151f510fddda54baedd421b4527612da95b88dc89ff6b437d1e7192abe2fbe",
+    "bytes": 9393
+  },
+  {
+    "path": "skills/respira-setup-assistant/SKILL.md",
+    "sha256": "cce94bee2871508e5f78efa114b4e35f8e60e215d47101b841d7d73f006b4af8",
+    "bytes": 13807
+  },
+  {
+    "path": "skills/respira-site-audit/SKILL.md",
+    "sha256": "9940fd5fce2836db1f111926318053f8a77959c0676b142b3772defc4b932b72",
+    "bytes": 8889
+  },
+  {
+    "path": "skills/respira-woocommerce/SKILL.md",
+    "sha256": "bac5e1930e17310b42731e114394b8739bd7fb34bc2ee196c302600e80ab9fbf",
+    "bytes": 7491
+  },
+  {
+    "path": "skills/seo-aeo-amplifier/SKILL.md",
+    "sha256": "ac7ce02898e19077d0d4e81f6090426b778f0c451ed760d76e45cdcb537b38d3",
+    "bytes": 11728
+  },
+  {
+    "path": "skills/site-onboarding/SKILL.md",
+    "sha256": "675de41537ba8b50c92e222c19d8611da8fe7ce1c30c51b084ea0c29fd00f021",
+    "bytes": 7396
+  },
+  {
+    "path": "skills/stale-content-detector/SKILL.md",
+    "sha256": "75530475732b78a5b55df785aca666fee9d9931c2f2b7f7f231317bebb4e89c7",
+    "bytes": 7011
+  },
+  {
+    "path": "skills/technical-debt-audit/SKILL.md",
+    "sha256": "49ebe1b064536757b9efc78e37c5ec346948a3378fea20245559867fae40b638",
+    "bytes": 24858
+  },
+  {
+    "path": "skills/woo-agent-storefront/SKILL.md",
+    "sha256": "26b92b3fd488f87f3dcac1e0d954377c51886db22462a3c1a02d2f81b2b74c68",
+    "bytes": 6150
+  },
+  {
+    "path": "skills/woo-catalog-perfection/SKILL.md",
+    "sha256": "01221af55aca5b1a7489733153a8afcfa4043805984ee6b2bf1e86da82a4578e",
+    "bytes": 4573
+  },
+  {
+    "path": "skills/woo-marketing-campaigns/SKILL.md",
+    "sha256": "0f746ce39867cfaff88558f2a068a614cdfd83226a1ae4443a87b6098ca3ed8f",
+    "bytes": 7610
+  },
+  {
+    "path": "skills/woo-pricing-promotions/SKILL.md",
+    "sha256": "b1fc50084cee6801b2eadca272ac965d391042c12efd5597f5471f58cefd842a",
+    "bytes": 6151
+  },
+  {
+    "path": "skills/woocommerce-health-check/SKILL.md",
+    "sha256": "4a0d0aa317539e915347e557b4fb65c8fb402ba31017377d869ae74951508c33",
+    "bytes": 25279
+  },
+  {
+    "path": "skills/wordpress-ai-image-optimizer/SKILL.md",
+    "sha256": "c9314f59f375845d0875121e46aeb22d0ab6eac7b04ea7efabeece7abc4b92cc",
+    "bytes": 9568
+  },
+  {
+    "path": "skills/wordpress-security-review/SKILL.md",
+    "sha256": "1d5269cd3c483f1a326207b7e3d01f2dba26e00d4ae1763d1e745039282b2009",
+    "bytes": 11534
+  },
+  {
+    "path": "skills/wordpress-security-review/tests/trigger.json",
+    "sha256": "1f5c74e0966adf5a661d271b004f1d65ddc5c42a2a808a9170670b68581f69fc",
+    "bytes": 1483
+  },
+  {
+    "path": "skills/wordpress-site-dna/SKILL.md",
+    "sha256": "65f3beb1b5baac0d6984c1348dae6a3f362b9e6066655040d7a98196bfc0f370",
+    "bytes": 22701
+  },
+  {
+    "path": "skills/wordpress-site-dna/tests/benchmark.json",
+    "sha256": "2ae82030031c053153274a5f02dba4c395b079940add4f9ac4d2bef4c0e63345",
+    "bytes": 4301
+  },
+  {
+    "path": "skills/wordpress-site-dna/tests/regression.json",
+    "sha256": "1d31d9c5162c4a3b6fcf2d62150c59f919a7bf642fc10fb83205ed20fd2980e7",
+    "bytes": 4332
+  },
+  {
+    "path": "skills/wordpress-site-dna/tests/trigger.json",
+    "sha256": "87984905ef518e633a681ac65627904f433125cc2bb7fe36b388ae50a9e68d9e",
+    "bytes": 2161
+  },
+  {
+    "path": "wordpress-mcp-dev/SKILL.md",
+    "sha256": "8cd0ef229377665bd82a842b8bbbb86818f9bdc45f04e7a008d0a57e6cb025ee",
+    "bytes": 1777
+  },
+  {
+    "path": "wordpress-mcp-dev/agents/openai.yaml",
+    "sha256": "271685fbbbdbacc24f25bcbd2d05854fb84f82cc14993d0d55ea6325efb2aa26",
+    "bytes": 242
+  },
+  {
+    "path": "wordpress-mcp-dev/references/full-guide.md",
+    "sha256": "9f9df161bde9ca626edeec2b9cb01e9034f2bff6da2c10b8b9fd0227aeb5a304",
+    "bytes": 35121
+  }
+]

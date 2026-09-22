@@ -1,0 +1,92 @@
+[
+  {
+    "status": "fulfilled",
+    "value": {
+      "key": "mini-excavator",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Case_mini_excavator_-_Arlington%2C_MA.jpg/1280px-Case_mini_excavator_-_Arlington%2C_MA.jpg",
+      "bytes": 584845,
+      "purpose": "Illustrative reference photography, not HONGDA products",
+      "credit": {
+        "filePage": "https://commons.wikimedia.org/wiki/File:Case_mini_excavator_-_Arlington%2C_MA.jpg",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Daderot\" title=\"User:Daderot\">Daderot</a>",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "key": "construction-excavator",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Caterpillar_330_excavator_on_a_pile_of_dirt.jpg/1280px-Caterpillar_330_excavator_on_a_pile_of_dirt.jpg",
+      "bytes": 215667,
+      "purpose": "Illustrative reference photography, not HONGDA products",
+      "credit": {
+        "filePage": "https://commons.wikimedia.org/wiki/File:Caterpillar_330_excavator_on_a_pile_of_dirt.jpg",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://matthewtrader.com\">Matthew T Rader</a>",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "key": "wheel-loader",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Bamberg_Liebherr_506-20160724-RM-123350.jpg/1280px-Bamberg_Liebherr_506-20160724-RM-123350.jpg",
+      "bytes": 504296,
+      "purpose": "Illustrative reference photography, not HONGDA products",
+      "credit": {
+        "filePage": "https://commons.wikimedia.org/wiki/File:Bamberg_Liebherr_506-20160724-RM-123350.jpg",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Ermell\" title=\"User:Ermell\">Ermell</a>",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "key": "backhoe-loader",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Case_580_Super_L_backhoe_loader_-_3.jpg/1280px-Case_580_Super_L_backhoe_loader_-_3.jpg",
+      "bytes": 197270,
+      "purpose": "Illustrative reference photography, not HONGDA products",
+      "credit": {
+        "filePage": "https://commons.wikimedia.org/wiki/File:Case_580_Super_L_backhoe_loader_-_3.jpg",
+        "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/41596107@N05\">Joedamadman</a>",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "key": "skid-steer-loader",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Bobcat_T650_compact_track_loader_%28side_view%29.jpg/1280px-Bobcat_T650_compact_track_loader_%28side_view%29.jpg",
+      "bytes": 606058,
+      "purpose": "Illustrative reference photography, not HONGDA products",
+      "credit": {
+        "filePage": "https://commons.wikimedia.org/wiki/File:Bobcat_T650_compact_track_loader_(side_view).jpg",
+        "artist": "<span typeof=\"mw:File\"><a href=\"//commons.wikimedia.org/wiki/User:Dmitry_Ivanov\" title=\"User:Dmitry Ivanov\"><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Dmitry_Ivanov_Logo.svg/20px-Dmitry_Ivanov_Logo.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Dmitry_Ivanov_Logo.svg/40px-Dmitry_Ivanov_Logo.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"100\" data-file-height=\"100\"></a></span> <a href=\"//commons.wikimedia.org/wiki/User:Dmitry_Ivanov\" title=\"User:Dmitry Ivanov\">Dmitry Ivanov</a>.",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "key": "heroMiniExcavator",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/JCB_compact_excavator.JPG/1280px-JCB_compact_excavator.JPG",
+      "bytes": 559725,
+      "purpose": "Illustrative reference photography, not HONGDA products",
+      "credit": {
+        "filePage": "https://commons.wikimedia.org/wiki/File:JCB_compact_excavator.JPG",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:High_Contrast\" title=\"User:High Contrast\">High Contrast</a>",
+        "license": "CC BY 3.0 de",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0/de/deed.en"
+      }
+    }
+  }
+]

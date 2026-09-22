@@ -1,0 +1,14 @@
+{
+  "apiVersion": 3,
+  "name": "b2b-site/related-products",
+  "title": "Related equipment",
+  "category": "widgets",
+  "usesContext": [
+    "postId",
+    "postType"
+  ],
+  "supports": {
+    "html": false
+  },
+  "editorScript": "b2b-site-blocks"
+}

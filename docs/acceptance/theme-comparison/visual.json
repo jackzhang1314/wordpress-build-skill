@@ -1,0 +1,466 @@
+[
+  {
+    "id": "a",
+    "name": "home",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      }
+    ],
+    "h1": [
+      "Your next job. The right machine."
+    ],
+    "blocks": 2,
+    "resources": 8,
+    "screenshot": "docs/comparison/a-home-1440.png"
+  },
+  {
+    "id": "a",
+    "name": "home",
+    "width": 390,
+    "scrollWidth": 390,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      }
+    ],
+    "h1": [
+      "Your next job. The right machine."
+    ],
+    "blocks": 2,
+    "resources": 9,
+    "screenshot": "docs/comparison/a-home-390.png"
+  },
+  {
+    "id": "a",
+    "name": "product",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      }
+    ],
+    "h1": [
+      "0.8 Ton Mini Excavator"
+    ],
+    "blocks": 6,
+    "resources": 4,
+    "screenshot": "docs/comparison/a-product-1440.png"
+  },
+  {
+    "id": "a",
+    "name": "product",
+    "width": 390,
+    "scrollWidth": 390,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      }
+    ],
+    "h1": [
+      "0.8 Ton Mini Excavator"
+    ],
+    "blocks": 6,
+    "resources": 4,
+    "screenshot": "docs/comparison/a-product-390.png"
+  },
+  {
+    "id": "a",
+    "name": "category",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      }
+    ],
+    "h1": [
+      "Mini Excavator"
+    ],
+    "blocks": 0,
+    "resources": 3,
+    "screenshot": "docs/comparison/a-category-1440.png"
+  },
+  {
+    "id": "a",
+    "name": "category",
+    "width": 390,
+    "scrollWidth": 390,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      }
+    ],
+    "h1": [
+      "Mini Excavator"
+    ],
+    "blocks": 0,
+    "resources": 3,
+    "screenshot": "docs/comparison/a-category-390.png"
+  },
+  {
+    "id": "b",
+    "name": "home",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      }
+    ],
+    "h1": [
+      "Your next job. The right machine."
+    ],
+    "blocks": 78,
+    "resources": 11,
+    "screenshot": "docs/comparison/b-home-1440.png"
+  },
+  {
+    "id": "b",
+    "name": "home",
+    "width": 390,
+    "scrollWidth": 390,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      }
+    ],
+    "h1": [
+      "Your next job. The right machine."
+    ],
+    "blocks": 78,
+    "resources": 13,
+    "screenshot": "docs/comparison/b-home-390.png"
+  },
+  {
+    "id": "b",
+    "name": "product",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      }
+    ],
+    "h1": [
+      "0.8 Ton Mini Excavator"
+    ],
+    "blocks": 69,
+    "resources": 6,
+    "screenshot": "docs/comparison/b-product-1440.png"
+  },
+  {
+    "id": "b",
+    "name": "product",
+    "width": 390,
+    "scrollWidth": 390,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      }
+    ],
+    "h1": [
+      "0.8 Ton Mini Excavator"
+    ],
+    "blocks": 69,
+    "resources": 6,
+    "screenshot": "docs/comparison/b-product-390.png"
+  },
+  {
+    "id": "b",
+    "name": "category",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      }
+    ],
+    "h1": [
+      "Mini Excavator"
+    ],
+    "blocks": 88,
+    "resources": 6,
+    "screenshot": "docs/comparison/b-category-1440.png"
+  },
+  {
+    "id": "b",
+    "name": "category",
+    "width": 390,
+    "scrollWidth": 390,
+    "images": [
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      },
+      {
+        "loaded": true,
+        "alt": "Illustrative compact equipment photograph"
+      }
+    ],
+    "h1": [
+      "Mini Excavator"
+    ],
+    "blocks": 88,
+    "resources": 6,
+    "screenshot": "docs/comparison/b-category-390.png"
+  }
+]

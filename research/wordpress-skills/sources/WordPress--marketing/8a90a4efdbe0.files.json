@@ -1,0 +1,117 @@
+[
+  {
+    "path": ".claude-plugin/marketplace.json",
+    "sha256": "925958f0bd932b8ba341199adfb5b902935234654511d9b4aaa7835ff2540c41",
+    "bytes": 630
+  },
+  {
+    "path": ".claude-plugin/plugin.json",
+    "sha256": "d7ce94c484061963bc648c72b9e9197ee91455758e9c718ca71646207444539b",
+    "bytes": 552
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/1-generic-issue.yml",
+    "sha256": "6063fe3540d0856e50845e3f762233ce34c30e274131dbae98c21d82af414083",
+    "bytes": 538
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/2-request-for-amplification-template.yml",
+    "sha256": "85379f6d18f848eac3e1b0c048c6be2956ceb563cb5e52a8a935c91993b7e1b0",
+    "bytes": 2216
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/3-request-for-release-amplification.yml",
+    "sha256": "9c5981c261cf34f760b3d7b62c2047c115329ded80cce9b3561d9ff1365ce50c",
+    "bytes": 1137
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/4-new-showcase-entry.yml",
+    "sha256": "afc3e6c85ba6b4b72b109fdb71cfe8d596d7b7de3133e7ed1ad609711d5e0c61",
+    "bytes": 2167
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/config.yml",
+    "sha256": "b5243a0d20f1a26b49970168b6e01990af85272f85731a941a9e6bfe01d12b4d",
+    "bytes": 498
+  },
+  {
+    "path": ".github/contributing.md",
+    "sha256": "e7dd6826ac0949e14bd4f688b377ccd14fa4eb9748bf2aac4d6ed0261764953e",
+    "bytes": 221
+  },
+  {
+    "path": ".github/support.md",
+    "sha256": "228a7c926be82a5077e3fe884226c54e4c64cba86da8c5ea95b377f0b2141d5a",
+    "bytes": 345
+  },
+  {
+    "path": ".gitignore",
+    "sha256": "ac244209df6370a954b10db85f1630454dd22ca7e616f351cad19d49e8aa6ce1",
+    "bytes": 11
+  },
+  {
+    "path": "AGENTS.md",
+    "sha256": "8dc6e4dc6646b32649f997be8bad25d14b0d93e7fdc3611454d5bebb40f19a19",
+    "bytes": 1562
+  },
+  {
+    "path": "CLAUDE.md",
+    "sha256": "9949625d2b30fe428614b7e6582af2cc58c7e48ebd8fba6e7ba4852645a45b3f",
+    "bytes": 110
+  },
+  {
+    "path": "README.md",
+    "sha256": "ff9552899a0b038653fffb8ef67a0d32a8b680176e41fad42ed2b4e321af139b",
+    "bytes": 2778
+  },
+  {
+    "path": "shared/references/wordpress-brand-writing-style-guide.md",
+    "sha256": "a0806898d1fad7bda3243d22fd793d768582cb4efb9cf7927a2ae91a96d12e54",
+    "bytes": 45685
+  },
+  {
+    "path": "skills/README.md",
+    "sha256": "4ad2ad8d3b8ab7fa9659848c3870207fb797d2afb4fa14dba4268ddcf9834dd7",
+    "bytes": 4181
+  },
+  {
+    "path": "skills/wordcamp-event-recap/SKILL.md",
+    "sha256": "d8ff4566a0b4c18814f20e0f8b5b8d6b1ecde657bebd8fbf73f93b2c825aecba",
+    "bytes": 47501
+  },
+  {
+    "path": "skills/wordcamp-event-recap/agents/openai.yaml",
+    "sha256": "291869ee596625d38c71273955b9c80966ef4cdf2654b5ec9754fdb8e5b6d137",
+    "bytes": 239
+  },
+  {
+    "path": "skills/wordpress-news-writing/SKILL.md",
+    "sha256": "bd76b07000e6b435cfdfeed47dd797be61bdf1225454319bc09bfef1a23f6742",
+    "bytes": 9512
+  },
+  {
+    "path": "skills/wordpress-news-writing/agents/openai.yaml",
+    "sha256": "ae3919e3404310d0c05f02caeb02f309a6481f62c7f005bb686a54161e88fabd",
+    "bytes": 252
+  },
+  {
+    "path": "skills/wordpress-showcase-writer/SKILL.md",
+    "sha256": "287c336ce96cd7a309d938c87ccbfb3153d62b80fc53d2670ad97bece195689d",
+    "bytes": 10694
+  },
+  {
+    "path": "skills/wordpress-showcase-writer/agents/openai.yaml",
+    "sha256": "23ac923eb74a2461301ad226fb818ba6d7c094051abc53cb215d85c675843522",
+    "bytes": 244
+  },
+  {
+    "path": "skills/wordpress-social-writer/SKILL.md",
+    "sha256": "133b1a1265ee55d3998b7899f5f0fe8c37fe2c44e61d94ad96613360ee8c4d0b",
+    "bytes": 34282
+  },
+  {
+    "path": "skills/wordpress-social-writer/agents/openai.yaml",
+    "sha256": "3b9e339dc0275aaae03073467e427881e9b25feb9bc80dc4f32218d75210d68c",
+    "bytes": 248
+  }
+]

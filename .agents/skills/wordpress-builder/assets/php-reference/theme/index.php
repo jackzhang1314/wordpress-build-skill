@@ -1,0 +1,1 @@
+<?php get_header(); ?><main id="main" class="shell section"><h1><?php echo esc_html(is_home() ? get_the_title((int) get_option('page_for_posts')) : __('Latest articles', 'new-site')); ?></h1><div class="grid"><?php while (have_posts()) : the_post(); get_template_part('parts/card'); endwhile; ?></div><?php the_posts_pagination(); ?></main><?php get_footer(); ?>

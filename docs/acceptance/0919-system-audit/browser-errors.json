@@ -1,0 +1,14 @@
+[
+  {
+    "level": "error",
+    "message": "TypeError: Failed to resolve module specifier \"@wordpress/interactivity\". Relative references must start with either \"/\", \"./\", or \"../\".",
+    "timestamp": "2026-09-19T13:47:07.171Z",
+    "url": "http://127.0.0.1:9462/terralift-contact/"
+  },
+  {
+    "level": "error",
+    "message": "TypeError: Failed to resolve module specifier \"@wordpress/interactivity\". Relative references must start with either \"/\", \"./\", or \"../\".",
+    "timestamp": "2026-09-19T13:47:44.845Z",
+    "url": "http://127.0.0.1:9462/"
+  }
+]

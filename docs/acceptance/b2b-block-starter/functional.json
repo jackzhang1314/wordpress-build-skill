@@ -1,0 +1,71 @@
+{
+  "testedAt": "2026-09-19T23:09:32.737Z",
+  "scope": "isolated local clean installations",
+  "sites": {
+    "primary": {
+      "runtime": {
+        "wordpress": "7.1",
+        "php": "8.3.33",
+        "mysql": "8.4.11",
+        "acf": "6.8.9",
+        "acfPro": false,
+        "fluentform": "6.2.9",
+        "blockTheme": true,
+        "theme": "b2b-equipment",
+        "bindings": [
+          "acf/field",
+          "core/pattern-overrides",
+          "core/post-data",
+          "core/post-meta",
+          "core/term-data"
+        ]
+      },
+      "checks": {
+        "routes": true,
+        "officialAcfBindingsInQueryLoop": true,
+        "templatesAndAcfReadback": true,
+        "categoryLayouts": true,
+        "newDraftAndPublish": true,
+        "patternsRegistered": [
+          "b2b-equipment/selection-guide",
+          "b2b-equipment/site-header"
+        ],
+        "pagination": true,
+        "phpSyntax": 10,
+        "databaseTemplateOverrides": 0
+      }
+    },
+    "reuse": {
+      "runtime": {
+        "wordpress": "7.1",
+        "php": "8.3.33",
+        "mysql": "8.4.11",
+        "acf": "6.8.9",
+        "acfPro": false,
+        "fluentform": "6.2.9",
+        "blockTheme": true,
+        "theme": "b2b-equipment",
+        "bindings": [
+          "acf/field",
+          "core/pattern-overrides",
+          "core/post-data",
+          "core/post-meta",
+          "core/term-data"
+        ]
+      },
+      "checks": {
+        "routes": true,
+        "officialAcfBindingsInQueryLoop": true,
+        "templatesAndAcfReadback": true,
+        "categoryLayouts": true,
+        "newDraftAndPublish": true,
+        "patternsRegistered": [
+          "b2b-equipment/selection-guide",
+          "b2b-equipment/site-header"
+        ],
+        "phpSyntax": 10,
+        "databaseTemplateOverrides": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "tool": {
+    "name": "detect_plugins",
+    "version": "0.1.0"
+  },
+  "repoRoot": "/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill/.lab/reference-BTR7M6/source",
+  "truncated": false,
+  "count": 0,
+  "plugins": []
+}

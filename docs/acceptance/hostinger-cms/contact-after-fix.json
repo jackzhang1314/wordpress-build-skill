@@ -1,0 +1,19 @@
+{
+  "testedAt": "2026-09-20T11:58:27.625349+00:00",
+  "scope": "authenticated-REST-save-and-frontend-draft-view-clones",
+  "rows": [
+    {
+      "type": "pages",
+      "sourceId": 61,
+      "slug": "contact-us",
+      "template": "enquiry",
+      "saved": true,
+      "previewTitle": true,
+      "bodyRendered": true,
+      "acfSaved": true,
+      "acfRendered": true,
+      "status": "pass",
+      "testDraftRemoved": true
+    }
+  ]
+}

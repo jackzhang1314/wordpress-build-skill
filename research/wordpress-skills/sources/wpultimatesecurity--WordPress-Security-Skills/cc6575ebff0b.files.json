@@ -1,0 +1,672 @@
+[
+  {
+    "path": ".github/ISSUE_TEMPLATE/api-correction.yml",
+    "sha256": "45906af4e2dd16c58a420cd15c85395a0b819e84e20ae56f2c4d1e6006928f00",
+    "bytes": 998
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/docs-improvement.yml",
+    "sha256": "18f49cb117df9ae7ed52601f7a907e0e67a2671af4c0d088e448117336c778fb",
+    "bytes": 673
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/insecure-example-report.yml",
+    "sha256": "ed764764ec61549851a2299e31d9ab90ca0fbb527d627b0eb42ab74f5388d440",
+    "bytes": 1061
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/new-skill-proposal.yml",
+    "sha256": "4acfbfd4f4ce4eb346497c80f71aad65aeba8d87ec5091d1f1f985b0ddd35024",
+    "bytes": 1035
+  },
+  {
+    "path": ".github/pull_request_template.md",
+    "sha256": "9002d05d0207497f8187c1005fbc6eb28151f1395e5307246a7acd62279de0bc",
+    "bytes": 723
+  },
+  {
+    "path": ".github/workflows/validate.yml",
+    "sha256": "ff7158b36bd87a99422791dc5c8b1605a99dd33252913e59663adf7f1278b27e",
+    "bytes": 4674
+  },
+  {
+    "path": ".gitignore",
+    "sha256": "e496c0e927aab2518ce65dc4f1e44cbd0b9c66267bd5131aa59d352a42f36647",
+    "bytes": 1273
+  },
+  {
+    "path": ".gitleaks.toml",
+    "sha256": "d7bee23c2b6ae57347d88f246505229e2e73312fe1857f59920bd80f7b682eb7",
+    "bytes": 549
+  },
+  {
+    "path": "CHANGELOG.md",
+    "sha256": "e355398a2e1183ea451f45f8db11947a197af8da22c20c7ac3c4548e286794d2",
+    "bytes": 6176
+  },
+  {
+    "path": "CONTRIBUTING.md",
+    "sha256": "26051176a7971baf4cf771a6d511177e8007cdb191d545852eb72144a7d2f3c3",
+    "bytes": 5342
+  },
+  {
+    "path": "LICENSE",
+    "sha256": "ca0cd61fbbf73d62ddc329b1aaa28387707b12dc39c9f7a51e2373ba110b8527",
+    "bytes": 1062
+  },
+  {
+    "path": "README.md",
+    "sha256": "5f3b0c8201f0d44683cc7145e77a1e87f9f8f6cf63098a41577aff9063d7f920",
+    "bytes": 16606
+  },
+  {
+    "path": "SECURITY.md",
+    "sha256": "e66c3237f407e0ada07197631e1242e361762278100a4bf1b038d5eb40b9d20d",
+    "bytes": 2536
+  },
+  {
+    "path": "docs/ai-authorship.md",
+    "sha256": "6710f6e57290044ced80016507f01e50bae66f87bf031a4cf555280b30e108e1",
+    "bytes": 2379
+  },
+  {
+    "path": "docs/coverage-matrix.md",
+    "sha256": "bc25677c2238e5fd357f0e58bc0b07d8f18c862309bb741def35a8666bdddf7e",
+    "bytes": 2558
+  },
+  {
+    "path": "eval/scenarios/README.md",
+    "sha256": "260d12c4625f2c3b7d2ca2af8cefa7ee0c143d8dbb48496bf4f16114c5be707d",
+    "bytes": 1873
+  },
+  {
+    "path": "eval/scenarios/ajax-security-ajax-nonce-verification.json",
+    "sha256": "06abf7a79254d322038aba9b46b9a3b28ae553a2b3b0c24c268b0fbb9cf3f46c",
+    "bytes": 2390
+  },
+  {
+    "path": "eval/scenarios/authentication-session-security-custom-credential-check.json",
+    "sha256": "9aac00498377c44750d02e3e5e76debb175ffea92ceb52583cf1a5b904f0263b",
+    "bytes": 2768
+  },
+  {
+    "path": "eval/scenarios/capability-permission-checks-role-vs-capability.json",
+    "sha256": "07a3401383ea4430d8eba56175cde5645ef6f4ff1da61a05c33a3768c19fc9ce",
+    "bytes": 2298
+  },
+  {
+    "path": "eval/scenarios/cron-background-job-security-secure-cron-export.json",
+    "sha256": "1557865923da2498c0d231c133a055b1ced06a2afa15cafba78348918ca176d5",
+    "bytes": 2451
+  },
+  {
+    "path": "eval/scenarios/dependency-supply-chain-security-remote-updater-rce.json",
+    "sha256": "638a8dddbb80664b2cff8269cecf78605450e0c7d5709cd4f744c10769b9317b",
+    "bytes": 2513
+  },
+  {
+    "path": "eval/scenarios/file-upload-security-arbitrary-upload-rce.json",
+    "sha256": "ff689bfe9ac66dc807e90f8b70e075c05333486ef80ee4fe08f1712bba2177e7",
+    "bytes": 2233
+  },
+  {
+    "path": "eval/scenarios/filesystem-security-arbitrary-file-deletion.json",
+    "sha256": "25ba267203b0d6d939986cba673713a002226aa7c6ff6537aa96bad0d86c4798",
+    "bytes": 1916
+  },
+  {
+    "path": "eval/scenarios/gutenberg-block-editor-security-render-callback-xss.json",
+    "sha256": "e55e0798539f37c5fc628154c40b145ec508e3fdea8fa553e9266b27503e9bfe",
+    "bytes": 2469
+  },
+  {
+    "path": "eval/scenarios/http-api-ssrf-prevention-unvalidated-webhook-url.json",
+    "sha256": "c5866aecb98d4224c4a2ec57ceb282be51b46a177b17213cf8991b455413d230",
+    "bytes": 2227
+  },
+  {
+    "path": "eval/scenarios/input-sanitization-validation-unvalidated-role-assignment.json",
+    "sha256": "ff7f600a483d479a8015f56ddd17dba1f1dddd854b4aa5dd244dd3307578e954",
+    "bytes": 2235
+  },
+  {
+    "path": "eval/scenarios/multisite-security-unvalidated-blog-id-switch.json",
+    "sha256": "8d39a9483c84b8ab3d9124ae0c66ece809a4bfcaa2913541450eca17d951a382",
+    "bytes": 1980
+  },
+  {
+    "path": "eval/scenarios/nonces-csrf-protection-nonce-without-capability.json",
+    "sha256": "811c4347cb045238e92e84e91fc60aa899d9122d602f12575b6d9ff4ea4ffa61",
+    "bytes": 2469
+  },
+  {
+    "path": "eval/scenarios/object-injection-deserialization-unserialize-user-input.json",
+    "sha256": "81751952fd9f606054f81b61550544ab05708cd32fbe62f4173f0d9ea82244ac",
+    "bytes": 2278
+  },
+  {
+    "path": "eval/scenarios/output-escaping-unescaped-template-output.json",
+    "sha256": "50a72f40c1053f90be87e8fb6598e19673d28ef551d8a93df84e3c31bb122613",
+    "bytes": 1740
+  },
+  {
+    "path": "eval/scenarios/rest-api-security-permission-callback-write.json",
+    "sha256": "4c04a228ddfb65a7bbd95bb823b91055189839c441206000335d308de5383c74",
+    "bytes": 2218
+  },
+  {
+    "path": "eval/scenarios/secrets-credentials-management-hardcoded-api-key.json",
+    "sha256": "2a3353177790efd0d906e159783e8424d0c7126dcdb27f26a82137ecc7cf3617",
+    "bytes": 2442
+  },
+  {
+    "path": "eval/scenarios/secure-plugin-development-verify-before-act.json",
+    "sha256": "9acb06465f1b0bf0360ae5f77909e9aa6d82226273bc5d4def835a488c37ef64",
+    "bytes": 1939
+  },
+  {
+    "path": "eval/scenarios/security-auditing-code-review-nonce-without-capability.json",
+    "sha256": "da6ca2260911b942d9e2a57884bf2af6668c21eeb88f2fc933d4e041ddf965aa",
+    "bytes": 4231
+  },
+  {
+    "path": "eval/scenarios/security-headers-csp-cors-origin-reflection.json",
+    "sha256": "a687ca0f8f732f8f2a18222e09483405551aca600437d9505cb983f9558024eb",
+    "bytes": 2358
+  },
+  {
+    "path": "eval/scenarios/settings-options-security-missing-sanitize-callback.json",
+    "sha256": "790e5ae0bc40f0573e80aeb8647b6f2173bc8f9e45bb13efc72036c9328caa4e",
+    "bytes": 2431
+  },
+  {
+    "path": "eval/scenarios/shortcode-block-security-shortcode-atts-stored-xss.json",
+    "sha256": "6fb7b6e728acb051a484789116dc8d31af4e6e50292f045cfdb2e26767d27ac3",
+    "bytes": 2129
+  },
+  {
+    "path": "eval/scenarios/sql-injection-prevention-raw-query-interpolation.json",
+    "sha256": "644671a4c33531d054953814d97b26c31a8501651d090b1c203a4616c9271985",
+    "bytes": 1521
+  },
+  {
+    "path": "eval/scenarios/user-data-protection-privacy-missing-exporter-eraser.json",
+    "sha256": "e2fe66d9cffa329dbc98f9ee3f23886a80680a9900ef60bf4d22e598e544b65e",
+    "bytes": 2279
+  },
+  {
+    "path": "eval/scenarios/woocommerce-security-order-access-control.json",
+    "sha256": "c4fa01ec37d11bf63674b49f4b27e832c483a1894633360e20eede15583007f6",
+    "bytes": 2732
+  },
+  {
+    "path": "eval/scenarios/wp-cli-security-cli-delete-sql-injection.json",
+    "sha256": "580c2224b4f3fb57cfe2d47233dd0d255d27567c632fde1ee32aed87f72b7545",
+    "bytes": 1683
+  },
+  {
+    "path": "eval/scenarios/wp-hardening-best-practices-debug-display-production.json",
+    "sha256": "22f274539af45838ce05a5cdfdb8c94485439d9b5e0559ef08435ff7eff34492",
+    "bytes": 2175
+  },
+  {
+    "path": "phpcs.xml.dist",
+    "sha256": "15f6951a8b6a133b61d441b6efcb69cfd561c3c59c294788f79750b26c46709e",
+    "bytes": 2497
+  },
+  {
+    "path": "scripts/add-skill.py",
+    "sha256": "f8e4242ba0dee221c4295fa658697f6e8d6120cd2e9dc1f777fc9986b935a3f9",
+    "bytes": 5579
+  },
+  {
+    "path": "scripts/smoke-install.py",
+    "sha256": "0070c20d424e9bd1d9271d9db7544c910adc1121bf0aaeef343119f392548e05",
+    "bytes": 2506
+  },
+  {
+    "path": "scripts/validate-content.py",
+    "sha256": "8d7586d19937bd8ef25429715220b71e29f957fc6b2f63e80ad6a1fc5217a86b",
+    "bytes": 6770
+  },
+  {
+    "path": "scripts/validate-markdown.py",
+    "sha256": "f826204018b04042f0a5250b968436773b9e9a85bf6160bb1ad29fb1b1efbcdf",
+    "bytes": 4024
+  },
+  {
+    "path": "scripts/validate-skills.sh",
+    "sha256": "cac7836e2c8f45c9630f3a5a7babb85d143919462ed80c5946380c9f130089f7",
+    "bytes": 5051
+  },
+  {
+    "path": "skills/ajax-security/SKILL.md",
+    "sha256": "42ed5928bdddf8cc5a57a3b6842027728d6bd96cd949994b2457f68a10766221",
+    "bytes": 12324
+  },
+  {
+    "path": "skills/ajax-security/references/checklist.md",
+    "sha256": "dbc37e1ea6b4988bdcad8998acfe39e4a96926ad7c299bebfaa30220de5299d8",
+    "bytes": 766
+  },
+  {
+    "path": "skills/ajax-security/references/secure-ajax-handler.php",
+    "sha256": "ffb4a2ee2f8549124b06e56d284f362d03976804a8bb9300d666624c33841de1",
+    "bytes": 3553
+  },
+  {
+    "path": "skills/authentication-session-security/SKILL.md",
+    "sha256": "4552db89fd08757d9011c1dcaaf5f2752f583e886994094ef3e16090087c3a4b",
+    "bytes": 17878
+  },
+  {
+    "path": "skills/authentication-session-security/references/cheatsheet.md",
+    "sha256": "821b7f6fa5a3e2f85d4f53cc0d6114d61f6f833775ea20c7b1032d8b7574ba2e",
+    "bytes": 4629
+  },
+  {
+    "path": "skills/authentication-session-security/references/checklist.md",
+    "sha256": "38918ce13c70bcbc659b23b4542f7a4b0e646c4f0248310edeccabe711a91cce",
+    "bytes": 1769
+  },
+  {
+    "path": "skills/authentication-session-security/references/secure-authentication.php",
+    "sha256": "a1a363475c2065d6d06050c4c5c27488509e481de2d9a8937c082521d1bb88f8",
+    "bytes": 15104
+  },
+  {
+    "path": "skills/capability-permission-checks/SKILL.md",
+    "sha256": "62fc9b32e0d24e2b517f7fb04248ea254e54914f09898dff4feb1c5f6d3ca721",
+    "bytes": 9282
+  },
+  {
+    "path": "skills/capability-permission-checks/references/capability-check-example.php",
+    "sha256": "294771e8e83c97874a83eea1d8994ebade0bff689a697a818eb84be4389a1416",
+    "bytes": 3712
+  },
+  {
+    "path": "skills/capability-permission-checks/references/checklist.md",
+    "sha256": "c871eb1cc51134a6c13dc25bf36541ea7062bf6c4454fd2db065c3c9fd22a072",
+    "bytes": 878
+  },
+  {
+    "path": "skills/cron-background-job-security/SKILL.md",
+    "sha256": "e66aedcbe09bd66b4fd16135a951e92139ad32ad9b5210e697340ee56330d1a6",
+    "bytes": 9124
+  },
+  {
+    "path": "skills/cron-background-job-security/references/checklist.md",
+    "sha256": "2d2bfbfee13058beb0ef14c66f6a07b54264abb22d83e0553ca774a40fdb305e",
+    "bytes": 697
+  },
+  {
+    "path": "skills/cron-background-job-security/references/secure-cron-job.php",
+    "sha256": "85dfc247e9479683824c345fe86c2963a520589266e879b8b83f289fa376ed6c",
+    "bytes": 4177
+  },
+  {
+    "path": "skills/dependency-supply-chain-security/SKILL.md",
+    "sha256": "a324c152665e94d59a9181b8e6234f059473800e6488e6a6f43dbe05d3787839",
+    "bytes": 16322
+  },
+  {
+    "path": "skills/dependency-supply-chain-security/references/cheatsheet.md",
+    "sha256": "da35ee4fa54eac34c71e7d281d167856abf6fd1a785f26ed3b44087000d5c08b",
+    "bytes": 2115
+  },
+  {
+    "path": "skills/dependency-supply-chain-security/references/checklist.md",
+    "sha256": "fe7ccc5c899aad92b1db9b4f65f01d694ce5c8436c9d65e811331204b2c71dfc",
+    "bytes": 2110
+  },
+  {
+    "path": "skills/dependency-supply-chain-security/references/secure-dependency-management.php",
+    "sha256": "5cea82605260dd168172e5838eddac9b03d5f649a3b75e55b28483a5faf00e03",
+    "bytes": 9031
+  },
+  {
+    "path": "skills/file-upload-security/SKILL.md",
+    "sha256": "c518ad87e338894a11660bde6c0c09ec0e97f88f87ca40a565d0a7ae86afd672",
+    "bytes": 9464
+  },
+  {
+    "path": "skills/file-upload-security/references/checklist.md",
+    "sha256": "1335bbcd8e4c5d5a645e0c0d24506216658500c006c3f5c40a68cbffb1e3622a",
+    "bytes": 902
+  },
+  {
+    "path": "skills/file-upload-security/references/secure-file-upload.php",
+    "sha256": "23740ec59786b86b900c3d131a38617ed14a54bf77607c7fc2678690361a5ae4",
+    "bytes": 3521
+  },
+  {
+    "path": "skills/filesystem-security/SKILL.md",
+    "sha256": "3d007fe7e5998c90dcac4ea46390ca361ca34f1371d7042ef4fd5c9136b30669",
+    "bytes": 8489
+  },
+  {
+    "path": "skills/filesystem-security/references/checklist.md",
+    "sha256": "383dcfee242117b1250dfae38f67bdb7d6b0f6fe81e72dbbba9272ce9e7f9fb8",
+    "bytes": 724
+  },
+  {
+    "path": "skills/filesystem-security/references/secure-filesystem-operations.php",
+    "sha256": "508dcdabcde43b05ba7d824cbdd282ae0a882b29a1a1b5d2c4ee2f6f691e2d08",
+    "bytes": 3703
+  },
+  {
+    "path": "skills/gutenberg-block-editor-security/SKILL.md",
+    "sha256": "ea149bea5a059b113113bf9fa153ed51f678087fe1b554e177a9b0e394deef62",
+    "bytes": 9022
+  },
+  {
+    "path": "skills/gutenberg-block-editor-security/references/checklist.md",
+    "sha256": "2bc43ecf054895278d4487bc237e37932d4260e86c7202162d973e6be079f631",
+    "bytes": 815
+  },
+  {
+    "path": "skills/gutenberg-block-editor-security/references/secure-block-editor.php",
+    "sha256": "966c22411c453c1bada913cf22e1a0824be1703497eaed3d5336f8fe1c145766",
+    "bytes": 3265
+  },
+  {
+    "path": "skills/http-api-ssrf-prevention/SKILL.md",
+    "sha256": "0c0405cf8b450e237f836153d8345a692143710587c3771d90947150f24920bc",
+    "bytes": 8150
+  },
+  {
+    "path": "skills/http-api-ssrf-prevention/references/checklist.md",
+    "sha256": "6f610d004bbe2d1a482cca2318d182effad81aad3711ac075eec5fcb728f3f60",
+    "bytes": 678
+  },
+  {
+    "path": "skills/http-api-ssrf-prevention/references/secure-http-request.php",
+    "sha256": "88eefbe1fb3f4fee5a219ee73390d523c90bcc021f9965987a19a2f7f4236425",
+    "bytes": 2938
+  },
+  {
+    "path": "skills/input-sanitization-validation/SKILL.md",
+    "sha256": "0d943f283faa0e81182cc5cf19d122d8400cc47da5421251bf063bbcec4fff58",
+    "bytes": 11850
+  },
+  {
+    "path": "skills/input-sanitization-validation/references/checklist.md",
+    "sha256": "abfc875154a2b655f6f6f08248009f2c8d9b8066181aed9c7b9da4438154417f",
+    "bytes": 788
+  },
+  {
+    "path": "skills/input-sanitization-validation/references/sanitization-cheatsheet.md",
+    "sha256": "2b82fe213ce70c89482d499230f74c190c1b107f5b4fe0dda5157a5e25cad960",
+    "bytes": 3745
+  },
+  {
+    "path": "skills/multisite-security/SKILL.md",
+    "sha256": "ad45de1a44656855f9337cd7d1aba25d6047be924d7509d780768492c11598bf",
+    "bytes": 8156
+  },
+  {
+    "path": "skills/multisite-security/references/checklist.md",
+    "sha256": "dbbf1d6678dd4a3d04f37ce0349634f4a04ac72a405e867ebedaeeca09391d11",
+    "bytes": 692
+  },
+  {
+    "path": "skills/multisite-security/references/secure-multisite-operations.php",
+    "sha256": "83d89a7ca3268b06a5e9f155d114fe1effdc0f8c7fec32fea7821c011af12ded",
+    "bytes": 2862
+  },
+  {
+    "path": "skills/nonces-csrf-protection/SKILL.md",
+    "sha256": "418cd5d7320b144b975e1b9f18423fa6d14b04b0e36c843d58661c94dbb68893",
+    "bytes": 12355
+  },
+  {
+    "path": "skills/nonces-csrf-protection/references/checklist.md",
+    "sha256": "79850fe6cd602e02adc9760eca4fad41eace72816ad76c058a407e3a2e5fe49a",
+    "bytes": 1564
+  },
+  {
+    "path": "skills/nonces-csrf-protection/references/secure-ajax-handler.php",
+    "sha256": "07d52827c03effcd5f2f23d3addf33f51d7f80bd73934d3fb0f52ac8b4e2c15c",
+    "bytes": 2567
+  },
+  {
+    "path": "skills/object-injection-deserialization/SKILL.md",
+    "sha256": "da253ed9448e29b014714bc0906d22d432387d175cafd3a805e5357b73aefa7c",
+    "bytes": 6953
+  },
+  {
+    "path": "skills/object-injection-deserialization/references/checklist.md",
+    "sha256": "3d078d1a1d8be162c074a38c6d85ffde157e1755c5e25a6d3708c6f25d5d78af",
+    "bytes": 631
+  },
+  {
+    "path": "skills/object-injection-deserialization/references/secure-deserialization.php",
+    "sha256": "1ca0c533cd8348009d7e22a9c75b1de781f5911dd80ffc2b3f875fe5e145552e",
+    "bytes": 3469
+  },
+  {
+    "path": "skills/output-escaping/SKILL.md",
+    "sha256": "9d0caf3f42326d8d72edcf10cc72e27768a6822957c081de779f9a90fb07e8ef",
+    "bytes": 8662
+  },
+  {
+    "path": "skills/output-escaping/references/checklist.md",
+    "sha256": "5a011591d60db9e2c02e8ce8ea2b6367fea3b911a0e73123634a16d02d5e837b",
+    "bytes": 754
+  },
+  {
+    "path": "skills/output-escaping/references/escaping-cheatsheet.md",
+    "sha256": "123cffdb330eb525ffcc9a44014a743de43250777a7748e1a9554027291ef4e2",
+    "bytes": 2880
+  },
+  {
+    "path": "skills/rest-api-security/SKILL.md",
+    "sha256": "71f536d4ccb545511657e85a640861ed2da2b7911342de7aed48f6d98a060aa6",
+    "bytes": 12504
+  },
+  {
+    "path": "skills/rest-api-security/references/checklist.md",
+    "sha256": "128dfe500260dca82db8ced5d4028516ec94134191311a39a5cfde2175896ed5",
+    "bytes": 765
+  },
+  {
+    "path": "skills/rest-api-security/references/secure-rest-endpoint.php",
+    "sha256": "1af262f4f135204153b80aa3a3d34ab7e3a29e342494baecf421b8e50f5beb96",
+    "bytes": 2851
+  },
+  {
+    "path": "skills/secrets-credentials-management/SKILL.md",
+    "sha256": "55a3809e2fcbbcf26868a9f7a12addfdf32c8ac7d576bb600a11d58028f44ba1",
+    "bytes": 11152
+  },
+  {
+    "path": "skills/secrets-credentials-management/references/checklist.md",
+    "sha256": "5bccb779e24e5795401da04f2f2faedb8d80e81a6ae87565208834091e9a0852",
+    "bytes": 657
+  },
+  {
+    "path": "skills/secrets-credentials-management/references/secure-secret-storage.php",
+    "sha256": "16a996e79faa0f0cce600e33d17633459b980aeb555bd1cf3741282bc87973a6",
+    "bytes": 4207
+  },
+  {
+    "path": "skills/secure-plugin-development/SKILL.md",
+    "sha256": "30e40202baf8b03ed8fce3c9c7373746c2ff4e79949bfc51e9f8f0ddd3909c06",
+    "bytes": 7832
+  },
+  {
+    "path": "skills/secure-plugin-development/references/checklist.md",
+    "sha256": "e9733000a6b502b82036ff00aaadb816927ae37acd498b047477391f97732eea",
+    "bytes": 1209
+  },
+  {
+    "path": "skills/secure-plugin-development/references/decision-tree.md",
+    "sha256": "6647c84821a437c443312b3a2959bc49bc55a06b65c1af72a52efe7128e37891",
+    "bytes": 8387
+  },
+  {
+    "path": "skills/secure-plugin-development/references/secure-plugin-skeleton.php",
+    "sha256": "4c6facf2117ec42734813468c7452114c7941f9c31eb8a691575b21952b9c9a3",
+    "bytes": 3287
+  },
+  {
+    "path": "skills/security-auditing-code-review/SKILL.md",
+    "sha256": "98ae04642582bc716616a787e1299c8e47a72eb489d578a0b9d2f62b38aec623",
+    "bytes": 9638
+  },
+  {
+    "path": "skills/security-auditing-code-review/references/audit-checklist.md",
+    "sha256": "78e6d00666fc0cd213f4a8e7b895698631ae4dcdc581d5bf8cb5e1ba1b9fbbee",
+    "bytes": 3078
+  },
+  {
+    "path": "skills/security-auditing-code-review/references/grep-patterns.md",
+    "sha256": "bfeeca5785ef4baaab9bd771b28d44e6701f2014812ddc25695bf3a766876b0c",
+    "bytes": 5613
+  },
+  {
+    "path": "skills/security-auditing-code-review/references/report-template.md",
+    "sha256": "5e5071323db171e4560083fbe43287b31bf80887db026d0a1de49f031b19d9d5",
+    "bytes": 4821
+  },
+  {
+    "path": "skills/security-auditing-code-review/scripts/scan-security-sinks.sh",
+    "sha256": "14ea374bd6635603ef8863059880d6edabb886b7afc752eac2e4957583bcb001",
+    "bytes": 4100
+  },
+  {
+    "path": "skills/security-headers-csp/SKILL.md",
+    "sha256": "b6b03b9c4d646e8c8ea4f99701f80f998a0f2b9632f22866aaea12ea6b8d445f",
+    "bytes": 15499
+  },
+  {
+    "path": "skills/security-headers-csp/references/checklist.md",
+    "sha256": "e7f35f034e851a15e3913ffdd9a85749d23296588763adab0c1d988f58aae72c",
+    "bytes": 4187
+  },
+  {
+    "path": "skills/security-headers-csp/references/headers-cheatsheet.md",
+    "sha256": "caccdcb7a3dbf9e059a7f586eddaf28f8259b514118fbc3d24dbf93aa24b1195",
+    "bytes": 4617
+  },
+  {
+    "path": "skills/security-headers-csp/references/secure-security-headers.php",
+    "sha256": "e057dd48c6f8e27518c2712bae1c194e78946b9be95a480c24787072de3298a8",
+    "bytes": 10681
+  },
+  {
+    "path": "skills/settings-options-security/SKILL.md",
+    "sha256": "0f201ed47ecce563fcc1fd6feddc20c031d5920cc19b9b95c2221189a700ad12",
+    "bytes": 9196
+  },
+  {
+    "path": "skills/settings-options-security/references/checklist.md",
+    "sha256": "0040dd3e672805b823a16118e597ee43a9f2f67c0ad19c7447c5e9fc24055464",
+    "bytes": 723
+  },
+  {
+    "path": "skills/settings-options-security/references/secure-settings-page.php",
+    "sha256": "ba3fb8017974f0707295ec8f81e1e8c97fa224d91a35e9d2919bcfbb59073930",
+    "bytes": 4152
+  },
+  {
+    "path": "skills/shortcode-block-security/SKILL.md",
+    "sha256": "02f8999f679e0caf94d59e9eb37966df1fed60a0065d64ccae1488513fab3289",
+    "bytes": 8430
+  },
+  {
+    "path": "skills/shortcode-block-security/references/checklist.md",
+    "sha256": "3bf168b55785009419fdc5de645e70e189741cf3f561043c4e80abba29df98dc",
+    "bytes": 675
+  },
+  {
+    "path": "skills/shortcode-block-security/references/secure-shortcode-block.php",
+    "sha256": "1c76a209847d5dd5ac6ae24e48c88c103e7e6cb46d5fb538c973b57775993bc9",
+    "bytes": 3435
+  },
+  {
+    "path": "skills/sql-injection-prevention/SKILL.md",
+    "sha256": "45fb896ef6f2acf07c04cbf638dee189522a72d130027fc38cb136c3da71c0f7",
+    "bytes": 7906
+  },
+  {
+    "path": "skills/sql-injection-prevention/references/checklist.md",
+    "sha256": "7673d89cbd6b934679b0c2bf8b4cf7244a3fd4aee8a1362957579829009bc7cb",
+    "bytes": 807
+  },
+  {
+    "path": "skills/sql-injection-prevention/references/secure-wpdb-queries.php",
+    "sha256": "400e1630582f70bad7e3886268aace85c695b409e02d65fad6243f16deb6eb6f",
+    "bytes": 4305
+  },
+  {
+    "path": "skills/user-data-protection-privacy/SKILL.md",
+    "sha256": "1edfb5f6c82fdceb542053c1a32ddd65d21774e5bfbd49e32c96c6719d1201d3",
+    "bytes": 11439
+  },
+  {
+    "path": "skills/user-data-protection-privacy/references/checklist.md",
+    "sha256": "f165465d9b5ce71c3fd303e0d77783d0eb4df98f7bf2c7710fe4768144f8a888",
+    "bytes": 827
+  },
+  {
+    "path": "skills/user-data-protection-privacy/references/privacy-data-handlers.php",
+    "sha256": "d10241b3f9845a865b5943cf245996454e63d093818672d4cdad824a9dcc4af8",
+    "bytes": 4279
+  },
+  {
+    "path": "skills/woocommerce-security/SKILL.md",
+    "sha256": "3ba2fe0fc392636a9ec1e740d407b58a0ec036eb0ed874e46226583fa3d52625",
+    "bytes": 8145
+  },
+  {
+    "path": "skills/woocommerce-security/references/checklist.md",
+    "sha256": "bdaa2b69882cd85f3cf42772910b9289ae96945f5124afbfc061128dd66955f0",
+    "bytes": 756
+  },
+  {
+    "path": "skills/woocommerce-security/references/secure-woocommerce-order.php",
+    "sha256": "6b5c6281af338cc6a4fb5127966aeb2ba2ce05716c5bd5e4d8ae092945f3a70a",
+    "bytes": 3201
+  },
+  {
+    "path": "skills/wp-cli-security/SKILL.md",
+    "sha256": "faeaf61e5ba11f19b94da85c6755c06e130a4e40eaf3338b9801076fb513f0da",
+    "bytes": 7479
+  },
+  {
+    "path": "skills/wp-cli-security/references/checklist.md",
+    "sha256": "7ec0c21143e640cb577e1e8e1dd9e0b6b29aa0ea4b7fa7c07876106d39a2afc0",
+    "bytes": 651
+  },
+  {
+    "path": "skills/wp-cli-security/references/secure-wp-cli-command.php",
+    "sha256": "872473b2e86a54926be55f6839feea33d191961d42e6cfa7d31d1ff9915abf30",
+    "bytes": 2931
+  },
+  {
+    "path": "skills/wp-hardening-best-practices/SKILL.md",
+    "sha256": "58cd5800f18d88ce1f8573bef656d5fb7c3c4720b32ff654cc96517d62aa5d44",
+    "bytes": 9961
+  },
+  {
+    "path": "skills/wp-hardening-best-practices/references/checklist.md",
+    "sha256": "248853bb89c397d49571ec3484e5bada508e5f74101e75273a563bb52fff1df9",
+    "bytes": 1086
+  },
+  {
+    "path": "skills/wp-hardening-best-practices/references/go-live-checklist.md",
+    "sha256": "9bd89753c00be1fb82230bb5674a6d0566b49e0d351fba324b3860f1c7a043d7",
+    "bytes": 2321
+  },
+  {
+    "path": "skills/wp-hardening-best-practices/references/htaccess-hardening.conf",
+    "sha256": "2abd57ef24718423b8b02f1a84ba2a7ad34343267112c45c7a705162bc633b71",
+    "bytes": 2176
+  },
+  {
+    "path": "skills/wp-hardening-best-practices/references/wp-config-hardening.php",
+    "sha256": "672905e5ec55b305d842b10ffaab19352ffabb2fda82994e5013edbc6e4779f2",
+    "bytes": 2177
+  }
+]

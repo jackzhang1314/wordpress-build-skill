@@ -1,0 +1,5 @@
+{
+  "status": "interrupted",
+  "phase": "SMTP HTTP readiness",
+  "reason": "Docker internal network host port unreachable on this desktop; services healthy inside network; retry uses loopback published ports on normal dedicated bridge."
+}

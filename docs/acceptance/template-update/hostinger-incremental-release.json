@@ -1,0 +1,19 @@
+{
+  "testedAt": "2026-09-21T18:27:19.900Z",
+  "scope": "real-incremental-release-theme-files-only-not-full-deployment",
+  "kind": "theme",
+  "domain": "mediumblue-quail-505146.hostingersite.com",
+  "uploaded": [],
+  "backupDir": null,
+  "converged": true,
+  "verifiedBinaries": [
+    "assets/fonts/body.ttf",
+    "assets/fonts/display.ttf"
+  ],
+  "dbOverridePaths": [],
+  "limitations": [
+    "No database writes: enquiries untouched by construction",
+    "Rendered-page verification is a separate live check"
+  ],
+  "releaseApproval": false
+}

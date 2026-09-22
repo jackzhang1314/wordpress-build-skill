@@ -1,0 +1,21 @@
+{
+  "testedAt": "2026-09-21T15:24:11.172Z",
+  "scope": "local-reuse-conflict-resolution-not-full-deployment",
+  "slug": "harness-resolve-9403feaf85",
+  "checks": {
+    "overrideAndFileCreated": true,
+    "resetSucceeded": true,
+    "backupCapturesOperatorContent": true,
+    "overrideDeletedAndFileTakesOver": true,
+    "restoreSucceeded": true,
+    "operatorEditRestoredAndWins": true,
+    "resetRefusesMissingOverride": true,
+    "cleanup": true
+  },
+  "notCovered": [
+    "hostinger-remote-resolution",
+    "multi-entry-backup-restore",
+    "global-styles-resolution",
+    "concurrent-enquiry-during-resolution"
+  ]
+}

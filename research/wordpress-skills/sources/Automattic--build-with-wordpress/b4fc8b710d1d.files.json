@@ -1,0 +1,1542 @@
+[
+  {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "8d1f6f811527dd1f36c077efd127904129e49667f801f52ad4c5fb360b95c71e",
+    "bytes": 1107
+  },
+  {
+    "path": ".github/workflows/developer-docs-agent.yml",
+    "sha256": "3e0e7d5aa8de6422728bd186650fc93b6bdfa48490ffb4e4ab1048b7925c39a2",
+    "bytes": 3571
+  },
+  {
+    "path": ".github/workflows/skills-agent.yml",
+    "sha256": "3e501063c15ed7b580d0ba824798ed461bda1cb994e1785d1977d0489f3030be",
+    "bytes": 1823
+  },
+  {
+    "path": ".gitignore",
+    "sha256": "fee4cf2298549fd1c28f02e4904b1671e8eadb0f6188a1aac6bb775123488647",
+    "bytes": 35
+  },
+  {
+    "path": "README.md",
+    "sha256": "1faa499dc6e52ac52c9e7cf67685173a870c99297648f92a5e4ae824dcdb2d30",
+    "bytes": 9756
+  },
+  {
+    "path": "assets/vscode/icon.png",
+    "sha256": "c89cada342509122dfdf0ce4dcffde43c9f851988870b75b368f16b5aef1394a",
+    "bytes": 171192
+  },
+  {
+    "path": "docs/README.md",
+    "sha256": "87dd4cf290191642b1d7aefdb29bd5c7c7e26a2fdae90d60aea1d5bcbc6af1af",
+    "bytes": 5936
+  },
+  {
+    "path": "docs/architecture.md",
+    "sha256": "31dad782325c009e2dfa98e3f0ceee22b7b32b71fbec7be0bb970e105f3e7cfb",
+    "bytes": 10815
+  },
+  {
+    "path": "docs/contributor-workflows.md",
+    "sha256": "f1220b36ab9a5a182b24bf5b559f4a9b1f83c2f1d09cbaaa3bef6ccb895b5fe7",
+    "bytes": 11655
+  },
+  {
+    "path": "docs/figma-studio-runner.md",
+    "sha256": "fe6df19e491da3af48bcb40e56954014271c1a2bf639da8cc4d50a786accd078",
+    "bytes": 5973
+  },
+  {
+    "path": "docs/generated-outputs.md",
+    "sha256": "8a1de2735702077fe533a9e433223197fe8649876db25650658849fe0350f20b",
+    "bytes": 12292
+  },
+  {
+    "path": "docs/skills-and-integrations.md",
+    "sha256": "56db1ae108610a5d411545e4801de34d77b08671d602c507123f39534edd10c4",
+    "bytes": 8833
+  },
+  {
+    "path": "package-lock.json",
+    "sha256": "469fe50c3819a64abf4499b8f3a16b3c0113801114f062ac9940c22fcbdadaa5",
+    "bytes": 2170
+  },
+  {
+    "path": "package.json",
+    "sha256": "ee7923e7d9af68b2e59008f7fb3db5284faa6628e4738e5f2f8dee4ae719e0ea",
+    "bytes": 672
+  },
+  {
+    "path": "plugins/aider/.aider.conf.yml",
+    "sha256": "74f3169e9930a7e22f5058431bec4d03b5a30b8ce8a185da7a3524cb939220b8",
+    "bytes": 429
+  },
+  {
+    "path": "plugins/aider/CONVENTIONS.md",
+    "sha256": "130910a1b71c747e08d83f0c84b5d245e6578cb0a291e10a2eec19a89d56c035",
+    "bytes": 1463
+  },
+  {
+    "path": "plugins/aider/README.md",
+    "sha256": "4eec6fa556813b04bf8f7812bcc4e2d038ea0f4d09f2730230c8c703d4590148",
+    "bytes": 2060
+  },
+  {
+    "path": "plugins/aider/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/aider/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/aider/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/aider/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/aider/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/aider/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/aider/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/aider/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/amp/.agents/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/amp/.agents/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/amp/.agents/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/amp/.agents/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/amp/.agents/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/amp/.agents/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/amp/.agents/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/amp/.agents/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/amp/.amp/plugins/wordpress-studio.ts",
+    "sha256": "f8e23fdb83e0017b240c83cba8b0da334c7c10bfe08556219901bd6dbbfc5b7a",
+    "bytes": 610
+  },
+  {
+    "path": "plugins/amp/.amp/settings.json",
+    "sha256": "8e3b72cb7667c22a60e02f7eb69b614259c90f159228a64050134df91899853c",
+    "bytes": 160240
+  },
+  {
+    "path": "plugins/amp/AGENTS.md",
+    "sha256": "efd7734f502ca6c74121d0f5b5f931e5082b611ef66159625c085a6d8528c259",
+    "bytes": 2012
+  },
+  {
+    "path": "plugins/amp/README.md",
+    "sha256": "b257b830b1f87598b806a331cacc4802e0250d62538dd7d433f5ddfa38252cd3",
+    "bytes": 2465
+  },
+  {
+    "path": "plugins/claude-code/.claude-plugin/plugin.json",
+    "sha256": "c1efc1ea32a669df8915048b68c7c3e53bc8b2ba4e05871b730092fc8b8f5a5d",
+    "bytes": 239
+  },
+  {
+    "path": "plugins/claude-code/.mcp.json",
+    "sha256": "5a0b767a4b4f44e12ff4776b2160908e19fb025ad048fe43465569f37790dab1",
+    "bytes": 160244
+  },
+  {
+    "path": "plugins/claude-code/README.md",
+    "sha256": "58ee206e03edea7c24bba96abaf15e385ed9c4e212d8c6a024ee20f59d2b1090",
+    "bytes": 823
+  },
+  {
+    "path": "plugins/claude-code/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/claude-code/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/claude-code/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/claude-code/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/claude-code/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/claude-code/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/claude-code/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/claude-code/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/cline/.cline/plugins/README.md",
+    "sha256": "0f5b5de7be3007de6411525b5d2b5d3c212f21affba1de16b5747f20afea33d5",
+    "bytes": 394
+  },
+  {
+    "path": "plugins/cline/.cline/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/cline/.cline/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/cline/.cline/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/cline/.cline/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/cline/.cline/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/cline/.cline/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/cline/.cline/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/cline/.cline/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/cline/.clinerules/wordpress-com.md",
+    "sha256": "7df014fb613b4fe2f7c2d3e0f662329464b8f9ebfa16cb1617bb4efb50fca583",
+    "bytes": 1389
+  },
+  {
+    "path": "plugins/cline/README.md",
+    "sha256": "2a8c59a1d2450d7a74481de252f6fdb912f65524ae74b326dad04dedf86ec488",
+    "bytes": 2995
+  },
+  {
+    "path": "plugins/cline/mcp.json",
+    "sha256": "0bc07a7edbb01a4c43cdab0764e159a6a4bbaeb2362fad7b33464e799d42ba30",
+    "bytes": 160238
+  },
+  {
+    "path": "plugins/codex/.agents/plugins/marketplace.json",
+    "sha256": "2476a8adceae246e3bcdb0cc539a8bcd856aafd0008fbb1e18f0380ae5d3e2a0",
+    "bytes": 388
+  },
+  {
+    "path": "plugins/codex/plugins/wordpress-studio/.codex-plugin/plugin.json",
+    "sha256": "11e0d763af371b98542b1fe40c47beb629744d415f45205a400794ffe7736dfc",
+    "bytes": 1479
+  },
+  {
+    "path": "plugins/codex/plugins/wordpress-studio/.mcp.json",
+    "sha256": "160ea91ec935bd659e4772ef804ca0d494b5a077170342991e6d0ea014480195",
+    "bytes": 160238
+  },
+  {
+    "path": "plugins/codex/plugins/wordpress-studio/README.md",
+    "sha256": "b0f7b4cd0c2cbbb4e7846e9094acc706e38314854a0cf19e4c683e79c4be0de6",
+    "bytes": 1009
+  },
+  {
+    "path": "plugins/codex/plugins/wordpress-studio/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/codex/plugins/wordpress-studio/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/codex/plugins/wordpress-studio/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/codex/plugins/wordpress-studio/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/codex/plugins/wordpress-studio/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/codex/plugins/wordpress-studio/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/codex/plugins/wordpress-studio/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/codex/plugins/wordpress-studio/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/conductor/.conductor/settings.toml",
+    "sha256": "7d79efbd8541db6f76a000c3e9368b7e0fa4d585e49115c74f5e6f71d8f6512e",
+    "bytes": 164
+  },
+  {
+    "path": "plugins/conductor/README.md",
+    "sha256": "122257ea04482290fafdd41f90bb4b98ad01ac979ba0dc0fb8efb27a6c747fca",
+    "bytes": 4035
+  },
+  {
+    "path": "plugins/continue/.continue/mcpServers/wordpress-com.yaml",
+    "sha256": "4f6ddecf2622e990d4298ac8b7173eb06043c7cf28ee3b9149f5bb41d7baeddc",
+    "bytes": 148
+  },
+  {
+    "path": "plugins/continue/.continue/prompts/audit-wordpress-com-project.md",
+    "sha256": "fea6f794ade9ba817141786a7cc9948f86289b5a1870ada4cf4e7011b8bab850",
+    "bytes": 596
+  },
+  {
+    "path": "plugins/continue/.continue/prompts/create-wordpress-com-site.md",
+    "sha256": "e28b374254cb535a6fa79eec7527673085fbc52094d63f7ec42f145004590938",
+    "bytes": 769
+  },
+  {
+    "path": "plugins/continue/.continue/rules/wordpress-com.md",
+    "sha256": "eae1bded59b2b15c568d1706cf1646cee2bd2f3af72c3edc5341fb40230b7a9d",
+    "bytes": 857
+  },
+  {
+    "path": "plugins/continue/README.md",
+    "sha256": "18b14e6e70f42a367a93416853b5a2a18ca8463012becdd0fadca88c150e62c2",
+    "bytes": 2690
+  },
+  {
+    "path": "plugins/continue/config.yaml",
+    "sha256": "f691a5c278062df570c106a7ae15ab73fe8ea6a9793a7f93e95ed5299aacc02f",
+    "bytes": 655
+  },
+  {
+    "path": "plugins/copilot/.github/copilot-instructions.md",
+    "sha256": "03dd313d3a412c72b53012d2b27c7341aa4845d58741cb8b221362109bd3ba76",
+    "bytes": 1503
+  },
+  {
+    "path": "plugins/copilot/.github/instructions/wordpress-studio.instructions.md",
+    "sha256": "a7075092d3a83b61253d73be19ef3aa3d75d08a53b227fd46ed01cd9ba19f433",
+    "bytes": 541
+  },
+  {
+    "path": "plugins/copilot/.vscode/mcp.json",
+    "sha256": "29ab9400295354306c7cf68cc1ba46e97040d4d831154dcf4b03dc471a039465",
+    "bytes": 160283
+  },
+  {
+    "path": "plugins/copilot/README.md",
+    "sha256": "a8fb2144a14bf9af1b45f8068014aa3f848f4ac164d650474cfd5ab89af45277",
+    "bytes": 894
+  },
+  {
+    "path": "plugins/copilot/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/copilot/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/copilot/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/copilot/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/copilot/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/copilot/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/copilot/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/copilot/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/cursor/.cursor-plugin/plugin.json",
+    "sha256": "84ca3fc0391fd1f32632954f18f0134f5641341a6b40f4b1519434ccdb97281a",
+    "bytes": 781
+  },
+  {
+    "path": "plugins/cursor/README.md",
+    "sha256": "e64215eb4a4d848b48a986c70e7b079c646528863d6f8db4c19a076ef058022c",
+    "bytes": 4579
+  },
+  {
+    "path": "plugins/cursor/mcp.json",
+    "sha256": "55aeae7799fb645a0fe8ce76dbfd0005b473633073553be3085cb4c9936e28ce",
+    "bytes": 160239
+  },
+  {
+    "path": "plugins/cursor/rules/wordpress-studio.mdc",
+    "sha256": "98b090af0b6cede9c38e798a84468ef2401b683206fee85a17a000a5259019ce",
+    "bytes": 670
+  },
+  {
+    "path": "plugins/cursor/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/cursor/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/cursor/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/cursor/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/cursor/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/cursor/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/cursor/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/cursor/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/devin-desktop/.devin/rules/wordpress-com-mcp.md",
+    "sha256": "5395d25db7412720247f8b4a940af84efd9e6aa282014b84b15dc956f0189e79",
+    "bytes": 718
+  },
+  {
+    "path": "plugins/devin-desktop/.devin/rules/wordpress-com.md",
+    "sha256": "5f5e9d0998ca6aaf6621d49d0b14420f68954fd1d402b825e74d8a0d82cd5ed5",
+    "bytes": 651
+  },
+  {
+    "path": "plugins/devin-desktop/.devin/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/devin-desktop/.devin/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/devin-desktop/.devin/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/devin-desktop/.devin/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/devin-desktop/.devin/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/devin-desktop/.devin/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/devin-desktop/.devin/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/devin-desktop/.devin/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/devin-desktop/README.md",
+    "sha256": "9197197fc43e40655ecd0d19eea792ffafdc35e8facd4bf807967f7a6bb366ad",
+    "bytes": 3500
+  },
+  {
+    "path": "plugins/devin-desktop/mcp_config.json",
+    "sha256": "958fb1a5cd9ad84f84be3479fc995056110befd68d665d5507aec0bd1571c1ef",
+    "bytes": 160246
+  },
+  {
+    "path": "plugins/devin/.devin/config.json",
+    "sha256": "840f8f13c8b92f3b961c5057bf83100e8a85ef77c9e5b9d860ad4e342af29714",
+    "bytes": 160238
+  },
+  {
+    "path": "plugins/devin/.devin/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/devin/.devin/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/devin/.devin/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/devin/.devin/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/devin/.devin/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/devin/.devin/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/devin/.devin/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/devin/.devin/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/devin/AGENTS.md",
+    "sha256": "3f6d29b9b5fd8102f11a6e454106b262a939b494c03a9939bb6e35883b1d8369",
+    "bytes": 1040
+  },
+  {
+    "path": "plugins/devin/README.md",
+    "sha256": "01ed5b5e015432d43ead4614dc97b04ba4d66df86ebd122c64863c063c8c8b97",
+    "bytes": 1925
+  },
+  {
+    "path": "plugins/factory/.factory-plugin/marketplace.json",
+    "sha256": "4646e757a3ee2fb1a906f4aaff300224549b0e7700bf24acdb4d647559be2bae",
+    "bytes": 444
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/.factory-plugin/plugin.json",
+    "sha256": "680fc8cb282b48ba5b9e965bcdcafc949900fb580f07e11fe28cf6e375aabeea",
+    "bytes": 413
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/README.md",
+    "sha256": "8be6ab8cefc5d457c94bedae105853aeddbb544e390d81fafe1ff23da32a3c8c",
+    "bytes": 2432
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/commands/wordpress.md",
+    "sha256": "e51dc739a01432e54a893090f3bdf567e8e0492fdbf54d5876a805fda8d8b13a",
+    "bytes": 434
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/droids/wordpress-builder.md",
+    "sha256": "111cad84ad5c766bfe2a8c3e07ac85e286cec90f58ce100550e00da2b402fb4a",
+    "bytes": 1007
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/hooks/hooks.json",
+    "sha256": "7e2ef5c5efb7595ca649793fa90984b6bebdc2e7b2a0a3336773822a2a40abcb",
+    "bytes": 331
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/hooks/session-context.sh",
+    "sha256": "85eeb06166d4c1c49d31ec72b8e0a9dbdd8ac881430f081830abe58ba4ed8c9b",
+    "bytes": 292
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/mcp.json",
+    "sha256": "eeaef009d889c7cdb9860b60578a0ff880a1a1043a6779361697a4ec719118a3",
+    "bytes": 160246
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/factory/plugins/wordpress-studio/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/README.md",
+    "sha256": "624ce3fa71a3d11d5347546839ba3a7b551936338510c1da3370ab2257df5302",
+    "bytes": 4372
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/fixtures/sample-scene.json",
+    "sha256": "c8f46cff2f372f44675d5048955ad5192db781d7975472b3352b7aef2e122d2e",
+    "bytes": 2196
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/manifest.json",
+    "sha256": "619373e5de39b5234ee4d2ac075924563a1579244be5c698c6c112c5757e44c7",
+    "bytes": 195
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/package-lock.json",
+    "sha256": "5a847e48b1459bc0241113a2ec202794f30b081e64eed2bd1c24d64421877423",
+    "bytes": 15410
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/package.json",
+    "sha256": "948be2c1ab99e41bcb7dedf7e56d6102718b43f56432a1e11ddd6ab7512778b5",
+    "bytes": 566
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/scripts/build.mjs",
+    "sha256": "4fdcc14122ec99feed48e2afee224696600884fda5c53937981d323a3d5dd344",
+    "bytes": 1779
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/src/code.ts",
+    "sha256": "c244aa4e0f6ad1cfa0b13435d17ba48f24d69c5bb245ef0955b5dd836fcb5a27",
+    "bytes": 9826
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/src/exporter.ts",
+    "sha256": "9547d6ab3e5d1bfeec32b812e03927f6ca406a3d599923d08ecf04105915a92f",
+    "bytes": 850
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/src/index.ts",
+    "sha256": "1f338326be86217e6d5aae1ea1384daf1f8293b8a29b024beb4781a3ade4d6ca",
+    "bytes": 13511
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/src/payload.ts",
+    "sha256": "917f689014ce73ed247d5362bfdb9f599fb7bba09120aeb74ab4c837ac748674",
+    "bytes": 5724
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/src/types.ts",
+    "sha256": "f709942f00f1ef21bb0387bef183917c641a04ee8eb66709ea1da2cb02b1c0da",
+    "bytes": 2625
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/src/ui.html",
+    "sha256": "4ec69cf6fea176d6ca9d3150db44eebcb9b41c93ab80538e6e33802ff2de6dff",
+    "bytes": 2112
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/src/ui.ts",
+    "sha256": "b61e7a1386d13307add0f95bf6369dc7e226ede5f659663c4d23edd0f7e0831f",
+    "bytes": 5514
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/tests/generate-artifact.test.mjs",
+    "sha256": "6c7ee9d0abd19a8b013aec0a66812f0f33f5188b17739f4d5cb1792392585e36",
+    "bytes": 10574
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/tsconfig.figma.json",
+    "sha256": "342b299a7a3e9ac8589d0d66a670aa9b7d63c17e047ee2268126a0c576e9642a",
+    "bytes": 230
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/tsconfig.json",
+    "sha256": "68ee805c897b2a67441e20ff13a54ec79de9790b7be42e143db021affc77e798",
+    "bytes": 153
+  },
+  {
+    "path": "plugins/figma-to-wordpress-studio/tsconfig.ui.json",
+    "sha256": "d5ccf63c15bd0bdb20a3a7146fea62f3413e1a6cc9280a96239093e7f07fbc84",
+    "bytes": 205
+  },
+  {
+    "path": "plugins/gemini/.gemini/settings.json",
+    "sha256": "341518fd6496d07bda4ec36dbe708c2ee4365dbeb05f48cbf4fa167bbd786e23",
+    "bytes": 160239
+  },
+  {
+    "path": "plugins/gemini/GEMINI.md",
+    "sha256": "8811cd24fe59cd671a4d9e45e151e384a696195c304d34aab090f9e70587c65c",
+    "bytes": 1409
+  },
+  {
+    "path": "plugins/gemini/README.md",
+    "sha256": "808029e4ea2f01b7637b3d9e71c342c407b8a533909eea602c4057b24ba42d14",
+    "bytes": 869
+  },
+  {
+    "path": "plugins/gemini/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/gemini/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/gemini/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/gemini/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/gemini/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/gemini/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/gemini/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/gemini/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/hermes/.hermes/config.yaml",
+    "sha256": "954fd6f901caf428cdf051737f378ca3b692fc7ce3771cd3105010caf8daf76f",
+    "bytes": 160240
+  },
+  {
+    "path": "plugins/hermes/README.md",
+    "sha256": "78ec0704b48161a79327b19a2d167834644091286182c9673c5facd7d2853469",
+    "bytes": 1823
+  },
+  {
+    "path": "plugins/hermes/__init__.py",
+    "sha256": "71bb7f39486f76f5fe813c217f092dfa4fa0c61e67a747a8653d132ea1705aa9",
+    "bytes": 744
+  },
+  {
+    "path": "plugins/hermes/plugin.yaml",
+    "sha256": "a4c27c15badca6f1cddf076737a943dc5e1506af2fe0e53c8bc28d99caff413d",
+    "bytes": 145
+  },
+  {
+    "path": "plugins/hermes/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/hermes/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/hermes/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/hermes/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/hermes/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/hermes/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/hermes/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/hermes/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/junie/.junie/AGENTS.md",
+    "sha256": "2c1c55124aefaebb3e26c181f5207891bfc5370fa5afd262c2dba03149175b96",
+    "bytes": 1287
+  },
+  {
+    "path": "plugins/junie/.junie/mcp/mcp.json",
+    "sha256": "73927a38b29509dcf6e980f6bb408ed5e12167d9faf15300fb5a97027a5accb3",
+    "bytes": 160238
+  },
+  {
+    "path": "plugins/junie/.junie/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/junie/.junie/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/junie/.junie/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/junie/.junie/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/junie/.junie/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/junie/.junie/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/junie/.junie/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/junie/.junie/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/junie/README.md",
+    "sha256": "d9f73b9e211d4ba8f223aeaa214875384a795145877dde99dbc7c8a59ef9f390",
+    "bytes": 2756
+  },
+  {
+    "path": "plugins/kilo-code/.kilo/agents/wordpress-com.md",
+    "sha256": "7b96d97b5ae0045994b409e4881304cc324b3dbbe0e9625622e843098d0415aa",
+    "bytes": 633
+  },
+  {
+    "path": "plugins/kilo-code/.kilo/plugin/README.md",
+    "sha256": "2240ac83ff5986a9be2bff944be8b94bb1addc7b10ba60f03753e3bb9f9831ee",
+    "bytes": 349
+  },
+  {
+    "path": "plugins/kilo-code/.kilo/rules/wordpress-com.md",
+    "sha256": "01b51287a8e180e3e6dea891e329a8f2a92c289f079f58355d6a8d801e559d3e",
+    "bytes": 822
+  },
+  {
+    "path": "plugins/kilo-code/.kilo/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/kilo-code/.kilo/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/kilo-code/.kilo/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/kilo-code/.kilo/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/kilo-code/.kilo/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/kilo-code/.kilo/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/kilo-code/.kilo/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/kilo-code/.kilo/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/kilo-code/AGENTS.md",
+    "sha256": "77584fe5c66983f9de8b417a0ec52e7c1daa879a392be70ba70c6871cf696c2c",
+    "bytes": 1339
+  },
+  {
+    "path": "plugins/kilo-code/README.md",
+    "sha256": "608dc2c25d12a02fbe69843ffcd76630d1ba0c1ec6ece566384ed90f9c94b1e4",
+    "bytes": 3756
+  },
+  {
+    "path": "plugins/kilo-code/kilo.jsonc",
+    "sha256": "fd0f58794de0372418017524929916341c94d5e55c296f2b39156ca68bd833ed",
+    "bytes": 160423
+  },
+  {
+    "path": "plugins/openclaw/AGENTS.md",
+    "sha256": "37d1ca871c388eed1039dfd28f140bda58d87ea26d1c05ebb5103c3fee36d166",
+    "bytes": 1327
+  },
+  {
+    "path": "plugins/openclaw/README.md",
+    "sha256": "5bfbed2d2e70c8631e4de9ccaa4755f244d109f4dd33f42a0006aa991f681dd7",
+    "bytes": 1213
+  },
+  {
+    "path": "plugins/openclaw/mcp.json",
+    "sha256": "434d4a7311ec455779c6db4254770109d6410cb0dd3e63f38fefd9bfc13309e5",
+    "bytes": 160241
+  },
+  {
+    "path": "plugins/openclaw/package.json",
+    "sha256": "b7c73e509ff8bfe4001b9d564ffc4fb156f08481e1dc6bfefc0186ccfe26c436",
+    "bytes": 651
+  },
+  {
+    "path": "plugins/openclaw/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/openclaw/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/openclaw/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/openclaw/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/openclaw/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/openclaw/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/openclaw/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/openclaw/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/opencode/.opencode/agents/wordpress-com.md",
+    "sha256": "80e0fdcc4f4f9ec18d93f4b99fde33cdadf27d388f41a4d55572d7117e7cab85",
+    "bytes": 632
+  },
+  {
+    "path": "plugins/opencode/.opencode/commands/wordpress.md",
+    "sha256": "a7ac965e901bb070c49a11389831382c6b786f2f70102fc598b2501ddbcbe101",
+    "bytes": 366
+  },
+  {
+    "path": "plugins/opencode/.opencode/plugins/README.md",
+    "sha256": "9c2daea4251697b53de99ecb628d5d1ba262d36c445ef0625696b9d90394c776",
+    "bytes": 348
+  },
+  {
+    "path": "plugins/opencode/.opencode/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/opencode/.opencode/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/opencode/.opencode/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/opencode/.opencode/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/opencode/.opencode/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/opencode/.opencode/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/opencode/.opencode/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/opencode/.opencode/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/opencode/AGENTS.md",
+    "sha256": "22de6748969b060d62edef5e122f4ba3b8b603e981701f5d42085f2325ab7ef5",
+    "bytes": 1310
+  },
+  {
+    "path": "plugins/opencode/README.md",
+    "sha256": "6427ebacf9b0964d56a4ba8962e87f191c2a4863adf3a117df32803ecb4da0ef",
+    "bytes": 2824
+  },
+  {
+    "path": "plugins/opencode/opencode.json",
+    "sha256": "03d841a1aa86f61a728017c0b82f60f8632b3c372ea73771d98abc7244a9120b",
+    "bytes": 160403
+  },
+  {
+    "path": "plugins/pi/README.md",
+    "sha256": "6a31dfc005e8d8eb1b4ed1aa137370d17b6fb8d3d29c59cad927344369104412",
+    "bytes": 1501
+  },
+  {
+    "path": "plugins/pi/package.json",
+    "sha256": "071ea6e25f5f7be351d76d2dae8b1faa65e02ab90bc9cc5dff0b3179ac045cf3",
+    "bytes": 383
+  },
+  {
+    "path": "plugins/pi/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/pi/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/pi/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/pi/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/pi/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/pi/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/pi/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/pi/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/qodo/AGENTS.md",
+    "sha256": "c535b73787d4fce9c51938bf01c3faeb3bf9edd475fce9a755d8bcc1aed41c73",
+    "bytes": 1885
+  },
+  {
+    "path": "plugins/qodo/README.md",
+    "sha256": "ba14b18266cd8376cd7c757914b6059df39409b6e2c7ebd0c2052b9bfb95f0d4",
+    "bytes": 163279
+  },
+  {
+    "path": "plugins/qodo/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/qodo/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/qodo/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/qodo/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/qodo/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/qodo/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/qodo/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/qodo/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/roo-code/.roo/mcp.json",
+    "sha256": "4844fa5972c495288bb1ad699a3117313707fe1a7563d9e074a0806ccd7e284f",
+    "bytes": 160241
+  },
+  {
+    "path": "plugins/roo-code/.roo/rules-code/wordpress-com-code.md",
+    "sha256": "40122b4008676a01c2044f6bd82efa3806246dc2dfe3eb400da236abd10765e1",
+    "bytes": 682
+  },
+  {
+    "path": "plugins/roo-code/.roo/rules/wordpress-com.md",
+    "sha256": "27bd7d8b98fff2112e0e26b231ce03f4e2ef84406745556e416aaf5a97a08811",
+    "bytes": 1325
+  },
+  {
+    "path": "plugins/roo-code/AGENTS.md",
+    "sha256": "eb94c7d52321487f37aa6c0275f39450d8c8fa45f808dab3b78b7a74b96fdfa5",
+    "bytes": 537
+  },
+  {
+    "path": "plugins/roo-code/README.md",
+    "sha256": "75e71ef0377b77d9ff73a88c5985018998d8bf89afbcbda05b840900b87573f2",
+    "bytes": 2024
+  },
+  {
+    "path": "plugins/roo-code/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/roo-code/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/roo-code/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/roo-code/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/roo-code/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/roo-code/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/roo-code/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/roo-code/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/vscode/LICENSE",
+    "sha256": "15c0c21de8ecb58cb452ff941de8ecedd044050ceb89de258a14cbe0ae159f6b",
+    "bytes": 281
+  },
+  {
+    "path": "plugins/vscode/README.md",
+    "sha256": "e7b38d12c4c1ead336f9aece3b197bd96730ce989535b4975b6036244d723a9f",
+    "bytes": 2871
+  },
+  {
+    "path": "plugins/vscode/extension.js",
+    "sha256": "8d087c217ab791275ef26fab12c0ee4d497856d7ea5514d721b43179148bb0e6",
+    "bytes": 7738
+  },
+  {
+    "path": "plugins/vscode/images/icon.png",
+    "sha256": "c89cada342509122dfdf0ce4dcffde43c9f851988870b75b368f16b5aef1394a",
+    "bytes": 171192
+  },
+  {
+    "path": "plugins/vscode/mcp.json",
+    "sha256": "d901f86203e412eb23ef20fe08c05faa292691c44c8f52f772faeb46f2590080",
+    "bytes": 160282
+  },
+  {
+    "path": "plugins/vscode/package.json",
+    "sha256": "994bd5f7afea9ef56d8b86cda489702850784ae3e9accf132c5f0d970a68db50",
+    "bytes": 1791
+  },
+  {
+    "path": "plugins/vscode/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/vscode/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/vscode/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/vscode/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/vscode/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/vscode/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/vscode/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/vscode/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/zed/.agents/skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "plugins/zed/.agents/skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "plugins/zed/.agents/skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "plugins/zed/.agents/skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "plugins/zed/.agents/skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "plugins/zed/.agents/skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "plugins/zed/.agents/skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "plugins/zed/.agents/skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "plugins/zed/.zed/settings.json",
+    "sha256": "3da18d8b23606d58a49f46207c944884667f75c73257e989fa3051ff2fdbed14",
+    "bytes": 160241
+  },
+  {
+    "path": "plugins/zed/AGENTS.md",
+    "sha256": "28e365a5da26f8795bec143205ecea755b709a31b8c39f73993ca391678c62ac",
+    "bytes": 1351
+  },
+  {
+    "path": "plugins/zed/README.md",
+    "sha256": "5550331589cbc91338017ccac0d20a57f6a440ecea165ff8a5479c36f28ddfc0",
+    "bytes": 2836
+  },
+  {
+    "path": "pnpm-lock.yaml",
+    "sha256": "79d05e67d25ffcc23b30aab277586c2891e1d68286b94d3d88b38062905f40a2",
+    "bytes": 31772
+  },
+  {
+    "path": "scripts/build-plugins.mjs",
+    "sha256": "9a24b47df84bfb61e61c742cc99613c9ed547d8510460321288e6032090afa21",
+    "bytes": 131593
+  },
+  {
+    "path": "scripts/build-telemetry-mcp.mjs",
+    "sha256": "872f758aa75f359108067f937b04f0b565cceb476979b439a70ae6c562e0cf28",
+    "bytes": 720
+  },
+  {
+    "path": "scripts/export-cursor-plugin.mjs",
+    "sha256": "9c40966d91d9c1f96eb1010ad7ae9365436b5819e6891d9eda5abb0529bb877e",
+    "bytes": 1773
+  },
+  {
+    "path": "scripts/mcp-setup-contract.mjs",
+    "sha256": "13ac44f97d4b38b21b7e80e5b43e546b5f178fb64a040fb716574fdd08217db4",
+    "bytes": 3072
+  },
+  {
+    "path": "scripts/verify-plugins.mjs",
+    "sha256": "9159f7cdaf094347f58f8334aabe3adee5b43d7f6793c64af10452ce18e05e79",
+    "bytes": 46009
+  },
+  {
+    "path": "scripts/wordpress-telemetry-mcp.mjs",
+    "sha256": "3e77f653009c5fdfc29957b0bfaed6437372ebdf15f2638812f32c3f9da7d86c",
+    "bytes": 2729
+  },
+  {
+    "path": "skills/auditing/SKILL.md",
+    "sha256": "0bdafcc73202aec27a5a6a5232174ddc51d405d518ae62a31c3844c392057f68",
+    "bytes": 4886
+  },
+  {
+    "path": "skills/block-creator/SKILL.md",
+    "sha256": "98d7ac1faee751433c5393956e8a31193029f78e37fafd5b0b398b47cae93144",
+    "bytes": 5147
+  },
+  {
+    "path": "skills/design-previews-creator/SKILL.md",
+    "sha256": "a408e52da1c508482fbc722d7617f549873de9581fb9e0fb59b65f0218327ac0",
+    "bytes": 3052
+  },
+  {
+    "path": "skills/plugin-creator/SKILL.md",
+    "sha256": "daa3cec94a33888976f963eb69b1189434bfc2c26600aa29b91623c9cdd71349",
+    "bytes": 1892
+  },
+  {
+    "path": "skills/site-creator/SKILL.md",
+    "sha256": "593e0c1a6502671a5f3f122672f34ee9651081de70911690287ffc981a7dda66",
+    "bytes": 3685
+  },
+  {
+    "path": "skills/studio/SKILL.md",
+    "sha256": "d84a7018f5b4d3b6442b2ef286763f36c60502a67539f89cf521113dfeff1d8e",
+    "bytes": 4768
+  },
+  {
+    "path": "skills/theme-creator/SKILL.md",
+    "sha256": "1fe37455cc770e2a43705b8b7eaae108bd6c0c59bc8fc22b315b80ab7688105d",
+    "bytes": 4467
+  },
+  {
+    "path": "skills/wordpress-creator/SKILL.md",
+    "sha256": "647461efc2e0d13e7541dcd846a21cd5e3b3cf520bcf11ddd0cf2b382b315ea3",
+    "bytes": 2103
+  },
+  {
+    "path": "tests/docs-agent-workflows.test.mjs",
+    "sha256": "732c84cc58042adaccc57837689062ae88cdcdf4ce6a417c65aeb00b3d1a9e0c",
+    "bytes": 8081
+  }
+]

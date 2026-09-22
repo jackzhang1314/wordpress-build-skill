@@ -1,0 +1,23 @@
+{
+  "method": "Playwright CLI actual controls; tool call results, not inferred from REST registration",
+  "a": {
+    "productEditorialSelected": true,
+    "reloadPersisted": true,
+    "standardRestored": true,
+    "control": "Template options popover native select"
+  },
+  "b": {
+    "productEditorialSelected": true,
+    "reloadPersisted": true,
+    "standardRestored": true,
+    "control": "Template options, Change template, option picker",
+    "pickerOtherOptionsWhenStandardCurrent": [
+      "Product — Editorial"
+    ],
+    "mobileMenuOpen": true,
+    "escapeCloses": true,
+    "focusRestored": true
+  },
+  "categoryUiEditing": "not exercised; term layout writes tested through authenticated REST",
+  "recordedAt": "2026-09-19T21:53:17.777Z"
+}

@@ -1,0 +1,20 @@
+{
+  "startedAt": "2026-09-20T00:34:23.460Z",
+  "scope": "block-reference-local-package-clean-install",
+  "checks": {},
+  "hostinger": "not-tested",
+  "externalMail": "not-tested",
+  "commercialContent": "mock-not-approved",
+  "visualApproval": "not-tested",
+  "runtime": {
+    "wordpress": "7.1",
+    "php": "8.3.33",
+    "mysql": "8.4.11"
+  },
+  "sourceHead": "a49821fa88311b5fa59f4d0298b8a6f5b71bd7a1",
+  "sourceUncommitted": true,
+  "status": "failed",
+  "phase": "Start isolated preparation, clean-install and recovery databases",
+  "error": "Start isolated preparation, clean-install and recovery databases: docker failed (1): mysql: [Warning] Using a password on the command line interface can be insecure.\nERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)\n",
+  "finishedAt": "2026-09-20T00:34:56.480Z"
+}

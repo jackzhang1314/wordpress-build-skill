@@ -1,0 +1,93 @@
+{
+  "startedAt": "2026-09-20T00:40:04.544Z",
+  "scope": "block-reference-local-package-clean-install",
+  "checks": {
+    "excludedDevelopmentMetadata": 13,
+    "sanitized": {
+      "users": 0,
+      "enquiries": 0,
+      "form": 3,
+      "public": 0
+    },
+    "plugins": {
+      "pass": true,
+      "checks": [
+        {
+          "slug": "advanced-custom-fields",
+          "expected": "6.8.9",
+          "actual": "6.8.9",
+          "active": true,
+          "pass": true
+        },
+        {
+          "slug": "fluentform",
+          "expected": "6.2.9",
+          "actual": "6.2.9",
+          "active": true,
+          "pass": true
+        },
+        {
+          "slug": "seo-by-rank-math",
+          "expected": "1.0.278",
+          "actual": "1.0.278",
+          "active": true,
+          "pass": true
+        },
+        {
+          "slug": "site-model",
+          "expected": "1.1.0",
+          "actual": "1.1.0",
+          "active": true,
+          "pass": true
+        }
+      ],
+      "unexpectedActive": []
+    },
+    "cleanInstall": {
+      "routes": 7,
+      "filesVerified": 3357,
+      "attachments": 6
+    },
+    "editingAndTemplates": true,
+    "enquiries": {
+      "browser": 2,
+      "stored": 2,
+      "smtp": 2,
+      "notificationDelta": true,
+      "recipientAndSubmittedEmail": true
+    },
+    "restored": {
+      "routes": 7,
+      "filesVerified": 3357,
+      "attachments": 6
+    },
+    "recovery": {
+      "logicalTables": 11,
+      "enquiriesPreserved": 2
+    },
+    "containerPersistence": true
+  },
+  "hostinger": "not-tested",
+  "externalMail": "not-tested",
+  "commercialContent": "mock-not-approved",
+  "visualApproval": "not-tested",
+  "runtime": {
+    "wordpress": "7.1",
+    "php": "8.3.33",
+    "mysql": "8.4.11"
+  },
+  "sourceHead": "a49821fa88311b5fa59f4d0298b8a6f5b71bd7a1",
+  "sourceUncommitted": true,
+  "package": {
+    "sha256": "e0ef68cdd8dadc227ee74184abd2af94173d2c55e8fa078ba82080a094035b11",
+    "files": 3359,
+    "manifestHash": "4d390e349d4a5b8b686a1a153ad20e5684246a178b419934fbe64dcfab86779c"
+  },
+  "installedRuntime": {
+    "wordpress": "7.1",
+    "php": "8.3.33",
+    "mysql": "8.4.11"
+  },
+  "status": "passed",
+  "finishedAt": "2026-09-20T00:42:03.016Z"
+}

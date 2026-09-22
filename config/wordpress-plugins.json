@@ -1,0 +1,20 @@
+{
+  "profile": "b2b-native-free",
+  "schemaVersion": 1,
+  "scope": "new-sites-only",
+  "required": [
+    {"slug":"advanced-custom-fields","name":"Advanced Custom Fields Free","version":"6.8.9","source":"vendor","url":"https://connect.advancedcustomfields.com/v2/plugins/download?p=acf&s=web&t=6.8.9","role":"fields","configure":"Business plugin registers ACF fields; verify admin editing and frontend binding."},
+    {"slug":"fluentform","name":"Fluent Forms Free","version":"6.2.9","source":"wordpress.org","role":"forms","configure":"Create project enquiry form, required fields, confirmation and notification; record form ID and test submission."},
+    {"slug":"seo-by-rank-math","name":"Rank Math Free","version":"1.0.278","source":"wordpress.org","role":"seo","configure":"Skip account connection; configure modules, CPT/taxonomy sitemap, robots and schema; verify rendered metadata."},
+    {"slug":"site-model","name":"Project business plugin","version":"1.1.0","source":"project","role":"business","configure":"Register CPT, taxonomies, fields, dynamic blocks and enquiry product validation."}
+  ],
+  "capabilities": [
+    {"id":"mail-delivery","requiredBefore":"release","provider":"Project SMTP/API or host mail transport","additionalPlugin":"Only if the chosen transport needs one; one transport owner."},
+    {"id":"spam-protection","requiredBefore":"public-forms","provider":"Form-native protection and/or edge controls","additionalPlugin":"Only after selecting and verifying the public form protection plan."},
+    {"id":"backup-restore","requiredBefore":"release","provider":"Host or deployment backup of database and uploads","additionalPlugin":"Only if platform backups are unavailable."},
+    {"id":"cache-images","requiredBefore":"performance-acceptance","provider":"Host/CDN cache and media pipeline","additionalPlugin":"Only to close a measured performance gap."},
+    {"id":"multilingual","requiredBefore":"multilingual-release","provider":"Not enabled by default","additionalPlugin":"Select one implementation only when multilingual is in scope."}
+  ],
+  "localOnly": ["SMTP capture MU plugin", "Receipt inspection MU plugin", "Mailpit service (not a WordPress plugin)"],
+  "policy": "Pinned versions are the tested baseline, not a claim of latest/security status. Review releases before deployment; validate updates and then change this profile. No old-plugin compatibility or data importer."
+}

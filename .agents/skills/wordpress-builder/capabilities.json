@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 1,
+  "scope": "new-site",
+  "source": {
+    "repository": "https://github.com/WordPress/agent-skills",
+    "commit": "d87ee6916e740c7960b6959220c0481a41b320c7",
+    "license": "GPL-2.0-or-later"
+  },
+  "modules": [
+    {
+      "id": "wp-project-triage",
+      "entry": "vendor/wordpress/skills/wp-project-triage/SKILL.md",
+      "requires": [
+        "Node.js"
+      ],
+      "status": "integrated-not-fully-behavior-tested"
+    },
+    {
+      "id": "wp-plugin-development",
+      "entry": "vendor/wordpress/skills/wp-plugin-development/SKILL.md",
+      "requires": [
+        "Read module prerequisites; confirm actual tools and target versions"
+      ],
+      "status": "integrated-not-fully-behavior-tested"
+    },
+    {
+      "id": "wp-rest-api",
+      "entry": "vendor/wordpress/skills/wp-rest-api/SKILL.md",
+      "requires": [
+        "Read module prerequisites; confirm actual tools and target versions"
+      ],
+      "status": "integrated-not-fully-behavior-tested"
+    },
+    {
+      "id": "wp-wpcli-and-ops",
+      "entry": "vendor/wordpress/skills/wp-wpcli-and-ops/SKILL.md",
+      "requires": [
+        "Read module prerequisites; confirm actual tools and target versions"
+      ],
+      "status": "integrated-not-fully-behavior-tested"
+    },
+    {
+      "id": "wp-phpstan",
+      "entry": "vendor/wordpress/skills/wp-phpstan/SKILL.md",
+      "requires": [
+        "Read module prerequisites; confirm actual tools and target versions"
+      ],
+      "status": "integrated-not-fully-behavior-tested"
+    },
+    {
+      "id": "wp-playground",
+      "entry": "vendor/wordpress/skills/wp-playground/SKILL.md",
+      "requires": [
+        "Read module prerequisites; confirm actual tools and target versions"
+      ],
+      "status": "integrated-not-fully-behavior-tested"
+    },
+    {
+      "id": "blueprint",
+      "entry": "vendor/wordpress/skills/blueprint/SKILL.md",
+      "requires": [
+        "Read module prerequisites; confirm actual tools and target versions"
+      ],
+      "status": "integrated-not-fully-behavior-tested"
+    },
+    {
+      "id": "wp-block-themes",
+      "entry": "vendor/wordpress/skills/wp-block-themes/SKILL.md",
+      "requires": [
+        "Read module prerequisites; confirm actual tools and target versions"
+      ],
+      "status": "integrated-not-fully-behavior-tested"
+    },
+    {
+      "id": "wp-block-development",
+      "entry": "vendor/wordpress/skills/wp-block-development/SKILL.md",
+      "requires": [
+        "Read module prerequisites; confirm actual tools and target versions"
+      ],
+      "status": "integrated-not-fully-behavior-tested"
+    },
+    {
+      "id": "wp-patterns",
+      "entry": "vendor/wordpress/skills/wp-patterns/SKILL.md",
+      "requires": [
+        "Read module prerequisites; confirm actual tools and target versions"
+      ],
+      "status": "integrated-not-fully-behavior-tested"
+    }
+  ],
+  "files": [
+    {
+      "path": "vendor/wordpress/LICENSE",
+      "sha256": "e32a315ba45df64329783a922f7bf457064b7a8fa1f46c1bda55a95850d5377c"
+    },
+    {
+      "path": "vendor/wordpress/skills/blueprint/SKILL.md",
+      "sha256": "e5770f02397f18005fb176def00c7dbc76dc3e8ce84407e7025734336d973747"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-development/SKILL.md",
+      "sha256": "d0db3166a84e2efeaa56a697f2b9879be96893bb8dc24f45438f444503699b36"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-development/references/attributes-and-serialization.md",
+      "sha256": "953725785cda47a6f6fc0ee19d5c96b9b4016300278b68eb64bdaaabf5d41a45"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-development/references/block-json.md",
+      "sha256": "a6f9f3f56f75caf54ece9beaa61835fda4fa241afc9c91cc3db39a9c396f2d63"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-development/references/creating-new-blocks.md",
+      "sha256": "45a437e3a4bc78e517ed478fb550cdb70c88b5b7bd05fe2b61525c95e2a35e0c"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-development/references/debugging.md",
+      "sha256": "eced905202c692f626a4ffbf7282579b1463e0301496e1464d0e917a964e1e77"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-development/references/deprecations.md",
+      "sha256": "136b1328823964ae7a7c638398c5662304db5b9d6f45f318a3523705ffd5e937"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-development/references/dynamic-rendering.md",
+      "sha256": "fee9acc6909290cf3549f7d23d23cc12fc3003f4db07ba9c49f0e165b2e39dd1"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-development/references/inner-blocks.md",
+      "sha256": "06d5b2b929d9e27d7c9114ecb14b2d7ee538d24088d80d1e9b3e49890ce16355"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-development/references/registration.md",
+      "sha256": "b5b0386a03b6c5eabcd9076e3067f78231fef471018e88c1bcf4e4745e9d1e9c"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-development/references/supports-and-wrappers.md",
+      "sha256": "e4001355e8e6c1117da157881589a2267520a7846666ee7540251114f88f697a"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-development/references/tooling-and-testing.md",
+      "sha256": "571c08dbc19c99bfdc59d277189e8391bb7651e6ee3ea8f09c2b7c412a2cf9d5"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-development/scripts/list_blocks.mjs",
+      "sha256": "01bd752371dd13d3e8c0b1f7a240eed382c0177594449c102e8853a288023951"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-themes/SKILL.md",
+      "sha256": "ae92ea0d67010c0e68a798dfd9ca8d196e66fa9602414bfa7fcca00dc1a95fa5"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-themes/references/creating-new-block-theme.md",
+      "sha256": "3dcb5bb2ed6c1298b9bb26e3f665f7c3ebebe69e94810a0a0a065fa8a054b774"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-themes/references/debugging.md",
+      "sha256": "a1387e6e34220613ae1292a6d86b5c2f4479f443392037ff6977aa68cf9c8239"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-themes/references/patterns.md",
+      "sha256": "43a2f184a42a80d4784cb0ce064339aead8d411c18827f7d958b247d633453a4"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-themes/references/style-variations.md",
+      "sha256": "6f50b6055d3da1dd89543bbafcef2b726756c1901bedf55574f7f5bc1cbd208d"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-themes/references/templates-and-parts.md",
+      "sha256": "05e9491404e434fe66711d4fcb63ceddb52385365ccb5a5c8ce9b7020a859edc"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-themes/references/theme-json.md",
+      "sha256": "27c8a68465aa3fdf23cdb411242323ee930149048ed3e524ee1584a92e170fa1"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-block-themes/scripts/detect_block_themes.mjs",
+      "sha256": "63bfa8dfbb6d71f615ff62581dec4f361a9da8e11b99ea6faf6c2d9d8c79d13f"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-patterns/SKILL.md",
+      "sha256": "662d1e312d8103f5be52a149e31257fb32e8b88c6be2897748fbfe78bb8a01a7"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-patterns/references/anti-patterns.md",
+      "sha256": "3ac8deb9c3085f2cf7be273d48d9c33d79c653f3ceaf8e6a1043e456bce50bb6"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-patterns/references/block-markup-reference.md",
+      "sha256": "af8b544bea2111274798e544b19197dc634bc879d4e04955529f3a4332640d3e"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-patterns/references/design-with-tokens.md",
+      "sha256": "4f15bc8d4fb7f629309a84902eea3b8628b27ffbb226ba77a867bee322086c70"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-patterns/references/example-prompts.md",
+      "sha256": "783397b05a5e12b3d068cf18f95df6f49c1d204a4bad88cf9dc8376a6554e0d6"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-patterns/references/pattern-categories-and-types.md",
+      "sha256": "398e39733320c52663c25965e003ca4697c8e256016a6f005fdb2d145798556c"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-patterns/references/pattern-registration.md",
+      "sha256": "b3db41735dc8e7f9c4124ca2e4f82eb42e8805c6909abe0f274a9c546878f19b"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-patterns/references/visual-composition.md",
+      "sha256": "f4416789a8c29c7e6f3baaea5c4eb11d68085f61db25fbf80ba02d70f8485739"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-phpstan/SKILL.md",
+      "sha256": "fda508d51ddbcbb1f0f98d89a20c6a89e2684b3774b8ab1e859352b5e6676450"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-phpstan/references/configuration.md",
+      "sha256": "444869ffacca37ea38eb79b01a0ec0ffc8cd68a701282232b058d490fb83aeb7"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-phpstan/references/third-party-classes.md",
+      "sha256": "5cc8488188cdb917e6998f77ded6da136c6fe24a8b0f991efd06d2a03855ab0e"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-phpstan/references/wordpress-annotations.md",
+      "sha256": "340b6299d539ab7fc34357842cd67187ef0ebdcfdca44f5439794f5c3148199a"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-phpstan/scripts/phpstan_inspect.mjs",
+      "sha256": "035a73b0d47de4464bbcbf85f12bafbc432496f5cf393da3ca6071eeee44bb5d"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-playground/SKILL.md",
+      "sha256": "548f46447bcde96a65b131c360b9e5a01f7d9a3a031f90ec9912a1aca607d44d"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-playground/references/cli.md",
+      "sha256": "f00d5957ee321a03466d3448c1335c6c07dda2b103334a9810a81e1e082aad08"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-playground/references/debugging.md",
+      "sha256": "33a4613f8b2617965f56d3aa66cb65c48b4012128a367af9e6347b02991cc10e"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-playground/references/website.md",
+      "sha256": "2f2c1be3178e5ef57b7657a321a61215addb69bde12e0eea7e200b59fd87c861"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-plugin-development/SKILL.md",
+      "sha256": "a9b8af653897ac150e52de1430ad0c51cefe19553ac932c48cfc54639270c5bc"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-plugin-development/references/data-and-cron.md",
+      "sha256": "6a21d6a919b536ca8c748649450031ec71b7606845cabb089540dddb0313626f"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-plugin-development/references/debugging.md",
+      "sha256": "045e6cfe9bfc77ddec277d4ce9b2ca3e90d3047281dbe4a58f18b4406c59cb6f"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-plugin-development/references/lifecycle.md",
+      "sha256": "231fb911cff2402b6701591a10e202e86cef0c4ea4d7053168fdd7ba02d0a91e"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-plugin-development/references/security.md",
+      "sha256": "95c92315721242f3ad55eec47518acb3ed833fd9c751adb84cfe45642307cb1b"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-plugin-development/references/settings-api.md",
+      "sha256": "535fde7f0194f6f14e999d6d691f3e9b696d0da2425fa737254628c9c5d20ceb"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-plugin-development/references/structure.md",
+      "sha256": "00ae05f608a594e7be557d41aa8bf3b9240a4ce84986cbf11ab7a419f48fdb03"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-plugin-development/scripts/detect_plugins.mjs",
+      "sha256": "3fe7315c575699e25aea56ad7b2a09f424892a6cfcaba8fbe196617b85844354"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-project-triage/SKILL.md",
+      "sha256": "6475b01679576ded3113a5d12f08b789c1def02249f0fcdd23d119593e72ce5c"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-project-triage/references/triage.schema.json",
+      "sha256": "f24dd91e56c2268a8026ca97235ada9240c70aded32c1c70985c62af4f306903"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-project-triage/scripts/detect_wp_project.mjs",
+      "sha256": "3b9c42cdc3652dad0b3be1d00e0efbe6a416fe206775b8231ec82f920b1b25d2"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-rest-api/SKILL.md",
+      "sha256": "46c17297230f9f8f0f43f273277dad4d2fd4bee9849ae95cdcce8ae4cc04bb5b"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-rest-api/references/authentication.md",
+      "sha256": "5ec3a866c0d4e956779f1048703835b70f5ba183442ad6a2239d4c1313ae4703"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-rest-api/references/custom-content-types.md",
+      "sha256": "a14caa1cc672022f9773e7fa9fec97f524b59e0a6fe62ea4aa4dcafd53780a75"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-rest-api/references/discovery-and-params.md",
+      "sha256": "7fd320f42b0b3d75f750a84c91d15281eec273701fe4b89fe194a2c323d3f71b"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-rest-api/references/responses-and-fields.md",
+      "sha256": "1a10fe4b8b73d82421456a9e864590bb061d96dc5f4a79c236e74445f404df54"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-rest-api/references/routes-and-endpoints.md",
+      "sha256": "abcb570b61bc114337db7845f6da72d9f3c581d9b3a32997d703be0b586f0b35"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-rest-api/references/schema.md",
+      "sha256": "05e2c9557d9d8a89010ac1b0f7b17dadbdf596490bcecedfc62c3c4a28333a4e"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-wpcli-and-ops/SKILL.md",
+      "sha256": "0d3e3524058326ff05bc47acb104a5a12035a155968bd685549b59f992ec3045"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-wpcli-and-ops/references/automation.md",
+      "sha256": "06b967e13ad5f6e02df1a520987c06dc0b6ffcb289ea4e92bf1df66169bd70aa"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-wpcli-and-ops/references/cron-and-cache.md",
+      "sha256": "670c3a996fba891b64589e419265ae27b95705aebed3eeee3bfb331f0762bffe"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-wpcli-and-ops/references/debugging.md",
+      "sha256": "50105f756f8562d6bef454623c196614fba914c23136b7f4c0653ac550c4a388"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-wpcli-and-ops/references/multisite.md",
+      "sha256": "44e4322ce8fec4a4f5ed65b7cf7509b958fb314f756fc3e0d5ed4453fe229413"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-wpcli-and-ops/references/packages-and-updates.md",
+      "sha256": "6b619fc294734078b758121e6bfab6e36e7de119a6a3a50bf3d004749136420d"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-wpcli-and-ops/references/safety.md",
+      "sha256": "74628dbc5b0a6b78df40e2bcc4a1c2f9038ad2f0fe08734591868d944aa2d3fb"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-wpcli-and-ops/references/search-replace.md",
+      "sha256": "12b8f7d8aea1dfbca5610ab1680dca761c0512ee4ff628a4894e7bd56453b8ee"
+    },
+    {
+      "path": "vendor/wordpress/skills/wp-wpcli-and-ops/scripts/wpcli_inspect.mjs",
+      "sha256": "156d432ad3867fa9e8d53d09c0614350c4d9e2f6909b861779de9b137e0857c1"
+    }
+  ]
+}

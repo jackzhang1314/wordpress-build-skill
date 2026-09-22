@@ -1,0 +1,16 @@
+{
+  "recordedAt": "2026-09-20T00:40:56+08:00",
+  "version": "0.3.1",
+  "head": "a49821fa88311b5fa59f4d0298b8a6f5b71bd7a1",
+  "workingTree": "uncommitted; includes previous changes",
+  "files": {
+    "package.json": "14c40531141bf78b2bc45879a8695aaf3451800d39d0f675ab31a306b5c3fcaf",
+    "package-lock.json": "63523bfc44c76262d6d136e229fc7f6f4d58c16ba3c38ceb088b22c5689c4466",
+    "scripts/reference-site.mjs": "c315dadd7771530d7b5c388361275792d6e6aed90c9a29265bf976976cfe44fc",
+    "scripts/test-reference-site.mjs": "f083cc82b576d34e69871036b5f721d39501ef1cb0c7c6f3ccef3d5678790a47",
+    "scripts/fixtures/new-site/setup.php": "76efa2f411f9d72964c5347301e089dfa14b3635808b1bfb026969f415796087",
+    "scripts/fixtures/new-site/lab-only.php": "44c4d3f33ac5b728ca84e64b999e02886e9269d2d4ca33a9b945acee42629b09",
+    ".agents/skills/wordpress-builder/SKILL.md": "5124e3e0ada35c9f7aafcc7da2224186510dc28d4142295683f869ce1fb2a6d6",
+    ".agents/skills/wordpress-builder/references/reference-site.md": "71703fdde5c66d5509f15cf4b99533134091e81c16edeab0d54ac2992834dbf6"
+  }
+}

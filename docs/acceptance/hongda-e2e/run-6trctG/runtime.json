@@ -1,0 +1,568 @@
+{
+  "testedAt": "2026-09-19T20:38:49.515Z",
+  "site": {
+    "wordpress": "7.1.1",
+    "php": "8.3.32",
+    "acf": "6.8.9",
+    "fluentform": "6.2.9",
+    "theme": "site-reference",
+    "isBlockTheme": false,
+    "products": {
+      "yhd08": 13,
+      "yhd12": 14,
+      "yhd15": 15,
+      "yhd18": 16,
+      "yhd20": 17,
+      "yhd25": 18,
+      "yhd30": 19,
+      "yhd60": 20,
+      "yhd80": 21,
+      "yhd120": 22,
+      "yhdw08": 23,
+      "yhdw10": 24,
+      "yhdw30": 25,
+      "yhdb10": 26,
+      "yhdb20": 27,
+      "yhdss05": 28,
+      "yhdss10": 29,
+      "yhdss15": 30,
+      "yhdss25": 31
+    },
+    "categories": {
+      "mini-excavator": 2,
+      "construction-excavator": 3,
+      "wheel-loader": 4,
+      "backhoe-loader": 5,
+      "skid-steer-loader": 6
+    },
+    "solutions": {
+      "agriculture": 32,
+      "construction": 33,
+      "demolition": 34,
+      "excavation": 35,
+      "landscaping": 36,
+      "surface-mining": 37,
+      "snow-removal": 38,
+      "forestry-logging": 39,
+      "waste-solutions": 40,
+      "utility-work": 41,
+      "material-handling": 42
+    },
+    "posts": [
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60
+    ],
+    "storyPages": [
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50
+    ],
+    "contactTopics": [
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68
+    ],
+    "pages": {
+      "home": 12,
+      "about": 43,
+      "journal": 51,
+      "contact": 61
+    },
+    "credits": 74,
+    "media": {
+      "backhoe-loader": 6,
+      "construction-excavator": 7,
+      "heroMiniExcavator": 8,
+      "mini-excavator": 9,
+      "skid-steer-loader": 10,
+      "wheel-loader": 11
+    },
+    "form": 3,
+    "scope": "local-design-preview",
+    "mailMode": "local-capture"
+  },
+  "checks": {
+    "expected_native_objects": true,
+    "classic_theme_with_acf": true,
+    "no_compiled_reference_app": true,
+    "local_noindex_and_canonical": true,
+    "distinct_pagination": true,
+    "weight_filter": true,
+    "empty_filter": true,
+    "skill_edit_and_safe_replay": true,
+    "acf_field_renders": true,
+    "native_body_renders": true,
+    "native_thumbnail_renders": true,
+    "contact_link_follows_id": true,
+    "valid_context": true,
+    "invalid_context_ignored": true,
+    "runtime_matches_source": true
+  },
+  "routes": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhdss25/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhdss15/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhdss10/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhdss05/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhdb20/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhdb10/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhdw30/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhdw10/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhdw08/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd120/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd80/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd60/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd30/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd25/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd20/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd18/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd15/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd12/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd08/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/family/backhoe-loader/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/family/construction-excavator/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/family/mini-excavator/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/family/skid-steer-loader/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/family/wheel-loader/",
+      "status": 200
+    },
+    {
+      "path": "/industry/material-handling/",
+      "status": 200
+    },
+    {
+      "path": "/industry/utility-work/",
+      "status": 200
+    },
+    {
+      "path": "/industry/waste-solutions/",
+      "status": 200
+    },
+    {
+      "path": "/industry/forestry-logging/",
+      "status": 200
+    },
+    {
+      "path": "/industry/snow-removal/",
+      "status": 200
+    },
+    {
+      "path": "/industry/surface-mining/",
+      "status": 200
+    },
+    {
+      "path": "/industry/landscaping/",
+      "status": 200
+    },
+    {
+      "path": "/industry/excavation/",
+      "status": 200
+    },
+    {
+      "path": "/industry/demolition/",
+      "status": 200
+    },
+    {
+      "path": "/industry/construction/",
+      "status": 200
+    },
+    {
+      "path": "/industry/agriculture/",
+      "status": 200
+    },
+    {
+      "path": "/image-credits/",
+      "status": 200
+    },
+    {
+      "path": "/contact-us/exchange-refund/",
+      "status": 200
+    },
+    {
+      "path": "/contact-us/faqs/",
+      "status": 200
+    },
+    {
+      "path": "/contact-us/after-sales-service/",
+      "status": 200
+    },
+    {
+      "path": "/contact-us/maintenance/",
+      "status": 200
+    },
+    {
+      "path": "/contact-us/payment-delivery/",
+      "status": 200
+    },
+    {
+      "path": "/contact-us/dealer-opportunity/",
+      "status": 200
+    },
+    {
+      "path": "/contact-us/oem-solution/",
+      "status": 200
+    },
+    {
+      "path": "/contact-us/",
+      "status": 200
+    },
+    {
+      "path": "/blog/",
+      "status": 200
+    },
+    {
+      "path": "/our-story/warranty/",
+      "status": 200
+    },
+    {
+      "path": "/our-story/production-quality/",
+      "status": 200
+    },
+    {
+      "path": "/our-story/parts-components/",
+      "status": 200
+    },
+    {
+      "path": "/our-story/team/",
+      "status": 200
+    },
+    {
+      "path": "/our-story/certifications/",
+      "status": 200
+    },
+    {
+      "path": "/our-story/about/",
+      "status": 200
+    },
+    {
+      "path": "/our-story/group/",
+      "status": 200
+    },
+    {
+      "path": "/our-story/",
+      "status": 200
+    },
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/journal/what-is-a-backhoe-guide/",
+      "status": 200
+    },
+    {
+      "path": "/journal/start-landscaping-business-equipment/",
+      "status": 200
+    },
+    {
+      "path": "/journal/9-types-excavator-buckets/",
+      "status": 200
+    },
+    {
+      "path": "/journal/import-excavator-from-china-case/",
+      "status": 200
+    },
+    {
+      "path": "/journal/gradall-vs-excavator/",
+      "status": 200
+    },
+    {
+      "path": "/journal/excavator-overheating-guide/",
+      "status": 200
+    },
+    {
+      "path": "/journal/wheel-loader-brake-systems/",
+      "status": 200
+    },
+    {
+      "path": "/journal/mini-skid-steer-weight-guide/",
+      "status": 200
+    },
+    {
+      "path": "/journal/mini-excavator-cost-2026/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/page/2/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/page/3/",
+      "status": 200
+    },
+    {
+      "path": "/industry/",
+      "status": 200
+    },
+    {
+      "path": "/blog/",
+      "status": 200
+    },
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/this-does-not-exist/",
+      "status": 404
+    },
+    {
+      "path": "/equipment/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/page/2/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/family/construction-excavator/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd08/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd08/",
+      "status": 200
+    },
+    {
+      "path": "/equipment/model/yhd08/",
+      "status": 200
+    },
+    {
+      "path": "/contact-us/",
+      "status": 200
+    },
+    {
+      "path": "/contact-us/",
+      "status": 200
+    }
+  ],
+  "source": [
+    {
+      "path": "BRIEF.md",
+      "sha256": "71eb995011adf6cff5f947aff324a3ea89cc490596ee2856fa3fa33661523671"
+    },
+    {
+      "path": "README.md",
+      "sha256": "f3407468dd6fbf1a0dd85cbcdf56ca73081971970707695d7a1e7458f7bcf781"
+    },
+    {
+      "path": "content/form.php",
+      "sha256": "4940e6cd74401bc0d0d23585ac0023d69939adca1adc9810e121afc72969630b"
+    },
+    {
+      "path": "content/media/backhoe-loader.jpg",
+      "sha256": "bb1163df742fb162c7b034cebfdecb023ed1e71a29f746b1909f4f693daa5723"
+    },
+    {
+      "path": "content/media/construction-excavator.jpg",
+      "sha256": "908b45b2a670232a9edb50972bbc099e65823386048d29f218f4611ee0eec887"
+    },
+    {
+      "path": "content/media/heroMiniExcavator.jpg",
+      "sha256": "7e17b92103da9a98d71070ce0aacb38d402077d5fa94748a7dafb2ca2f93ffb6"
+    },
+    {
+      "path": "content/media/mini-excavator.jpg",
+      "sha256": "784f9c1bc9ee75b7dbd62f3a7f88fe5a18ccefed531e727afe3729b767a58f92"
+    },
+    {
+      "path": "content/media/skid-steer-loader.jpg",
+      "sha256": "c682469d52f7579e8b12453494881262f79fa9eebe3303d49bd5996c60622a24"
+    },
+    {
+      "path": "content/media/wheel-loader.jpg",
+      "sha256": "6c4956a334b87d67fa84220eed19a4424490c22cda33bd3a6ef5942fd856b0bb"
+    },
+    {
+      "path": "content/media-manifest.json",
+      "sha256": "839eee1e165b18dd07ff5af3ddb45f1af0d9bccb1ad15ea1caa250cb205c1777"
+    },
+    {
+      "path": "content/reference.json",
+      "sha256": "9ee2f4a00504ba9ef1103773d2ee749ce67d62ca6739e428c178b189fa2e639b"
+    },
+    {
+      "path": "content/seed.php",
+      "sha256": "66414f9af776e382b33a1f8dc1cd6300924f8323002a9c2159d6931f186a8d3e"
+    },
+    {
+      "path": "plugin/site-model.php",
+      "sha256": "70b7b13b071eb8336143f0341586dd28456bb9a69b16b19572f5a90fb2b1b72b"
+    },
+    {
+      "path": "theme/404.php",
+      "sha256": "3f7928d244fedf00a19c49fca4e545dbff7bd515e3a553c0a61bab7406efaee2"
+    },
+    {
+      "path": "theme/archive-hd_product.php",
+      "sha256": "124e28ae519779a76d4fc8f4c1a1f2e86ad006c122a69331c2f53c8ee1912ad0"
+    },
+    {
+      "path": "theme/archive-hd_solution.php",
+      "sha256": "032b5cb50add59e6cb218836736ae8753e0e94a16eeb72db3c8bf8037d118d29"
+    },
+    {
+      "path": "theme/editor.css",
+      "sha256": "6d072179a7da4571f1abd5f8543b9ba4150b5d86526823c3a253a2740a6a78b5"
+    },
+    {
+      "path": "theme/footer.php",
+      "sha256": "19d03ebb8b11febfe5fae9b28cee29b07692d7fe577bd67bb7be78bafae22df0"
+    },
+    {
+      "path": "theme/front-page.php",
+      "sha256": "1909af6e35ffc0953f6b98a95977c813fb89a80053b61efbea2a1d4ddc6360a4"
+    },
+    {
+      "path": "theme/functions.php",
+      "sha256": "6350c3dbb8518039f8aaa16eecd91aef9c5214f8fa32abc5b81f584234f5e91e"
+    },
+    {
+      "path": "theme/header.php",
+      "sha256": "0bd95accdd196aa30c83c0b0a49e1a36e74eb55c44ad0cdbfa9c09b50b480546"
+    },
+    {
+      "path": "theme/inc/view.php",
+      "sha256": "1b22b944dbd15d7da1156fc5b637239e80ef9f30427e5723c2032705d9456a9e"
+    },
+    {
+      "path": "theme/index.php",
+      "sha256": "43a5b036b910890b9fae8a921a5ef9bba0bd13af11e1474c8e9e7e05b2eb843a"
+    },
+    {
+      "path": "theme/page-about.php",
+      "sha256": "db2e82b959d0beffafaa16e652c7a36f939c4380dcb67ca7c0d120d75f1d0ebd"
+    },
+    {
+      "path": "theme/page-contact.php",
+      "sha256": "9f6de6584de506453c1634e9c6c2cbd5f22732020f34b001e6227fded500e75f"
+    },
+    {
+      "path": "theme/page.php",
+      "sha256": "89b56c6f8ad517240037a1689cf502684c500c28d6ced687f8aae8e1e8a7eb82"
+    },
+    {
+      "path": "theme/single-hd_product.php",
+      "sha256": "daceeb76839b43e1c048c27c8892981a52ff9f6c4730c02f449dee3c32ebafa0"
+    },
+    {
+      "path": "theme/single-hd_solution.php",
+      "sha256": "a2cad01b8446ad174c194ec726a23ce1d110029b3a2628d975f1b169a5b3defb"
+    },
+    {
+      "path": "theme/single.php",
+      "sha256": "f61ca79acfe47baf1cab1850f98a67a223826abaa63df552e036f8533ff5a12a"
+    },
+    {
+      "path": "theme/style.css",
+      "sha256": "b89141f6b4e339f6f4fa98224438e6d01cd29ddeef92868753397b00ffa32f8f"
+    },
+    {
+      "path": "theme/taxonomy-hd_category.php",
+      "sha256": "34322ce7cef995b32dd2abeed5f2cc28f0e345b7ed0ae0408f03460b1137d35e"
+    },
+    {
+      "path": "theme/theme.json",
+      "sha256": "73ccfc391b14c9fa0a34b80d1efd85c35914722bba01319476e3ebe800e20284"
+    }
+  ]
+}

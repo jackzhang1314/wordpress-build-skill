@@ -1,0 +1,20 @@
+{
+  "at": "2026-09-20T00:53:02.050Z",
+  "scope": "hostinger-staging-read-preflight",
+  "mode": "offline",
+  "configuration": "valid",
+  "hostingerAccount": "not-verified",
+  "deployment": "not-executed",
+  "hostingerCli": "unavailable-or-not-working",
+  "remote": "not-tested",
+  "validation": {
+    "lint": "passed",
+    "unitTests": 43,
+    "realHostinger": "not-tested"
+  },
+  "sourceHashes": {
+    "scripts/hostinger/preflight.mjs": "e8658838808378a7e1d42302cb5c42ee3ab02cf7406e94ae5eb880fd5499638c",
+    "tests/hostinger-preflight.test.mjs": "147fb5b852db302ceab0f6a26ea81163a3b740c69899ecd6a1924d1bd22e6516",
+    "config/hostinger-staging.example.json": "e323be755980e4f7f52ab83912e9690839078b89dae276ed45d98781805c3768"
+  }
+}

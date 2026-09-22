@@ -1,0 +1,1 @@
+<?php get_header(); ?><main id="main" class="shell section"><h1>Page not found</h1><p>Try searching, or return to <a href="<?php echo esc_url(home_url('/')); ?>">the homepage</a>.</p><?php get_search_form(); ?></main><?php get_footer(); ?>

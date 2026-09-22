@@ -1,0 +1,138 @@
+{
+  "$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+  "version": 3,
+  "settings": {
+    "layout": {
+      "contentSize": "780px",
+      "wideSize": "1160px"
+    },
+    "color": {
+      "palette": [
+        {
+          "slug": "ink",
+          "name": "Ink",
+          "color": "#102B3F"
+        },
+        {
+          "slug": "steel",
+          "name": "Steel",
+          "color": "#173E5D"
+        },
+        {
+          "slug": "signal",
+          "name": "Signal",
+          "color": "#F3B529"
+        },
+        {
+          "slug": "paper",
+          "name": "Paper",
+          "color": "#FFFFFF"
+        },
+        {
+          "slug": "mist",
+          "name": "Mist",
+          "color": "#EEF3F6"
+        },
+        {
+          "slug": "muted",
+          "name": "Muted",
+          "color": "#526878"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "slug": "body",
+          "name": "Equipment Body",
+          "fontFamily": "Equipment Body, Arial, sans-serif"
+        },
+        {
+          "slug": "display",
+          "name": "Equipment Display",
+          "fontFamily": "Equipment Display, Impact, sans-serif"
+        }
+      ],
+      "fontSizes": [
+        {
+          "slug": "large",
+          "name": "Large",
+          "size": "1.25rem"
+        },
+        {
+          "slug": "display",
+          "name": "Display",
+          "size": "clamp(2rem, 4vw, 3.5rem)"
+        }
+      ]
+    },
+    "spacing": {
+      "spacingSizes": [
+        {
+          "slug": "section",
+          "name": "Section",
+          "size": "clamp(3rem, 6vw, 6rem)"
+        },
+        {
+          "slug": "gap",
+          "name": "Gap",
+          "size": "2rem"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "var:preset|font-family|body"
+    },
+    "spacing": {
+      "blockGap": "0"
+    },
+    "color": {
+      "text": "var:preset|color|ink",
+      "background": "var:preset|color|paper"
+    }
+  },
+  "customTemplates": [
+    {
+      "name": "product-standard",
+      "title": "Product \u2014 Standard",
+      "postTypes": [
+        "hd_product"
+      ]
+    },
+    {
+      "name": "product-editorial",
+      "title": "Product \u2014 Editorial",
+      "postTypes": [
+        "hd_product"
+      ]
+    },
+    {
+      "name": "enquiry",
+      "title": "Enquiry",
+      "postTypes": [
+        "page"
+      ]
+    },
+    {
+      "name": "company",
+      "title": "Company story",
+      "postTypes": [
+        "page"
+      ]
+    }
+  ],
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    }
+  ]
+}

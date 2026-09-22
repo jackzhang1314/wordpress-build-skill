@@ -1,0 +1,43 @@
+{
+  "testedAt": "2026-09-21T18:21:29.744Z",
+  "domain": "mediumblue-quail-505146.hostingersite.com",
+  "theme": "site-model",
+  "scope": "read-only-remote-text-files-vs-local-candidate",
+  "remoteFiles": 16,
+  "verifiedTextFiles": 15,
+  "changes": [],
+  "unverified": [
+    "settings.php"
+  ],
+  "remoteResponseHashes": {
+    "blocks/breadcrumbs/block.json": "bcb8b89cca8d31f3280e60617d19fc0664ce7ff130d9ffee52f60535f68fb042",
+    "blocks.php": "f7290233bab3b7550d6a02a4421a2274b0079f25df76dcc5285cf1ba99ea6160",
+    "blocks/application-links/block.json": "0141c015ffaedaeb2884eb1b31e51145ba79bd0c7d976becc57870fac3437e84",
+    "assets/editor.js": "183c970b079ea92445a1f5bf8d72f8f2bb7ee1949150107d1119d3cab5bed7ed",
+    "blocks/category-controls/block.json": "e8618b034030d0a9c7a957fa673a6ce026a569b816cafd3e3566294346c8c708",
+    "blocks/home-families/block.json": "ca7f439379e76dfafc0a07346ecb2e2b53b7324ba7cdb9d737d6702c14167934",
+    "blocks/product-cta/block.json": "c27b182022144a739355cad134445ba4cd526a0d686f4ab322c6e043e209d692",
+    "blocks/enquiry-form/block.json": "8f89b8a405be4facd5742080b50a2e29d4def2cddf65df1b3ed2851386fa3c8a",
+    "inquiry.php": "093bb8ca908d982904aac08f9b6878965fb7b337f6f3e43f6b511e96dd649553",
+    "blocks/specifications/block.json": "9e0b7f39af488e5604eab8d32b49541179a235a93990546887391489c0ed2ae0",
+    "blocks/product-facts/block.json": "6cf9bacb24a8de0f4d2f5958f71f7fcc2342acd5fd820f76c0752f23e7d3ca74",
+    "blocks/related-products/block.json": "a6a55dcaf72d2dccbdb5841f16db7c29a9bed8ab7db599c74ead201e90d1c2d3",
+    "seo.php": "7995d44901cebd1181baf67a94981cfa4c83521a1e8fdad42955cf72b41498e4",
+    "site-model.php": "5496fc1d219e1bda4fbda15f00bcc55e2619f349f5a206ed24a934cbf6352db9",
+    "view.php": "401ccc287101615f8cbd6c3f48096b1fafba1e35b113eb6bcddb18efa378b5ef"
+  },
+  "normalizedFinalNewlineMatches": [
+    "blocks.php",
+    "inquiry.php",
+    "seo.php",
+    "site-model.php",
+    "view.php"
+  ],
+  "releaseApproval": false,
+  "limitations": [
+    "No atomic filesystem snapshot; same-size concurrent edits may evade directory consistency check",
+    "Endpoint may strip final newline; normalized matches are not byte-exact remote file verification",
+    "Binary files not downloaded",
+    "Database overrides and plugin files not covered"
+  ]
+}

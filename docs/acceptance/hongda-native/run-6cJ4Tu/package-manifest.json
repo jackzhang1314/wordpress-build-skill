@@ -1,0 +1,98 @@
+{
+  "createdAt": "2026-09-19T20:58:10.730Z",
+  "scope": "installable-code-only",
+  "theme": "site-reference",
+  "plugin": "site-model/site-model.php",
+  "files": [
+    {
+      "path": "site-reference/404.php",
+      "sha256": "3f7928d244fedf00a19c49fca4e545dbff7bd515e3a553c0a61bab7406efaee2"
+    },
+    {
+      "path": "site-reference/archive-hd_product.php",
+      "sha256": "124e28ae519779a76d4fc8f4c1a1f2e86ad006c122a69331c2f53c8ee1912ad0"
+    },
+    {
+      "path": "site-reference/archive-hd_solution.php",
+      "sha256": "032b5cb50add59e6cb218836736ae8753e0e94a16eeb72db3c8bf8037d118d29"
+    },
+    {
+      "path": "site-reference/editor.css",
+      "sha256": "6d072179a7da4571f1abd5f8543b9ba4150b5d86526823c3a253a2740a6a78b5"
+    },
+    {
+      "path": "site-reference/footer.php",
+      "sha256": "19d03ebb8b11febfe5fae9b28cee29b07692d7fe577bd67bb7be78bafae22df0"
+    },
+    {
+      "path": "site-reference/front-page.php",
+      "sha256": "1909af6e35ffc0953f6b98a95977c813fb89a80053b61efbea2a1d4ddc6360a4"
+    },
+    {
+      "path": "site-reference/functions.php",
+      "sha256": "6350c3dbb8518039f8aaa16eecd91aef9c5214f8fa32abc5b81f584234f5e91e"
+    },
+    {
+      "path": "site-reference/header.php",
+      "sha256": "0bd95accdd196aa30c83c0b0a49e1a36e74eb55c44ad0cdbfa9c09b50b480546"
+    },
+    {
+      "path": "site-reference/inc/view.php",
+      "sha256": "1b22b944dbd15d7da1156fc5b637239e80ef9f30427e5723c2032705d9456a9e"
+    },
+    {
+      "path": "site-reference/index.php",
+      "sha256": "43a5b036b910890b9fae8a921a5ef9bba0bd13af11e1474c8e9e7e05b2eb843a"
+    },
+    {
+      "path": "site-reference/page-about.php",
+      "sha256": "db2e82b959d0beffafaa16e652c7a36f939c4380dcb67ca7c0d120d75f1d0ebd"
+    },
+    {
+      "path": "site-reference/page-contact.php",
+      "sha256": "9f6de6584de506453c1634e9c6c2cbd5f22732020f34b001e6227fded500e75f"
+    },
+    {
+      "path": "site-reference/page.php",
+      "sha256": "89b56c6f8ad517240037a1689cf502684c500c28d6ced687f8aae8e1e8a7eb82"
+    },
+    {
+      "path": "site-reference/single-hd_product.php",
+      "sha256": "daceeb76839b43e1c048c27c8892981a52ff9f6c4730c02f449dee3c32ebafa0"
+    },
+    {
+      "path": "site-reference/single-hd_solution.php",
+      "sha256": "a2cad01b8446ad174c194ec726a23ce1d110029b3a2628d975f1b169a5b3defb"
+    },
+    {
+      "path": "site-reference/single.php",
+      "sha256": "f61ca79acfe47baf1cab1850f98a67a223826abaa63df552e036f8533ff5a12a"
+    },
+    {
+      "path": "site-reference/style.css",
+      "sha256": "b89141f6b4e339f6f4fa98224438e6d01cd29ddeef92868753397b00ffa32f8f"
+    },
+    {
+      "path": "site-reference/taxonomy-hd_category.php",
+      "sha256": "34322ce7cef995b32dd2abeed5f2cc28f0e345b7ed0ae0408f03460b1137d35e"
+    },
+    {
+      "path": "site-reference/theme.json",
+      "sha256": "73ccfc391b14c9fa0a34b80d1efd85c35914722bba01319476e3ebe800e20284"
+    },
+    {
+      "path": "site-model/site-model.php",
+      "sha256": "70b7b13b071eb8336143f0341586dd28456bb9a69b16b19572f5a90fb2b1b72b"
+    }
+  ],
+  "archives": [
+    {
+      "file": "site-reference.zip",
+      "sha256": "562d5dbaf2e55ab227cabb3030b0a00fb3c875a89f3ca6b7ece16f2dc9cd6fea"
+    },
+    {
+      "file": "site-model.zip",
+      "sha256": "5b8265e45818e894376567f2c83969bfdf1a1c48786cb86827ab9225679bc7e6"
+    }
+  ]
+}

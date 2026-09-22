@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-09-19T17:59:40.782Z",
+  "source": "https://hongda-machinery.pages.dev/",
+  "deploymentId": "b0401c2b-3986-48ad-9d7a-2830ccfa77ed",
+  "kind": "deployed compiled artifacts; not original source",
+  "files": [
+    {
+      "path": "deployment/index.html",
+      "bytes": 876,
+      "sha256": "86c132d349995e5329805e4dc3c34a800cd0ff13c5365f43d8b79ce172cbd512",
+      "deploymentMatches": true
+    },
+    {
+      "path": "deployment/assets/index-XbKuH3yj.js",
+      "bytes": 318956,
+      "sha256": "960cb19d3c3a48771c891fe5ba1692f758bb188a769f3cce0e62a460fa2fd3c7",
+      "deploymentMatches": true
+    },
+    {
+      "path": "deployment/assets/index-D_fKNnQ1.css",
+      "bytes": 34145,
+      "sha256": "4d2bb55fc7779c0cbe37e524dc46c1c4d1330cb7aad8613a3891dcbf8002fcac",
+      "deploymentMatches": true
+    }
+  ]
+}

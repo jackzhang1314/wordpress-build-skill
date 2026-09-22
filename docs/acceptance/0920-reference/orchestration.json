@@ -1,0 +1,46 @@
+{
+  "project": {
+    "schemaVersion": 1,
+    "scope": "new-site",
+    "name": "Fieldwork local functional reference",
+    "sourceRoot": "/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill/.lab/reference-BTR7M6/source",
+    "theme": "php-hybrid",
+    "environment": "playground",
+    "targets": {
+      "wordpress": "7.1.1",
+      "php": "8.3",
+      "acf": "free"
+    },
+    "brief": "新建独立功能参考站，验证产品、分类、原生正文、询盘与可编辑性；不包含客户品牌视觉设计或生产发布。"
+  },
+  "projectHash": "63203fa286995d997c14eec824ac003bc3e7f2bc46379c0a4eac0af6adf5bd3d",
+  "registryHash": "5118af9d567b1cec988ba70346beb6ef8b8d000a554fb065b87087914942f157",
+  "progress": [
+    {
+      "stage": "discover",
+      "state": "recorded-verified"
+    },
+    {
+      "stage": "model",
+      "state": "recorded-verified"
+    },
+    {
+      "stage": "theme",
+      "state": "recorded-verified"
+    },
+    {
+      "stage": "content",
+      "state": "recorded-verified"
+    },
+    {
+      "stage": "verify",
+      "state": "recorded-verified"
+    },
+    {
+      "stage": "release",
+      "state": "pending"
+    }
+  ],
+  "next": "release",
+  "note": "Evidence-backed declarations; not a live remote audit or automatic publication."
+}

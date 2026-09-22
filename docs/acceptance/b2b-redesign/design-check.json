@@ -1,0 +1,322 @@
+{
+  "testedAt": "2026-09-21T17:12:40.862Z",
+  "links": [
+    {
+      "name": "Products",
+      "url": "http://127.0.0.1:9490/equipment/"
+    },
+    {
+      "name": "All equipment",
+      "url": "http://127.0.0.1:9490/equipment/"
+    },
+    {
+      "name": "Backhoe loaders",
+      "url": "http://127.0.0.1:9490/equipment/family/backhoe-loader/"
+    },
+    {
+      "name": "Compact excavators",
+      "url": "http://127.0.0.1:9490/equipment/family/mini-excavator/"
+    },
+    {
+      "name": "Construction excavators",
+      "url": "http://127.0.0.1:9490/equipment/family/construction-excavator/"
+    },
+    {
+      "name": "Skid steer loaders",
+      "url": "http://127.0.0.1:9490/equipment/family/skid-steer-loader/"
+    },
+    {
+      "name": "Wheel loaders",
+      "url": "http://127.0.0.1:9490/equipment/family/wheel-loader/"
+    },
+    {
+      "name": "Applications",
+      "url": "http://127.0.0.1:9490/industry/"
+    },
+    {
+      "name": "Buying guides",
+      "url": "http://127.0.0.1:9490/blog/"
+    },
+    {
+      "name": "About",
+      "url": "http://127.0.0.1:9490/our-story/"
+    },
+    {
+      "name": "Contact",
+      "url": "http://127.0.0.1:9490/contact-us/"
+    }
+  ],
+  "results": [
+    {
+      "name": "home",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "catalogue",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "category",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "product",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "product-standard",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "applications",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "application",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "about",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "guides",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "article",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "contact",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "home",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "catalogue",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "category",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "product",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "product-standard",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "applications",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "application",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "about",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "guides",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "article",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "contact",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "home",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "catalogue",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "category",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "product",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "product-standard",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "applications",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "application",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "about",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "guides",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "article",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    },
+    {
+      "name": "contact",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "h1": 1,
+      "forms": 1
+    }
+  ],
+  "mobileNavigation": true,
+  "samePage": true,
+  "focused": true,
+  "focusReturned": true,
+  "preserved": "Preserved input",
+  "context": "13",
+  "resetContext": ""
+}

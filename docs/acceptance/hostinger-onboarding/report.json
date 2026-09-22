@@ -1,0 +1,25 @@
+{
+  "verifiedAt": "2026-09-20T10:37:35.263801+00:00",
+  "cli": "3.35.0 (Build: ae73453)",
+  "scope": "real-hostinger-empty-wordpress-provisioning",
+  "url": "https://mediumblue-quail-505146.hostingersite.com",
+  "datacenter": "boston",
+  "wordpress": "7.1.1",
+  "checks": {
+    "existingPaidOrderFound": true,
+    "websiteCreated": true,
+    "installationValid": true,
+    "httpsStatus": 200,
+    "noindex": true,
+    "adminLogin": true,
+    "siteurlAndHomeHttps": true
+  },
+  "notCovered": [
+    "custom-site-deployment",
+    "plugin-baseline",
+    "SSH",
+    "production-email",
+    "remote-backup-restore",
+    "visual-quality"
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "file": "templates/404.html",
+    "total": 6,
+    "failures": []
+  },
+  {
+    "file": "templates/archive-hd_product.html",
+    "total": 30,
+    "failures": []
+  },
+  {
+    "file": "templates/company.html",
+    "total": 6,
+    "failures": []
+  },
+  {
+    "file": "templates/enquiry.html",
+    "total": 7,
+    "failures": []
+  },
+  {
+    "file": "templates/front-page.html",
+    "total": 4,
+    "failures": []
+  },
+  {
+    "file": "templates/index.html",
+    "total": 6,
+    "failures": []
+  },
+  {
+    "file": "templates/page.html",
+    "total": 6,
+    "failures": []
+  },
+  {
+    "file": "templates/product-editorial.html",
+    "total": 31,
+    "failures": []
+  },
+  {
+    "file": "templates/product-standard.html",
+    "total": 36,
+    "failures": []
+  },
+  {
+    "file": "templates/single-hd_product.html",
+    "total": 36,
+    "failures": []
+  },
+  {
+    "file": "templates/single.html",
+    "total": 6,
+    "failures": []
+  },
+  {
+    "file": "templates/taxonomy-hd_category-editorial.html",
+    "total": 29,
+    "failures": []
+  },
+  {
+    "file": "templates/taxonomy-hd_category.html",
+    "total": 30,
+    "failures": []
+  },
+  {
+    "file": "parts/footer.html",
+    "total": 3,
+    "failures": []
+  },
+  {
+    "file": "parts/header.html",
+    "total": 7,
+    "failures": []
+  },
+  {
+    "file": "home-content.html",
+    "total": 36,
+    "failures": []
+  }
+]
