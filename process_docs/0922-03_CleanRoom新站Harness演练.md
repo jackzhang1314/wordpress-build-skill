@@ -142,3 +142,8 @@
 ### 第七轮补充：字段审计门禁
 
 - 新增 `harness audit-fields`：双向检查（存值无后台字段定义 / 字段类型在当前 ACF 版本未注册），接入部署验证链；首次运行即抓到 6 个孤儿 meta 并随 seed 清理，复审通过。npm test 111/111 + lint 通过。
+
+### Fluent Forms 落地完成
+
+- FF 表单 id=3 程序化创建（两处坑：form_fields 必须含 fields 键对象；formSettings meta 必需，否则短代码返回空）。Contact 页切换 FF 短代码，浏览器真实填表提交 E2E：条目 id 1 入库（fluentform_submissions）。
+- 待办：FF 后台条目 + 邮件通知人工核看；自研 RFQ 短代码与 CPT 退役（数据保留）。
