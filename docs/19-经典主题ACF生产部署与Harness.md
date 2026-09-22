@@ -64,3 +64,9 @@
 项目：`/Users/Zhuanz1/Documents/ChatGPT/wordpress-projects/irontrack-parts`
 验收：`docs/process/0922-03_IRONTRACK经典主题ACF上线.md`
 截图：`docs/acceptance/*.png`
+
+## B2B 全流程演练补充（2026-09-22 第二轮）
+
+- 真实信息架构（6 产品 / 4 分类 / 3 行业 / 3 指南 / 新闻 / About / Contact）完成 `deploy --with-media --with-content`；22 个 URL、6 项计数（含 `kind: "term"` 的分类计数）、7 个 sitemap、RFQ 新版表单写入全部通过。
+- 新修正：`contentCounts` 增加 `kind: post|term`，`verifyDatabase` 对 taxonomy 使用 `wp term list` 计数；此前把分类当 post type 数会导致验证误报 0 并触发回滚。
+- 流程教训：手写/重写 `project.json` 时必须合并 provision 回写的 `domain/ssh/hostinger` 字段，否则远程命令直接拒绝执行（Harness 拒绝是正确行为）。

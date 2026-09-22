@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {fetchPage, inspectPage, verifyPages} from '../../harness/lib/verify.mjs';
+import {fetchPage, inspectPage, verifyDatabase, verifyPages} from '../../harness/lib/verify.mjs';
 
 test('page inspection requires one H1, order and markers', () => {
   const response = {status: 200};
@@ -28,4 +28,22 @@ test('fetch page normalizes base and closes its timeout', async () => {
   assert.equal(seen[0], 'https://example.test/x');
   assert.equal(response.status, 200);
   assert.equal(html, '<h1>ok</h1>');
+});
+
+test('database verification counts taxonomy terms when kind is term', async () => {
+  const calls = [];
+  const wp = args => {
+    calls.push(args);
+    if (args[0] === 'term') return '4';
+    return args.some(arg => String(arg).includes('cleanroom_product')) ? '6' : '0';
+  };
+  const project = {contentCounts: [
+    {label: 'Products', postType: 'cleanroom_product', expected: 6, kind: 'post'},
+    {label: 'Categories', postType: 'product_collection', expected: 4, kind: 'term'},
+  ]};
+  const result = await verifyDatabase(project, {wp});
+  assert.equal(result.pass, true);
+  assert.deepEqual(calls[0], ['post', 'list', '--post_type=cleanroom_product', '--format=count']);
+  assert.deepEqual(calls[1], ['term', 'list', 'product_collection', '--format=count']);
+  assert.equal(result.results[1].count, 4);
 });

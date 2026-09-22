@@ -75,3 +75,12 @@
 
 - Hostinger 新站默认激活了 hostinger 相关助手/引导插件；本轮验收未依赖它们，也未删除主机自带插件。后续项目如要求插件白名单，应在 `disabledPlugins` 或独立插件基线 gate 中显式处理。
 - 第一次 provision 失败生成的域名已通过原命令显式传入后成功恢复；为避免中断后只依赖人工记忆，后续可评估在生成子域后立即原子回写 project.json。
+
+## 第二轮：B2B 全流程压测（20:55–21:20 +08:00）
+
+- 升级为完整 B2B 信息架构（NOVALUX Industrial Lighting 演示品牌）：6 产品（ACF 规格 repeater）、4 产品分类、3 行业方案、3 知识指南、1 新闻、About/Contact 页、11 张媒体图、重建导航。
+- 第 1 次部署失败：contentCounts 中 taxonomy 被当 post type 计数为 0 → 验证失败自动回滚（自动回滚按预期工作）。
+- Harness 修复：`contentCounts` 支持 `kind: post|term`，`verifyDatabase` 分支使用 `wp term list`；新增回归测试（95/95）。
+- 流程事故：手写重写 project.json 丢失 provisioned `domain/ssh/hostinger` 字段 → 远程命令被正确拒绝；已恢复字段并记录教训。
+- 第 2 次部署成功：22/22 URL、6 项计数、7 个 sitemap 全过；新版 /contact/ 表单提交 RFQ（ID 83，302 → thank-you）。
+- 证据：`evidence/verify-b2b-final.json`、`status-b2b-final.json`、`b2b-rfq-rows.txt`、`.wordpress-builder/deploy-b2b-console.log`。

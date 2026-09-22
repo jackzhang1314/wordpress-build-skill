@@ -19,6 +19,7 @@ export const projectSchema = z.object({
     label: z.string().min(1),
     postType: z.string().regex(/^[a-z0-9_-]+$/),
     expected: z.number().int().min(0).optional(),
+    kind: z.enum(['post', 'term']).default('post'),
   })).default([]),
   requiredPlugins: z.array(z.string().regex(/^[a-z0-9-]+$/)).default(['advanced-custom-fields', 'seo-by-rank-math']),
   disabledPlugins: z.array(z.string().regex(/^[a-z0-9-]+$/)).default([]),

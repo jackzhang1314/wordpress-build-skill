@@ -50,10 +50,13 @@ export async function verifyPages(base, paths, markers = [], options = {}) {
 export async function verifyDatabase(project, {wp} = {}) {
   const results = [];
   for (const item of project.contentCounts) {
-    const output = wp(['post', 'list', '--post_type=' + item.postType, '--format=count']).trim();
+    const countArgs = item.kind === 'term'
+      ? ['term', 'list', item.postType, '--format=count']
+      : ['post', 'list', '--post_type=' + item.postType, '--format=count'];
+    const output = wp(countArgs).trim();
     const count = Number(output.split('\n').pop()) || 0;
     const pass = item.expected === undefined ? count >= 0 : count >= item.expected;
-    results.push({label: item.label, postType: item.postType, count, expected: item.expected, pass});
+    results.push({label: item.label, postType: item.postType, kind: item.kind, count, expected: item.expected, pass});
   }
   return {pass: results.every(item => item.pass), results};
 }
