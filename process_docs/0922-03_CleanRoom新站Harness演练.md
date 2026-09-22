@@ -105,3 +105,10 @@
 - 修复 2：`--with-media` 幂等导入——只上传媒体地图缺失的键，不再整库重复导入（B2B 三轮已堆 6 套重复附件）。测试：已映射键跳过、仅上传新文件。
 - 远端核对：本仓库未配置 git remote，`codex/classic-acf-v2` 目前为本地分支；如需异地固化需先添加 remote。
 - 测试 99/99，lint 通过；分支链新增 `persist-domain`、`idempotent-media`、docs 共 3 个提交。
+
+## 第五轮：维护层 + 通用性整改（2026-09-23）
+
+- 通用性审计抓到 2 处中心代码过度拟合并修复：seo.mjs 硬编码 it_rfq（IRONTRACK 残迹）、ops.mjs 硬编码 Asia/Shanghai 时区（现由 project.timezone 声明，缺省不动）。
+- 维护命令层（SSH-first、内容无关）：edit-page / post push（指纹 drift 检测 + --adopt-remote + readback + journal）、nav add|remove（外科手术式）、template assign（Template Name + the_content 校验 + meta readback）。seed 降级为首次开通专用。
+- 线上实测：about 冲突拒绝→adopt 接管(id 42)→幂等 no-op；QA Flow Test 导航增删往返且兄弟项存活；qa-flow-article 草稿推送往返并清理。过程中抓到 WP 陷阱：post_status=any 不含 draft，指纹查询改为显式状态列表。
+- 测试 107/107，lint 通过。用户故事 ①改首页 ②加导航 ③传文章 ④模板指派 全部一等命令闭环。
