@@ -22,7 +22,7 @@ export const projectSchema = z.object({
     expected: z.number().int().min(0).optional(),
     kind: z.enum(['post', 'term']).default('post'),
   })).default([]),
-  requiredPlugins: z.array(z.string().regex(/^[a-z0-9-]+$/)).default(['advanced-custom-fields', 'seo-by-rank-math', 'fluentform', 'classic-editor', 'fluent-smtp']),
+  requiredPlugins: z.array(z.string().regex(/^[a-z0-9-]+$/)).default(['advanced-custom-fields', 'seo-by-rank-math', 'fluentform', 'classic-editor']),
   disabledPlugins: z.array(z.string().regex(/^[a-z0-9-]+$/)).default([]),
   ssh: z.object({
     host: z.string().min(1),
