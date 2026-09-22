@@ -39,3 +39,40 @@ test('classic project audit detects missing plugin main and content JSON errors'
     await rm(root, {recursive: true, force: true});
   }
 });
+
+test('content gate flags raw angle brackets that WordPress text helpers would swallow', async () => {
+  const {mkdtemp, writeFile, rm} = await import('node:fs/promises');
+  const {tmpdir} = await import('node:os');
+  const {join} = await import('node:path');
+  const root = await mkdtemp(join(tmpdir(), 'quality-content-'));
+  try {
+    await mkdirSafe(join(root, 'theme'));
+    await mkdirSafe(join(root, 'plugin'));
+    await mkdirSafe(join(root, 'content'));
+    await writeFile(join(root, 'theme/style.css'), '/*\nTheme Name: Demo\nVersion: 1.0.0\n*/\n');
+    await writeFile(join(root, 'theme/functions.php'), '<?php\n');
+    await writeFile(join(root, 'theme/index.php'), '<?php get_header(); ?><h1>Home</h1><?php get_footer();');
+    await writeFile(join(root, 'plugin/demo-model.php'), "<?php\ndefined('ABSPATH') || exit;\n");
+    await writeFile(join(root, 'content/site-data.json'), JSON.stringify({
+      terms: [], pages: {home: {content: '<p>ok</p>'}},
+      products: [{excerpt: 'UGR<19 panel for offices'}],
+    }));
+    const project = {
+      slug: 'demo', theme: 'demo-theme', plugin: 'demo-model', pluginMain: 'demo-model.php',
+      requiredPlugins: [], disabledPlugins: [], contentMarkers: [], contentCounts: [],
+      media: {sources: []}, seed: {enabled: true, script: 'scripts/seed.php', data: 'content/site-data.json'},
+      paths: {theme: 'theme', plugin: 'plugin', content: 'content'},
+    };
+    const report = await auditProject(root, project, {phpBin: undefined});
+    const content = report.gates.find(gate => gate.name === 'content-data');
+    assert.equal(content.pass, false);
+    assert.match(JSON.stringify(content.checks), /UGR<19/);
+  } finally {
+    await rm(root, {recursive: true, force: true});
+  }
+});
+
+async function mkdirSafe(path) {
+  const {mkdir} = await import('node:fs/promises');
+  await mkdir(path, {recursive: true});
+}

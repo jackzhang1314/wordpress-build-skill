@@ -62,6 +62,23 @@ export function checkContent(projectRoot, project) {
     const data = JSON.parse(readFileSync(path, 'utf8'));
     const required = ['terms', 'pages'];
     const missing = required.filter(key => !(key in data));
+    // Raw "<" that is not an HTML tag gets swallowed by WordPress text helpers
+    // (e.g. an excerpt "UGR<19 panel" renders as "UGR"). Flag it before shipping.
+    const strayTags = [];
+    const walk = (value, trail) => {
+      if (typeof value === 'string') {
+        for (const match of value.matchAll(/<(?![a-zA-Z/!])/g)) {
+          strayTags.push({path: trail, sample: value.slice(Math.max(0, match.index - 20), match.index + 30).trim()});
+          if (strayTags.length >= 10) return;
+        }
+      } else if (Array.isArray(value)) {
+        value.forEach((item, index) => walk(item, `${trail}[${index}]`));
+      } else if (value && typeof value === 'object') {
+        for (const [key, item] of Object.entries(value)) walk(item, trail ? `${trail}.${key}` : key);
+      }
+    };
+    walk(data, '');
+    if (strayTags.length >= 10) strayTags.push({path: '…', sample: 'further findings truncated'});
     const mediaMap = join(projectRoot, 'content/media-map.json');
     let missingMedia = [];
     if (existsSync(mediaMap)) {
@@ -71,8 +88,9 @@ export function checkContent(projectRoot, project) {
     }
     return {
       name: 'content-data',
-      pass: missing.length === 0 && missingMedia.length === 0,
-      checks: [{name: 'content-data', pass: missing.length === 0 && missingMedia.length === 0, missingKeys: missing, missingMedia}],
+      pass: missing.length === 0 && missingMedia.length === 0 && strayTags.length === 0,
+      checks: [{name: 'content-data', pass: missing.length === 0 && missingMedia.length === 0 && strayTags.length === 0,
+        missingKeys: missing, missingMedia, strayAngleBrackets: strayTags}],
     };
   } catch (error) {
     return {name: 'content-data', pass: false, checks: [{name: 'content-data', pass: false, detail: error.message}]};

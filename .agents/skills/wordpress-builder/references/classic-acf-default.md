@@ -19,3 +19,6 @@ Production evidence and deploy commands: `docs/19-经典主题ACF生产部署与
 12. **Rollback is an availability test**, not just an archive existence check. Restore a known theme/plugin snapshot, clear cache, reopen key pages, and retain database/content counters and the RFQ private row.
 13. **Content counts must match data shape.** `contentCounts` entries default to `kind: "post"`; taxonomy/term acceptance counts must declare `kind: "term"` so verification uses `wp term list` instead of miscounting as zero posts.
 14. **Media import is idempotent.** `--with-media` uploads only keys missing from `content/media-map.json`; never re-import existing files, or the library fills with duplicate attachment sets.
+15. **Text safety in copy**: a raw `<` in any content string (e.g. "UGR<19") is swallowed by WordPress text helpers as a fake tag. Write "UGR below 19" or `&lt;19`; the harness content gate fails local checks when it finds stray angle brackets.
+16. **Three change lanes after launch**: design/code only → `deploy --skip-content`; bulk content → `harness content` (idempotent seed); single pages/posts/nav → maintenance commands. Never mix lanes for a small change.
+17. **Visual deploys**: bump the theme style version (CDN `?ver=` bust), clear Hostinger cache, then do a browser screenshot smoke test of key pages — HTTP 200 alone does not prove the design rendered.
