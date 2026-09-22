@@ -18,3 +18,4 @@ Production evidence and deploy commands: `docs/19-经典主题ACF生产部署与
 11. **Accept only the configured business sitemaps.** The index, post/page, product CPT and business taxonomy sitemaps must each return XML; private RFQ models stay out of sitemaps and REST.
 12. **Rollback is an availability test**, not just an archive existence check. Restore a known theme/plugin snapshot, clear cache, reopen key pages, and retain database/content counters and the RFQ private row.
 13. **Content counts must match data shape.** `contentCounts` entries default to `kind: "post"`; taxonomy/term acceptance counts must declare `kind: "term"` so verification uses `wp term list` instead of miscounting as zero posts.
+14. **Media import is idempotent.** `--with-media` uploads only keys missing from `content/media-map.json`; never re-import existing files, or the library fills with duplicate attachment sets.

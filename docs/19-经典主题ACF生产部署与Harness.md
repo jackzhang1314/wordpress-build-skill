@@ -70,3 +70,4 @@
 - 真实信息架构（6 产品 / 4 分类 / 3 行业 / 3 指南 / 新闻 / About / Contact）完成 `deploy --with-media --with-content`；22 个 URL、6 项计数（含 `kind: "term"` 的分类计数）、7 个 sitemap、RFQ 新版表单写入全部通过。
 - 新修正：`contentCounts` 增加 `kind: post|term`，`verifyDatabase` 对 taxonomy 使用 `wp term list` 计数；此前把分类当 post type 数会导致验证误报 0 并触发回滚。
 - 流程教训：手写/重写 `project.json` 时必须合并 provision 回写的 `domain/ssh/hostinger` 字段，否则远程命令直接拒绝执行（Harness 拒绝是正确行为）。
+- 欠债清偿：provision 生成子域后立即写入 project.json（中断可凭盘上记录恢复）；`--with-media` 改为幂等导入，只上传媒体地图缺失的键，不再每次堆一套重复附件。
