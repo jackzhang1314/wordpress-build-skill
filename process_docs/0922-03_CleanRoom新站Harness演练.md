@@ -147,3 +147,7 @@
 
 - FF 表单 id=3 程序化创建（两处坑：form_fields 必须含 fields 键对象；formSettings meta 必需，否则短代码返回空）。Contact 页切换 FF 短代码，浏览器真实填表提交 E2E：条目 id 1 入库（fluentform_submissions）。
 - 待办：FF 后台条目 + 邮件通知人工核看；自研 RFQ 短代码与 CPT 退役（数据保留）。
+
+### RFQ 退役完成
+
+- Fluent Forms 成为询盘唯一主人（表单 id=3 + Entries 管理入口）；原生 RFQ CPT/菜单/短代码全部摘除，侧边栏不再显示，历史 2 条测试数据保留在数据库中未删除。verify 的 contentCounts 同步移除 RFQ 项。
