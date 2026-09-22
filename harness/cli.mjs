@@ -191,6 +191,10 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
     if (command === 'provision') {
       const result = await provisionHostinger(root, project, args, {execFile: execFileSync, logger});
       if (args.includes('--no-deploy')) {
+        // Even without a full deploy, required plugins must be installed and active.
+        const freshProject = loadProject(root);
+        const freshSsh = createSSH(freshProject, {execFile: execFileSync});
+        await syncRemotePlugins(freshProject, freshSsh, logger);
         outputResult(result, json, logger);
         return 0;
       }
