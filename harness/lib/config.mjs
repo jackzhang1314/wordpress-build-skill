@@ -7,6 +7,7 @@ export const slug = /^[a-z0-9][a-z0-9-]*$/;
 export const projectSchema = z.object({
   title: z.string().min(2),
   description: z.string().default(''),
+  timezone: z.string().default(''),
   slug: z.string().regex(slug).optional(),
   type: z.string().default('wordpress-b2b'),
   domain: z.string().regex(/^$|^[a-z0-9][a-z0-9.-]*\.[a-z]{2,}$/i),

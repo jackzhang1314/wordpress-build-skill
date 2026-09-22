@@ -94,7 +94,9 @@ export function configureWordPress(project, ssh, logger = () => {}) {
   if (!project.ssh) throw new Error('SSH configuration is required to configure WordPress');
   ssh.wp(['option', 'update', 'blogname', project.title]);
   ssh.wp(['option', 'update', 'blogdescription', project.description || '']);
-  ssh.wp(['option', 'update', 'timezone_string', 'Asia/Shanghai']);
+  if (project.timezone) {
+    ssh.wp(['option', 'update', 'timezone_string', project.timezone]);
+  }
   ssh.wp(['option', 'update', 'permalink_structure', '/%postname%/']);
   ssh.wp(['option', 'update', 'default_comment_status', 'closed']);
   ssh.wp(['option', 'update', 'default_ping_status', 'closed']);

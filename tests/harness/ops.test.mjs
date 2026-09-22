@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {mkdirSync, mkdtempSync, rmSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {backupProject, importMedia, seedContent} from '../../harness/lib/ops.mjs';
+import {backupProject, configureWordPress, importMedia, seedContent} from '../../harness/lib/ops.mjs';
 
 test('seed contract passes staged media map and site data as explicit arguments', async () => {
   const root = mkdtempSync(join(tmpdir(), 'harness-seed-'));
@@ -64,6 +64,17 @@ test('backup retries a fresh installation whose plugin files change during tar',
   } finally {
     rmSync(root, {recursive: true, force: true});
   }
+});
+
+test('core options respect project timezone and skip the setting when absent', () => {
+  const calls = [];
+  const ssh = {wp: args => calls.push(args)};
+  const sshProject = timezone => ({title: 'T', description: '', timezone, ssh: {wpPath: '/tmp/wp'}});
+  configureWordPress(sshProject('Europe/Berlin'), ssh);
+  configureWordPress(sshProject(''), ssh);
+  assert.deepEqual(calls[2], ['option', 'update', 'timezone_string', 'Europe/Berlin']);
+  assert.ok(!calls.some(args => args.includes('timezone_string') && args.includes('Asia/Shanghai')));
+  assert.equal(calls.filter(args => args.includes('timezone_string')).length, 1);
 });
 
 test('forced media import is idempotent and only uploads keys missing from the map', async () => {

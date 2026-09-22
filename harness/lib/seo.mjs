@@ -98,7 +98,8 @@ export function rankMathConfig(project) {
   const seo = project.seo ?? {};
   const derived = (project.contentCounts ?? [])
     .map(item => item.postType)
-    .filter(name => !['attachment', 'it_rfq'].includes(name) && !name.endsWith('_rfq'));
+    // Core attachment plus any project's RFQ model (suffix rule, no hardcoded project names).
+    .filter(name => name !== 'attachment' && !name.endsWith('_rfq'));
   const postTypes = (seo.postTypes?.length ? seo.postTypes : ['post', 'page', ...derived]).map(normalizePostType);
   const taxonomies = (seo.taxonomies ?? []).map(normalizePostType);
   const names = postTypes.map(type => type.name);
