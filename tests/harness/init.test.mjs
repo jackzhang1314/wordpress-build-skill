@@ -21,6 +21,7 @@ test('init scaffolds a generic classic theme and valid config', async () => {
     assert.equal(existsSync(join(root, 'theme/single-site_product.php')), false);
     assert.equal(existsSync(join(root, 'theme/theme.json')), false);
     assert.match(await import('node:fs').then(fs => fs.readFileSync(join(root, 'project.json'), 'utf8')), /demo-site_product/);
+    assert.match(await import('node:fs').then(fs => fs.readFileSync(join(root, '.gitignore'), 'utf8')), /\.content-state\.json/);
   } finally {
     await rm(parent, {recursive: true, force: true});
   }

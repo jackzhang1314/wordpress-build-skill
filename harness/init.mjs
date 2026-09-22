@@ -59,6 +59,7 @@ export function initProject({name, projectsRoot, git = true, reference = referen
 
   writeFileSync(join(root, '.gitignore'), [
     '.backups/', '.deploy-staging/', '.wordpress-builder/', '.DS_Store', 'node_modules/', '*.log', '*.env', '!*.example.env',
+    '.seed-state.json', '.content-state.json', '.deploy-state.json',
   ].join('\n') + '\n');
   writeFileSync(join(root, 'project.json'), JSON.stringify({
     title: name,
