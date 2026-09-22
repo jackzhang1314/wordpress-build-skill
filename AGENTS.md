@@ -6,6 +6,7 @@
 
 - 设计决策：[目标架构](docs/TARGET-ARCHITECTURE.md)；实际实现：[架构现状](docs/ARCHITECTURE.md)；使用方式：[上手指南](docs/GETTING-STARTED.md)。历史研究及实验记录不是当前功能清单。
 - v2 新站默认最小经典 PHP 主题 + 业务插件 CPT/taxonomy + ACF 本地字段 + SSH/WP-CLI 部署；规范见 [classic-acf-default](.agents/skills/wordpress-builder/references/classic-acf-default.md)。历史区块主题、HONGDA PHP 示例和区块样板保留为参考，不再作为新站默认。
+- v2 统一 Harness 入口是 `harness/cli.mjs`，用 `--project <site-dir>` 管理 init、doctor、check、backup、media、content、deploy、verify、status、rollback、wp/ssh/cache；禁止把项目名、域名或内容模型硬编码进入口。
 - 开始改动前检查目录、分支、HEAD 和未提交内容。现有共享工作区修改不得覆盖；实验环境与参考网站分别识别，不清空不明数据。
 
 ## 克隆后的依赖引导

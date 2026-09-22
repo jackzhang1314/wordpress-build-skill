@@ -8,7 +8,7 @@
 //   node scripts/deploy-lab.mjs all                                  # backup + theme + plugin
 
 import { execSync } from 'node:child_process';
-import { cpSync, mkdirSync } from 'node:fs';
+import { cpSync, mkdirSync, realpathSync } from 'node:fs';
 import path from 'node:path';
 
 const ROOT = process.cwd();
@@ -26,6 +26,29 @@ const targets = {
 
 function run(cmd) {
   execSync(cmd, { stdio: 'inherit', cwd: ROOT });
+}
+
+export async function checkRoute(url, timeoutMs = 5000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, { signal: controller.signal });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return response.status;
+  } catch (error) {
+    if (error.name === 'AbortError') throw new Error(`timed out after ${timeoutMs}ms`);
+    throw error;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+export function assertInside(candidate, root) {
+  const relative = path.relative(realpathSync(path.resolve(root)), realpathSync(path.resolve(candidate)));
+  if (!relative || relative.startsWith('..') || path.isAbsolute(relative)) {
+    throw new Error('deployment source escapes the managed source directory');
+  }
+  return relative;
 }
 
 function syncTarget(name) {

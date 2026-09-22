@@ -11,3 +11,5 @@ For new WordPress B2B sites, prefer the production-tested classic architecture:
 7. **Verify the real URL**, not just HTTP: one H1 per page, no heading skips, media actually loads, navigation has no duplicates, RFQ row exists with key fields.
 
 Production evidence and deploy commands: `docs/19-经典主题ACF生产部署与Harness.md`.
+
+8. **Use the central v2 harness**, not a per-site copy: `node harness/cli.mjs --project <site-dir> check|backup|deploy|verify|status|rollback`. The CLI owns orchestration; `project.json` owns site-specific paths, models and acceptance counts.

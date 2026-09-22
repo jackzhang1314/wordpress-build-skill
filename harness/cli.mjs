@@ -1,0 +1,299 @@
+#!/usr/bin/env node
+import {execFileSync} from 'node:child_process';
+import {existsSync, writeFileSync} from 'node:fs';
+import {join, resolve} from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {loadProject, resolveProjectRoot} from './lib/config.mjs';
+import {commandExists} from './lib/process.mjs';
+import {createSSH} from './lib/ssh.mjs';
+import {auditProject} from './lib/quality.mjs';
+import {verifyDatabase, verifyPages} from './lib/verify.mjs';
+import {
+  backupProject,
+  clearHostingerCache,
+  importMedia,
+  restoreFiles,
+  seedContent,
+  syncCode,
+  syncRemotePlugins,
+} from './lib/ops.mjs';
+import {initProject} from './init.mjs';
+
+const HELP = `WordPress Harness v2
+=====================
+
+Usage:
+  node harness/cli.mjs init <project-name> --root <projects-parent> [--no-git]
+  node harness/cli.mjs --project <site-dir> <command> [args]
+
+Project commands:
+  config                  Validate project.json
+  doctor                  Check tools, SSH and WP-CLI
+  check                   Run local quality gates
+  backup                  Back up remote files and database
+  media [--force]         Import configured media sources
+  content                 Upload the project seed package
+  deploy                  check, backup, plugins, sync, seed, cache, verify
+  verify                  Verify live pages and database counts
+  status                  Show remote content counts and active plugins
+  rollback <backup-id>    Restore theme/plugin files
+  cache                   Clear the Hostinger site cache
+  wp <args...>            Run WP-CLI through SSH
+  ssh                     Open an SSH session
+  open                    Open the Hostinger SSH-access page
+
+Deploy options:
+  --with-media            Force a new media import
+  --with-content          Force content seeding
+  --skip-content          Do not seed in this run
+  --json                  Machine-readable output
+`;
+
+function outputResult(payload, json, logger) {
+  if (json) logger(JSON.stringify(payload, null, 2));
+  else if (payload?.summary) logger(payload.summary);
+}
+
+function globalArgs(argv) {
+  const options = {project: process.env.WORDPRESS_PROJECT_ROOT};
+  const rest = [];
+  for (let index = 0; index < argv.length; index += 1) {
+    const value = argv[index];
+    if (value === '--project') options.project = argv[++index];
+    else if (value.startsWith('--project=')) options.project = value.slice(10);
+    else if (value === '--json') options.json = true;
+    else rest.push(value);
+  }
+  return {options, rest};
+}
+
+function context(options) {
+  const root = resolveProjectRoot(options.project);
+  const project = loadProject(root);
+  return {root, project, ssh: project.ssh ? createSSH(project, {execFile: execFileSync}) : undefined};
+}
+
+function printAudit(report, logger) {
+  for (const gate of report.gates) {
+    const checks = gate.checks ?? [];
+    if (checks.length === 0) logger(`  ${gate.pass ? 'OK ' : 'FAIL'} ${gate.name}`);
+    for (const check of checks.slice(0, 200)) {
+      const label = check.file ? `${gate.name}/${check.file}` : `${gate.name}/${check.name ?? gate.name}`;
+      const detail = check.detail || check.missingMedia?.length
+        ? ` -- ${check.detail || `missing media: ${check.missingMedia.join(', ')}`}`
+        : '';
+      logger(`  ${check.pass ? 'OK ' : 'FAIL'} ${label}${detail}`);
+    }
+  }
+}
+
+async function commandDoctor({project, ssh}, json, logger) {
+  const checks = {
+    node: Number(process.versions.node.split('.')[0]) >= 20,
+    git: commandExists(execFileSync, 'git', ['--version']),
+    rsync: commandExists(execFileSync, 'rsync', ['--version']),
+    tar: commandExists(execFileSync, 'tar', ['--version']),
+    gzip: commandExists(execFileSync, 'gzip', ['--version']),
+    hostingerCli: commandExists(execFileSync, 'hostinger', ['version']),
+    php: commandExists(execFileSync, 'php', ['-v']),
+  };
+  if (project?.ssh) {
+    try {
+      ssh.run('echo ok');
+      checks.ssh = true;
+      checks.wpCli = ssh.wp(['core', 'version']).trim();
+    } catch (error) {
+      checks.ssh = false;
+      checks.wpCli = false;
+      checks.sshError = error.message;
+    }
+  }
+  const pass = checks.node && checks.git && checks.rsync && checks.tar && checks.gzip
+    && (!project?.ssh || (checks.ssh && Boolean(checks.wpCli)));
+  if (!json) {
+    for (const [name, value] of Object.entries(checks)) logger(`  ${value ? 'OK ' : 'FAIL'} ${name}: ${value}`);
+    logger(`\n${pass ? 'OK: required operations available.' : 'FAIL: harness requirements are not ready.'}`);
+  }
+  return {pass, checks};
+}
+
+async function runCheck({root, project}, json, logger) {
+  const report = await auditProject(root, project, {
+    phpBin: commandExists(execFileSync, 'php', ['-v']) ? 'php' : (commandExists(execFileSync, 'docker', ['info']) ? 'docker:wordpress:cli-php8.3' : undefined),
+  });
+  if (!json) {
+    logger('Local quality gates');
+    printAudit(report, logger);
+    logger(`\n${report.pass ? 'OK: local checks passed.' : 'FAIL: local checks failed.'}`);
+  }
+  return report;
+}
+
+function firstValue(args) {
+  return args.filter(item => !item.startsWith('--'))[0];
+}
+
+export async function main(argv = process.argv.slice(2), logger = console.log, errors = console.error) {
+  const {options, rest} = globalArgs(argv);
+  const [command, ...args] = rest;
+  const json = Boolean(options.json);
+  try {
+    if (!command || command === 'help' || command === '--help') {
+      logger(HELP);
+      return 0;
+    }
+
+    if (command === 'init') {
+      const rootIndex = args.indexOf('--root');
+      const created = initProject({
+        name: firstValue(args),
+        projectsRoot: rootIndex >= 0 ? args[rootIndex + 1] : resolve(process.cwd(), '..'),
+        git: !args.includes('--no-git'),
+      });
+      outputResult({pass: true, projectRoot: created}, json, logger);
+      if (!json) logger(`OK: project created: ${created}`);
+      return 0;
+    }
+
+    const site = context(options);
+    const {root, project, ssh} = site;
+    const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open'];
+    if (remoteCommands.includes(command) && !ssh) throw new Error('Complete project.json ssh before running remote commands');
+    const base = `https://${project.domain}`;
+
+    if (command === 'config') {
+      logger(JSON.stringify({...project, ssh: {...project.ssh, keyPath: project.ssh ? '[redacted]' : undefined}}, null, 2));
+      return 0;
+    }
+    if (command === 'doctor') {
+      const result = await commandDoctor(site, json, logger);
+      return result.pass ? 0 : 1;
+    }
+    if (command === 'check') {
+      const result = await runCheck(site, json, logger);
+      return result.pass ? 0 : 1;
+    }
+    if (command === 'backup') {
+      const backup = backupProject(root, project, ssh, logger);
+      outputResult({...backup.manifest, backupDir: backup.backupDir}, json, logger);
+      return 0;
+    }
+    if (command === 'media') {
+      const map = await importMedia(root, project, ssh, {force: args.includes('--force'), logger});
+      outputResult({pass: true, count: Object.keys(map).length}, json, logger);
+      return 0;
+    }
+    if (command === 'content') {
+      await seedContent(root, project, ssh, logger);
+      return 0;
+    }
+    if (command === 'verify') {
+      if (!project.domain) throw new Error('project.domain is empty');
+      const pages = await verifyPages(base, project.livePages, project.contentMarkers);
+      const database = await verifyDatabase(project, {wp: input => ssh.wp(input)});
+      const result = {pass: pages.pass && database.pass, pages, database};
+      if (!json) {
+        for (const page of pages.results) {
+          const details = [page.status, `H1 ${page.h1}`, `skips ${page.skips}`];
+          if (page.missingMarkers.length > 0) details.push(`missing markers ${page.missingMarkers.join(', ')}`);
+          logger(`  ${page.pass ? 'OK ' : 'FAIL'} ${page.path}: ${details.join(', ')}`);
+        }
+        for (const item of database.results) logger(`  ${item.pass ? 'OK ' : 'FAIL'} ${item.label}: ${item.count}`);
+      }
+      outputResult(result, json, logger);
+      return result.pass ? 0 : 1;
+    }
+    if (command === 'deploy') {
+      const report = await runCheck(site, json, logger);
+      if (!report.pass) throw new Error('local quality gates failed');
+      if (!ssh) throw new Error('SSH configuration is required before deploy');
+      logger(`\nDeploying ${project.title} -> ${project.domain}`);
+      ssh.run('echo ok');
+      const wpVersion = ssh.wp(['core', 'version']).trim();
+      logger(`  OK  SSH/WP-CLI preflight (WordPress ${wpVersion})`);
+      const backup = backupProject(root, project, ssh, logger);
+      let rollbackNeeded = false;
+      try {
+        await syncRemotePlugins(project, ssh, logger);
+        await syncCode(root, project, ssh, logger);
+        rollbackNeeded = true;
+        await importMedia(root, project, ssh, {force: args.includes('--with-media'), logger});
+        if (!args.includes('--skip-content') && (args.includes('--with-content') || !existsSync(join(root, '.seed-state.json')))) {
+          await seedContent(root, project, ssh, logger);
+        }
+        const cache = clearHostingerCache(project, {execFile: execFileSync});
+        logger(`  ${cache.pass ? 'OK ' : 'WARN'} Hostinger cache ${cache.detail}`);
+        const verification = await verifyPages(base, project.livePages, project.contentMarkers);
+        const database = await verifyDatabase(project, {wp: input => ssh.wp(input)});
+        if (!verification.pass || !database.pass) throw new Error('remote verification failed');
+        for (const page of verification.results) logger(`    OK ${page.path}: ${page.status}, H1 ${page.h1}, skips ${page.skips}`);
+        for (const item of database.results) logger(`    OK ${item.label}: ${item.count}`);
+        writeFileSync(join(root, '.deploy-state.json'), JSON.stringify({
+          deployedAt: new Date().toISOString(),
+          domain: project.domain,
+          backup: backup.manifest.id,
+        }, null, 2));
+        logger(`\nOK: deploy complete: ${base}`);
+        return 0;
+      } catch (error) {
+        if (rollbackNeeded) {
+          logger('  WARN deployment failed; restoring pre-deploy theme/plugin files');
+          try {
+            restoreFiles(project, ssh, backup.backupDir, logger);
+          } catch (rollbackError) {
+            logger(`  FAIL rollback failed: ${rollbackError.message}`);
+          }
+        }
+        throw error;
+      }
+    }
+    if (command === 'status') {
+      const database = await verifyDatabase(project, {wp: input => ssh.wp(input)});
+      const plugins = JSON.parse(ssh.wp(['plugin', 'list', '--status=active', '--format=json'])).map(plugin => plugin.name);
+      const payload = {domain: project.domain, content: database.results, activePlugins: plugins};
+      if (!json) {
+        logger(`\n=== ${project.title} ===\nLive: ${base}`);
+        for (const item of database.results) logger(`${item.label}: ${item.count}`);
+        logger(`Active plugins: ${plugins.join(', ')}`);
+      } else outputResult(payload, json, logger);
+      return database.pass ? 0 : 1;
+    }
+    if (command === 'rollback') {
+      const id = firstValue(args);
+      if (!id) throw new Error('usage: harness rollback <backup-id>');
+      restoreFiles(project, ssh, resolve(root, '.backups', id), logger);
+      return 0;
+    }
+    if (command === 'cache') {
+      const result = clearHostingerCache(project, {execFile: execFileSync});
+      outputResult(result, json, logger);
+      return result.pass ? 0 : 1;
+    }
+    if (command === 'wp') {
+      if (args.length === 0) throw new Error('usage: harness wp <wp-cli arguments>');
+      logger(ssh.wp(args));
+      return 0;
+    }
+    if (command === 'ssh') {
+      execFileSync('ssh', ssh.baseArgs, {stdio: 'inherit'});
+      return 0;
+    }
+    if (command === 'open') {
+      const url = `https://hpanel.hostinger.com/websites/${project.domain}/advanced/ssh-access?redirectLocation=side_menu`;
+      if (process.platform === 'darwin') execFileSync('open', [url], {stdio: 'pipe'});
+      logger(url);
+      return 0;
+    }
+
+    errors(`Unknown command: ${command}\n`);
+    logger(HELP);
+    return 2;
+  } catch (error) {
+    errors(`FAIL ${error.message}`);
+    if (process.env.HARNESS_DEBUG && error.stack) errors(error.stack);
+    return 1;
+  }
+}
+if (process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url) {
+  process.exit(await main());
+}
