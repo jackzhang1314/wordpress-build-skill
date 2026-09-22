@@ -34,7 +34,7 @@ export function updateProvisionedProject(projectRoot, {
   hostingerUser,
   order,
   sshHost,
-  sshPort = '22',
+  sshPort,
   sshUser,
   sshKeyPath,
 } = {}) {

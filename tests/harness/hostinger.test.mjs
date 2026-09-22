@@ -21,7 +21,7 @@ function fakeHostinger(domain, order) {
 test('provision is idempotent when website and WordPress already exist', async () => {
   const root = mkdtempSync(join(tmpdir(), 'harness-provision-'));
   const path = join(root, 'project.json');
-  writeFileSync(path, JSON.stringify({title: 'Demo', domain: '', theme: 'demo-theme', plugin: 'demo-model', hostinger: {user: '', order: 42}}));
+  writeFileSync(path, JSON.stringify({title: 'Demo', domain: '', theme: 'demo-theme', plugin: 'demo-model', hostinger: {user: '', order: 42}, ssh: {host: 'ssh.example.test', port: '65002', user: 'u_test', keyPath: 'key', wpPath: '/tmp/old'}}));
   try {
     const result = await provisionHostinger(root, JSON.parse(readFileSync(path, 'utf8')), ['--domain', 'demo-123.hostingersite.com'], {
       execFile: fakeHostinger('demo-123.hostingersite.com', 42),
@@ -31,6 +31,7 @@ test('provision is idempotent when website and WordPress already exist', async (
     assert.equal(result.credentialsPath, '');
     const saved = JSON.parse(readFileSync(path, 'utf8'));
     assert.equal(saved.domain, 'demo-123.hostingersite.com');
+    assert.equal(saved.ssh.port, '65002');
     assert.equal(saved.hostinger.user, 'u_test');
     assert.equal(saved.ssh.wpPath, '/home/u_test/domains/demo-123.hostingersite.com/public_html');
     assert.match(readFileSync(path, 'utf8'), /u_test/);
