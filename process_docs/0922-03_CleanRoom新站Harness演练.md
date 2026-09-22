@@ -97,3 +97,11 @@
 - 最终验证全绿：22/22 页、6 项计数（RFQ=2）、7 个 sitemap 200/XML；产品页 img 指向真实上传 JPEG（200 / image/jpeg / 188KB），media-map 指向 attachment 101–111。
 - 证据：`evidence/verify-b2b-images-final.json`、`status-b2b-images-final.json`、`b2b-image-load-check.txt`、`.wordpress-builder/deploy-b2b-images-console.log`、`deploy-b2b-final-console.log`。
 - Harness 最终提交链：`102ea2e → d347414 → 71eacc3 → 9a300b3 → e432321`（全部 ff 到 `codex/classic-acf-v2`，测试 97/97）。
+
+## 第四轮：遗留欠债清偿（2026-09-22 22:40 +08:00）
+
+- 沉淀审计：8 个已修问题均有代码+回归测试+文档四层落点；2 个"已记录未修"遗留项本轮闭环。
+- 修复 1：provision 生成子域后立即原子写入 project.json（此前中断后域名只存终端输出）。测试：等待建站超时后盘上仍有域名。
+- 修复 2：`--with-media` 幂等导入——只上传媒体地图缺失的键，不再整库重复导入（B2B 三轮已堆 6 套重复附件）。测试：已映射键跳过、仅上传新文件。
+- 远端核对：本仓库未配置 git remote，`codex/classic-acf-v2` 目前为本地分支；如需异地固化需先添加 remote。
+- 测试 99/99，lint 通过；分支链新增 `persist-domain`、`idempotent-media`、docs 共 3 个提交。
