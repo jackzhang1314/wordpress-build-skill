@@ -68,6 +68,55 @@ test('new WordPress credentials are written only to a private file', async () =>
   }
 });
 
+test('new-site provisioning can derive the Hostinger user without pre-seeding hostinger config', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'harness-provision-new-account-'));
+  const path = join(root, 'project.json');
+  writeFileSync(path, JSON.stringify({title: 'Demo', domain: '', theme: 'demo-theme', plugin: 'demo-model'}));
+  const execFile = (command, args) => {
+    const joined = args.join(' ');
+    if (joined.includes('websites list')) return JSON.stringify({data: [{domain: 'new-account.hostingersite.com', username: 'u_new_account'}]});
+    if (joined.includes('installations list')) return JSON.stringify([{domain: 'new-account.hostingersite.com', is_valid: true}]);
+    return JSON.stringify({message: 'accepted'});
+  };
+  try {
+    const result = await provisionHostinger(root, JSON.parse(readFileSync(path, 'utf8')), [
+      '--domain', 'new-account.hostingersite.com',
+      '--order', '42',
+    ], {execFile, intervalMs: 1});
+    assert.equal(result.hostingerUser, 'u_new_account');
+    const saved = JSON.parse(readFileSync(path, 'utf8'));
+    assert.equal(saved.hostinger.order, 42);
+    assert.equal(saved.hostinger.user, 'u_new_account');
+    assert.equal(saved.ssh.wpPath, '/home/u_new_account/domains/new-account.hostingersite.com/public_html');
+  } finally {
+    rmSync(root, {recursive: true, force: true});
+  }
+});
+
+test('new-site credentials use safe defaults when hostinger config is absent', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'harness-provision-absent-config-'));
+  const path = join(root, 'project.json');
+  writeFileSync(path, JSON.stringify({title: 'Demo', domain: '', theme: 'demo-theme', plugin: 'demo-model'}));
+  let submitted = false;
+  const execFile = (command, args) => {
+    const joined = args.join(' ');
+    if (joined.includes('websites list')) return JSON.stringify({data: [{domain: 'absent.hostingersite.com', username: 'u_absent'}]});
+    if (joined.includes('installations list')) return JSON.stringify(submitted ? [{domain: 'absent.hostingersite.com', is_valid: true}] : []);
+    if (joined.includes('installations install')) submitted = true;
+    return JSON.stringify({message: 'accepted'});
+  };
+  try {
+    const result = await provisionHostinger(root, JSON.parse(readFileSync(path, 'utf8')), [
+      '--domain', 'absent.hostingersite.com',
+      '--order', '42',
+    ], {execFile, intervalMs: 1});
+    assert.equal(result.hostingerUser, 'u_absent');
+    assert.match(readFileSync(result.credentialsPath, 'utf8'), /"login": "codexadmin"/);
+  } finally {
+    rmSync(root, {recursive: true, force: true});
+  }
+});
+
 test('provisioned project config updates domain and private path safely', () => {
   const root = mkdtempSync(join(tmpdir(), 'harness-provision-config-'));
   const path = join(root, 'project.json');

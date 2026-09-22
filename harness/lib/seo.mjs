@@ -114,6 +114,15 @@ export function rankMathConfig(project) {
   };
 }
 
+export function rankMathSitemapPaths(project) {
+  const config = rankMathConfig(project);
+  const leaves = [
+    ...config.postTypes.filter(type => type.sitemap).map(type => `/${type.name}-sitemap.xml`),
+    ...config.taxonomies.filter(taxonomy => taxonomy.sitemap).map(taxonomy => `/${taxonomy.name}-sitemap.xml`),
+  ];
+  return [...new Set(['/sitemap_index.xml', ...leaves])];
+}
+
 function parseState(output) {
   const start = output.indexOf('{');
   const end = output.lastIndexOf('}');
@@ -152,7 +161,7 @@ export async function verifyRankMath(project, ssh, {fetchImpl = fetch, logger = 
     ']);',
   ].join(' ')]));
   const sitemapChecks = [];
-  for (const path of ['/sitemap_index.xml', '/page-sitemap.xml']) {
+  for (const path of rankMathSitemapPaths(project)) {
     try {
       const {response, html} = await fetchPage(`https://${project.domain}`, path, {fetchImpl});
       const isXml = response.status === 200 && /<\?xml|<sitemapindex|<urlset/i.test(html.slice(0, 500));

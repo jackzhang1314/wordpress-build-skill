@@ -29,6 +29,8 @@ node harness/cli.mjs --project <site-dir> provision
 
 已存在网站/安装时命令必须幂等：只回读和补齐 project.json，不重复建站，不覆盖已有 WordPress。创建成功后默认进入首次 deploy；如只做开通，用 `--no-deploy`。
 
+全新项目的 `project.hostinger` 可暂时缺省：只要显式提供 order 和 SSH 参数，Harness 会从 website 结果回读用户并写回 project.json；管理员账号/邮箱缺省值不得进入日志。注意 website list 先返回可用站点并不保证 WordPress 安装轮询完成；全新安装稳定前，主题/插件 tar 快照可能遇到 `file changed as we read it`。Harness 对该类首次安装竞态做有限重试，仍未稳定则停止部署，不把部分归档当作可用回滚点。
+
 ## 项目配置
 
 客户项目 AGENTS.md 链接本规范，记录实际部署配置位置与已实现命令。私有目标配置放项目忽略目录（本仓库为 `.wordpress-builder/`），至少区分：

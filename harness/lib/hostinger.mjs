@@ -92,7 +92,7 @@ export async function provisionHostinger(projectRoot, project, args = [], {
   }
   logger(`  OK  website available (user ${website.username})`);
 
-  const hostingerUser = website.username || project.hostinger.user;
+  const hostingerUser = website.username || project.hostinger?.user;
   if (!hostingerUser) throw new Error('Hostinger did not return the hosting username');
   const installations = () => jsonOutput(execFile, [
     'wordpress', 'installations', 'list', hostingerUser, '--domain', domain,
@@ -100,8 +100,8 @@ export async function provisionHostinger(projectRoot, project, args = [], {
   let installationsList = installations();
   let credentialsPath = '';
   if (!installationsList.some(item => item.domain === domain)) {
-    const adminUser = commandValue(args, '--admin-user') || project.hostinger.adminUser || 'codexadmin';
-    const adminEmail = commandValue(args, '--admin-email') || project.hostinger.adminEmail || `admin@${domain}`;
+    const adminUser = commandValue(args, '--admin-user') || project.hostinger?.adminUser || 'codexadmin';
+    const adminEmail = commandValue(args, '--admin-email') || project.hostinger?.adminEmail || `admin@${domain}`;
     const password = process.env.WP_ADMIN_PASSWORD || randomBytes(21).toString('base64url');
     const credentials = {login: adminUser, password, email: adminEmail};
     jsonOutput(execFile, [

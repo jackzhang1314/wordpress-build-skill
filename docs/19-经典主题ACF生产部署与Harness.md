@@ -45,11 +45,19 @@
 5. 清空导航要删除所有 `nav_menu_item` 帖子；`wp_get_nav_menu_items()` 会漏掉 object_id 为 0 的孤儿项。
 6. Rank Math 只激活不等于接管；必须写入 registration skip、configured、approved modules、CPT/taxonomy titles/sitemap options，再刷新 rewrite，并实际验证 `/sitemap_index.xml` 与子 sitemap 的 XML。
 7. SSH/rsync 偶发 ETIMEDOUT 必须重试；重试后重新执行远端验证。
+8. 全新项目可以先没有 `project.hostinger`；提供 `--order` 与 SSH 参数后，Harness 从 Hostinger website 回读并写回用户。新安装 website 就绪不等于后台文件写入停止，文件快照对 `file changed as we read it` 做有限重试。
+9. Seed 在远端 staging 后执行，Harness 显式传媒体地图与站点数据参数；项目脚本不要假设原始项目路径。业务 sitemap 从 `project.json` 派生并逐个验证 XML，私有 RFQ 不进入 sitemap。
 
 ## 验证
 
 - v2 harness：89/89 Node tests 全绿；`npm run lint`、`npm run typecheck`、`git diff --check` 全绿。
 - 用统一 CLI 对 IRONTRACK 项目执行 `check`、`doctor`、`verify`、`status`、`content`、`configure-seo`、`deploy` 成功；部署后 7 个 URL、H1/标题层级、10/4/1 数据库计数、Rank Math 前台与 `/sitemap_index.xml`、`/page-sitemap.xml` XML 全部通过。
+
+## Clean-room 新站演练补充（2026-09-22）
+
+- 独立最小经典 PHP + ACF 项目完成 `provision`、完整 `deploy --with-media --with-content`、6 个关键 URL、H1/跳级、产品/指南/RFQ 计数、RFQ private row、Rank Math Free、index 与 post/page/产品 CPT/业务 taxonomy 子 sitemap 验证。
+- 使用 `rollback` 恢复已知主题/插件快照后，六页验证、数据库计数和 RFQ 行仍通过；站点保持可用。
+- 跨项目规范已回写 `classic-acf-default.md`、`hostinger.md`、`seo.md`；Harness 补充 new-account provisioning、seed staging contract、fresh-install backup retry 与业务 sitemap 派生验收回归测试。
 
 ## 证据
 

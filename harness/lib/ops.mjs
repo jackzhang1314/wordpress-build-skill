@@ -16,11 +16,31 @@ export function safeName(value) {
   return String(value).replace(/[^A-Za-z0-9._-]/g, '-');
 }
 
+function readRemoteFileTree(ssh, command, options, logger, attempts = 3) {
+  let lastError;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      return ssh.run(command, options);
+    } catch (error) {
+      lastError = error;
+      // A fresh Hostinger install can keep writing plugin files after its website is listed.
+      if (!/file changed as we read it/i.test(error.message) || attempt === attempts) break;
+      logger(`  WARN  remote files changed during backup; retrying (${attempt + 1}/${attempts})`);
+    }
+  }
+  throw lastError;
+}
+
 export function backupProject(projectRoot, project, ssh, logger = () => {}) {
   const backupDir = join(projectRoot, '.backups', timestamp());
   mkdirSync(backupDir, {recursive: true});
   const wpPath = shellQuote(project.ssh.wpPath);
-  const files = ssh.run(`tar -cf - -C ${wpPath}/wp-content themes plugins`, {encoding: 'buffer', timeout: 300000, maxBuffer: 512 * 1024 * 1024});
+  const files = readRemoteFileTree(
+    ssh,
+    `tar -cf - -C ${wpPath}/wp-content themes plugins`,
+    {encoding: 'buffer', timeout: 300000, maxBuffer: 512 * 1024 * 1024},
+    logger,
+  );
   writeFileSync(join(backupDir, 'themes-plugins.tar'), files);
   const wpConfig = shellQuote(project.ssh.wpPath);
   const dumpCommand = [
@@ -154,7 +174,7 @@ export async function seedContent(projectRoot, project, ssh, logger = () => {}) 
     `mv ${shellQuote(staging + '/content/site-data.json')} ${shellQuote(staging + '/site-data.json')}`,
     `mv ${shellQuote(staging + '/content/media-map.json')} ${shellQuote(staging + '/media-map.json')}`,
   ].join(' && '));
-  const output = ssh.wp(['eval-file', `${staging}/seed.php`, `${staging}/media-map.json`]);
+  const output = ssh.wp(['eval-file', `${staging}/seed.php`, `${staging}/media-map.json`, `${staging}/site-data.json`]);
   logger(output.trim());
   ssh.wp(['cache', 'flush']);
   ssh.wp(['rewrite', 'flush']);

@@ -79,6 +79,8 @@ node harness/cli.mjs --project <site-dir> configure-seo
 
 `deploy` 会在插件基线后自动执行同一配置。Harness 负责跳过账户连接、approved modules、organization、CPT/taxonomy titles/sitemaps、rewrite/cache 和 XML 验收；项目 `project.json` 只声明业务 post types、taxonomies、noindex 和 organization。激活插件后必须实际请求 `/sitemap_index.xml` 与业务子 sitemap；HTTP 200 还要确认 XML，不把 HTML 404 页或 WordPress core sitemap 误报为 Rank Math 接管。
 
+自动验收不是只请求 `/page-sitemap.xml`：Harness 从 project 配置派生每个启用中的 post type 和 taxonomy 子地图，逐一检查 HTTP 200 与 XML 标记；私有 RFQ 模型不进入派生列表。成功回执应保留 index、post/page、产品 CPT 和业务 taxonomy 的状态或原始 XML 证据，感谢页 query 参数不作为可索引落地页。
+
 ## 当前唯一 SEO 实现：Rank Math Free
 
 本方案新站统一使用 Rank Math 免费版；不同时启用其他完整 SEO 插件，不做旧插件适配、回退或历史 SEO 数据导入。旧版本实验结果只作历史记录，不能作为新站安装说明。
