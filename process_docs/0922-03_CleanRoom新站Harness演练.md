@@ -151,3 +151,7 @@
 ### RFQ 退役完成
 
 - Fluent Forms 成为询盘唯一主人（表单 id=3 + Entries 管理入口）；原生 RFQ CPT/菜单/短代码全部摘除，侧边栏不再显示，历史 2 条测试数据保留在数据库中未删除。verify 的 contentCounts 同步移除 RFQ 项。
+
+### SMTP 命令化完成
+
+- `harness smtp configure/test` 落地（eval-file 暂存方式，避免内联引号问题）；Brevo 凭据配置与测试发信均实测通过（测试邮件已发往 1314jackzhang@gmail.com 待确认收件）。规范 #26 补充命令用法。

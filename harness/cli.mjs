@@ -12,6 +12,7 @@ import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
 import {assignTemplate, auditFields, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
 import {rotateCredentials, showCredentials} from './lib/credentials.mjs';
+import {configureSmtp, testSmtp} from './lib/smtp.mjs';
 import {
   backupProject,
   clearHostingerCache,
@@ -52,6 +53,7 @@ Project commands:
   template assign         Assign a page template after validating it renders the body
   credentials show|rotate Hand over site credentials, or regenerate the admin password
   audit-fields           Verify every stored value has an admin-editable ACF field
+  smtp configure|test    Set up the sending channel (Brevo) and send a test email
   wp <args...>            Run WP-CLI through SSH
   ssh                     Open an SSH session
   open                    Open the Hostinger SSH-access page
@@ -184,7 +186,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
 
     const site = context(options);
     const {root, project, ssh} = site;
-    const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials', 'audit-fields'];
+    const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials', 'audit-fields', 'smtp'];
     if (remoteCommands.includes(command) && !ssh) throw new Error('Complete project.json ssh before running remote commands');
     const base = `https://${project.domain}`;
 
@@ -253,6 +255,14 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
     if (command === 'audit-fields') {
       const report = await auditFields(site, args, logger);
       return report.pass ? 0 : 1;
+    }
+    if (command === 'smtp') {
+      const sub = firstValue(args);
+      const rest = args.slice(1);
+      if (sub === 'configure') await configureSmtp(site, rest, logger);
+      else if (sub === 'test') await testSmtp(site, rest, logger);
+      else throw new Error('usage: harness smtp configure|test');
+      return 0;
     }
     if (command === 'config') {
       logger(JSON.stringify({...project, ssh: {...project.ssh, keyPath: project.ssh ? '[redacted]' : undefined}}, null, 2));
