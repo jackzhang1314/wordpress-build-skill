@@ -5,7 +5,7 @@
 本仓库维护可复用建站工具、Skill 和参考网站。客户站应有独立源码、环境及自己的 AGENTS.md，不能直接套用本仓库的测试命令和示例状态。
 
 - 设计决策：[目标架构](docs/TARGET-ARCHITECTURE.md)；实际实现：[架构现状](docs/ARCHITECTURE.md)；使用方式：[上手指南](docs/GETTING-STARTED.md)。历史研究及实验记录不是当前功能清单。
-- 新站默认原生区块主题 + 业务插件/CPT/分类 + ACF + 原生模板/Patterns + 必要 PHP 动态块；不使用 Elementor，不承担旧站迁移。新增 [区块代表页样板](examples/b2b-block-starter/README.md) 已独立落地；历史 HONGDA PHP 示例保留；当前 Hostinger 预览站使用原生区块样板，实测范围以架构现状和验收证据为准。
+- v2 新站默认最小经典 PHP 主题 + 业务插件 CPT/taxonomy + ACF 本地字段 + SSH/WP-CLI 部署；规范见 [classic-acf-default](.agents/skills/wordpress-builder/references/classic-acf-default.md)。历史区块主题、HONGDA PHP 示例和区块样板保留为参考，不再作为新站默认。
 - 开始改动前检查目录、分支、HEAD 和未提交内容。现有共享工作区修改不得覆盖；实验环境与参考网站分别识别，不清空不明数据。
 
 ## 克隆后的依赖引导

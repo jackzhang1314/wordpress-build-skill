@@ -1,6 +1,6 @@
 ---
 name: wordpress-builder
-description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 阶段管线，把企业资料建成原生区块页面与 ACF 驱动的自由 HTML 模板，HTML 预览门先行，预览、修订后发布并配置首页与导航，支持任务恢复、分层部署和改动核验。
+description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 阶段管线；v2 新站默认经典 PHP 主题 + ACF 字段与业务插件 CPT/RFQ，通过 SSH/WP-CLI Harness 构建、预览、部署、验收和增量更新。
 ---
 
 # Codex WordPress 建站：8 阶段设计工程管线
@@ -11,7 +11,7 @@ description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 �
 
 按顺序执行 8 个阶段。阶段结论写入任务目录；恢复任务时先读取已有阶段文件、`status` 和远端状态，再从下一项未完成操作继续，不重复已确认的写入。
 
-生成或修改主题模板与 PHP 代码时，必读 [自由模板与主题代码工程规范](references/theme-code.md)——模板优先级、文档壳、ACF REST 细节、CSS 纪律、部署坑全部来自隔离站实测。
+**v2 新站默认 [经典 PHP 主题 + ACF](references/classic-acf-default.md)**：普通 PHP 模板承载视觉，ACF 承载可编辑内容，业务插件承载 CPT/taxonomy/RFQ；不要为新站默认引入 Block Theme。历史自由模板与区块规范仍用于旧站维护。生成或修改主题模板与 PHP 代码时，必读 [自由模板与主题代码工程规范](references/theme-code.md)——模板优先级、文档壳、ACF REST 细节、CSS 纪律、部署坑全部来自隔离站实测。
 
 ## 阶段 1：Brief
 
