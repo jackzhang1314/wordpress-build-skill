@@ -37,8 +37,7 @@
 - `docs/19-经典主题ACF生产部署与Harness.md`
 - `.agents/skills/wordpress-builder/references/classic-acf-default.md`
 
-## 遗留
+## 遗留状态（2026-09-22 复核）
 
-- Rank Math setup wizard 级配置和 Rank Math Sitemap 接管仍未完成。
-- Hostinger provision（生成子域 + WP install）仍走 Hostinger CLI 手工编排，未并入 `harness provision`。
-- 项目 seed 脚本仍是项目业务契约；中央 harness 负责传输和执行，不解析业务字段。
+- Rank Math 与 Hostinger provision 已在 [0922-02](0922-02_HarnessV2开通与SEO闭环.md) 并入中央 Harness。
+- 项目 seed 脚本继续作为项目业务契约；中央 harness 负责传输、执行和验收，不解析业务字段。

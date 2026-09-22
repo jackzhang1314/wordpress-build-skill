@@ -6,6 +6,7 @@ export const slug = /^[a-z0-9][a-z0-9-]*$/;
 
 export const projectSchema = z.object({
   title: z.string().min(2),
+  description: z.string().default(''),
   slug: z.string().regex(slug).optional(),
   type: z.string().default('wordpress-b2b'),
   domain: z.string().regex(/^$|^[a-z0-9][a-z0-9.-]*\.[a-z]{2,}$/i),
@@ -31,6 +32,9 @@ export const projectSchema = z.object({
   hostinger: z.object({
     user: z.string().min(1),
     order: z.number().int().positive().optional(),
+    adminUser: z.string().min(1).default('codexadmin'),
+    adminEmail: z.string().email().optional(),
+    datacenter: z.string().min(1).optional(),
   }).optional(),
   media: z.object({
     sources: z.array(z.object({
@@ -43,6 +47,22 @@ export const projectSchema = z.object({
     script: z.string().default('scripts/seed.php'),
     data: z.string().default('content/site-data.json'),
   }).default({enabled: false, script: 'scripts/seed.php', data: 'content/site-data.json'}),
+  seo: z.object({
+    organization: z.string().min(1).optional(),
+    postTypes: z.array(z.object({
+      name: z.string().regex(/^[a-z0-9_-]+$/),
+      sitemap: z.boolean().default(true),
+      metaBox: z.boolean().default(true),
+      richSnippet: z.enum(['off','article','product']).default('off'),
+    })).default([]),
+    taxonomies: z.array(z.object({
+      name: z.string().regex(/^[a-z0-9_-]+$/),
+      sitemap: z.boolean().default(true),
+      metaBox: z.boolean().default(true),
+      richSnippet: z.enum(['off','article','product']).default('off'),
+    })).default([]),
+    noindex: z.array(z.string().regex(/^[a-z0-9_-]+$/)).default([]),
+  }).default({}),
   paths: z.object({
     theme: z.string().default('theme'),
     plugin: z.string().default('plugin'),

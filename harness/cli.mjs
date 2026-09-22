@@ -6,12 +6,15 @@ import {pathToFileURL} from 'node:url';
 import {loadProject, resolveProjectRoot} from './lib/config.mjs';
 import {commandExists} from './lib/process.mjs';
 import {createSSH} from './lib/ssh.mjs';
+import {provisionHostinger} from './lib/hostinger.mjs';
+import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
 import {
   backupProject,
   clearHostingerCache,
   importMedia,
+  configureWordPress,
   restoreFiles,
   seedContent,
   syncCode,
@@ -38,6 +41,9 @@ Project commands:
   status                  Show remote content counts and active plugins
   rollback <backup-id>    Restore theme/plugin files
   cache                   Clear the Hostinger site cache
+  provision [options]     Create Hostinger site/WP, then deploy
+  configure-seo           Back up DB and configure Rank Math Free
+  setup                   Configure core WP, plugins and Rank Math
   wp <args...>            Run WP-CLI through SSH
   ssh                     Open an SSH session
   open                    Open the Hostinger SSH-access page
@@ -47,6 +53,19 @@ Deploy options:
   --with-content          Force content seeding
   --skip-content          Do not seed in this run
   --json                  Machine-readable output
+
+Provision options:
+  --domain <domain>       Use a known domain instead of a generated subdomain
+  --order <id>            Hostinger order id if absent from project.json
+  --admin-user <user>     WordPress admin login (default codexadmin)
+  --admin-email <email>   WordPress admin email
+  --ssh-host <host>       SSH host to save after provisioning
+  --ssh-port <port>       SSH port to save after provisioning
+  --ssh-user <user>       SSH user to save after provisioning
+  --ssh-key <path>        Private key path to save after provisioning
+  --datacenter <code>     Required for the first site on a new plan
+  --no-deploy             Create/install only; do not run the deploy pipeline
+  WP_ADMIN_PASSWORD is read from the environment when supplied; otherwise a private random password is generated.
 `;
 
 function outputResult(payload, json, logger) {
@@ -161,6 +180,34 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
     if (remoteCommands.includes(command) && !ssh) throw new Error('Complete project.json ssh before running remote commands');
     const base = `https://${project.domain}`;
 
+    if (command === 'provision') {
+      const result = await provisionHostinger(root, project, args, {execFile: execFileSync, logger});
+      if (args.includes('--no-deploy')) {
+        outputResult(result, json, logger);
+        return 0;
+      }
+      logger('\nContinuing with first deployment');
+      return main(['--project', root, 'deploy', '--with-media', '--with-content'], logger, errors);
+    }
+    if (command === 'configure-seo') {
+      if (!ssh) throw new Error('SSH configuration is required for Rank Math');
+      const backup = backupProject(root, project, ssh, logger);
+      configureWordPress(project, ssh, logger);
+      await syncRemotePlugins(project, ssh, logger);
+      configureRankMath(project, ssh, {logger});
+      const cache = clearHostingerCache(project, {execFile: execFileSync});
+      logger(`  ${cache.pass ? 'OK ' : 'WARN'} Hostinger cache ${cache.detail}`);
+      await verifyRankMath(project, ssh, {logger});
+      outputResult({pass: true, backup: backup.manifest.id}, json, logger);
+      return 0;
+    }
+    if (command === 'setup') {
+      if (!ssh) throw new Error('SSH configuration is required for setup');
+      configureWordPress(project, ssh, logger);
+      await syncRemotePlugins(project, ssh, logger);
+      configureRankMath(project, ssh, {logger});
+      return 0;
+    }
     if (command === 'config') {
       logger(JSON.stringify({...project, ssh: {...project.ssh, keyPath: project.ssh ? '[redacted]' : undefined}}, null, 2));
       return 0;
@@ -191,7 +238,8 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       if (!project.domain) throw new Error('project.domain is empty');
       const pages = await verifyPages(base, project.livePages, project.contentMarkers);
       const database = await verifyDatabase(project, {wp: input => ssh.wp(input)});
-      const result = {pass: pages.pass && database.pass, pages, database};
+      const seo = project.requiredPlugins.includes('seo-by-rank-math') ? await verifyRankMath(project, ssh) : {pass: true};
+      const result = {pass: pages.pass && database.pass && seo.pass, pages, database, seo};
       if (!json) {
         for (const page of pages.results) {
           const details = [page.status, `H1 ${page.h1}`, `skips ${page.skips}`];
@@ -217,6 +265,8 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
         await syncRemotePlugins(project, ssh, logger);
         await syncCode(root, project, ssh, logger);
         rollbackNeeded = true;
+        configureWordPress(project, ssh, logger);
+        configureRankMath(project, ssh, {logger});
         await importMedia(root, project, ssh, {force: args.includes('--with-media'), logger});
         if (!args.includes('--skip-content') && (args.includes('--with-content') || !existsSync(join(root, '.seed-state.json')))) {
           await seedContent(root, project, ssh, logger);

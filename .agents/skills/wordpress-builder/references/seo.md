@@ -69,6 +69,16 @@ robots.txt 控制抓取，noindex 控制索引：要让 Google 读取 noindex，
 
 依据：[Core Web Vitals](https://developers.google.com/search/docs/appearance/core-web-vitals)。结构化数据测试工具的结果与真实搜索表现单独记录。SEO 技术、业务功能、视觉认可分别验收，不用一个总分互相抵消。
 
+## Harness v2 自动配置
+
+生产站首次部署和后续部署不得只 `plugin activate seo-by-rank-math`。使用：
+
+```bash
+node harness/cli.mjs --project <site-dir> configure-seo
+```
+
+`deploy` 会在插件基线后自动执行同一配置。Harness 负责跳过账户连接、approved modules、organization、CPT/taxonomy titles/sitemaps、rewrite/cache 和 XML 验收；项目 `project.json` 只声明业务 post types、taxonomies、noindex 和 organization。激活插件后必须实际请求 `/sitemap_index.xml` 与业务子 sitemap；HTTP 200 还要确认 XML，不把 HTML 404 页或 WordPress core sitemap 误报为 Rank Math 接管。
+
 ## 当前唯一 SEO 实现：Rank Math Free
 
 本方案新站统一使用 Rank Math 免费版；不同时启用其他完整 SEO 插件，不做旧插件适配、回退或历史 SEO 数据导入。旧版本实验结果只作历史记录，不能作为新站安装说明。

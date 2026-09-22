@@ -12,4 +12,5 @@ For new WordPress B2B sites, prefer the production-tested classic architecture:
 
 Production evidence and deploy commands: `docs/19-经典主题ACF生产部署与Harness.md`.
 
-8. **Use the central v2 harness**, not a per-site copy: `node harness/cli.mjs --project <site-dir> check|backup|deploy|verify|status|rollback`. The CLI owns orchestration; `project.json` owns site-specific paths, models and acceptance counts.
+8. **Use the central v2 harness**, not a per-site copy: `node harness/cli.mjs --project <site-dir> provision|check|backup|deploy|verify|status|rollback|configure-seo`. The CLI owns orchestration; `project.json` owns site-specific paths, models, SEO post types and acceptance counts.
+9. **Rank Math Free is configured by the harness**, not by a setup-wizard detour. It must skip account connection, enable only Sitemap/Schema/ACF/Redirections/404 Monitor, write CPT/taxonomy title and sitemap options, flush rewrites, then verify frontend initialization and XML sitemaps. Provisioning credentials are written to a private 0600 file, never to Git or logs.

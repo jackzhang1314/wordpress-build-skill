@@ -70,6 +70,20 @@ export async function syncCode(projectRoot, project, ssh, logger = () => {}) {
   logger('  ✅ Theme/plugin synced and activated');
 }
 
+export function configureWordPress(project, ssh, logger = () => {}) {
+  if (!project.ssh) throw new Error('SSH configuration is required to configure WordPress');
+  ssh.wp(['option', 'update', 'blogname', project.title]);
+  ssh.wp(['option', 'update', 'blogdescription', project.description || '']);
+  ssh.wp(['option', 'update', 'timezone_string', 'Asia/Shanghai']);
+  ssh.wp(['option', 'update', 'permalink_structure', '/%postname%/']);
+  ssh.wp(['option', 'update', 'default_comment_status', 'closed']);
+  ssh.wp(['option', 'update', 'default_ping_status', 'closed']);
+  ssh.wp(['rewrite', 'flush']);
+  ssh.wp(['cache', 'flush']);
+  logger('  OK  WordPress core options configured');
+  return {pass: true};
+}
+
 export async function syncRemotePlugins(project, ssh, logger = () => {}) {
   const installed = JSON.parse(ssh.wp(['plugin', 'list', '--format=json']));
   const find = name => installed.find(plugin => plugin.name === name);

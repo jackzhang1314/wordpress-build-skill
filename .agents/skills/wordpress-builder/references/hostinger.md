@@ -17,6 +17,18 @@ CLI 和 MCP 使用同一供应商 API，不重复封装同一操作。必须查�
 
 Hostinger AI/WordPress MCP 插件不是部署必需项，不加入统一必装清单。缓存与安全能力按实际主机评估，避免与主机服务重叠；发现主机预装插件先列清单、说明归属，不自动批量删除。Rank Math 保持唯一 SEO 输出负责人。
 
+## Harness v2 首次开通
+
+新站授权后使用中央 Harness，不用临时脚本：
+
+```bash
+node harness/cli.mjs --project <site-dir> provision
+```
+
+它按官方 CLI 执行：website list → 必要时 free subdomain/website create → installation list → 必要时 WP install → 轮询异步结果 → 回写目标路径。新管理员凭据只写入项目忽略目录的 0600 JSON；CLI 回执只允许出现路径，不允许出现密码。SSH host/port/key 不能从 Hostinger website API 假设时，必须用 `--ssh-host/--ssh-port/--ssh-user/--ssh-key` 显式提供；缺失时不冒充可部署。
+
+已存在网站/安装时命令必须幂等：只回读和补齐 project.json，不重复建站，不覆盖已有 WordPress。创建成功后默认进入首次 deploy；如只做开通，用 `--no-deploy`。
+
 ## 项目配置
 
 客户项目 AGENTS.md 链接本规范，记录实际部署配置位置与已实现命令。私有目标配置放项目忽略目录（本仓库为 `.wordpress-builder/`），至少区分：
