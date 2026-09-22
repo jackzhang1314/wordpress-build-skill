@@ -11,6 +11,7 @@ import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
 import {assignTemplate, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
+import {rotateCredentials, showCredentials} from './lib/credentials.mjs';
 import {
   backupProject,
   clearHostingerCache,
@@ -49,6 +50,7 @@ Project commands:
   post push <article>     Create/update a single post from JSON (--adopt-remote on conflict)
   nav add|remove          Surgical menu item operations (no full rebuild)
   template assign         Assign a page template after validating it renders the body
+  credentials show|rotate Hand over site credentials, or regenerate the admin password
   wp <args...>            Run WP-CLI through SSH
   ssh                     Open an SSH session
   open                    Open the Hostinger SSH-access page
@@ -181,7 +183,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
 
     const site = context(options);
     const {root, project, ssh} = site;
-    const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template'];
+    const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials'];
     if (remoteCommands.includes(command) && !ssh) throw new Error('Complete project.json ssh before running remote commands');
     const base = `https://${project.domain}`;
 
@@ -233,6 +235,14 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
     if (command === 'template') {
       if (firstValue(args) !== 'assign') throw new Error('usage: harness template assign <slug> --template <file.php>');
       await assignTemplate(site, args.slice(1), logger);
+      return 0;
+    }
+    if (command === 'credentials') {
+      const sub = firstValue(args) ?? 'show';
+      const rest = args.filter(item => item !== sub);
+      if (sub === 'show') await showCredentials(site, rest, logger);
+      else if (sub === 'rotate') await rotateCredentials(site, rest, logger);
+      else throw new Error('usage: harness credentials show|rotate [--json]');
       return 0;
     }
     if (command === 'config') {
