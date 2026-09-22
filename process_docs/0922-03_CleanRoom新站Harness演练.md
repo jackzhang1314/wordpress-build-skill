@@ -165,3 +165,10 @@
 - FF 表单样式统一到主题 token；提交按钮 label 为空（表单配置缺陷，不在本次范围）→ 主题层 `.ff-btn-submit::before` 提供 "Send specifications" 文案，v4.0.1 单独部署验证。
 - 验收截图（before/after）：home、products、product detail、category、industry、guide、about、contact、404、search、移动端 home+menu+contact；懒加载与 LiteSpeed 缓存造成的两类截图假象已记录规避方法。
 - 沉淀：新增 `references/design-classic.md`（经典 PHP 主题视觉规范，Block 主题规则仍见 design.md）。
+
+### 第九轮：Product Design 审计驱动的体验修复（2026-09-23）
+
+- 按 Product Design $audit 工作流对本站核心转化路径（首页→目录→详情→行业→指南→About→RFQ）重新取证审计：11 张桌面/移动截图 + a11y DOM 探针（landmark、alt、label、tap-target、焦点）。
+- 发现并修复 4 项（v4.0.2，deploy 全绿）：① hero 大图 alt 为空（WCAG 1.1.1）→ 模板层 alt 兜底；② 指南上下篇导航只有单卡时右对齐悬空 → only-child 占满整行；③ guide-nav label 用 --faint（约 2.9:1）→ --muted（约 6.4:1）；④ 移动端卡片标题/页脚链接命中区 <24px → 触控 padding。另将产品详情"相关产品"从纯随机改为同分类优先、随机补位（商品推荐相关性）。
+- 证据极限：FF 表单 ajax 提交在 CDP 自动化环境未触发（无 XHR），成功/错误态截图不可得，标记为人工复核项；屏幕阅读器与完整 WCAG 合规不在截图审计范围。
+- 过程冲突：并行任务在 theme/mu-plugins/ 投放含密码的 SMTP mu-plugin（secret-scan 正确拦截）并修改 project.json；本次未动、未提交他人文件，采用临时隔离→部署→原样恢复的方式通过门禁，提交仅含本任务 4 个文件。
