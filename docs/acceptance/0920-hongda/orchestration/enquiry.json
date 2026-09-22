@@ -1,0 +1,10 @@
+{
+  "testedAt": "2026-09-19T19:00:51.461Z",
+  "requiredFields": 4,
+  "invalidProductRejected": true,
+  "validSubmission": true,
+  "entries": 1,
+  "productId": "11",
+  "localNotifications": 1,
+  "externalDelivery": "not-tested"
+}

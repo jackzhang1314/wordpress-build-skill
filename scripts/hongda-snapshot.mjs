@@ -1,0 +1,27 @@
+import {readFile,writeFile,cp,readdir,mkdir,chmod} from 'node:fs/promises';
+import {join,resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const lab=JSON.parse(await readFile(process.env.WP_LAB_POINTER??'.lab/hongda-latest.json','utf8'));
+const c=JSON.parse(await readFile(join(lab.artifacts,'connection.json'),'utf8'));
+assert.ok(['http://127.0.0.1:9464','http://127.0.0.1:9466'].includes(c.site),'Only the isolated preview may be backed up');
+const headers={Authorization:'Basic '+Buffer.from(c.username+':'+c.password).toString('base64')};
+const r=await fetch(c.site+'/wp-json/hongda-lab/v1/snapshot',{method:'POST',headers,redirect:'error',signal:AbortSignal.timeout(120000)});
+if(!r.ok)throw new Error(`Snapshot failed (${r.status}): ${await r.text()}`);
+const result=await r.json();assert.match(result.id,/^\d{8}-\d{6}-[a-f0-9]{10}$/);
+const directory=join(lab.artifacts,'snapshots',result.id);
+for(const [file,hash] of [['database.sqlite',result.databaseSha256],['uploads.zip',result.uploadsSha256]])assert.equal(createHash('sha256').update(await readFile(join(directory,file))).digest('hex'),hash);
+await cp(join(lab.run,'source'),join(directory,'source'),{recursive:true});
+await cp(join(lab.run,'mu-plugins'),join(directory,'mu-plugins'),{recursive:true,filter:p=>!p.endsWith('snapshot-probe.php')});
+const plugins=resolve(process.env.WP_TEST_PLUGINS_PATH??'.lab/wordpress/wp-content/plugins');
+await mkdir(join(directory,'dependencies'));
+for(const name of ['advanced-custom-fields','fluentform','autodescription'])await cp(join(plugins,name),join(directory,'dependencies',name),{recursive:true});
+await cp(join(lab.artifacts,'connection.json'),join(directory,'connection.json'));
+await chmod(join(directory,'connection.json'),0o600);
+const inventory=[];
+async function hashFiles(dir,base=''){for(const f of await readdir(dir,{withFileTypes:true})){const rel=join(base,f.name);if(f.isSymbolicLink())throw new Error('Snapshot symlinks are unsupported: '+rel);if(f.isDirectory())await hashFiles(join(dir,f.name),rel);else inventory.push({path:rel,sha256:createHash('sha256').update(await readFile(join(dir,f.name))).digest('hex')});}}
+await hashFiles(directory);
+const manifest={...result,sourceUrl:c.site,files:inventory};
+await writeFile(join(directory,'manifest.json'),JSON.stringify(manifest,null,2),{mode:0o600});
+await writeFile(process.env.WP_SNAPSHOT_POINTER??'.lab/hongda-snapshot-latest.json',JSON.stringify({directory}),{mode:0o600});
+console.log(JSON.stringify({directory,files:inventory.length,uploads:result.uploads.length,scope:result.scope},null,2));

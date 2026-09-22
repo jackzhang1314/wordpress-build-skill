@@ -1,0 +1,8 @@
+{
+  "hooks": [
+    {
+      "event": "SessionStart",
+      "script": "echo 'WordPress Official Agent Skills active. Skills: blueprint, wordpress-router, wp-abilities-api, wp-abilities-audit, wp-abilities-verify, wp-block-development, wp-block-themes, wp-interactivity-api, wp-performance, wp-phpstan, wp-playground, wp-plugin-development, wp-plugin-directory-guidelines, wp-project-triage, wp-rest-api, wp-wpcli-and-ops, wpds. Say the skill name to invoke it.'"
+    }
+  ]
+}

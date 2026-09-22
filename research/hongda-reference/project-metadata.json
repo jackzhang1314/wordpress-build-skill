@@ -1,0 +1,14 @@
+{
+  "name": "hongda-machinery",
+  "subdomain": "hongda-machinery.pages.dev",
+  "domains": [
+    "hongda-machinery.pages.dev"
+  ],
+  "production_branch": "main",
+  "created_on": "2026-09-02T12:38:15.210255Z",
+  "latest_deployment": {
+    "id": "b0401c2b-3986-48ad-9d7a-2830ccfa77ed",
+    "url": "https://b0401c2b.hongda-machinery.pages.dev",
+    "created_on": "2026-09-03T11:27:34.589286Z"
+  }
+}

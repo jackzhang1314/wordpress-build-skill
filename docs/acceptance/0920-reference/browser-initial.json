@@ -1,0 +1,125 @@
+{
+  "recordedAt": "2026-09-19T16:33:25.893Z",
+  "run": "reference-1HgeGW",
+  "site": {
+    "wordpress": "7.1.1",
+    "php": "8.3.32",
+    "acf": "6.8.9",
+    "fluentform": "6.2.9",
+    "theme": "site-reference",
+    "isBlockTheme": false,
+    "products": [
+      8,
+      9,
+      10
+    ],
+    "collection": 2,
+    "articles": [
+      11,
+      12,
+      13
+    ],
+    "form": 3,
+    "pages": {
+      "home": 4,
+      "about": 5,
+      "journal": 6,
+      "contact": 7
+    },
+    "mailMode": "local-capture",
+    "scope": "isolated-fictional-reference"
+  },
+  "checks": {
+    "browser_acf_save_and_frontend": true,
+    "browser_native_body_save_and_frontend": true,
+    "browser_featured_image_removal": true,
+    "form_required_validation": true,
+    "form_success_ui": true,
+    "form_record_count": 1,
+    "local_mail_count": 1,
+    "external_mail_delivery": "not-tested"
+  },
+  "viewport": [
+    {
+      "page": "/",
+      "width": 390,
+      "scrollWidth": 390,
+      "navVisible": true
+    },
+    {
+      "page": "/contact/",
+      "width": 390,
+      "scrollWidth": 390
+    }
+  ],
+  "knownIssues": [
+    "WP editor Meta Boxes starts collapsed; its pointer target overlapped the resize separator, keyboard Enter opened it.",
+    "WP editor reports a global-styles iframe warning; no frontend JS error was observed."
+  ],
+  "files": [
+    {
+      "path": "plugin/site-model.php",
+      "sha256": "2a35d90350262c18ffaa70be2d28fc1e648aed0ae59ec02508e4e7f33c8d7878"
+    },
+    {
+      "path": "theme/404.php",
+      "sha256": "ac3df9a1f151b7a6c67521e7b6ddd0847f45937cdae40368b3e64f421f536b0e"
+    },
+    {
+      "path": "theme/archive.php",
+      "sha256": "f87d71a52fab508fec2f1f2062b1e9fc5ba4659c80dcd06ae717a653f1138af7"
+    },
+    {
+      "path": "theme/footer.php",
+      "sha256": "a9e75fe8b99f11bed5ba5210ba7d1aabdaf77aba8f5a752682bed51827d716b8"
+    },
+    {
+      "path": "theme/front-page.php",
+      "sha256": "c2ffb2027ed3a3235f1c82bce49b0d783fcdba1dfe3bef600188e173a457f07a"
+    },
+    {
+      "path": "theme/functions.php",
+      "sha256": "e198dd3dda1dbc878fea49d3f79a15ffbe8093bc8edab9787ff1532f39edaffe"
+    },
+    {
+      "path": "theme/header.php",
+      "sha256": "c0a0172181d744f8ad9152ac6efb021c890aa1c86b458f0af308f4485b5b0600"
+    },
+    {
+      "path": "theme/index.php",
+      "sha256": "fd8e7962ba910207dffa76829ebf48c79bb87a39451667b609497dba94ce5b4d"
+    },
+    {
+      "path": "theme/page.php",
+      "sha256": "01ed9eea30c8187c2fcf0019891c41f70308628c7728a114224e6f241f2fcb39"
+    },
+    {
+      "path": "theme/parts/card.php",
+      "sha256": "9b8e13e6f95093143b6fc24531d6fd31733dbac9e8c321e3b7976fa0211ff49b"
+    },
+    {
+      "path": "theme/search.php",
+      "sha256": "95921119dc57074e88c162a1f6d36eb35a12f3756f64a710a60a2155529d8db3"
+    },
+    {
+      "path": "theme/single-site_product.php",
+      "sha256": "b3fa6249510ed60a49ebab76ce8e5a2bd40311c9385a7a753903cfa9dd49b46b"
+    },
+    {
+      "path": "theme/single.php",
+      "sha256": "01ed9eea30c8187c2fcf0019891c41f70308628c7728a114224e6f241f2fcb39"
+    },
+    {
+      "path": "theme/style.css",
+      "sha256": "cf09d26a4a6b0ae6921b0494486a916eb4cfc18592ccbf20792f5dfc83e19871"
+    },
+    {
+      "path": "theme/taxonomy-product_collection.php",
+      "sha256": "92624e7e5ed994155b10288fc2ddbdc3ce9b732d62defc863de2f7c00486ad7d"
+    },
+    {
+      "path": "theme/theme.json",
+      "sha256": "741a00b2307feb6f84462025cfd4b9206031417a416efdb0cbbebd7e046fc08a"
+    }
+  ]
+}

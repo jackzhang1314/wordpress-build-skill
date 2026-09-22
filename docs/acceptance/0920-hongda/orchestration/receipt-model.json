@@ -1,0 +1,15 @@
+{
+  "projectHash": "5c1d2735a4023bdc93aee353253dfdca23c45dc57dbdff1fb4f5648c574731b9",
+  "stage": "model",
+  "outcome": "verified",
+  "summary": "Native equipment, category and industry objects exist; ACF edits round trip",
+  "checks": [
+    {
+      "name": "Native equipment, category and industry objects exist; ACF edits round trip",
+      "status": "pass"
+    }
+  ],
+  "evidence": [
+    "runtime.json"
+  ]
+}

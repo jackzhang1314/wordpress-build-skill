@@ -1,0 +1,131 @@
+{
+  "testedAt": "2026-09-20T00:16:47.723Z",
+  "profile": "b2b-native-free",
+  "sites": {
+    "primary": {
+      "inventory": {
+        "pass": true,
+        "checks": [
+          {
+            "slug": "advanced-custom-fields",
+            "expected": "6.8.9",
+            "actual": "6.8.9",
+            "active": true,
+            "pass": true
+          },
+          {
+            "slug": "fluentform",
+            "expected": "6.2.9",
+            "actual": "6.2.9",
+            "active": true,
+            "pass": true
+          },
+          {
+            "slug": "seo-by-rank-math",
+            "expected": "1.0.278",
+            "actual": "1.0.278",
+            "active": true,
+            "pass": true
+          },
+          {
+            "slug": "site-model",
+            "expected": "1.1.0",
+            "actual": "1.1.0",
+            "active": true,
+            "pass": true
+          }
+        ],
+        "unexpectedActive": []
+      },
+      "configuration": {
+        "acfFree": true,
+        "fieldRegistered": true,
+        "productType": true,
+        "category": true,
+        "formExists": true,
+        "formFields": [
+          "name",
+          "email",
+          "country",
+          "description",
+          "product_id"
+        ],
+        "notificationEnabled": true,
+        "rankMathFree": true,
+        "rankMathFrontend": true,
+        "rankMathModules": [
+          "sitemap",
+          "rich-snippet",
+          "acf",
+          "redirections",
+          "404-monitor"
+        ],
+        "previewNoindex": true,
+        "labOnly": true
+      }
+    },
+    "reuse": {
+      "inventory": {
+        "pass": true,
+        "checks": [
+          {
+            "slug": "advanced-custom-fields",
+            "expected": "6.8.9",
+            "actual": "6.8.9",
+            "active": true,
+            "pass": true
+          },
+          {
+            "slug": "fluentform",
+            "expected": "6.2.9",
+            "actual": "6.2.9",
+            "active": true,
+            "pass": true
+          },
+          {
+            "slug": "seo-by-rank-math",
+            "expected": "1.0.278",
+            "actual": "1.0.278",
+            "active": true,
+            "pass": true
+          },
+          {
+            "slug": "site-model",
+            "expected": "1.1.0",
+            "actual": "1.1.0",
+            "active": true,
+            "pass": true
+          }
+        ],
+        "unexpectedActive": []
+      },
+      "configuration": {
+        "acfFree": true,
+        "fieldRegistered": true,
+        "productType": true,
+        "category": true,
+        "formExists": true,
+        "formFields": [
+          "name",
+          "email",
+          "country",
+          "description",
+          "product_id"
+        ],
+        "notificationEnabled": true,
+        "rankMathFree": true,
+        "rankMathFrontend": true,
+        "rankMathModules": [
+          "sitemap",
+          "rich-snippet",
+          "acf",
+          "redirections",
+          "404-monitor"
+        ],
+        "previewNoindex": true,
+        "labOnly": true
+      }
+    }
+  },
+  "scope": "read-only existing local instances; production mail/spam/backup/performance gates are separate"
+}

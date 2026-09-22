@@ -1,0 +1,122 @@
+[
+  {
+    "path": ".agents/skills/defensive-data-design/SKILL.md",
+    "sha256": "f23ed215887193a3487e812de71a50a4e02409cfe3b018062061a47863266e68",
+    "bytes": 5306
+  },
+  {
+    "path": ".agents/skills/design-system-code-review/SKILL.md",
+    "sha256": "15dc8cc0cbfafb217c25b5ef683015257260f8a2db03944431ca8dae31322bdd",
+    "bytes": 2750
+  },
+  {
+    "path": ".agents/skills/design-system-contribution/SKILL.md",
+    "sha256": "55ee4dbea4dfc3ec14d237bee90a5fe730a142d0a734707e60c403fd585a580a",
+    "bytes": 3028
+  },
+  {
+    "path": ".agents/skills/design-system-ui-composition/SKILL.md",
+    "sha256": "841990c35eb1c93c18fafcabe589b0ccda4f38636c64a2f8cea1b9c4c7924656",
+    "bytes": 3506
+  },
+  {
+    "path": ".agents/skills/design-system-ui-review/SKILL.md",
+    "sha256": "f334d115b92a7b81e7de2d5014009fef345de5a95617a4a810627460abef9ce1",
+    "bytes": 3588
+  },
+  {
+    "path": ".agents/skills/emotion-to-scss-modules/SKILL.md",
+    "sha256": "f5483277c2289d14483c2cea0bcad2bfbf73103a84dd32dd53813982a23b4119",
+    "bytes": 3045
+  },
+  {
+    "path": ".agents/skills/package-runtime-compatibility/SKILL.md",
+    "sha256": "f4fa67fb48d0c91c6dc89d2a87b0aba1289aaecc82608cf37abd694433746749",
+    "bytes": 1292
+  },
+  {
+    "path": ".agents/skills/testing/SKILL.md",
+    "sha256": "4276d1aced7521d69a163fd0a71ecf1832432cb7d5d0c70af8bf9116f958c131",
+    "bytes": 1431
+  },
+  {
+    "path": ".agents/skills/testing/references/e2e.md",
+    "sha256": "dc7e81c6ebe8bba1252413f72592fffdf7d80c74dc2fe3cce7b068b2a405719a",
+    "bytes": 1800
+  },
+  {
+    "path": ".agents/skills/testing/references/jest.md",
+    "sha256": "6b2c6187b6d1a21f00737128c5f2844ffcffd2cb46294a07fa653ac1a15d5f83",
+    "bytes": 685
+  },
+  {
+    "path": ".agents/skills/testing/references/php.md",
+    "sha256": "b52207a9603855d8d9eabdede85d39e239015eaba778d4c5c4ba1e4df486e43f",
+    "bytes": 669
+  },
+  {
+    "path": "AGENTS.md",
+    "sha256": "50a3f41df3326f982b0a2e3d7a9c0ec68a126f573638320fb1699eeac5f07327",
+    "bytes": 10971
+  },
+  {
+    "path": "LICENSE.md",
+    "sha256": "ab2b32b2c482d181f7ea0a1806e22636b346f4daeed820595b118b2bff2b2888",
+    "bytes": 36411
+  },
+  {
+    "path": "README.md",
+    "sha256": "53ac7a16931eff5b5672fb48c7cb9eb5b4e2c458ee02ad1a180952ad9fd020d9",
+    "bytes": 6603
+  },
+  {
+    "path": "docs/contributors/code/package-runtime-compatibility.md",
+    "sha256": "8aee4386af4a20e37bc4ac61a89a9dc93c41ee9a8b4e4864d324cebf0e5f6ad2",
+    "bytes": 7742
+  },
+  {
+    "path": "docs/contributors/code/testing-overview.md",
+    "sha256": "b8881fad551de8994d2c59638061ca76e484315379b8387b001b000b745383d6",
+    "bytes": 31958
+  },
+  {
+    "path": "docs/contributors/design/design-system-packages.md",
+    "sha256": "2944d3dfdec9294702ee3ad671303d311f106721c2b81658180558f02f1bffd8",
+    "bytes": 8793
+  },
+  {
+    "path": "docs/contributors/documentation/copy-guide.md",
+    "sha256": "eb17e482cadace011f2c1b353fd41ac37cbeec48fb2d9b94d42a8079389c8efc",
+    "bytes": 18468
+  },
+  {
+    "path": "packages/components/CONTRIBUTING.md",
+    "sha256": "03c9664bb9a0503b6cc8b11f05f32ef2f813d6a29ef0eac60d3f73daf1de999c",
+    "bytes": 35924
+  },
+  {
+    "path": "packages/components/emotion-to-scss-modules.md",
+    "sha256": "7b88ac0004b15cfd427155b9c3d22c701a871ba7ad58363a2f50c7c8522808fe",
+    "bytes": 18874
+  },
+  {
+    "path": "packages/theme/README.md",
+    "sha256": "f550c4cf013cc49c5a97cfe7a2e3e850c9f97e684a40966bd122ecff4354b1c4",
+    "bytes": 18444
+  },
+  {
+    "path": "packages/theme/tokens/README.md",
+    "sha256": "d1aff7a3e057904eb83bd24bbdb5e887e411f796a3a43929db4fdb1fa5706a1b",
+    "bytes": 6017
+  },
+  {
+    "path": "packages/ui/CONTRIBUTING.md",
+    "sha256": "047b2c4a02dafe33e417e04627d41dcf2dd65f7148d6dd908a2320175df4b628",
+    "bytes": 20794
+  },
+  {
+    "path": "storybook/stories/design-system/patterns/destructive-actions.mdx",
+    "sha256": "399defa87cfa0cb9190cd99259d776c03fc9efa02b53b11ad38f2c4576eaec4b",
+    "bytes": 4629
+  }
+]

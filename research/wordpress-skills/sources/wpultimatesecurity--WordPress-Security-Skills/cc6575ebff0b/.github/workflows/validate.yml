@@ -1,0 +1,111 @@
+name: Validate skills
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validation dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ripgrep
+          python -m pip install "PyYAML==6.0.3" "git+https://github.com/agentskills/agentskills.git@69ef37e9424c0a7ea9dd2293b559e43ec8176379#subdirectory=skills-ref"
+
+      - name: Validate using official skills-ref
+        run: |
+          set -euo pipefail
+          for skill in skills/*; do
+            skills-ref validate "$skill"
+          done
+
+      - name: Smoke isolated installation and discovery
+        run: python scripts/smoke-install.py
+
+      - name: Run skill validation
+        run: ./scripts/validate-skills.sh
+
+      - name: Install PHPCS + WordPress Coding Standards + dependencies
+        run: |
+          set -euo pipefail
+          curl -fsSL -o phpcs.phar https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/3.9.0/phpcs.phar
+          chmod +x phpcs.phar
+          curl -fsSL -o wpcs.tar.gz https://github.com/WordPress/WordPress-Coding-Standards/archive/refs/tags/3.0.1.tar.gz
+          tar -xzf wpcs.tar.gz
+          curl -fsSL -o phpcsutils.tar.gz https://github.com/PHPCSStandards/PHPCSUtils/archive/refs/tags/1.0.10.tar.gz
+          tar -xzf phpcsutils.tar.gz
+          curl -fsSL -o phpcsextra.tar.gz https://github.com/PHPCSStandards/PHPCSExtra/archive/refs/tags/1.2.1.tar.gz
+          tar -xzf phpcsextra.tar.gz
+          ./phpcs.phar --config-set installed_paths "$(pwd)/WordPress-Coding-Standards-3.0.1,$(pwd)/PHPCSUtils-1.0.10,$(pwd)/PHPCSExtra-1.2.1"
+          ./phpcs.phar --config-set default_standard WordPress
+          ./phpcs.phar -i
+
+      - name: Run PHPCS on reference PHP files
+        run: |
+          set -euo pipefail
+          ./phpcs.phar --standard=phpcs.xml.dist skills/*/references/*.php
+
+      - name: Check external developer.wordpress.org links
+        run: |
+          set -euo pipefail
+          # Extract URL values only, without rg's multi-file filename prefixes.
+          urls="$(rg --no-filename -o 'https://developer\.wordpress\.org/[^)[:space:]>\"]+' skills/*/SKILL.md README.md | sort -u)"
+          [ -n "$urls" ] || { echo "::error::No WordPress reference URLs found"; exit 1; }
+          missing=0
+          while IFS= read -r url; do
+            if ! status="$(curl -sSL --connect-timeout 10 --max-time 20 -o /dev/null -w '%{http_code}' "$url")"; then
+              echo "::warning::Could not check reference (network failure): $url"
+              continue
+            fi
+            case "$status" in
+              404|410) echo "::error::Missing reference ($status): $url"; missing=1 ;;
+              2??) ;;
+              *) echo "::warning::Reference could not be verified ($status): $url" ;;
+            esac
+          done <<< "$urls"
+          exit "$missing"
+
+      - name: Scan checkout and reachable history for secrets
+        run: |
+          set -euo pipefail
+          scanner_dir="$(mktemp -d "$RUNNER_TEMP/gitleaks.XXXXXX")"
+          trap 'rm -rf "$scanner_dir"' EXIT
+          base=https://github.com/gitleaks/gitleaks/releases/download/v8.30.1
+          archive=gitleaks_8.30.1_linux_x64.tar.gz
+          curl -fsSL "$base/$archive" -o "$scanner_dir/$archive"
+          curl -fsSL "$base/gitleaks_8.30.1_checksums.txt" -o "$scanner_dir/checksums.txt"
+          (cd "$scanner_dir" && rg "^[a-f0-9]{64}  $archive$" checksums.txt | sha256sum --check --strict)
+          tar -xzf "$scanner_dir/$archive" -C "$scanner_dir" gitleaks
+          "$scanner_dir/gitleaks" git --log-opts="--all" --redact --no-banner .
+          "$scanner_dir/gitleaks" dir --redact --no-banner .
+
+      - name: Remind if README tables may be out of sync
+        run: |
+          set -euo pipefail
+          skill_count="$(find skills -mindepth 1 -maxdepth 1 -type d | wc -l)"
+          readme_skill_rows="$(rg '^\| \[' README.md | wc -l)"
+          if [ "$skill_count" -ne "$readme_skill_rows" ]; then
+            echo "::warning::README 'The skills' table has $readme_skill_rows rows but skills/ has $skill_count directories. Please sync README.md and docs/coverage-matrix.md."
+          fi
+
+      - name: Inspect skill files
+        run: |
+          rg --files skills
+          rg -n "name:|description:|references/" skills
+          find skills -maxdepth 2 -type f | sort

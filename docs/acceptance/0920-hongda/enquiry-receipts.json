@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "id": 1,
+      "form": 3,
+      "productId": "11"
+    }
+  ],
+  "mail": [
+    {
+      "to": "reference@example.test",
+      "subject": "HONGDA preview inquiry",
+      "bodySha256": "f4867826301eb8ae42580b308010e594f71992bf36951000e4094a0e6d537f2f"
+    }
+  ]
+}

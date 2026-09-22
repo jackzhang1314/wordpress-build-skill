@@ -1,0 +1,28 @@
+{
+  "testedAt": "2026-09-21T15:45:37.292Z",
+  "scope": "local-reuse-full-incremental-rehearsal-mid-update-enquiries-not-full-deployment",
+  "slug": "harness-enquiry-34c8650c99",
+  "insertionPoints": [
+    "pre-reset",
+    "post-reset"
+  ],
+  "checks": {
+    "fixtureCreated": true,
+    "snapshotExported": true,
+    "preflightDetectedConflict": true,
+    "enquiryBeforeReset": true,
+    "resetSucceeded": true,
+    "enquiryAfterReset": true,
+    "newFileTakesOver": true,
+    "preExistingEnquiriesUnchanged": true,
+    "enquiryPreservedprereset": true,
+    "enquiryPreservedpostreset": true,
+    "cleanup": true
+  },
+  "notCovered": [
+    "hostinger-remote-incremental-run",
+    "form-submission-via-browser-during-update",
+    "plugin-database-migration",
+    "binary-file-transport"
+  ]
+}

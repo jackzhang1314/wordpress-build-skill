@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "wordpress-official-agent-skills",
+  "displayName": "WordPress Official Agent Skills",
+  "version": "1.0.0",
+  "logo": "./icon.svg",
+  "description": "Official WordPress agent-skills packaged as a Claude Code plugin. Mirror of WordPress/agent-skills — 17 expert skills covering plugin development, block development, REST API, WP-CLI, performance, PHPStan, Playground, Abilities API, and more.",
+  "author": {
+    "name": "Al Amin Ahamed",
+    "email": "mrabir.ahamed@gmail.com"
+  },
+  "homepage": "https://github.com/mralaminahamed/wordpress-official-agent-skills",
+  "repository": "https://github.com/mralaminahamed/wordpress-official-agent-skills",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "wordpress",
+    "agent-skills",
+    "wp-plugin",
+    "gutenberg",
+    "wp-cli",
+    "phpstan",
+    "rest-api",
+    "claude-code"
+  ],
+  "upstream": {
+    "source": "https://github.com/WordPress/agent-skills",
+    "branch": "trunk",
+    "skillsPath": "skills/"
+  }
+}

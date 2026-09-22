@@ -1,0 +1,55 @@
+{
+  "recordedAt": "2026-09-19T20:00:44.710Z",
+  "checks": {
+    "lint": "pass",
+    "readinessUnitTests": 4,
+    "skillValidation": "pass",
+    "officialModules": 10
+  },
+  "files": [
+    {
+      "path": "scripts/hongda-site.mjs",
+      "sha256": "c0f755864b50ff012e94b602999c637e48e0c0476193da3df6474a7bdcc37fe1"
+    },
+    {
+      "path": "scripts/hongda-snapshot.mjs",
+      "sha256": "03d884a7d0854cfbb58e816abb40e10a6e68195cfc6e765dc35bb0c08d634318"
+    },
+    {
+      "path": "scripts/hongda-restore.mjs",
+      "sha256": "e717eb46213923a2b79d5b95e8e9cbfb8c974ce43efbb0b6b6ff9333a527f035"
+    },
+    {
+      "path": "scripts/wordpress-ready.mjs",
+      "sha256": "414da86e160463d63450419816d914b49314d806fc7995eb2a81aa8e60f732ae"
+    },
+    {
+      "path": "scripts/test-hongda-enquiry.mjs",
+      "sha256": "e1f0402dbe25f8e87828c84b33022f71adabf7f55e0df256b6288cc0be80e0e8"
+    },
+    {
+      "path": "scripts/test-hongda-recovery.mjs",
+      "sha256": "ac79a53717e7c9cafe5caf2ed0e4c62901c289ba55b74a2ca6bd673780863471"
+    },
+    {
+      "path": "scripts/fixtures/hongda/snapshot.php",
+      "sha256": "89ab3dbe98f5337b7fddb63fecbc984ed057c7d83785fd3667ef7dace396b3eb"
+    },
+    {
+      "path": "tests/wordpress-ready.test.mjs",
+      "sha256": "c367d351fcda55f1731c9ff881e560aa01ff8511c2392def498f635b93f4564f"
+    },
+    {
+      "path": ".agents/skills/wordpress-builder/SKILL.md",
+      "sha256": "26b6708d7442669b26ea266b8b65c15be8d9edfaf9b48f84bb5bbaec419726b4"
+    },
+    {
+      "path": ".agents/skills/wordpress-builder/references/verification.md",
+      "sha256": "39cfbb85b8ae34ffe720c79d2a4f75bff57224d98e4bb10e162678e160187dad"
+    },
+    {
+      "path": ".agents/skills/wordpress-builder/references/release.md",
+      "sha256": "d19fd903ecb54cc02ae8f81e86d62d6bd6012f34ab690008d25d6156f36a1a0b"
+    }
+  ]
+}

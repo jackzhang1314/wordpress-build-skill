@@ -1,0 +1,147 @@
+{
+  "testedAt": "2026-09-19T23:38:07.135Z",
+  "checks": {
+    "templatePicker": {
+      "names": [
+        "Product — Standard"
+      ],
+      "selected": "product-standard"
+    },
+    "field": {
+      "actualAcfInput": true,
+      "saveButton": true,
+      "frontend": true
+    },
+    "contentAndImage": {
+      "body": true,
+      "image": 8,
+      "method": "native editor data actions plus actual Save button; not media-picker UI"
+    },
+    "blockValidation": [
+      {
+        "file": "templates/404.html",
+        "count": 18,
+        "errors": []
+      },
+      {
+        "file": "templates/archive-hd_product.html",
+        "count": 31,
+        "errors": []
+      },
+      {
+        "file": "templates/archive-hd_solution.html",
+        "count": 28,
+        "errors": []
+      },
+      {
+        "file": "templates/company.html",
+        "count": 4,
+        "errors": []
+      },
+      {
+        "file": "templates/enquiry.html",
+        "count": 30,
+        "errors": []
+      },
+      {
+        "file": "templates/front-page.html",
+        "count": 4,
+        "errors": []
+      },
+      {
+        "file": "templates/home.html",
+        "count": 28,
+        "errors": []
+      },
+      {
+        "file": "templates/index.html",
+        "count": 26,
+        "errors": []
+      },
+      {
+        "file": "templates/page.html",
+        "count": 17,
+        "errors": []
+      },
+      {
+        "file": "templates/product-editorial.html",
+        "count": 55,
+        "errors": []
+      },
+      {
+        "file": "templates/product-standard.html",
+        "count": 53,
+        "errors": []
+      },
+      {
+        "file": "templates/search.html",
+        "count": 27,
+        "errors": []
+      },
+      {
+        "file": "templates/single-hd_product.html",
+        "count": 53,
+        "errors": []
+      },
+      {
+        "file": "templates/single-hd_solution.html",
+        "count": 27,
+        "errors": []
+      },
+      {
+        "file": "templates/single.html",
+        "count": 19,
+        "errors": []
+      },
+      {
+        "file": "templates/taxonomy-hd_category-editorial.html",
+        "count": 40,
+        "errors": []
+      },
+      {
+        "file": "templates/taxonomy-hd_category.html",
+        "count": 32,
+        "errors": []
+      },
+      {
+        "file": "parts/footer.html",
+        "count": 1,
+        "errors": []
+      },
+      {
+        "file": "parts/header.html",
+        "count": 1,
+        "errors": []
+      },
+      {
+        "file": "home",
+        "count": 76,
+        "errors": []
+      },
+      {
+        "file": "b2b-equipment/selection-guide",
+        "count": 5,
+        "errors": []
+      },
+      {
+        "file": "b2b-equipment/site-footer",
+        "count": 18,
+        "errors": []
+      },
+      {
+        "file": "b2b-equipment/site-header",
+        "count": 20,
+        "errors": []
+      }
+    ],
+    "homeAndPattern": {
+      "beforeCount": 76,
+      "patternInserted": true,
+      "frontend": true
+    },
+    "categoryUi": {
+      "selectAndSave": true,
+      "frontend": true
+    }
+  }
+}

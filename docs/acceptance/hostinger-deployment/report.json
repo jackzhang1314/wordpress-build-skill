@@ -1,0 +1,41 @@
+{
+  "filesVerified": 3357,
+  "attachments": 6,
+  "products": 19,
+  "enquiries": [
+    {
+      "id": 1,
+      "productId": ""
+    },
+    {
+      "id": 2,
+      "productId": "13"
+    }
+  ],
+  "notificationsEnabled": [
+    false
+  ],
+  "theme": "b2b-equipment",
+  "noindex": true,
+  "wordpress": "7.1.1",
+  "php": "8.3.33",
+  "database": "11.8.9-MariaDB-log",
+  "verifiedAt": "2026-09-20T11:10:48.611398+00:00",
+  "url": "https://mediumblue-quail-505146.hostingersite.com",
+  "status": "deployed-preview-verified",
+  "backup": "database-and-wp-content-outside-document-root",
+  "temporaryExecutablesRemoved": true,
+  "externalMail": "not-tested-notifications-disabled",
+  "remoteRestore": "passed-isolated-same-host-cli",
+  "commercialContent": "mock-noindex",
+  "visualApproval": "not-claimed",
+  "remoteRestoreEvidence": "recovery.json",
+  "postDeploymentChanges": {
+    "files": [
+      "theme/templates/enquiry.html",
+      "theme/presentation.php"
+    ],
+    "evidence": "../hostinger-cms/report.json",
+    "note": "Initial 3357-file verification and recovery snapshot predate these two CMS fixes; not a new full-package hash or restore claim."
+  }
+}

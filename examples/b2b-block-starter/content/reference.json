@@ -1,0 +1,3266 @@
+{
+  "company": {
+    "brandName": "HONGDA",
+    "legalName": "Hongda Heavy Machinery Equipment Co., Ltd.",
+    "group": "Hongda Industrial Group",
+    "email": "info@hongdamachinery.com",
+    "phone": "+86 531 8888 6666",
+    "whatsapp": "+86 186 0000 5275",
+    "address": "Hongda Industrial Park, No. 88 Jingshi Road, Jinan, Shandong, China",
+    "salesOffice": "Tower B, Hongda Finance Plaza, Licheng District, Jinan, Shandong, China",
+    "certifications": [
+      "ISO 9001",
+      "CE",
+      "ISO 14001",
+      "ISO 45001",
+      "EPA / EU Stage V"
+    ]
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "to": "/"
+    },
+    {
+      "label": "Equipment",
+      "to": "/equipment",
+      "mega": true,
+      "columns": [
+        {
+          "title": "Mini Excavator",
+          "links": [
+            {
+              "label": "0.8T – YHD08",
+              "to": "/equipment/mini-excavator/yhd08"
+            },
+            {
+              "label": "1.2T – YHD12",
+              "to": "/equipment/mini-excavator/yhd12"
+            },
+            {
+              "label": "1.5T – YHD15",
+              "to": "/equipment/mini-excavator/yhd15"
+            },
+            {
+              "label": "1.8T – YHD18",
+              "to": "/equipment/mini-excavator/yhd18"
+            },
+            {
+              "label": "2T – YHD20",
+              "to": "/equipment/mini-excavator/yhd20"
+            },
+            {
+              "label": "2.5T – YHD25",
+              "to": "/equipment/mini-excavator/yhd25"
+            },
+            {
+              "label": "3T – YHD30",
+              "to": "/equipment/mini-excavator/yhd30"
+            }
+          ]
+        },
+        {
+          "title": "Construction Excavator",
+          "links": [
+            {
+              "label": "6T – YHD60",
+              "to": "/equipment/construction-excavator/yhd60"
+            },
+            {
+              "label": "8T – YHD80",
+              "to": "/equipment/construction-excavator/yhd80"
+            },
+            {
+              "label": "Large Digger",
+              "to": "/equipment/construction-excavator/yhd120"
+            }
+          ]
+        },
+        {
+          "title": "Loaders & More",
+          "links": [
+            {
+              "label": "Wheel Loader",
+              "to": "/equipment/wheel-loader"
+            },
+            {
+              "label": "Mini Loader",
+              "to": "/equipment/wheel-loader#mini"
+            },
+            {
+              "label": "Backhoe Loader",
+              "to": "/equipment/backhoe-loader"
+            },
+            {
+              "label": "Skid Steer Loader",
+              "to": "/equipment/skid-steer-loader"
+            },
+            {
+              "label": "Stand-On Skid Steer",
+              "to": "/equipment/skid-steer-loader#standon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Industry",
+      "to": "/industry",
+      "children": [
+        {
+          "label": "Agriculture",
+          "to": "/industry/agriculture"
+        },
+        {
+          "label": "Construction",
+          "to": "/industry/construction"
+        },
+        {
+          "label": "Demolition",
+          "to": "/industry/demolition"
+        },
+        {
+          "label": "Excavation",
+          "to": "/industry/excavation"
+        },
+        {
+          "label": "Landscaping",
+          "to": "/industry/landscaping"
+        },
+        {
+          "label": "Surface Mining",
+          "to": "/industry/surface-mining"
+        },
+        {
+          "label": "Snow Removal",
+          "to": "/industry/snow-removal"
+        },
+        {
+          "label": "Forestry & Logging",
+          "to": "/industry/forestry-logging"
+        },
+        {
+          "label": "Waste Solutions",
+          "to": "/industry/waste-solutions"
+        },
+        {
+          "label": "Utility Work",
+          "to": "/industry/utility-work"
+        }
+      ]
+    },
+    {
+      "label": "Blog",
+      "to": "/blog"
+    },
+    {
+      "label": "Our Story",
+      "to": "/our-story",
+      "children": [
+        {
+          "label": "Hongda Group",
+          "to": "/our-story/group"
+        },
+        {
+          "label": "About Hongda",
+          "to": "/our-story/about"
+        },
+        {
+          "label": "Certifications",
+          "to": "/our-story/certifications"
+        },
+        {
+          "label": "Our Team",
+          "to": "/our-story/team"
+        },
+        {
+          "label": "Parts & Components",
+          "to": "/our-story/parts-components"
+        },
+        {
+          "label": "Production & Quality",
+          "to": "/our-story/production-quality"
+        },
+        {
+          "label": "Warranty Policy",
+          "to": "/our-story/warranty"
+        }
+      ]
+    },
+    {
+      "label": "Contact Us",
+      "to": "/contact-us",
+      "children": [
+        {
+          "label": "OEM Solution",
+          "to": "/contact-us/oem-solution"
+        },
+        {
+          "label": "Dealer Opportunity",
+          "to": "/contact-us/dealer-opportunity"
+        },
+        {
+          "label": "Payment & Delivery",
+          "to": "/contact-us/payment-delivery"
+        },
+        {
+          "label": "Maintenance",
+          "to": "/contact-us/maintenance"
+        },
+        {
+          "label": "After Sales Service",
+          "to": "/contact-us/after-sales-service"
+        },
+        {
+          "label": "FAQs",
+          "to": "/contact-us/faqs"
+        }
+      ]
+    },
+    {
+      "label": "Security Alert",
+      "to": "/security-alert",
+      "alert": true
+    }
+  ],
+  "footerEquipment": [
+    {
+      "label": "Mini Excavator",
+      "to": "/equipment/mini-excavator"
+    },
+    {
+      "label": "Construction Excavator",
+      "to": "/equipment/construction-excavator"
+    },
+    {
+      "label": "Wheel Loader",
+      "to": "/equipment/wheel-loader"
+    },
+    {
+      "label": "Backhoe Loader",
+      "to": "/equipment/backhoe-loader"
+    },
+    {
+      "label": "Skid Steer Loader",
+      "to": "/equipment/skid-steer-loader"
+    },
+    {
+      "label": "Exchange & Refund",
+      "to": "/contact-us/exchange-refund"
+    },
+    {
+      "label": "Fraud Alert & Security Notice",
+      "to": "/security-alert"
+    }
+  ],
+  "footerIndustries": [
+    {
+      "label": "Agriculture",
+      "to": "/industry/agriculture"
+    },
+    {
+      "label": "Construction",
+      "to": "/industry/construction"
+    },
+    {
+      "label": "Forestry & Logging",
+      "to": "/industry/forestry-logging"
+    },
+    {
+      "label": "Landscaping",
+      "to": "/industry/landscaping"
+    },
+    {
+      "label": "Snow Removal",
+      "to": "/industry/snow-removal"
+    },
+    {
+      "label": "Material Handling",
+      "to": "/industry/material-handling"
+    }
+  ],
+  "localAssets": {
+    "banner": "/api/assets/f8a8d3fb-de7c-4eef-bd0a-5be81eba992e",
+    "heroExcavator": "/api/assets/58919245-caa0-4941-8751-05df3029bdb5",
+    "loader": "/api/assets/b024bcac-b5e0-47d9-87af-a393b199c495",
+    "factory": "/api/assets/3adfa6b4-50fa-4548-93f8-436e427043d8",
+    "backhoe": "/api/assets/d31f1d09-5991-4a30-bb41-5d01e2d8644c"
+  },
+  "referencePhotos": {
+    "mini-excavator": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Case_mini_excavator_-_Arlington%2C_MA.jpg/1280px-Case_mini_excavator_-_Arlington%2C_MA.jpg",
+    "construction-excavator": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Caterpillar_330_excavator_on_a_pile_of_dirt.jpg/1280px-Caterpillar_330_excavator_on_a_pile_of_dirt.jpg",
+    "wheel-loader": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Bamberg_Liebherr_506-20160724-RM-123350.jpg/1280px-Bamberg_Liebherr_506-20160724-RM-123350.jpg",
+    "backhoe-loader": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Case_580_Super_L_backhoe_loader_-_3.jpg/1280px-Case_580_Super_L_backhoe_loader_-_3.jpg",
+    "skid-steer-loader": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Bobcat_T650_compact_track_loader_%28side_view%29.jpg/1280px-Bobcat_T650_compact_track_loader_%28side_view%29.jpg",
+    "heroMiniExcavator": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/JCB_compact_excavator.JPG/1280px-JCB_compact_excavator.JPG",
+    "loaderScene": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/John_Deere_544K_at_construction_site_in_Sunnyvale.jpg/1280px-John_Deere_544K_at_construction_site_in_Sunnyvale.jpg",
+    "backhoeScene": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Caterpillar_backhoe_loader_at_construction_site_in_Sunnyvale%2C_back_view.jpg/1280px-Caterpillar_backhoe_loader_at_construction_site_in_Sunnyvale%2C_back_view.jpg",
+    "factoryChina": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Wangcheng_District_Factory_of_Zoomlion_2022032103.jpg/1280px-Wangcheng_District_Factory_of_Zoomlion_2022032103.jpg"
+  },
+  "heroCards": [
+    {
+      "label": "Excavators",
+      "sub": "0.8 – 12 tons",
+      "to": "/equipment/mini-excavator",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Case_mini_excavator_-_Arlington%2C_MA.jpg/1280px-Case_mini_excavator_-_Arlington%2C_MA.jpg",
+      "ai": "/api/assets/58919245-caa0-4941-8751-05df3029bdb5",
+      "tone": "red",
+      "art": "excavator"
+    },
+    {
+      "label": "Loaders",
+      "sub": "Mini to 3 tons",
+      "to": "/equipment/wheel-loader",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/John_Deere_544K_at_construction_site_in_Sunnyvale.jpg/1280px-John_Deere_544K_at_construction_site_in_Sunnyvale.jpg",
+      "ai": "/api/assets/b024bcac-b5e0-47d9-87af-a393b199c495",
+      "tone": "gold",
+      "art": "loader"
+    },
+    {
+      "label": "Backhoe & Skid",
+      "sub": "Dig + load, zero-turn",
+      "to": "/equipment/backhoe-loader",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Caterpillar_backhoe_loader_at_construction_site_in_Sunnyvale%2C_back_view.jpg/1280px-Caterpillar_backhoe_loader_at_construction_site_in_Sunnyvale%2C_back_view.jpg",
+      "ai": "/api/assets/d31f1d09-5991-4a30-bb41-5d01e2d8644c",
+      "tone": "green",
+      "art": "backhoe"
+    }
+  ],
+  "categories": [
+    {
+      "slug": "mini-excavator",
+      "label": "Mini Excavator",
+      "short": "Mini Excavator",
+      "tagline": "0.8–3.5 ton compact excavators with zero-tail options",
+      "desc": "Agile mini excavators engineered for tight urban sites, landscaping, farming and rental fleets. Available with rubber or steel tracks and EPA / EU Stage V engine options.",
+      "tone": "red",
+      "art": "excavator",
+      "to": "/equipment/mini-excavator"
+    },
+    {
+      "slug": "construction-excavator",
+      "label": "Construction Excavator",
+      "short": "Construction Excavator",
+      "tagline": "General-purpose diggers from 6 to 12 tons",
+      "desc": "Powerful and reliable construction diggers built for earthmoving, road work, demolition and infrastructure projects.",
+      "tone": "blue",
+      "art": "excavator",
+      "to": "/equipment/construction-excavator"
+    },
+    {
+      "slug": "wheel-loader",
+      "label": "Wheel Loader",
+      "short": "Wheel Loader",
+      "tagline": "Mini, medium and large wheel loaders for material handling",
+      "desc": "Versatile wheel loaders that load, carry, stockpile and load trucks with high breakout force and low fuel burn.",
+      "tone": "gold",
+      "art": "loader",
+      "to": "/equipment/wheel-loader"
+    },
+    {
+      "slug": "backhoe-loader",
+      "label": "Backhoe Loader",
+      "short": "Backhoe Loader",
+      "tagline": "One machine, two functions — digging and loading",
+      "desc": "Combines a powerful loader bucket and rear backhoe in one dependable package for contractors and municipalities.",
+      "tone": "green",
+      "art": "backhoe",
+      "to": "/equipment/backhoe-loader"
+    },
+    {
+      "slug": "skid-steer-loader",
+      "label": "Skid Steer Loader",
+      "short": "Skid Steer Loader",
+      "tagline": "Tracked and wheeled skid steers that turn on the spot",
+      "desc": "Compact skid steer loaders with superb maneuverability and dozens of quick-attach tools for every job site.",
+      "tone": "slate",
+      "art": "skid",
+      "to": "/equipment/skid-steer-loader"
+    }
+  ],
+  "benefits": {
+    "excavator": [
+      {
+        "icon": "spark",
+        "title": "Zero Tail Swing",
+        "desc": "Rear counterweight stays inside the track width so you can work flush against walls and curbs."
+      },
+      {
+        "icon": "gear",
+        "title": "Emission-Ready Engine",
+        "desc": "EPA Tier 4 Final or EU Stage V certified engines with low noise and low fuel consumption."
+      },
+      {
+        "icon": "shield",
+        "title": "Reinforced Structure",
+        "desc": "Robot-welded box-section boom and arm deliver long life under continuous loading."
+      },
+      {
+        "icon": "wrench",
+        "title": "Simple Daily Service",
+        "desc": "Wide-opening side covers put filters, grease points and the battery within easy reach."
+      },
+      {
+        "icon": "box",
+        "title": "Attachment Versatility",
+        "desc": "Run augers, breakers, grapples, thumbs and trenchers straight from the auxiliary circuit."
+      },
+      {
+        "icon": "user",
+        "title": "Comfortable Cab",
+        "desc": "Suspension seat, joystick pilot controls, ROPS/TOPS canopy or optional enclosed AC cab."
+      }
+    ],
+    "loader": [
+      {
+        "icon": "spark",
+        "title": "High Breakout Force",
+        "desc": "Aggressive Z-bar linkage rips into stockpiles and bank material with minimal spillage."
+      },
+      {
+        "icon": "gear",
+        "title": "Efficient Powertrain",
+        "desc": "Matched engine and powershift transmission deliver quick cycles with low fuel burn."
+      },
+      {
+        "icon": "shield",
+        "title": "Tough Bucket",
+        "desc": "High-strength steel buckets with bolt-on cutting edges and wear plates."
+      },
+      {
+        "icon": "user",
+        "title": "Operator Comfort",
+        "desc": "Spacious ROPS cab, pilot joystick control and great all-round visibility."
+      },
+      {
+        "icon": "wrench",
+        "title": "Quick Service Points",
+        "desc": "Ground-level daily checks, grouped grease points and swing-out cooling pack."
+      },
+      {
+        "icon": "box",
+        "title": "Multi-Tool Ready",
+        "desc": "Quick coupler compatible with forks, pallet arms, buckets, brooms and snow blades."
+      }
+    ],
+    "backhoe": [
+      {
+        "icon": "spark",
+        "title": "Two Machines in One",
+        "desc": "Front loader for loading and backfill, rear backhoe for digging and trenching."
+      },
+      {
+        "icon": "gear",
+        "title": "Proven Powertrain",
+        "desc": "Durable diesel engine and heavy-duty transmission sized for contractor duty."
+      },
+      {
+        "icon": "shield",
+        "title": "Stable Outriggers",
+        "desc": "Wide-stance stabilizer legs give a solid digging platform on uneven ground."
+      },
+      {
+        "icon": "user",
+        "title": "Side-Shift or Center-Mount",
+        "desc": "Choose a side-shift backhoe for work along walls or center-mount for heavy digging."
+      },
+      {
+        "icon": "wrench",
+        "title": "Easy Daily Checks",
+        "desc": "Centralized grease points and tilt-up engine hood make maintenance fast."
+      },
+      {
+        "icon": "box",
+        "title": "Extendable Dipper",
+        "desc": "Optional extendable dipper arm adds reach without moving the machine."
+      }
+    ],
+    "skid": [
+      {
+        "icon": "spark",
+        "title": "Zero-Radius Turning",
+        "desc": "Skid-steer design turns within its own length for work in confined areas."
+      },
+      {
+        "icon": "gear",
+        "title": "High-Torque Drive",
+        "desc": "Hydrostatic drive gives precise, powerful movement on tracks or wheels."
+      },
+      {
+        "icon": "shield",
+        "title": "Protected Cab",
+        "desc": "ROPS/FOPS cab, laminated glass and sealed door keep dust and debris out."
+      },
+      {
+        "icon": "box",
+        "title": "Fast Attachment Change",
+        "desc": "Universal quick-attach plate changes buckets, augers, forks and mowers in seconds."
+      },
+      {
+        "icon": "user",
+        "title": "Joystick Controls",
+        "desc": "Low-effort pilot joysticks make daily operation comfortable and precise."
+      },
+      {
+        "icon": "wrench",
+        "title": "Swing-Out Cooling",
+        "desc": "Rear and side doors swing wide for fast cleaning and service access."
+      }
+    ]
+  },
+  "products": [
+    {
+      "slug": "yhd08",
+      "model": "YHD08",
+      "name": "0.8 Ton Mini Excavator",
+      "category": "mini-excavator",
+      "ton": 0.8,
+      "tag": "Zero Tail Swing",
+      "tone": "red",
+      "blurb": "The YHD08 is Hongda’s smallest excavator — narrow enough to pass through a standard garden gate yet strong enough for real digging, trenching and landscaping work.",
+      "bullets": [
+        "Zero tail swing keeps the counterweight inside the tracks",
+        "EPA Tier 4 Final / EU Stage V compliant engine option",
+        "Rubber tracks protect turf and paving",
+        "Dozer blade for backfilling and leveling"
+      ],
+      "specs": [
+        [
+          "Engine model",
+          "Kubota D902"
+        ],
+        [
+          "Engine power",
+          "10.2 kW / 2,600 rpm"
+        ],
+        [
+          "Operating weight",
+          "850 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.02 m³"
+        ],
+        [
+          "Max. digging depth",
+          "1,450 mm"
+        ],
+        [
+          "Max. dumping height",
+          "1,850 mm"
+        ],
+        [
+          "Max. digging force",
+          "8.2 kN"
+        ],
+        [
+          "Travel speed",
+          "2.1 km/h"
+        ]
+      ],
+      "range": [
+        [
+          "Max. digging depth",
+          "1,450 mm"
+        ],
+        [
+          "Max. digging height",
+          "2,350 mm"
+        ],
+        [
+          "Max. dumping height",
+          "1,850 mm"
+        ],
+        [
+          "Max. digging radius",
+          "2,450 mm"
+        ],
+        [
+          "Tail swing radius",
+          "640 mm"
+        ],
+        [
+          "Boom swing angle",
+          "75°"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "2,260 × 720 × 1,330 mm"
+        ],
+        [
+          "Track width",
+          "150 mm"
+        ],
+        [
+          "Ground clearance",
+          "160 mm"
+        ],
+        [
+          "Fuel tank",
+          "12 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhd12",
+      "model": "YHD12",
+      "name": "1.2 Ton Mini Excavator",
+      "category": "mini-excavator",
+      "ton": 1.2,
+      "tag": "Best Seller",
+      "tone": "red",
+      "blurb": "A best-selling 1.2-ton mini digger with retractable undercarriage. Small enough to transport in a pickup bed, big enough for foundation, utility and rental jobs.",
+      "bullets": [
+        "Retractable undercarriage narrows to 800 mm for access",
+        "Fuel-efficient Yanmar or Kubota engine",
+        "Standard dozer blade and auxiliary piping",
+        "One-year Hongda warranty with spare-parts supply"
+      ],
+      "specs": [
+        [
+          "Engine model",
+          "Yanmar 3TNV76 / Kubota D902"
+        ],
+        [
+          "Engine power",
+          "12.6 kW / 2,200 rpm"
+        ],
+        [
+          "Operating weight",
+          "1,250 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.04 m³"
+        ],
+        [
+          "Max. digging depth",
+          "2,010 mm"
+        ],
+        [
+          "Max. dumping height",
+          "2,380 mm"
+        ],
+        [
+          "Max. digging force",
+          "13.5 kN"
+        ],
+        [
+          "Travel speed",
+          "2.3 km/h"
+        ]
+      ],
+      "range": [
+        [
+          "Max. digging depth",
+          "2,010 mm"
+        ],
+        [
+          "Max. digging height",
+          "3,200 mm"
+        ],
+        [
+          "Max. dumping height",
+          "2,380 mm"
+        ],
+        [
+          "Max. digging radius",
+          "3,380 mm"
+        ],
+        [
+          "Tail swing radius",
+          "700 mm"
+        ],
+        [
+          "Boom swing angle",
+          "80°"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "3,020 × 980 × 2,240 mm"
+        ],
+        [
+          "Track width",
+          "230 mm"
+        ],
+        [
+          "Ground clearance",
+          "180 mm"
+        ],
+        [
+          "Fuel tank",
+          "18 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhd15",
+      "model": "YHD15",
+      "name": "1.5 Ton Mini Excavator",
+      "category": "mini-excavator",
+      "ton": 1.5,
+      "tag": "Zero Tail Swing",
+      "tone": "red",
+      "blurb": "A nimble 1.5-ton zero-tail-swing excavator that combines low ground pressure with impressive breakout force for landscaping and indoor demolition.",
+      "bullets": [
+        "Zero tail swing design for tight-space work",
+        "Steel or rubber track options",
+        "Pilot joystick controls with hydraulic quick coupler",
+        "Optional enclosed cab with heating"
+      ],
+      "specs": [
+        [
+          "Engine model",
+          "Kubota D902 / Yanmar 3TNV76"
+        ],
+        [
+          "Engine power",
+          "13.2 kW / 2,400 rpm"
+        ],
+        [
+          "Operating weight",
+          "1,550 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.05 m³"
+        ],
+        [
+          "Max. digging depth",
+          "2,100 mm"
+        ],
+        [
+          "Max. dumping height",
+          "2,540 mm"
+        ],
+        [
+          "Max. digging force",
+          "16.5 kN"
+        ],
+        [
+          "Travel speed",
+          "2.6 km/h"
+        ]
+      ],
+      "range": [
+        [
+          "Max. digging depth",
+          "2,100 mm"
+        ],
+        [
+          "Max. digging height",
+          "3,380 mm"
+        ],
+        [
+          "Max. dumping height",
+          "2,540 mm"
+        ],
+        [
+          "Max. digging radius",
+          "3,560 mm"
+        ],
+        [
+          "Tail swing radius",
+          "720 mm"
+        ],
+        [
+          "Boom swing angle",
+          "75°"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "3,410 × 1,080 × 2,360 mm"
+        ],
+        [
+          "Track width",
+          "260 mm"
+        ],
+        [
+          "Ground clearance",
+          "190 mm"
+        ],
+        [
+          "Fuel tank",
+          "20 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhd18",
+      "model": "YHD18",
+      "name": "1.8 Ton Mini Excavator",
+      "category": "mini-excavator",
+      "ton": 1.8,
+      "tag": "Retractable Tracks",
+      "tone": "red",
+      "blurb": "The 1.8-ton YHD18 delivers a strong balance of power and portability. With an extendable undercarriage it narrows to 1,050 mm for transport and gate access.",
+      "bullets": [
+        "Retractable undercarriage — width adjusts from 1,050 to 1,300 mm",
+        "Heavy-duty reinforced boom and arm",
+        "EPA / EU Stage V compliant engine options",
+        "Great for utility, solar, landscaping and rental fleets"
+      ],
+      "specs": [
+        [
+          "Engine model",
+          "Kubota D1105 / Yanmar 3TNV80"
+        ],
+        [
+          "Engine power",
+          "18.4 kW / 2,350 rpm"
+        ],
+        [
+          "Operating weight",
+          "1,800 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.06 m³"
+        ],
+        [
+          "Max. digging depth",
+          "2,125 mm"
+        ],
+        [
+          "Max. dumping height",
+          "2,760 mm"
+        ],
+        [
+          "Max. digging force",
+          "19.5 kN"
+        ],
+        [
+          "Travel speed",
+          "3.1 km/h"
+        ]
+      ],
+      "range": [
+        [
+          "Max. digging depth",
+          "2,125 mm"
+        ],
+        [
+          "Max. digging height",
+          "3,720 mm"
+        ],
+        [
+          "Max. dumping height",
+          "2,760 mm"
+        ],
+        [
+          "Max. digging radius",
+          "3,851 mm"
+        ],
+        [
+          "Tail swing radius",
+          "1,000 mm"
+        ],
+        [
+          "Boom swing angle",
+          "80°"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "3,655 × 1,050 × 2,232 mm"
+        ],
+        [
+          "Track width",
+          "280 mm"
+        ],
+        [
+          "Ground clearance",
+          "210 mm"
+        ],
+        [
+          "Fuel tank",
+          "24 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhd20",
+      "model": "YHD20",
+      "name": "2 Ton Mini Excavator",
+      "category": "mini-excavator",
+      "ton": 2,
+      "tag": "Rubber Tracks",
+      "tone": "red",
+      "blurb": "A 2-ton mini excavator that feels like a bigger machine on site. Smooth hydraulics and a comfortable canopy keep operators productive all day.",
+      "bullets": [
+        "Wider undercarriage for superior stability",
+        "Steel canopy or enclosed cab options",
+        "Efficient 18.5 kW diesel engine",
+        "Auger, breaker and thumb ready"
+      ],
+      "specs": [
+        [
+          "Engine model",
+          "Kubota D1105"
+        ],
+        [
+          "Engine power",
+          "18.5 kW / 2,400 rpm"
+        ],
+        [
+          "Operating weight",
+          "2,050 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.07 m³"
+        ],
+        [
+          "Max. digging depth",
+          "2,310 mm"
+        ],
+        [
+          "Max. dumping height",
+          "2,870 mm"
+        ],
+        [
+          "Max. digging force",
+          "21.8 kN"
+        ],
+        [
+          "Travel speed",
+          "3.2 km/h"
+        ]
+      ],
+      "range": [
+        [
+          "Max. digging depth",
+          "2,310 mm"
+        ],
+        [
+          "Max. digging height",
+          "3,850 mm"
+        ],
+        [
+          "Max. dumping height",
+          "2,870 mm"
+        ],
+        [
+          "Max. digging radius",
+          "4,020 mm"
+        ],
+        [
+          "Tail swing radius",
+          "1,050 mm"
+        ],
+        [
+          "Boom swing angle",
+          "80°"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "3,780 × 1,200 × 2,380 mm"
+        ],
+        [
+          "Track width",
+          "300 mm"
+        ],
+        [
+          "Ground clearance",
+          "220 mm"
+        ],
+        [
+          "Fuel tank",
+          "26 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhd25",
+      "model": "YHD25",
+      "name": "2.5 Ton Mini Excavator",
+      "category": "mini-excavator",
+      "ton": 2.5,
+      "tag": "Cab Version",
+      "tone": "red",
+      "blurb": "The 2.5-ton YHD25 with enclosed cab is built for year-round productivity, offering heating, air conditioning and a quiet working environment.",
+      "bullets": [
+        "Enclosed cab with A/C and heater",
+        "Independent boom swing for offset digging",
+        "Strong 21 kW engine with low emissions",
+        "Pilot joystick controls and suspension seat"
+      ],
+      "specs": [
+        [
+          "Engine model",
+          "Yanmar 3TNV86 / Kubota V1505"
+        ],
+        [
+          "Engine power",
+          "21 kW / 2,400 rpm"
+        ],
+        [
+          "Operating weight",
+          "2,500 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.09 m³"
+        ],
+        [
+          "Max. digging depth",
+          "2,520 mm"
+        ],
+        [
+          "Max. dumping height",
+          "3,050 mm"
+        ],
+        [
+          "Max. digging force",
+          "24.5 kN"
+        ],
+        [
+          "Travel speed",
+          "3.4 km/h"
+        ]
+      ],
+      "range": [
+        [
+          "Max. digging depth",
+          "2,520 mm"
+        ],
+        [
+          "Max. digging height",
+          "4,120 mm"
+        ],
+        [
+          "Max. dumping height",
+          "3,050 mm"
+        ],
+        [
+          "Max. digging radius",
+          "4,380 mm"
+        ],
+        [
+          "Tail swing radius",
+          "1,120 mm"
+        ],
+        [
+          "Boom swing angle",
+          "90°"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "4,020 × 1,320 × 2,480 mm"
+        ],
+        [
+          "Track width",
+          "320 mm"
+        ],
+        [
+          "Ground clearance",
+          "230 mm"
+        ],
+        [
+          "Fuel tank",
+          "30 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhd30",
+      "model": "YHD30",
+      "name": "3 Ton Mini Excavator",
+      "category": "mini-excavator",
+      "ton": 3,
+      "tag": "Power + Comfort",
+      "tone": "red",
+      "blurb": "Our 3-ton mini excavator offers the reach and digging power to handle serious utility and residential projects while staying trailer-friendly.",
+      "bullets": [
+        "Kubota engine with EPA Tier 4 Final option",
+        "Wide flotation tracks for soft ground",
+        "Hydraulic quick coupler standard",
+        "Large backlit display and ergonomic cab"
+      ],
+      "specs": [
+        [
+          "Engine model",
+          "Kubota V1505 / Yanmar 4TNV84"
+        ],
+        [
+          "Engine power",
+          "25.5 kW / 2,400 rpm"
+        ],
+        [
+          "Operating weight",
+          "3,050 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.11 m³"
+        ],
+        [
+          "Max. digging depth",
+          "2,860 mm"
+        ],
+        [
+          "Max. dumping height",
+          "3,320 mm"
+        ],
+        [
+          "Max. digging force",
+          "28.6 kN"
+        ],
+        [
+          "Travel speed",
+          "3.6 km/h"
+        ]
+      ],
+      "range": [
+        [
+          "Max. digging depth",
+          "2,860 mm"
+        ],
+        [
+          "Max. digging height",
+          "4,600 mm"
+        ],
+        [
+          "Max. dumping height",
+          "3,320 mm"
+        ],
+        [
+          "Max. digging radius",
+          "4,850 mm"
+        ],
+        [
+          "Tail swing radius",
+          "1,200 mm"
+        ],
+        [
+          "Boom swing angle",
+          "90°"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "4,380 × 1,480 × 2,560 mm"
+        ],
+        [
+          "Track width",
+          "340 mm"
+        ],
+        [
+          "Ground clearance",
+          "240 mm"
+        ],
+        [
+          "Fuel tank",
+          "42 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhd60",
+      "model": "YHD60",
+      "name": "6 Ton Construction Excavator",
+      "category": "construction-excavator",
+      "ton": 6,
+      "tag": "Small Digger",
+      "tone": "blue",
+      "blurb": "A 6-ton construction digger that bridges the gap between mini and midi. Ideal for municipal drainage, road shoulder work and small earthmoving contracts.",
+      "bullets": [
+        "Powerful Yanmar / Kubota engine, EU Stage V ready",
+        "Reinforced arm for heavy-duty digging",
+        "Comfortable cab with climate control",
+        "Two-speed travel for fast repositioning"
+      ],
+      "specs": [
+        [
+          "Engine model",
+          "Yanmar 4TNV98 / Kubota V2403"
+        ],
+        [
+          "Engine power",
+          "36.2 kW / 2,200 rpm"
+        ],
+        [
+          "Operating weight",
+          "6,100 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.22 m³"
+        ],
+        [
+          "Max. digging depth",
+          "3,680 mm"
+        ],
+        [
+          "Max. dumping height",
+          "4,080 mm"
+        ],
+        [
+          "Max. digging force",
+          "48 kN"
+        ],
+        [
+          "Travel speed",
+          "4.8 km/h"
+        ]
+      ],
+      "range": [
+        [
+          "Max. digging depth",
+          "3,680 mm"
+        ],
+        [
+          "Max. digging height",
+          "5,980 mm"
+        ],
+        [
+          "Max. dumping height",
+          "4,080 mm"
+        ],
+        [
+          "Max. digging radius",
+          "6,250 mm"
+        ],
+        [
+          "Tail swing radius",
+          "1,720 mm"
+        ],
+        [
+          "Boom swing angle",
+          "92°"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "5,850 × 2,100 × 2,760 mm"
+        ],
+        [
+          "Track width",
+          "450 mm"
+        ],
+        [
+          "Ground clearance",
+          "360 mm"
+        ],
+        [
+          "Fuel tank",
+          "85 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhd80",
+      "model": "YHD80",
+      "name": "8 Ton Construction Excavator",
+      "category": "construction-excavator",
+      "ton": 8,
+      "tag": "Medium Digger",
+      "tone": "blue",
+      "blurb": "The 8-ton YHD80 is a true multi-purpose digger for contractors who need daily reliability across site prep, utilities and demolition support.",
+      "bullets": [
+        "High-pressure hydraulic system for fast cycles",
+        "EPA / EU Stage V certified engine",
+        "Heavy-duty undercarriage with sealed tracks",
+        "Large cab with 7-inch color monitor"
+      ],
+      "specs": [
+        [
+          "Engine model",
+          "Yanmar 4TNV98 / Kubota V2403"
+        ],
+        [
+          "Engine power",
+          "54.3 kW / 2,100 rpm"
+        ],
+        [
+          "Operating weight",
+          "8,200 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.32 m³"
+        ],
+        [
+          "Max. digging depth",
+          "4,150 mm"
+        ],
+        [
+          "Max. dumping height",
+          "4,620 mm"
+        ],
+        [
+          "Max. digging force",
+          "68 kN"
+        ],
+        [
+          "Travel speed",
+          "5.0 km/h"
+        ]
+      ],
+      "range": [
+        [
+          "Max. digging depth",
+          "4,150 mm"
+        ],
+        [
+          "Max. digging height",
+          "6,650 mm"
+        ],
+        [
+          "Max. dumping height",
+          "4,620 mm"
+        ],
+        [
+          "Max. digging radius",
+          "6,960 mm"
+        ],
+        [
+          "Tail swing radius",
+          "1,920 mm"
+        ],
+        [
+          "Boom swing angle",
+          "90°"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "6,250 × 2,250 × 2,920 mm"
+        ],
+        [
+          "Track width",
+          "500 mm"
+        ],
+        [
+          "Ground clearance",
+          "390 mm"
+        ],
+        [
+          "Fuel tank",
+          "120 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhd120",
+      "model": "YHD120",
+      "name": "12 Ton Construction Excavator",
+      "category": "construction-excavator",
+      "ton": 12,
+      "tag": "Large Digger",
+      "tone": "blue",
+      "blurb": "A large 12-ton digger built for heavier earthmoving, road construction and bulk excavation where you need reach, lifting power and all-day endurance.",
+      "bullets": [
+        "High-torque diesel engine with EU Stage V option",
+        "Reinforced booms for demanding workloads",
+        "Effortless pilot controls with auto-idle",
+        "Excellent service access for low ownership cost"
+      ],
+      "specs": [
+        [
+          "Engine model",
+          "Cummins B3.3 / Isuzu 4JJ1"
+        ],
+        [
+          "Engine power",
+          "82 kW / 2,000 rpm"
+        ],
+        [
+          "Operating weight",
+          "12,200 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.55 m³"
+        ],
+        [
+          "Max. digging depth",
+          "5,120 mm"
+        ],
+        [
+          "Max. dumping height",
+          "5,680 mm"
+        ],
+        [
+          "Max. digging force",
+          "92 kN"
+        ],
+        [
+          "Travel speed",
+          "5.4 km/h"
+        ]
+      ],
+      "range": [
+        [
+          "Max. digging depth",
+          "5,120 mm"
+        ],
+        [
+          "Max. digging height",
+          "7,860 mm"
+        ],
+        [
+          "Max. dumping height",
+          "5,680 mm"
+        ],
+        [
+          "Max. digging radius",
+          "8,240 mm"
+        ],
+        [
+          "Tail swing radius",
+          "2,350 mm"
+        ],
+        [
+          "Boom swing angle",
+          "90°"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "7,420 × 2,520 × 3,080 mm"
+        ],
+        [
+          "Track width",
+          "600 mm"
+        ],
+        [
+          "Ground clearance",
+          "440 mm"
+        ],
+        [
+          "Fuel tank",
+          "210 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhdw08",
+      "model": "YHDW08",
+      "name": "Mini Wheel Loader 0.8t",
+      "category": "wheel-loader",
+      "ton": 0.8,
+      "tag": "Mini Loader",
+      "tone": "gold",
+      "blurb": "A compact wheel loader for farms, warehouses, stables and landscaping — easy to transport and gentle on paved surfaces.",
+      "bullets": [
+        "Tight turning radius for confined yards",
+        "Four-wheel drive with high traction",
+        "Quick-attach bucket and pallet fork options",
+        "Simple, low-cost maintenance"
+      ],
+      "specs": [
+        [
+          "Rated load",
+          "800 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.35 m³"
+        ],
+        [
+          "Engine power",
+          "18.5 kW"
+        ],
+        [
+          "Operating weight",
+          "1,850 kg"
+        ],
+        [
+          "Max. dump height",
+          "2,420 mm"
+        ],
+        [
+          "Travel speed",
+          "18 km/h"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "3,880 × 1,380 × 2,260 mm"
+        ],
+        [
+          "Wheel base",
+          "1,520 mm"
+        ],
+        [
+          "Ground clearance",
+          "230 mm"
+        ],
+        [
+          "Fuel tank",
+          "32 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhdw10",
+      "model": "YHDW10",
+      "name": "1 Ton Wheel Loader",
+      "category": "wheel-loader",
+      "ton": 1,
+      "tag": "Medium Loader",
+      "tone": "gold",
+      "blurb": "Our 1-ton medium wheel loader balances reach, breakout force and speed, making short work of loading trucks, feeding hoppers and clearing snow.",
+      "bullets": [
+        "High breakout force Z-bar linkage",
+        "Powershift transmission for smooth shifts",
+        "ROPS cab with excellent visibility",
+        "Suitable for buckets, forks and snow blades"
+      ],
+      "specs": [
+        [
+          "Rated load",
+          "1,000 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.55 m³"
+        ],
+        [
+          "Engine power",
+          "36.8 kW"
+        ],
+        [
+          "Operating weight",
+          "3,200 kg"
+        ],
+        [
+          "Max. dump height",
+          "2,850 mm"
+        ],
+        [
+          "Travel speed",
+          "22 km/h"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "4,560 × 1,660 × 2,540 mm"
+        ],
+        [
+          "Wheel base",
+          "1,850 mm"
+        ],
+        [
+          "Ground clearance",
+          "280 mm"
+        ],
+        [
+          "Fuel tank",
+          "55 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhdw30",
+      "model": "YHDW30",
+      "name": "3 Ton Wheel Loader",
+      "category": "wheel-loader",
+      "ton": 3,
+      "tag": "Large Loader",
+      "tone": "gold",
+      "blurb": "A productive 3-ton wheel loader for heavy stockpile work, truck loading and bulk material handling on construction and quarry sites.",
+      "bullets": [
+        "Turbocharged diesel engine with low emissions",
+        "Heavy-duty axles with wet disc brakes",
+        "Automatic powershift transmission",
+        "Optional ride control and HVAC cab"
+      ],
+      "specs": [
+        [
+          "Rated load",
+          "3,000 kg"
+        ],
+        [
+          "Bucket capacity",
+          "1.8 m³"
+        ],
+        [
+          "Engine power",
+          "92 kW"
+        ],
+        [
+          "Operating weight",
+          "10,200 kg"
+        ],
+        [
+          "Max. dump height",
+          "3,520 mm"
+        ],
+        [
+          "Travel speed",
+          "36 km/h"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "6,900 × 2,450 × 3,280 mm"
+        ],
+        [
+          "Wheel base",
+          "2,750 mm"
+        ],
+        [
+          "Ground clearance",
+          "400 mm"
+        ],
+        [
+          "Fuel tank",
+          "160 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhdb10",
+      "model": "YHDB10",
+      "name": "Mini Backhoe Loader",
+      "category": "backhoe-loader",
+      "ton": 1.8,
+      "tag": "Mini Backhoe",
+      "tone": "green",
+      "blurb": "A mini backhoe loader that brings digger and loader capability to small contractors, plumbers and landscapers at a fraction of the cost.",
+      "bullets": [
+        "Compact size — fits through a 1.9 m gate",
+        "Front loader plus rear backhoe digging depth 2.6 m",
+        "Hydrostatic drive with two pedals",
+        "Easy trailer transport at under 2 tons"
+      ],
+      "specs": [
+        [
+          "Backhoe digging depth",
+          "2,600 mm"
+        ],
+        [
+          "Rated load (loader)",
+          "450 kg"
+        ],
+        [
+          "Engine power",
+          "18.5 kW"
+        ],
+        [
+          "Operating weight",
+          "1,800 kg"
+        ],
+        [
+          "Max. dump height",
+          "2,150 mm"
+        ],
+        [
+          "Travel speed",
+          "12 km/h"
+        ]
+      ],
+      "range": [
+        [
+          "Digging depth",
+          "2,600 mm"
+        ],
+        [
+          "Loading height",
+          "2,150 mm"
+        ],
+        [
+          "Swing arc",
+          "180°"
+        ],
+        [
+          "Reach at ground level",
+          "3,100 mm"
+        ]
+      ]
+    },
+    {
+      "slug": "yhdb20",
+      "model": "YHDB20",
+      "name": "Backhoe Loader 2t Class",
+      "category": "backhoe-loader",
+      "ton": 6.5,
+      "tag": "Contractor Backhoe",
+      "tone": "green",
+      "blurb": "The YHDB20 is a true contractor backhoe loader. Powerful front loading plus a 4.3 m backhoe dig depth — one machine for most site tasks.",
+      "bullets": [
+        "Backhoe digging depth 4.3 m with extendable dipper option",
+        "Center-mount or side-shift configurations",
+        "Loader breakout force for serious stockpile work",
+        "Wide-stance stabilizers for a solid platform"
+      ],
+      "specs": [
+        [
+          "Backhoe digging depth",
+          "4,300 mm"
+        ],
+        [
+          "Rated load (loader)",
+          "1,600 kg"
+        ],
+        [
+          "Engine power",
+          "68 kW"
+        ],
+        [
+          "Operating weight",
+          "6,500 kg"
+        ],
+        [
+          "Max. dump height",
+          "3,080 mm"
+        ],
+        [
+          "Travel speed",
+          "36 km/h"
+        ]
+      ],
+      "range": [
+        [
+          "Digging depth",
+          "4,300 mm"
+        ],
+        [
+          "Loading height",
+          "3,080 mm"
+        ],
+        [
+          "Swing arc",
+          "180°"
+        ],
+        [
+          "Reach at ground level",
+          "5,900 mm"
+        ]
+      ]
+    },
+    {
+      "slug": "yhdss05",
+      "model": "YHDSS05",
+      "name": "Stand-On Skid Steer",
+      "category": "skid-steer-loader",
+      "ton": 0.45,
+      "tag": "Stand On",
+      "tone": "slate",
+      "blurb": "A stand-on skid steer that is incredibly compact. Step on, work all day, and load it into a pickup truck when the job is done.",
+      "bullets": [
+        "Stand-on platform saves cab weight and cost",
+        "Narrow 890 mm width fits through doorways",
+        "Impressive 450 kg rated operating capacity",
+        "Universal quick-attach plate"
+      ],
+      "specs": [
+        [
+          "Rated operating capacity",
+          "450 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.18 m³"
+        ],
+        [
+          "Engine power",
+          "18.5 kW"
+        ],
+        [
+          "Operating weight",
+          "980 kg"
+        ],
+        [
+          "Max. dump height",
+          "2,050 mm"
+        ],
+        [
+          "Travel speed",
+          "10 km/h"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "2,200 × 890 × 1,420 mm"
+        ],
+        [
+          "Ground clearance",
+          "150 mm"
+        ],
+        [
+          "Fuel tank",
+          "18 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhdss10",
+      "model": "YHDSS10",
+      "name": "Mini Skid Steer Loader",
+      "category": "skid-steer-loader",
+      "ton": 0.5,
+      "tag": "Wheeled",
+      "tone": "slate",
+      "blurb": "A mini wheeled skid steer with vertical lift that is small enough for rental yards yet tough enough for daily construction duty.",
+      "bullets": [
+        "Vertical lift path for tall truck loading",
+        "Seat-bar safety interlock system",
+        "Durable 4-tire wheeled drive",
+        "Runs a full range of quick-attach tools"
+      ],
+      "specs": [
+        [
+          "Rated operating capacity",
+          "500 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.22 m³"
+        ],
+        [
+          "Engine power",
+          "23.5 kW"
+        ],
+        [
+          "Operating weight",
+          "1,680 kg"
+        ],
+        [
+          "Max. dump height",
+          "2,340 mm"
+        ],
+        [
+          "Travel speed",
+          "11.5 km/h"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "2,680 × 1,220 × 1,920 mm"
+        ],
+        [
+          "Ground clearance",
+          "160 mm"
+        ],
+        [
+          "Fuel tank",
+          "32 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhdss15",
+      "model": "YHDSS15",
+      "name": "Small Skid Steer Loader",
+      "category": "skid-steer-loader",
+      "ton": 0.7,
+      "tag": "Tracked",
+      "tone": "slate",
+      "blurb": "A tracked small skid steer (compact track loader) that delivers outstanding flotation and traction on soft, muddy or steep sites.",
+      "bullets": [
+        "Rubber tracks reduce ground pressure",
+        "High-torque hydrostatic drive",
+        "Sealed and lubricated undercarriage",
+        "Great for grading, demolition and agriculture"
+      ],
+      "specs": [
+        [
+          "Rated operating capacity",
+          "700 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.32 m³"
+        ],
+        [
+          "Engine power",
+          "36.8 kW"
+        ],
+        [
+          "Operating weight",
+          "2,850 kg"
+        ],
+        [
+          "Max. dump height",
+          "2,560 mm"
+        ],
+        [
+          "Travel speed",
+          "12 km/h"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "3,050 × 1,550 × 2,050 mm"
+        ],
+        [
+          "Ground clearance",
+          "210 mm"
+        ],
+        [
+          "Fuel tank",
+          "55 L"
+        ]
+      ]
+    },
+    {
+      "slug": "yhdss25",
+      "model": "YHDSS25",
+      "name": "Large Skid Steer Loader",
+      "category": "skid-steer-loader",
+      "ton": 1.2,
+      "tag": "High Capacity",
+      "tone": "slate",
+      "blurb": "Our largest skid steer — a 1.2-ton rated powerhouse for heavy loading, demolition and agriculture work, with a deluxe heated cab.",
+      "bullets": [
+        "1,200 kg rated operating capacity",
+        "High-flow hydraulics for cold planers and snow blowers",
+        "Deluxe cab with heat, A/C and air-ride seat",
+        "Heavy-duty radial lift design"
+      ],
+      "specs": [
+        [
+          "Rated operating capacity",
+          "1,200 kg"
+        ],
+        [
+          "Bucket capacity",
+          "0.6 m³"
+        ],
+        [
+          "Engine power",
+          "61.5 kW"
+        ],
+        [
+          "Operating weight",
+          "4,200 kg"
+        ],
+        [
+          "Max. dump height",
+          "3,110 mm"
+        ],
+        [
+          "Travel speed",
+          "13 km/h"
+        ]
+      ],
+      "size": [
+        [
+          "Overall L×W×H",
+          "3,780 × 1,980 × 2,150 mm"
+        ],
+        [
+          "Ground clearance",
+          "250 mm"
+        ],
+        [
+          "Fuel tank",
+          "85 L"
+        ]
+      ]
+    }
+  ],
+  "industries": [
+    {
+      "slug": "agriculture",
+      "name": "Agriculture",
+      "tone": "green",
+      "art": "loader",
+      "hero": "Agriculture Equipment for Every Acre",
+      "intro": "From crop management and forage production to livestock and landscape maintenance, Hongda builds compact machines that keep farms running in 30+ countries.",
+      "highlights": [
+        "ISO-certified factory",
+        "30+ countries served",
+        "50+ compatible attachments",
+        "1-year warranty"
+      ],
+      "recommended": [
+        {
+          "type": "wheel-loader",
+          "label": "Farm Wheel Loaders",
+          "text": "Engine and horsepower matter most. Load feed, manure and grain with buckets, forks, bale squeezers and bucket attachments.",
+          "to": "/equipment/wheel-loader"
+        },
+        {
+          "type": "skid-steer-loader",
+          "label": "Ag Skid Steers",
+          "text": "Clearing land, mowing, sweeping and ditching — one operator can switch attachments in seconds without leaving the seat.",
+          "to": "/equipment/skid-steer-loader"
+        },
+        {
+          "type": "mini-excavator",
+          "label": "Farm Excavators",
+          "text": "Affordable, fuel-efficient and easy to operate — ideal for drainage, fencing, trenching and pasture maintenance.",
+          "to": "/equipment/mini-excavator"
+        }
+      ],
+      "scenarios": [
+        {
+          "text": "For large fields — deep plowing and heavy towing",
+          "machine": "Wheel Loader / Tractor"
+        },
+        {
+          "text": "For barns and hay storage — tight-space cleaning and stacking",
+          "machine": "Compact Skid Steer"
+        },
+        {
+          "text": "For drainage, fences and pipes — trenching and auger drilling",
+          "machine": "Mini Excavator"
+        }
+      ],
+      "faq": {
+        "q": "Which Hongda machine is best for mixing cement on a farm?",
+        "a": "For occasional mixing we recommend a skid steer with a mixing bucket, or mixing directly with an excavator bucket. For larger volumes, pair a mini track dumper with your loader for loading and transport."
+      }
+    },
+    {
+      "slug": "construction",
+      "name": "Construction",
+      "tone": "slate",
+      "art": "excavator",
+      "hero": "Compact Equipment That Builds",
+      "intro": "Foundations, utilities, roadways and finishing work demand reliable iron. Hongda construction machines deliver the digging power, lifting strength and uptime contractors rely on.",
+      "highlights": [
+        "EPA / EU Stage V engines",
+        "24/7 parts support",
+        "Quick-attach versatility",
+        "Dealer network"
+      ],
+      "recommended": [
+        {
+          "type": "construction-excavator",
+          "label": "Construction Diggers",
+          "text": "From 6-ton site-prep machines to 12-ton earthmovers, our diggers handle foundations, drainage and bulk excavation.",
+          "to": "/equipment/construction-excavator"
+        },
+        {
+          "type": "backhoe-loader",
+          "label": "Backhoe Loaders",
+          "text": "One machine that digs trenches and loads trucks — the contractor’s workhorse for daily site tasks.",
+          "to": "/equipment/backhoe-loader"
+        },
+        {
+          "type": "wheel-loader",
+          "label": "Wheel Loaders",
+          "text": "Load trucks, feed crushers and clean up the site with a loader matched to your daily tonnage.",
+          "to": "/equipment/wheel-loader"
+        }
+      ],
+      "scenarios": [
+        {
+          "text": "Site clearing and preparation",
+          "machine": "Construction Excavator"
+        },
+        {
+          "text": "Trenching for utilities and drainage",
+          "machine": "Backhoe Loader / Mini Excavator"
+        },
+        {
+          "text": "Loading trucks and stockpile work",
+          "machine": "Wheel Loader"
+        }
+      ],
+      "faq": {
+        "q": "Can I run attachments like breakers on Hongda excavators?",
+        "a": "Yes. All Hongda excavators come with an auxiliary hydraulic circuit as standard, so you can run hydraulic breakers, augers, grapples, thumbs and compaction plates."
+      }
+    },
+    {
+      "slug": "demolition",
+      "name": "Demolition",
+      "tone": "darkred",
+      "art": "excavator",
+      "hero": "Demolition Equipment Built to Break",
+      "intro": "Interior strip-outs, partial demolition and full structure take-downs. Our excavators with breaker circuits and zero-tail-swing options work where space is tight and dust is a factor.",
+      "highlights": [
+        "High-flow hydraulics",
+        "Zero-tail-swing models",
+        "Breaker + grapple ready",
+        "Reinforced booms"
+      ],
+      "recommended": [
+        {
+          "type": "mini-excavator",
+          "label": "Demolition Mini Excavators",
+          "text": "Work indoors and in tight backyards with a zero-tail-swing mini that fits through narrow openings.",
+          "to": "/equipment/mini-excavator"
+        },
+        {
+          "type": "construction-excavator",
+          "label": "Demolition Diggers",
+          "text": "Medium and large diggers deliver the reach and breaker flow to bring down walls and load debris.",
+          "to": "/equipment/construction-excavator"
+        },
+        {
+          "type": "skid-steer-loader",
+          "label": "Debris Skid Steers",
+          "text": "Sweep, scoop and load rubble fast with a high-capacity skid steer and a 4-in-1 bucket.",
+          "to": "/equipment/skid-steer-loader"
+        }
+      ],
+      "scenarios": [
+        {
+          "text": "Interior and confined demolition",
+          "machine": "Zero-Tail-Swing Mini Excavator"
+        },
+        {
+          "text": "Heavy structural breaking",
+          "machine": "Construction Excavator + Breaker"
+        },
+        {
+          "text": "Debris removal and sorting",
+          "machine": "Skid Steer Loader + Grapple"
+        }
+      ],
+      "faq": {
+        "q": "Do you offer machines with breaker circuits and sound-reduced cabs?",
+        "a": "Yes. Demolition machines can be specified with high-flow auxiliary circuits, hydraulic quick couplers, reinforced guarding and sound-reduced cabs."
+      }
+    },
+    {
+      "slug": "excavation",
+      "name": "Excavation",
+      "tone": "red",
+      "art": "excavator",
+      "hero": "Excavation Equipment That Moves Earth",
+      "intro": "From swimming pools and basements to storm-water retention ponds, the right excavator means finishing on time with clean grade.",
+      "highlights": [
+        "Precision hydraulics",
+        "Wide track options",
+        "Grade-ready cab displays",
+        "Fast cycle times"
+      ],
+      "recommended": [
+        {
+          "type": "mini-excavator",
+          "label": "Compact Excavators",
+          "text": "Sized to sneak behind houses and finish pool and basement digs without disturbing the neighbor’s yard.",
+          "to": "/equipment/mini-excavator"
+        },
+        {
+          "type": "construction-excavator",
+          "label": "General Excavators",
+          "text": "Mid-size diggers with big reach for retaining walls, drainage runs and bulk excavation.",
+          "to": "/equipment/construction-excavator"
+        },
+        {
+          "type": "wheel-loader",
+          "label": "Support Loaders",
+          "text": "Keep excavated material moving — load trucks and backfill as the digger advances.",
+          "to": "/equipment/wheel-loader"
+        }
+      ],
+      "scenarios": [
+        {
+          "text": "Basement and footing excavation",
+          "machine": "Construction Excavator"
+        },
+        {
+          "text": "Pool and tight-access digs",
+          "machine": "Mini Excavator"
+        },
+        {
+          "text": "Haul-away and backfill logistics",
+          "machine": "Wheel Loader"
+        }
+      ],
+      "faq": {
+        "q": "What size excavator do I need for a basement dig?",
+        "a": "For most residential basements an 8–12 ton digger offers the right reach and bucket size. For tight backyard pools, a 3–6 ton unit with a zero-tail-swing option is often the better fit."
+      }
+    },
+    {
+      "slug": "landscaping",
+      "name": "Landscaping",
+      "tone": "green",
+      "art": "skid",
+      "hero": "Landscaping Equipment for Beautiful Results",
+      "intro": "Install patios, irrigation, retaining walls and planting beds faster. Compact, low-ground-pressure machines protect turf while doing the heavy lifting.",
+      "highlights": [
+        "Low ground pressure",
+        "Turf-friendly tracks",
+        "Wide attachment range",
+        "Trailer-friendly weight"
+      ],
+      "recommended": [
+        {
+          "type": "skid-steer-loader",
+          "label": "Landscaping Skid Steers",
+          "text": "Move mulch, soil, boulders and sod. Topsoil screens, augers and rakes make quick work of site prep.",
+          "to": "/equipment/skid-steer-loader"
+        },
+        {
+          "type": "mini-excavator",
+          "label": "Landscaping Excavators",
+          "text": "Dig footings, trenches and ponds with precision, then grade with the dozer blade.",
+          "to": "/equipment/mini-excavator"
+        },
+        {
+          "type": "wheel-loader",
+          "label": "Compact Loaders",
+          "text": "Load trucks and feed the crew from stockpiles without tearing up the lawn.",
+          "to": "/equipment/wheel-loader"
+        }
+      ],
+      "scenarios": [
+        {
+          "text": "Patios, retaining walls and water features",
+          "machine": "Mini Excavator + Skid Steer"
+        },
+        {
+          "text": "Irrigation and drainage trenches",
+          "machine": "Mini Excavator + Trencher"
+        },
+        {
+          "text": "Bulk material handling and cleanup",
+          "machine": "Skid Steer Loader"
+        }
+      ],
+      "faq": {
+        "q": "Are Hongda machines gentle on existing lawns?",
+        "a": "Yes. Our rubber-tracked mini excavators and skid steers distribute weight to keep ground pressure low, so you can work on finished turf with minimal damage."
+      }
+    },
+    {
+      "slug": "surface-mining",
+      "name": "Surface Mining",
+      "tone": "gold",
+      "art": "loader",
+      "hero": "Surface Mining & Quarry Support Equipment",
+      "intro": "Support loading, stockpile management and site maintenance at quarries and surface mines with machines built for severe duty and long shifts.",
+      "highlights": [
+        "Severe-duty guarding",
+        "High breakout force",
+        "Reliable dealer parts",
+        "Operator safety"
+      ],
+      "recommended": [
+        {
+          "type": "wheel-loader",
+          "label": "Mining Wheel Loaders",
+          "text": "Load haul trucks, feed crushers and manage stockpiles with our 3-ton class loader.",
+          "to": "/equipment/wheel-loader"
+        },
+        {
+          "type": "construction-excavator",
+          "label": "Quarry Diggers",
+          "text": "Handle oversize material, clean up faces and load with a robust 12-ton digger.",
+          "to": "/equipment/construction-excavator"
+        },
+        {
+          "type": "skid-steer-loader",
+          "label": "Utility Skid Steers",
+          "text": "Keep walkways clear, move tools and service equipment across the site.",
+          "to": "/equipment/skid-steer-loader"
+        }
+      ],
+      "scenarios": [
+        {
+          "text": "Truck and crusher loading",
+          "machine": "Large Wheel Loader"
+        },
+        {
+          "text": "Face cleanup and scaling support",
+          "machine": "12T Construction Excavator"
+        },
+        {
+          "text": "Site services and maintenance",
+          "machine": "Skid Steer Loader"
+        }
+      ],
+      "faq": {
+        "q": "Can your loaders be specified with mining options?",
+        "a": "Yes — heavy-duty guarding, fire suppression-ready cabling, extra lighting and high-wear buckets can be specified for mining and quarry duty."
+      }
+    },
+    {
+      "slug": "snow-removal",
+      "name": "Snow Removal",
+      "tone": "blue",
+      "art": "loader",
+      "hero": "Snow Removal Equipment That Keeps You Moving",
+      "intro": "Clear lots, sidewalks and driveways before the snow sets. Hongda loaders and skid steers pair with snow blowers, plows and brooms to handle any storm.",
+      "highlights": [
+        "High-flow hydraulics",
+        "Heated cabs",
+        "Quick-mount plows",
+        "Winterization kits"
+      ],
+      "recommended": [
+        {
+          "type": "skid-steer-loader",
+          "label": "Snow Skid Steers",
+          "text": "Run a snow blower, angle blade or broom from a heated cab — turn 180° to plow cul-de-sacs.",
+          "to": "/equipment/skid-steer-loader"
+        },
+        {
+          "type": "wheel-loader",
+          "label": "Snow Loaders",
+          "text": "Clear big lots and load trucks with a wheel loader and a wide snow bucket or blower.",
+          "to": "/equipment/wheel-loader"
+        },
+        {
+          "type": "mini-excavator",
+          "label": "Sidewalk Excavators",
+          "text": "Use a mini excavator with a snow blower for sidewalks and paths too narrow for a loader.",
+          "to": "/equipment/mini-excavator"
+        }
+      ],
+      "scenarios": [
+        {
+          "text": "Parking lots and streets",
+          "machine": "Wheel Loader + Snow Bucket"
+        },
+        {
+          "text": "Sidewalks and loading docks",
+          "machine": "Skid Steer + Snow Blower"
+        },
+        {
+          "text": "Hillside and ramp clearance",
+          "machine": "Tracked Skid Steer"
+        }
+      ],
+      "faq": {
+        "q": "Can I buy a machine with a heater and snow package pre-installed?",
+        "a": "Yes. We offer winterized packages with enclosed heated cabs, block heaters, high-flow hydraulics and lighting for 24-hour snow operations."
+      }
+    },
+    {
+      "slug": "forestry-logging",
+      "name": "Forestry & Logging",
+      "tone": "green",
+      "art": "backhoe",
+      "hero": "Forestry Equipment for Tough Terrain",
+      "intro": "From firewood processing to land clearing and logging support, Hongda machines deliver the traction and tool power forestry work demands.",
+      "highlights": [
+        "Heavy-duty guarding",
+        "High-flow attachments",
+        "Log grapples & forks",
+        "Remote support"
+      ],
+      "recommended": [
+        {
+          "type": "skid-steer-loader",
+          "label": "Forestry Skid Steers",
+          "text": "Move logs, clear brush and feed chippers with grapples, brush cutters and forks.",
+          "to": "/equipment/skid-steer-loader"
+        },
+        {
+          "type": "construction-excavator",
+          "label": "Logging Diggers",
+          "text": "Sort and load logs, build roads and clear land with a powerful excavator and thumb.",
+          "to": "/equipment/construction-excavator"
+        },
+        {
+          "type": "mini-excavator",
+          "label": "Firewood & Trail Diggers",
+          "text": "Small but mighty — perfect for firewood yards, trail maintenance and fence work.",
+          "to": "/equipment/mini-excavator"
+        }
+      ],
+      "scenarios": [
+        {
+          "text": "Firewood processing and log handling",
+          "machine": "Skid Steer + Log Grapple"
+        },
+        {
+          "text": "Land clearing and road building",
+          "machine": "Construction Excavator"
+        },
+        {
+          "text": "Trail maintenance and planting",
+          "machine": "Mini Excavator + Auger"
+        }
+      ],
+      "faq": {
+        "q": "What attachments do you recommend for log handling?",
+        "a": "A hydraulic thumb and grapple are the essentials. Skid steers run dedicated log grapples, while excavators use a bucket-thumb combination or a forestry grapple."
+      }
+    },
+    {
+      "slug": "waste-solutions",
+      "name": "Waste Solutions",
+      "tone": "slate",
+      "art": "skid",
+      "hero": "Waste Management Machinery",
+      "intro": "Recycling centers, transfer stations and scrap yards need machines that shrug off dust, debris and abuse while keeping the material moving.",
+      "highlights": [
+        "Sealed cabs",
+        "High-flow hydraulics",
+        "Multi-tool compatibility",
+        "Rugged guarding"
+      ],
+      "recommended": [
+        {
+          "type": "skid-steer-loader",
+          "label": "Recycling Skid Steers",
+          "text": "Sort, feed and clear around shredders and balers with grapples and 4-in-1 buckets.",
+          "to": "/equipment/skid-steer-loader"
+        },
+        {
+          "type": "wheel-loader",
+          "label": "Transfer Loaders",
+          "text": "Push, load and stockpile waste and recyclables with a wheel loader built for dusty duty.",
+          "to": "/equipment/wheel-loader"
+        },
+        {
+          "type": "construction-excavator",
+          "label": "Scrap Diggers",
+          "text": "Handle scrap with a long-reach digger, magnet or grapple attachment.",
+          "to": "/equipment/construction-excavator"
+        }
+      ],
+      "scenarios": [
+        {
+          "text": "Feeding shredders and sorting lines",
+          "machine": "Skid Steer + Grapple"
+        },
+        {
+          "text": "Transfer station loading and stockpiling",
+          "machine": "Wheel Loader"
+        },
+        {
+          "text": "Scrap yard sorting and loading",
+          "machine": "Excavator + Magnet/Grapple"
+        }
+      ],
+      "faq": {
+        "q": "Are special filters or cab protection available for dusty sites?",
+        "a": "Yes — we can fit cab pressurization, high-efficiency recirculation filters and dust seals for recycling and waste environments."
+      }
+    },
+    {
+      "slug": "utility-work",
+      "name": "Utility Work",
+      "tone": "red",
+      "art": "excavator",
+      "hero": "Utility Equipment for Water, Power & Gas",
+      "intro": "Water, sewer, power, gas and telecom crews need compact machines that fit in road closures and work beside live traffic safely and quickly.",
+      "highlights": [
+        "Zero-tail-swing options",
+        "Rubber tracks",
+        "Quiet engines",
+        "Trailer-friendly"
+      ],
+      "recommended": [
+        {
+          "type": "mini-excavator",
+          "label": "Utility Mini Excavators",
+          "text": "Narrow, quiet and easy to transport — the standard tool for potholing, service lines and small trench runs.",
+          "to": "/equipment/mini-excavator"
+        },
+        {
+          "type": "backhoe-loader",
+          "label": "Utility Backhoes",
+          "text": "Side-shift backhoes trench along walls and roadsides while the loader handles spoil and backfill.",
+          "to": "/equipment/backhoe-loader"
+        },
+        {
+          "type": "skid-steer-loader",
+          "label": "Utility Skid Steers",
+          "text": "Carry pipe, tools and spoil, and run plate compactors and augers for fast reinstatement.",
+          "to": "/equipment/skid-steer-loader"
+        }
+      ],
+      "scenarios": [
+        {
+          "text": "Service line potholing and trenching",
+          "machine": "Mini Excavator"
+        },
+        {
+          "text": "Mainline trenching beside traffic",
+          "machine": "Backhoe Loader (Side-shift)"
+        },
+        {
+          "text": "Backfill, compaction and site cleanup",
+          "machine": "Skid Steer + Compactor"
+        }
+      ],
+      "faq": {
+        "q": "Do you supply rubber-tracked machines for sidewalk and road work?",
+        "a": "Yes. Rubber-tracked mini excavators and skid steers protect pavement and reduce surface damage, which is a common municipal requirement."
+      }
+    },
+    {
+      "slug": "material-handling",
+      "name": "Material Handling",
+      "tone": "gold",
+      "art": "loader",
+      "hero": "Material Handling Equipment",
+      "intro": "Move, stack, load and feed — Hongda loaders and compact machines keep warehouses, yards, farms and plants productive with a full range of handling tools.",
+      "highlights": [
+        "Quick-attach system",
+        "Pallet forks & buckets",
+        "Compact turning radius",
+        "Reliable hydraulics"
+      ],
+      "recommended": [
+        {
+          "type": "wheel-loader",
+          "label": "Handling Loaders",
+          "text": "Buckets, forks, bale clamps and booms — one loader covers most handling jobs around the yard.",
+          "to": "/equipment/wheel-loader"
+        },
+        {
+          "type": "skid-steer-loader",
+          "label": "Compact Handlers",
+          "text": "Great inside warehouses and on congested sites where bigger machines cannot turn.",
+          "to": "/equipment/skid-steer-loader"
+        },
+        {
+          "type": "mini-excavator",
+          "label": "Material Diggers",
+          "text": "Lift and place pipe, block and heavy components with precision on the jobsite.",
+          "to": "/equipment/mini-excavator"
+        }
+      ],
+      "scenarios": [
+        {
+          "text": "Warehouse and yard loading",
+          "machine": "Wheel Loader + Forks"
+        },
+        {
+          "text": "Tight indoor material movement",
+          "machine": "Skid Steer"
+        },
+        {
+          "text": "Precision lifting and placement",
+          "machine": "Mini Excavator"
+        }
+      ],
+      "faq": {
+        "q": "What handling attachments are available?",
+        "a": "Pallet forks, bale spears/clamps, utility buckets, 4-in-1 buckets, boom arms and crane attachments are available across the loader range."
+      }
+    }
+  ],
+  "manufacturingBenefits": [
+    {
+      "icon": "factory",
+      "title": "Modern Manufacturing",
+      "desc": "Laser cutting, robotic welding and assembly lines across three Hongda factories in Shandong."
+    },
+    {
+      "icon": "shield",
+      "title": "Quality Inspection",
+      "desc": "Every machine passes hydraulic pressure, structural, electrical and paint checks before shipping."
+    },
+    {
+      "icon": "wrench",
+      "title": "Customized Solutions",
+      "desc": "Engines, cabs, buckets, couplers, decals and private-label programs tailored to your market."
+    },
+    {
+      "icon": "truck",
+      "title": "Fast Delivery Worldwide",
+      "desc": "FOB / CIF / DDP shipping from Qingdao and Tianjin with full export documentation."
+    }
+  ],
+  "manufacturingClaims": [
+    "Three in-house factories with vertical integration",
+    "EPA Tier 4 Final & EU Stage V certified engine options",
+    "OEM / private-label customization available",
+    "Flexible payment terms with pre-shipment inspection",
+    "One-year warranty plus genuine parts supply"
+  ],
+  "galleries": {
+    "mini-excavator": [
+      {
+        "label": "Front View",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Case_mini_excavator_-_Arlington%2C_MA.jpg/1280px-Case_mini_excavator_-_Arlington%2C_MA.jpg",
+        "ai": "/api/assets/58919245-caa0-4941-8751-05df3029bdb5",
+        "art": "excavator",
+        "tone": "red"
+      },
+      {
+        "label": "On the Job",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/JCB_compact_excavator.JPG/1280px-JCB_compact_excavator.JPG",
+        "ai": "/api/assets/f8a8d3fb-de7c-4eef-bd0a-5be81eba992e",
+        "art": "excavator",
+        "tone": "red"
+      },
+      {
+        "label": "Assembly Plant",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Wangcheng_District_Factory_of_Zoomlion_2022032103.jpg/1280px-Wangcheng_District_Factory_of_Zoomlion_2022032103.jpg",
+        "ai": "/api/assets/3adfa6b4-50fa-4548-93f8-436e427043d8",
+        "art": "factory",
+        "tone": "red"
+      },
+      {
+        "label": "Versatile Attach",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/John_Deere_544K_at_construction_site_in_Sunnyvale.jpg/1280px-John_Deere_544K_at_construction_site_in_Sunnyvale.jpg",
+        "art": "excavator",
+        "tone": "red"
+      }
+    ],
+    "construction-excavator": [
+      {
+        "label": "Front View",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Caterpillar_330_excavator_on_a_pile_of_dirt.jpg/1280px-Caterpillar_330_excavator_on_a_pile_of_dirt.jpg",
+        "ai": "/api/assets/58919245-caa0-4941-8751-05df3029bdb5",
+        "art": "excavator",
+        "tone": "blue"
+      },
+      {
+        "label": "On the Job",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/JCB_compact_excavator.JPG/1280px-JCB_compact_excavator.JPG",
+        "ai": "/api/assets/f8a8d3fb-de7c-4eef-bd0a-5be81eba992e",
+        "art": "excavator",
+        "tone": "blue"
+      },
+      {
+        "label": "Assembly Plant",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Wangcheng_District_Factory_of_Zoomlion_2022032103.jpg/1280px-Wangcheng_District_Factory_of_Zoomlion_2022032103.jpg",
+        "ai": "/api/assets/3adfa6b4-50fa-4548-93f8-436e427043d8",
+        "art": "factory",
+        "tone": "blue"
+      },
+      {
+        "label": "Jobsite Dig",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Caterpillar_backhoe_loader_at_construction_site_in_Sunnyvale%2C_back_view.jpg/1280px-Caterpillar_backhoe_loader_at_construction_site_in_Sunnyvale%2C_back_view.jpg",
+        "art": "excavator",
+        "tone": "blue"
+      }
+    ],
+    "wheel-loader": [
+      {
+        "label": "Front View",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Bamberg_Liebherr_506-20160724-RM-123350.jpg/1280px-Bamberg_Liebherr_506-20160724-RM-123350.jpg",
+        "ai": "/api/assets/b024bcac-b5e0-47d9-87af-a393b199c495",
+        "art": "loader",
+        "tone": "gold"
+      },
+      {
+        "label": "On the Job",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/John_Deere_544K_at_construction_site_in_Sunnyvale.jpg/1280px-John_Deere_544K_at_construction_site_in_Sunnyvale.jpg",
+        "ai": "/api/assets/f8a8d3fb-de7c-4eef-bd0a-5be81eba992e",
+        "art": "loader",
+        "tone": "gold"
+      },
+      {
+        "label": "Assembly Plant",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Wangcheng_District_Factory_of_Zoomlion_2022032103.jpg/1280px-Wangcheng_District_Factory_of_Zoomlion_2022032103.jpg",
+        "ai": "/api/assets/3adfa6b4-50fa-4548-93f8-436e427043d8",
+        "art": "factory",
+        "tone": "gold"
+      },
+      {
+        "label": "Truck Loading",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Caterpillar_330_excavator_on_a_pile_of_dirt.jpg/1280px-Caterpillar_330_excavator_on_a_pile_of_dirt.jpg",
+        "art": "loader",
+        "tone": "gold"
+      }
+    ],
+    "backhoe-loader": [
+      {
+        "label": "Front View",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Case_580_Super_L_backhoe_loader_-_3.jpg/1280px-Case_580_Super_L_backhoe_loader_-_3.jpg",
+        "ai": "/api/assets/d31f1d09-5991-4a30-bb41-5d01e2d8644c",
+        "art": "backhoe",
+        "tone": "green"
+      },
+      {
+        "label": "On the Job",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Caterpillar_backhoe_loader_at_construction_site_in_Sunnyvale%2C_back_view.jpg/1280px-Caterpillar_backhoe_loader_at_construction_site_in_Sunnyvale%2C_back_view.jpg",
+        "ai": "/api/assets/f8a8d3fb-de7c-4eef-bd0a-5be81eba992e",
+        "art": "backhoe",
+        "tone": "green"
+      },
+      {
+        "label": "Assembly Plant",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Wangcheng_District_Factory_of_Zoomlion_2022032103.jpg/1280px-Wangcheng_District_Factory_of_Zoomlion_2022032103.jpg",
+        "ai": "/api/assets/3adfa6b4-50fa-4548-93f8-436e427043d8",
+        "art": "factory",
+        "tone": "green"
+      },
+      {
+        "label": "Trench Work",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/JCB_compact_excavator.JPG/1280px-JCB_compact_excavator.JPG",
+        "art": "backhoe",
+        "tone": "green"
+      }
+    ],
+    "skid-steer-loader": [
+      {
+        "label": "Front View",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Bobcat_T650_compact_track_loader_%28side_view%29.jpg/1280px-Bobcat_T650_compact_track_loader_%28side_view%29.jpg",
+        "art": "skid",
+        "tone": "slate"
+      },
+      {
+        "label": "On the Job",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Caterpillar_backhoe_loader_at_construction_site_in_Sunnyvale%2C_back_view.jpg/1280px-Caterpillar_backhoe_loader_at_construction_site_in_Sunnyvale%2C_back_view.jpg",
+        "ai": "/api/assets/f8a8d3fb-de7c-4eef-bd0a-5be81eba992e",
+        "art": "skid",
+        "tone": "slate"
+      },
+      {
+        "label": "Assembly Plant",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Wangcheng_District_Factory_of_Zoomlion_2022032103.jpg/1280px-Wangcheng_District_Factory_of_Zoomlion_2022032103.jpg",
+        "ai": "/api/assets/3adfa6b4-50fa-4548-93f8-436e427043d8",
+        "art": "factory",
+        "tone": "slate"
+      },
+      {
+        "label": "Attachments",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/John_Deere_544K_at_construction_site_in_Sunnyvale.jpg/1280px-John_Deere_544K_at_construction_site_in_Sunnyvale.jpg",
+        "art": "skid",
+        "tone": "slate"
+      }
+    ]
+  },
+  "posts": [
+    {
+      "slug": "mini-excavator-cost-2026",
+      "title": "How Much Does a Mini Excavator Cost? 2026 Price Guide",
+      "date": "2026-08-21",
+      "tone": "red",
+      "art": "excavator",
+      "excerpt": "Mini excavator prices vary widely by size, brand and specification. We break down current price ranges, what affects cost, and how to budget for a compact digger in 2026.",
+      "body": [
+        {
+          "h": "What drives the price",
+          "p": "Mini excavator pricing is driven by operating weight, engine emission tier, track type, cab configuration and brand. A small 0.8-ton unit costs far less than a fully equipped 3-ton machine with an enclosed cab."
+        },
+        {
+          "p": "As a rule of thumb, expect a usable entry-level mini excavator from a Chinese manufacturer to start in the lower five-figure USD range, with larger, cabbed, emission-compliant models climbing significantly. Port costs, shipping and attachments all add to the landed price."
+        },
+        {
+          "h": "New vs. used",
+          "p": "Used machines can save money up front but often carry hidden wear in the undercarriage and hydraulics. New machines from Hongda include a one-year warranty, genuine spare-parts support and engines certified to EPA or EU Stage V — which also simplifies importing into many countries."
+        },
+        {
+          "p": "Talk to our sales team with your job size and attachment needs and we will recommend a model and configuration that fits both your application and your budget."
+        }
+      ]
+    },
+    {
+      "slug": "mini-skid-steer-weight-guide",
+      "title": "How Much Does a Mini Skid Steer Weigh? Complete Guide",
+      "date": "2026-08-14",
+      "tone": "slate",
+      "art": "skid",
+      "excerpt": "Weight determines transport, ground pressure and capacity. Here is what mini skid steers actually weigh and why it matters on the jobsite.",
+      "body": [
+        {
+          "p": "Mini skid steers generally weigh between 1,000 and 3,000 kg depending on size, drive type and cab equipment. Stand-on models are the lightest, while tracked compact loaders are the heaviest in the class."
+        },
+        {
+          "h": "Why weight matters",
+          "p": "Lighter machines are easier to trailer, gentler on turf and more maneuverable. Heavier machines bring more breakout force and stability. Always check the rated operating capacity against the weight of the materials you plan to move."
+        },
+        {
+          "p": "Hongda publishes full specification sheets including operating weight, transport dimensions and ground pressure so you can plan trailers and site access with confidence."
+        }
+      ]
+    },
+    {
+      "slug": "wheel-loader-brake-systems",
+      "title": "Wheel Loader Brake Systems: Working Principles and Common Faults",
+      "date": "2026-08-06",
+      "tone": "gold",
+      "art": "loader",
+      "excerpt": "Understanding how wheel loader brakes work helps you diagnose faults early and avoid expensive downtime on site.",
+      "body": [
+        {
+          "p": "Most modern wheel loaders use hydraulic wet-disc brakes sealed inside the axles. Because the discs run in oil, they cool well and resist dust and water — ideal for loader duty."
+        },
+        {
+          "h": "Common faults",
+          "p": "The most frequent issues are contaminated brake oil, worn seals causing oil bypass, and low accumulator pressure leading to a soft pedal. Regular oil sampling and scheduled axle service prevent most failures."
+        },
+        {
+          "p": "If your brake warning light stays on or stopping distances increase, stop the machine and check the hydraulic charge pressure before continuing work."
+        }
+      ]
+    },
+    {
+      "slug": "excavator-overheating-guide",
+      "title": "Excavator Overheating Problem: Signs, Reasons and Fixes",
+      "date": "2026-07-30",
+      "tone": "red",
+      "art": "excavator",
+      "excerpt": "An overheating excavator loses power and risks serious engine damage. Learn the warning signs and the most common causes we see in the field.",
+      "body": [
+        {
+          "p": "Overheating usually announces itself through the temperature gauge, reduced hydraulic power, or a faint burning smell from the engine bay. Ignoring it can warp heads and ruin the engine."
+        },
+        {
+          "h": "Top causes",
+          "p": "Clogged radiator fins, a slipping fan belt, low coolant, a stuck thermostat, and overfilled or degraded hydraulic oil are the usual culprits. In dusty sites, radiator cores can plug in a single shift."
+        },
+        {
+          "p": "Clean the cooling package daily in dusty conditions, check coolant levels every morning, and have the hydraulic oil tested at each service interval."
+        }
+      ]
+    },
+    {
+      "slug": "gradall-vs-excavator",
+      "title": "Gradall vs Excavator: Key Differences and Which to Choose",
+      "date": "2026-07-22",
+      "tone": "blue",
+      "art": "excavator",
+      "excerpt": "Gradall-style telescopic excavators and conventional excavators each have strengths. Here is how to decide which suits your work.",
+      "body": [
+        {
+          "p": "A conventional excavator uses a boom-and-arm design that is powerful, precise and affordable. A Gradall-style machine extends a telescopic boom for flat, parallel grading along slopes and shoulders."
+        },
+        {
+          "h": "Which one is right for you?",
+          "p": "For general digging, trenching and demolition, a conventional excavator offers the best combination of breakout force and value. For highway ditch grading and finishing slopes, a telescopic machine is hard to beat."
+        },
+        {
+          "p": "Most contractors we work with choose a conventional excavator first, then add attachments to expand its range."
+        }
+      ]
+    },
+    {
+      "slug": "import-excavator-from-china-case",
+      "title": "How to Import Excavator from China? A Real Case Study",
+      "date": "2026-07-15",
+      "tone": "green",
+      "art": "factory",
+      "excerpt": "Follow a real buyer from first inquiry to delivered machine — the documents, inspections, payment terms and shipping steps for importing an excavator from China.",
+      "body": [
+        {
+          "p": "A distributor in South America needed three mini excavators and one 8-ton digger. This is the step-by-step path they took with our team."
+        },
+        {
+          "h": "The process",
+          "p": "Step one is confirming the model, engine emission tier and attachments to match your local regulations. Step two is a proforma invoice, deposit and production. Step three is pre-shipment inspection, then sea freight, customs clearance and delivery."
+        },
+        {
+          "p": "The buyer saved roughly 30% versus equivalent machines from their local dealer network, while still receiving a one-year warranty and remote technical support from our factory team."
+        }
+      ]
+    },
+    {
+      "slug": "9-types-excavator-buckets",
+      "title": "9 Types of Excavator Buckets You Should Know",
+      "date": "2026-07-08",
+      "tone": "gold",
+      "art": "excavator",
+      "excerpt": "From general-purpose to rock, trenching and cleaning buckets — choosing the right bucket transforms your excavator’s productivity.",
+      "body": [
+        {
+          "p": "The bucket is the excavator’s most-used tool, yet many operators run a single general bucket for every job. Matching bucket type and width to the task cuts cycle times and fuel burn."
+        },
+        {
+          "h": "The main bucket families",
+          "p": "General-purpose, grading, trenching, ditching, rock, cleaning, skeleton, tilt and 4-in-1 buckets each have a specialty. Wide buckets move more material; narrow buckets dig deeper and into tight slots."
+        },
+        {
+          "p": "Our sales engineers can help you build a bucket package for your typical jobs — one machine can carry a full attachment fleet."
+        }
+      ]
+    },
+    {
+      "slug": "start-landscaping-business-equipment",
+      "title": "Essential Equipment to Start a Landscaping Business",
+      "date": "2026-06-28",
+      "tone": "green",
+      "art": "skid",
+      "excerpt": "A beginner’s guide to the machines that unlock landscaping revenue — and the compact options that keep startup costs low.",
+      "body": [
+        {
+          "p": "Landscaping work quickly outgrows shovels and wheelbarrows. The question is which machine to buy first."
+        },
+        {
+          "h": "Start with a skid steer or compact loader",
+          "p": "A skid steer with a bucket, pallet forks and an auger covers mulch installation, soil moving, fence work and material handling. Add a mini excavator when digging and drainage work becomes regular."
+        },
+        {
+          "p": "Both machines trailer easily behind a pickup, which keeps mobilization simple and lets you quote jobs across a wide area."
+        }
+      ]
+    },
+    {
+      "slug": "what-is-a-backhoe-guide",
+      "title": "What Is a Backhoe? A Complete Beginner’s Guide",
+      "date": "2026-06-20",
+      "tone": "slate",
+      "art": "backhoe",
+      "excerpt": "Backhoe loaders combine a loader and a digger in one machine. Learn how they work, what they cost and what they are best at.",
+      "body": [
+        {
+          "p": "A backhoe loader has a loading bucket at the front and a digging arm (the “backhoe”) at the rear. That single machine can dig a trench, then turn around and load the spoil into a truck."
+        },
+        {
+          "h": "What are they best at?",
+          "p": "Backhoes shine on utility work, small foundations, drainage and general contracting where jobs change every hour. Their road speed lets them travel between nearby sites without a lowboy."
+        },
+        {
+          "p": "Choose a side-shift model for working along walls and curbs, or a center-mount model for maximum digging power in open ground."
+        }
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "slug": "group",
+      "name": "Hongda Group",
+      "tone": "slate",
+      "art": "factory",
+      "short": "The parent industrial group behind the HONGDA brand.",
+      "hero": "Hongda Industrial Group",
+      "intro": "Hongda Industrial Group is a diversified manufacturing group headquartered in Shandong, China. Its heavy-equipment division designs and builds compact construction machinery exported to more than 30 countries.",
+      "sections": [
+        {
+          "h": "One Group, Full Integration",
+          "p": "Being part of a group gives us advantages independent factories cannot match: shared steel procurement, in-house component machining, centralized R&D and a group-wide quality system across every production line."
+        },
+        {
+          "h": "Global Reach",
+          "p": "Group companies serve construction, agriculture, logistics and energy customers worldwide, supported by overseas warehouses, distributor partners and a dedicated export service team in Jinan."
+        }
+      ]
+    },
+    {
+      "slug": "about",
+      "name": "About Hongda",
+      "tone": "red",
+      "art": "factory",
+      "short": "Who we are — a compact machinery manufacturer in China.",
+      "hero": "China’s Reliable Compact Machinery Manufacturer",
+      "intro": "Hongda Heavy Machinery Equipment Co., Ltd. designs and manufactures mini excavators, wheel loaders, backhoe loaders and skid steer loaders in Shandong, China. We help contractors, rental fleets and dealers worldwide get dependable iron at a fair price.",
+      "sections": [
+        {
+          "h": "Our mission",
+          "p": "To make professional-grade compact equipment accessible — combining honest pricing, certified quality and responsive after-sales support."
+        },
+        {
+          "h": "What we do",
+          "p": "From laser cutting and robotic welding to assembly and inspection, every machine passes through our own factories. That control lets us offer OEM customization, private-label programs and rapid parts supply."
+        },
+        {
+          "h": "Certified quality",
+          "p": "Our machines are produced under ISO 9001, ISO 14001 and ISO 45001 certified management systems, with engine options certified to EPA and EU Stage V emissions standards."
+        }
+      ]
+    },
+    {
+      "slug": "certifications",
+      "name": "Certifications",
+      "tone": "blue",
+      "art": "qc",
+      "short": "ISO, CE, EPA and EU Stage V — the standards behind our machines.",
+      "hero": "Certified Quality, Verified Compliance",
+      "intro": "International certifications are not badges to us — they are the paperwork that lets you import, register and resell our machines with confidence in your market.",
+      "sections": [
+        {
+          "h": "Management system certifications",
+          "p": "Our factory operates under ISO 9001 (quality), ISO 14001 (environment) and ISO 45001 (occupational health and safety) certified systems, audited annually by accredited bodies."
+        },
+        {
+          "h": "Machine & engine compliance",
+          "p": "Mini excavators and loaders can be specified with engines certified to EPA Tier 4 Final or EU Stage V. Machines carry CE documentation for the European market, and we provide the technical files and declarations your importer needs."
+        }
+      ],
+      "certs": [
+        "ISO 9001",
+        "ISO 14001",
+        "ISO 45001",
+        "CE",
+        "EPA Tier 4 Final",
+        "EU Stage V",
+        "SGS pre-shipment inspection"
+      ]
+    },
+    {
+      "slug": "team",
+      "name": "Our Team",
+      "tone": "green",
+      "art": "team",
+      "short": "The engineers, QC staff and export specialists behind every machine.",
+      "hero": "People Who Answer When You Call",
+      "intro": "Behind every Hongda machine is a team that picks up the phone: application engineers who recommend the right configuration, QC inspectors who test before shipping, and export staff who coordinate documents and logistics.",
+      "sections": [
+        {
+          "h": "Engineering & applications",
+          "p": "Our engineers help you choose buckets, engines, cabs and emission packages that fit local regulations and job conditions — before you place the order."
+        },
+        {
+          "h": "Quality control",
+          "p": "Dedicated inspectors check structural welds, hydraulic pressures, electrical systems and paint finish on every unit against a written checklist."
+        },
+        {
+          "h": "After-sales & parts",
+          "p": "A dedicated after-sales desk handles warranty claims, troubleshooting videos and spare-parts orders, supported by overseas distributors and our Jinan parts center."
+        }
+      ]
+    },
+    {
+      "slug": "parts-components",
+      "name": "Parts & Components",
+      "tone": "gold",
+      "art": "parts",
+      "short": "Genuine parts and world-brand components keep you working.",
+      "hero": "Genuine Parts, World-Brand Components",
+      "intro": "We use proven global component brands and back every machine with genuine spare parts — so repairs are predictable and downtime stays short.",
+      "sections": [
+        {
+          "h": "World-brand components",
+          "p": "Engines from Kubota, Yanmar, Cummins and Isuzu; pumps and valves from leading hydraulic suppliers; motors, seals and filters sourced for reliability and easy local replacement."
+        },
+        {
+          "h": "Genuine Hongda parts",
+          "p": "Order filters, bucket teeth, track parts, hoses and wear parts directly from our parts center. We ship globally and recommend a starter spare-parts kit with every machine order."
+        }
+      ]
+    },
+    {
+      "slug": "production-quality",
+      "name": "Production & Quality",
+      "tone": "slate",
+      "art": "workshop",
+      "short": "Six-step in-house manufacturing and a strict QC system.",
+      "hero": "In-House Manufacturing, Rigorous QC",
+      "intro": "We control the process from steel plate to shipping crate. That is how we keep quality high and prices fair.",
+      "sections": [],
+      "steps": [
+        "Steel Plate Laser Cutting",
+        "Automated / Manual Welding",
+        "Shot Blasting",
+        "Paint Spraying",
+        "Final Assembly",
+        "Inspection & Logistics"
+      ]
+    },
+    {
+      "slug": "warranty",
+      "name": "Warranty Policy",
+      "tone": "red",
+      "art": "warranty",
+      "short": "One-year warranty, genuine parts and clear claims.",
+      "hero": "Warranty Protection You Can Rely On",
+      "intro": "Every new Hongda machine includes a standard one-year warranty covering manufacturing defects in materials and workmanship, backed by our after-sales team.",
+      "sections": [
+        {
+          "h": "What is covered",
+          "p": "Structural components, hydraulic system components and the powertrain are covered against manufacturing defects for 12 months from delivery. Wear items such as bucket teeth, tracks, filters and cutting edges are excluded."
+        },
+        {
+          "h": "How to claim",
+          "p": "Contact your sales representative or our after-sales desk with your machine serial number and a description or video of the issue. We will diagnose by remote video, then supply replacement parts or guide local repairs under warranty."
+        },
+        {
+          "h": "Extended protection",
+          "p": "Optional extended warranty and a prepaid parts plan are available for fleets and dealers. Ask us for a custom support agreement."
+        }
+      ]
+    }
+  ],
+  "contactTopics": [
+    {
+      "slug": "oem-solution",
+      "name": "OEM Solution",
+      "tone": "red",
+      "art": "factory",
+      "short": "Private-label and custom-configured machines for your brand.",
+      "hero": "OEM & Private-Label Manufacturing",
+      "intro": "Build your own equipment brand without owning a factory. Hongda manufactures machines to your specification and paints them in your colors with your decals.",
+      "points": [
+        {
+          "h": "Custom configuration",
+          "p": "Choose engine brand, emission tier, cab style, bucket package, quick couplers and attachments to match your market."
+        },
+        {
+          "h": "Private-label branding",
+          "p": "We apply your logo, color scheme, decals and serial-number system on the production line — not after the fact."
+        },
+        {
+          "h": "Market documentation",
+          "p": "Get certificates of origin, CE/EPA documentation and technical files prepared for your import and registration process."
+        },
+        {
+          "h": "Protected territories",
+          "p": "We work with a limited number of OEM partners per market and respect your distribution agreements."
+        }
+      ]
+    },
+    {
+      "slug": "dealer-opportunity",
+      "name": "Dealer Opportunity",
+      "tone": "gold",
+      "art": "team",
+      "short": "Join the Hongda dealer network.",
+      "hero": "Become a Hongda Dealer",
+      "intro": "We are expanding our distributor network worldwide. Dealers get factory-direct pricing, marketing support, training and priority allocation of popular models.",
+      "points": [
+        {
+          "h": "Special discounts",
+          "p": "Tiered dealer pricing that rewards volume, with demo-machine programs for your showroom."
+        },
+        {
+          "h": "Priority allocation",
+          "p": "Early access to production slots for fast-moving models like mini excavators and skid steers."
+        },
+        {
+          "h": "Marketing support",
+          "p": "Product photography, brochures, spare-parts kits and joint advertising funds to help you sell."
+        },
+        {
+          "h": "Training & after-sales",
+          "p": "We train your technicians and sales staff — online and at our factory — and back you with remote diagnostics."
+        }
+      ]
+    },
+    {
+      "slug": "payment-delivery",
+      "name": "Payment & Delivery",
+      "tone": "blue",
+      "art": "truck",
+      "short": "Flexible payment terms and worldwide shipping.",
+      "hero": "Payment & Delivery That De-Risk Your Purchase",
+      "intro": "Clear payment stages and multiple shipping options protect both sides. Most buyers pay a deposit, inspect before shipping, then settle the balance against shipping documents.",
+      "points": [
+        {
+          "h": "Payment terms",
+          "p": "Typical terms are 30% deposit to start production and 70% balance against the Bill of Lading. T/T, wire transfer and letters of credit are accepted."
+        },
+        {
+          "h": "Pre-shipment inspection",
+          "p": "We welcome a third-party inspection (SGS/BV) or your own agent at our factory before the balance payment."
+        },
+        {
+          "h": "Shipping options",
+          "p": "Choose FOB Qingdao/Tianjin, CIF or DDP to your door. We handle consolidation, ro-ro or container shipping and all export documentation."
+        },
+        {
+          "h": "Delivery time",
+          "p": "Popular models are typically produced and ready within 15–30 working days after deposit, depending on configuration."
+        }
+      ]
+    },
+    {
+      "slug": "maintenance",
+      "name": "Maintenance",
+      "tone": "slate",
+      "art": "wrench",
+      "short": "Daily checks, service intervals and maintenance videos.",
+      "hero": "Maintenance Made Simple",
+      "intro": "Preventive maintenance keeps your machine working and protects your warranty. We make it easy with grouped service points and clear schedules.",
+      "points": [
+        {
+          "h": "Daily checks",
+          "p": "A 5-minute walk-around: fluid levels, leaks, tracks/tires, grease points and warning lights."
+        },
+        {
+          "h": "Service intervals",
+          "p": "Engine oil and filter changes follow the engine maker’s hours; hydraulic oil and filters follow our schedule in the operator manual."
+        },
+        {
+          "h": "Genuine consumables",
+          "p": "Use genuine Hongda filters and oils to protect your warranty and component life. We stock the parts and ship worldwide."
+        },
+        {
+          "h": "Video support",
+          "p": "Our service team provides step-by-step maintenance videos and live video guidance for your mechanics."
+        }
+      ]
+    },
+    {
+      "slug": "after-sales-service",
+      "name": "After Sales Service",
+      "tone": "green",
+      "art": "headset",
+      "short": "Remote diagnostics, spare parts and responsive support.",
+      "hero": "After-Sales Service That Answers",
+      "intro": "A machine purchase should come with a support team, not a goodbye. Our after-sales desk assists every customer — direct or via distributors.",
+      "points": [
+        {
+          "h": "One-year warranty",
+          "p": "Every machine includes a 12-month warranty on manufacturing defects, with a simple video-first claims process."
+        },
+        {
+          "h": "Remote diagnostics",
+          "p": "Send us a video or photo of the issue and our engineers will guide your mechanic through the fix in real time."
+        },
+        {
+          "h": "Spare-parts supply",
+          "p": "Our Jinan parts center and overseas warehouses keep fast-moving parts in stock and ship within 24 hours on most orders."
+        },
+        {
+          "h": "Lifetime technical support",
+          "p": "Even after the warranty period, we continue to answer technical questions and supply parts for your machine."
+        }
+      ]
+    },
+    {
+      "slug": "faqs",
+      "name": "FAQs",
+      "tone": "purple",
+      "art": "doc",
+      "short": "Frequently asked questions about buying and owning.",
+      "hero": "Frequently Asked Questions",
+      "intro": "Quick answers to the questions buyers ask us most — from shipping and payment to emissions, parts and warranty.",
+      "faqs": [
+        {
+          "q": "What is the minimum order quantity?",
+          "a": "There is no minimum for standard machines — one unit is fine. OEM programs typically start at container quantities depending on machine size."
+        },
+        {
+          "q": "Can I visit the factory before ordering?",
+          "a": "Absolutely. We host buyers in Jinan for factory tours, test drives and face-to-face meetings. We can also arrange online video factory tours."
+        },
+        {
+          "q": "Which emission standards can your machines meet?",
+          "a": "Standard engines are available, and we offer EPA Tier 4 Final and EU Stage V certified engine options on most mini excavators and loaders."
+        },
+        {
+          "q": "Do you offer spare parts with the machine?",
+          "a": "Yes — we recommend a starter kit of filters, belts and wear parts with every order, and we stock ongoing parts supply from our parts center."
+        },
+        {
+          "q": "How long does shipping take?",
+          "a": "Ocean freight from Qingdao/Tianjin to most major ports takes 20–45 days depending on destination. Production is typically 15–30 working days after deposit."
+        },
+        {
+          "q": "Can I brand the machine with my own logo?",
+          "a": "Yes. We support OEM/private-label programs including custom paint, decals, logos and serial numbering. Ask our sales team for details."
+        }
+      ]
+    },
+    {
+      "slug": "exchange-refund",
+      "name": "Exchange & Refund",
+      "tone": "darkred",
+      "art": "refresh",
+      "short": "Exchange, refund and return policy.",
+      "hero": "Exchange & Refund Policy",
+      "intro": "We want you to be confident in your purchase. Read the terms below for defects, returns and exchanges on standard catalog machines.",
+      "points": [
+        {
+          "h": "Defective machines",
+          "p": "If a new machine arrives with a manufacturing defect, contact us within 7 days of delivery with photos and the serial number. We will repair, replace parts, or arrange a solution per the warranty terms."
+        },
+        {
+          "h": "Exchange policy",
+          "p": "Within 14 days of delivery, a machine with a confirmed factory defect that cannot be repaired on site may be exchanged for an equivalent model."
+        },
+        {
+          "h": "Custom / OEM orders",
+          "p": "Custom-configured and OEM machines are produced to your specification and therefore are not eligible for change-of-mind refunds once production begins."
+        },
+        {
+          "h": "Fraud protection",
+          "p": "Only pay through the verified corporate bank accounts on your official proforma invoice. Never send money to personal or third-party accounts — see our Security Alert page."
+        }
+      ]
+    }
+  ]
+}

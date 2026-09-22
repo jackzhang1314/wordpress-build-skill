@@ -1,0 +1,16 @@
+[
+  {
+    "path": "/",
+    "product": "",
+    "status": 200,
+    "success": true,
+    "entryId": 5
+  },
+  {
+    "path": "/equipment/model/yhd08/",
+    "product": "13",
+    "status": 200,
+    "success": true,
+    "entryId": 6
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "verifiedAt": "2026-09-20T12:20:22.344690+00:00",
+  "counts": {
+    "pages": 19,
+    "posts": 9,
+    "hd_product": 19,
+    "hd_solution": 11,
+    "hd_category": 5
+  },
+  "originalContentDifferences": [],
+  "cleanupPassed": true,
+  "fluentFormsEntriesUI": {
+    "total": 2,
+    "ids": [
+      1,
+      2
+    ],
+    "notificationsEnabled": false
+  },
+  "scope": "Administrator desktop browser; all 58 editors opened; draft-clone write/read/render coverage plus representative UI workflows. Not every role/browser/plugin feature.",
+  "contentMatrix": {
+    "total": 58,
+    "passed": 58,
+    "sources": [
+      "content-matrix.json",
+      "contact-after-fix.json"
+    ],
+    "note": "Retains original failed contact result; post-fix result supersedes it."
+  },
+  "fixes": [
+    "Enquiry template now renders editable page body",
+    "Product picker allows applicable user-created custom templates"
+  ]
+}

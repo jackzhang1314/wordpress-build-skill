@@ -1,0 +1,110 @@
+{
+  "testedAt": "2026-09-20T11:05:35.654342+00:00",
+  "url": "https://mediumblue-quail-505146.hostingersite.com",
+  "routes": [
+    {
+      "path": "/",
+      "status": 200,
+      "url": "https://mediumblue-quail-505146.hostingersite.com/",
+      "title": [
+        "Compact equipment for the work ahead - HONGDA"
+      ],
+      "h1": 1,
+      "noindex": true,
+      "localLinks": 0,
+      "fatal": false,
+      "businessTheme": true
+    },
+    {
+      "path": "/equipment/",
+      "status": 200,
+      "url": "https://mediumblue-quail-505146.hostingersite.com/equipment/",
+      "title": [
+        "Equipment - HONGDA"
+      ],
+      "h1": 1,
+      "noindex": true,
+      "localLinks": 0,
+      "fatal": false,
+      "businessTheme": true
+    },
+    {
+      "path": "/equipment/model/yhd08/",
+      "status": 200,
+      "url": "https://mediumblue-quail-505146.hostingersite.com/equipment/model/yhd08/",
+      "title": [
+        "YHD08 \u00b7 compact excavator - HONGDA"
+      ],
+      "h1": 1,
+      "noindex": true,
+      "localLinks": 0,
+      "fatal": false,
+      "businessTheme": true
+    },
+    {
+      "path": "/equipment/model/yhd12/",
+      "status": 200,
+      "url": "https://mediumblue-quail-505146.hostingersite.com/equipment/model/yhd12/",
+      "title": [
+        "YHD12 \u00b7 compact excavator - HONGDA"
+      ],
+      "h1": 1,
+      "noindex": true,
+      "localLinks": 0,
+      "fatal": false,
+      "businessTheme": true
+    },
+    {
+      "path": "/industry/agriculture/",
+      "status": 200,
+      "url": "https://mediumblue-quail-505146.hostingersite.com/industry/agriculture/",
+      "title": [
+        "Farm &amp; land management - HONGDA"
+      ],
+      "h1": 1,
+      "noindex": true,
+      "localLinks": 0,
+      "fatal": false,
+      "businessTheme": true
+    },
+    {
+      "path": "/our-story/",
+      "status": 200,
+      "url": "https://mediumblue-quail-505146.hostingersite.com/our-story/",
+      "title": [
+        "About HONGDA - HONGDA"
+      ],
+      "h1": 1,
+      "noindex": true,
+      "localLinks": 0,
+      "fatal": false,
+      "businessTheme": true
+    },
+    {
+      "path": "/contact-us/",
+      "status": 200,
+      "url": "https://mediumblue-quail-505146.hostingersite.com/contact-us/",
+      "title": [
+        "Tell us about your next project. - HONGDA"
+      ],
+      "h1": 1,
+      "noindex": true,
+      "localLinks": 0,
+      "fatal": false,
+      "businessTheme": true
+    },
+    {
+      "path": "/missing-deployment-acceptance/",
+      "status": 404,
+      "url": "https://mediumblue-quail-505146.hostingersite.com/missing-deployment-acceptance/",
+      "title": [
+        "Page Not Found - HONGDA"
+      ],
+      "h1": 1,
+      "noindex": true,
+      "localLinks": 0,
+      "fatal": false,
+      "businessTheme": true
+    }
+  ]
+}

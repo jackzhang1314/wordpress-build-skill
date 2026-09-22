@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+  "version": 3,
+  "settings": {
+    "layout": {
+      "contentSize": "780px",
+      "wideSize": "1160px"
+    },
+    "color": {
+      "palette": [
+        {
+          "slug": "red",
+          "name": "Hongda red",
+          "color": "#b70e1f"
+        },
+        {
+          "slug": "dark",
+          "name": "Charcoal",
+          "color": "#171d22"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#ffffff"
+        },
+        {
+          "slug": "pale",
+          "name": "Light grey",
+          "color": "#f6f7f8"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "slug": "body",
+          "name": "Arial",
+          "fontFamily": "Arial, Helvetica, sans-serif"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "var:preset|font-family|body"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "startedAt": "2026-09-19T20:56:39.353Z",
+  "scope": "local-native-php-mysql-smtp",
+  "project": "hongda-native-b73e0fee",
+  "checks": {
+    "installedFiles": 20,
+    "site": true,
+    "inquiry": true,
+    "smtp": {
+      "received": 1,
+      "containsSubmittedEmail": true,
+      "expectedRecipient": true,
+      "transport": "PHPMailer -> SMTP -> Mailpit"
+    }
+  },
+  "externalInbox": "not-tested",
+  "publicDnsTls": "not-tested",
+  "visualApproval": "pending",
+  "runtime": {
+    "wordpress": "7.1",
+    "php": "8.3.33",
+    "database": "8.4.11",
+    "smtp": true,
+    "mailIntercept": false
+  },
+  "images": [
+    "sha256:74103f21d460e96abdee0dc304852a00823950bef3cb343ba855e19b6983c31d",
+    "sha256:85b9bf2e29cf836ecb8c2a15a935d4ba0c606631dff1dd79531a11983c638f2a",
+    "sha256:37a38e48e9338cd7e89dfeb487f37b02ebfcd9cb23111bed2d345e79d37d6dd6"
+  ],
+  "status": "failed",
+  "phase": "Import into independent MySQL database and restore uploads",
+  "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   configuration: 'c1edd9eefe0d2a937360ad9bca135a602745c2f0f46390643830b24bd9e3adb3',\n-   configuration: '304d2feb49e35889f02a859824522d87c5d33b18792059bd36ce3543de5df6c8',\n    fluentform_submissions: {\n      rows: 1,\n+     sha256: '8986ae8a25649ceaab3689eb4906e35ff7599b376ec66af7c2d4162f6543872d'\n-     sha256: 'cb3f5d519de43eca2208601646077ce81a6861ad9fc50247158e112673e62fa3'\n    },\n    postmeta: {\n      rows: 324,\n      sha256: '2fc8fb1603be06f714b914feece9d0b2890c3564f1484d79f1fa131c30ae67a2'\n    },\n    posts: {\n      rows: 78,\n+     sha256: '10d478c9c0c4f68abc6f5877aaa501a9fe090a4098d3f8eb40b08d77883c0964'\n-     sha256: 'cb59e14a07c2aaf7f00b4f076fbf958275e1ce3b3ace549f7249d5315f5e1a36'\n    },\n    term_relationships: {\n      rows: 34,\n      sha256: 'c44dc842a35fea3a5aa7151db1d743fdbcb2a644fc84e5ab600cfd9f40011427'\n    },\n",
+  "finishedAt": "2026-09-19T20:57:44.377Z"
+}

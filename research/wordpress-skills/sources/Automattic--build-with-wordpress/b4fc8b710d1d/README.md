@@ -1,0 +1,156 @@
+# Build with WordPress
+
+Canonical source for WordPress-focused agent skills, MCP setup, and generated packages across coding-agent surfaces.
+
+Build with WordPress lets coding agents create, edit, inspect, and validate WordPress.com and WordPress Studio projects using the same shared guidance. The repository owns the portable skill source plus the generator that adapts those skills into each agent's native packaging, configuration, or workspace convention.
+
+## Why Developers Use It
+
+Use Build with WordPress when you want your coding agent to understand WordPress projects without hand-writing a different setup for every tool. It gives developers:
+
+- ready-to-use WordPress guidance for site builds, theme edits, custom blocks, plugins, and audits
+- Studio MCP and `wp_cli` access wired into each agent surface that supports it
+- one shared skill source, so behavior stays consistent across agents
+- generated packages that fit each tool's native conventions instead of a lowest-common-denominator config
+- local verification that every generated output still builds and points at the expected files
+
+## How It Relates To WordPress Studio
+
+WordPress Studio is the runtime this package teaches agents to use. [Studio](https://github.com/Automattic/studio) is a desktop and web-based surface for building and managing custom WordPress websites and applications. Studio owns the WordPress sites, the `studio` CLI, and the `studio mcp` server. Build with WordPress owns the agent-facing layer around Studio: instructions, skills, MCP config snippets, telemetry wiring, and native package files for each coding agent.
+
+In practice, a developer installs WordPress Studio once, then uses the generated output for their preferred agent. That agent can ask Studio to create and manage sites, inspect screenshots, validate blocks, run performance checks, and use WP-CLI through MCP instead of guessing how to operate a WordPress project from files alone.
+
+Generated outputs are available for:
+
+- Aider
+- Amp
+- Claude Code
+- Cline
+- Codex
+- Conductor
+- Continue
+- Cursor
+- Devin CLI
+- Factory Droid
+- Gemini
+- GitHub Copilot
+- Hermes
+- Junie
+- Kilo Code
+- OpenClaw
+- OpenCode
+- Pi
+- Qodo
+- Roo Code
+- Devin Desktop
+- VS Code Marketplace extension scaffold
+- Zed
+
+The shared WordPress workflow:
+
+- prefers the WordPress Studio MCP server for site management, screenshots, and block validation
+- falls back to the Studio CLI through a shared Studio skill when MCP is unavailable
+- uses `wp_cli` through the MCP server as the general-purpose WordPress escape hatch
+- routes requests to the right implementation path for site work, block themes, custom blocks, custom plugins, and audits
+- can generate three design preview directions before building a site theme
+- bundles a plugin-local telemetry MCP server so workflow events do not depend on Studio shipping telemetry support
+
+## Developer Documentation
+
+Start with the [developer documentation index](docs/README.md) when changing skills, generator code, verification contracts, or generated plugin artifacts. The docs cover repository architecture, generated-output contracts, Studio and skill integrations, and contributor workflows.
+
+## Commands
+
+```bash
+pnpm install
+pnpm build
+pnpm verify
+```
+
+Use `pnpm build:telemetry-mcp` when you only need to rebuild `dist/wordpress-telemetry-mcp.mjs`.
+
+## What Gets Generated
+
+Each build packages the shared `skills/` directory into the surfaces that can consume them. MCP-enabled outputs embed an inline telemetry bootstrap generated from the shared `dist/wordpress-telemetry-mcp.mjs` artifact, instead of copying the telemetry source into every output folder or requiring a separate artifact path at runtime. Outputs use the native extension point for each agent instead of forcing one universal plugin shape.
+
+| Surface | Output | Native files |
+| --- | --- | --- |
+| Aider | `plugins/aider/` | `.aider.conf.yml`, `CONVENTIONS.md`, `skills/` |
+| Amp | `plugins/amp/` | `AGENTS.md`, `.agents/skills/`, `.amp/settings.json`, `.amp/plugins/wordpress-studio.ts` |
+| Claude Code | `plugins/claude-code/` | `.claude-plugin/plugin.json`, `.mcp.json`, `skills/` |
+| Cline | `plugins/cline/` | `.clinerules/`, `.cline/skills/`, `mcp.json` |
+| Codex | `plugins/codex/` | Codex marketplace metadata, plugin manifest, `.mcp.json`, `skills/` |
+| Conductor | `plugins/conductor/` | `.conductor/settings.toml` and Conductor-specific setup notes |
+| Continue | `plugins/continue/` | `config.yaml`, `.continue/rules/`, prompts, MCP server YAML |
+| Cursor | `plugins/cursor/` | Cursor plugin output exported to `Automattic/wordpress-cursor-plugin` |
+| Devin CLI | `plugins/devin/` | `AGENTS.md`, `.devin/config.json`, `.devin/skills/` |
+| Factory Droid | `plugins/factory/` | Factory marketplace, plugin, command, Droid, hooks, MCP config, skills |
+| Gemini | `plugins/gemini/` | `GEMINI.md`, `.gemini/settings.json`, `skills/` |
+| GitHub Copilot | `plugins/copilot/` | `.github/copilot-instructions.md`, scoped instructions, `.vscode/mcp.json` |
+| Hermes | `plugins/hermes/` | `plugin.yaml`, `__init__.py`, `.hermes/config.yaml`, `skills/` |
+| Junie | `plugins/junie/` | `.junie/AGENTS.md`, `.junie/skills/`, `.junie/mcp/mcp.json` |
+| Kilo Code | `plugins/kilo-code/` | `kilo.jsonc`, `AGENTS.md`, `.kilo/agents/`, `.kilo/rules/`, `.kilo/skills/` |
+| OpenClaw | `plugins/openclaw/` | `package.json` with OpenClaw package metadata, `AGENTS.md`, `mcp.json`, `skills/` |
+| OpenCode | `plugins/opencode/` | `AGENTS.md`, `.opencode/`, commands, agents, skills, MCP config |
+| Pi | `plugins/pi/` | `package.json` with `pi-package` metadata and `skills/` |
+| Qodo | `plugins/qodo/` | `AGENTS.md`, `skills/`, MCP setup documented for Qodo Agentic Tools |
+| Roo Code | `plugins/roo-code/` | `.roo/mcp.json`, `.roo/rules/`, `.roo/rules-code/`, `skills/` |
+| Devin Desktop | `plugins/devin-desktop/` | `.devin/rules/`, `.devin/skills/`, `mcp_config.json` |
+| VS Code Marketplace extension scaffold | `plugins/vscode/` | `package.json`, `extension.js`, `mcp.json`, `skills/` |
+| Zed | `plugins/zed/` | `AGENTS.md`, `.agents/skills/`, `.zed/settings.json` |
+
+Some outputs intentionally stop at workspace files or setup guidance because that is what the official agent surface supports today. For example, Pi does not expose built-in MCP configuration, Qodo documents MCP through Agentic Tools or enterprise allow-lists, and Conductor keeps MCP setup in app/provider settings rather than a repository-local MCP file. Devin CLI uses `plugins/devin/` with `AGENTS.md`, `.devin/config.json`, and `.devin/skills/`. Devin Desktop uses `plugins/devin-desktop/` with Devin-native `.devin/rules/`, `.devin/skills/`, and `mcp_config.json`; Cascade's official MCP config destination still uses `~/.codeium/windsurf/mcp_config.json`, and Devin Desktop docs say marketplace extensions cannot be installed. The VS Code output is a generated extension scaffold with the Automattic Marketplace publisher and no Marketplace publishing automation.
+
+## Testing
+
+Run the full verification before opening a PR:
+
+```bash
+pnpm install --frozen-lockfile
+pnpm build
+pnpm verify
+```
+
+For manual smoke tests, open or copy the relevant folder from `plugins/` into that agent's expected project root, confirm `wordpress-studio` and `wordpress-telemetry` are available where the surface supports MCP, then try representative WordPress tasks:
+
+- create a new site
+- build or edit a theme
+- create a custom block
+- create a custom plugin
+- run a performance, accessibility, or frontend audit
+
+## Cursor Publishing
+
+Cursor requires a standalone native plugin repository. The generated Cursor package is not a VS Code extension, is not installed from a `.vsix`, and should not use VS Code Marketplace packaging or publishing tooling. This repo remains the source of truth; the publishable Cursor repository lives at:
+
+https://github.com/Automattic/wordpress-cursor-plugin
+
+Update `skills/` and the Cursor generator here, then verify the generated output:
+
+```bash
+pnpm build
+pnpm verify
+pnpm export:cursor -- --dry-run
+```
+
+The dry run prints the exact subtree split and push commands without creating a split branch, pushing to the standalone repository, or mutating the standalone checkout.
+
+For local Cursor testing, install the generated package at Cursor's native local plugin path:
+
+```bash
+mkdir -p ~/.cursor/plugins/local
+rm -rf ~/.cursor/plugins/local/wordpress-studio
+cp -R plugins/cursor ~/.cursor/plugins/local/wordpress-studio
+```
+
+Reload Cursor and confirm the local plugin contains `.cursor-plugin/plugin.json`, `README.md`, `mcp.json`, `rules/wordpress-studio.mdc`, and the full `skills/` tree. In Cursor's MCP or tools settings, confirm `wordpress-studio` and `wordpress-telemetry` are visible and enabled. In Cursor's rules and skills surfaces, confirm `rules/wordpress-studio.mdc` and the bundled WordPress skills are visible before submitting marketplace changes.
+
+When maintainers are ready to update the standalone repository, run the non-dry-run export from a clean source worktree:
+
+```bash
+pnpm export:cursor
+```
+
+The export command runs `git subtree split --prefix=plugins/cursor` and pushes the result to `Automattic/wordpress-cursor-plugin` on `sync/from-build-with-wordpress`. Open or update a PR from that branch into the standalone repo's `main` branch.
+
+Before submitting or updating the Cursor listing, confirm the standalone branch includes the expected generated files, review `.cursor-plugin/plugin.json` listing metadata including rules, skills, and MCP server paths, verify the README and MCP setup match the generated source, repeat the local native-plugin test flow from `~/.cursor/plugins/local/wordpress-studio`, and submit to Cursor only after the standalone repository PR is accepted.

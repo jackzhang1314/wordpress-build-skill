@@ -1,0 +1,42 @@
+[
+  {
+    "name": "banner",
+    "path": "/api/assets/f8a8d3fb-de7c-4eef-bd0a-5be81eba992e",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 876,
+    "isImage": false
+  },
+  {
+    "name": "heroExcavator",
+    "path": "/api/assets/58919245-caa0-4941-8751-05df3029bdb5",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 876,
+    "isImage": false
+  },
+  {
+    "name": "loader",
+    "path": "/api/assets/b024bcac-b5e0-47d9-87af-a393b199c495",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 876,
+    "isImage": false
+  },
+  {
+    "name": "factory",
+    "path": "/api/assets/3adfa6b4-50fa-4548-93f8-436e427043d8",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 876,
+    "isImage": false
+  },
+  {
+    "name": "backhoe",
+    "path": "/api/assets/d31f1d09-5991-4a30-bb41-5d01e2d8644c",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 876,
+    "isImage": false
+  }
+]

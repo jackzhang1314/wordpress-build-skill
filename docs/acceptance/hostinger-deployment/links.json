@@ -1,0 +1,222 @@
+{
+  "testedAt": "2026-09-20T11:41:44.076463+00:00",
+  "scope": "links-discovered-from-home-equipment-industry-blog",
+  "links": [
+    {
+      "path": "/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/blog/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/contact-us/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/family/backhoe-loader/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/family/construction-excavator/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/family/mini-excavator/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/family/skid-steer-loader/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/family/wheel-loader/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/model/yhd08/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/model/yhd12/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/model/yhd120/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/model/yhd15/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/model/yhd18/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/model/yhd20/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/model/yhd25/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/model/yhd30/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/model/yhd60/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/page/2/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/equipment/page/3/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/image-credits/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/industry/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/industry/agriculture/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/industry/construction/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/industry/demolition/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/industry/excavation/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/industry/forestry-logging/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/industry/landscaping/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/industry/material-handling/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/industry/snow-removal/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/industry/surface-mining/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/industry/utility-work/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/industry/waste-solutions/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/journal/9-types-excavator-buckets/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/journal/excavator-overheating-guide/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/journal/gradall-vs-excavator/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/journal/import-excavator-from-china-case/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/journal/mini-excavator-cost-2026/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/journal/mini-skid-steer-weight-guide/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/journal/start-landscaping-business-equipment/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/journal/what-is-a-backhoe-guide/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/journal/wheel-loader-brake-systems/",
+      "status": 200,
+      "sameOrigin": true
+    },
+    {
+      "path": "/our-story/",
+      "status": 200,
+      "sameOrigin": true
+    }
+  ],
+  "pass": true
+}

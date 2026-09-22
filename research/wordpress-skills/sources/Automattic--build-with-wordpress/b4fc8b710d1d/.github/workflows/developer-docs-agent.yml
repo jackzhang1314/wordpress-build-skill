@@ -1,0 +1,81 @@
+name: Build With WordPress Developer Docs Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_kind:
+        description: Documentation run mode
+        required: false
+        default: maintenance
+        type: choice
+        options:
+          - maintenance
+          - bootstrap
+  push:
+    branches:
+      - trunk
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: developer-docs-agent-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  developer-docs-agent:
+    name: Maintain Developer Docs
+    uses: Automattic/docs-agent/.github/workflows/maintain-docs.yml@7b67d341eea16b75b8e055507d36a8d8e69a1fe3
+    with:
+      audience: technical
+      run_kind: ${{ github.event.inputs.run_kind || 'maintenance' }}
+      require_pr: ${{ github.event_name == 'workflow_dispatch' }}
+      base_ref: trunk
+      docs_branch: docs-agent/build-with-wordpress-developer-docs-v2
+      writable_paths: README.md,docs/**,plugins/**/README.md
+      bootstrap_contract: |
+        {
+          "required_paths": ["README.md", "docs/README.md"],
+          "required_globs": [{"pattern": "docs/**/*.md", "min_count": 3}],
+          "entry_points": [{"path": "README.md", "must_link_to": ["docs/README.md"]}]
+        }
+      source_delta: |
+        [
+          {
+            "id": "figma-studio-handoff-diagnostics",
+            "source_refs": [
+              "https://github.com/Automattic/build-with-wordpress/pull/100",
+              "plugins/figma-to-wordpress-studio/src/payload.ts",
+              "plugins/figma-to-wordpress-studio/src/ui.ts",
+              "plugins/figma-to-wordpress-studio/tests/generate-artifact.test.mjs"
+            ],
+            "requires_documentation_change": false
+          }
+        ]
+      verification_commands: |
+        [
+          "pnpm install --frozen-lockfile",
+          "pnpm build",
+          "pnpm verify"
+        ]
+      validation_dependencies: npm install --global pnpm@10.8.1
+      drift_checks: |
+        [
+          {
+            "command": "git diff --exit-code -- . ':(top,exclude)README.md' ':(top,glob,exclude)docs/**' ':(top,glob,exclude)plugins/**/README.md'",
+            "description": "Generated package outputs outside developer documentation are committed after build"
+          }
+        ]
+      prompt: |
+        Maintain developer-facing documentation for Build with WordPress.
+
+        Manual dispatch defaults to the native technical documentation maintenance package; select bootstrap only to intentionally re-bootstrap the documentation. Push-triggered runs use the native technical documentation maintenance package and should make the smallest source-grounded documentation update needed for newly merged code or finish with no changes when documentation is current.
+
+        Write repository documentation with `docs/README.md` as the index, focused topic pages under `docs/**`, and `plugins/**/README.md` only when a plugin package needs local developer-facing contract notes. Cover the repository purpose, package layout, generated plugin artifacts, build and verification commands, skill packaging, Studio integration points, and contributor workflows.
+
+        Keep the developer documentation current with the native maintenance lanes in `.github/workflows/developer-docs-agent.yml` and `.github/workflows/skills-agent.yml`, including their purpose, writable boundaries, verification contract, and no-op behavior.
+    secrets:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      EXTERNAL_PACKAGE_SOURCE_POLICY: ${{ secrets.EXTERNAL_PACKAGE_SOURCE_POLICY }}

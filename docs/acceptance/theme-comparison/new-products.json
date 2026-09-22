@@ -1,0 +1,20 @@
+[
+  {
+    "id": "a",
+    "createdDraft": true,
+    "published": true,
+    "selectedTemplate": "product-editorial.php",
+    "frontendContent": true,
+    "inquiryContext": true,
+    "method": "authenticated WordPress REST; editor UI tested separately"
+  },
+  {
+    "id": "b",
+    "createdDraft": true,
+    "published": true,
+    "selectedTemplate": "product-editorial",
+    "frontendContent": true,
+    "inquiryContext": true,
+    "method": "authenticated WordPress REST; editor UI tested separately"
+  }
+]

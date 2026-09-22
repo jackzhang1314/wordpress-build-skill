@@ -1,0 +1,25 @@
+{
+  "recordedAt": "2026-09-19T21:55:00.362130+08:00",
+  "baseline": "a49821fa88311b5fa59f4d0298b8a6f5b71bd7a1",
+  "commands": {
+    "npm run typecheck": {
+      "exitCode": 0
+    },
+    "npm run lint": {
+      "exitCode": 0
+    },
+    "npm test": {
+      "exitCode": 0,
+      "passed": 23,
+      "failed": 0
+    }
+  },
+  "routes": 32,
+  "productsWithContact404": 6,
+  "navigationWithoutImportMap": 18,
+  "missingLocalReportLinks": [],
+  "rejectedScreenshots": [
+    "rejected-fullpage-stitch.png"
+  ],
+  "limitations": "No PHP fault injection, production delivery, screen-reader or competitor generation benchmark."
+}

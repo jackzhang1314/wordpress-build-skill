@@ -1,0 +1,53 @@
+{
+  "results": [
+    {
+      "url": "http://127.0.0.1:9463/",
+      "width": 1440,
+      "status": 200,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "navVisible": true
+    },
+    {
+      "url": "http://127.0.0.1:9463/products/linen-panel/",
+      "width": 1440,
+      "status": 200,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "navVisible": true
+    },
+    {
+      "url": "http://127.0.0.1:9463/contact/",
+      "width": 1440,
+      "status": 200,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "navVisible": true
+    },
+    {
+      "url": "http://127.0.0.1:9463/",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "h1": 1,
+      "navVisible": true
+    },
+    {
+      "url": "http://127.0.0.1:9463/products/linen-panel/",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "h1": 1,
+      "navVisible": true
+    },
+    {
+      "url": "http://127.0.0.1:9463/contact/",
+      "width": 390,
+      "status": 200,
+      "scrollWidth": 390,
+      "h1": 1,
+      "navVisible": true
+    }
+  ],
+  "errors": []
+}

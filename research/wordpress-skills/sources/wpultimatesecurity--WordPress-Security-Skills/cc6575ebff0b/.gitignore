@@ -1,0 +1,96 @@
+# Operating system junk
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+Thumbs.db
+Desktop.ini
+
+# Editors
+.idea/
+.vscode/
+.zed/
+*.swp
+*.swo
+*~
+*.orig
+*.rej
+*.sublime-workspace
+*.sublime-project
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.local.md
+
+# Logs, temp files, backups
+*.log
+*.tmp
+*.temp
+*.bak
+tmp/
+temp/
+*.sql
+*.sql.gz
+*.sqlite
+*.dump
+
+# AI agent local state and local installs.
+# skills/ in the repo root is the source of truth; anything an agent tool
+# writes or a local skill install copies into this checkout stays local.
+.claude/*
+!.claude/settings.json
+.codex/
+.cursor/
+.opencode/
+.gemini/
+.windsurf/
+.serena/
+.aider*
+
+# PHP and CI tooling artifacts
+*.phar
+vendor/
+.phpunit.cache/
+.phpunit.result.cache
+.phpcs-cache
+.php-cs-fixer.cache
+
+# Python caches (local validation tooling)
+__pycache__/
+.venv*/
+venv/
+
+# Node and build caches
+node_modules/
+.npm/
+coverage/
+
+# Generated archives and build output
+dist/
+build/
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.tar.bz2
+*.tar.zst
+*.7z
+
+# Local instruction files and redacted security-review reports
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.tmp/
+.cache/
+gitleaks-report*.json
+gitleaks-report*.sarif
+
+# Internal working notes (not part of the public repo)
+docs/phase-1/
+docs/phase-2/
+docs/sample/

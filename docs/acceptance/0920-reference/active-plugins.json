@@ -1,0 +1,22 @@
+[
+  {
+    "plugin": "advanced-custom-fields/acf",
+    "name": "Advanced Custom Fields",
+    "version": "6.8.9"
+  },
+  {
+    "plugin": "fluentform/fluentform",
+    "name": "Fluent Forms",
+    "version": "6.2.9"
+  },
+  {
+    "plugin": "site-model/site-model",
+    "name": "New Site Content Model",
+    "version": "1.0.0"
+  },
+  {
+    "plugin": "autodescription/autodescription",
+    "name": "The SEO Framework",
+    "version": "5.1.4"
+  }
+]

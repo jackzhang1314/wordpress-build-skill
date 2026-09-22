@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-09-19T21:05:02.516Z",
+  "site": "http://127.0.0.1:9464",
+  "method": "authenticated read-only REST OPTIONS",
+  "pages": {
+    "template": {
+      "description": "The theme file to use to display the post.",
+      "type": "string",
+      "context": [
+        "view",
+        "edit"
+      ]
+    },
+    "acf": {
+      "description": "ACF field data",
+      "type": "object",
+      "properties": []
+    }
+  },
+  "hd_product": {
+    "template": {
+      "description": "The theme file to use to display the post.",
+      "type": "string",
+      "context": [
+        "view",
+        "edit"
+      ]
+    },
+    "acf": {
+      "description": "ACF field data",
+      "type": "object",
+      "properties": {
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "required": false
+        },
+        "weight": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "required": false
+        },
+        "specifications": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "required": false
+        },
+        "working_range": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "required": false
+        },
+        "dimensions": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "required": false
+        }
+      }
+    }
+  },
+  "hd_category": {
+    "template": null,
+    "acf": {
+      "description": "ACF field data",
+      "type": "object",
+      "properties": []
+    }
+  }
+}

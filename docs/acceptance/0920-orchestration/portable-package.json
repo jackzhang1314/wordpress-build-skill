@@ -1,0 +1,10 @@
+{
+  "packageRelocated": true,
+  "moduleCount": 10,
+  "officialTriageKind": [
+    "wp-theme"
+  ],
+  "handoffNext": "model",
+  "productionOrRemoteReadinessClaim": false,
+  "scope": "Local CLI integration only"
+}
