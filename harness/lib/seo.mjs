@@ -162,13 +162,22 @@ export async function verifyRankMath(project, ssh, {fetchImpl = fetch, logger = 
   ].join(' ')]));
   const sitemapChecks = [];
   for (const path of rankMathSitemapPaths(project)) {
-    try {
-      const {response, html} = await fetchPage(`https://${project.domain}`, path, {fetchImpl});
-      const isXml = response.status === 200 && /<\?xml|<sitemapindex|<urlset/i.test(html.slice(0, 500));
-      sitemapChecks.push({path, status: response.status, isXml, pass: isXml});
-    } catch (error) {
-      sitemapChecks.push({path, status: 0, isXml: false, pass: false, detail: error.message});
+    let attemptsLeft = 2;
+    let check;
+    for (;;) {
+      try {
+        const {response, html} = await fetchPage(`https://${project.domain}`, path, {fetchImpl});
+        const isXml = response.status === 200 && /<\?xml|<sitemapindex|<urlset/i.test(html.slice(0, 500));
+        check = {path, status: response.status, isXml, pass: isXml};
+      } catch (error) {
+        check = {path, status: 0, isXml: false, pass: false, detail: error.message};
+      }
+      // Host sitemaps can drop single requests while the same host serves the rest; retry transports only.
+      if (check.pass || check.status !== 0 || attemptsLeft === 0) break;
+      attemptsLeft -= 1;
+      await new Promise(resolve => setTimeout(resolve, 1000));
     }
+    sitemapChecks.push(check);
   }
   const sitemap = {pass: sitemapChecks.every(item => item.pass), results: sitemapChecks};
   const pass = !state.pro && state.registrationSkip && state.configured && state.frontend && sitemap.pass;
