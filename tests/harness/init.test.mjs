@@ -15,7 +15,7 @@ test('init scaffolds a generic classic theme and valid config', async () => {
     assert.equal(project.theme, 'demo-site-theme');
     assert.equal(project.plugin, 'demo-site-model');
     assert.equal(project.pluginMain, 'demo-site-model.php');
-    assert.deepEqual(project.requiredPlugins, ['advanced-custom-fields', 'seo-by-rank-math', 'fluentform', 'classic-editor']);
+    assert.deepEqual(project.requiredPlugins, ['advanced-custom-fields', 'seo-by-rank-math', 'fluentform', 'classic-editor', 'fluent-smtp']);
     assert.equal(existsSync(join(root, 'theme/functions.php')), true);
     assert.equal(existsSync(join(root, 'plugin/demo-site-model.php')), true);
     assert.equal(existsSync(join(root, 'plugin/site-model.php')), false);

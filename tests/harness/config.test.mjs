@@ -8,7 +8,7 @@ test('project schema applies safe defaults and accepts minimal new projects', ()
   });
   assert.equal(parsed.success, true);
   assert.equal(parsed.data.paths.theme, 'theme');
-  assert.deepEqual(parsed.data.requiredPlugins, ['advanced-custom-fields', 'seo-by-rank-math', 'fluentform', 'classic-editor']);
+  assert.deepEqual(parsed.data.requiredPlugins, ['advanced-custom-fields', 'seo-by-rank-math', 'fluentform', 'classic-editor', 'fluent-smtp']);
 });
 
 test('legacy project fields are normalized into generic content counts', () => {

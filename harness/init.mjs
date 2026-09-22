@@ -71,7 +71,7 @@ export function initProject({name, projectsRoot, git = true, reference = referen
     livePages: ['/', '/products/'],
     contentMarkers: [],
     contentCounts: [{label: 'Products', postType: `${slug}_product`}],
-    requiredPlugins: ['advanced-custom-fields', 'seo-by-rank-math', 'fluentform', 'classic-editor'],
+    requiredPlugins: ['advanced-custom-fields', 'seo-by-rank-math', 'fluentform', 'classic-editor', 'fluent-smtp'],
     disabledPlugins: [],
     ssh: undefined,
     hostinger: undefined,
