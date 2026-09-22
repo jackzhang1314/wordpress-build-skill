@@ -37,12 +37,21 @@ export function inspectPage(response, html, path, markers = []) {
 export async function verifyPages(base, paths, markers = [], options = {}) {
   const results = [];
   for (const path of paths) {
-    try {
-      const {response, html} = await fetchPage(base, path, options);
-      results.push(inspectPage(response, html, path, path === '/' ? markers : []));
-    } catch (error) {
-      results.push({path, status: 0, h1: 0, headings: 0, skips: 0, missingMarkers: [], fatal: false, pass: false, detail: error.message});
+    let attemptsLeft = options.transportRetries ?? 2;
+    let result;
+    for (;;) {
+      try {
+        const {response, html} = await fetchPage(base, path, options);
+        result = inspectPage(response, html, path, path === '/' ? markers : []);
+      } catch (error) {
+        result = {path, status: 0, h1: 0, headings: 0, skips: 0, missingMarkers: [], fatal: false, pass: false, detail: error.message};
+      }
+      // Retry only transport failures (status 0); HTTP failures are real answers.
+      if (result.pass || result.status !== 0 || attemptsLeft === 0) break;
+      attemptsLeft -= 1;
+      if (options.transportRetryDelayMs) await new Promise(resolve => setTimeout(resolve, options.transportRetryDelayMs));
     }
+    results.push(result);
   }
   return {pass: results.every(result => result.pass), results};
 }

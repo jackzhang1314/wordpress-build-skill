@@ -47,3 +47,21 @@ test('database verification counts taxonomy terms when kind is term', async () =
   assert.deepEqual(calls[1], ['term', 'list', 'product_collection', '--format=count']);
   assert.equal(result.results[1].count, 4);
 });
+
+test('verify pages retries transient transport failures but not HTTP failures', async () => {
+  let attempts = 0;
+  const fetchImpl = async () => {
+    attempts += 1;
+    if (attempts === 1) throw new Error('This operation was aborted');
+    return {status: 200, text: async () => '<h1>ok</h1>'};
+  };
+  const result = await verifyPages('https://example.test', ['/slow/'], [], {fetchImpl, transportRetryDelayMs: 1});
+  assert.equal(result.pass, true);
+  assert.equal(attempts, 2);
+
+  attempts = 0;
+  const httpFailFetch = async () => ({status: 404, text: async () => 'not found'});
+  const httpResult = await verifyPages('https://example.test', ['/missing/'], [], {fetchImpl: httpFailFetch});
+  assert.equal(httpResult.pass, false);
+  assert.equal(attempts, 0);
+});

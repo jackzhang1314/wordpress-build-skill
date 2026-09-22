@@ -275,7 +275,15 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
         logger(`  ${cache.pass ? 'OK ' : 'WARN'} Hostinger cache ${cache.detail}`);
         const verification = await verifyPages(base, project.livePages, project.contentMarkers);
         const database = await verifyDatabase(project, {wp: input => ssh.wp(input)});
-        if (!verification.pass || !database.pass) throw new Error('remote verification failed');
+        if (!verification.pass || !database.pass) {
+          for (const page of verification.results.filter(item => !item.pass)) {
+            logger(`    FAIL ${page.path}: ${page.detail ?? `status ${page.status}, H1 ${page.h1}, skips ${page.skips}`}`);
+          }
+          for (const item of database.results.filter(entry => !entry.pass)) {
+            logger(`    FAIL ${item.label}: count ${item.count}, expected >= ${item.expected}`);
+          }
+          throw new Error('remote verification failed');
+        }
         for (const page of verification.results) logger(`    OK ${page.path}: ${page.status}, H1 ${page.h1}, skips ${page.skips}`);
         for (const item of database.results) logger(`    OK ${item.label}: ${item.count}`);
         writeFileSync(join(root, '.deploy-state.json'), JSON.stringify({
