@@ -20,8 +20,8 @@ const commands={};
 commands.status=function(){
   console.log('\n=== LITENG PARTS ===');
   console.log('Live: '+live);
-  const parts=sshRun('wp post list --post_type=lt_part --format=count --path='+wpRemote);
-  const guides=sshRun('wp post list --post_type=lt_guide --format=count --path='+wpRemote);
+  const parts=sshRun('wp post list --post_type=${cfg.partPostType} --format=count --path='+wpRemote);
+  const guides=sshRun('wp post list --post_type=${cfg.guidePostType} --format=count --path='+wpRemote);
   const overrides=sshRun('wp post list --post_type=wp_template,wp_template_part --post_status=publish --format=count --path='+wpRemote);
   console.log('Parts: '+parts.trim()+' | Guides: '+guides.trim()+' | DB overrides: '+overrides.trim());
 };
@@ -34,10 +34,10 @@ commands.deploy=async function(){
   writeFileSync(join(backupDir,'themes-plugins.tar'),tarData);
   ok('Backup saved');
   step('Syncing theme files');
-  execFileSync('rsync',['-avz','--delete','-e','ssh -p '+sshPort+' -i '+sshKey,join(P,'theme')+'/',user+'@46.202.182.12:'+wpRemote+'/wp-content/themes/liteng-parts-theme/'],{encoding:'utf8',timeout:300000,maxBuffer:64*1024*1024,stdio:['pipe','pipe','pipe']});
+  execFileSync('rsync',['-avz','--delete','-e','ssh -p '+sshPort+' -i '+sshKey,join(P,'theme')+'/',user+'@46.202.182.12:'+wpRemote+'/wp-content/themes/${cfg.themeName}/'],{encoding:'utf8',timeout:300000,maxBuffer:64*1024*1024,stdio:['pipe','pipe','pipe']});
   ok('Theme synced');
   step('Syncing plugin files');
-  execFileSync('rsync',['-avz','--delete','-e','ssh -p '+sshPort+' -i '+sshKey,join(P,'plugin')+'/',user+'@46.202.182.12:'+wpRemote+'/wp-content/plugins/site-model/'],{encoding:'utf8',timeout:300000,maxBuffer:64*1024*1024,stdio:['pipe','pipe','pipe']});
+  execFileSync('rsync',['-avz','--delete','-e','ssh -p '+sshPort+' -i '+sshKey,join(P,'plugin')+'/',user+'@46.202.182.12:'+wpRemote+'/wp-content/plugins/${cfg.pluginSlug}/'],{encoding:'utf8',timeout:300000,maxBuffer:64*1024*1024,stdio:['pipe','pipe','pipe']});
   ok('Plugin synced');
   step('Flushing rewrite rules');
   try{sshRun('wp rewrite flush --path='+wpRemote);ok('flushed');}
