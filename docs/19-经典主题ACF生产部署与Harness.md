@@ -71,3 +71,5 @@
 - 新修正：`contentCounts` 增加 `kind: post|term`，`verifyDatabase` 对 taxonomy 使用 `wp term list` 计数；此前把分类当 post type 数会导致验证误报 0 并触发回滚。
 - 流程教训：手写/重写 `project.json` 时必须合并 provision 回写的 `domain/ssh/hostinger` 字段，否则远程命令直接拒绝执行（Harness 拒绝是正确行为）。
 - 欠债清偿：provision 生成子域后立即写入 project.json（中断可凭盘上记录恢复）；`--with-media` 改为幂等导入，只上传媒体地图缺失的键，不再每次堆一套重复附件。
+- 维护层上线：`edit-page`/`post push`（写前指纹检测手工编辑冲突，--adopt-remote 才允许接管，readback + .content-state.json journal）、`nav add|remove`（外科手术式菜单项操作，不再全量重建）、`template assign`（校验 Template Name 与 the_content 渲染）。seed 降级为首次开通专用，后续内容变更走维护命令。
+- 通用性整改：中心代码移除 IRONTRACK `it_rfq` 残迹与时区硬编码；`project.timezone` 由项目声明，"项目管业务、Harness 管机制"边界重新收紧。
