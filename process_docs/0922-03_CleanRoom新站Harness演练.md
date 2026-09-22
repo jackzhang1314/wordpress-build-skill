@@ -112,3 +112,11 @@
 - 维护命令层（SSH-first、内容无关）：edit-page / post push（指纹 drift 检测 + --adopt-remote + readback + journal）、nav add|remove（外科手术式）、template assign（Template Name + the_content 校验 + meta readback）。seed 降级为首次开通专用。
 - 线上实测：about 冲突拒绝→adopt 接管(id 42)→幂等 no-op；QA Flow Test 导航增删往返且兄弟项存活；qa-flow-article 草稿推送往返并清理。过程中抓到 WP 陷阱：post_status=any 不含 draft，指纹查询改为显式状态列表。
 - 测试 107/107，lint 通过。用户故事 ①改首页 ②加导航 ③传文章 ④模板指派 全部一等命令闭环。
+
+## 第六轮：视觉设计系统 v3（2026-09-23）
+
+- 应用户"明亮简洁高级工业 B2B"要求，主题样式全量重写（v3.0.0）：设计令牌化（色板/字阶/圆角/阴影）、吸顶导航、双栏 hero + 数据条、eyebrow 分区标题、卡片 hover 体系、规格表、浅色 CTA 带、四栏页脚；响应式三档断点 + prefers-reduced-motion。
+- 模板同步重构：front-page（hero 图取 hero 附件 + 四个分区 + Buyer guides）、archive 页头组件化、产品页双栏 + 规格表 + 询价 CTA 卡、行业页页头化。
+- `deploy --skip-content` 全绿：22/22 URL、6 项计数。截屏核验首页与卡片区；发现并修复 LED Panel 摘要含 `UGR<19` 被截断问题（改写文案后 seed 重推，线上已确认）。
+- 测试项目仓库完成首次提交 `de4e3b5`（38 个文件：主题/内容/seed/媒体/配置）。
+- 待办：AI 产品渲染图替换库存照片（可选）、落地页模板 + template assign 实测、配 remote 推送。
