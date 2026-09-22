@@ -117,6 +117,29 @@ test('new-site credentials use safe defaults when hostinger config is absent', a
   }
 });
 
+test('generated subdomain is persisted before website creation so failed provisioning resumes', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'harness-provision-domain-'));
+  const path = join(root, 'project.json');
+  writeFileSync(path, JSON.stringify({title: 'Demo', domain: '', theme: 'demo-theme', plugin: 'demo-model'}));
+  const execFile = (command, args) => {
+    const joined = args.join(' ');
+    if (joined.includes('generate-free-subdomain')) return JSON.stringify({domain: 'resume-me-123.hostingersite.com'});
+    if (joined.includes('websites create')) return JSON.stringify({message: 'accepted'});
+    if (joined.includes('websites list')) return JSON.stringify({data: []});
+    return JSON.stringify({message: 'accepted'});
+  };
+  try {
+    await assert.rejects(
+      provisionHostinger(root, JSON.parse(readFileSync(path, 'utf8')), ['--order', '42'], {execFile, attempts: 1, intervalMs: 1}),
+      /Timed out waiting/,
+    );
+    const saved = JSON.parse(readFileSync(path, 'utf8'));
+    assert.equal(saved.domain, 'resume-me-123.hostingersite.com');
+  } finally {
+    rmSync(root, {recursive: true, force: true});
+  }
+});
+
 test('provisioned project config updates domain and private path safely', () => {
   const root = mkdtempSync(join(tmpdir(), 'harness-provision-config-'));
   const path = join(root, 'project.json');

@@ -29,6 +29,14 @@ export function commandValue(args, name, fallback = undefined) {
   return index >= 0 && index + 1 < args.length ? args[index + 1] : fallback;
 }
 
+function persistDomain(projectRoot, domain) {
+  const path = join(projectRoot, 'project.json');
+  const raw = JSON.parse(readFileSync(path, 'utf8'));
+  if (raw.domain === domain) return;
+  raw.domain = domain;
+  writeFileSync(path, JSON.stringify(raw, null, 2) + '\n');
+}
+
 export function updateProvisionedProject(projectRoot, {
   domain,
   hostingerUser,
@@ -73,6 +81,8 @@ export async function provisionHostinger(projectRoot, project, args = [], {
     logger(`  OK  generated free subdomain: ${domain}`);
   }
   domain = normalizeDomain(domain);
+  // Persist before any remote mutation so a mid-provision failure leaves the target on disk.
+  persistDomain(projectRoot, domain);
 
   const listWebsites = () => jsonOutput(execFile, ['hosting', 'websites', 'list']).data ?? [];
   let website = listWebsites().find(item => item.domain === domain);
