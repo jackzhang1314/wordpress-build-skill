@@ -33,7 +33,7 @@ export async function configureSmtp(site, args, logger = console.log) {
   };
   const dir = `/tmp/smtp-config-${Date.now()}`;
   site.ssh.run(`rm -rf ${shellQuote(dir)} && mkdir -p ${shellQuote(dir)}`);
-  site.ssh.run(`cat > ${shellQuote(dir + '/apply.php')}`, {input: Buffer.from("<?php if (!defined('ABSPATH')) exit('CLI only'); $p = json_decode(file_get_contents($args[0]), true); update_option('fluentmail-settings', $p); echo 'saved';", 'utf8')});
+  site.ssh.run(`cat > ${shellQuote(dir + '/apply.php')}`, {input: Buffer.from("<?php if (!defined('ABSPATH')) exit('CLI only'); $p = json_decode(file_get_contents($args[0]), true); update_option('fluentmail-settings', $p); // FluentSMTP option (kept for backward compat) echo 'saved';", 'utf8')});
   site.ssh.run(`cat > ${shellQuote(dir + '/payload.json')}`, {input: Buffer.from(JSON.stringify(settings), 'utf8')});
   site.ssh.wp(['eval-file', `${dir}/apply.php`, `${dir}/payload.json`]);
   logger(`  OK  SMTP configured via ${host}:${port} (sender ${fromEmail})`);
