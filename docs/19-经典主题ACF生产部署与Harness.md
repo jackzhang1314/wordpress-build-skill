@@ -11,7 +11,7 @@
 | 层 | 归属 |
 | --- | --- |
 | 视觉与模板 | 经典主题：`header.php`、`footer.php`、`front-page.php`、页面模板、CPT/taxonomy 模板 |
-| 业务模型 | 业务插件：CPT、分类、ACF local fields、SEO 默认值；询盘捕获由 Fluent Forms 负责 |
+| 业务模型 | 业务插件：CPT、分类、ACF local fields、SEO 默认值；询盘捕获由 Fluent Forms 负责，邮件通知通过 mu-plugin SMTP（smtp.hostinger.com）发送 |
 | 内容 | `content/site-data.json` 种子 + ACF 后台编辑 |
 | 平台 | Hostinger CLI：网站创建、安装 WordPress、缓存清理 |
 | 管理 | SSH + WP-CLI：文件、数据库、插件、媒体、内容、验收 |
