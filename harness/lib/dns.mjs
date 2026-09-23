@@ -54,3 +54,25 @@ export async function dnsList(site, args, logger = console.log, deps = {}) {
   }
   return records.result;
 }
+
+export async function dnsDelete(site, args, logger = console.log, fetchImpl = fetch) {
+  const token = argValue(args, '--cf-token');
+  const zoneName = argValue(args, '--zone');
+  const recordId = argValue(args, '--record-id');
+  const typeName = argValue(args, '--type');
+  const recordName = argValue(args, '--name');
+  if (!token || !zoneName) throw new Error('usage: harness dns delete --cf-token <token> --zone <domain> (--record-id <id> | --type <type> --name <name>)');
+  const zones = await cfRequest(token, 'GET', `/zones?name=${encodeURIComponent(zoneName)}`, undefined, fetchImpl);
+  const zone = zones.result[0];
+  if (!zone) throw new Error(`zone not found: ${zoneName}`);
+  let id = recordId;
+  if (!id) {
+    if (!typeName || !recordName) throw new Error('provide --record-id or --type + --name');
+    const all = await cfRequest(token, 'GET', `/zones/${zone.id}/dns_records?per_page=100&name=${encodeURIComponent(recordName)}&type=${typeName}`, undefined, fetchImpl);
+    if (!all.result.length) throw new Error(`record not found: ${typeName} ${recordName}`);
+    id = all.result[0].id;
+  }
+  await cfRequest(token, 'DELETE', `/zones/${zone.id}/dns_records/${id}`, undefined, fetchImpl);
+  logger(`  OK  deleted record ${id} from ${zoneName}`);
+  return {deleted: id};
+}
