@@ -48,8 +48,11 @@ function makeSite(options = {}) {
         const payload = JSON.parse(files[jsonPath]);
         evalCalls.push({php, payload});
         if (php.includes('wp_update_nav_menu_item')) {
-          items.push({id: ++nextId, title: payload.label, url: payload.url});
-          return JSON.stringify({id: nextId});
+          const parentItem = payload.parent ? items.find(item => item.title === payload.parent) : null;
+          if (payload.parent && !parentItem) throw new Error('parent-not-found');
+          const id = ++nextId;
+          items.push({id, title: payload.label, url: payload.url, parentId: parentItem ? parentItem.id : 0});
+          return JSON.stringify({id, parent: parentItem ? parentItem.id : 0});
         }
         if (php.includes('wp_delete_post')) {
           const before = items.length;
@@ -147,6 +150,22 @@ test('nav add and remove are surgical: siblings survive', async () => {
     await navRemove(env.site, ['QA Check']);
     assert.ok(!env.items.some(item => item.title === 'QA Check'));
     assert.ok(env.items.some(item => item.title === 'Home') && env.items.some(item => item.title === 'About'));
+  } finally {
+    env.cleanup();
+  }
+});
+
+test('nav add --parent nests the child and rejects a missing parent', async () => {
+  const env = makeSite({items: [{id: 1, title: 'Products'}]});
+  try {
+    const result = await navAdd(env.site, ['Industrial', '--url', '/product-category/industrial/', '--parent', 'Products']);
+    assert.equal(result.parent, 1);
+    assert.ok(env.items.some(item => item.title === 'Industrial' && item.parentId === 1));
+    await assert.rejects(
+      navAdd(env.site, ['Ghost', '--url', '/ghost/', '--parent', 'Missing']),
+      /parent-not-found/,
+    );
+    assert.ok(!env.items.some(item => item.title === 'Ghost'), 'failed add must not create the item');
   } finally {
     env.cleanup();
   }

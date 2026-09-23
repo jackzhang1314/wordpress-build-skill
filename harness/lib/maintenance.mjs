@@ -179,13 +179,21 @@ if (!defined('ABSPATH')) exit('CLI only');
 $p = json_decode(file_get_contents($args[0]), true);
 $menu = wp_get_nav_menu_object($p['menu']);
 if (!$menu) { fwrite(STDERR, 'menu-not-found'); exit(1); }
+$parentId = 0;
+if (!empty($p['parent'])) {
+  foreach (wp_get_nav_menu_items($menu->term_id) ?: [] as $item) {
+    if (trim($item->title) === $p['parent']) { $parentId = (int) $item->ID; break; }
+  }
+  if (!$parentId) { fwrite(STDERR, 'parent-not-found'); exit(1); }
+}
 $id = wp_update_nav_menu_item($menu->term_id, 0, [
   'menu-item-title' => $p['label'], 'menu-item-status' => 'publish',
   'menu-item-type' => 'custom', 'menu-item-object' => 'custom', 'menu-item-url' => $p['url'],
   'menu-item-position' => (int) ($p['position'] ?? 0),
+  'menu-item-parent-id' => $parentId,
 ]);
 if (is_wp_error($id)) { fwrite(STDERR, $id->get_error_message()); exit(1); }
-echo wp_json_encode(['id' => (int) $id]);
+echo wp_json_encode(['id' => (int) $id, 'parent' => $parentId]);
 `;
 
 const NAV_REMOVE_PHP = `<?php
@@ -204,14 +212,16 @@ export async function navAdd(site, args, logger = () => {}) {
   const label = firstPositional(args);
   const url = argValue(args, '--url');
   const menu = argValue(args, '--menu', 'primary');
-  if (!label || !url) throw new Error('usage: harness nav add <label> --url <path> [--menu primary]');
+  const parent = argValue(args, '--parent');
+  if (!label || !url) throw new Error('usage: harness nav add <label> --url <path> [--menu primary] [--parent <item-label>]');
   const result = await stageAndRun(site.ssh, site.root, 'nav-add', [
     {name: 'nav.php', content: NAV_ADD_PHP},
-    {name: 'payload.json', content: JSON.stringify({menu, label, url, position: argValue(args, '--position')})},
+    {name: 'payload.json', content: JSON.stringify({menu, label, url, position: argValue(args, '--position'), parent})},
   ]);
   const items = await listMenuItems(site.ssh, menu);
   if (!items.some(item => item.title === label)) throw new Error(`readback failed: ${label} missing after add`);
-  logger(`  OK  nav item added: ${label} -> ${url} (id ${result.id})`);
+  if (parent && !result.parent) throw new Error(`readback failed: ${label} not nested under "${parent}"`);
+  logger(`  OK  nav item added: ${label} -> ${url}${parent ? ` (child of ${parent})` : ''} (id ${result.id})`);
   return result;
 }
 
