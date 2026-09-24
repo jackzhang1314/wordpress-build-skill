@@ -120,16 +120,6 @@
             "value": "CE, RoHS, SAA (option)"
           }
         ],
-        "product_applications": [
-          "Distributors",
-          "Contractors",
-          "Project tenders"
-        ],
-        "product_documents": [
-          "Datasheet",
-          "Installation guide",
-          "Declaration of conformity"
-        ],
         "warranty": "5 years",
         "lead_time": "30–45 days",
         "moq": "Negotiated by project",
@@ -219,16 +209,6 @@
             "value": "-30 °C to +45 °C"
           }
         ],
-        "product_applications": [
-          "Distributors",
-          "Contractors",
-          "Project tenders"
-        ],
-        "product_documents": [
-          "Datasheet",
-          "Installation guide",
-          "Declaration of conformity"
-        ],
         "warranty": "5 years",
         "lead_time": "30–45 days",
         "moq": "Negotiated by project",
@@ -313,16 +293,6 @@
             "label": "Corrosion class",
             "value": "C5-M coating option"
           }
-        ],
-        "product_applications": [
-          "Distributors",
-          "Contractors",
-          "Project tenders"
-        ],
-        "product_documents": [
-          "Datasheet",
-          "Installation guide",
-          "Declaration of conformity"
         ],
         "warranty": "5 years",
         "lead_time": "30–45 days",
@@ -409,16 +379,6 @@
             "value": "CE, ENEC-ready design"
           }
         ],
-        "product_applications": [
-          "Distributors",
-          "Contractors",
-          "Project tenders"
-        ],
-        "product_documents": [
-          "Datasheet",
-          "Installation guide",
-          "Declaration of conformity"
-        ],
         "warranty": "5 years",
         "lead_time": "30–45 days",
         "moq": "Negotiated by project",
@@ -504,16 +464,6 @@
             "value": "L80B10 @ 50,000 h"
           }
         ],
-        "product_applications": [
-          "Distributors",
-          "Contractors",
-          "Project tenders"
-        ],
-        "product_documents": [
-          "Datasheet",
-          "Installation guide",
-          "Declaration of conformity"
-        ],
         "warranty": "5 years",
         "lead_time": "30–45 days",
         "moq": "Negotiated by project",
@@ -598,16 +548,6 @@
             "label": "Certifications",
             "value": "CE, RoHS, HACCP-ready design"
           }
-        ],
-        "product_applications": [
-          "Distributors",
-          "Contractors",
-          "Project tenders"
-        ],
-        "product_documents": [
-          "Datasheet",
-          "Installation guide",
-          "Declaration of conformity"
         ],
         "warranty": "5 years",
         "lead_time": "30–45 days",

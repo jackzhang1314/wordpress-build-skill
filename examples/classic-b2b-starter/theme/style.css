@@ -1,6 +1,6 @@
 /*
 Theme Name: b2b-starter
-Version: 6.2.0
+Version: 6.2.1
 Requires at least: 6.4
 Requires PHP: 8.1
 Text Domain: b2b-starter
@@ -355,11 +355,6 @@ p{margin:0 0 1em}
 .fact-strip>div+div{border-left:1px solid var(--line)}
 .fact-strip dt{font-size:13px;font-weight:650;color:var(--muted)}
 .fact-strip dd{margin:5px 0 0;font-size:15px;color:var(--ink)}
-.document-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.document-card{min-height:74px;padding:18px;border:1px solid var(--line);border-radius:var(--radius-s);background:var(--paper);box-shadow:var(--shadow-card)}
-.document-card a{display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--ink);font-weight:650}
-.document-card a:hover{color:var(--accent)}
-.document-card p{margin:0;color:var(--ink);font-weight:650}
 .rich-description{max-width:900px;margin-top:28px}
 .rich-description img{height:auto;border-radius:var(--radius-s)}
 .rich-description figure{margin:32px 0}
@@ -375,11 +370,9 @@ p{margin:0 0 1em}
   .fact-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fact-strip>div:nth-child(n+3){border-top:1px solid var(--line)}
   .fact-strip>div:nth-child(3){border-left:0}
-  .document-card-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:620px){
   .product-value-chips{grid-template-columns:1fr 1fr}
-  .attribute-grid,.document-card-grid{grid-template-columns:1fr}
   .fact-strip{grid-template-columns:1fr}
   .fact-strip>div+div{border-top:1px solid var(--line);border-left:0}
   .gallery-thumbs{grid-template-columns:repeat(4,minmax(0,1fr))}

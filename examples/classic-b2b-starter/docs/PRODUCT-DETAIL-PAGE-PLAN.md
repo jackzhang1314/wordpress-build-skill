@@ -1,6 +1,6 @@
 # Product Detail Page Plan v2
 
-Status: implemented and verified on the component verification site.  
+Status: implemented and verified on the component verification site. Product-only Applications and Documents modules were removed after review because they added low-value placeholder content; application context remains available on product-category pages.  
 Scope: `single-starter_product.php`, product ACF fields, page data, components, seed data, CSS, harness gates and deployment verification.
 
 ## 1. Goal
@@ -103,8 +103,6 @@ The values come from ACF. Empty fields are hidden.
 
 ```text
 Full specifications
-Applications
-Documents & downloads
 FAQ
 ```
 
@@ -171,13 +169,11 @@ The bottom CTA is the final conversion opportunity after long-form details.
 4. At a glance
 5. Commercial facts
 6. Full specifications
-7. Applications
-8. Documents & downloads
-9. FAQ
-10. Product details
+7. FAQ
+8. Product details
     ← WordPress main rich-text content
-11. Related products
-12. CTA band
+9. Related products
+10. CTA band
 ```
 
 ## 5. Component Plan
@@ -192,8 +188,6 @@ The bottom CTA is the final conversion opportunity after long-form details.
 | `component_check_list` | At-a-glance claims | existing component |
 | `component_fact_strip` | Warranty, MOQ, lead time, customization | existing/upgraded component |
 | `component_spec_table` | Full structured specifications | existing component |
-| `component_pill_list` | Applications | existing component |
-| `component_document_list` | Downloadable or named documents | `rows` |
 | `component_faq` | Product FAQ | existing component |
 | `component_rich_description` | Safe, constrained prose wrapper for main content | current post content |
 | `component_related_products` | Manual IDs first, automatic fallback | existing/upgraded component |
@@ -217,8 +211,6 @@ The bottom CTA is the final conversion opportunity after long-form details.
 | `product_highlights` | Hero value chips or at-a-glance claims |
 | `quick_specs` | Key attributes |
 | `spec_table` | Full specifications |
-| `product_applications` | Applications |
-| `product_documents` | Documents & downloads |
 | `warranty` | Commercial facts |
 | `lead_time` | Commercial facts |
 | `moq` | Commercial facts |
@@ -327,8 +319,6 @@ Key attributes: two-column grid
 At a glance: compact checklist
 Commercial facts: full-width four-column strip
 Specifications: constrained table
-Applications: pills or cards
-Documents: named download cards
 FAQ: collapsed rows
 Product details: constrained prose container
 Related products: three-card grid
@@ -349,8 +339,6 @@ Key attributes
 At a glance
 Commercial facts
 Specifications
-Applications
-Documents
 FAQ
 Product details
 Related products

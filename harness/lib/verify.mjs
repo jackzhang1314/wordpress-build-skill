@@ -97,9 +97,16 @@ export async function verifyDatabase(project, options = {}) {
     results.push({label: item.label, postType: item.postType, kind: item.kind, count, expected: item.expected, pass});
   }
   if (options.blankMedia) {
-    const output = wp(['post', 'list', '--post_type=attachment', '--format=count']).trim();
-    const count = Number(output.split('\n').pop()) || 0;
-    results.push({label: 'Remote blank media', postType: 'attachment', kind: 'post', count, expected: 0, pass: count === 0});
+    const managedIds = (options.managedMediaIds ?? []).map(Number);
+    if (!managedIds.length) {
+      // A zero-source Starter permits owner uploads after handover; it must not ship or import media.
+      results.push({label: 'Harness-managed media', postType: 'attachment', kind: 'post', count: 0, expected: 0, pass: true});
+    } else {
+      const output = wp(['post', 'list', '--post_type=attachment', '--post_status=any', '--fields=ID', '--format=csv']).trim();
+      const remoteIds = output.split('\n').slice(1).map(Number).filter(Number.isInteger).filter(id => id > 0);
+      const count = remoteIds.filter(id => managedIds.includes(id)).length;
+      results.push({label: 'Harness-managed media', postType: 'attachment', kind: 'post', count, expected: 0, pass: count === 0});
+    }
   }
   return {pass: results.every(item => item.pass), results};
 }

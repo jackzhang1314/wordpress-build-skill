@@ -67,8 +67,6 @@ Core fields are industry-neutral:
 - `quick_specs`: `Label | Value` lines
 - `product_highlights`: one claim per line
 - `spec_table`: `Label | Value` lines
-- `product_applications`: one item per line
-- `product_documents`: one item per line
 - `warranty`, `lead_time`, `moq`
 - `customization_note`
 - `product_cta_note`, `product_cta_label`, `product_trust_points`

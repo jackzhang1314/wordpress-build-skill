@@ -2,7 +2,7 @@
 /**
  * Plugin Name: b2b-starter Content Model
  * Description: Full B2B information architecture: products, industries, guides and RFQ capture.
- * Version: 2.3.0
+ * Version: 2.3.1
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Requires Plugins: advanced-custom-fields
@@ -236,8 +236,6 @@ add_action('acf/init', static function (): void {
             $field('field_p_details_title', 'product_details_title', 'Product details title', 'text', ['instructions' => 'Optional heading for the bottom rich-text section. Leave empty to use “Product details”.']),
             $field('field_p_highlights', 'product_highlights', 'Key selling points', 'textarea', array_merge(['rows' => 6], $rows_help('Enter a short claim.'))),
             $field('field_p_spec_table', 'spec_table', 'Full specifications', 'textarea', array_merge(['rows' => 10], $rows_help('Use Label | Value.'))),
-            $field('field_p_applications', 'product_applications', 'Typical applications', 'textarea', array_merge(['rows' => 6], $rows_help('Enter an application.'))),
-            $field('field_p_documents', 'product_documents', 'Documents & downloads', 'textarea', array_merge(['rows' => 6], $rows_help('Enter a document name or URL.'))),
             $field('field_p_warranty', 'warranty', 'Warranty', 'text'),
             $field('field_p_lead_time', 'lead_time', 'Lead time', 'text'),
             $field('field_p_moq', 'moq', 'MOQ', 'text'),

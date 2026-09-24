@@ -55,6 +55,8 @@ function starter_delete_legacy_post_meta(): void {
         'category_cta_title', '_category_cta_title',
         'category_cta_text', '_category_cta_text',
         'category_cta_button', '_category_cta_button',
+        'product_applications', '_product_applications',
+        'product_documents', '_product_documents',
         'field_starter_industry_challenge',
         'field_starter_industry_outcome',
     ];
@@ -209,7 +211,7 @@ foreach ($data['products'] ?? [] as $product) {
         foreach (['wattage', 'efficacy', 'ip_rating', 'field_starter_wattage', 'field_starter_efficacy', 'field_starter_ip'] as $legacy) {
             delete_post_meta($product_id, $legacy);
         }
-        foreach (['quick_specs', 'at_a_glance', 'product_highlights', 'spec_table', 'product_applications', 'product_documents', 'product_faq', 'product_shipping_terms', 'product_details_title', 'warranty', 'lead_time', 'moq', 'customization_note', 'product_cta_note', 'product_cta_label', 'product_trust_points'] as $field_name) {
+        foreach (['quick_specs', 'at_a_glance', 'product_highlights', 'spec_table', 'product_faq', 'product_shipping_terms', 'product_details_title', 'warranty', 'lead_time', 'moq', 'customization_note', 'product_cta_note', 'product_cta_label', 'product_trust_points'] as $field_name) {
             if (isset($acf[$field_name])) {
                 $value = $acf[$field_name];
                 if (is_array($value)) {

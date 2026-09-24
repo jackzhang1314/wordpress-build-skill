@@ -60,7 +60,7 @@ test('page controllers separate data access from presentation', () => {
 test('product schema is generic and seeded through admin-editable ACF fields', () => {
   const data = JSON.parse(readFileSync(join(starterRoot, 'content/site-data.json'), 'utf8'));
   for (const product of data.products) {
-    for (const field of ['quick_specs', 'product_highlights', 'at_a_glance', 'spec_table', 'product_documents', 'product_faq', 'product_shipping_terms', 'product_cta_note', 'product_trust_points']) {
+    for (const field of ['quick_specs', 'product_highlights', 'at_a_glance', 'spec_table', 'product_faq', 'product_shipping_terms', 'product_cta_note', 'product_trust_points']) {
       assert.ok(product.acf[field] !== undefined, `${product.slug} misses ${field}`);
     }
     for (const forbidden of ['wattage', 'efficacy', 'ip_rating']) {
@@ -68,7 +68,7 @@ test('product schema is generic and seeded through admin-editable ACF fields', (
     }
   }
   const plugin = readFileSync(join(starterRoot, 'plugin/starter-model.php'), 'utf8');
-  for (const field of ['quick_specs', 'at_a_glance', 'spec_table', 'product_applications', 'product_documents', 'product_faq', 'product_shipping_terms', 'product_details_title', 'related_products']) {
+  for (const field of ['quick_specs', 'at_a_glance', 'spec_table', 'product_faq', 'product_shipping_terms', 'product_details_title', 'related_products']) {
     assert.match(plugin, new RegExp(`'${field}'`));
   }
 });
@@ -96,7 +96,7 @@ test('product detail v2 keeps a simple hero and uses the main editor at the bott
   assert.match(product, /component_product_hero_summary/);
   assert.match(product, /component_attribute_grid/);
   assert.match(product, /component_fact_strip/);
-  assert.match(product, /component_document_list/);
+  assert.doesNotMatch(product, /component_document_list|Typical applications|Documents & downloads/);
 
   const faqIndex = product.indexOf("title' => 'Product questions'");
   const detailsIndex = product.indexOf('component_rich_description');
@@ -108,7 +108,7 @@ test('product detail v2 keeps a simple hero and uses the main editor at the bott
 
 test('product gallery and rich text have bounded presentation contracts', () => {
   const components = readFileSync(join(starterRoot, 'theme/inc/components.php'), 'utf8');
-  for (const name of ['component_product_gallery', 'component_product_hero_summary', 'component_attribute_grid', 'component_fact_strip', 'component_document_list', 'component_rich_description']) {
+  for (const name of ['component_product_gallery', 'component_product_hero_summary', 'component_attribute_grid', 'component_fact_strip', 'component_rich_description']) {
     assert.match(components, new RegExp(`function ${name}\\(`));
   }
   const css = readFileSync(join(starterRoot, 'theme/style.css'), 'utf8');

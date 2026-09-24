@@ -196,18 +196,6 @@ function product_data(): array {
         $at_a_glance = lines('product_trust_points', $post_id);
     }
 
-    $documents = [];
-    foreach (lines('product_documents', $post_id) as $document) {
-        $parts = array_map('trim', explode('|', (string) $document, 2));
-        $label = $parts[0] ?? '';
-        $url = $parts[1] ?? '';
-        $documents[] = [
-            'label' => $label,
-            'url' => $url,
-            'is_link' => $url !== '' && (str_starts_with($url, 'http://') || str_starts_with($url, 'https://') || str_starts_with($url, '/')),
-        ];
-    }
-
     $terms = get_the_terms($post_id, 'product_collection');
     $primary_term = is_array($terms) && isset($terms[0]) && !is_wp_error($terms[0]) ? $terms[0] : null;
     $category = [];
@@ -243,7 +231,6 @@ function product_data(): array {
         'commercial_facts' => $commercial_facts,
         'customization' => text('customization_note', $post_id),
         'specifications' => field_rows('spec_table', $post_id),
-        'applications' => lines('product_applications', $post_id),
         'documents' => $documents,
         'faq' => rows('product_faq', $post_id),
         'details' => [

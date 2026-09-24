@@ -345,24 +345,6 @@ function component_fact_strip(array $props = []): void {
 	echo '</dl>';
 }
 
-/** Named document cards; an optional second line segment becomes a link. */
-function component_document_list(array $props = []): void {
-	$documents = array_values(array_filter((array) ($props['documents'] ?? []), static fn ($row): bool => trim((string) ($row['label'] ?? '')) !== ''));
-	if (!$documents) return;
-	echo '<div class="document-card-grid">';
-	foreach ($documents as $document) {
-		$label = (string) $document['label'];
-		echo '<div class="document-card">';
-		if (!empty($document['is_link'])) {
-			printf('<a href="%s">%s<span aria-hidden="true">→</span></a>', esc_url((string) $document['url']), esc_html($label));
-		} else {
-			printf('<p>%s</p>', esc_html($label));
-		}
-		echo '</div>';
-	}
-	echo '</div>';
-}
-
 /** Constrained wrapper for WordPress main editor content. */
 function component_rich_description(array $props = []): void {
 	$content = trim((string) ($props['content'] ?? ''));

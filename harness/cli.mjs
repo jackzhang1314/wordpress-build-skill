@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import {execFileSync} from 'node:child_process';
-import {existsSync, writeFileSync} from 'node:fs';
+import {existsSync, readFileSync, writeFileSync} from 'node:fs';
 import {join, resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {loadProject, resolveProjectRoot} from './lib/config.mjs';
@@ -11,6 +11,18 @@ import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
 import {isBlankMediaContract} from './lib/verify.mjs';
+
+function managedMediaIds(projectRoot, project) {
+  const contentDir = project.paths?.content ?? 'content';
+  const mediaMapPath = join(projectRoot, contentDir, 'media-map.json');
+  if (!existsSync(mediaMapPath)) return [];
+  try {
+    const map = JSON.parse(readFileSync(mediaMapPath, 'utf8'));
+    return Object.values(map || {}).map(Number).filter(Number.isInteger).filter(id => id > 0);
+  } catch {
+    throw new Error(`media map is not valid JSON: ${mediaMapPath}`);
+  }
+}
 import {captureScreenshots, detectChromeBin} from './lib/screenshots.mjs';
 import {launchCdpBrowser} from './lib/cdp-browser.mjs';
 import {defaultRfqFields, verifyRfqForm} from './lib/form-verify.mjs';
@@ -348,7 +360,11 @@ add_action("phpmailer_init", function ($phpmailer) {
     if (command === 'verify') {
       if (!project.domain) throw new Error('project.domain is empty');
       const pages = await verifyPages(base, project.livePages, project.contentMarkers);
-      const database = await verifyDatabase(project, {wp: input => ssh.wp(input), blankMedia: isBlankMediaContract(root, project)});
+      const database = await verifyDatabase(project, {
+        wp: input => ssh.wp(input),
+        blankMedia: isBlankMediaContract(root, project),
+        managedMediaIds: managedMediaIds(root, project),
+      });
       const seo = project.requiredPlugins.includes('seo-by-rank-math') ? await verifyRankMath(project, ssh) : {pass: true};
       let screenshots;
       if (args.includes('--screenshots')) {
@@ -445,7 +461,11 @@ add_action("phpmailer_init", function ($phpmailer) {
         const cache = clearHostingerCache(project, {execFile: execFileSync});
         logger(`  ${cache.pass ? 'OK ' : 'WARN'} Hostinger cache ${cache.detail}`);
         const verification = await verifyPages(base, project.livePages, project.contentMarkers);
-        const database = await verifyDatabase(project, {wp: input => ssh.wp(input), blankMedia: isBlankMediaContract(root, project)});
+        const database = await verifyDatabase(project, {
+        wp: input => ssh.wp(input),
+        blankMedia: isBlankMediaContract(root, project),
+        managedMediaIds: managedMediaIds(root, project),
+      });
         if (!verification.pass || !database.pass) {
           for (const page of verification.results.filter(item => !item.pass)) {
             logger(`    FAIL ${page.path}: ${page.detail ?? `status ${page.status}, H1 ${page.h1}, skips ${page.skips}`}`);

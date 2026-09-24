@@ -1,6 +1,6 @@
 <?php
 /**
- * Single product: compact conversion hero followed by structured proof and rich details.
+ * Single product: compact conversion hero followed by proof, specifications and rich details.
  *
  * @package b2b-starter
  */
@@ -66,27 +66,7 @@ get_header(); ?>
 	</section>
 	<?php endif; ?>
 
-	<?php if ($product['applications']) : ?>
-	<section class="section" aria-label="Product applications">
-		<?php Starter\Theme\component_section_heading([
-			'eyebrow' => 'Use cases',
-			'title' => 'Typical applications',
-		]); ?>
-		<?php Starter\Theme\component_pill_list(['items' => $product['applications']]); ?>
-	</section>
-	<?php endif; ?>
-
-	<?php if ($product['documents']) : ?>
-	<section class="section" aria-label="Product documents">
-		<?php Starter\Theme\component_section_heading([
-			'eyebrow' => 'Resources',
-			'title' => 'Documents & downloads',
-		]); ?>
-		<?php Starter\Theme\component_document_list(['documents' => $product['documents']]); ?>
-	</section>
-	<?php endif; ?>
-
-	<?php if ($product['faq']) : ?>
+			<?php if ($product['faq']) : ?>
 	<section class="section" aria-label="Product FAQ">
 		<?php Starter\Theme\component_section_heading([
 			'eyebrow' => 'FAQ',

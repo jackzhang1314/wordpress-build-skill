@@ -69,21 +69,25 @@ test('verify pages retries transient transport failures but not HTTP failures', 
   assert.equal(attempts, 0);
 });
 
-test('blank media verification requires zero remote attachments', async () => {
+test('zero-source starter allows owner uploads and audits only harness-managed media', async () => {
   const calls = [];
   const wp = args => {
     calls.push(args);
-    return args.some(arg => String(arg).includes('attachment')) ? '2' : '3';
+    return args.some(arg => String(arg).includes('attachment')) ? 'ID\n180\n182\n' : '3';
   };
   const project = {
     contentCounts: [{label: 'Guides', postType: 'starter_guide', expected: 3, kind: 'post'}],
     media: {sources: []},
     paths: {content: 'content'},
   };
-  const result = await verifyDatabase(project, {wp, blankMedia: true});
-  assert.equal(result.pass, false);
-  assert.deepEqual(calls.at(-1), ['post', 'list', '--post_type=attachment', '--format=count']);
-  assert.equal(result.results.at(-1).count, 2);
+  const result = await verifyDatabase(project, {wp, blankMedia: true, managedMediaIds: []});
+  assert.equal(result.pass, true);
+  assert.deepEqual(calls.filter(args => args.some(arg => String(arg).includes('attachment'))), []);
+  assert.deepEqual(result.results.at(-1), {label: 'Harness-managed media', postType: 'attachment', kind: 'post', count: 0, expected: 0, pass: true});
+
+  const managed = await verifyDatabase(project, {wp, blankMedia: true, managedMediaIds: [180]});
+  assert.equal(managed.pass, false);
+  assert.equal(managed.results.at(-1).count, 1);
 });
 
 test('starter blank media contract is detected from source and empty map', () => {
