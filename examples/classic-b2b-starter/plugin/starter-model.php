@@ -2,7 +2,7 @@
 /**
  * Plugin Name: b2b-starter Content Model
  * Description: Full B2B information architecture: products, industries, guides and RFQ capture.
- * Version: 2.0.0
+ * Version: 2.1.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Requires Plugins: advanced-custom-fields
@@ -50,14 +50,101 @@ register_deactivation_hook(__FILE__, static function (): void {
     flush_rewrite_rules();
 });
 
+/** Create the sample RFQ form once when Fluent Forms is available. */
+function ensure_rfq_form(): int {
+    global $wpdb;
+    $forms_table = $wpdb->prefix . 'fluentform_forms';
+    if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $forms_table)) !== $forms_table) {
+        return 0;
+    }
+
+    $form_id = (int) get_option('starter_rfq_form_id');
+    if ($form_id && (int) $wpdb->get_var($wpdb->prepare("SELECT ID FROM {$forms_table} WHERE ID = %d", $form_id))) {
+        return $form_id;
+    }
+
+    // Recover safely if the option was removed but the form still exists.
+    $form_id = (int) $wpdb->get_var($wpdb->prepare(
+        "SELECT ID FROM {$forms_table} WHERE title = %s AND status = 'published' ORDER BY ID LIMIT 1",
+        'Request for quotation'
+    ));
+    if ($form_id) {
+        update_option('starter_rfq_form_id', $form_id);
+        return $form_id;
+    }
+
+    $field = static function (string $element, string $name, string $label, bool $required = false, string $type = 'text'): array {
+        return [
+            'element' => $element,
+            'attributes' => ['name' => $name, 'type' => $type, 'class' => '', 'placeholder' => ''],
+            'settings' => [
+                'label' => $label,
+                'admin_field_label' => $label,
+                'validation_rules' => $required ? ['required' => ['value' => true, 'message' => 'This field is required.']] : [],
+                'conditional_logic' => [],
+            ],
+            'editor_options' => ['title' => $label, 'icon_class' => 'ff-edit-text'],
+        ];
+    };
+    $fields = [
+        $field('input_name', 'name', 'Name', true, 'name'),
+        $field('input_email', 'email', 'Work email', true, 'email'),
+        $field('input_text', 'company', 'Company'),
+        $field('input_text', 'country', 'Country / region'),
+        $field('input_text', 'product', 'Product or project type'),
+        $field('textarea', 'requirements', 'Requirements', true, 'textarea'),
+        [
+            'element' => 'input_checkbox',
+            'attributes' => ['name' => 'consent', 'type' => 'checkbox', 'value' => ['Default' => []]],
+            'settings' => [
+                'label' => 'I agree to be contacted about this enquiry',
+                'choices' => [['label' => 'Yes', 'value' => 'yes']],
+                'validation_rules' => ['required' => ['value' => true, 'message' => 'Required.']],
+            ],
+        ],
+    ];
+
+    $inserted = $wpdb->insert($forms_table, [
+        'title' => 'Request for quotation',
+        'status' => 'published',
+        'form_fields' => wp_json_encode($fields),
+        'appearance_settings' => wp_json_encode(['css' => '']),
+        'has_payment' => 0,
+        'type' => 'form',
+        'conditions' => wp_json_encode([]),
+        'created_by' => get_current_user_id() ?: 1,
+    ]);
+    if (!$inserted) {
+        return 0;
+    }
+
+    $form_id = (int) $wpdb->insert_id;
+    $wpdb->insert($wpdb->prefix . 'fluentform_form_meta', [
+        'form_id' => $form_id,
+        'meta_key' => 'notifications',
+        'value' => wp_json_encode([[
+            'name' => 'Admin notification',
+            'sendTo' => ['type' => 'email', 'email' => get_option('admin_email')],
+            'subject' => 'New quotation request — {inputs.name}',
+            'body' => '<p>{all_data}</p>',
+            'isEnabled' => true,
+        ]]),
+    ]);
+    update_option('starter_rfq_form_id', $form_id);
+    return $form_id;
+}
+
 add_action('init', static function (): void {
     // RFQ form embed. Maps the stable placeholder shortcode to the Fluent Form
     // instance so editors never need to know internal form IDs.
     add_shortcode('starter_rfq_form', static function (array $atts = []): string {
-        $atts = shortcode_atts(['id' => '3'], $atts, 'starter_rfq_form');
-        $form_id = (string) $atts['id'];
         if (!shortcode_exists('fluentform')) {
             return '<p>' . esc_html__('Install Fluent Forms to enable the quotation form.', 'b2b-starter') . '</p>';
+        }
+        $atts = shortcode_atts(['id' => ''], $atts, 'starter_rfq_form');
+        $form_id = (string) ($atts['id'] !== '' ? $atts['id'] : ensure_rfq_form());
+        if ($form_id === '0') {
+            return '<p>' . esc_html__('The quotation form is not ready yet. Please try again shortly.', 'b2b-starter') . '</p>';
         }
         return do_shortcode('[fluentform id="' . esc_attr($form_id) . '"]');
     });

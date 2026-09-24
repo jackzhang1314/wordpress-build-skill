@@ -120,3 +120,16 @@ rsync -av --delete theme-backup/ your-server:~/public_html/wp-content/themes/you
 ```
 
 Content edits in WP Admin survive theme restores (they live in the database).
+
+## Visual verification (390 / 768 / 1440)
+
+After any deploy, capture every declared route at all three breakpoints:
+
+```sh
+node ../../harness/cli.mjs --project . verify --screenshots          # full gate + screenshots
+node ../../harness/cli.mjs --project . screenshot --routes /,/products/ --widths 390,768,1440
+```
+
+Screenshots land in `evidence/screenshots/` as `WIDTH--route.png`. The gate
+fails when any capture is missing or suspiciously small (error page). Chrome
+is auto-detected; set `CHROME_BIN` to override.
