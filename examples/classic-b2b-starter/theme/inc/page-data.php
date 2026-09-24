@@ -184,17 +184,6 @@ function normalize_product_image(array $image): array {
 function product_data(): array {
     $post_id = (int) get_the_ID();
     $quick_specs = rows('quick_specs', $post_id);
-    if (!$quick_specs && trim((string) field_text('warranty', $post_id)) !== '') {
-        $quick_specs = [['label' => 'Warranty', 'value' => field_text('warranty', $post_id)]];
-    }
-
-    $at_a_glance = lines('at_a_glance', $post_id);
-    if (!$at_a_glance) {
-        $at_a_glance = lines('product_highlights', $post_id);
-    }
-    if (!$at_a_glance) {
-        $at_a_glance = lines('product_trust_points', $post_id);
-    }
 
     $terms = get_the_terms($post_id, 'product_collection');
     $primary_term = is_array($terms) && isset($terms[0]) && !is_wp_error($terms[0]) ? $terms[0] : null;
@@ -207,12 +196,6 @@ function product_data(): array {
     }
 
     $related = get_field('related_products', $post_id);
-    $commercial_facts = [
-        ['label' => 'Warranty', 'value' => text('warranty', $post_id)],
-        ['label' => 'MOQ', 'value' => text('moq', $post_id)],
-        ['label' => 'Lead time', 'value' => text('lead_time', $post_id)],
-        ['label' => 'Trade terms', 'value' => text('product_shipping_terms', $post_id)],
-    ];
 
     $content = (string) get_post_field('post_content', $post_id);
     return [
@@ -226,12 +209,7 @@ function product_data(): array {
             'note' => global_text('response_promise', 'Every enquiry receives a human reply within one working day.'),
             'url' => contact_url((string) get_the_title()),
         ],
-        'key_attributes' => $quick_specs,
-        'at_a_glance' => array_slice($at_a_glance, 0, 4),
-        'commercial_facts' => $commercial_facts,
-        'customization' => text('customization_note', $post_id),
         'specifications' => field_rows('spec_table', $post_id),
-        'documents' => $documents,
         'faq' => rows('product_faq', $post_id),
         'details' => [
             'title' => text('product_details_title', $post_id, 'Product details'),

@@ -1,6 +1,6 @@
 # Product Detail Page Plan v2
 
-Status: implemented and verified on the component verification site. Product-only Applications and Documents modules were removed after review because they added low-value placeholder content; application context remains available on product-category pages.  
+Status: implemented and verified on the component verification site. The Key Attributes, At a Glance, Commercial Terms and Customization modules were also removed after review because they duplicated hero data, specs or editable rich-text content. Product-only Applications and Documents modules remain removed; application context remains available on product-category pages.  
 Scope: `single-starter_product.php`, product ACF fields, page data, components, seed data, CSS, harness gates and deployment verification.
 
 ## 1. Goal
@@ -184,9 +184,6 @@ The bottom CTA is the final conversion opportunity after long-form details.
 |---|---|---|
 | `component_product_gallery` | Main image, thumbnails, captions, placeholder fallback | `images`, `title`, `aspect` |
 | `component_product_hero_summary` | Category, H1, excerpt, value chips, primary CTA | `category`, `title`, `description`, `value_chips`, `cta` |
-| `component_attribute_grid` | Four to six compact key attributes | `rows` |
-| `component_check_list` | At-a-glance claims | existing component |
-| `component_fact_strip` | Warranty, MOQ, lead time, customization | existing/upgraded component |
 | `component_spec_table` | Full structured specifications | existing component |
 | `component_faq` | Product FAQ | existing component |
 | `component_rich_description` | Safe, constrained prose wrapper for main content | current post content |

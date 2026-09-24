@@ -1,6 +1,6 @@
 <?php
 /**
- * Single product: compact conversion hero followed by proof, specifications and rich details.
+ * Single product: minimal conversion hero with proof, details and RFQ.
  *
  * @package b2b-starter
  */
@@ -22,39 +22,6 @@ get_header(); ?>
 			'cta' => $product['cta'],
 		]); ?>
 	</section>
-
-	<?php if ($product['key_attributes']) : ?>
-	<section class="section" aria-label="Product key attributes">
-		<?php Starter\Theme\component_section_heading([
-			'eyebrow' => 'Key attributes',
-			'title' => 'Essential product data',
-		]); ?>
-		<?php Starter\Theme\component_attribute_grid(['rows' => $product['key_attributes']]); ?>
-	</section>
-	<?php endif; ?>
-
-	<?php if ($product['at_a_glance']) : ?>
-	<section class="section" aria-label="Product at a glance">
-		<?php Starter\Theme\component_section_heading([
-			'eyebrow' => 'At a glance',
-			'title' => 'Why buyers shortlist it',
-		]); ?>
-		<?php Starter\Theme\component_check_list(['items' => $product['at_a_glance']]); ?>
-	</section>
-	<?php endif; ?>
-
-	<?php if ($product['commercial_facts'] || $product['customization']) : ?>
-	<section class="section" aria-label="Product commercial terms">
-		<?php Starter\Theme\component_section_heading([
-			'eyebrow' => 'Commercial terms',
-			'title' => 'Buying & delivery',
-		]); ?>
-		<?php Starter\Theme\component_fact_strip(['rows' => $product['commercial_facts']]); ?>
-		<?php if ($product['customization']) : ?>
-			<?php Starter\Theme\component_callout(['title' => 'Customization', 'text' => $product['customization']]); ?>
-		<?php endif; ?>
-	</section>
-	<?php endif; ?>
 
 	<?php if ($product['specifications']) : ?>
 	<section class="section" aria-label="Product specifications">

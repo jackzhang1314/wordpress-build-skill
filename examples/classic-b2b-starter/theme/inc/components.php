@@ -88,7 +88,7 @@ function component_feature_grid(array $props = []): void {
 	echo '</div>';
 }
 
-/** Accessible compact list of applications or highlights. */
+/** Linked taxonomy chips or application pills. */
 function component_pill_list(array $props = []): void {
 	$items = array_values(array_filter(array_map('trim', (array) ($props['items'] ?? []))));
 	if (!$items) return;
@@ -141,15 +141,6 @@ function component_quick_specs(array $props = []): void {
 		printf('<div><dt>%s</dt><dd>%s</dd></div>', esc_html($row['label']), esc_html($row['value']));
 	}
 	echo '</dl>';
-}
-
-/** Checklist rendered from plain lines; hidden when empty. */
-function component_check_list(array $props = []): void {
-	$items = array_values(array_filter(array_map('trim', (array) ($props['items'] ?? []))));
-	if (!$items) return;
-	echo '<ul class="check-list">';
-	foreach ($items as $item) echo '<li>' . esc_html($item) . '</li>';
-	echo '</ul>';
 }
 
 /** Small trust/reassurance strip of short claims. */
@@ -325,24 +316,6 @@ function component_product_hero_summary(array $props = []): void {
 		echo '</div>';
 	}
 	echo '</div>';
-}
-
-/** Compact label/value grid for four to six key product attributes. */
-function component_attribute_grid(array $props = []): void {
-	$rows = array_values(array_filter((array) ($props['rows'] ?? []), static fn ($row): bool => trim((string) ($row['label'] ?? '')) !== ''));
-	if (!$rows) return;
-	echo '<dl class="attribute-grid">';
-	foreach ($rows as $row) printf('<div><dt>%s</dt><dd>%s</dd></div>', esc_html((string) $row['label']), esc_html((string) ($row['value'] ?? '')));
-	echo '</dl>';
-}
-
-/** Commercial facts strip; each named value is hidden when empty. */
-function component_fact_strip(array $props = []): void {
-	$rows = array_values(array_filter((array) ($props['rows'] ?? []), static fn ($row): bool => trim((string) ($row['value'] ?? '')) !== ''));
-	if (!$rows) return;
-	echo '<dl class="fact-strip">';
-	foreach ($rows as $row) printf('<div><dt>%s</dt><dd>%s</dd></div>', esc_html((string) $row['label']), esc_html((string) $row['value']));
-	echo '</dl>';
 }
 
 /** Constrained wrapper for WordPress main editor content. */

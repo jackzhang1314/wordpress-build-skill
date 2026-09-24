@@ -2,7 +2,7 @@
 /**
  * Plugin Name: b2b-starter Content Model
  * Description: Full B2B information architecture: products, industries, guides and RFQ capture.
- * Version: 2.3.1
+ * Version: 2.4.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Requires Plugins: advanced-custom-fields
@@ -230,19 +230,10 @@ add_action('acf/init', static function (): void {
             $field('field_p_gallery_4', 'product_gallery_4', 'Gallery image 4', 'image', ['return_format' => 'array', 'preview_size' => 'medium']),
             $field('field_p_gallery_5', 'product_gallery_5', 'Gallery image 5', 'image', ['return_format' => 'array', 'preview_size' => 'medium']),
             $field('field_p_quick_specs', 'quick_specs', 'Quick specifications', 'textarea', array_merge(['rows' => 6], $rows_help('Use Label | Value.'))),
-            $field('field_p_at_a_glance', 'at_a_glance', 'At a glance', 'textarea', array_merge(['rows' => 4], $rows_help('Enter a short buyer-facing claim.'))),
             $field('field_p_faq', 'product_faq', 'Product FAQ', 'textarea', array_merge(['rows' => 8], $rows_help('Use Question | Answer.'))),
-            $field('field_p_shipping_terms', 'product_shipping_terms', 'Shipping / trade terms', 'text'),
             $field('field_p_details_title', 'product_details_title', 'Product details title', 'text', ['instructions' => 'Optional heading for the bottom rich-text section. Leave empty to use “Product details”.']),
-            $field('field_p_highlights', 'product_highlights', 'Key selling points', 'textarea', array_merge(['rows' => 6], $rows_help('Enter a short claim.'))),
             $field('field_p_spec_table', 'spec_table', 'Full specifications', 'textarea', array_merge(['rows' => 10], $rows_help('Use Label | Value.'))),
-            $field('field_p_warranty', 'warranty', 'Warranty', 'text'),
-            $field('field_p_lead_time', 'lead_time', 'Lead time', 'text'),
-            $field('field_p_moq', 'moq', 'MOQ', 'text'),
-            $field('field_p_customization', 'customization_note', 'Customization note', 'textarea', ['rows' => 4]),
-            $field('field_p_cta_note', 'product_cta_note', 'Product CTA note', 'textarea', ['rows' => 3]),
             $field('field_p_cta_label', 'product_cta_label', 'Product CTA button label', 'text'),
-            $field('field_p_trust_points', 'product_trust_points', 'Trust points', 'textarea', array_merge(['rows' => 4], $rows_help('Enter a short claim.'))),
             $field('field_p_related', 'related_products', 'Related products', 'post_object', [
                 'post_type' => ['starter_product'], 'multiple' => 1, 'return_format' => 'id', 'instructions' => 'Leave empty to show automatic related products.',
             ]),
