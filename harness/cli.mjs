@@ -69,6 +69,7 @@ Project commands:
 Deploy options:
   --with-media            Force a new media import
   --with-content          Force content seeding
+  --with-nav              Explicitly rebuild the seeded navigation
   --skip-content          Do not seed in this run
   --json                  Machine-readable output
 
@@ -341,7 +342,7 @@ add_action("phpmailer_init", function ($phpmailer) {
       return 0;
     }
     if (command === 'content') {
-      await seedContent(root, project, ssh, logger);
+      await seedContent(root, project, ssh, logger, {rebuildNav: args.includes('--with-nav')});
       return 0;
     }
     if (command === 'verify') {
@@ -437,8 +438,9 @@ add_action("phpmailer_init", function ($phpmailer) {
         configureWordPress(project, ssh, logger);
         configureRankMath(project, ssh, {logger});
         await importMedia(root, project, ssh, {force: args.includes('--with-media'), logger});
-        if (!args.includes('--skip-content') && (args.includes('--with-content') || !existsSync(join(root, '.seed-state.json')))) {
-          await seedContent(root, project, ssh, logger);
+        if (!args.includes('--skip-content') && (args.includes('--with-content') || args.includes('--with-nav') || !existsSync(join(root, '.seed-state.json')))) {
+          const rebuildNav = !existsSync(join(root, '.seed-state.json')) || args.includes('--with-nav');
+          await seedContent(root, project, ssh, logger, {rebuildNav});
         }
         const cache = clearHostingerCache(project, {execFile: execFileSync});
         logger(`  ${cache.pass ? 'OK ' : 'WARN'} Hostinger cache ${cache.detail}`);

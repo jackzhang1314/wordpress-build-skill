@@ -26,8 +26,8 @@ See `DESIGN.md` for the full token reference.
 | Site name | WP Admin → Settings → General → Site Title |
 | Tagline | WP Admin → Settings → General → Tagline |
 | Logo | Replace `theme/assets/favicon.svg`; add custom logo via Customizer or hardcode in `header.php` |
-| Contact email | Search `sales@yourcompany.example` across `theme/` (header, footer, page-contact) and replace |
-| Working hours | `theme/footer.php` + `theme/page-contact.php` — edit the `Mon–Fri, 9:00–18:00 (GMT+8)` string |
+| Contact email | WP Admin → Appearance → Customize → Contact & Brand Info |
+| Working hours | WP Admin → Appearance → Customize → Contact & Brand Info |
 
 ## 3. Content (20 minutes)
 
@@ -35,10 +35,11 @@ See `DESIGN.md` for the full token reference.
 
 | Page | Source | How to edit |
 |---|---|---|
-| Home hero + sections | `content/site-data.json` → `pages[0]` | Edit `title`, `excerpt` (hero subhead), `content` (hero prose) |
-| About page body | `content/patches/about.html` | Edit raw HTML |
-| About page facts | `theme/functions.php` → `factory_defaults()` | Edit the `stats` and `capabilities` textarea strings |
-| Contact page | `theme/page-contact.php` | Edit the aside checklist and direct-lines section |
+| Home hero + sections | WP Admin → Home page | Page editor plus **Homepage content & sections** |
+| About page | WP Admin → About page | Page editor; template must stay **About page** |
+| Company facts | WP Admin → Factory profile | Stats and capabilities |
+| Contact page | WP Admin → Contact page | Page editor plus **Contact page content** |
+| Archive/system copy | WP Admin → Site copy | Archive introductions, 404 and response promise |
 
 ### Products / Industries / Guides
 
@@ -51,7 +52,7 @@ Edit `content/site-data.json` and re-seed, or edit in WP Admin:
 | `starter_guide` | `/guides/` | `/guides/` |
 | `product_collection` (taxonomy) | `/product-category/` | Category pages |
 
-Each product has ACF fields: `wattage`, `efficacy`, `ip_rating`, `warranty`, `specs` (textarea — one `Label | Value` per line).
+Each product has a generic ACF panel: quick specifications, highlights, full specifications, applications, documents, warranty, lead time, MOQ, customization note, CTA and trust points. Use `Label | Value` lines for specs.
 
 ### Navigation
 
@@ -63,7 +64,7 @@ WP Admin → Appearance → Menus. Assign to **Primary navigation**. Sub-menu it
 |---|---|
 | Hero photo | Upload to Media Library with post_title = `hero` |
 | Product photos | Set featured image on each product |
-| Placeholder fallback | Automatic SVG icons when no featured image is set |
+| Placeholder fallback | Neutral dimensioned media placeholder when no featured image is set |
 | Favicon | `theme/assets/favicon.svg` |
 
 ## 5. Email
@@ -72,7 +73,7 @@ Add constants to `wp-config.php` (see README §3). Test by submitting the contac
 
 ## 6. Forms
 
-The contact form uses Fluent Forms (form ID 3). To change fields:
+The contact form uses Fluent Forms (linked by the stable `[starter_rfq_form]` shortcode). To change fields:
 
 1. WP Admin → Fluent Forms → edit the RFQ form
 2. Styling comes from `theme/style.css` — no plugin-level changes needed

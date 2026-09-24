@@ -4,7 +4,8 @@ import {existsSync, readFileSync, readdirSync, statSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {join} from 'node:path';
 
-const starterRoot = fileURLToPath(new URL('../examples/classic-b2b-starter', import.meta.url));
+const repoRoot = fileURLToPath(new URL('../', import.meta.url));
+const starterRoot = join(repoRoot, 'examples/classic-b2b-starter');
 
 function walk(relative = '') {
   const root = join(starterRoot, relative);
@@ -38,6 +39,61 @@ test('starter naming is neutral and project-specific names do not return', () =>
   }
 });
 
+test('page routing uses assigned WordPress page templates, not slug-bound files', () => {
+  for (const file of ['theme/page-templates/about.php', 'theme/page-templates/contact.php', 'theme/page-templates/landing.php', 'theme/page-templates/full-width.php']) {
+    const text = readFileSync(join(starterRoot, file), 'utf8');
+    assert.match(text, /Template Name:/);
+    assert.match(text, /Template Post Type:\s*page/);
+  }
+  assert.ok(!existsSync(join(starterRoot, 'theme/page-about.php')));
+  assert.ok(!existsSync(join(starterRoot, 'theme/page-contact.php')));
+});
+
+test('page controllers separate data access from presentation', () => {
+  for (const name of ['homepage_data', 'about_data', 'contact_data', 'product_data', 'product_category_data', 'industry_data']) {
+    assert.match(readFileSync(join(starterRoot, 'theme/inc/page-data.php'), 'utf8'), new RegExp(`function ${name}\\(`));
+  }
+  const product = readFileSync(join(starterRoot, 'theme/single-starter_product.php'), 'utf8');
+  assert.doesNotMatch(product, /get_posts|WP_Query|component_section_heading\(\['eyebrow' => 'Data', 'title' => 'Full specifications'\] \);/);
+});
+
+test('product schema is generic and seeded through admin-editable ACF fields', () => {
+  const data = JSON.parse(readFileSync(join(starterRoot, 'content/site-data.json'), 'utf8'));
+  for (const product of data.products) {
+    for (const field of ['quick_specs', 'product_highlights', 'spec_table', 'product_documents', 'product_cta_note', 'product_trust_points']) {
+      assert.ok(product.acf[field] !== undefined, `${product.slug} misses ${field}`);
+    }
+    for (const forbidden of ['wattage', 'efficacy', 'ip_rating']) {
+      assert.ok(product.acf[forbidden] === undefined, `${product.slug} retains LED-specific core field ${forbidden}`);
+    }
+  }
+  const plugin = readFileSync(join(starterRoot, 'plugin/starter-model.php'), 'utf8');
+  for (const field of ['quick_specs', 'spec_table', 'product_applications', 'product_documents', 'related_products']) {
+    assert.match(plugin, new RegExp(`'${field}'`));
+  }
+});
+
+test('industry and term fields are written by field name or qualified object id', () => {
+  const seed = readFileSync(join(starterRoot, 'scripts/seed.php'), 'utf8');
+  assert.match(seed, /update_field\('challenge'/);
+  assert.match(seed, /update_field\('outcome'/);
+  assert.doesNotMatch(seed, /update_field\('field_starter_industry_/);
+});
+
+test('term ACF seeding uses qualified ACF object ids to prevent post-meta pollution', () => {
+  const seed = readFileSync(join(starterRoot, 'scripts/seed.php'), 'utf8');
+  assert.match(seed, /update_field\(\$field_name, \(string\) \$field_value, 'product_collection_' \. \$term_id\)/);
+  assert.match(seed, /starter_delete_legacy_post_meta/);
+});
+
+test('seed navigation is explicit and default deploy does not rebuild it', () => {
+  const seed = readFileSync(join(starterRoot, 'scripts/seed.php'), 'utf8');
+  assert.match(seed, /if \(starter_rebuild_nav_enabled\(\)\)/);
+  const ops = readFileSync(join(repoRoot, 'harness/lib/ops.mjs'), 'utf8');
+  assert.match(ops, /rebuildNav = true/);
+  assert.match(ops, /navPolicy = rebuildNav/);
+});
+
 test('starter media map starts blank and seed data does not request uploaded media', () => {
   const map = JSON.parse(readFileSync(join(starterRoot, 'content/media-map.json'), 'utf8'));
   assert.deepEqual(map, {});
@@ -55,13 +111,14 @@ test('templates compose through components instead of repeating section shells',
     'archive-starter_product.php',
     'front-page.php',
     'index.php',
-    'page-about.php',
+    'page-templates/about.php',
     'page.php',
     'search.php',
     'single-starter_guide.php',
     'single-starter_industry.php',
     'single-starter_product.php',
     'taxonomy-product_collection.php',
+    'page-templates/contact.php',
   ];
   for (const file of componentFiles) {
     const text = readFileSync(join(starterRoot, 'theme', file), 'utf8');
@@ -93,7 +150,10 @@ test('starter project contract uses required plugin baseline and placeholder dep
 test('every consumed ACF field has an admin-editable field definition', () => {
   const plugin = readFileSync(join(starterRoot, 'plugin/starter-model.php'), 'utf8');
   const themeFiles = walk('theme').filter(file => file.endsWith('.php'));
-  const registered = new Set([...plugin.matchAll(/'name'\s*=>\s*'([a-z0-9_]+)'/g)].map(match => match[1]));
+  const registered = new Set([
+    ...plugin.matchAll(/'name'\s*=>\s*'([a-z0-9_]+)'/g),
+    ...plugin.matchAll(/\$field\(\s*'field_[a-z0-9_]+'\s*,\s*'([a-z0-9_]+)'/g),
+  ].flatMap(match => [match[1]]));
   const consumed = new Set();
   for (const file of themeFiles) {
     const text = readFileSync(join(starterRoot, file), 'utf8');

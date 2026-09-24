@@ -2,7 +2,7 @@
 /**
  * Plugin Name: b2b-starter Content Model
  * Description: Full B2B information architecture: products, industries, guides and RFQ capture.
- * Version: 2.1.0
+ * Version: 2.2.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Requires Plugins: advanced-custom-fields
@@ -209,15 +209,33 @@ add_action('init', static function (): void {
 add_action('acf/init', static function (): void {
     if (!function_exists('acf_add_local_field_group')) return;
 
+    $field = static function (string $key, string $name, string $label, string $type, array $args = []): array {
+        return array_merge([
+            'key' => $key, 'name' => $name, 'label' => $label, 'type' => $type, 'show_in_rest' => true,
+        ], $args);
+    };
+    $rows_help = static function (string $format): array {
+        return ['instructions' => $format . ' One item per line. Empty lines are ignored.'];
+    };
+
     acf_add_local_field_group([
-        'key' => 'group_starter_product', 'title' => 'Product specifications', 'show_in_rest' => true,
+        'key' => 'group_starter_product', 'title' => 'Product content', 'show_in_rest' => true,
         'fields' => [
-            ['key' => 'field_starter_wattage', 'name' => 'wattage', 'label' => 'Wattage range', 'type' => 'text'],
-            ['key' => 'field_starter_efficacy', 'name' => 'efficacy', 'label' => 'Luminous efficacy', 'type' => 'text'],
-            ['key' => 'field_starter_ip', 'name' => 'ip_rating', 'label' => 'IP rating', 'type' => 'text'],
-            ['key' => 'field_starter_warranty', 'name' => 'warranty', 'label' => 'Warranty', 'type' => 'text'],
-            ['key' => 'field_starter_spec_table', 'name' => 'spec_table', 'label' => 'Specification table', 'type' => 'textarea',
-             'rows' => 8, 'instructions' => 'One row per line as: Label | Value'],
+            $field('field_p_quick_specs', 'quick_specs', 'Quick specifications', 'textarea', array_merge(['rows' => 6], $rows_help('Use Label | Value.'))),
+            $field('field_p_highlights', 'product_highlights', 'Key selling points', 'textarea', array_merge(['rows' => 6], $rows_help('Enter a short claim.'))),
+            $field('field_p_spec_table', 'spec_table', 'Full specifications', 'textarea', array_merge(['rows' => 10], $rows_help('Use Label | Value.'))),
+            $field('field_p_applications', 'product_applications', 'Typical applications', 'textarea', array_merge(['rows' => 6], $rows_help('Enter an application.'))),
+            $field('field_p_documents', 'product_documents', 'Documents & downloads', 'textarea', array_merge(['rows' => 6], $rows_help('Enter a document name or URL.'))),
+            $field('field_p_warranty', 'warranty', 'Warranty', 'text'),
+            $field('field_p_lead_time', 'lead_time', 'Lead time', 'text'),
+            $field('field_p_moq', 'moq', 'MOQ', 'text'),
+            $field('field_p_customization', 'customization_note', 'Customization note', 'textarea', ['rows' => 4]),
+            $field('field_p_cta_note', 'product_cta_note', 'Product CTA note', 'textarea', ['rows' => 3]),
+            $field('field_p_cta_label', 'product_cta_label', 'Product CTA button label', 'text'),
+            $field('field_p_trust_points', 'product_trust_points', 'Trust points', 'textarea', array_merge(['rows' => 4], $rows_help('Enter a short claim.'))),
+            $field('field_p_related', 'related_products', 'Related products', 'post_object', [
+                'post_type' => ['starter_product'], 'multiple' => 1, 'return_format' => 'id', 'instructions' => 'Leave empty to show automatic related products.',
+            ]),
         ],
         'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'starter_product']]],
     ]);
@@ -225,39 +243,67 @@ add_action('acf/init', static function (): void {
     acf_add_local_field_group([
         'key' => 'group_starter_industry', 'title' => 'Industry details', 'show_in_rest' => true,
         'fields' => [
-            ['key' => 'field_starter_industry_challenge', 'name' => 'challenge', 'label' => 'Lighting challenge', 'type' => 'textarea'],
-            ['key' => 'field_starter_industry_outcome', 'name' => 'outcome', 'label' => 'Project outcome', 'type' => 'textarea'],
+            $field('field_i_challenge', 'challenge', 'Customer challenge', 'textarea', ['rows' => 5]),
+            $field('field_i_outcome', 'outcome', 'Outcome', 'textarea', ['rows' => 5]),
+            $field('field_i_cta_title', 'industry_cta_title', 'CTA title', 'text'),
+            $field('field_i_cta_text', 'industry_cta_text', 'CTA text', 'textarea', ['rows' => 3]),
+            $field('field_i_cta_button', 'industry_cta_button', 'CTA button label', 'text'),
         ],
         'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'starter_industry']]],
     ]);
 
-    // Rich category content (free ACF term meta; textarea line formats — no repeaters).
+    // Rich category content uses term meta; textarea line formats keep the starter on ACF Free.
     acf_add_local_field_group([
         'key' => 'group_collection_content', 'title' => 'Category content', 'show_in_rest' => true,
         'fields' => [
-            ['key' => 'field_tc_intro', 'name' => 'category_intro', 'label' => 'Intro paragraph', 'type' => 'textarea', 'rows' => 4,
-             'instructions' => 'Shown under the category description on the category page. Leave empty to use the built-in default.'],
-            ['key' => 'field_tc_features', 'name' => 'category_features', 'label' => 'Category highlights', 'type' => 'textarea', 'rows' => 8,
-             'instructions' => 'One per line: Feature | Short description. Empty lines are ignored.'],
-            ['key' => 'field_tc_applications', 'name' => 'category_applications', 'label' => 'Typical applications', 'type' => 'textarea', 'rows' => 6,
-             'instructions' => 'One per line. Leave empty to use the built-in default.'],
-            ['key' => 'field_tc_faq', 'name' => 'category_faq', 'label' => 'Category FAQ', 'type' => 'textarea', 'rows' => 8,
-             'instructions' => 'One per line: Question | Answer. Leave empty to use the built-in default.'],
+            $field('field_tc_intro', 'category_intro', 'Intro paragraph', 'textarea', ['rows' => 4]),
+            $field('field_tc_features', 'category_features', 'Category highlights', 'textarea', array_merge(['rows' => 8], $rows_help('Use Title | Description.'))),
+            $field('field_tc_applications', 'category_applications', 'Typical applications', 'textarea', array_merge(['rows' => 6], $rows_help('Enter an application.'))),
+            $field('field_tc_faq', 'category_faq', 'Category FAQ', 'textarea', array_merge(['rows' => 8], $rows_help('Use Question | Answer.'))),
+            $field('field_tc_cta_title', 'category_cta_title', 'CTA title', 'text'),
+            $field('field_tc_cta_text', 'category_cta_text', 'CTA text', 'textarea', ['rows' => 3]),
+            $field('field_tc_cta_button', 'category_cta_button', 'CTA button label', 'text'),
         ],
         'location' => [[['param' => 'taxonomy', 'operator' => '==', 'value' => 'product_collection']]],
     ]);
 
-    // Product page selling points.
     acf_add_local_field_group([
-        'key' => 'group_product_highlights', 'title' => 'Product highlights', 'show_in_rest' => true,
+        'key' => 'group_home_content', 'title' => 'Homepage content & sections', 'show_in_rest' => true,
         'fields' => [
-            ['key' => 'field_p_highlights', 'name' => 'product_highlights', 'label' => 'Key selling points', 'type' => 'textarea', 'rows' => 6,
-             'instructions' => 'One per line. Rendered as a checklist next to the specifications. Leave empty to hide.'],
+            $field('field_home_overline', 'home_overline', 'Hero eyebrow', 'text'),
+            $field('field_home_description', 'home_description', 'Hero description', 'textarea', ['rows' => 4]),
+            $field('field_home_show_apps', 'show_applications', 'Show applications', 'true_false', ['default_value' => 1]),
+            $field('field_home_apps_title', 'applications_title', 'Applications title', 'text'),
+            $field('field_home_apps_count', 'applications_count', 'Applications count', 'number', ['default_value' => 12, 'min' => 1, 'max' => 12]),
+            $field('field_home_show_products', 'show_featured_products', 'Show featured products', 'true_false', ['default_value' => 1]),
+            $field('field_home_products_title', 'featured_products_title', 'Products title', 'text'),
+            $field('field_home_products_count', 'featured_products_count', 'Products count', 'number', ['default_value' => 6, 'min' => 1, 'max' => 12]),
+            $field('field_home_show_industries', 'show_industries', 'Show industries', 'true_false', ['default_value' => 1]),
+            $field('field_home_industries_title', 'industries_title', 'Industries title', 'text'),
+            $field('field_home_industries_count', 'industries_count', 'Industries count', 'number', ['default_value' => 3, 'min' => 1, 'max' => 12]),
+            $field('field_home_show_guides', 'show_guides', 'Show guides', 'true_false', ['default_value' => 1]),
+            $field('field_home_guides_title', 'guides_title', 'Guides title', 'text'),
+            $field('field_home_guides_count', 'guides_count', 'Guides count', 'number', ['default_value' => 3, 'min' => 1, 'max' => 12]),
+            $field('field_home_cta_title', 'home_cta_title', 'Homepage CTA title', 'text'),
+            $field('field_home_cta_text', 'home_cta_text', 'Homepage CTA text', 'textarea', ['rows' => 3]),
+            $field('field_home_cta_button', 'home_cta_button', 'Homepage CTA button', 'text'),
         ],
-        'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'starter_product']]],
+        'location' => [[['param' => 'page_type', 'operator' => '==', 'value' => 'front_page']]],
     ]);
 
-    // Site-wide factory profile (editable under one options screen).
+    acf_add_local_field_group([
+        'key' => 'group_landing_content', 'title' => 'Landing page content', 'show_in_rest' => true,
+        'fields' => [
+            $field('field_landing_overline', 'landing_overline', 'Eyebrow', 'text'),
+            $field('field_landing_description', 'landing_description', 'Intro description', 'textarea', ['rows' => 4]),
+            $field('field_landing_features', 'landing_features', 'Feature rows', 'textarea', array_merge(['rows' => 8], $rows_help('Use Title | Description.'))),
+            $field('field_landing_cta_title', 'landing_cta_title', 'CTA title', 'text'),
+            $field('field_landing_cta_text', 'landing_cta_text', 'CTA text', 'textarea', ['rows' => 3]),
+            $field('field_landing_cta_button', 'landing_cta_button', 'CTA button label', 'text'),
+        ],
+        'location' => [[['param' => 'page_template', 'operator' => '==', 'value' => 'page-templates/landing.php']]],
+    ]);
+
     if (function_exists('acf_add_options_page')) {
         acf_add_options_page([
             'page_title' => 'Factory profile', 'menu_title' => 'Factory profile', 'menu_slug' => 'factory-profile',
@@ -271,47 +317,38 @@ add_action('acf/init', static function (): void {
     acf_add_local_field_group([
         'key' => 'group_factory_profile', 'title' => 'Factory profile', 'show_in_rest' => true,
         'fields' => [
-            ['key' => 'field_f_intro', 'name' => 'factory_intro', 'label' => 'Factory introduction', 'type' => 'textarea', 'rows' => 4,
-             'instructions' => 'Shown on the home and about pages. Leave empty to use the built-in default.'],
-            ['key' => 'field_f_stats', 'name' => 'factory_stats', 'label' => 'Factory facts', 'type' => 'textarea', 'rows' => 6,
-             'instructions' => 'One per line: Value | Label. Leave empty to use the built-in default.'],
-            ['key' => 'field_f_caps', 'name' => 'factory_capabilities', 'label' => 'Capabilities', 'type' => 'textarea', 'rows' => 8,
-             'instructions' => 'One per line: Title | Description. Leave empty to use the built-in default.'],
+            $field('field_f_intro', 'factory_intro', 'Factory introduction', 'textarea', ['rows' => 4, 'instructions' => 'Shown where the design requests a company proof block.']),
+            $field('field_f_stats', 'factory_stats', 'Factory facts', 'textarea', array_merge(['rows' => 6], $rows_help('Use Value | Label.'))),
+            $field('field_f_caps', 'factory_capabilities', 'Capabilities', 'textarea', array_merge(['rows' => 8], $rows_help('Use Title | Description.'))),
         ],
         'location' => [[['param' => 'options_page', 'operator' => '==', 'value' => 'factory-profile']]],
     ]);
 
-    // Copy for routes that do not own a normal editable page object.
+    // Copy for archives, system routes and global conversion promises.
     acf_add_local_field_group([
-        'key' => 'group_site_copy', 'title' => 'Archive and system copy', 'show_in_rest' => true,
+        'key' => 'group_site_copy', 'title' => 'Site copy & conversion', 'show_in_rest' => true,
         'fields' => [
-            ['key' => 'field_product_archive_description', 'name' => 'product_archive_description', 'label' => 'Product archive introduction', 'type' => 'textarea', 'rows' => 3,
-             'instructions' => 'Shown under the Product catalogue title. Leave empty to use the built-in default.'],
-            ['key' => 'field_industry_archive_description', 'name' => 'industry_archive_description', 'label' => 'Industry archive introduction', 'type' => 'textarea', 'rows' => 3,
-             'instructions' => 'Shown under the Industry solutions title. Leave empty to use the built-in default.'],
-            ['key' => 'field_guide_archive_description', 'name' => 'guide_archive_description', 'label' => 'Guide archive introduction', 'type' => 'textarea', 'rows' => 3,
-             'instructions' => 'Shown under the Knowledge guides title. Leave empty to use the built-in default.'],
-            ['key' => 'field_news_archive_description', 'name' => 'news_archive_description', 'label' => 'News archive introduction', 'type' => 'textarea', 'rows' => 3,
-             'instructions' => 'Shown under News & updates. Leave empty to use the built-in default.'],
-            ['key' => 'field_not_found_description', 'name' => 'not_found_description', 'label' => '404 introduction', 'type' => 'textarea', 'rows' => 3,
-             'instructions' => 'Shown on the page-not-found screen. Leave empty to use the built-in default.'],
+            $field('field_product_archive_description', 'product_archive_description', 'Product archive introduction', 'textarea', ['rows' => 3]),
+            $field('field_industry_archive_description', 'industry_archive_description', 'Industry archive introduction', 'textarea', ['rows' => 3]),
+            $field('field_guide_archive_description', 'guide_archive_description', 'Guide archive introduction', 'textarea', ['rows' => 3]),
+            $field('field_news_archive_description', 'news_archive_description', 'News archive introduction', 'textarea', ['rows' => 3]),
+            $field('field_not_found_description', 'not_found_description', '404 introduction', 'textarea', ['rows' => 3]),
+            $field('field_response_promise', 'response_promise', 'Response promise', 'text'),
+            $field('field_about_cta_title', 'about_cta_title', 'About CTA title', 'text'),
+            $field('field_about_cta_text', 'about_cta_text', 'About CTA text', 'textarea', ['rows' => 3]),
+            $field('field_about_cta_button', 'about_cta_button', 'About CTA button label', 'text'),
         ],
         'location' => [[['param' => 'options_page', 'operator' => '==', 'value' => 'site-copy']]],
     ]);
 
-    // Contact page supports both structured guidance and the embedded form.
     acf_add_local_field_group([
         'key' => 'group_contact_content', 'title' => 'Contact page content', 'show_in_rest' => true,
         'fields' => [
-            ['key' => 'field_contact_intro', 'name' => 'contact_intro', 'label' => 'Contact introduction', 'type' => 'textarea', 'rows' => 3,
-             'instructions' => 'Shown under the page title. Leave empty to use the page excerpt or built-in default.'],
-            ['key' => 'field_contact_checklist', 'name' => 'contact_checklist', 'label' => 'What helps us quote faster', 'type' => 'textarea', 'rows' => 6,
-             'instructions' => 'One checklist item per line. Leave empty to use the built-in default.'],
-            ['key' => 'field_form_title', 'name' => 'form_title', 'label' => 'Form panel title', 'type' => 'text',
-             'instructions' => 'Leave empty to use “Request for quotation”.'],
-            ['key' => 'field_form_note', 'name' => 'form_note', 'label' => 'Form panel note', 'type' => 'textarea', 'rows' => 3,
-             'instructions' => 'Short reassurance above the form. Leave empty to use the built-in default.'],
+            $field('field_contact_intro', 'contact_intro', 'Contact introduction', 'textarea', ['rows' => 3]),
+            $field('field_contact_checklist', 'contact_checklist', 'What helps us respond faster', 'textarea', array_merge(['rows' => 6], $rows_help('Enter a checklist item.'))),
+            $field('field_form_title', 'form_title', 'Form panel title', 'text'),
+            $field('field_form_note', 'form_note', 'Form panel note', 'textarea', ['rows' => 3]),
         ],
-        'location' => [[['param' => 'page_template', 'operator' => '==', 'value' => 'page-contact.php']]],
+        'location' => [[['param' => 'page_template', 'operator' => '==', 'value' => 'page-templates/contact.php']]],
     ]);
 });

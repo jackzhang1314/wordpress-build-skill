@@ -188,6 +188,23 @@ test('post push creates a missing article and records journal state', async () =
   }
 });
 
+test('template assign accepts official nested page templates and rejects traversal', async () => {
+  const env = makeSite({posts: {'page:about': {id: 2, status: 'publish', content: 'x', modified: 'x'}}});
+  try {
+    mkdirSync(join(env.root, 'theme/page-templates'), {recursive: true});
+    writeFileSync(join(env.root, 'theme/page-templates/about.php'), '<?php /* Template Name: About page */ the_content(); ?>');
+    const result = await assignTemplate(env.site, ['about', '--template', 'page-templates/about.php']);
+    assert.equal(env.templates.about, 'page-templates/about.php');
+    assert.equal(result.template, 'page-templates/about.php');
+    await assert.rejects(
+      assignTemplate(env.site, ['about', '--template', 'page-templates/../bad.php']),
+      /invalid template name/,
+    );
+  } finally {
+    env.cleanup();
+  }
+});
+
 test('template assign validates the body-render rule before touching remote', async () => {
   const env = makeSite({posts: {'page:home': {id: 1, status: 'publish', content: 'x', modified: 'x'}}});
   try {

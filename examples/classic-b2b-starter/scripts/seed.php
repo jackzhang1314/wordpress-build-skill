@@ -45,6 +45,29 @@ function starter_thumbnail(int $post_id, array $map, string $key, string $alt): 
     }
 }
 
+function starter_delete_legacy_post_meta(): void {
+    global $wpdb;
+    $keys = [
+        'category_intro', '_category_intro',
+        'category_features', '_category_features',
+        'category_applications', '_category_applications',
+        'category_faq', '_category_faq',
+        'category_cta_title', '_category_cta_title',
+        'category_cta_text', '_category_cta_text',
+        'category_cta_button', '_category_cta_button',
+        'field_starter_industry_challenge',
+        'field_starter_industry_outcome',
+    ];
+    $placeholders = implode(',', array_fill(0, count($keys), '%s'));
+    $wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->postmeta} WHERE meta_key IN ({$placeholders})", $keys));
+}
+
+function starter_rebuild_nav_enabled(): bool {
+    global $args;
+    $enabled = isset($args[2]) ? $args[2] : 'true';
+    return trim((string) $enabled) !== 'false';
+}
+
 function starter_specs(array $rows): array {
     $output = [];
     foreach ($rows as $row) {
@@ -132,6 +155,7 @@ if (!is_array($media_map) || !is_array($data)) {
 
 /* ---------- Remove v1 acceptance content ---------- */
 
+starter_delete_legacy_post_meta();
 starter_delete_by_slug('modular-surface-system', ['starter_product']);
 starter_delete_by_slug('starter-site-handover-checklist', ['post']);
 starter_delete_by_slug('request-a-quote', ['page']);
@@ -159,6 +183,12 @@ foreach ($data['terms'] ?? [] as $row) {
         }
         $term_id = (int) $created['term_id'];
     }
+    if (function_exists('update_field') && !empty($row['acf'])) {
+        foreach ($row['acf'] as $field_name => $field_value) {
+            // ACF requires the qualified term object id; a bare numeric term id is treated as a post id.
+            update_field($field_name, (string) $field_value, 'product_collection_' . $term_id);
+        }
+    }
     $term_ids[$row['slug']] = $term_id;
 }
 
@@ -175,26 +205,26 @@ foreach ($data['products'] ?? [] as $product) {
     starter_thumbnail($product_id, $media_map, $product['image_key'] ?? '', $product['image_alt'] ?? '');
     if (function_exists('update_field')) {
         $acf = $product['acf'] ?? [];
-        foreach (['wattage', 'efficacy', 'ip_rating', 'warranty'] as $scalar) {
-            if (isset($acf[$scalar])) {
-                update_field($scalar, (string) $acf[$scalar], $product_id);
+        // Remove v1 lighting-specific scalar fields so admin sees one generic contract.
+        foreach (['wattage', 'efficacy', 'ip_rating', 'field_starter_wattage', 'field_starter_efficacy', 'field_starter_ip'] as $legacy) {
+            delete_post_meta($product_id, $legacy);
+        }
+        foreach (['quick_specs', 'product_highlights', 'spec_table', 'product_applications', 'product_documents', 'warranty', 'lead_time', 'moq', 'customization_note', 'product_cta_note', 'product_cta_label', 'product_trust_points'] as $field_name) {
+            if (isset($acf[$field_name])) {
+                $value = $acf[$field_name];
+                if (is_array($value)) {
+                    $is_rows = isset($value[0]) && is_array($value[0]);
+                    $value = implode("\n", array_map(
+                        static fn ($row) => $is_rows
+                            ? trim((string) ($row['label'] ?? '')) . ' | ' . trim((string) ($row['value'] ?? ''))
+                            : trim((string) $row),
+                        $value
+                    ));
+                }
+                update_field($field_name, $value, $product_id);
             }
         }
-        if (isset($acf['specs'])) {
-            // Free ACF has no repeater field: store rows as "Label | Value" lines in a textarea.
-            foreach (array_keys(get_post_meta($product_id)) as $meta_key) {
-                if (preg_match('/^specs(_\d+_)?/', $meta_key) || $meta_key === 'field_starter_spec_table') { delete_post_meta($product_id, $meta_key); }
-            }
-            $lines = implode("\n", array_map(
-                static fn (array $row): string => trim((string) ($row['label'] ?? '')) . ' | ' . trim((string) ($row['value'] ?? '')),
-                is_array($acf['specs']) ? $acf['specs'] : []
-            ));
-            if (function_exists('update_field')) {
-                update_field('field_starter_spec_table', $lines, $product_id);
-            } else {
-                update_post_meta($product_id, 'spec_table', $lines);
-            }
-        }
+        update_field('related_products', [], $product_id);
     }
 }
 
@@ -206,8 +236,8 @@ foreach ($data['industries'] ?? [] as $industry) {
     $industry_ids[] = $industry_id;
     starter_thumbnail($industry_id, $media_map, $industry['image_key'] ?? '', $industry['image_alt'] ?? '');
     if (function_exists('update_field')) {
-        update_field('field_starter_industry_challenge', (string) ($industry['acf']['challenge'] ?? ''), $industry_id);
-        update_field('field_starter_industry_outcome', (string) ($industry['acf']['outcome'] ?? ''), $industry_id);
+        update_field('challenge', (string) ($industry['acf']['challenge'] ?? ''), $industry_id);
+        update_field('outcome', (string) ($industry['acf']['outcome'] ?? ''), $industry_id);
     }
 }
 
@@ -228,12 +258,27 @@ foreach ($data['news'] ?? [] as $news) {
 /* ---------- Pages ---------- */
 
 $page_ids = [];
+$page_templates = [
+    'about' => 'page-templates/about.php',
+    'contact' => 'page-templates/contact.php',
+];
 foreach ($data['pages'] ?? [] as $key => $page) {
     $page = array_merge($page, ['status' => 'publish']);
     $page_ids[$key] = starter_upsert('page', $page['slug'], $page);
+    if (isset($page_templates[$key])) {
+        update_post_meta($page_ids[$key], '_wp_page_template', $page_templates[$key]);
+    }
 }
 update_option('show_on_front', 'page');
 update_option('page_on_front', $page_ids['home']);
+
+/* ---------- Editable global options ---------- */
+
+if (function_exists('update_field') && !empty($data['global_options'])) {
+    foreach ($data['global_options'] as $option_name => $option_value) {
+        update_field($option_name, (string) $option_value, 'option');
+    }
+}
 
 /* ---------- Navigation ---------- */
 
@@ -261,6 +306,7 @@ $guide_children = array_values(array_map(
     $guide_ids
 ));
 
+if (starter_rebuild_nav_enabled()) {
 starter_rebuild_menu([
     ['label' => 'Home', 'object_id' => $page_ids['home']],
     [
@@ -281,6 +327,7 @@ starter_rebuild_menu([
     ['label' => 'About', 'object_id' => $page_ids['about']],
     ['label' => 'Contact', 'object_id' => $page_ids['contact']],
 ]);
+}
 
 flush_rewrite_rules();
 wp_cache_flush();

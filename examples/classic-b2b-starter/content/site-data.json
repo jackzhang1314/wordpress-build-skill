@@ -4,25 +4,61 @@
       "taxonomy": "product_collection",
       "name": "Industrial Lighting",
       "slug": "industrial",
-      "description": "High bay and linear luminaires for factories, warehouses and workshops with mounting heights from 6 to 15 metres."
+      "description": "High bay and linear luminaires for factories, warehouses and workshops with mounting heights from 6 to 15 metres.",
+      "acf": {
+        "category_intro": "High bay and linear luminaires sized from real layouts, with a photometric layout included in every quotation.",
+        "category_features": "Mounting heights | Layouts engineered for 6–15 m mounting heights.\nEfficacy | Up to 150 lm/W system efficacy for long burning hours.\nControls | 0–10V / DALI dimming with daylight and presence options.\nDocumentation | DIM and IES files plus declarations ship with every order.",
+        "category_applications": "Production halls\nWarehouses & racking aisles\nWorkshops & maintenance bays\nCold stores",
+        "category_faq": "How do I size high bay wattage? | Start from the lux target and mounting height, then let efficacy determine wattage.\nWhich IP rating do I need? | IP65 covers dust and most washdown; IP69K applies to food-grade washdown.\nDo you support DALI grouping? | Yes — drivers support DALI and 0–10V, documented per zone.",
+        "category_cta_title": "Specifying industrial lighting?",
+        "category_cta_text": "Send your layout or mounting heights for a photometric layout and itemised pricing.",
+        "category_cta_button": "Request a quotation"
+      }
     },
     {
       "taxonomy": "product_collection",
       "name": "Outdoor Lighting",
       "slug": "outdoor",
-      "description": "IP66 flood and street luminaires for facades, yards, car parks and public roads."
+      "description": "IP66 flood and street luminaires for facades, yards, car parks and public roads.",
+      "acf": {
+        "category_intro": "Flood, street and area luminaires with controlled optics for car parks, facades, yards and access roads.",
+        "category_features": "Optics | Asymmetric and road optics place light on the surface, not into windows.\nIngress protection | IP66 housings with surge protection for exposed installations.\nMounting | Pole, bracket and wall options matched to existing infrastructure.\nCompliance | Road tender documentation is maintained with each product.",
+        "category_applications": "Car parks\nFacades & yards\nAccess roads\nSports courts",
+        "category_faq": "Do you quote from a site plan? | Yes — send pole positions or a sketch and we return an illuminance layout.\nCan luminaires match existing poles? | Bracket and cable-entry options cover most common interfaces.\nWhat warranty applies outdoors? | Five years, covering driver and housing.",
+        "category_cta_title": "Planning an outdoor lighting project?",
+        "category_cta_text": "Send pole positions or a site plan for a tailored recommendation.",
+        "category_cta_button": "Request a quotation"
+      }
     },
     {
       "taxonomy": "product_collection",
       "name": "Commercial Indoor",
       "slug": "commercial-indoor",
-      "description": "Low-glare panel and recessed luminaires for offices, retail floors and showrooms."
+      "description": "Low-glare panel and recessed luminaires for offices, retail floors and showrooms.",
+      "acf": {
+        "category_intro": "Low-glare panels and recessed luminaires for offices, retail floors and showrooms.",
+        "category_features": "Glare control | Low-UGR optics keep screens and merchandise comfortable.\nDimming | 0–10V dimming down to 10% for daylight-linked interiors.\nInstallation | Recessed for grid ceilings with surface kits for solid ceilings.\nConsistency | Controlled colour bins keep light uniform across large floors.",
+        "category_applications": "Offices & meeting rooms\nRetail floors\nShowrooms\nCorridors & lobbies",
+        "category_faq": "Which panel fits a 600 grid? | The 600×600 panel drops into standard exposed-T grids.\nDo panels flicker on camera? | Flicker-free drivers keep light stable for video and displays.\nIs emergency lighting available? | Emergency packs are available; share the escape route plan for specification.",
+        "category_cta_title": "Specifying commercial interiors?",
+        "category_cta_text": "Share room dimensions, mounting type and target UGR for a recommendation.",
+        "category_cta_button": "Request a quotation"
+      }
     },
     {
       "taxonomy": "product_collection",
       "name": "Food-grade & Washdown",
       "slug": "food-grade",
-      "description": "Sealed tri-proof luminaires for food processing, cold storage and high-pressure washdown areas."
+      "description": "Sealed tri-proof luminaires for food processing, cold storage and high-pressure washdown areas.",
+      "acf": {
+        "category_intro": "Sealed IP69K luminaires rated for high-pressure, high-temperature washdown and cold environments.",
+        "category_features": "Washdown proof | IP69K sealing survives high-pressure caustic cleaning.\nHygienic design | Smooth housings without dust collection points.\nCold store rated | Drivers specified for reliable low-temperature starting.\nAudit ready | Material and sealing documentation for audit files.",
+        "category_applications": "Food processing lines\nCold stores\nPackaging areas\nWashdown zones",
+        "category_faq": "What does IP69K cover exactly? | Close-range high-pressure, high-temperature washdown — beyond IP66/IP67.\nWhich surface finish? | Food-safe, corrosion-resistant housings suited to cleaning agents.\nDo you support audits? | Yes, sealing and material documentation is supplied for audit files.",
+        "category_cta_title": "Specifying washdown lighting?",
+        "category_cta_text": "Send the cleaning regime and layout for a sealed, audit-ready recommendation.",
+        "category_cta_button": "Request a quotation"
+      }
     }
   ],
   "products": [
@@ -35,11 +71,34 @@
         "industrial"
       ],
       "acf": {
-        "wattage": "150 W",
-        "efficacy": "150 lm/W",
-        "ip_rating": "IP65",
-        "warranty": "5 years",
-        "specs": [
+        "quick_specs": [
+          {
+            "label": "Capacity",
+            "value": "150 W"
+          },
+          {
+            "label": "Efficiency",
+            "value": "150 lm/W"
+          },
+          {
+            "label": "Protection",
+            "value": "IP65"
+          },
+          {
+            "label": "Warranty",
+            "value": "5 years"
+          },
+          {
+            "label": "Reference",
+            "value": "22,500 lm"
+          }
+        ],
+        "product_highlights": [
+          "Project-specific configuration available",
+          "Technical documentation supplied before dispatch",
+          "Export packaging and loading support"
+        ],
+        "spec_table": [
           {
             "label": "Luminous flux",
             "value": "22,500 lm"
@@ -64,7 +123,29 @@
             "label": "Certifications",
             "value": "CE, RoHS, SAA (option)"
           }
-        ]
+        ],
+        "product_applications": [
+          "Distributors",
+          "Contractors",
+          "Project tenders"
+        ],
+        "product_documents": [
+          "Datasheet",
+          "Installation guide",
+          "Declaration of conformity"
+        ],
+        "warranty": "5 years",
+        "lead_time": "30–45 days",
+        "moq": "Negotiated by project",
+        "customization_note": "Housing finish, optics, controls, cable length and labelling can be configured for eligible volumes.",
+        "product_cta_note": "Volume pricing, documentation and project recommendations are available on request.",
+        "product_cta_label": "Request pricing for this model",
+        "product_trust_points": [
+          "Documented quality control",
+          "Certification support",
+          "Factory-direct project pricing"
+        ],
+        "related_products": []
       }
     },
     {
@@ -76,11 +157,34 @@
         "industrial"
       ],
       "acf": {
-        "wattage": "100 W",
-        "efficacy": "145 lm/W",
-        "ip_rating": "IP65",
-        "warranty": "5 years",
-        "specs": [
+        "quick_specs": [
+          {
+            "label": "Capacity",
+            "value": "100 W"
+          },
+          {
+            "label": "Efficiency",
+            "value": "145 lm/W"
+          },
+          {
+            "label": "Protection",
+            "value": "IP65"
+          },
+          {
+            "label": "Warranty",
+            "value": "5 years"
+          },
+          {
+            "label": "Reference",
+            "value": "14,500 lm"
+          }
+        ],
+        "product_highlights": [
+          "Project-specific configuration available",
+          "Technical documentation supplied before dispatch",
+          "Export packaging and loading support"
+        ],
+        "spec_table": [
           {
             "label": "Luminous flux",
             "value": "14,500 lm"
@@ -101,7 +205,29 @@
             "label": "Operating temperature",
             "value": "-30 °C to +45 °C"
           }
-        ]
+        ],
+        "product_applications": [
+          "Distributors",
+          "Contractors",
+          "Project tenders"
+        ],
+        "product_documents": [
+          "Datasheet",
+          "Installation guide",
+          "Declaration of conformity"
+        ],
+        "warranty": "5 years",
+        "lead_time": "30–45 days",
+        "moq": "Negotiated by project",
+        "customization_note": "Housing finish, optics, controls, cable length and labelling can be configured for eligible volumes.",
+        "product_cta_note": "Volume pricing, documentation and project recommendations are available on request.",
+        "product_cta_label": "Request pricing for this model",
+        "product_trust_points": [
+          "Documented quality control",
+          "Certification support",
+          "Factory-direct project pricing"
+        ],
+        "related_products": []
       }
     },
     {
@@ -113,11 +239,34 @@
         "outdoor"
       ],
       "acf": {
-        "wattage": "200 W",
-        "efficacy": "140 lm/W",
-        "ip_rating": "IP66",
-        "warranty": "5 years",
-        "specs": [
+        "quick_specs": [
+          {
+            "label": "Capacity",
+            "value": "200 W"
+          },
+          {
+            "label": "Efficiency",
+            "value": "140 lm/W"
+          },
+          {
+            "label": "Protection",
+            "value": "IP66"
+          },
+          {
+            "label": "Warranty",
+            "value": "5 years"
+          },
+          {
+            "label": "Reference",
+            "value": "28,000 lm"
+          }
+        ],
+        "product_highlights": [
+          "Project-specific configuration available",
+          "Technical documentation supplied before dispatch",
+          "Export packaging and loading support"
+        ],
+        "spec_table": [
           {
             "label": "Luminous flux",
             "value": "28,000 lm"
@@ -134,7 +283,29 @@
             "label": "Corrosion class",
             "value": "C5-M coating option"
           }
-        ]
+        ],
+        "product_applications": [
+          "Distributors",
+          "Contractors",
+          "Project tenders"
+        ],
+        "product_documents": [
+          "Datasheet",
+          "Installation guide",
+          "Declaration of conformity"
+        ],
+        "warranty": "5 years",
+        "lead_time": "30–45 days",
+        "moq": "Negotiated by project",
+        "customization_note": "Housing finish, optics, controls, cable length and labelling can be configured for eligible volumes.",
+        "product_cta_note": "Volume pricing, documentation and project recommendations are available on request.",
+        "product_cta_label": "Request pricing for this model",
+        "product_trust_points": [
+          "Documented quality control",
+          "Certification support",
+          "Factory-direct project pricing"
+        ],
+        "related_products": []
       }
     },
     {
@@ -146,11 +317,34 @@
         "outdoor"
       ],
       "acf": {
-        "wattage": "120 W",
-        "efficacy": "150 lm/W",
-        "ip_rating": "IP66",
-        "warranty": "5 years",
-        "specs": [
+        "quick_specs": [
+          {
+            "label": "Capacity",
+            "value": "120 W"
+          },
+          {
+            "label": "Efficiency",
+            "value": "150 lm/W"
+          },
+          {
+            "label": "Protection",
+            "value": "IP66"
+          },
+          {
+            "label": "Warranty",
+            "value": "5 years"
+          },
+          {
+            "label": "Reference",
+            "value": "18,000 lm"
+          }
+        ],
+        "product_highlights": [
+          "Project-specific configuration available",
+          "Technical documentation supplied before dispatch",
+          "Export packaging and loading support"
+        ],
+        "spec_table": [
           {
             "label": "Luminous flux",
             "value": "18,000 lm"
@@ -167,7 +361,29 @@
             "label": "Certifications",
             "value": "CE, ENEC-ready design"
           }
-        ]
+        ],
+        "product_applications": [
+          "Distributors",
+          "Contractors",
+          "Project tenders"
+        ],
+        "product_documents": [
+          "Datasheet",
+          "Installation guide",
+          "Declaration of conformity"
+        ],
+        "warranty": "5 years",
+        "lead_time": "30–45 days",
+        "moq": "Negotiated by project",
+        "customization_note": "Housing finish, optics, controls, cable length and labelling can be configured for eligible volumes.",
+        "product_cta_note": "Volume pricing, documentation and project recommendations are available on request.",
+        "product_cta_label": "Request pricing for this model",
+        "product_trust_points": [
+          "Documented quality control",
+          "Certification support",
+          "Factory-direct project pricing"
+        ],
+        "related_products": []
       }
     },
     {
@@ -179,11 +395,34 @@
         "commercial-indoor"
       ],
       "acf": {
-        "wattage": "40 W",
-        "efficacy": "130 lm/W",
-        "ip_rating": "IP44",
-        "warranty": "5 years",
-        "specs": [
+        "quick_specs": [
+          {
+            "label": "Capacity",
+            "value": "40 W"
+          },
+          {
+            "label": "Efficiency",
+            "value": "130 lm/W"
+          },
+          {
+            "label": "Protection",
+            "value": "IP44"
+          },
+          {
+            "label": "Warranty",
+            "value": "5 years"
+          },
+          {
+            "label": "Reference",
+            "value": "5,200 lm"
+          }
+        ],
+        "product_highlights": [
+          "Project-specific configuration available",
+          "Technical documentation supplied before dispatch",
+          "Export packaging and loading support"
+        ],
+        "spec_table": [
           {
             "label": "Luminous flux",
             "value": "5,200 lm"
@@ -200,7 +439,29 @@
             "label": "Lifetime",
             "value": "L80B10 @ 50,000 h"
           }
-        ]
+        ],
+        "product_applications": [
+          "Distributors",
+          "Contractors",
+          "Project tenders"
+        ],
+        "product_documents": [
+          "Datasheet",
+          "Installation guide",
+          "Declaration of conformity"
+        ],
+        "warranty": "5 years",
+        "lead_time": "30–45 days",
+        "moq": "Negotiated by project",
+        "customization_note": "Housing finish, optics, controls, cable length and labelling can be configured for eligible volumes.",
+        "product_cta_note": "Volume pricing, documentation and project recommendations are available on request.",
+        "product_cta_label": "Request pricing for this model",
+        "product_trust_points": [
+          "Documented quality control",
+          "Certification support",
+          "Factory-direct project pricing"
+        ],
+        "related_products": []
       }
     },
     {
@@ -212,11 +473,34 @@
         "food-grade"
       ],
       "acf": {
-        "wattage": "40 W",
-        "efficacy": "140 lm/W",
-        "ip_rating": "IP69K",
-        "warranty": "5 years",
-        "specs": [
+        "quick_specs": [
+          {
+            "label": "Capacity",
+            "value": "40 W"
+          },
+          {
+            "label": "Efficiency",
+            "value": "140 lm/W"
+          },
+          {
+            "label": "Protection",
+            "value": "IP69K"
+          },
+          {
+            "label": "Warranty",
+            "value": "5 years"
+          },
+          {
+            "label": "Reference",
+            "value": "5,600 lm"
+          }
+        ],
+        "product_highlights": [
+          "Project-specific configuration available",
+          "Technical documentation supplied before dispatch",
+          "Export packaging and loading support"
+        ],
+        "spec_table": [
           {
             "label": "Luminous flux",
             "value": "5,600 lm"
@@ -233,7 +517,29 @@
             "label": "Certifications",
             "value": "CE, RoHS, HACCP-ready design"
           }
-        ]
+        ],
+        "product_applications": [
+          "Distributors",
+          "Contractors",
+          "Project tenders"
+        ],
+        "product_documents": [
+          "Datasheet",
+          "Installation guide",
+          "Declaration of conformity"
+        ],
+        "warranty": "5 years",
+        "lead_time": "30–45 days",
+        "moq": "Negotiated by project",
+        "customization_note": "Housing finish, optics, controls, cable length and labelling can be configured for eligible volumes.",
+        "product_cta_note": "Volume pricing, documentation and project recommendations are available on request.",
+        "product_cta_label": "Request pricing for this model",
+        "product_trust_points": [
+          "Documented quality control",
+          "Certification support",
+          "Factory-direct project pricing"
+        ],
+        "related_products": []
       }
     }
   ],
@@ -301,7 +607,8 @@
     "home": {
       "title": "Industrial LED Lighting Manufacturer for Global Projects",
       "slug": "home",
-      "content": "<p>Your Company engineers high bay, flood and street luminaires for distributors, electrical contractors and project tenders across Europe, Australia and North America.</p><p>Every project is sized from real drawings — racking layouts, pole positions, ceiling heights — and ships with certification packs, DIM/IES files and a 5-year warranty.</p>"
+      "content": "<p>Your Company engineers high bay, flood and street luminaires for distributors, electrical contractors and project tenders across Europe, Australia and North America.</p><p>Every project is sized from real drawings — racking layouts, pole positions, ceiling heights — and ships with certification packs, DIM/IES files and a 5-year warranty.</p>",
+      "excerpt": "Export-ready products for distributors, contractors and project buyers."
     },
     "about": {
       "title": "About Your Company",
@@ -313,5 +620,22 @@
       "slug": "contact",
       "content": "<p>Send your drawings, a lighting schedule or a simple description of the project. Our export team replies with photometric recommendations and itemised pricing within one working day.</p>[starter_rfq_form]"
     }
+  },
+  "global_options": {
+    "factory_stats": "3 lines | Automated SMT, assembly and burn-in\n40k / mo | High bay output capacity\n100% | Driver burn-in before packing\n5 years | Warranty on every luminaire",
+    "factory_capabilities": "Automated production | Three lines with in-house SMT, assembly and ageing.\nDriver burn-in | Every batch completes a full-power burn-in before packing.\nPhotometric lab | Photometry verified for each SKU; files maintained with revisions.\nCertification handling | Declarations and reports prepared with shipping documents.\nOEM / ODM | Private labels, cable lengths and optics configured from drawings.\nExport logistics | Container loading, documentation packs and market compliance.",
+    "response_promise": "Every enquiry receives a human reply within one working day.",
+    "about_cta_title": "See the quality yourself",
+    "about_cta_text": "Request a sample or visit our production line.",
+    "about_cta_button": "Contact export team",
+    "product_archive_description": "A distributor-ready catalogue with project-rated products, specifications and documentation.",
+    "industry_archive_description": "Application-led recommendations for common commercial and industrial projects.",
+    "guide_archive_description": "Practical buying and specification guides for international project buyers.",
+    "news_archive_description": "Company, production and product updates.",
+    "not_found_description": "The page may have moved. Use the routes below to return to the catalogue."
+  },
+  "page_templates": {
+    "about": "page-templates/about.php",
+    "contact": "page-templates/contact.php"
   }
 }

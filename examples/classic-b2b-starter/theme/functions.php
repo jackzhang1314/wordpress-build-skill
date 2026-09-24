@@ -3,6 +3,7 @@ namespace Starter\Theme;
 defined('ABSPATH') || exit;
 
 require_once get_theme_file_path('inc/components.php');
+require_once get_theme_file_path('inc/page-data.php');
 
 add_action('after_setup_theme', static function (): void {
     add_theme_support('title-tag');
@@ -107,44 +108,19 @@ function lines_rows(string $raw): array {
     return $rows;
 }
 
-/** Built-in category copy used until an editor overrides it in ACF. */
+/** Generic starter fallbacks; business copy belongs in editable fields. */
 function category_defaults(string $slug): array {
-    $map = [
-        'industrial' => [
-            'intro' => 'High bay and linear luminaires sized from real racking and production layouts, with a photometric layout included in every quotation.',
-            'features' => "Mounting heights | Layouts engineered for 6–15 m mounting heights, from narrow racking aisles to open production floors.\nEfficacy | Up to 150 lm/W system efficacy to cut connected load on long burning hours.\nControls | 0–10V / DALI dimming with daylight and presence options for zoned production.\nDocumentation | DIM and IES files plus CE declarations ship with every order.",
-            'applications' => "Production halls\nWarehouses & racking aisles\nWorkshops & maintenance bays\nCold stores",
-            'faq' => "How do I size high bay wattage? | Start from the lux target and mounting height, then let efficacy determine wattage — we return a photometric layout with every quote.\nWhich IP rating do I need? | IP65 covers dust and most washdown in halls; IP69K applies to food-grade washdown areas.\nDo you support DALI grouping? | Yes — drivers support DALI and 0–10V, and we document grouping per zone.",
-        ],
-        'outdoor' => [
-            'intro' => 'Flood, street and area luminaires with controlled optics for car parks, facades, yards and access roads — documented to ME3 class where required.',
-            'features' => "Optics | Asymmetric and road optics place light on the surface, not into windows.\nIngress protection | IP66 housings with surge protection for exposed installations.\nMounting | Pole, bracket and wall options matched to existing infrastructure.\nCompliance | ME3 lighting class documentation for road tenders.",
-            'applications' => "Car parks\nFacades & yards\nAccess roads\nSports courts",
-            'faq' => "Do you quote from a site plan? | Yes — send pole positions or a simple sketch and we return an illuminance layout.\nCan luminaires match existing poles? | Bracket and cable-entry options cover most common pole interfaces.\nWhat warranty applies outdoors? | Five years, covering driver and housing.",
-        ],
-        'commercial-indoor' => [
-            'intro' => 'Low-glare panels and downlights for offices, retail floors and showrooms, with UGR below 19 for comfortable work and display lighting.',
-            'features' => "Glare control | UGR < 19 optics keep screens and merchandise comfortable.\nDimming | 0–10V dimming down to 10% for daylight-linked interiors.\nInstallation | Recessed for grid ceilings with surface kits for solid ceilings.\nConsistency | MacAdam 3 bins keep colour uniform across large floors.",
-            'applications' => "Offices & meeting rooms\nRetail floors\nShowrooms\nCorridors & lobbies",
-            'faq' => "Which panel fits a 600 grid? | The 600×600 panel drops into standard exposed-T grids with spring clips.\nDo panels flicker on camera? | Flicker-free drivers keep light stable for video and displays.\nIs emergency lighting available? | Emergency packs are available; share the escape route plan and we spec them in.",
-        ],
-        'food-grade' => [
-            'intro' => 'Sealed IP69K luminaires rated for high-pressure, high-temperature washdown in food processing, cold stores and packaging areas.',
-            'features' => "Washdown proof | IP69K sealing survives 80 °C, 100 bar caustic cleaning cycles.\nHygienic design | Smooth, crevice-free housings without dust collection points.\nCold store rated | Drivers specified for reliable low-temperature starting.\nAudit ready | Material and sealing documentation for HACCP files.",
-            'applications' => "Food processing lines\nCold stores\nPackaging areas\nWashdown zones",
-            'faq' => "What does IP69K cover exactly? | Close-range high-pressure, high-temperature washdown — beyond IP66/IP67.\nWhich surface finish? | Food-safe, corrosion-resistant housings suited to caustic cleaning agents.\nDo you support HACCP audits? | Yes, sealing and material documentation is supplied for your audit file.",
-        ],
+    return [
+        'intro' => '',
+        'features' => '',
+        'applications' => '',
+        'faq' => '',
     ];
-    return $map[$slug] ?? ['intro' => '', 'features' => '', 'applications' => '', 'faq' => ''];
 }
 
-/** Built-in factory copy used until an editor overrides it in ACF. */
+/** Starter ships no business claims; ACF seed and admin content own those. */
 function factory_defaults(): array {
-    return [
-        'intro' => 'Your factory runs three automated production lines with in-house driver burn-in, photometric testing and a documented packing process — the reason every shipment lands with its certification pack.',
-        'stats' => "3 lines | Automated SMT, assembly and burn-in\n40k / mo | High bay output capacity\n100% | Driver burn-in before packing\n5 years | Warranty on every luminaire",
-        'capabilities' => "Automated production | Three lines with in-house SMT, assembly and ageing — capacity for 40,000 high bays per month.\nDriver burn-in | Every batch completes a full-power burn-in cycle before packing, so early-life failures stay in the factory.\nPhotometric lab | Integrating sphere and distribution photometer verify each SKU; DIM and IES files are maintained with every revision.\nCertification handling | CE declarations, SAA certificates and ETL reports are prepared with the container documents, not after them.\nOEM / ODM | Private labels, custom cable lengths and optics configured from your drawings.\nExport logistics | Container loading, documentation packs and EU / AU / NA market compliance handled in-house.",
-    ];
+    return ['intro' => '', 'stats' => '', 'capabilities' => ''];
 }
 
 /** First sentences of raw content, heading-safe (tags become spaces). */

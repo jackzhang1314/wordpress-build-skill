@@ -307,3 +307,19 @@ p{margin:0 0 1em}
   .guide-nav{grid-template-columns:1fr}
   .guide-nav .next{text-align:left;align-items:flex-start}
 }
+
+/* Architecture v2 component contracts */
+.product-facts{display:flex;flex-wrap:wrap;gap:8px 18px;margin:18px 0;padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius-s);background:var(--brand-surface)}
+.product-facts span{font-size:14px;color:var(--muted)}
+.product-facts strong{display:inline-block;margin-right:6px;color:var(--ink)}
+.document-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;list-style:none;margin:0;padding:0}
+.document-list li{min-height:48px;padding:13px 16px;border:1px solid var(--line);border-radius:var(--radius-s);background:var(--paper);font-weight:550;box-shadow:var(--shadow-card)}
+.article-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:-8px 0 18px;color:var(--muted);font-size:14px}
+.article-meta a{color:var(--muted)}
+.article-meta a:hover{color:var(--accent)}
+.article-photo{width:100%;max-height:560px;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-card)}
+.page-photo{width:100%;max-height:520px;object-fit:cover;margin:0 0 24px;border-radius:var(--radius)}
+@media(max-width:720px){
+  .product-facts{align-items:flex-start;flex-direction:column}
+  .article-photo,.page-photo{max-height:320px}
+}

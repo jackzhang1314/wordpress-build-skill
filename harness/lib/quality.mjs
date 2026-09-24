@@ -1,6 +1,6 @@
 import {execFileSync} from 'node:child_process';
 import {existsSync, readdirSync, readFileSync} from 'node:fs';
-import {join, relative} from 'node:path';
+import {basename, join, relative} from 'node:path';
 import {projectFile} from './config.mjs';
 
 function walk(root, extensions = []) {
@@ -188,7 +188,10 @@ export function checkAcfBinding(projectRoot, project) {
   const defined = new Set();
   for (const file of walk(pluginDir, ['.php'])) {
     const text = readFileSync(file, 'utf8');
-    for (const match of text.matchAll(/'name'\s*=>\s*'([a-z0-9_]+)'/g)) {
+    for (const match of [
+      ...text.matchAll(/'name'\s*=>\s*'([a-z0-9_]+)'/g),
+      ...text.matchAll(/\$field\(\s*'field_[a-z0-9_]*'\s*,\s*'([a-z0-9_]+)'/g),
+    ]) {
       defined.add(match[1]);
     }
   }
@@ -206,6 +209,40 @@ export function checkRoutes(projectRoot, project) {
     {name: 'format', pass: pages.every(page => page.startsWith('/') && page.endsWith('/'))},
   ];
   return {name: 'routes', pass: checks.every(item => item.pass), checks};
+}
+
+/** Official page templates are assigned; slug-bound page templates are forbidden. */
+export function checkPageTemplates(projectRoot, project) {
+  const themeDir = projectFile(projectRoot, project.paths.theme);
+  const checks = [];
+  const slugBound = walk(themeDir, ['.php']).filter(file => {
+    const name = basename(file);
+    return /^page-.+\.php$/.test(name) && !['page.php', 'page-data.php'].includes(name);
+  }).map(file => relative(projectRoot, file));
+  checks.push({name: 'no-slug-bound-page-templates', pass: slugBound.length === 0, offenders: slugBound});
+  const required = {
+    'page-templates/about.php': 'About page',
+    'page-templates/contact.php': 'Contact / RFQ',
+    'page-templates/landing.php': 'Landing page',
+    'page-templates/full-width.php': 'Full width page',
+  };
+  for (const [file, label] of Object.entries(required)) {
+    const path = join(themeDir, file);
+    const text = existsSync(path) ? readFileSync(path, 'utf8') : '';
+    checks.push({name: `template:${file}`, pass: text.includes(`Template Name: ${label}`) && /Template Post Type:\s*page/.test(text)});
+  }
+  const dataPath = projectFile(projectRoot, project.seed.data);
+  if (existsSync(dataPath)) {
+    try {
+      const data = JSON.parse(readFileSync(dataPath, 'utf8'));
+      const templates = data.page_templates ?? {about: 'page-templates/about.php', contact: 'page-templates/contact.php'};
+      const assigned = Object.entries(data.pages ?? {}).filter(([key]) => templates[key]).every(([key]) => Boolean(templates[key]));
+      checks.push({name: 'seed-template-assignment-map', pass: assigned, detail: Object.keys(templates).join(', ')});
+    } catch {
+      checks.push({name: 'seed-data-parse', pass: false});
+    }
+  }
+  return {name: 'page-template-contract', pass: checks.every(item => item.pass), checks};
 }
 
 /** Namespaced PHP must use global WordPress classes with a leading backslash. */
@@ -290,6 +327,7 @@ export async function auditProject(projectRoot, project, options = {}) {
     checkComponentDuplication(projectRoot, project),
     checkZeroMedia(projectRoot, project),
     checkAcfBinding(projectRoot, project),
+    checkPageTemplates(projectRoot, project),
     checkRoutes(projectRoot, project),
     checkWordPressClasses(projectRoot, project),
     checkUiComponentContracts(projectRoot, project),

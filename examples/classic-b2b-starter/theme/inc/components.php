@@ -134,12 +134,7 @@ function component_spec_table(array $props = []): void {
 
 /** Compact definition list of key specs. Fields map: field_name => label. */
 function component_quick_specs(array $props = []): void {
-	$fields = (array) ($props['fields'] ?? []);
-	$rows = [];
-	foreach ($fields as $name => $label) {
-		$value = field_text((string) $name);
-		if (trim($value) !== '') $rows[] = ['label' => (string) $label, 'value' => $value];
-	}
+	$rows = array_values(array_filter((array) ($props['rows'] ?? []), static fn ($row): bool => trim((string) ($row['label'] ?? '')) !== ''));
 	if (!$rows) return;
 	echo '<dl class="quick-specs">';
 	foreach ($rows as $row) {
@@ -201,20 +196,22 @@ function component_link_cards(array $props = []): void {
 /** Related products from the current product's terms, with catalogue fallback. */
 function component_related_products(array $props = []): void {
 	$post_id = (int) ($props['post_id'] ?? get_the_ID());
+	$manual_ids = array_values(array_filter(array_map('intval', (array) ($props['related_ids'] ?? []))));
 	$terms = get_the_terms($post_id, 'product_collection');
 	$ids = get_posts([
 		'post_type' => 'starter_product',
 		'posts_per_page' => 3,
 		'post__not_in' => [$post_id],
 		'fields' => 'ids',
-		'orderby' => 'rand',
+		'orderby' => $manual_ids ? 'none' : 'rand',
+		'post__in' => $manual_ids,
 		'tax_query' => is_array($terms) && $terms && !is_wp_error($terms) ? [[
 			'taxonomy' => 'product_collection',
 			'field' => 'term_id',
 			'terms' => wp_list_pluck($terms, 'term_id'),
 		]] : [],
 	]);
-	if (count($ids) < 3) {
+	if (!$manual_ids && count($ids) < 3) {
 		$ids = array_merge($ids, get_posts([
 			'post_type' => 'starter_product',
 			'posts_per_page' => 3 - count($ids),

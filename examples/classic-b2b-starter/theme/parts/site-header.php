@@ -5,7 +5,7 @@
  * @package b2b-starter
  */
 
-$topbar = Starter\Theme\get_setting('topbar_text', 'Factory-direct LED luminaires · CE / SAA / ETL documentation pack');
+$topbar = Starter\Theme\get_setting('topbar_text', 'Global export enquiries welcome');
 ?>
 <?php if ($topbar) : ?><div class="topbar"><div class="shell"><span><?php echo esc_html($topbar); ?></span><a href="<?php echo esc_url(Starter\Theme\contact_url()); ?>"><?php echo esc_html(Starter\Theme\get_setting('contact_email', 'sales@yourcompany.com')); ?></a></div></div><?php endif; ?>
 <header class="site-header"><div class="shell">

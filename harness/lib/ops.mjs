@@ -156,7 +156,7 @@ export async function importMedia(projectRoot, project, ssh, {force = false, log
   return map;
 }
 
-export async function seedContent(projectRoot, project, ssh, logger = () => {}) {
+export async function seedContent(projectRoot, project, ssh, logger = () => {}, {rebuildNav = true} = {}) {
   if (!project.seed.enabled) throw new Error('Seed is disabled in project.json');
   const script = projectFile(projectRoot, project.seed.script);
   const data = projectFile(projectRoot, project.seed.data);
@@ -182,7 +182,8 @@ export async function seedContent(projectRoot, project, ssh, logger = () => {}) 
     `mv ${shellQuote(staging + '/content/site-data.json')} ${shellQuote(staging + '/site-data.json')}`,
     `mv ${shellQuote(staging + '/content/media-map.json')} ${shellQuote(staging + '/media-map.json')}`,
   ].join(' && '));
-  const output = ssh.wp(['eval-file', `${staging}/seed.php`, `${staging}/media-map.json`, `${staging}/site-data.json`]);
+  const navPolicy = rebuildNav ? 'true' : 'false';
+  const output = ssh.wp(['eval-file', `${staging}/seed.php`, `${staging}/media-map.json`, `${staging}/site-data.json`, navPolicy]);
   logger(output.trim());
   ssh.wp(['cache', 'flush']);
   ssh.wp(['rewrite', 'flush']);

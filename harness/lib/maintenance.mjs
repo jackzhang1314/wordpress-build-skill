@@ -252,7 +252,7 @@ export async function assignTemplate(site, args, logger = () => {}) {
   const slug = firstPositional(args);
   const template = argValue(args, '--template');
   if (!slug || !template) throw new Error('usage: harness template assign <slug> --template <file.php>');
-  if (!template.endsWith('.php') || template.includes('/') || template.includes('..')) {
+  if (!/^(?:[a-z0-9_-]+|page-templates\/[a-z0-9_-]+)\.php$/.test(template)) {
     throw new Error(`invalid template name: ${template}`);
   }
   const themeDir = projectFile(site.root, site.project.paths.theme);
