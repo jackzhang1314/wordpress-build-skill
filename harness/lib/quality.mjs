@@ -115,6 +115,99 @@ export function checkSecrets(projectRoot, project) {
   return {name: 'secret-scan', pass: findings.length === 0, checks: findings};
 }
 
+/** Templates may only compose; known section markup must live in inc/ or parts/. */
+export function checkComponentDuplication(projectRoot, project) {
+  const themeDir = projectFile(projectRoot, project.paths.theme);
+  const reserved = new Set(['functions.php', 'header.php', 'footer.php', 'sidebar.php']);
+  const offenders = [];
+  const markers = [
+    'class="section-heading"',
+    'class="faq-item"',
+    'class="spec-table"',
+    'class="cta-band"',
+    'class="app-list"',
+    'class="quick-specs"',
+    'class="check-list"',
+    'class="trust-strip"',
+    'class="term-grid',
+    'class="stats"',
+  ];
+  for (const file of walk(themeDir, ['.php'])) {
+    const rel = relative(themeDir, file);
+    if (rel.startsWith('inc/') || rel.startsWith('parts/') || reserved.has(rel.replace(/\\/g, '/'))) continue;
+    const text = readFileSync(file, 'utf8');
+    for (const marker of markers) {
+      if (text.includes(marker)) offenders.push({file: relative(projectRoot, file), marker});
+    }
+  }
+  return {name: 'component-duplication', pass: offenders.length === 0, checks: offenders};
+}
+
+/** Starter content and theme ship zero binary media; slots are dimension placeholders. */
+export function checkZeroMedia(projectRoot, project) {
+  const findings = [];
+  const contentDir = projectFile(projectRoot, project.paths.content);
+  for (const file of walk(contentDir, ['.json'])) {
+    const text = readFileSync(file, 'utf8');
+    if (text.includes('image_key')) findings.push({file: relative(projectRoot, file), issue: 'image_key reference'});
+    if (text.includes('/uploads/')) findings.push({file: relative(projectRoot, file), issue: 'uploads URL'});
+  }
+  const mediaMap = join(contentDir, 'media-map.json');
+  if (existsSync(mediaMap)) {
+    const map = JSON.parse(readFileSync(mediaMap, 'utf8'));
+    if (Object.keys(map).length > 0) findings.push({file: relative(projectRoot, mediaMap), issue: 'non-empty media map'});
+  }
+  const themeDir = projectFile(projectRoot, project.paths.theme);
+  const binaryExt = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif'];
+  for (const file of walk(themeDir, binaryExt)) {
+    findings.push({file: relative(projectRoot, file), issue: 'binary image asset'});
+  }
+  if (existsSync(join(themeDir, 'assets', 'img'))) {
+    findings.push({file: 'theme/assets/img', issue: 'image asset directory'});
+  }
+  for (const file of walk(themeDir, ['.php'])) {
+    const text = readFileSync(file, 'utf8');
+    if (/set_post_thumbnail|wp_insert_attachment|media_handle_upload|media_sideload/.test(text)) {
+      findings.push({file: relative(projectRoot, file), issue: 'media write call in theme'});
+    }
+  }
+  return {name: 'zero-media', pass: findings.length === 0, checks: findings};
+}
+
+/** Every ACF field the theme reads must be registered by the plugin. */
+export function checkAcfBinding(projectRoot, project) {
+  const themeDir = projectFile(projectRoot, project.paths.theme);
+  const pluginDir = projectFile(projectRoot, project.paths.plugin);
+  const used = new Set();
+  for (const file of walk(themeDir, ['.php'])) {
+    const text = readFileSync(file, 'utf8');
+    for (const match of text.matchAll(/field_(?:text|rows|lines|option)\(\s*'([a-z0-9_]+)'/g)) {
+      used.add(match[1]);
+    }
+  }
+  const defined = new Set();
+  for (const file of walk(pluginDir, ['.php'])) {
+    const text = readFileSync(file, 'utf8');
+    for (const match of text.matchAll(/'name'\s*=>\s*'([a-z0-9_]+)'/g)) {
+      defined.add(match[1]);
+    }
+  }
+  const missing = [...used].filter(name => !defined.has(name)).sort();
+  return {name: 'acf-binding', pass: missing.length === 0, checks: missing.map(name => ({field: name, issue: 'used in theme but not registered'}))};
+}
+
+/** The starter declares its full route manifest; deploy verification walks it. */
+export function checkRoutes(projectRoot, project) {
+  const expectedCount = Number(project.routeCount ?? 23);
+  const pages = (project.livePages ?? []).map(String);
+  const checks = [
+    {name: 'count', pass: pages.length === expectedCount, detail: `${pages.length}/${expectedCount}`},
+    {name: 'unique', pass: new Set(pages).size === pages.length},
+    {name: 'format', pass: pages.every(page => page.startsWith('/') && page.endsWith('/'))},
+  ];
+  return {name: 'routes', pass: checks.every(item => item.pass), checks};
+}
+
 export async function checkPhpSyntax(files, {phpBin = 'php'} = {}) {
   const dockerImage = phpBin?.startsWith('docker:') ? phpBin.slice(7) : undefined;
   const command = dockerImage ? 'docker' : phpBin;
@@ -135,10 +228,19 @@ export async function checkPhpSyntax(files, {phpBin = 'php'} = {}) {
 }
 
 export async function auditProject(projectRoot, project, options = {}) {
-  const gates = [checkStructure(projectRoot, project), checkTemplateHeadings(
+  const gates = [
+    checkStructure(projectRoot, project),
+    checkTemplateHeadings(
     projectFile(projectRoot, project.paths.theme),
     projectFile(projectRoot, project.paths.plugin),
-  ), checkContent(projectRoot, project), checkSecrets(projectRoot, project)];
+    ),
+    checkContent(projectRoot, project),
+    checkSecrets(projectRoot, project),
+    checkComponentDuplication(projectRoot, project),
+    checkZeroMedia(projectRoot, project),
+    checkAcfBinding(projectRoot, project),
+    checkRoutes(projectRoot, project),
+  ];
 
   const phpBin = options.phpBin;
   const phpFiles = [

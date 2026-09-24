@@ -15,11 +15,10 @@ get_header(); ?>
 		'description' => $intro,
 	]);
 	?>
-	<section class="stats" aria-label="Company facts">
-		<?php foreach (Starter\Theme\field_rows('factory_stats', 'option', $factory['stats']) as $row) : ?>
-		<div class="stat"><b><?php echo esc_html($row['label']); ?></b><span><?php echo esc_html($row['value']); ?></span></div>
-		<?php endforeach; ?>
-	</section>
+	<?php Starter\Theme\component_stat_strip(['items' => array_map(
+		static fn ($row): array => ['value' => $row['label'], 'label' => $row['value']],
+		Starter\Theme\field_rows('factory_stats', 'option', $factory['stats'])
+	)]); ?>
 	<article class="prose article"><?php the_content(); ?></article>
 	<section class="section">
 		<?php Starter\Theme\component_section_heading(['eyebrow' => 'Capabilities', 'title' => 'What the factory delivers']); ?>

@@ -10,6 +10,7 @@ import {provisionHostinger} from './lib/hostinger.mjs';
 import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
+import {captureScreenshots} from './lib/screenshots.mjs';
 import {assignTemplate, argValue, auditFields, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
 import {shellQuote} from './lib/ssh.mjs';
 import {rotateCredentials, showCredentials} from './lib/credentials.mjs';
@@ -41,7 +42,8 @@ Project commands:
   media [--force]         Import configured media sources
   content                 Upload the project seed package
   deploy                  check, backup, plugins, sync, seed, cache, verify
-  verify                  Verify live pages and database counts
+  verify [--screenshots]  Verify live pages, database (and capture 390/768/1440 screenshots)
+  screenshot              Capture live routes at 390/768/1440 via headless Chrome
   status                  Show remote content counts and active plugins
   rollback <backup-id>    Restore theme/plugin files
   cache                   Clear the Hostinger site cache
@@ -189,6 +191,10 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
     const site = context(options);
     const {root, project, ssh} = site;
     const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials', 'audit-fields', 'smtp', 'email-setup'];
+    const exampleUnsafeCommands = [...remoteCommands, 'provision', 'configure-seo', 'setup'];
+    if (project._isExample && exampleUnsafeCommands.includes(command)) {
+      throw new Error('Copy project.example.json to project.json and fill site values before running this command');
+    }
     if (remoteCommands.includes(command) && !ssh) throw new Error('Complete project.json ssh before running remote commands');
     const base = `https://${project.domain}`;
 
@@ -339,7 +345,19 @@ add_action("phpmailer_init", function ($phpmailer) {
       const pages = await verifyPages(base, project.livePages, project.contentMarkers);
       const database = await verifyDatabase(project, {wp: input => ssh.wp(input)});
       const seo = project.requiredPlugins.includes('seo-by-rank-math') ? await verifyRankMath(project, ssh) : {pass: true};
-      const result = {pass: pages.pass && database.pass && seo.pass, pages, database, seo};
+      let screenshots;
+      if (args.includes('--screenshots')) {
+        const outDir = argValue(args, '--out') ?? join(root, 'evidence', 'screenshots');
+        const widths = (argValue(args, '--widths') ?? '390,768,1440').split(',').map(Number);
+        screenshots = await captureScreenshots({base, routes: project.livePages, widths, outDir});
+        if (!json) {
+          for (const shot of screenshots.skipped ? [] : screenshots.shots) {
+            logger(`  ${shot.pass ? 'OK ' : 'FAIL'} ${shot.width} ${shot.route}: ${shot.bytes}B`);
+          }
+          if (screenshots.skipped) logger(`  WARN screenshots skipped: ${screenshots.reason}`);
+        }
+      }
+      const result = {pass: pages.pass && database.pass && seo.pass && (!screenshots || screenshots.pass), pages, database, seo, screenshots};
       if (!json) {
         for (const page of pages.results) {
           const details = [page.status, `H1 ${page.h1}`, `skips ${page.skips}`];
@@ -347,6 +365,21 @@ add_action("phpmailer_init", function ($phpmailer) {
           logger(`  ${page.pass ? 'OK ' : 'FAIL'} ${page.path}: ${details.join(', ')}`);
         }
         for (const item of database.results) logger(`  ${item.pass ? 'OK ' : 'FAIL'} ${item.label}: ${item.count}`);
+      }
+      outputResult(result, json, logger);
+      return result.pass ? 0 : 1;
+    }
+    if (command === 'screenshot') {
+      if (!project.domain) throw new Error('project.domain is empty');
+      const routeArg = argValue(args, '--routes');
+      const routes = routeArg ? routeArg.split(',').map(route => (route.startsWith('/') ? route : `/${route}`)) : project.livePages;
+      const widths = (argValue(args, '--widths') ?? '390,768,1440').split(',').map(Number);
+      const outDir = argValue(args, '--out') ?? join(root, 'evidence', 'screenshots');
+      const result = await captureScreenshots({base, routes, widths, outDir});
+      if (!json) {
+        if (result.skipped) logger(`SKIP screenshots: ${result.reason}`);
+        for (const shot of result.shots) logger(`  ${shot.pass ? 'OK ' : 'FAIL'} ${shot.width} ${shot.route}: ${shot.bytes}B`);
+        logger(`\n${result.pass ? 'OK' : 'FAIL'}: ${result.shots.filter(shot => shot.pass).length}/${result.shots.length} screenshots in ${outDir}`);
       }
       outputResult(result, json, logger);
       return result.pass ? 0 : 1;

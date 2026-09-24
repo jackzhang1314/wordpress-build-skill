@@ -1,0 +1,30 @@
+# 0924-03 Harness 视觉与结构门禁
+
+- 时间：2026-09-24 18:05 Asia/Shanghai
+- 触发原因：继续 Starter 产品化，补齐三端截图能力、结构复用检测、零媒体与 ACF 绑定门禁。
+- 主要工作：
+  - 新增 `harness/lib/screenshots.mjs`，支持 390/768/1440 截图规划、Chrome 探测、无头截图与大小校验。
+  - Harness CLI 新增 `screenshot` 命令和 `verify --screenshots`。
+  - `project.example.json` 可直接驱动本地 `check`；写远端/部署命令必须先复制为真实 `project.json`。
+  - 新增 Harness 质量门禁：组件重复检测、零媒体检测、ACF 字段绑定、路由清单。
+  - About 页统计改为 `component_stat_strip` 组合；删除未使用的 hero 占位 SVG，避免 Starter 暗示真实媒体资产。
+  - 新增 screenshot、starter config 和 starter gates 测试。
+- 关键文件：
+  - `harness/lib/screenshots.mjs`
+  - `harness/lib/quality.mjs`
+  - `harness/lib/config.mjs`
+  - `harness/cli.mjs`
+  - `tests/harness/screenshots.test.mjs`
+  - `tests/harness/starter-gates.test.mjs`
+  - `tests/harness/starter-config.test.mjs`
+- 验证：
+  - `npm run typecheck` 通过。
+  - `npm run lint` 通过。
+  - `npm test`：134/134 通过。
+  - `harness check --project examples/classic-b2b-starter` 全绿，包括 structure、heading、content、secret、component-duplication、zero-media、acf-binding、routes、php-syntax。
+  - 真实截图冒烟通过：4/4，覆盖 `/` 和 `/products/` 的 390/1440。
+  - `deploy` 对 example 配置正确拒绝，提示先复制并填写 `project.json`。
+  - `npm run package:starter` 成功；SHA256 `e678720b10bbfbfb1fc7d3e119058df70e4d046a7a959eb0c820d44db237aeba`。
+- 遗留：
+  - 用 Starter 全量内容在全新 Hostinger 空站跑 provision/deploy/verify/screenshot。
+  - 建立 `dist/` 包发布、GitHub Template Repo 与安装引导。

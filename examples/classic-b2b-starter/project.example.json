@@ -125,11 +125,14 @@
   },
   "ssh": {
     "host": "REPLACE_SSH_HOST",
-    "port": 65002,
-    "user": "REPLACE_SSH_USER",
+    "port": "65002",
+    "user": "starter-owner",
     "keyPath": "REPLACE_SSH_KEY_PATH",
-    "wpPath": "REPLACE_REMOTE_WP_PATH"
+    "wpPath": "/home/REPLACE_USER/domains/example.hostingersite.com/public_html"
   },
   "timezone": "Asia/Shanghai",
-  "pluginMain": "starter-model.php"
+  "pluginMain": "starter-model.php",
+  "hostinger": {
+    "user": "starter-owner"
+  }
 }

@@ -132,56 +132,6 @@ function component_spec_table(array $props = []): void {
 	echo '</tbody></table>';
 }
 
-/** Compact definition list of key specs. Fields map: field_name => label. */
-function component_quick_specs(array $props = []): void {
-	$fields = (array) ($props['fields'] ?? []);
-	$rows = [];
-	foreach ($fields as $name => $label) {
-		$value = field_text((string) $name);
-		if (trim($value) !== '') $rows[] = ['label' => (string) $label, 'value' => $value];
-	}
-	if (!$rows) return;
-	echo '<dl class="quick-specs">';
-	foreach ($rows as $row) {
-		printf('<div><dt>%s</dt><dd>%s</dd></div>', esc_html($row['label']), esc_html($row['value']));
-	}
-	echo '</dl>';
-}
-
-/** Checklist rendered from plain lines; hidden when empty. */
-function component_check_list(array $props = []): void {
-	$items = array_values(array_filter(array_map('trim', (array) ($props['items'] ?? []))));
-	if (!$items) return;
-	echo '<ul class="check-list">';
-	foreach ($items as $item) echo '<li>' . esc_html($item) . '</li>';
-	echo '</ul>';
-}
-
-/** Small trust/reassurance strip of short claims. */
-function component_trust_strip(array $props = []): void {
-	$items = array_values(array_filter(array_map('trim', (array) ($props['items'] ?? []))));
-	if (!$items) return;
-	echo '<p class="trust-strip">';
-	foreach ($items as $item) echo '<span>' . esc_html($item) . '</span>';
-	echo '</p>';
-}
-
-/** Linked taxonomy chips for the current post. */
-function component_term_chips(array $props = []): void {
-	$taxonomy = (string) ($props['taxonomy'] ?? 'product_collection');
-	$post_id = (int) ($props['post_id'] ?? get_the_ID());
-	$terms = get_the_terms($post_id, $taxonomy);
-	if (!is_array($terms) || !$terms) return;
-	echo '<div class="product-meta">';
-	foreach ($terms as $term) {
-		$url = get_term_link($term);
-		if (!is_wp_error($url)) {
-			printf('<a class="card-chip" href="%s">%s</a>', esc_url((string) $url), esc_html($term->name));
-		}
-	}
-	echo '</div>';
-}
-
 /** Direct-link cards used by 404 and other recovery layouts. */
 function component_link_cards(array $props = []): void {
 	$links = (array) ($props['links'] ?? []);

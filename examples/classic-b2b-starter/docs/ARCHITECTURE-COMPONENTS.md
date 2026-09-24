@@ -53,7 +53,9 @@ WordPress route/template hierarchy
 
 ## Next hardening
 
-- Convert remaining repeated section blocks in product/industry/guide templates to component calls.
-- Add a component registry test that fails when a template copies a known section structure.
-- Add visual regression baselines at 390/768/1440 for every route.
-- Keep starter media at zero uploaded attachments; content sync should enforce blank-media invariants.
+- [x] All page templates compose through `inc/components.php` / `parts/`; inline section markup is gated by `harness check` (component-duplication).
+- [x] Component registry test: `tests/harness/starter-gates.test.mjs` fails when a template copies a known section structure.
+- [x] Visual captures: `harness screenshot` records every route at 390/768/1440 via headless Chrome; `harness verify --screenshots` runs it as a gate (byte-size validated).
+- [x] Zero-media invariant: `harness check` fails on seed media references, media-map entries, binary assets or media-write calls in the theme.
+- [x] ACF binding: `harness check` fails when the theme reads a field the plugin does not register.
+- [x] Route manifest: `harness check` enforces the 23-route manifest declared in `project.example.json`.
