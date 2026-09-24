@@ -7,7 +7,7 @@ A production-ready B2B WordPress template for industrial suppliers, manufacturer
 | Area | Included |
 |---|---|
 | **Theme** | Responsive B2B design system (CSS variable driven), hero + stats + sections home page, product/industry/guide CPT templates, contact form page, mobile nav |
-| **Content model** | `cleanroom_product`, `cleanroom_industry`, `cleanroom_guide` CPTs + `product_collection` taxonomy with ACF fields (free version, no repeaters) |
+| **Content model** | `starter_product`, `starter_industry`, `starter_guide` CPTs + `product_collection` taxonomy with ACF fields (free version, no repeaters) |
 | **Forms** | Fluent Forms RFQ page with styled form panel |
 | **SEO** | Rank Math with per-post-type sitemap, product rich-snippet |
 | **Email** | SMTP via wp-config constants (`theme/mu-plugins/smtp.php`) |
@@ -66,7 +66,7 @@ See `CUSTOMIZE.md` for the full brand-change checklist and `DEPLOY.md` for the l
 theme/style.css         — design tokens + all styles (change 3 vars here)
 theme/*.php             — page templates (home, product, industry, guide, contact, about…)
 theme/mu-plugins/smtp.php — SMTP config (reads wp-config constants)
-plugin/harness-cleanroom-model.php — CPTs + ACF fields
+plugin/starter-model.php — CPTs + ACF fields
 content/site-data.json  — seed content (products, industries, guides, pages)
 content/patches/about.html — About page body HTML
 DESIGN.md               — design system reference for AI and humans

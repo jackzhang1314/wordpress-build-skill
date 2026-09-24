@@ -2,13 +2,13 @@
 /**
  * Contact / RFQ: guidance aside + Fluent Forms panel (form id 3).
  *
- * @package harness-cleanroom
+ * @package b2b-starter
  */
 
 get_header(); ?>
 <main id="main" class="shell"><?php while (have_posts()) : the_post(); ?>
 	<header class="page-head">
-		<?php Cleanroom\Theme\breadcrumbs(); ?>
+		<?php Starter\Theme\breadcrumbs(); ?>
 		<p class="eyebrow">Contact</p>
 		<h1><?php the_title(); ?></h1>
 		<p>Tell us the application, quantity and target certifications — itemised pricing in three working days.</p>

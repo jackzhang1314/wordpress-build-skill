@@ -1,4 +1,4 @@
-# harness-cleanroom
+# b2b-starter
 
 Classic PHP theme + ACF project.
 

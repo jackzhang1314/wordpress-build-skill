@@ -1,6 +1,6 @@
 <?php
 /**
- * NOVALUX B2B seed. Invoked by harness as:
+ * B2B Starter seed. Invoked by harness as:
  * wp eval-file seed.php <staged-media-map> <staged-site-data>
  */
 
@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
     exit('CLI only');
 }
 
-function novalux_upsert(string $post_type, string $slug, array $payload): int {
+function starter_upsert(string $post_type, string $slug, array $payload): int {
     $existing = get_page_by_path($slug, OBJECT, [$post_type]);
     $fields = [
         'post_type' => $post_type,
@@ -27,14 +27,14 @@ function novalux_upsert(string $post_type, string $slug, array $payload): int {
     return (int) $post_id;
 }
 
-function novalux_delete_by_slug(string $slug, array $types): void {
+function starter_delete_by_slug(string $slug, array $types): void {
     $found = get_page_by_path($slug, OBJECT, $types);
     if ($found instanceof WP_Post) {
         wp_delete_post($found->ID, true);
     }
 }
 
-function novalux_thumbnail(int $post_id, array $map, string $key, string $alt): void {
+function starter_thumbnail(int $post_id, array $map, string $key, string $alt): void {
     if ($key === '' || !isset($map[$key])) {
         return;
     }
@@ -45,18 +45,18 @@ function novalux_thumbnail(int $post_id, array $map, string $key, string $alt): 
     }
 }
 
-function novalux_specs(array $rows): array {
+function starter_specs(array $rows): array {
     $output = [];
     foreach ($rows as $row) {
         $output[] = [
-            'field_nova_spec_label' => (string) ($row['label'] ?? ''),
-            'field_nova_spec_value' => (string) ($row['value'] ?? ''),
+            'field_starter_spec_label' => (string) ($row['label'] ?? ''),
+            'field_starter_spec_value' => (string) ($row['value'] ?? ''),
         ];
     }
     return $output;
 }
 
-function novalux_rebuild_menu(array $items): void {
+function starter_rebuild_menu(array $items): void {
     // Fresh acceptance site: remove every nav item, including orphans with empty object_id.
     $all_items = get_posts(['post_type' => 'nav_menu_item', 'numberposts' => -1, 'fields' => 'ids']);
     foreach ($all_items as $item_id) {
@@ -113,9 +113,9 @@ if (!is_array($media_map) || !is_array($data)) {
 
 /* ---------- Remove v1 acceptance content ---------- */
 
-novalux_delete_by_slug('modular-surface-system', ['cleanroom_product']);
-novalux_delete_by_slug('cleanroom-site-handover-checklist', ['post']);
-novalux_delete_by_slug('request-a-quote', ['page']);
+starter_delete_by_slug('modular-surface-system', ['starter_product']);
+starter_delete_by_slug('starter-site-handover-checklist', ['post']);
+starter_delete_by_slug('request-a-quote', ['page']);
 $legacy_term = term_exists('precision-surfaces', 'product_collection');
 if (is_array($legacy_term)) {
     wp_delete_term((int) reset($legacy_term), 'product_collection');
@@ -147,13 +147,13 @@ foreach ($data['terms'] ?? [] as $row) {
 
 $product_ids = [];
 foreach ($data['products'] ?? [] as $product) {
-    $product_id = novalux_upsert('cleanroom_product', $product['slug'], $product);
+    $product_id = starter_upsert('starter_product', $product['slug'], $product);
     $product_ids[] = $product_id;
     $assigned = array_values(array_intersect_key($term_ids, array_flip($product['terms'] ?? [])));
     if ($assigned) {
         wp_set_object_terms($product_id, $assigned, 'product_collection', false);
     }
-    novalux_thumbnail($product_id, $media_map, $product['image_key'] ?? '', $product['image_alt'] ?? '');
+    starter_thumbnail($product_id, $media_map, $product['image_key'] ?? '', $product['image_alt'] ?? '');
     if (function_exists('update_field')) {
         $acf = $product['acf'] ?? [];
         foreach (['wattage', 'efficacy', 'ip_rating', 'warranty'] as $scalar) {
@@ -164,14 +164,14 @@ foreach ($data['products'] ?? [] as $product) {
         if (isset($acf['specs'])) {
             // Free ACF has no repeater field: store rows as "Label | Value" lines in a textarea.
             foreach (array_keys(get_post_meta($product_id)) as $meta_key) {
-                if (preg_match('/^specs(_\d+_)?/', $meta_key) || $meta_key === 'field_nova_spec_table') { delete_post_meta($product_id, $meta_key); }
+                if (preg_match('/^specs(_\d+_)?/', $meta_key) || $meta_key === 'field_starter_spec_table') { delete_post_meta($product_id, $meta_key); }
             }
             $lines = implode("\n", array_map(
                 static fn (array $row): string => trim((string) ($row['label'] ?? '')) . ' | ' . trim((string) ($row['value'] ?? '')),
                 is_array($acf['specs']) ? $acf['specs'] : []
             ));
             if (function_exists('update_field')) {
-                update_field('field_nova_spec_table', $lines, $product_id);
+                update_field('field_starter_spec_table', $lines, $product_id);
             } else {
                 update_post_meta($product_id, 'spec_table', $lines);
             }
@@ -183,12 +183,12 @@ foreach ($data['products'] ?? [] as $product) {
 
 $industry_ids = [];
 foreach ($data['industries'] ?? [] as $industry) {
-    $industry_id = novalux_upsert('cleanroom_industry', $industry['slug'], $industry);
+    $industry_id = starter_upsert('starter_industry', $industry['slug'], $industry);
     $industry_ids[] = $industry_id;
-    novalux_thumbnail($industry_id, $media_map, $industry['image_key'] ?? '', $industry['image_alt'] ?? '');
+    starter_thumbnail($industry_id, $media_map, $industry['image_key'] ?? '', $industry['image_alt'] ?? '');
     if (function_exists('update_field')) {
-        update_field('field_nova_industry_challenge', (string) ($industry['acf']['challenge'] ?? ''), $industry_id);
-        update_field('field_nova_industry_outcome', (string) ($industry['acf']['outcome'] ?? ''), $industry_id);
+        update_field('field_starter_industry_challenge', (string) ($industry['acf']['challenge'] ?? ''), $industry_id);
+        update_field('field_starter_industry_outcome', (string) ($industry['acf']['outcome'] ?? ''), $industry_id);
     }
 }
 
@@ -196,14 +196,14 @@ foreach ($data['industries'] ?? [] as $industry) {
 
 $guide_ids = [];
 foreach ($data['guides'] ?? [] as $guide) {
-    $guide_id = novalux_upsert('cleanroom_guide', $guide['slug'], $guide);
+    $guide_id = starter_upsert('starter_guide', $guide['slug'], $guide);
     $guide_ids[] = $guide_id;
-    novalux_thumbnail($guide_id, $media_map, $guide['image_key'] ?? '', $guide['image_alt'] ?? '');
+    starter_thumbnail($guide_id, $media_map, $guide['image_key'] ?? '', $guide['image_alt'] ?? '');
 }
 
 $news_ids = [];
 foreach ($data['news'] ?? [] as $news) {
-    $news_ids[] = novalux_upsert('post', $news['slug'], $news);
+    $news_ids[] = starter_upsert('post', $news['slug'], $news);
 }
 
 /* ---------- Pages ---------- */
@@ -211,18 +211,18 @@ foreach ($data['news'] ?? [] as $news) {
 $page_ids = [];
 foreach ($data['pages'] ?? [] as $key => $page) {
     $page = array_merge($page, ['status' => 'publish']);
-    $page_ids[$key] = novalux_upsert('page', $page['slug'], $page);
+    $page_ids[$key] = starter_upsert('page', $page['slug'], $page);
 }
 update_option('show_on_front', 'page');
 update_option('page_on_front', $page_ids['home']);
 
 /* ---------- Navigation ---------- */
 
-novalux_rebuild_menu([
+starter_rebuild_menu([
     ['label' => 'Home', 'object_id' => $page_ids['home']],
-    ['label' => 'Products', 'url' => (string) get_post_type_archive_link('cleanroom_product')],
-    ['label' => 'Industries', 'url' => (string) get_post_type_archive_link('cleanroom_industry')],
-    ['label' => 'Knowledge', 'url' => (string) get_post_type_archive_link('cleanroom_guide')],
+    ['label' => 'Products', 'url' => (string) get_post_type_archive_link('starter_product')],
+    ['label' => 'Industries', 'url' => (string) get_post_type_archive_link('starter_industry')],
+    ['label' => 'Knowledge', 'url' => (string) get_post_type_archive_link('starter_guide')],
     ['label' => 'About', 'object_id' => $page_ids['about']],
     ['label' => 'Contact', 'object_id' => $page_ids['contact']],
 ]);

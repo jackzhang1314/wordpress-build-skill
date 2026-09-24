@@ -1,9 +1,9 @@
 /*
-Theme Name: harness-cleanroom
-Version: 5.1.1
+Theme Name: b2b-starter
+Version: 6.0.0
 Requires at least: 6.4
 Requires PHP: 8.1
-Text Domain: harness-cleanroom
+Text Domain: b2b-starter
 Description: Bright minimal industrial B2B design system — token-driven, zero hardcoded colors.
 */
 :root{
@@ -259,6 +259,9 @@ p{margin:0 0 1em}
 .app-list{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
 .app-list li{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:14px;font-weight:550;color:var(--ink)}
 .app-list li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.error-search{max-width:560px;margin:0 0 44px}
+.error-search input[type=search],.search-form input[type=search]{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:var(--radius-s);font:inherit}
+.empty-state{padding:36px;border:1px dashed var(--line);border-radius:var(--radius-s);color:var(--muted);text-align:center}
 
 @media(max-width:980px){
   .contact-layout{grid-template-columns:1fr;gap:36px}

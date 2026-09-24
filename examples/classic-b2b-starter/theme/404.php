@@ -2,28 +2,22 @@
 /**
  * 404: search + primary destinations.
  *
- * @package harness-cleanroom
+ * @package b2b-starter
  */
 
 get_header(); ?>
 <main id="main" class="shell">
-	<header class="page-head">
-		<?php Cleanroom\Theme\breadcrumbs(); ?>
-		<p class="eyebrow">404</p>
-		<h1>Page not found</h1>
-		<p>The page may have moved. Search the site or start from one of these:</p>
-		<div style="margin-top:24px"><?php get_search_form(); ?></div>
-	</header>
-	<div class="term-grid error-grid"><?php foreach ([
-		['Product catalogue', '/products/'],
-		['Industry solutions', '/industries/'],
-		['Knowledge guides', '/guides/'],
-		['Contact us', '/contact/'],
-	] as $link) : ?>
-		<a class="term-card" href="<?php echo esc_url(home_url($link[1])); ?>">
-			<h2><?php echo esc_html($link[0]); ?></h2>
-			<p><?php echo esc_html($link[1]); ?></p>
-		</a>
-	<?php endforeach; ?></div>
+	<?php Starter\Theme\component_page_head([
+		'eyebrow' => '404',
+		'title' => 'Page not found',
+		'description' => 'The page may have moved. Search the site or start from one of these:',
+	]); ?>
+	<div class="error-search"><?php get_search_form(); ?></div>
+	<?php Starter\Theme\component_link_cards(['links' => [
+		['label' => 'Product catalogue', 'url' => home_url('/products/'), 'description' => 'Browse the full catalogue.'],
+		['label' => 'Industry solutions', 'url' => home_url('/industries/'), 'description' => 'Find solutions by sector.'],
+		['label' => 'Knowledge guides', 'url' => home_url('/guides/'), 'description' => 'Read specification guides.'],
+		['label' => 'Contact us', 'url' => home_url('/contact/'), 'description' => 'Request a quotation.'],
+	]]); ?>
 </main>
 <?php get_footer(); ?>

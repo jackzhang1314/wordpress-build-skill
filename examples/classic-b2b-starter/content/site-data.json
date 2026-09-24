@@ -311,7 +311,7 @@
     "contact": {
       "title": "Contact & Request for Quotation",
       "slug": "contact",
-      "content": "<p>Send your drawings, a lighting schedule or a simple description of the project. Our export team replies with photometric recommendations and itemised pricing within one working day.</p>[cleanroom_rfq_form]"
+      "content": "<p>Send your drawings, a lighting schedule or a simple description of the project. Our export team replies with photometric recommendations and itemised pricing within one working day.</p>[starter_rfq_form]"
     }
   }
 }

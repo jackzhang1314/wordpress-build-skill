@@ -1,5 +1,5 @@
 <?php
-namespace Cleanroom\Theme;
+namespace Starter\Theme;
 defined('ABSPATH') || exit;
 
 require_once get_theme_file_path('inc/components.php');
@@ -11,13 +11,13 @@ add_action('after_setup_theme', static function (): void {
     add_theme_support('editor-styles');
     add_editor_style('style.css');
     add_theme_support('html5', ['search-form', 'gallery', 'caption', 'style', 'script']);
-    register_nav_menus(['primary' => __('Primary navigation', 'harness-cleanroom')]);
+    register_nav_menus(['primary' => __('Primary navigation', 'b2b-starter')]);
 });
 
 add_action('wp_enqueue_scripts', static function (): void {
     $ver = wp_get_theme()->get('Version');
-    wp_enqueue_style('cleanroom', get_stylesheet_uri(), [], $ver);
-    wp_enqueue_script('cleanroom-nav', get_theme_file_uri('assets/js/nav.js'), [], $ver, ['in_footer' => true]);
+    wp_enqueue_style('starter', get_stylesheet_uri(), [], $ver);
+    wp_enqueue_script('starter-nav', get_theme_file_uri('assets/js/nav.js'), [], $ver, ['in_footer' => true]);
 });
 
 add_action('wp_head', static function (): void {
@@ -33,9 +33,9 @@ add_action('wp_head', static function (): void {
    archive pages. */
 add_filter('nav_menu_css_class', static function (array $classes, $item): array {
     $map = [
-        'cleanroom_product' => 'products',
-        'cleanroom_industry' => 'industries',
-        'cleanroom_guide' => 'guides',
+        'starter_product' => 'products',
+        'starter_industry' => 'industries',
+        'starter_guide' => 'guides',
     ];
     $type = '';
     if (is_singular(array_keys($map))) {
@@ -43,7 +43,7 @@ add_filter('nav_menu_css_class', static function (array $classes, $item): array 
     } elseif (is_post_type_archive(array_keys($map))) {
         $type = get_query_var('post_type');
     } elseif (is_tax('product_collection')) {
-        $type = 'cleanroom_product';
+        $type = 'starter_product';
     }
     if ($type === '' || !isset($map[$type])) return $classes;
     $candidates = [trailingslashit((string) get_post_type_archive_link($type))];
@@ -152,29 +152,29 @@ function breadcrumbs(): void {
     $trail = [['label' => 'Home', 'url' => home_url('/')]];
     $current = '';
 
-    if (is_singular('cleanroom_product')) {
-        $trail[] = ['label' => 'Products', 'url' => get_post_type_archive_link('cleanroom_product')];
+    if (is_singular('starter_product')) {
+        $trail[] = ['label' => 'Products', 'url' => get_post_type_archive_link('starter_product')];
         $terms = get_the_terms(get_the_ID(), 'product_collection');
         if (is_array($terms) && $terms && !is_wp_error($terms[0])) {
             $trail[] = ['label' => $terms[0]->name, 'url' => get_term_link($terms[0])];
         }
         $current = get_the_title();
-    } elseif (is_singular('cleanroom_industry')) {
-        $trail[] = ['label' => 'Industries', 'url' => get_post_type_archive_link('cleanroom_industry')];
+    } elseif (is_singular('starter_industry')) {
+        $trail[] = ['label' => 'Industries', 'url' => get_post_type_archive_link('starter_industry')];
         $current = get_the_title();
-    } elseif (is_singular('cleanroom_guide')) {
-        $trail[] = ['label' => 'Knowledge', 'url' => get_post_type_archive_link('cleanroom_guide')];
+    } elseif (is_singular('starter_guide')) {
+        $trail[] = ['label' => 'Knowledge', 'url' => get_post_type_archive_link('starter_guide')];
         $current = get_the_title();
     } elseif (is_singular()) {
         $current = get_the_title();
-    } elseif (is_post_type_archive('cleanroom_product')) {
+    } elseif (is_post_type_archive('starter_product')) {
         $current = 'Product catalogue';
-    } elseif (is_post_type_archive('cleanroom_industry')) {
+    } elseif (is_post_type_archive('starter_industry')) {
         $current = 'Industry solutions';
-    } elseif (is_post_type_archive('cleanroom_guide')) {
+    } elseif (is_post_type_archive('starter_guide')) {
         $current = 'Knowledge guides';
     } elseif (is_tax()) {
-        $trail[] = ['label' => 'Products', 'url' => get_post_type_archive_link('cleanroom_product')];
+        $trail[] = ['label' => 'Products', 'url' => get_post_type_archive_link('starter_product')];
         $current = single_term_title('', false);
     } elseif (is_search()) {
         $current = 'Search results';
@@ -266,34 +266,34 @@ function term_icon_svg(string $name): string {
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' . $path . '</svg>';
 }
 add_action('widgets_init', function () {
-    register_sidebar(['name' => __('Sidebar', 'harness-cleanroom'), 'id' => 'sidebar-1', 'before_widget' => '<section class="widget">', 'after_widget' => '</section>', 'before_title' => '<h2 class="widget-title">', 'after_title' => '</h2>']);
+    register_sidebar(['name' => __('Sidebar', 'b2b-starter'), 'id' => 'sidebar-1', 'before_widget' => '<section class="widget">', 'after_widget' => '</section>', 'before_title' => '<h2 class="widget-title">', 'after_title' => '</h2>']);
 });
 
 /**
  * Customizer: site-wide editable settings.
- * All values accessible via Cleanroom\Theme\get_setting( $key ).
+ * All values accessible via Starter\Theme\get_setting( $key ).
  */
 add_action('customize_register', function ($wp_customize) {
     $wp_customize->add_section('contact_info', [
-        'title'    => __('Contact & Brand Info', 'harness-cleanroom'),
+        'title'    => __('Contact & Brand Info', 'b2b-starter'),
         'priority' => 30,
     ]);
     $fields = [
-        'contact_email'    => ['label' => __('Contact Email', 'harness-cleanroom'), 'default' => 'sales@yourcompany.com', 'type' => 'text'],
-        'contact_phone'    => ['label' => __('Phone', 'harness-cleanroom'), 'default' => '', 'type' => 'text'],
-        'contact_hours'    => ['label' => __('Working Hours', 'harness-cleanroom'), 'default' => 'Mon–Fri, 9:00–18:00 (GMT+8)', 'type' => 'text'],
-        'topbar_text'      => ['label' => __('Topbar Text', 'harness-cleanroom'), 'default' => '', 'type' => 'text'],
-        'footer_about'     => ['label' => __('Footer About Text', 'harness-cleanroom'), 'default' => '', 'type' => 'textarea'],
-        'social_linkedin'  => ['label' => __('LinkedIn URL', 'harness-cleanroom'), 'default' => '', 'type' => 'url'],
-        'social_youtube'   => ['label' => __('YouTube URL', 'harness-cleanroom'), 'default' => '', 'type' => 'url'],
-        'stat_1_value'     => ['label' => __('Stat 1 Value', 'harness-cleanroom'), 'default' => '', 'type' => 'text'],
-        'stat_1_label'     => ['label' => __('Stat 1 Label', 'harness-cleanroom'), 'default' => '', 'type' => 'text'],
-        'stat_2_value'     => ['label' => __('Stat 2 Value', 'harness-cleanroom'), 'default' => '', 'type' => 'text'],
-        'stat_2_label'     => ['label' => __('Stat 2 Label', 'harness-cleanroom'), 'default' => '', 'type' => 'text'],
-        'stat_3_value'     => ['label' => __('Stat 3 Value', 'harness-cleanroom'), 'default' => '', 'type' => 'text'],
-        'stat_3_label'     => ['label' => __('Stat 3 Label', 'harness-cleanroom'), 'default' => '', 'type' => 'text'],
-        'cta_title'        => ['label' => __('CTA Title', 'harness-cleanroom'), 'default' => '', 'type' => 'text'],
-        'cta_text'         => ['label' => __('CTA Text', 'harness-cleanroom'), 'default' => '', 'type' => 'textarea'],
+        'contact_email'    => ['label' => __('Contact Email', 'b2b-starter'), 'default' => 'sales@yourcompany.com', 'type' => 'text'],
+        'contact_phone'    => ['label' => __('Phone', 'b2b-starter'), 'default' => '', 'type' => 'text'],
+        'contact_hours'    => ['label' => __('Working Hours', 'b2b-starter'), 'default' => 'Mon–Fri, 9:00–18:00 (GMT+8)', 'type' => 'text'],
+        'topbar_text'      => ['label' => __('Topbar Text', 'b2b-starter'), 'default' => '', 'type' => 'text'],
+        'footer_about'     => ['label' => __('Footer About Text', 'b2b-starter'), 'default' => '', 'type' => 'textarea'],
+        'social_linkedin'  => ['label' => __('LinkedIn URL', 'b2b-starter'), 'default' => '', 'type' => 'url'],
+        'social_youtube'   => ['label' => __('YouTube URL', 'b2b-starter'), 'default' => '', 'type' => 'url'],
+        'stat_1_value'     => ['label' => __('Stat 1 Value', 'b2b-starter'), 'default' => '', 'type' => 'text'],
+        'stat_1_label'     => ['label' => __('Stat 1 Label', 'b2b-starter'), 'default' => '', 'type' => 'text'],
+        'stat_2_value'     => ['label' => __('Stat 2 Value', 'b2b-starter'), 'default' => '', 'type' => 'text'],
+        'stat_2_label'     => ['label' => __('Stat 2 Label', 'b2b-starter'), 'default' => '', 'type' => 'text'],
+        'stat_3_value'     => ['label' => __('Stat 3 Value', 'b2b-starter'), 'default' => '', 'type' => 'text'],
+        'stat_3_label'     => ['label' => __('Stat 3 Label', 'b2b-starter'), 'default' => '', 'type' => 'text'],
+        'cta_title'        => ['label' => __('CTA Title', 'b2b-starter'), 'default' => '', 'type' => 'text'],
+        'cta_text'         => ['label' => __('CTA Text', 'b2b-starter'), 'default' => '', 'type' => 'textarea'],
     ];
     foreach ($fields as $key => $args) {
         $wp_customize->add_setting($key, [

@@ -14,7 +14,7 @@ WordPress route/template hierarchy
 
 ## Layers
 
-1. **Content schema** — CPTs (`cleanroom_product`, `cleanroom_industry`, `cleanroom_guide`), taxonomies, ACF fields, options. This is the admin-editable data contract.
+1. **Content schema** — CPTs (`starter_product`, `starter_industry`, `starter_guide`), taxonomies, ACF fields, options. This is the admin-editable data contract.
 2. **Design tokens** — CSS custom properties for brand color, text, surfaces, spacing, radius, shadow, and typography. No component hardcodes brand values.
 3. **Components** — `theme/inc/components.php` owns reusable presentation functions. Loop-specific cards and global header/footer live in `theme/parts/`.
 4. **Templates** — `front-page.php`, archives, singles, taxonomy, pages. They query data only when necessary and compose components; they do not repeat section markup.
@@ -27,6 +27,13 @@ WordPress route/template hierarchy
 | `component_page_head` | eyebrow, title, description, breadcrumbs | Inner-page H1 and breadcrumb placement |
 | `component_section_heading` | eyebrow, title, description, link | Section label/heading hierarchy |
 | `component_cta_band` | eyebrow, title, text, button | Primary conversion block |
+| `component_card_grid` | query_args/main_query, title_tag, pagination | Card query and empty state |
+| `component_feature_grid` | label/value rows | Capability or benefit grid |
+| `component_pill_list` | text items | Applications and tags |
+| `component_faq` | question/answer rows | FAQ disclosure list |
+| `component_callout` | title, text, variant | Challenge/outcome highlight |
+| `component_spec_table` | label/value rows | Product specification table |
+| `component_link_cards` | label/url/description links | 404/recovery destinations |
 | `component_stat_strip` | value/label items | Homepage proof strip |
 | `parts/card` | loop item + `title_tag` | Product/solution/guide card |
 | `parts/site-header` | settings + navigation | Document body header |
@@ -39,6 +46,7 @@ WordPress route/template hierarchy
 - Header/footer/global settings use Customizer or ACF options.
 - Repeated presentation is changed in one component, not copied across templates.
 - Placeholder media states the intended size/ratio; it does not invent a fake product image.
+- Component markup is added only once in `theme/inc/components.php`; page templates pass data and compose it.
 - A visual or structural change must bump the theme version and pass browser verification.
 
 ## Next hardening

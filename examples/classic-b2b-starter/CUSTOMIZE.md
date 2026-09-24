@@ -46,9 +46,9 @@ Edit `content/site-data.json` and re-seed, or edit in WP Admin:
 
 | Post type | Slug base | Archive |
 |---|---|---|
-| `cleanroom_product` | `/products/` | `/products/` |
-| `cleanroom_industry` | `/industries/` | `/industries/` |
-| `cleanroom_guide` | `/guides/` | `/guides/` |
+| `starter_product` | `/products/` | `/products/` |
+| `starter_industry` | `/industries/` | `/industries/` |
+| `starter_guide` | `/guides/` | `/guides/` |
 | `product_collection` (taxonomy) | `/product-category/` | Category pages |
 
 Each product has ACF fields: `wattage`, `efficacy`, `ip_rating`, `warranty`, `specs` (textarea — one `Label | Value` per line).
@@ -89,9 +89,9 @@ The contact form uses Fluent Forms (form ID 3). To change fields:
 
 | File | Reason |
 |---|---|
-| `plugin/harness-cleanroom-model.php` CPT slugs | Breaks theme template file naming (`single-cleanroom_product.php` etc.) |
-| Theme class names (`Cleanroom\Theme\…`) | Referenced across templates |
+| `plugin/starter-model.php` CPT slugs | Breaks theme template file naming (`single-starter_product.php` etc.) |
+| Theme class names (`Starter\Theme\…`) | Referenced across templates |
 | `DESIGN.md` token names | AI-generated pages follow this document |
 | `content/media-map.json` structure | The seed script depends on the format |
 
-If you must rename a CPT, search-and-replace `cleanroom_product` → `your_product` and rename the corresponding template files together.
+If you must rename a CPT, search-and-replace `starter_product` → `your_product` and rename the corresponding template files together.

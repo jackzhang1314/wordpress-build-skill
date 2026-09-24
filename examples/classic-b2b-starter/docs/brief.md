@@ -1,4 +1,4 @@
-# harness-cleanroom brief
+# b2b-starter brief
 
 - Business goal:
 - Buyers:

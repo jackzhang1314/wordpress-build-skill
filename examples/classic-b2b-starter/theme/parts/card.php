@@ -2,7 +2,7 @@
 /**
  * Universal content card. $args: title_tag (h2|h3), kind (product|industry|guide|post).
  *
- * @package harness-cleanroom
+ * @package b2b-starter
  */
 
 $kind = $args['kind'] ?? (string) get_post_type();
@@ -22,7 +22,7 @@ if ($kind === 'product') {
 }
 ?>
 <article class="card">
-	<a class="card-media" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true"><?php Cleanroom\Theme\card_media($kind); ?></a>
+	<a class="card-media" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true"><?php Starter\Theme\card_media($kind); ?></a>
 	<div class="card-body">
 		<?php if ($chip !== '') : ?><span class="card-chip"><?php echo esc_html($chip); ?></span><?php endif; ?>
 		<<?php echo esc_html($title_tag); ?> class="card-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></<?php echo esc_html($title_tag); ?>>

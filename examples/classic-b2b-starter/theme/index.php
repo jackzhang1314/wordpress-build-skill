@@ -2,20 +2,16 @@
 /**
  * News archive / blog home.
  *
- * @package harness-cleanroom
+ * @package b2b-starter
  */
 
 get_header(); ?>
 <main id="main" class="shell">
-	<header class="page-head">
-		<?php Cleanroom\Theme\breadcrumbs(); ?>
-		<p class="eyebrow">Company</p>
-		<h1>News &amp; updates</h1>
-		<p>Production, certifications and exhibition notes from the team.</p>
-	</header>
-	<?php if (have_posts()) : ?>
-		<div class="grid archive-grid"><?php while (have_posts()) : the_post(); get_template_part('parts/card'); endwhile; ?></div>
-		<?php the_posts_pagination(['prev_text' => '←', 'next_text' => '→']);
-	endif; ?>
+	<?php Starter\Theme\component_page_head([
+		'eyebrow' => 'Company',
+		'title' => 'News & updates',
+		'description' => 'Production, certifications and exhibition notes from the team.',
+	]); ?>
+	<?php Starter\Theme\component_card_grid(['main_query' => true, 'pagination' => true]); ?>
 </main>
 <?php get_footer(); ?>

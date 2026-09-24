@@ -1,39 +1,39 @@
 <?php
 /**
- * Plugin Name: harness-cleanroom Content Model
+ * Plugin Name: b2b-starter Content Model
  * Description: Full B2B information architecture: products, industries, guides and RFQ capture.
  * Version: 2.0.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Requires Plugins: advanced-custom-fields
  */
-namespace Cleanroom\Model;
+namespace Starter\Model;
 
 defined('ABSPATH') || exit;
 
 function register_model(): void {
-    register_post_type('cleanroom_product', [
-        'labels' => ['name' => __('Products', 'harness-cleanroom'), 'singular_name' => __('Product', 'harness-cleanroom')],
+    register_post_type('starter_product', [
+        'labels' => ['name' => __('Products', 'b2b-starter'), 'singular_name' => __('Product', 'b2b-starter')],
         'public' => true, 'show_in_rest' => true, 'has_archive' => 'products',
         'rewrite' => ['slug' => 'products'], 'menu_icon' => 'dashicons-lightbulb',
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields'],
     ]);
 
-    register_taxonomy('product_collection', ['cleanroom_product'], [
-        'labels' => ['name' => __('Product Categories', 'harness-cleanroom'), 'singular_name' => __('Product Category', 'harness-cleanroom')],
+    register_taxonomy('product_collection', ['starter_product'], [
+        'labels' => ['name' => __('Product Categories', 'b2b-starter'), 'singular_name' => __('Product Category', 'b2b-starter')],
         'public' => true, 'hierarchical' => true, 'show_in_rest' => true,
         'show_admin_column' => true, 'rewrite' => ['slug' => 'product-category'],
     ]);
 
-    register_post_type('cleanroom_industry', [
-        'labels' => ['name' => __('Industry Solutions', 'harness-cleanroom'), 'singular_name' => __('Industry Solution', 'harness-cleanroom')],
+    register_post_type('starter_industry', [
+        'labels' => ['name' => __('Industry Solutions', 'b2b-starter'), 'singular_name' => __('Industry Solution', 'b2b-starter')],
         'public' => true, 'show_in_rest' => true, 'has_archive' => 'industries',
         'rewrite' => ['slug' => 'industries'], 'menu_icon' => 'dashicons-building',
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields'],
     ]);
 
-    register_post_type('cleanroom_guide', [
-        'labels' => ['name' => __('Knowledge Guides', 'harness-cleanroom'), 'singular_name' => __('Knowledge Guide', 'harness-cleanroom')],
+    register_post_type('starter_guide', [
+        'labels' => ['name' => __('Knowledge Guides', 'b2b-starter'), 'singular_name' => __('Knowledge Guide', 'b2b-starter')],
         'public' => true, 'show_in_rest' => true, 'has_archive' => 'guides',
         'rewrite' => ['slug' => 'guides'], 'menu_icon' => 'dashicons-book',
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields'],
@@ -45,7 +45,7 @@ add_action('init', __NAMESPACE__ . '\\register_model');
 
 register_activation_hook(__FILE__, static function (): void { register_model(); flush_rewrite_rules(); });
 register_deactivation_hook(__FILE__, static function (): void {
-    foreach (['cleanroom_product', 'cleanroom_industry', 'cleanroom_guide'] as $type) unregister_post_type($type);
+    foreach (['starter_product', 'starter_industry', 'starter_guide'] as $type) unregister_post_type($type);
     unregister_taxonomy('product_collection');
     flush_rewrite_rules();
 });
@@ -53,11 +53,11 @@ register_deactivation_hook(__FILE__, static function (): void {
 add_action('init', static function (): void {
     // RFQ form embed. Maps the stable placeholder shortcode to the Fluent Form
     // instance so editors never need to know internal form IDs.
-    add_shortcode('cleanroom_rfq_form', static function (array $atts = []): string {
-        $atts = shortcode_atts(['id' => '3'], $atts, 'cleanroom_rfq_form');
+    add_shortcode('starter_rfq_form', static function (array $atts = []): string {
+        $atts = shortcode_atts(['id' => '3'], $atts, 'starter_rfq_form');
         $form_id = (string) $atts['id'];
         if (!shortcode_exists('fluentform')) {
-            return '<p>' . esc_html__('Install Fluent Forms to enable the quotation form.', 'harness-cleanroom') . '</p>';
+            return '<p>' . esc_html__('Install Fluent Forms to enable the quotation form.', 'b2b-starter') . '</p>';
         }
         return do_shortcode('[fluentform id="' . esc_attr($form_id) . '"]');
     });
@@ -67,25 +67,25 @@ add_action('acf/init', static function (): void {
     if (!function_exists('acf_add_local_field_group')) return;
 
     acf_add_local_field_group([
-        'key' => 'group_cleanroom_product', 'title' => 'Product specifications', 'show_in_rest' => true,
+        'key' => 'group_starter_product', 'title' => 'Product specifications', 'show_in_rest' => true,
         'fields' => [
-            ['key' => 'field_nova_wattage', 'name' => 'wattage', 'label' => 'Wattage range', 'type' => 'text'],
-            ['key' => 'field_nova_efficacy', 'name' => 'efficacy', 'label' => 'Luminous efficacy', 'type' => 'text'],
-            ['key' => 'field_nova_ip', 'name' => 'ip_rating', 'label' => 'IP rating', 'type' => 'text'],
-            ['key' => 'field_nova_warranty', 'name' => 'warranty', 'label' => 'Warranty', 'type' => 'text'],
-            ['key' => 'field_nova_spec_table', 'name' => 'spec_table', 'label' => 'Specification table', 'type' => 'textarea',
+            ['key' => 'field_starter_wattage', 'name' => 'wattage', 'label' => 'Wattage range', 'type' => 'text'],
+            ['key' => 'field_starter_efficacy', 'name' => 'efficacy', 'label' => 'Luminous efficacy', 'type' => 'text'],
+            ['key' => 'field_starter_ip', 'name' => 'ip_rating', 'label' => 'IP rating', 'type' => 'text'],
+            ['key' => 'field_starter_warranty', 'name' => 'warranty', 'label' => 'Warranty', 'type' => 'text'],
+            ['key' => 'field_starter_spec_table', 'name' => 'spec_table', 'label' => 'Specification table', 'type' => 'textarea',
              'rows' => 8, 'instructions' => 'One row per line as: Label | Value'],
         ],
-        'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'cleanroom_product']]],
+        'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'starter_product']]],
     ]);
 
     acf_add_local_field_group([
-        'key' => 'group_cleanroom_industry', 'title' => 'Industry details', 'show_in_rest' => true,
+        'key' => 'group_starter_industry', 'title' => 'Industry details', 'show_in_rest' => true,
         'fields' => [
-            ['key' => 'field_nova_industry_challenge', 'name' => 'challenge', 'label' => 'Lighting challenge', 'type' => 'textarea'],
-            ['key' => 'field_nova_industry_outcome', 'name' => 'outcome', 'label' => 'Project outcome', 'type' => 'textarea'],
+            ['key' => 'field_starter_industry_challenge', 'name' => 'challenge', 'label' => 'Lighting challenge', 'type' => 'textarea'],
+            ['key' => 'field_starter_industry_outcome', 'name' => 'outcome', 'label' => 'Project outcome', 'type' => 'textarea'],
         ],
-        'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'cleanroom_industry']]],
+        'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'starter_industry']]],
     ]);
 
     // Rich category content (free ACF term meta; textarea line formats — no repeaters).
@@ -111,7 +111,7 @@ add_action('acf/init', static function (): void {
             ['key' => 'field_p_highlights', 'name' => 'product_highlights', 'label' => 'Key selling points', 'type' => 'textarea', 'rows' => 6,
              'instructions' => 'One per line. Rendered as a checklist next to the specifications. Leave empty to hide.'],
         ],
-        'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'cleanroom_product']]],
+        'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'starter_product']]],
     ]);
 
     // Site-wide factory profile (editable under one options screen).

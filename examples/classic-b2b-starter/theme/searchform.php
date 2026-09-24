@@ -2,7 +2,7 @@
 /**
  * Styled search form.
  *
- * @package harness-cleanroom
+ * @package b2b-starter
  */
 
 ?>
