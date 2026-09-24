@@ -7,7 +7,7 @@
 
 get_header(); ?>
 <main id="main" class="shell">
-<?php while (have_posts()) : the_post(); $home = Starter\Theme\homepage_data(); ?>
+<?php while (have_posts()) : the_post(); $home = Starter\Theme\homepage_data(); $factory = Starter\Theme\factory_profile_data(); ?>
 	<?php get_template_part('parts/hero', null, [
 		'eyebrow' => $home['overline'],
 		'description' => $home['description'] ?: get_the_excerpt(),
@@ -15,6 +15,7 @@ get_header(); ?>
 	]); ?>
 <?php endwhile; ?>
 <?php Starter\Theme\component_stat_strip(['items' => $home['stats']]); ?>
+<?php Starter\Theme\component_factory_strip(['proof' => $factory['proof'], 'certifications' => $factory['certifications'], 'markets' => $factory['markets']]); ?>
 <?php if ($home['sections']['applications']['enabled']) : ?>
 <section class="section home-categories">
 	<?php Starter\Theme\component_section_heading([
@@ -51,6 +52,13 @@ get_header(); ?>
 	]]); ?>
 </section>
 <?php endif; ?>
+<?php Starter\Theme\component_factory_capability([
+	'intro' => $factory['intro'],
+	'capabilities' => $factory['capabilities'],
+	'process' => $factory['process'],
+	'quality_tests' => $factory['quality_tests'],
+	'certifications' => $factory['certifications'],
+]); ?>
 <?php if ($home['sections']['guides']['enabled']) : ?>
 <section class="section home-guides">
 	<?php Starter\Theme\component_section_heading([

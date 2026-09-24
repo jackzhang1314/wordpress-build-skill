@@ -2,7 +2,7 @@
 /**
  * Plugin Name: b2b-starter Content Model
  * Description: Full B2B information architecture: products, industries, guides and RFQ capture.
- * Version: 2.6.0
+ * Version: 2.7.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Requires Plugins: advanced-custom-fields
@@ -335,6 +335,10 @@ add_action('acf/init', static function (): void {
             $field('field_f_intro', 'factory_intro', 'Factory introduction', 'textarea', ['rows' => 4, 'instructions' => 'Shown where the design requests a company proof block.']),
             $field('field_f_stats', 'factory_stats', 'Factory facts', 'textarea', array_merge(['rows' => 6], $rows_help('Use Value | Label.'))),
             $field('field_f_caps', 'factory_capabilities', 'Capabilities', 'textarea', array_merge(['rows' => 8], $rows_help('Use Title | Description.'))),
+            $field('field_f_certifications', 'factory_certifications', 'Certifications & standards', 'textarea', array_merge(['rows' => 6], $rows_help('Use Name | Note.'))),
+            $field('field_f_process', 'factory_process', 'Manufacturing process', 'textarea', array_merge(['rows' => 8], $rows_help('Use Step | Description.'))),
+            $field('field_f_quality_tests', 'factory_quality_tests', 'Quality tests', 'textarea', array_merge(['rows' => 6], $rows_help('Enter a quality-control step.'))),
+            $field('field_f_markets', 'factory_markets', 'Export markets', 'text'),
         ],
         'location' => [[['param' => 'options_page', 'operator' => '==', 'value' => 'factory-profile']]],
     ]);

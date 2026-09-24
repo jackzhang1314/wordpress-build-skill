@@ -483,3 +483,63 @@ function component_related_blog_cards(array $props = []): void {
 	wp_reset_postdata();
 	echo '</div>';
 }
+
+/** Compact factory proof strip for core conversion pages. */
+function component_factory_strip(array $props = []): void {
+	$proof = array_values(array_filter((array) ($props['proof'] ?? []), static fn ($row): bool => trim((string) ($row['value'] ?? '')) !== ''));
+	$certifications = array_values(array_filter(array_map('trim', (array) ($props['certifications'] ?? []))));
+	$markets = (string) ($props['markets'] ?? '');
+	if (!$proof && !$certifications && $markets === '') return;
+
+	echo '<section class="factory-strip" aria-label="Factory and export proof"><div class="factory-strip-grid">';
+	foreach ($proof as $row) {
+		printf('<div><strong>%s</strong><span>%s</span></div>', esc_html((string) $row['value']), esc_html((string) ($row['label'] ?? '')));
+	}
+	if ($markets !== '') {
+		echo '<div><strong>Export markets</strong><span>' . esc_html($markets) . '</span></div>';
+	}
+	echo '</div>';
+	if ($certifications) {
+		echo '<div class="factory-certifications">';
+		foreach ($certifications as $item) echo '<span>' . esc_html((string) $item) . '</span>';
+		echo '</div>';
+	}
+	echo '</section>';
+}
+
+/** Manufacturing and quality-control module for core templates. */
+function component_factory_capability(array $props = []): void {
+	$intro = (string) ($props['intro'] ?? '');
+	$capabilities = (array) ($props['capabilities'] ?? []);
+	$process = (array) ($props['process'] ?? []);
+	$quality_tests = (array) ($props['quality_tests'] ?? []);
+	$certifications = (array) ($props['certifications'] ?? []);
+	if (!$intro && !$capabilities && !$process && !$quality_tests && !$certifications) return;
+
+	echo '<section class="section factory-capability" aria-label="Manufacturing and quality control">';
+	component_section_heading([
+		'eyebrow' => (string) ($props['eyebrow'] ?? 'Manufacturing'),
+		'title' => (string) ($props['title'] ?? 'Factory and quality control'),
+		'description' => $intro,
+	]);
+	if ($capabilities) component_feature_grid(['rows' => $capabilities, 'class' => 'capability-grid']);
+	if ($process) {
+		echo '<p class="sub-heading">Production process</p>';
+		component_process_steps(['rows' => $process]);
+	}
+	if ($quality_tests || $certifications) {
+		echo '<div class="quality-grid">';
+		if ($quality_tests) {
+			echo '<div class="quality-panel"><p class="panel-title">Quality checks</p>';
+			component_check_list(['items' => $quality_tests]);
+			echo '</div>';
+		}
+		if ($certifications) {
+			echo '<div class="quality-panel"><p class="panel-title">Standards &amp; certifications</p><ul class="app-list">';
+			foreach ($certifications as $item) echo '<li>' . esc_html((string) $item) . '</li>';
+			echo '</ul></div>';
+		}
+		echo '</div>';
+	}
+	echo '</section>';
+}

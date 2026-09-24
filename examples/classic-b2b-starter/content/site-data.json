@@ -594,7 +594,12 @@
     "industry_archive_description": "Application-led recommendations for common commercial and industrial projects.",
     "guide_archive_description": "Practical buying and specification guides for international project buyers.",
     "news_archive_description": "Company, production and product updates.",
-    "not_found_description": "The page may have moved. Use the routes below to return to the catalogue."
+    "not_found_description": "The page may have moved. Use the routes below to return to the catalogue.",
+    "factory_intro": "A factory-controlled production workflow helps buyers stabilise quality, documentation and delivery across repeat projects.",
+    "factory_certifications": "ISO 9001-ready process\nCE\nRoHS\nSAA\nETL options\nDALI / 0-10V",
+    "factory_process": "Specification review | Confirm application, environment, standards and project constraints.\nProduction planning | Match configuration, components and capacity to the confirmed order.\nAssembly & testing | Complete assembly, ageing, driver burn-in and photometric checks.\nPacking & export | Prepare documentation, packing and loading support for destination markets.",
+    "factory_quality_tests": "Incoming component inspection\nDriver burn-in testing\nPhotometric and colour checks\nFinal assembly inspection\nExport packing review",
+    "factory_markets": "EU / AU / NA export projects"
   },
   "page_templates": {
     "about": "page-templates/about.php",

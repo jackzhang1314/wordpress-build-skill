@@ -6,7 +6,7 @@
  */
 
 get_header(); ?>
-<main id="main" class="shell"><?php while (have_posts()) : the_post(); $product = Starter\Theme\product_data(); ?>
+<main id="main" class="shell"><?php while (have_posts()) : the_post(); $product = Starter\Theme\product_data(); $factory = Starter\Theme\factory_profile_data(); ?>
 	<?php Starter\Theme\breadcrumbs(); ?>
 
 	<section class="product-hero" aria-label="Product hero">
@@ -22,6 +22,8 @@ get_header(); ?>
 			'cta' => $product['cta'],
 		]); ?>
 	</section>
+
+	<?php Starter\Theme\component_factory_strip(['proof' => $factory['proof'], 'certifications' => $factory['certifications'], 'markets' => $factory['markets']]); ?>
 
 	<?php if ($product['specifications']) : ?>
 	<section class="section" aria-label="Product specifications">

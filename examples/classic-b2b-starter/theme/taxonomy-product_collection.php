@@ -7,7 +7,7 @@
 
 get_header(); ?>
 <main id="main" class="shell">
-<?php $category = Starter\Theme\product_category_data(); ?>
+<?php $category = Starter\Theme\product_category_data(); $factory = Starter\Theme\factory_profile_data(); ?>
 
 	<?php Starter\Theme\breadcrumbs(); ?>
 	<?php Starter\Theme\component_category_hero([
@@ -19,6 +19,8 @@ get_header(); ?>
 		'cta' => $category['cta'],
 		'all_url' => '#selection-guide',
 	]); ?>
+
+	<?php Starter\Theme\component_factory_strip(['proof' => $factory['proof'], 'certifications' => $factory['certifications'], 'markets' => $factory['markets']]); ?>
 
 	<?php Starter\Theme\component_anchor_nav(['links' => [
 		['label' => 'Products', 'url' => '#products'],
@@ -80,6 +82,16 @@ get_header(); ?>
 		<?php if ($category['use_cases']) Starter\Theme\component_feature_grid(['rows' => $category['use_cases'], 'class' => 'use-case-grid']); ?>
 	</section>
 	<?php endif; ?>
+
+	<?php Starter\Theme\component_factory_capability([
+		'eyebrow' => 'Factory support',
+		'title' => 'Manufacturing capability for this range',
+		'intro' => $factory['intro'],
+		'capabilities' => $factory['capabilities'],
+		'process' => $factory['process'],
+		'quality_tests' => $factory['quality_tests'],
+		'certifications' => $factory['certifications'],
+	]); ?>
 
 	<?php if ($category['standards'] || $category['process'] || $category['checklist']) : ?>
 	<section id="standards" class="section">

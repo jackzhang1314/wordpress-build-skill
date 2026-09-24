@@ -549,3 +549,31 @@ main>.section:first-of-type{margin-top:clamp(56px,6vw,88px)}
   .article-body{font-size:16px}
   .author-box{padding:20px}
 }
+
+/* Factory proof and core-template capability modules */
+.factory-strip{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-top:34px;padding:22px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-card)}
+.factory-strip-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.factory-strip-grid strong{display:block;color:var(--ink);font-size:clamp(1.1rem,2vw,1.35rem);font-weight:750;letter-spacing:-.03em;font-feature-settings:"tnum"}
+.factory-strip-grid span{display:block;margin-top:4px;color:var(--muted);font-size:13px}
+.factory-certifications{display:flex;flex-wrap:wrap;gap:8px;border-top:1px solid var(--line);padding-top:14px}
+.factory-certifications span{padding:6px 10px;border-radius:999px;background:var(--surface);color:var(--muted);font-size:12px;font-weight:650}
+.factory-capability .sub-heading{margin:34px 0 16px;color:var(--ink);font-size:1.15rem;font-weight:700}
+.capability-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.quality-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:28px}
+.quality-panel{padding:24px;border:1px solid var(--line);border-radius:var(--radius-s);background:#fff}
+.quality-panel .panel-title{margin:0 0 14px;color:var(--ink);font-size:15px;font-weight:750}
+.about-hero{max-width:900px;padding:clamp(42px,5vw,68px) 0 30px}
+.about-leader{margin:20px 0 0;color:var(--muted);font-size:18px}
+.about-story{max-width:82ch;margin-top:36px;font-size:17px;line-height:1.75}
+.about-capabilities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.contact-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:38px}
+.contact-path{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-card)}
+.contact-path h2{margin:0 0 8px;font-size:18px}
+.contact-path p{margin:0 0 14px;color:var(--muted);font-size:14.5px}
+@media(max-width:980px){
+  .factory-strip-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .capability-grid,.about-capabilities,.contact-paths,.quality-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .factory-strip-grid,.capability-grid,.about-capabilities,.contact-paths,.quality-grid{grid-template-columns:1fr}
+}

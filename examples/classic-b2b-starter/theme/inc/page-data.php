@@ -40,6 +40,27 @@ function enabled(string $name): bool {
     return $value === null ? true : (bool) $value;
 }
 
+function factory_profile_data(): array {
+    $proof = field_rows('factory_stats', 'option');
+    $capabilities = field_rows('factory_capabilities', 'option');
+    $certifications = lines('factory_certifications', 'option');
+    $process = rows('factory_process', 'option');
+    $quality_tests = lines('factory_quality_tests', 'option');
+    $markets = global_text('factory_markets');
+
+    return [
+        'intro' => global_text('factory_intro'),
+        'proof' => $proof,
+        'capabilities' => $capabilities,
+        'certifications' => $certifications,
+        'process' => $process,
+        'quality_tests' => $quality_tests,
+        'markets' => $markets,
+        'has_core_proof' => (bool) ($proof || $capabilities || $certifications || $markets),
+        'has_manufacturing' => (bool) ($capabilities || $process || $quality_tests),
+    ];
+}
+
 function homepage_data(): array {
     $factory = factory_defaults();
     $stats = [];
