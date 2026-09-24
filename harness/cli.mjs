@@ -11,7 +11,9 @@ import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
 import {isBlankMediaContract} from './lib/verify.mjs';
-import {captureScreenshots} from './lib/screenshots.mjs';
+import {captureScreenshots, detectChromeBin} from './lib/screenshots.mjs';
+import {launchCdpBrowser} from './lib/cdp-browser.mjs';
+import {defaultRfqFields, verifyRfqForm} from './lib/form-verify.mjs';
 import {assignTemplate, argValue, auditFields, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
 import {shellQuote} from './lib/ssh.mjs';
 import {rotateCredentials, showCredentials} from './lib/credentials.mjs';
@@ -43,8 +45,9 @@ Project commands:
   media [--force]         Import configured media sources
   content                 Upload the project seed package
   deploy                  check, backup, plugins, sync, seed, cache, verify
-  verify [--screenshots]  Verify live pages, database (and capture 390/768/1440 screenshots)
-  screenshot              Capture live routes at 390/768/1440 via headless Chrome
+  verify [--screenshots]  Verify live pages and database; --screenshots adds captures
+  screenshot              Capture smoke, template or full route sets
+  verify-form             Render, submit and verify a Fluent Forms RFQ entry
   status                  Show remote content counts and active plugins
   rollback <backup-id>    Restore theme/plugin files
   cache                   Clear the Hostinger site cache
@@ -58,7 +61,7 @@ Project commands:
   credentials show|rotate Hand over site credentials, or regenerate the admin password
   audit-fields           Verify every stored value has an admin-editable ACF field
   email-setup            Guided setup: create business mailbox + configure SMTP + test
-  smtp configure|test    Set up the sending channel (Brevo) and send a test email
+  smtp configure|test    Set up the sending channel and send a test email
   wp <args...>            Run WP-CLI through SSH
   ssh                     Open an SSH session
   open                    Open the Hostinger SSH-access page
@@ -191,7 +194,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
 
     const site = context(options);
     const {root, project, ssh} = site;
-    const remoteCommands = ['backup', 'media', 'content', 'verify', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials', 'audit-fields', 'smtp', 'email-setup'];
+    const remoteCommands = ['backup', 'media', 'content', 'verify', 'verify-form', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials', 'audit-fields', 'smtp', 'email-setup'];
     const exampleUnsafeCommands = [...remoteCommands, 'provision', 'configure-seo', 'setup'];
     if (project._isExample && exampleUnsafeCommands.includes(command)) {
       throw new Error('Copy project.example.json to project.json and fill site values before running this command');
@@ -350,7 +353,11 @@ add_action("phpmailer_init", function ($phpmailer) {
       if (args.includes('--screenshots')) {
         const outDir = argValue(args, '--out') ?? join(root, 'evidence', 'screenshots');
         const widths = (argValue(args, '--widths') ?? '390,768,1440').split(',').map(Number);
-        screenshots = await captureScreenshots({base, routes: project.livePages, widths, outDir});
+        const mode = argValue(args, '--mode') ?? 'full';
+        const routeArg = argValue(args, '--routes');
+        const routes = routeArg ? routeArg.split(',').map(route => (route.startsWith('/') ? route : `/${route}`)) : undefined;
+        const concurrency = Number(argValue(args, '--concurrency') ?? 4);
+        screenshots = await captureScreenshots({base, routes, widths, outDir, mode, project, concurrency});
         if (!json) {
           for (const shot of screenshots.skipped ? [] : screenshots.shots) {
             logger(`  ${shot.pass ? 'OK ' : 'FAIL'} ${shot.width} ${shot.route}: ${shot.bytes}B`);
@@ -373,10 +380,12 @@ add_action("phpmailer_init", function ($phpmailer) {
     if (command === 'screenshot') {
       if (!project.domain) throw new Error('project.domain is empty');
       const routeArg = argValue(args, '--routes');
-      const routes = routeArg ? routeArg.split(',').map(route => (route.startsWith('/') ? route : `/${route}`)) : project.livePages;
       const widths = (argValue(args, '--widths') ?? '390,768,1440').split(',').map(Number);
       const outDir = argValue(args, '--out') ?? join(root, 'evidence', 'screenshots');
-      const result = await captureScreenshots({base, routes, widths, outDir});
+      const mode = argValue(args, '--mode') ?? 'smoke';
+      const routes = routeArg ? routeArg.split(',').map(route => (route.startsWith('/') ? route : `/${route}`)) : undefined;
+      const concurrency = Number(argValue(args, '--concurrency') ?? 4);
+      const result = await captureScreenshots({base, routes, widths, outDir, mode, project, concurrency});
       if (!json) {
         if (result.skipped) logger(`SKIP screenshots: ${result.reason}`);
         for (const shot of result.shots) logger(`  ${shot.pass ? 'OK ' : 'FAIL'} ${shot.width} ${shot.route}: ${shot.bytes}B`);
@@ -384,6 +393,32 @@ add_action("phpmailer_init", function ($phpmailer) {
       }
       outputResult(result, json, logger);
       return result.pass ? 0 : 1;
+    }
+    if (command === 'verify-form') {
+      if (!project.domain) throw new Error('project.domain is empty');
+      const route = argValue(args, '--route') ?? '/contact/';
+      const formId = Number(argValue(args, '--form-id') ?? 0);
+      const successText = argValue(args, '--success-text') ?? 'Thank you';
+      const timeoutMs = Number(argValue(args, '--timeout') ?? 25000);
+      const fieldsArg = argValue(args, '--fields');
+      const fields = fieldsArg ? JSON.parse(fieldsArg) : defaultRfqFields();
+      const browser = await launchCdpBrowser({chromeBin: detectChromeBin(), timeoutMs});
+      try {
+        const browserPage = await browser.newPage();
+        const result = await verifyRfqForm({
+          base, route, fields, formId, browserPage, successText, timeoutMs,
+          wp: input => ssh.wp(input),
+        });
+        if (!json) {
+          logger(`  ${result.inspection?.pass ? 'OK ' : 'FAIL'} form rendered on ${route}`);
+          logger(`  ${result.success ? 'OK ' : 'FAIL'} browser submission accepted`);
+          logger(`  ${result.increment > 0 ? 'OK ' : 'FAIL'} Fluent Forms entries: ${result.before} → ${result.after}`);
+        }
+        outputResult(result, json, logger);
+        return result.pass ? 0 : 1;
+      } finally {
+        browser.close();
+      }
     }
     if (command === 'deploy') {
       const report = await runCheck(site, json, logger);

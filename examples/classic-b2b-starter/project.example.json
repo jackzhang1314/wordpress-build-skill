@@ -31,6 +31,55 @@
     "/contact/",
     "/company-third-production-line/"
   ],
+  "screenshotModes": {
+    "smoke": [
+      "/",
+      "/products/",
+      "/product-category/industrial/",
+      "/products/ufo-highbay-150w/",
+      "/contact/"
+    ],
+    "templates": [
+      "/",
+      "/products/",
+      "/product-category/industrial/",
+      "/products/ufo-highbay-150w/",
+      "/industries/",
+      "/industries/warehouse-lighting/",
+      "/guides/",
+      "/guides/ip-ratings-explained/",
+      "/company-third-production-line/",
+      "/about/",
+      "/contact/",
+      "/?s=led",
+      "/this-page-does-not-exist/"
+    ],
+    "full": [
+      "/",
+      "/products/",
+      "/products/ufo-highbay-150w/",
+      "/products/linear-highbay-100w/",
+      "/products/led-flood-200w/",
+      "/products/street-light-120w/",
+      "/products/led-panel-600/",
+      "/products/tri-proof-40w/",
+      "/product-category/industrial/",
+      "/product-category/outdoor/",
+      "/product-category/commercial-indoor/",
+      "/product-category/food-grade/",
+      "/industries/",
+      "/industries/warehouse-lighting/",
+      "/industries/parking-lighting/",
+      "/industries/retail-lighting/",
+      "/guides/",
+      "/guides/choose-high-bay-wattage/",
+      "/guides/ip-ratings-explained/",
+      "/guides/export-certifications/",
+      "/about/",
+      "/contact/",
+      "/company-third-production-line/"
+    ]
+  },
   "contentMarkers": [
     "Your Company"
   ],

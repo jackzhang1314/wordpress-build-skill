@@ -1,6 +1,28 @@
-import {execFile} from 'node:child_process';
-import {existsSync, mkdirSync, statSync} from 'node:fs';
+import {existsSync, mkdirSync, statSync, writeFile} from 'node:fs';
 import {dirname, join} from 'node:path';
+import {launchCdpBrowser, mapWithConcurrency} from './cdp-browser.mjs';
+
+export const screenshotModes = ['smoke', 'templates', 'full'];
+
+/** Resolve a route set by explicit routes or a named verification tier. */
+export function resolveScreenshotRoutes(project = {}, {mode = 'smoke', routes} = {}) {
+  if (routes?.length) {
+    return {mode: 'custom', routes: [...routes]};
+  }
+
+  const selected = String(mode || 'smoke').toLowerCase();
+  if (!screenshotModes.includes(selected)) {
+    throw new Error(`Unknown screenshot mode "${selected}". Expected: ${screenshotModes.join(', ')}`);
+  }
+
+  const livePages = project.livePages ?? [];
+  const configured = project.screenshotModes?.[selected];
+  if (Array.isArray(configured) && configured.length) {
+    return {mode: selected, routes: [...configured]};
+  }
+  if (selected === 'smoke') return {mode: selected, routes: livePages.slice(0, 5)};
+  return {mode: selected, routes: livePages};
+}
 
 /** Expand routes × widths into deterministic job list with safe file names. */
 export function planScreenshotJobs(routes, widths, outDir) {
@@ -26,35 +48,88 @@ export function detectChromeBin(env = process.env, platform = process.platform) 
   return candidates.find(candidate => existsSync(candidate)) ?? '';
 }
 
-/**
- * Capture every route at every width with headless Chrome.
- * `runner` is injectable for tests; defaults to a real chrome spawn.
- */
-export async function captureScreenshots({base, routes, widths = [390, 768, 1440], outDir, chromeBin, timeoutMs = 45000, runner} = {}) {
-  if (chromeBin === '') return {pass: false, skipped: true, reason: 'chrome disabled (CHROME_BIN empty)', shots: []};
-  const bin = chromeBin || detectChromeBin();
-  if (!bin && !runner) return {pass: false, skipped: true, reason: 'no chrome binary found (set CHROME_BIN)', shots: []};
-  mkdirSync(outDir, {recursive: true});
-  const jobs = planScreenshotJobs(routes, widths, outDir);
-  const run = runner ?? ((job, chrome) => new Promise((resolve, reject) => {
-    const args = [
-      '--headless=new', '--disable-gpu', '--no-sandbox', '--hide-scrollbars',
-      `--window-size=${job.width},2400`, `--screenshot=${job.out}`,
-      '--virtual-time-budget=6000', '--timeout=30000',
-      `${base.replace(/\/$/, '')}${job.route}`,
-    ];
-    execFile(chrome, args, {timeout: timeoutMs}, error => (error ? reject(error) : resolve()));
-  }));
-  const shots = [];
-  for (const job of jobs) {
+/** Run a legacy injectable command for callers/tests that do not use CDP. */
+async function runLegacyRunner(jobs, runner, concurrency) {
+  return mapWithConcurrency(jobs, concurrency, async job => {
     try {
       mkdirSync(dirname(job.out), {recursive: true});
-      await run(job, bin);
+      await runner(job);
       const bytes = existsSync(job.out) ? statSync(job.out).size : 0;
-      shots.push({...job, bytes, pass: bytes > 5000});
+      return {...job, bytes, pass: bytes > 5000};
     } catch (error) {
-      shots.push({...job, bytes: 0, pass: false, error: String(error.message ?? error).slice(0, 160)});
+      return {...job, bytes: 0, pass: false, error: String(error.message ?? error).slice(0, 160)};
     }
+  });
+}
+
+/** Capture one route after setting viewport and waiting for page load. */
+async function captureJob(browser, job, base, timeoutMs) {
+  const page = await browser.newPage();
+  try {
+    await page.setViewport({width: job.width, height: 2400, mobile: job.width < 768});
+    await page.navigate(`${base.replace(/\/$/, '')}${job.route}`, {timeoutMs, settleMs: 500});
+    const png = await page.screenshot();
+    await new Promise((resolve, reject) => writeFile(job.out, png, error => (error ? reject(error) : resolve())));
+    const bytes = existsSync(job.out) ? statSync(job.out).size : 0;
+    return {...job, bytes, pass: bytes > 5000};
+  } finally {
+    page.close();
   }
-  return {pass: shots.length > 0 && shots.every(shot => shot.pass), skipped: false, shots};
+}
+
+/**
+ * Capture routes using a shared headless Chrome instance.
+ * Each worker keeps one CDP page open; width is changed before every navigation.
+ * `runner` remains as an injectable legacy escape hatch for custom capture commands.
+ */
+export async function captureScreenshots({
+  base, routes, widths = [390, 768, 1440], outDir,
+  chromeBin, concurrency = 4, timeoutMs = 45000, mode = 'templates',
+  project = {}, runner, browserFactory,
+} = {}) {
+  const resolved = resolveScreenshotRoutes(project, {mode, routes});
+  routes = resolved.routes;
+  if (chromeBin === '') return {pass: false, skipped: true, reason: 'chrome disabled (CHROME_BIN empty)', shots: []};
+  const bin = chromeBin || detectChromeBin();
+  if (!bin && !runner && !browserFactory) {
+    return {pass: false, skipped: true, reason: 'no chrome binary found (set CHROME_BIN)', shots: []};
+  }
+
+  mkdirSync(outDir, {recursive: true});
+  const jobs = planScreenshotJobs(routes, widths, outDir);
+  const startedAt = Date.now();
+
+  if (runner) {
+    const shots = await runLegacyRunner(jobs, runner, concurrency);
+    return {pass: shots.length > 0 && shots.every(shot => shot.pass), skipped: false, concurrency, durationMs: Date.now() - startedAt, shots};
+  }
+
+  const factory = browserFactory ?? (async () => launchCdpBrowser({chromeBin: bin, timeoutMs}));
+  const browser = await factory({chromeBin: bin, timeoutMs});
+  try {
+    const shots = await mapWithConcurrency(jobs, concurrency, async job => {
+      let result = {...job, bytes: 0, pass: false};
+      for (let attempt = 1; attempt <= 2; attempt += 1) {
+        try {
+          result = await captureJob(browser, job, base, timeoutMs);
+          if (result.pass) break;
+          result.error = 'Screenshot was empty or suspiciously small';
+        } catch (error) {
+          result = {...job, bytes: 0, pass: false, error: String(error.message ?? error).slice(0, 160)};
+        }
+        if (attempt === 1) await new Promise(resolve => setTimeout(resolve, 250));
+      }
+      return result;
+    });
+
+    return {
+      pass: shots.length > 0 && shots.every(shot => shot.pass),
+      skipped: false,
+      concurrency,
+      durationMs: Date.now() - startedAt,
+      shots,
+    };
+  } finally {
+    await browser.close?.();
+  }
 }
