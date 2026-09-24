@@ -8,6 +8,7 @@ import {
   checkComponentDuplication,
   checkRoutes,
   checkZeroMedia,
+  checkWordPressClasses,
 } from '../../harness/lib/quality.mjs';
 import {captureScreenshots, planScreenshotJobs} from '../../harness/lib/screenshots.mjs';
 
@@ -105,6 +106,24 @@ test('routes gate enforces count, uniqueness and slash format', () => {
     env.project.livePages = ['/', '/', '/products/'];
     const dupes = checkRoutes(env.root, env.project);
     assert.equal(dupes.checks.find(item => item.name === 'unique').pass, false);
+  } finally {
+    env.cleanup();
+  }
+});
+
+test('wordpress-classes gate requires leading backslashes in namespaced PHP', () => {
+  const env = makeProject({
+    'theme/inc/components.php': '<?php\nnamespace Starter\\Theme;\nnew WP_Query([]);',
+    'theme/functions.php': '<?php\nnamespace Starter\\Theme;\n$x = new \\WP_Query([]);',
+    'plugin/starter-model.php': '<?php\nnamespace Starter\\Model;\n$x instanceof WP_Post;',
+  });
+  try {
+    const report = checkWordPressClasses(env.root, env.project);
+    assert.equal(report.pass, false);
+    assert.deepEqual(report.checks.map(item => [item.file, item.class]).sort(), [
+      ['plugin/starter-model.php', 'WP_Post'],
+      ['theme/inc/components.php', 'WP_Query'],
+    ]);
   } finally {
     env.cleanup();
   }

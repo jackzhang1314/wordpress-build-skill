@@ -208,6 +208,29 @@ export function checkRoutes(projectRoot, project) {
   return {name: 'routes', pass: checks.every(item => item.pass), checks};
 }
 
+/** Namespaced PHP must use global WordPress classes with a leading backslash. */
+export function checkWordPressClasses(projectRoot, project) {
+  const roots = [
+    projectFile(projectRoot, project.paths.theme),
+    projectFile(projectRoot, project.paths.plugin),
+  ];
+  const offenders = [];
+  for (const root of roots) {
+    for (const file of walk(root, ['.php'])) {
+      const text = readFileSync(file, 'utf8');
+      if (!/^namespace\s+\S+/m.test(text)) continue;
+      const bad = [
+        ...text.matchAll(/(?<![\\A-Za-z_])new\s+(WP_[A-Za-z_]+)/g),
+        ...text.matchAll(/(?<![\\A-Za-z_])instanceof\s+(WP_[A-Za-z_]+)/g),
+      ];
+      for (const match of bad) {
+        offenders.push({file: relative(projectRoot, file), class: match[1], issue: 'namespaced WordPress class is missing \\'});
+      }
+    }
+  }
+  return {name: 'wordpress-classes', pass: offenders.length === 0, checks: offenders};
+}
+
 export async function checkPhpSyntax(files, {phpBin = 'php'} = {}) {
   const dockerImage = phpBin?.startsWith('docker:') ? phpBin.slice(7) : undefined;
   const command = dockerImage ? 'docker' : phpBin;
@@ -240,6 +263,7 @@ export async function auditProject(projectRoot, project, options = {}) {
     checkZeroMedia(projectRoot, project),
     checkAcfBinding(projectRoot, project),
     checkRoutes(projectRoot, project),
+    checkWordPressClasses(projectRoot, project),
   ];
 
   const phpBin = options.phpBin;

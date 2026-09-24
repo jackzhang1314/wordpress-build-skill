@@ -54,7 +54,7 @@ function component_card_grid(array $props = []): void {
 	$use_main_query = (bool) ($props['main_query'] ?? false);
 	$pagination = (bool) ($props['pagination'] ?? false);
 
-	$query = $use_main_query ? $GLOBALS['wp_query'] : new WP_Query($query_args);
+	$query = $use_main_query ? $GLOBALS['wp_query'] : new \WP_Query($query_args);
 	echo '<div class="grid archive-grid">';
 	if ($query->have_posts()) {
 		while ($query->have_posts()) : $query->the_post();
@@ -230,7 +230,7 @@ function component_related_products(array $props = []): void {
 		'link' => ['url' => get_post_type_archive_link('starter_product'), 'label' => 'View all'],
 	]);
 	echo '<div class="grid">';
-	$query = new WP_Query(['post_type' => 'starter_product', 'post__in' => $ids, 'orderby' => 'post__in', 'posts_per_page' => 3]);
+	$query = new \WP_Query(['post_type' => 'starter_product', 'post__in' => $ids, 'orderby' => 'post__in', 'posts_per_page' => 3]);
 	while ($query->have_posts()) : $query->the_post();
 		get_template_part('parts/card', null, ['title_tag' => 'h3']);
 	endwhile;
