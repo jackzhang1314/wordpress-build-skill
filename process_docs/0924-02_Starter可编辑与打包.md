@@ -1,0 +1,27 @@
+# 0924-02 Starter 可编辑与打包
+
+- 时间：2026-09-24 17:25 Asia/Shanghai
+- 触发原因：继续组件化 Starter Template 产品化，补齐后台编辑完整性和可分发包。
+- 主要工作：
+  - 新增 Site Copy options 页面，可编辑产品/行业/指南/新闻 archive 简介、404 文案。
+  - 新增 Contact page content ACF 字段：简介、报价清单、表单标题、表单说明。
+  - Contact 页直连邮箱、电话、工作时间改为 Customizer 设置，移除硬编码联系方式。
+  - 将 Fluent Forms 硬编码 ID 替换为 `[starter_rfq_form]` 稳定短代码。
+  - 新增 `npm run package:starter`，输出版本化 tar.gz 与逐文件 SHA-256 manifest。
+  - 扩展 Starter 测试：所有模板消费的 ACF 字段必须有后台字段定义；内容不得硬编码 Fluent Forms ID。
+  - 更新 README/CUSTOMIZE/架构文档，固化后台编辑地图和打包命令。
+- 关键文件：
+  - `examples/classic-b2b-starter/plugin/starter-model.php`
+  - `examples/classic-b2b-starter/theme/page-contact.php`
+  - `examples/classic-b2b-starter/theme/inc/components.php`
+  - `scripts/package-starter.mjs`
+  - `tests/starter-template.test.mjs`
+- 验证：
+  - `npm run typecheck` 通过。
+  - `npm run lint` 通过。
+  - `npm test`：122/122 通过。
+  - 临时项目 Harness `check` 全绿。
+  - `npm run package:starter` 成功生成 `dist/b2b-wordpress-starter-2.0.0.tar.gz` 和 manifest；生成物不入库。
+- 遗留：
+  - 仍需全新 Hostinger 空站 provisioning/deploy/verify 实测。
+  - 仍需三端视觉截图基线和 GitHub Template Repo。

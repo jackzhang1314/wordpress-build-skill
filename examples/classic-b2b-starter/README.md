@@ -11,6 +11,8 @@ A production-ready B2B WordPress template for industrial suppliers, manufacturer
 | **Forms** | Fluent Forms RFQ page with styled form panel |
 | **SEO** | Rank Math with per-post-type sitemap, product rich-snippet |
 | **Email** | SMTP via wp-config constants (`theme/mu-plugins/smtp.php`) |
+| **Backend editing** | ACF fields for products, industries, categories, factory profile, archive copy and contact content; Customizer for brand/contact globals |
+| **Packaging** | `npm run package:starter` creates a reproducible tarball and SHA-256 manifest |
 | **Docs** | `DESIGN.md` (design tokens), `CUSTOMIZE.md` (brand change guide), `DEPLOY.md` (launch checklist) |
 
 ## Quick start (3 steps)
@@ -57,6 +59,19 @@ Then submit the contact form — a test email should arrive.
 - WordPress 6.4+
 - PHP 8.1+
 - Plugins: ACF Free, Fluent Forms Free, Rank Math Free, Classic Editor
+
+## Admin editing map
+
+| Screen | Edits |
+|---|---|
+| **Products → Product specifications** | Wattage, efficacy, IP, warranty and `Label | Value` specification rows |
+| **Product Highlights** | Checklist points shown on a product |
+| **Industry Solutions** | Challenge and project-outcome fields |
+| **Product Categories** | Intro, highlights, applications and FAQ |
+| **Factory profile** | Factory intro, facts and capability cards |
+| **Site copy** | Product / industry / guide / news archive intros and 404 copy |
+| **Contact page content** | Intro, quoting checklist, form title and form note |
+| **Appearance → Customize → Contact & Brand Info** | Email, phone, hours, topbar, footer, social links, homepage stats and CTA |
 
 See `CUSTOMIZE.md` for the full brand-change checklist and `DEPLOY.md` for the launch runbook.
 

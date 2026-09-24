@@ -10,7 +10,7 @@ get_header(); ?>
 	<?php Starter\Theme\component_page_head([
 		'eyebrow' => 'Company',
 		'title' => 'News & updates',
-		'description' => 'Production, certifications and exhibition notes from the team.',
+		'description' => Starter\Theme\field_option('news_archive_description') ?: 'Production, certifications and exhibition notes from the team.',
 	]); ?>
 	<?php Starter\Theme\component_card_grid(['main_query' => true, 'pagination' => true]); ?>
 </main>

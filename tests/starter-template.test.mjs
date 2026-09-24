@@ -89,3 +89,40 @@ test('starter project contract uses required plugin baseline and placeholder dep
   assert.equal(project.ssh.host, 'REPLACE_SSH_HOST');
   assert.equal(project.ssh.keyPath, 'REPLACE_SSH_KEY_PATH');
 });
+
+test('every consumed ACF field has an admin-editable field definition', () => {
+  const plugin = readFileSync(join(starterRoot, 'plugin/starter-model.php'), 'utf8');
+  const themeFiles = walk('theme').filter(file => file.endsWith('.php'));
+  const registered = new Set([...plugin.matchAll(/'name'\s*=>\s*'([a-z0-9_]+)'/g)].map(match => match[1]));
+  const consumed = new Set();
+  for (const file of themeFiles) {
+    const text = readFileSync(join(starterRoot, file), 'utf8');
+    for (const match of text.matchAll(/field_(?:text|rows|lines|option)\(\s*'([a-z0-9_]+)'/g)) {
+      consumed.add(match[1]);
+    }
+  }
+  const missing = [...consumed].filter(name => !registered.has(name));
+  assert.deepEqual(missing, []);
+  for (const name of [
+    'product_archive_description',
+    'industry_archive_description',
+    'guide_archive_description',
+    'news_archive_description',
+    'not_found_description',
+    'contact_intro',
+    'contact_checklist',
+    'form_title',
+    'form_note',
+  ]) {
+    assert.ok(registered.has(name), `missing editable ACF field ${name}`);
+  }
+});
+
+test('seed content embeds through the stable starter shortcode', () => {
+  for (const file of ['content/site-data.json', 'content/patches/contact.html']) {
+    const text = readFileSync(join(starterRoot, file), 'utf8');
+    assert.ok(!text.includes('[fluentform'), `${file} must not hardcode a Fluent Forms ID`);
+  }
+  const plugin = readFileSync(join(starterRoot, 'plugin/starter-model.php'), 'utf8');
+  assert.match(plugin, /add_shortcode\('starter_rfq_form'/);
+});

@@ -10,7 +10,7 @@ get_header(); ?>
 	<?php Starter\Theme\component_page_head([
 		'eyebrow' => '404',
 		'title' => 'Page not found',
-		'description' => 'The page may have moved. Search the site or start from one of these:',
+		'description' => Starter\Theme\field_option('not_found_description') ?: 'The page may have moved. Search the site or start from one of these:',
 	]); ?>
 	<div class="error-search"><?php get_search_form(); ?></div>
 	<?php Starter\Theme\component_link_cards(['links' => [

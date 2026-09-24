@@ -10,7 +10,7 @@ get_header(); ?>
 	<?php Starter\Theme\component_page_head([
 		'eyebrow' => 'Sectors',
 		'title' => 'Industry solutions',
-		'description' => 'Lighting packages matched to operating hours, mounting heights and compliance needs of each sector.',
+		'description' => Starter\Theme\field_option('industry_archive_description') ?: 'Lighting packages matched to operating hours, mounting heights and compliance needs of each sector.',
 	]); ?>
 	<?php Starter\Theme\component_card_grid(['main_query' => true, 'pagination' => true]); ?>
 </main>

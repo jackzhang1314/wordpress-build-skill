@@ -95,3 +95,20 @@ The contact form uses Fluent Forms (form ID 3). To change fields:
 | `content/media-map.json` structure | The seed script depends on the format |
 
 If you must rename a CPT, search-and-replace `starter_product` → `your_product` and rename the corresponding template files together.
+
+
+## Copy and ACF editing
+
+Project-specific presentation stays in code; buyer-facing copy lives in WordPress. The starter registers local ACF fields for every route-level block. Use **Site copy** for archive routes and **Contact page content** when editing the contact template. Use **Factory profile** for reusable company proof and capability cards. Do not introduce a new hardcoded paragraph into a template when the value is intended to be edited by marketing.
+
+The contact body must use the stable `[starter_rfq_form]` shortcode. It keeps Fluent Forms provider details out of templates and allows the form ID to change per site.
+
+## Starter package
+
+From the repository root, run:
+
+```bash
+npm run package:starter
+```
+
+This writes a versioned tarball and a SHA-256 manifest under `dist/`. Generated archives are not committed.

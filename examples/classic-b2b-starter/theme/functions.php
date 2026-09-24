@@ -73,6 +73,13 @@ function field_option(string $name): string {
     return is_string($value) ? $value : '';
 }
 
+/** Parse plain lines from an ACF option field (with built-in fallback). */
+function field_lines_option(string $name, string $fallback = ''): array {
+    $raw = field_option($name);
+    if (trim($raw) === '') $raw = $fallback;
+    return array_values(array_filter(array_map('trim', preg_split('/\r?\n/', (string) $raw) ?: []), static fn ($line) => $line !== ''));
+}
+
 /** Parse "Label | Value" lines from a field (with built-in fallback). */
 function field_rows(string $name, $source = null, string $fallback = ''): array {
     $raw = field_text($name, $source);
@@ -307,4 +314,3 @@ add_action('customize_register', function ($wp_customize) {
         ]);
     }
 });
-

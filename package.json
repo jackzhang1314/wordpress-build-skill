@@ -8,14 +8,15 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src tests harness/cli.mjs harness/init.mjs harness/lib tests/harness scripts/build.mjs scripts/lab.mjs scripts/lab-wp.mjs scripts/lab-bind.mjs",
+    "lint": "eslint src tests harness/cli.mjs harness/init.mjs harness/lib tests/harness scripts/build.mjs scripts/lab.mjs scripts/lab-wp.mjs scripts/lab-bind.mjs scripts/package-starter.mjs",
     "test": "tsx --test tests/*.test.ts tests/*.test.mjs tests/harness/*.test.mjs",
     "build": "node scripts/build.mjs",
     "wp": "tsx src/cli.ts",
     "lab": "node scripts/lab.mjs",
     "lab:wp": "node scripts/lab-wp.mjs",
     "verify:snapshot": "node scripts/verify-snapshot.mjs",
-    "harness": "node harness/cli.mjs"
+    "harness": "node harness/cli.mjs",
+    "package:starter": "node scripts/package-starter.mjs"
   },
   "dependencies": {
     "csv-parse": "7.0.2",

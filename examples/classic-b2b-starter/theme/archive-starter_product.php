@@ -10,7 +10,7 @@ get_header(); ?>
 	<?php Starter\Theme\component_page_head([
 		'eyebrow' => 'Catalogue',
 		'title' => 'Product catalogue',
-		'description' => 'Certified industrial and commercial LED luminaires for distributors, contractors and project tenders.',
+		'description' => Starter\Theme\field_option('product_archive_description') ?: 'Certified industrial and commercial LED luminaires for distributors, contractors and project tenders.',
 	]); ?>
 	<section class="section">
 		<?php Starter\Theme\component_section_heading(['eyebrow' => 'Applications', 'title' => 'Browse by application']); ?>

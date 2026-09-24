@@ -47,6 +47,8 @@ WordPress route/template hierarchy
 - Repeated presentation is changed in one component, not copied across templates.
 - Placeholder media states the intended size/ratio; it does not invent a fake product image.
 - Component markup is added only once in `theme/inc/components.php`; page templates pass data and compose it.
+- Every ACF value consumed by a template must have a matching local ACF field definition; the starter test suite enforces this contract.
+- Forms are embedded through `[starter_rfq_form]`; templates do not hardcode Fluent Forms IDs.
 - A visual or structural change must bump the theme version and pass browser verification.
 
 ## Next hardening

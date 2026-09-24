@@ -9,10 +9,27 @@
   "livePages": [
     "/",
     "/products/",
+    "/products/ufo-highbay-150w/",
+    "/products/linear-highbay-100w/",
+    "/products/led-flood-200w/",
+    "/products/street-light-120w/",
+    "/products/led-panel-600/",
+    "/products/tri-proof-40w/",
+    "/product-category/industrial/",
+    "/product-category/outdoor/",
+    "/product-category/commercial-indoor/",
+    "/product-category/food-grade/",
     "/industries/",
+    "/industries/warehouse-lighting/",
+    "/industries/parking-lighting/",
+    "/industries/retail-lighting/",
     "/guides/",
+    "/guides/choose-high-bay-wattage/",
+    "/guides/ip-ratings-explained/",
+    "/guides/export-certifications/",
     "/about/",
-    "/contact/"
+    "/contact/",
+    "/company-third-production-line/"
   ],
   "contentMarkers": [
     "Your Company"
@@ -113,5 +130,6 @@
     "keyPath": "REPLACE_SSH_KEY_PATH",
     "wpPath": "REPLACE_REMOTE_WP_PATH"
   },
-  "timezone": "Asia/Shanghai"
+  "timezone": "Asia/Shanghai",
+  "pluginMain": "starter-model.php"
 }

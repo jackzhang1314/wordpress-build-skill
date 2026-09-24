@@ -120,6 +120,10 @@ add_action('acf/init', static function (): void {
             'page_title' => 'Factory profile', 'menu_title' => 'Factory profile', 'menu_slug' => 'factory-profile',
             'capability' => 'edit_pages', 'icon_url' => 'dashicons-building', 'position' => 21, 'show_in_rest' => true,
         ]);
+        acf_add_options_page([
+            'page_title' => 'Site copy', 'menu_title' => 'Site copy', 'menu_slug' => 'site-copy',
+            'capability' => 'edit_pages', 'icon_url' => 'dashicons-editor-textcolor', 'position' => 22, 'show_in_rest' => true,
+        ]);
     }
     acf_add_local_field_group([
         'key' => 'group_factory_profile', 'title' => 'Factory profile', 'show_in_rest' => true,
@@ -132,5 +136,39 @@ add_action('acf/init', static function (): void {
              'instructions' => 'One per line: Title | Description. Leave empty to use the built-in default.'],
         ],
         'location' => [[['param' => 'options_page', 'operator' => '==', 'value' => 'factory-profile']]],
+    ]);
+
+    // Copy for routes that do not own a normal editable page object.
+    acf_add_local_field_group([
+        'key' => 'group_site_copy', 'title' => 'Archive and system copy', 'show_in_rest' => true,
+        'fields' => [
+            ['key' => 'field_product_archive_description', 'name' => 'product_archive_description', 'label' => 'Product archive introduction', 'type' => 'textarea', 'rows' => 3,
+             'instructions' => 'Shown under the Product catalogue title. Leave empty to use the built-in default.'],
+            ['key' => 'field_industry_archive_description', 'name' => 'industry_archive_description', 'label' => 'Industry archive introduction', 'type' => 'textarea', 'rows' => 3,
+             'instructions' => 'Shown under the Industry solutions title. Leave empty to use the built-in default.'],
+            ['key' => 'field_guide_archive_description', 'name' => 'guide_archive_description', 'label' => 'Guide archive introduction', 'type' => 'textarea', 'rows' => 3,
+             'instructions' => 'Shown under the Knowledge guides title. Leave empty to use the built-in default.'],
+            ['key' => 'field_news_archive_description', 'name' => 'news_archive_description', 'label' => 'News archive introduction', 'type' => 'textarea', 'rows' => 3,
+             'instructions' => 'Shown under News & updates. Leave empty to use the built-in default.'],
+            ['key' => 'field_not_found_description', 'name' => 'not_found_description', 'label' => '404 introduction', 'type' => 'textarea', 'rows' => 3,
+             'instructions' => 'Shown on the page-not-found screen. Leave empty to use the built-in default.'],
+        ],
+        'location' => [[['param' => 'options_page', 'operator' => '==', 'value' => 'site-copy']]],
+    ]);
+
+    // Contact page supports both structured guidance and the embedded form.
+    acf_add_local_field_group([
+        'key' => 'group_contact_content', 'title' => 'Contact page content', 'show_in_rest' => true,
+        'fields' => [
+            ['key' => 'field_contact_intro', 'name' => 'contact_intro', 'label' => 'Contact introduction', 'type' => 'textarea', 'rows' => 3,
+             'instructions' => 'Shown under the page title. Leave empty to use the page excerpt or built-in default.'],
+            ['key' => 'field_contact_checklist', 'name' => 'contact_checklist', 'label' => 'What helps us quote faster', 'type' => 'textarea', 'rows' => 6,
+             'instructions' => 'One checklist item per line. Leave empty to use the built-in default.'],
+            ['key' => 'field_form_title', 'name' => 'form_title', 'label' => 'Form panel title', 'type' => 'text',
+             'instructions' => 'Leave empty to use “Request for quotation”.'],
+            ['key' => 'field_form_note', 'name' => 'form_note', 'label' => 'Form panel note', 'type' => 'textarea', 'rows' => 3,
+             'instructions' => 'Short reassurance above the form. Leave empty to use the built-in default.'],
+        ],
+        'location' => [[['param' => 'page_template', 'operator' => '==', 'value' => 'page-contact.php']]],
     ]);
 });
