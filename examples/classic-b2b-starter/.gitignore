@@ -1,0 +1,11 @@
+.backups/
+.deploy-staging/
+.wordpress-builder/
+.DS_Store
+node_modules/
+*.log
+*.env
+!*.example.env
+.seed-state.json
+.content-state.json
+.deploy-state.json

@@ -94,7 +94,9 @@ export function slugify(value) {
 
 export function resolveProjectRoot(candidate = process.env.WORDPRESS_PROJECT_ROOT || process.cwd()) {
   const root = resolve(candidate);
-  if (!existsSync(join(root, 'project.json'))) {
+  const hasProject = existsSync(join(root, 'project.json'));
+  const hasExample = existsSync(join(root, 'project.example.json'));
+  if (!hasProject && !hasExample) {
     throw new Error(`project.json not found in ${root}. Use --project <site-directory>.`);
   }
   return root;
@@ -102,7 +104,12 @@ export function resolveProjectRoot(candidate = process.env.WORDPRESS_PROJECT_ROO
 
 export function loadProject(projectRoot) {
   const root = resolve(projectRoot);
-  const raw = JSON.parse(readFileSync(join(root, 'project.json'), 'utf8'));
+  const projectPath = join(root, 'project.json');
+  const examplePath = join(root, 'project.example.json');
+  // Starter checkouts ship only project.example.json; allow local gates to run
+  // against it as long as no write-state command depends on real SSH.
+  const usedPath = existsSync(projectPath) ? projectPath : (existsSync(examplePath) ? examplePath : projectPath);
+  const raw = JSON.parse(readFileSync(usedPath, 'utf8'));
   const parsed = projectSchema.safeParse(normalizeLegacyProject(raw));
   if (!parsed.success) {
     const detail = parsed.error.issues.map(issue => `${issue.path.join('.') || 'project'}: ${issue.message}`).join('; ');
@@ -112,6 +119,8 @@ export function loadProject(projectRoot) {
   project.slug ??= slugify(project.title);
   project.pluginMain ??= `${project.plugin}.php`;
   if (project.ssh) project.ssh.keyPath = resolve(root, project.ssh.keyPath);
+  project._projectFile = usedPath;
+  project._isExample = usedPath === examplePath && !existsSync(projectPath);
   return project;
 }
 

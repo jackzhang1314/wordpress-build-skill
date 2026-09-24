@@ -1,3 +1,5 @@
+import {existsSync, readFileSync} from 'node:fs';
+import {join, resolve} from 'node:path';
 import {headingReport} from './quality.mjs';
 
 export function normalizeBase(base) {
@@ -56,6 +58,20 @@ export async function verifyPages(base, paths, markers = [], options = {}) {
   return {pass: results.every(result => result.pass), results};
 }
 
+/** A starter that ships no media must also have no remote attachments after seed. */
+export function isBlankMediaContract(projectRoot, project = {}) {
+  if ((project.media?.sources ?? []).length) return false;
+  const contentDir = project.paths?.content ?? 'content';
+  const mediaMapPath = join(resolve(projectRoot), contentDir, 'media-map.json');
+  if (!existsSync(mediaMapPath)) return false;
+  try {
+    const map = JSON.parse(readFileSync(mediaMapPath, 'utf8'));
+    return map && typeof map === 'object' && Object.keys(map).length === 0;
+  } catch {
+    return false;
+  }
+}
+
 export async function verifyDatabase(project, options = {}) {
   const wp = options.wp ?? (() => '');
   const results = [];
@@ -79,6 +95,11 @@ export async function verifyDatabase(project, options = {}) {
     const count = Number(output.split('\n').pop()) || 0;
     const pass = item.expected === undefined ? count >= 0 : count >= item.expected;
     results.push({label: item.label, postType: item.postType, kind: item.kind, count, expected: item.expected, pass});
+  }
+  if (options.blankMedia) {
+    const output = wp(['post', 'list', '--post_type=attachment', '--format=count']).trim();
+    const count = Number(output.split('\n').pop()) || 0;
+    results.push({label: 'Remote blank media', postType: 'attachment', kind: 'post', count, expected: 0, pass: count === 0});
   }
   return {pass: results.every(item => item.pass), results};
 }

@@ -10,3 +10,6 @@ output/
 coverage/
 *.tsbuildinfo
 .playwright-cli/
+
+# Generated starter packages
+dist/

@@ -1,0 +1,28 @@
+# 0924-01 Component Starter 重构
+
+- 时间：2026-09-24 17:00 Asia/Shanghai
+- 触发原因：用户要求继续组件化 Starter Template 重构；原专职 session 的最新一轮因平台 server error 失败，由主会话接手。
+- 主要工作：
+  - 从最新 `codex/classic-acf-v2` 创建 `codex/component-starter-rebuild` worktree，并保留已验证 WordPress 底盘。
+  - 建立干净起点 `examples/classic-b2b-starter/`，排除运行时证据、服务器凭据和旧部署状态。
+  - 将 `Cleanroom` / `harness-cleanroom` / `novalux` 等项目命名统一替换为 `Starter`、`starter_*`、`b2b-starter`。
+  - 扩展组件层：page head、section heading、card grid、feature grid、pill list、FAQ、callout、spec table、link cards、CTA band、stat strip、related products。
+  - 重构 404、search、news、generic archive、产品/行业/指南 archive、首页、About、分类页、产品详情、行业详情、指南详情。
+  - 分类页、About、产品详情、行业详情、指南详情改由组件组合；首页卡片循环也进入 `component_card_grid`。
+  - Starter 内容媒体映射置空，保持零上传媒体；图片位继续使用尺寸占位。
+  - 新增 `tests/starter-template.test.mjs`，覆盖组件契约、中性命名、零媒体断言、模板组合规则和部署占位配置。
+  - `project.example.json` 修正为 `starter-model` 插件，SSH/order 均只保留占位符。
+- 关键文件：
+  - `examples/classic-b2b-starter/theme/inc/components.php`
+  - `examples/classic-b2b-starter/docs/ARCHITECTURE-COMPONENTS.md`
+  - `examples/classic-b2b-starter/project.example.json`
+  - `tests/starter-template.test.mjs`
+- 验证：
+  - `npm run typecheck` 通过。
+  - `npm run lint` 通过。
+  - `npm test`：120/120 通过。
+  - 使用临时 `/tmp/b2b-starter-check` 跑 Harness `check`：structure、heading hierarchy、content data、secret scan、PHP syntax 全绿。
+- 遗留：
+  - 尚未创建全新 Hostinger 空站做最终 provisioning/verify 实测。
+  - 尚未生成三端视觉回归基线和 GitHub Template Repo 包。
+  - Contact/页面级说明仍有少量 UI 文案需要迁移到可编辑字段，后续用 ACF options 统一。

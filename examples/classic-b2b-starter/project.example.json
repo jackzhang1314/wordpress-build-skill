@@ -1,0 +1,138 @@
+{
+  "title": "Your Company",
+  "description": "A neutral B2B starter description.",
+  "slug": "your-company",
+  "type": "wordpress-b2b",
+  "domain": "example.hostingersite.com",
+  "theme": "b2b-starter-theme",
+  "plugin": "starter-model",
+  "livePages": [
+    "/",
+    "/products/",
+    "/products/ufo-highbay-150w/",
+    "/products/linear-highbay-100w/",
+    "/products/led-flood-200w/",
+    "/products/street-light-120w/",
+    "/products/led-panel-600/",
+    "/products/tri-proof-40w/",
+    "/product-category/industrial/",
+    "/product-category/outdoor/",
+    "/product-category/commercial-indoor/",
+    "/product-category/food-grade/",
+    "/industries/",
+    "/industries/warehouse-lighting/",
+    "/industries/parking-lighting/",
+    "/industries/retail-lighting/",
+    "/guides/",
+    "/guides/choose-high-bay-wattage/",
+    "/guides/ip-ratings-explained/",
+    "/guides/export-certifications/",
+    "/about/",
+    "/contact/",
+    "/company-third-production-line/"
+  ],
+  "contentMarkers": [
+    "Your Company"
+  ],
+  "contentCounts": [
+    {
+      "label": "Products",
+      "postType": "starter_product",
+      "expected": 6
+    },
+    {
+      "label": "Product categories",
+      "postType": "product_collection",
+      "expected": 4,
+      "kind": "term"
+    },
+    {
+      "label": "Industries",
+      "postType": "starter_industry",
+      "expected": 3
+    },
+    {
+      "label": "Guides",
+      "postType": "starter_guide",
+      "expected": 3
+    },
+    {
+      "label": "News",
+      "postType": "post",
+      "expected": 1
+    }
+  ],
+  "requiredPlugins": [
+    "advanced-custom-fields",
+    "seo-by-rank-math",
+    "fluentform",
+    "classic-editor"
+  ],
+  "disabledPlugins": [],
+  "media": {
+    "sources": []
+  },
+  "seed": {
+    "enabled": true,
+    "script": "scripts/seed.php",
+    "data": "content/site-data.json"
+  },
+  "seo": {
+    "organization": "Your Company",
+    "postTypes": [
+      {
+        "name": "post",
+        "sitemap": true,
+        "metaBox": true,
+        "richSnippet": "article"
+      },
+      {
+        "name": "page",
+        "sitemap": true,
+        "metaBox": true
+      },
+      {
+        "name": "starter_product",
+        "sitemap": true,
+        "metaBox": true,
+        "richSnippet": "product"
+      },
+      {
+        "name": "starter_industry",
+        "sitemap": true,
+        "metaBox": true
+      },
+      {
+        "name": "starter_guide",
+        "sitemap": true,
+        "metaBox": true,
+        "richSnippet": "article"
+      }
+    ],
+    "taxonomies": [
+      {
+        "name": "product_collection",
+        "sitemap": true,
+        "metaBox": true
+      }
+    ],
+    "noindex": []
+  },
+  "paths": {
+    "theme": "theme",
+    "plugin": "plugin",
+    "content": "content"
+  },
+  "ssh": {
+    "host": "REPLACE_SSH_HOST",
+    "port": "65002",
+    "user": "starter-owner",
+    "keyPath": "REPLACE_SSH_KEY_PATH",
+    "wpPath": "/home/REPLACE_USER/domains/example.hostingersite.com/public_html"
+  },
+  "timezone": "Asia/Shanghai",
+  "pluginMain": "starter-model.php",
+  "hostinger": {
+    "user": "starter-owner"
+  }
+}
