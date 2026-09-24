@@ -1,0 +1,317 @@
+{
+  "terms": [
+    {
+      "taxonomy": "product_collection",
+      "name": "Industrial Lighting",
+      "slug": "industrial",
+      "description": "High bay and linear luminaires for factories, warehouses and workshops with mounting heights from 6 to 15 metres."
+    },
+    {
+      "taxonomy": "product_collection",
+      "name": "Outdoor Lighting",
+      "slug": "outdoor",
+      "description": "IP66 flood and street luminaires for facades, yards, car parks and public roads."
+    },
+    {
+      "taxonomy": "product_collection",
+      "name": "Commercial Indoor",
+      "slug": "commercial-indoor",
+      "description": "Low-glare panel and recessed luminaires for offices, retail floors and showrooms."
+    },
+    {
+      "taxonomy": "product_collection",
+      "name": "Food-grade & Washdown",
+      "slug": "food-grade",
+      "description": "Sealed tri-proof luminaires for food processing, cold storage and high-pressure washdown areas."
+    }
+  ],
+  "products": [
+    {
+      "title": "UFO LED High Bay 150W",
+      "slug": "ufo-highbay-150w",
+      "excerpt": "Compact 150W high bay with 22,500 lm output for 8–12 m mounting heights in warehouses and production halls.",
+      "content": "<p>The UFO series replaces 400W metal halide fittings one-for-one. A die-cast aluminium body and passive cooling keep junction temperatures low, while the standard 60° and 90° beam covers racking aisles and open production floors.</p><p>Drivers and boards are accessible from the rear cover, so on-site maintenance does not require removing the whole fitting.</p>",
+      "terms": [
+        "industrial"
+      ],
+      "acf": {
+        "wattage": "150 W",
+        "efficacy": "150 lm/W",
+        "ip_rating": "IP65",
+        "warranty": "5 years",
+        "specs": [
+          {
+            "label": "Luminous flux",
+            "value": "22,500 lm"
+          },
+          {
+            "label": "CCT options",
+            "value": "4000 K / 5000 K / 5700 K"
+          },
+          {
+            "label": "CRI",
+            "value": ">80"
+          },
+          {
+            "label": "Beam angles",
+            "value": "60° / 90° / 120°"
+          },
+          {
+            "label": "Surge protection",
+            "value": "4 kV"
+          },
+          {
+            "label": "Certifications",
+            "value": "CE, RoHS, SAA (option)"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Linear LED High Bay 100W",
+      "slug": "linear-highbay-100w",
+      "excerpt": "100W linear high bay with wide beam for aisle racking, cold stores and workshop benches.",
+      "content": "<p>The linear form factor puts light where narrow aisles need it, reducing fixture count in racking layouts. An optional emergency kit maintains 10% output for 90 minutes.</p>",
+      "terms": [
+        "industrial"
+      ],
+      "acf": {
+        "wattage": "100 W",
+        "efficacy": "145 lm/W",
+        "ip_rating": "IP65",
+        "warranty": "5 years",
+        "specs": [
+          {
+            "label": "Luminous flux",
+            "value": "14,500 lm"
+          },
+          {
+            "label": "CCT options",
+            "value": "4000 K / 5000 K"
+          },
+          {
+            "label": "CRI",
+            "value": ">80"
+          },
+          {
+            "label": "Emergency option",
+            "value": "90 min / 10%"
+          },
+          {
+            "label": "Operating temperature",
+            "value": "-30 °C to +45 °C"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LED Flood Light 200W",
+      "slug": "led-flood-200w",
+      "excerpt": "200W IP66 flood light with asymmetric optic for facades, yards and sports courts.",
+      "content": "<p>A tempered glass lens and marine-grade coating make the flood series suitable for coastal installations. The asymmetric optic limits spill light towards neighbours and roads.</p>",
+      "terms": [
+        "outdoor"
+      ],
+      "acf": {
+        "wattage": "200 W",
+        "efficacy": "140 lm/W",
+        "ip_rating": "IP66",
+        "warranty": "5 years",
+        "specs": [
+          {
+            "label": "Luminous flux",
+            "value": "28,000 lm"
+          },
+          {
+            "label": "Optics",
+            "value": "Asymmetric 30°×70° / 60° / 90°"
+          },
+          {
+            "label": "Surge protection",
+            "value": "6 kV"
+          },
+          {
+            "label": "Corrosion class",
+            "value": "C5-M coating option"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LED Street Light 120W",
+      "slug": "street-light-120w",
+      "excerpt": "120W road luminaire with tool-free maintenance and ME3 lighting class compliance.",
+      "content": "<p>Designed for municipal retrofits, the street series accepts 3–5 m arms and standard NEMA/Zhaga sockets for future smart-city upgrades.</p>",
+      "terms": [
+        "outdoor"
+      ],
+      "acf": {
+        "wattage": "120 W",
+        "efficacy": "150 lm/W",
+        "ip_rating": "IP66",
+        "warranty": "5 years",
+        "specs": [
+          {
+            "label": "Luminous flux",
+            "value": "18,000 lm"
+          },
+          {
+            "label": "Pole interface",
+            "value": "Ø48/60 mm arms"
+          },
+          {
+            "label": "Control socket",
+            "value": "NEMA / Zhaga (option)"
+          },
+          {
+            "label": "Certifications",
+            "value": "CE, ENEC-ready design"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LED Panel 600×600",
+      "slug": "led-panel-600",
+      "excerpt": "Low-glare recessed panel with UGR below 19 for offices and retail floors, 0-10V dimming.",
+      "content": "<p>A micro-prismatic diffuser keeps UGR below 19 for screen-heavy workspaces. The frame is compatible with standard 600×600 grid ceilings and surface-mount kits.</p>",
+      "terms": [
+        "commercial-indoor"
+      ],
+      "acf": {
+        "wattage": "40 W",
+        "efficacy": "130 lm/W",
+        "ip_rating": "IP44",
+        "warranty": "5 years",
+        "specs": [
+          {
+            "label": "Luminous flux",
+            "value": "5,200 lm"
+          },
+          {
+            "label": "UGR",
+            "value": "Below 19"
+          },
+          {
+            "label": "Dimming",
+            "value": "0–10V / DALI (option)"
+          },
+          {
+            "label": "Lifetime",
+            "value": "L80B10 @ 50,000 h"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Tri-Proof LED 40W",
+      "slug": "tri-proof-40w",
+      "excerpt": "Sealed IP69K tri-proof luminaire for food processing, cold stores and washdown areas.",
+      "content": "<p>Food-grade gaskets and stainless clips survive daily high-pressure washdowns, and the smooth housing leaves no dust traps. Connection is through rear cable glands with through-wiring.</p>",
+      "terms": [
+        "food-grade"
+      ],
+      "acf": {
+        "wattage": "40 W",
+        "efficacy": "140 lm/W",
+        "ip_rating": "IP69K",
+        "warranty": "5 years",
+        "specs": [
+          {
+            "label": "Luminous flux",
+            "value": "5,600 lm"
+          },
+          {
+            "label": "Housing",
+            "value": "PC body, stainless clips"
+          },
+          {
+            "label": "Operating temperature",
+            "value": "-30 °C to +50 °C"
+          },
+          {
+            "label": "Certifications",
+            "value": "CE, RoHS, HACCP-ready design"
+          }
+        ]
+      }
+    }
+  ],
+  "industries": [
+    {
+      "title": "Warehouse & Logistics Lighting",
+      "slug": "warehouse-lighting",
+      "excerpt": "High bay layouts that cut fixture count in narrow racking aisles and survive 24/7 dock operation.",
+      "content": "<p>We size high bay layouts from racking drawings, not generic spacing rules. Linear optics in aisles and UFO fittings at docks give the cleanest energy-per-lux result.</p>",
+      "acf": {
+        "challenge": "Narrow racking aisles waste light from round high bays, while 24/7 dock operation punishes drivers that cannot handle frequent switching.",
+        "outcome": "A typical 10,000 m² retrofit reduces connected load by 55–65% and pays back in 14–24 months at European industrial tariffs."
+      }
+    },
+    {
+      "title": "Parking & Exterior Area Lighting",
+      "slug": "parking-lighting",
+      "excerpt": "Spill-light controlled floods and street fittings for car parks, yards and access roads.",
+      "content": "<p>Car park and yard projects usually fail on spill light and glare complaints, not on lux numbers. We select asymmetric optics per pole position and verify beam edges against site boundaries.</p>",
+      "acf": {
+        "challenge": "Open car parks need uniform ground lighting without throwing light into neighbouring residential windows.",
+        "outcome": "Asymmetric distributions keep boundary spill below EPL limits while cutting pole count on most sites."
+      }
+    },
+    {
+      "title": "Retail & Supermarket Lighting",
+      "slug": "retail-lighting",
+      "excerpt": "Low-glare panels and accent lighting that keep shelves bright without washing out displays.",
+      "content": "<p>Retail lighting has two jobs: keep UGR below 19 for staff comfort, and keep colour consistent across fresh food zones. We combine panels for ambient light with high-CRI options where merchandising needs it.</p>",
+      "acf": {
+        "challenge": "Open ceiling retail spaces mix office-style comfort requirements with food-zone colour rendering rules.",
+        "outcome": "Panel grids at 300–400 lux with targeted high-CRI zones keep both facilities managers and merchandisers satisfied."
+      }
+    }
+  ],
+  "guides": [
+    {
+      "title": "How to Choose LED High Bay Wattage",
+      "slug": "choose-high-bay-wattage",
+      "excerpt": "A four-step method for sizing high bay wattage from mounting height, lux targets and racking layout.",
+      "content": "<h2>Start from lux, not wattage</h2><p>Define the task first: 150–200 lux for storage, 300 lux for packing, 500 lux for fine assembly. Wattage is only a consequence of the required lumens and the fitting's efficacy.</p><h2>Convert height to beam choice</h2><p>Below 6 m use wide beams; 8–12 m suits 60°–90° UFO optics; above 12 m tighten the beam and raise wattage per fitting instead of adding fixtures.</p><h2>Check the racking layout</h2><p>In aisles narrower than 4 m, linear optics beat round fittings on uniformity and fixture count.</p><h2>Validate the payback</h2><p>Compare connected load and annual hours; most industrial retrofits pay back in under two years.</p>"
+    },
+    {
+      "title": "IP Ratings Explained for Lighting Buyers",
+      "slug": "ip-ratings-explained",
+      "excerpt": "What IP65, IP66 and IP69K actually protect against, and which one your project needs.",
+      "content": "<h2>The two digits</h2><p>The first digit covers solids and dust, the second covers water. IP6x means dust-tight; the second digit scales from dripping water (3) to high-pressure jets (6) and washdown (9K).</p><h2>Common mistakes</h2><p>IP65 is not automatically better than IP66 for every project: IP66 focuses on heavy seas and jets, while IP69K adds close-range high-temperature washdown. Food plants should specify IP69K explicitly.</p><h2>Match rating to location</h2><p>Dry indoor: IP44. Covered outdoor: IP65. Open yard: IP66. Food processing and cold store washdown: IP69K.</p>"
+    },
+    {
+      "title": "Export Certifications: CE, SAA and ETL",
+      "slug": "export-certifications",
+      "excerpt": "Which certifications European, Australian and North American buyers ask for, and how we document them.",
+      "content": "<h2>Europe</h2><p>CE marking covers EMC and LVD directives; ENEC is a voluntary quality mark that tender documents increasingly reference.</p><h2>Australia and New Zealand</h2><p>SAA approval is required for luminaires sold into Australia. We ship test reports with container documents to smooth customs checks.</p><h2>North America</h2><p>ETL or UL listing is the practical baseline, plus DLC listing where utility rebate programmes apply.</p><h2>Documentation we provide</h2><p>Every project ships with declarations of conformity, test reports and warranty terms in a single PDF pack.</p>"
+    }
+  ],
+  "news": [
+    {
+      "title": "Your Company Opens Third Production Line",
+      "slug": "company-third-production-line",
+      "excerpt": "The new line doubles monthly high bay capacity for European and Australian projects.",
+      "content": "<p>Your Company has commissioned a third automated production line, lifting high bay output to 40,000 units per month. The line adds in-house driver burn-in testing for every batch.</p>"
+    }
+  ],
+  "pages": {
+    "home": {
+      "title": "Industrial LED Lighting Manufacturer for Global Projects",
+      "slug": "home",
+      "content": "<p>Your Company engineers high bay, flood and street luminaires for distributors, electrical contractors and project tenders across Europe, Australia and North America.</p><p>Every project is sized from real drawings — racking layouts, pole positions, ceiling heights — and ships with certification packs, DIM/IES files and a 5-year warranty.</p>"
+    },
+    "about": {
+      "title": "About Your Company",
+      "slug": "about",
+      "content": "<h2>Who we are</h2><p>Your Company is a demonstration brand assembled for this acceptance site: a factory-backed LED luminaire supplier serving wholesale distributors and project contractors.</p><h2>How we work with project buyers</h2><p>Send drawings or a lighting schedule; we return a photometric layout, an itemised quotation and certification documents within three working days.</p><h2>Quality and compliance</h2><p>Production runs include driver burn-in testing, and every shipment carries declarations of conformity with a five-year warranty.</p>"
+    },
+    "contact": {
+      "title": "Contact & Request for Quotation",
+      "slug": "contact",
+      "content": "<p>Send your drawings, a lighting schedule or a simple description of the project. Our export team replies with photometric recommendations and itemised pricing within one working day.</p>[cleanroom_rfq_form]"
+    }
+  }
+}
