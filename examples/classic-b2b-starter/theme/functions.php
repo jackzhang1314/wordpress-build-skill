@@ -183,6 +183,7 @@ function media_placeholder(string $kind = 'product', string $label = '', string 
         'industry' => '1600 × 1000 · 16:10',
         'guide' => '1200 × 900 · 4:3',
         'page' => '1200 × 900 · 4:3',
+        'category' => '1400 × 1050 · 4:3',
     ];
     $dimension = $dimension !== '' ? $dimension : ($dimensions[$kind] ?? $dimensions['product']);
     $screen_reader = $label !== '' ? '<span class="screen-reader-text">' . esc_html($label) . '</span>' : '';

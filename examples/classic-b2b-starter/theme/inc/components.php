@@ -330,3 +330,118 @@ function component_rich_description(array $props = []): void {
 	echo '<article class="prose rich-description">' . $content . '</article>'; // phpcs:ignore WordPress.Security.EscapeOutput -- editor content is trusted and already filtered by the_content().
 	echo '</section>';
 }
+
+/** Rich product-category hero with optional image, key facts and dual actions. */
+function component_category_hero(array $props = []): void {
+	$name = (string) ($props['name'] ?? '');
+	if ($name === '') return;
+	$overline = (string) ($props['overline'] ?? 'Product range');
+	$intro = (string) ($props['intro'] ?? '');
+	$image = (array) ($props['image'] ?? []);
+	$facts = array_slice((array) ($props['facts'] ?? []), 0, 4);
+	$cta = (array) ($props['cta'] ?? []);
+	$all_url = (string) ($props['all_url'] ?? '');
+
+	echo '<section class="category-hero"><div class="category-hero-grid">';
+	echo '<div class="category-copy">';
+	if ($overline !== '') echo '<p class="eyebrow">' . esc_html($overline) . '</p>';
+	echo '<h1>' . esc_html($name) . '</h1>';
+	if ($intro !== '') echo '<div class="prose category-intro"><p>' . esc_html($intro) . '</p></div>';
+	if ($facts) {
+		echo '<dl class="category-facts">';
+		foreach ($facts as $fact) printf('<div><dt>%s</dt><dd>%s</dd></div>', esc_html((string) ($fact['label'] ?? '')), esc_html((string) ($fact['value'] ?? '')));
+		echo '</dl>';
+	}
+	echo '<div class="category-actions">';
+	if (!empty($cta['url'])) printf('<a class="button button-large" href="%s">%s</a>', esc_url((string) $cta['url']), esc_html((string) ($cta['button_label'] ?? 'Request a quotation')));
+	if ($all_url !== '') printf('<a class="ghost-button" href="#selection-guide">Selection guide</a>');
+	echo '</div>';
+	echo '</div>';
+	echo '<div class="category-media">';
+	if (!empty($image['url'])) {
+		printf('<img src="%s" alt="%s" loading="eager" decoding="async">', esc_url((string) $image['url']), esc_attr((string) ($image['alt'] !== '' ? $image['alt'] : $name)));
+	} else {
+		echo media_placeholder('category', $name, '', '1400 × 1050 · 4:3');
+	}
+	echo '</div></div></section>';
+}
+
+/** Section anchor navigation for long commercial landing pages. */
+function component_anchor_nav(array $props = []): void {
+	$links = array_values(array_filter((array) ($props['links'] ?? []), static fn ($link): bool => trim((string) ($link['url'] ?? '')) !== '' && trim((string) ($link['label'] ?? '')) !== ''));
+	if (count($links) < 2) return;
+	echo '<nav class="anchor-nav" aria-label="Section navigation"><div class="anchor-track">';
+	foreach ($links as $link) printf('<a href="%s">%s</a>', esc_url((string) $link['url']), esc_html((string) $link['label']));
+	echo '</div></nav>';
+}
+
+/** Compact label/value fact grid used by category ranges. */
+function component_fact_grid(array $props = []): void {
+	$rows = array_values(array_filter((array) ($props['rows'] ?? []), static fn ($row): bool => trim((string) ($row['label'] ?? '')) !== ''));
+	if (!$rows) return;
+	echo '<dl class="fact-grid">';
+	foreach ($rows as $row) printf('<div><dt>%s</dt><dd>%s</dd></div>', esc_html((string) $row['label']), esc_html((string) ($row['value'] ?? '')));
+	echo '</dl>';
+}
+
+/** Numbered category process steps. */
+function component_process_steps(array $props = []): void {
+	$rows = array_values(array_filter((array) ($props['rows'] ?? []), static fn ($row): bool => trim((string) ($row['label'] ?? '')) !== ''));
+	if (!$rows) return;
+	echo '<ol class="process-grid">';
+	foreach ($rows as $index => $row) printf('<li><span>%02d</span><strong class="process-title">%s</strong><p>%s</p></li>', $index + 1, esc_html((string) $row['label']), esc_html((string) ($row['value'] ?? '')));
+	echo '</ol>';
+}
+
+/** Checklist with an accessible check icon. */
+function component_check_list(array $props = []): void {
+	$items = array_values(array_filter(array_map('trim', (array) ($props['items'] ?? []))));
+	if (!$items) return;
+	echo '<ul class="check-list">';
+	foreach ($items as $item) echo '<li>' . esc_html($item) . '</li>';
+	echo '</ul>';
+}
+
+/** Resource cards; an optional second line segment becomes a link. */
+function component_resource_list(array $props = []): void {
+	$rows = array_values(array_filter((array) ($props['resources'] ?? []), static fn ($row): bool => trim((string) ($row['label'] ?? '')) !== ''));
+	if (!$rows) return;
+	echo '<div class="resource-grid">';
+	foreach ($rows as $row) {
+		echo '<div class="resource-card">';
+		if (!empty($row['is_link'])) {
+			printf('<a href="%s">%s<span aria-hidden="true">→</span></a>', esc_url((string) $row['url']), esc_html((string) $row['label']));
+		} else {
+			printf('<p>%s</p>', esc_html((string) $row['label']));
+		}
+		echo '</div>';
+	}
+	echo '</div>';
+}
+
+/** Related category tiles derived from sibling product categories. */
+function component_related_category_tiles(array $props = []): void {
+	$terms = array_values(array_filter((array) ($props['terms'] ?? [])));
+	if (!$terms) return;
+	echo '<div class="related-category-grid">';
+	foreach ($terms as $term) {
+		printf(
+			'<a class="related-category" href="%s"><strong class="related-category-title">%s</strong><p>%s</p><span>Browse range →</span></a>',
+			esc_url((string) $term['url']),
+			esc_html((string) $term['name']),
+			esc_html((string) $term['description'])
+		);
+	}
+	echo '</div>';
+}
+
+/** Category editorial wrapper for ACF WYSIWYG content. */
+function component_category_editorial(array $props = []): void {
+	$content = trim((string) ($props['content'] ?? ''));
+	if ($content === '') return;
+	component_section_heading([
+		'eyebrow' => (string) ($props['eyebrow'] ?? 'Buying guide'),
+		'title' => (string) ($props['title'] ?? 'Category guide'),
+	]);
+	printf('<article class="prose category-editorial">%s</article>', wp_kses_post($content));
+}

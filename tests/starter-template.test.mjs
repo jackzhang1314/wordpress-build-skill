@@ -86,6 +86,45 @@ test('term ACF seeding uses qualified ACF object ids to prevent post-meta pollut
   assert.match(seed, /starter_delete_legacy_post_meta/);
 });
 
+test('product category pages use a rich commercial landing-page architecture', () => {
+  const template = readFileSync(join(starterRoot, 'theme/taxonomy-product_collection.php'), 'utf8');
+  const controller = readFileSync(join(starterRoot, 'theme/inc/page-data.php'), 'utf8');
+  for (const marker of [
+    'component_category_hero',
+    'component_anchor_nav',
+    'id="products"',
+    'id="selection-guide"',
+    'id="specifications"',
+    'id="applications"',
+    'id="standards"',
+    'id="resources"',
+    'id="faq"',
+    'component_related_category_tiles',
+    'component_category_editorial',
+    'application/ld+json',
+  ]) {
+    assert.match(template, new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  }
+  assert.match(controller, /'product_collection_' \. \$term_id/);
+  for (const field of [
+    'category_overline',
+    'category_intro',
+    'category_hero_image',
+    'category_key_facts',
+    'category_selection_guide',
+    'category_specifications',
+    'category_use_cases',
+    'category_standards',
+    'category_process',
+    'category_checklist',
+    'category_resources',
+    'category_faq',
+    'category_long_description',
+  ]) {
+    assert.match(controller, new RegExp(`'${field}'`));
+  }
+});
+
 test('product detail v2 keeps a simple hero and uses the main editor at the bottom', () => {
   const product = readFileSync(join(starterRoot, 'theme/single-starter_product.php'), 'utf8');
   const heroEnd = product.indexOf('</section>', product.indexOf('component_product_gallery'));

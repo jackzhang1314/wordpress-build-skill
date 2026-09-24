@@ -27,7 +27,7 @@ function lines(string $name, $source = null, array $fallback = []): array {
     if (trim($raw) === '') {
         return $fallback;
     }
-    return field_lines($name);
+    return array_values(array_filter(array_map('trim', preg_split('/\\r?\\n/', $raw) ?: []), static fn ($line) => $line !== ''));
 }
 
 function global_text(string $name, string $fallback = ''): string {
@@ -222,16 +222,71 @@ function product_data(): array {
 function product_category_data($term = null): array {
     $term = $term instanceof \WP_Term ? $term : get_queried_object();
     if (!$term instanceof \WP_Term) return [];
+
     $term_id = (int) $term->term_id;
+    $object_id = 'product_collection_' . $term_id;
+    $parse_resources = static function (array $items): array {
+        $rows = [];
+        foreach ($items as $item) {
+            $parts = array_map('trim', explode('|', (string) $item, 2));
+            $label = $parts[0] ?? '';
+            $url = $parts[1] ?? '';
+            if ($label === '') continue;
+            $rows[] = [
+                'label' => $label,
+                'url' => $url,
+                'is_link' => $url !== '' && (str_starts_with($url, 'http://') || str_starts_with($url, 'https://') || str_starts_with($url, '/')),
+            ];
+        }
+        return $rows;
+    };
+
+    $hero_image = function_exists('get_field') ? get_field('category_hero_image', $object_id) : null;
+    if (is_numeric($hero_image)) $hero_image = ['id' => (int) $hero_image];
+    $hero_image = is_array($hero_image) ? normalize_product_image($hero_image) : [];
+
+    $related_terms = get_terms([
+        'taxonomy' => 'product_collection',
+        'hide_empty' => false,
+        'exclude' => [$term_id],
+        'number' => 6,
+    ]);
+    $related_categories = [];
+    if (is_array($related_terms)) {
+        foreach ($related_terms as $related_term) {
+            $url = get_term_link($related_term);
+            if (is_wp_error($url)) continue;
+            $related_categories[] = [
+                'name' => (string) $related_term->name,
+                'url' => (string) $url,
+                'description' => wp_trim_words(wp_strip_all_tags((string) $related_term->description), 18, '…'),
+            ];
+        }
+    }
+
     return [
-        'intro' => text('category_intro', $term_id, wp_strip_all_tags((string) term_description($term))),
-        'features' => rows('category_features', $term_id),
-        'applications' => lines('category_applications', $term_id),
-        'faq' => rows('category_faq', $term_id),
+        'name' => (string) $term->name,
+        'slug' => (string) $term->slug,
+        'overline' => text('category_overline', $object_id, 'Product range'),
+        'intro' => text('category_intro', $object_id, wp_strip_all_tags((string) term_description($term))),
+        'hero_image' => $hero_image,
+        'key_facts' => rows('category_key_facts', $object_id),
+        'features' => rows('category_features', $object_id),
+        'selection_guide' => rows('category_selection_guide', $object_id),
+        'specifications' => rows('category_specifications', $object_id),
+        'applications' => lines('category_applications', $object_id),
+        'use_cases' => rows('category_use_cases', $object_id),
+        'standards' => lines('category_standards', $object_id),
+        'process' => rows('category_process', $object_id),
+        'checklist' => lines('category_checklist', $object_id),
+        'resources' => $parse_resources(lines('category_resources', $object_id)),
+        'faq' => rows('category_faq', $object_id),
+        'long_description' => (string) (function_exists('get_field') ? get_field('category_long_description', $object_id) : ''),
+        'related_categories' => $related_categories,
         'cta' => [
-            'title' => text('category_cta_title', $term_id, 'Request a quotation'),
-            'description' => text('category_cta_text', $term_id, 'Send your requirement and receive a project-specific response.'),
-            'button_label' => text('category_cta_button', $term_id, 'Contact us'),
+            'title' => text('category_cta_title', $object_id, 'Request a quotation'),
+            'description' => text('category_cta_text', $object_id, 'Send your requirement and receive a project-specific response.'),
+            'button_label' => text('category_cta_button', $object_id, 'Contact us'),
             'url' => contact_url($term->name),
         ],
     ];

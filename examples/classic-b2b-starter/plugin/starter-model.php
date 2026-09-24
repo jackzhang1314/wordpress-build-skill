@@ -2,7 +2,7 @@
 /**
  * Plugin Name: b2b-starter Content Model
  * Description: Full B2B information architecture: products, industries, guides and RFQ capture.
- * Version: 2.4.0
+ * Version: 2.5.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Requires Plugins: advanced-custom-fields
@@ -257,10 +257,24 @@ add_action('acf/init', static function (): void {
     acf_add_local_field_group([
         'key' => 'group_collection_content', 'title' => 'Category content', 'show_in_rest' => true,
         'fields' => [
-            $field('field_tc_intro', 'category_intro', 'Intro paragraph', 'textarea', ['rows' => 4]),
-            $field('field_tc_features', 'category_features', 'Category highlights', 'textarea', array_merge(['rows' => 8], $rows_help('Use Title | Description.'))),
+            $field('field_tc_overline', 'category_overline', 'Hero eyebrow', 'text'),
+            $field('field_tc_intro', 'category_intro', 'Hero introduction', 'textarea', ['rows' => 5, 'instructions' => 'Explain what belongs in this range and which buyers it serves.']),
+            $field('field_tc_hero_image', 'category_hero_image', 'Hero image', 'image', ['return_format' => 'array', 'preview_size' => 'medium']),
+            $field('field_tc_key_facts', 'category_key_facts', 'Key facts', 'textarea', array_merge(['rows' => 6], $rows_help('Use Label | Value.'))),
+            $field('field_tc_features', 'category_features', 'Range benefits', 'textarea', array_merge(['rows' => 8], $rows_help('Use Title | Description.'))),
+            $field('field_tc_selection_guide', 'category_selection_guide', 'Selection guide', 'textarea', array_merge(['rows' => 10], $rows_help('Use Step | Buying guidance.'))),
+            $field('field_tc_specifications', 'category_specifications', 'Category specifications', 'textarea', array_merge(['rows' => 10], $rows_help('Use Label | Value or range.'))),
             $field('field_tc_applications', 'category_applications', 'Typical applications', 'textarea', array_merge(['rows' => 6], $rows_help('Enter an application.'))),
+            $field('field_tc_use_cases', 'category_use_cases', 'Use cases', 'textarea', array_merge(['rows' => 10], $rows_help('Use Title | Description.'))),
+            $field('field_tc_standards', 'category_standards', 'Standards & compliance', 'textarea', array_merge(['rows' => 6], $rows_help('Enter a standard, certification or compliance note.'))),
+            $field('field_tc_process', 'category_process', 'RFQ process', 'textarea', array_merge(['rows' => 8], $rows_help('Use Step | Description.'))),
+            $field('field_tc_checklist', 'category_checklist', 'RFQ checklist', 'textarea', array_merge(['rows' => 6], $rows_help('Enter information buyers should send.'))),
+            $field('field_tc_resources', 'category_resources', 'Resources & downloads', 'textarea', array_merge(['rows' => 6], $rows_help('Use Label | URL.'))),
             $field('field_tc_faq', 'category_faq', 'Category FAQ', 'textarea', array_merge(['rows' => 8], $rows_help('Use Question | Answer.'))),
+            $field('field_tc_long_description', 'category_long_description', 'Long category description', 'wysiwyg', [
+                'media_upload' => 1, 'teeny' => 0, 'textarea_rows' => 16,
+                'instructions' => 'Rich editorial content for search intent, technical context, applications and buying guidance.',
+            ]),
             $field('field_tc_cta_title', 'category_cta_title', 'CTA title', 'text'),
             $field('field_tc_cta_text', 'category_cta_text', 'CTA text', 'textarea', ['rows' => 3]),
             $field('field_tc_cta_button', 'category_cta_button', 'CTA button label', 'text'),
