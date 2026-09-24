@@ -15,6 +15,11 @@ export const projectSchema = z.object({
   plugin: z.string().regex(slug),
   pluginMain: z.string().regex(/^[a-z0-9][a-z0-9._-]*\.php$/).optional(),
   livePages: z.array(z.string().regex(/^\/|^#\w+$/)).min(1).default(['/']),
+  screenshotModes: z.object({
+    smoke: z.array(z.string().min(1)).optional(),
+    templates: z.array(z.string().min(1)).optional(),
+    full: z.array(z.string().min(1)).optional(),
+  }).optional(),
   contentMarkers: z.array(z.string().min(1)).default([]),
   contentCounts: z.array(z.object({
     label: z.string().min(1),
