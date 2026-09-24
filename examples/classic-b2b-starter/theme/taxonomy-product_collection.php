@@ -13,6 +13,8 @@ $slug = (string) ($term->slug ?? '');
 $defaults = Starter\Theme\category_defaults($slug);
 $intro = Starter\Theme\field_text('category_intro', $term);
 if (trim($intro) === '') $intro = $defaults['intro'];
+$term_description = (string) ($term->description ?? '');
+$page_description = trim($intro) !== '' ? $intro : $term_description;
 $features = Starter\Theme\field_rows('category_features', $term, $defaults['features']);
 $applications = Starter\Theme\field_lines('category_applications', $term, $defaults['applications']);
 $faq = Starter\Theme\field_rows('category_faq', $term, $defaults['faq']);
@@ -20,11 +22,8 @@ $faq = Starter\Theme\field_rows('category_faq', $term, $defaults['faq']);
 Starter\Theme\component_page_head([
 	'eyebrow' => 'Product category',
 	'title' => (string) single_term_title('', false),
-	'description' => (string) ($term->description ?? '') . ($intro !== '' && ($term->description ?? '') !== '' ? '' : ''),
+	'description' => $page_description,
 ]);
-if ($intro !== '' && ($term->description ?? '') !== '') {
-	echo '<p class="lead-intro">' . esc_html($intro) . '</p>';
-}
 ?>
 	<?php if ($features) : ?>
 	<section class="section">

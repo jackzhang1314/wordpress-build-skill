@@ -56,6 +56,42 @@ function starter_specs(array $rows): array {
     return $output;
 }
 
+function starter_add_menu_item(array $item, int $menu_id, int $parent_id = 0): int {
+    $args = [
+        'menu-item-title' => $item['label'],
+        'menu-item-status' => 'publish',
+        'menu-item-parent-id' => $parent_id,
+    ];
+
+    if (!empty($item['term_id'])) {
+        $args['menu-item-type'] = 'taxonomy';
+        $args['menu-item-object'] = $item['taxonomy'] ?? 'product_collection';
+        $args['menu-item-object-id'] = (int) $item['term_id'];
+        $args['menu-item-url'] = (string) get_term_link((int) $item['term_id'], $args['menu-item-object']);
+    } elseif (!empty($item['object_id'])) {
+        $args['menu-item-type'] = 'post_type';
+        $args['menu-item-object'] = 'page';
+        $args['menu-item-object-id'] = (int) $item['object_id'];
+        $args['menu-item-url'] = (string) get_permalink((int) $item['object_id']);
+    } else {
+        $args['menu-item-type'] = 'custom';
+        $args['menu-item-object'] = 'custom';
+        $args['menu-item-url'] = (string) $item['url'];
+    }
+
+    $created = wp_update_nav_menu_item($menu_id, 0, $args);
+    if (is_wp_error($created)) {
+        throw new RuntimeException('Seed menu item failed: ' . $created->get_error_message());
+    }
+    $item_id = (int) $created;
+
+    foreach ($item['children'] ?? [] as $child) {
+        starter_add_menu_item($child, $menu_id, $item_id);
+    }
+
+    return $item_id;
+}
+
 function starter_rebuild_menu(array $items): void {
     // Fresh acceptance site: remove every nav item, including orphans with empty object_id.
     $all_items = get_posts(['post_type' => 'nav_menu_item', 'numberposts' => -1, 'fields' => 'ids']);
@@ -70,24 +106,7 @@ function starter_rebuild_menu(array $items): void {
     }
 
     foreach ($items as $item) {
-        $args = [
-            'menu-item-title' => $item['label'],
-            'menu-item-status' => 'publish',
-            'menu-item-menu-item-parent' => 0,
-        ];
-        if (!empty($item['object_id'])) {
-            $args['menu-item-type'] = 'post_type';
-            $args['menu-item-object'] = 'page';
-            $args['menu-item-object-id'] = (int) $item['object_id'];
-        } else {
-            $args['menu-item-type'] = 'custom';
-            $args['menu-item-object'] = 'custom';
-            $args['menu-item-url'] = (string) $item['url'];
-        }
-        $created = wp_update_nav_menu_item($menu_id, 0, $args);
-        if (is_wp_error($created)) {
-            throw new RuntimeException('Seed menu item failed: ' . $created->get_error_message());
-        }
+        starter_add_menu_item($item, $menu_id);
     }
 
     $locations = get_nav_menu_locations();
@@ -218,11 +237,47 @@ update_option('page_on_front', $page_ids['home']);
 
 /* ---------- Navigation ---------- */
 
+$product_children = array_values(array_map(
+    static fn (string $slug, int $term_id): array => [
+        'label' => get_term($term_id, 'product_collection')->name,
+        'term_id' => $term_id,
+        'taxonomy' => 'product_collection',
+    ],
+    array_keys($term_ids),
+    array_values($term_ids)
+));
+$industry_children = array_values(array_map(
+    static fn (int $post_id): array => [
+        'label' => get_the_title($post_id),
+        'url' => get_permalink($post_id),
+    ],
+    $industry_ids
+));
+$guide_children = array_values(array_map(
+    static fn (int $post_id): array => [
+        'label' => get_the_title($post_id),
+        'url' => get_permalink($post_id),
+    ],
+    $guide_ids
+));
+
 starter_rebuild_menu([
     ['label' => 'Home', 'object_id' => $page_ids['home']],
-    ['label' => 'Products', 'url' => (string) get_post_type_archive_link('starter_product')],
-    ['label' => 'Industries', 'url' => (string) get_post_type_archive_link('starter_industry')],
-    ['label' => 'Knowledge', 'url' => (string) get_post_type_archive_link('starter_guide')],
+    [
+        'label' => 'Products',
+        'url' => (string) get_post_type_archive_link('starter_product'),
+        'children' => $product_children,
+    ],
+    [
+        'label' => 'Industries',
+        'url' => (string) get_post_type_archive_link('starter_industry'),
+        'children' => $industry_children,
+    ],
+    [
+        'label' => 'Knowledge',
+        'url' => (string) get_post_type_archive_link('starter_guide'),
+        'children' => $guide_children,
+    ],
     ['label' => 'About', 'object_id' => $page_ids['about']],
     ['label' => 'Contact', 'object_id' => $page_ids['contact']],
 ]);

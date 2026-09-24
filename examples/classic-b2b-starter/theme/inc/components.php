@@ -240,14 +240,17 @@ function component_related_products(array $props = []): void {
 
 /** Full-width conversion band used at the end of catalogue and article pages. */
 function component_cta_band(array $props = []): void {
-	echo '<section class="cta-band">';
+	$button = $props['button'] ?? [];
+	echo '<section class="cta-band"><div class="cta-layout">';
 	component_section_heading([
 		'eyebrow' => (string) ($props['eyebrow'] ?? 'Start here'),
 		'title' => (string) ($props['title'] ?? ''),
 		'description' => (string) ($props['text'] ?? ''),
-		'link' => $props['button'] ?? [],
 	]);
-	echo '</section>';
+	if (!empty($button['url']) && !empty($button['label'])) {
+		printf('<a class="button" href="%s">%s</a>', esc_url((string) $button['url']), esc_html((string) $button['label']));
+	}
+	echo '</div></section>';
 }
 
 /** Three-column social-proof strip; empty items are omitted. */

@@ -12,7 +12,6 @@ get_header(); ?>
 	Starter\Theme\component_page_head([
 		'eyebrow' => 'About Your Company',
 		'title' => get_the_title(),
-		'description' => $intro,
 	]);
 	?>
 	<?php Starter\Theme\component_stat_strip(['items' => array_map(

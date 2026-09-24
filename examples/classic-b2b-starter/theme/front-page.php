@@ -4,11 +4,20 @@
 	<?php get_template_part('parts/hero'); ?>
 <?php endwhile; ?>
 <?php
-Starter\Theme\component_stat_strip(['items' => [
+// Prefer explicit homepage stats, but a starter should not ship an empty proof section.
+$home_stats = [
 	['value' => Starter\Theme\get_setting('stat_1_value'), 'label' => Starter\Theme\get_setting('stat_1_label')],
 	['value' => Starter\Theme\get_setting('stat_2_value'), 'label' => Starter\Theme\get_setting('stat_2_label')],
 	['value' => Starter\Theme\get_setting('stat_3_value'), 'label' => Starter\Theme\get_setting('stat_3_label')],
-]]);
+];
+if (!array_filter($home_stats, static fn ($item): bool => trim((string) $item['value']) !== '')) {
+	$factory = Starter\Theme\factory_defaults();
+	$home_stats = array_map(
+		static fn (array $row): array => ['value' => $row['label'], 'label' => $row['value']],
+		Starter\Theme\field_rows('factory_stats', 'option', $factory['stats'])
+	);
+}
+Starter\Theme\component_stat_strip(['items' => array_slice($home_stats, 0, 4)]);
 ?>
 <section class="section">
 	<?php Starter\Theme\component_section_heading([

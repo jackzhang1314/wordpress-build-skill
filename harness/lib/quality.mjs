@@ -231,6 +231,34 @@ export function checkWordPressClasses(projectRoot, project) {
   return {name: 'wordpress-classes', pass: offenders.length === 0, checks: offenders};
 }
 
+/** Semantic components must have the markup, hierarchy and CSS contracts that make them usable. */
+export function checkUiComponentContracts(projectRoot, project) {
+  const themeDir = projectFile(projectRoot, project.paths.theme);
+  const phpFiles = walk(themeDir, ['.php']).map(file => ({file, text: readFileSync(file, 'utf8')}));
+  const css = walk(themeDir, ['.css']).map(file => readFileSync(file, 'utf8')).join('\n');
+  const php = phpFiles.map(file => file.text).join('\n');
+  const checks = [
+    {
+      name: 'breadcrumb-list-reset',
+      pass: /<nav class="breadcrumbs"[^>]*><ol>/.test(php) && /\.breadcrumbs\s+ol\{[^}]*display:\s*flex/.test(css),
+    },
+    {
+      name: 'navigation-hierarchy',
+      pass: /wp_nav_menu\s*\(/.test(php) && /'depth'\s*=>\s*(?:0|2)/.test(php),
+    },
+    {
+      name: 'navigation-submenu-css',
+      pass: /\.site-header nav ul ul\{[^}]*position:\s*absolute/.test(css) &&
+            /\.site-header nav li:(?:hover|focus-within)>ul/.test(css),
+    },
+    {
+      name: 'navigation-accessibility',
+      pass: /aria-controls="primary-nav"/.test(php) && /id="primary-nav"/.test(php),
+    },
+  ];
+  return {name: 'ui-component-contracts', pass: checks.every(item => item.pass), checks};
+}
+
 export async function checkPhpSyntax(files, {phpBin = 'php'} = {}) {
   const dockerImage = phpBin?.startsWith('docker:') ? phpBin.slice(7) : undefined;
   const command = dockerImage ? 'docker' : phpBin;
@@ -264,6 +292,7 @@ export async function auditProject(projectRoot, project, options = {}) {
     checkAcfBinding(projectRoot, project),
     checkRoutes(projectRoot, project),
     checkWordPressClasses(projectRoot, project),
+    checkUiComponentContracts(projectRoot, project),
   ];
 
   const phpBin = options.phpBin;

@@ -10,7 +10,6 @@ get_header(); ?>
 	Starter\Theme\component_page_head([
 		'eyebrow' => 'Knowledge',
 		'title' => get_the_title(),
-		'description' => Starter\Theme\trimmed_intro(),
 	]);
 	?>
 	<article class="prose article"><?php the_content(); ?></article>

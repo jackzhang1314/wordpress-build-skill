@@ -9,6 +9,7 @@ import {
   checkRoutes,
   checkZeroMedia,
   checkWordPressClasses,
+  checkUiComponentContracts,
 } from '../../harness/lib/quality.mjs';
 import {captureScreenshots, planScreenshotJobs} from '../../harness/lib/screenshots.mjs';
 
@@ -137,6 +138,25 @@ test('screenshot planner produces width-first jobs with safe slugs', () => {
     '/out/0390--products-ufo-highbay-150w.png',
     '/out/1440--products-ufo-highbay-150w.png',
   ]);
+});
+
+test('ui component contracts require hierarchical nav and horizontal breadcrumbs', () => {
+  const env = makeProject({
+    'theme/functions.php': `<?php echo '<nav class="breadcrumbs" aria-label="Breadcrumb"><ol>';`,
+    'theme/parts/site-header.php': `<?php wp_nav_menu(['depth' => 2]); ?>
+<button aria-controls="primary-nav"></button><nav id="primary-nav"></nav>`,
+    'theme/style.css': `.breadcrumbs ol{display:flex;list-style:none}
+.site-header nav ul ul{position:absolute}
+.site-header nav li:hover>ul{display:block}
+.site-header nav li:focus-within>ul{display:block}`,
+    'plugin/starter-model.php': '<?php',
+  });
+  try {
+    const report = checkUiComponentContracts(env.root, env.project);
+    assert.equal(report.pass, true);
+  } finally {
+    env.cleanup();
+  }
 });
 
 test('captureScreenshots validates bytes and skips only without a runner or chrome', async () => {
