@@ -1,6 +1,6 @@
 # Product Detail Page Plan v2
 
-Status: planning document for the next product-page refactor.  
+Status: implemented and verified on the component verification site.  
 Scope: `single-starter_product.php`, product ACF fields, page data, components, seed data, CSS, harness gates and deployment verification.
 
 ## 1. Goal

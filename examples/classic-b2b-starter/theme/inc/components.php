@@ -367,9 +367,11 @@ function component_document_list(array $props = []): void {
 function component_rich_description(array $props = []): void {
 	$content = trim((string) ($props['content'] ?? ''));
 	if ($content === '') return;
+	echo '<section class="product-details">';
 	component_section_heading([
 		'eyebrow' => (string) ($props['eyebrow'] ?? 'Details'),
 		'title' => (string) ($props['title'] ?? 'Product details'),
 	]);
 	echo '<article class="prose rich-description">' . $content . '</article>'; // phpcs:ignore WordPress.Security.EscapeOutput -- editor content is trusted and already filtered by the_content().
+	echo '</section>';
 }

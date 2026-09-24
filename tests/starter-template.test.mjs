@@ -127,6 +127,13 @@ test('ACF free gallery slots are registered without a PRO gallery dependency', (
   assert.doesNotMatch(plugin, /'type'\s*=>\s*'gallery'/);
 });
 
+test('seed writes every editable product v2 field', () => {
+  const seed = readFileSync(join(starterRoot, 'scripts/seed.php'), 'utf8');
+  for (const field of ['at_a_glance', 'product_faq', 'product_shipping_terms', 'product_details_title']) {
+    assert.match(seed, new RegExp(`'${field}'`));
+  }
+});
+
 test('seed navigation is explicit and default deploy does not rebuild it', () => {
   const seed = readFileSync(join(starterRoot, 'scripts/seed.php'), 'utf8');
   assert.match(seed, /if \(starter_rebuild_nav_enabled\(\)\)/);

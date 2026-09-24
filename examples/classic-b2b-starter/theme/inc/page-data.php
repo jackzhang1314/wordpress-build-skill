@@ -226,7 +226,7 @@ function product_data(): array {
         ['label' => 'Trade terms', 'value' => text('product_shipping_terms', $post_id)],
     ];
 
-    $content = (string) get_the_content();
+    $content = (string) get_post_field('post_content', $post_id);
     return [
         'gallery' => product_gallery_images($post_id),
         'title' => (string) get_the_title(),

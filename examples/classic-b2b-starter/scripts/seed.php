@@ -209,7 +209,7 @@ foreach ($data['products'] ?? [] as $product) {
         foreach (['wattage', 'efficacy', 'ip_rating', 'field_starter_wattage', 'field_starter_efficacy', 'field_starter_ip'] as $legacy) {
             delete_post_meta($product_id, $legacy);
         }
-        foreach (['quick_specs', 'product_highlights', 'spec_table', 'product_applications', 'product_documents', 'warranty', 'lead_time', 'moq', 'customization_note', 'product_cta_note', 'product_cta_label', 'product_trust_points'] as $field_name) {
+        foreach (['quick_specs', 'at_a_glance', 'product_highlights', 'spec_table', 'product_applications', 'product_documents', 'product_faq', 'product_shipping_terms', 'product_details_title', 'warranty', 'lead_time', 'moq', 'customization_note', 'product_cta_note', 'product_cta_label', 'product_trust_points'] as $field_name) {
             if (isset($acf[$field_name])) {
                 $value = $acf[$field_name];
                 if (is_array($value)) {
