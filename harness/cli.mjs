@@ -10,6 +10,7 @@ import {provisionHostinger} from './lib/hostinger.mjs';
 import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
+import {isBlankMediaContract} from './lib/verify.mjs';
 import {captureScreenshots} from './lib/screenshots.mjs';
 import {assignTemplate, argValue, auditFields, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
 import {shellQuote} from './lib/ssh.mjs';
@@ -343,7 +344,7 @@ add_action("phpmailer_init", function ($phpmailer) {
     if (command === 'verify') {
       if (!project.domain) throw new Error('project.domain is empty');
       const pages = await verifyPages(base, project.livePages, project.contentMarkers);
-      const database = await verifyDatabase(project, {wp: input => ssh.wp(input)});
+      const database = await verifyDatabase(project, {wp: input => ssh.wp(input), blankMedia: isBlankMediaContract(root, project)});
       const seo = project.requiredPlugins.includes('seo-by-rank-math') ? await verifyRankMath(project, ssh) : {pass: true};
       let screenshots;
       if (args.includes('--screenshots')) {
@@ -407,7 +408,7 @@ add_action("phpmailer_init", function ($phpmailer) {
         const cache = clearHostingerCache(project, {execFile: execFileSync});
         logger(`  ${cache.pass ? 'OK ' : 'WARN'} Hostinger cache ${cache.detail}`);
         const verification = await verifyPages(base, project.livePages, project.contentMarkers);
-        const database = await verifyDatabase(project, {wp: input => ssh.wp(input)});
+        const database = await verifyDatabase(project, {wp: input => ssh.wp(input), blankMedia: isBlankMediaContract(root, project)});
         if (!verification.pass || !database.pass) {
           for (const page of verification.results.filter(item => !item.pass)) {
             logger(`    FAIL ${page.path}: ${page.detail ?? `status ${page.status}, H1 ${page.h1}, skips ${page.skips}`}`);

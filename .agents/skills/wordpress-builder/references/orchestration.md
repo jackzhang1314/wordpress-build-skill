@@ -38,3 +38,9 @@
 ## 识别结果的边界
 
 官方检测脚本输出是启发式线索。组合目录可能返回 unknown；带 theme.json 的经典主题可能被归类为 block theme；插件头解析器也可能漏识别标准 PHPDoc 中带星号的字段。保留原报告，进一步核对实际主题模板、WordPress 激活结果、`wp_is_block_theme()` 和 REST 类型。不要修改 vendor 或把检测器成功退出等同于正确识别。
+
+## Worktree 与并行 session 所有权
+
+一个工作树同时只允许一个可写 session；其他 session 只读或等待。进入任务前先记录分支、HEAD、status 和最新 harness 基线，不能凭旧摘要继续写。需要新任务时从最新已验收分支创建新 worktree，禁止在落后分支上继续补丁后再整体合并。
+
+并发收编必须先 `git diff` 归属核对，禁止只按文件名整体 `git add`。冲突修复后运行 lint/typecheck/test 和相关站点 check/verify，再单独提交。交付记录写明：谁拥有 worktree、被收编的改动、冲突处理、验证证据。

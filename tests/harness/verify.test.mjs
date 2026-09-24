@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {fetchPage, inspectPage, verifyDatabase, verifyPages} from '../../harness/lib/verify.mjs';
+import {fetchPage, inspectPage, isBlankMediaContract, verifyDatabase, verifyPages} from '../../harness/lib/verify.mjs';
+import {fileURLToPath} from 'node:url';
+
+const starterRoot = fileURLToPath(new URL('../../examples/classic-b2b-starter', import.meta.url));
 
 test('page inspection requires one H1, order and markers', () => {
   const response = {status: 200};
@@ -64,6 +67,34 @@ test('verify pages retries transient transport failures but not HTTP failures', 
   const httpResult = await verifyPages('https://example.test', ['/missing/'], [], {fetchImpl: httpFailFetch});
   assert.equal(httpResult.pass, false);
   assert.equal(attempts, 0);
+});
+
+test('blank media verification requires zero remote attachments', async () => {
+  const calls = [];
+  const wp = args => {
+    calls.push(args);
+    return args.some(arg => String(arg).includes('attachment')) ? '2' : '3';
+  };
+  const project = {
+    contentCounts: [{label: 'Guides', postType: 'starter_guide', expected: 3, kind: 'post'}],
+    media: {sources: []},
+    paths: {content: 'content'},
+  };
+  const result = await verifyDatabase(project, {wp, blankMedia: true});
+  assert.equal(result.pass, false);
+  assert.deepEqual(calls.at(-1), ['post', 'list', '--post_type=attachment', '--format=count']);
+  assert.equal(result.results.at(-1).count, 2);
+});
+
+test('starter blank media contract is detected from source and empty map', () => {
+  assert.equal(isBlankMediaContract(starterRoot, {
+    media: {sources: []},
+    paths: {content: 'content'},
+  }), true);
+  assert.equal(isBlankMediaContract(starterRoot, {
+    media: {sources: [{name: 'products', path: 'docs/media/products'}]},
+    paths: {content: 'content'},
+  }), false);
 });
 
 test('database verification retries transient wp failures', async () => {
