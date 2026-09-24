@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Hero Image">
+  <rect width="1600" height="900" fill="#E9EDF2"/>
+  <rect x="40" y="40" width="1520" height="820" fill="none" stroke="#B7C2D4" stroke-width="2" stroke-dasharray="10 6" rx="6"/>
+  <text x="800" y="458" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="30" font-weight="600" fill="#5B6572">1600 × 1000</text>
+  <text x="800" y="500" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="22" fill="#98A2B3">16:10 image placeholder</text>
+</svg>
