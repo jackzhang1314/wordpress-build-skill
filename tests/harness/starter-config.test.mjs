@@ -8,7 +8,7 @@ const starterRoot = fileURLToPath(new URL('../../examples/classic-b2b-starter', 
 test('starter example config is directly readable for local gates but marked non-deployable', () => {
   const project = loadProject(starterRoot);
   assert.equal(project._isExample, true);
-  assert.equal(project.livePages.length, 23);
+  assert.equal(project.livePages.length, 24);
   assert.equal(project.ssh.host, 'REPLACE_SSH_HOST');
   assert.match(project.ssh.keyPath, /REPLACE_SSH_KEY_PATH$/);
 });

@@ -16,7 +16,7 @@ get_header(); ?>
 <?php endwhile; ?>
 <?php Starter\Theme\component_stat_strip(['items' => $home['stats']]); ?>
 <?php if ($home['sections']['applications']['enabled']) : ?>
-<section class="section">
+<section class="section home-categories">
 	<?php Starter\Theme\component_section_heading([
 		'eyebrow' => 'Applications',
 		'title' => $home['sections']['applications']['title'],
@@ -26,7 +26,7 @@ get_header(); ?>
 </section>
 <?php endif; ?>
 <?php if ($home['sections']['products']['enabled']) : ?>
-<section class="section">
+<section class="section home-products">
 	<?php Starter\Theme\component_section_heading([
 		'eyebrow' => 'Catalogue',
 		'title' => $home['sections']['products']['title'],
@@ -39,7 +39,7 @@ get_header(); ?>
 </section>
 <?php endif; ?>
 <?php if ($home['sections']['industries']['enabled']) : ?>
-<section class="section">
+<section class="section home-sectors">
 	<?php Starter\Theme\component_section_heading([
 		'eyebrow' => 'Sectors',
 		'title' => $home['sections']['industries']['title'],
@@ -52,7 +52,7 @@ get_header(); ?>
 </section>
 <?php endif; ?>
 <?php if ($home['sections']['guides']['enabled']) : ?>
-<section class="section">
+<section class="section home-guides">
 	<?php Starter\Theme\component_section_heading([
 		'eyebrow' => 'Knowledge',
 		'title' => $home['sections']['guides']['title'],

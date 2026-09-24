@@ -86,6 +86,44 @@ test('term ACF seeding uses qualified ACF object ids to prevent post-meta pollut
   assert.match(seed, /starter_delete_legacy_post_meta/);
 });
 
+test('blog templates follow SEO-first editorial architecture', () => {
+  for (const file of ['theme/home.php', 'theme/archive.php', 'theme/single.php', 'theme/inc/blog.php', 'theme/parts/blog-card.php']) {
+    assert.ok(existsSync(join(starterRoot, file)), `missing ${file}`);
+  }
+
+  const single = readFileSync(join(starterRoot, 'theme/single.php'), 'utf8');
+  for (const marker of [
+    'Written by',
+    'article-byline',
+    'blog_reading_time',
+    'blog_article_content',
+    'article-toc',
+    'article-body',
+    'author-box',
+    'component_related_blog_cards',
+    'BlogPosting',
+    'datePublished',
+    'dateModified',
+    'publisher',
+  ]) {
+    assert.match(single, new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  }
+
+  const archive = readFileSync(join(starterRoot, 'theme/home.php'), 'utf8');
+  assert.match(archive, /component_blog_archive/);
+  assert.match(archive, /the_posts_pagination/);
+  assert.match(archive, /blog-filter/);
+
+  const helpers = readFileSync(join(starterRoot, 'theme/inc/blog.php'), 'utf8');
+  for (const marker of ['blog_reading_time', 'blog_modified_is_visible', 'blog_related_posts', 'sanitize_title']) {
+    assert.match(helpers, new RegExp(marker));
+  }
+
+  const project = JSON.parse(readFileSync(join(starterRoot, 'project.example.json'), 'utf8'));
+  assert.equal(project.routeCount, 24);
+  assert.ok(project.livePages.includes('/news/'));
+});
+
 test('product category pages use a rich commercial landing-page architecture', () => {
   const template = readFileSync(join(starterRoot, 'theme/taxonomy-product_collection.php'), 'utf8');
   const controller = readFileSync(join(starterRoot, 'theme/inc/page-data.php'), 'utf8');
@@ -191,6 +229,9 @@ test('templates compose through components instead of repeating section shells',
   const componentFiles = [
     '404.php',
     'archive.php',
+    'home.php',
+    'index.php',
+    'single.php',
     'archive-starter_guide.php',
     'archive-starter_industry.php',
     'archive-starter_product.php',
@@ -207,7 +248,7 @@ test('templates compose through components instead of repeating section shells',
   ];
   for (const file of componentFiles) {
     const text = readFileSync(join(starterRoot, 'theme', file), 'utf8');
-    const usesComponent = /component_page_head|component_section_heading|component_card_grid|component_cta_band|component_related_products|component_spec_table|component_feature_grid|component_link_cards|get_template_part\('parts\//.test(text);
+    const usesComponent = /component_page_head|component_section_heading|component_card_grid|component_blog_archive|component_cta_band|component_related_products|component_spec_table|component_feature_grid|component_link_cards|get_template_part\('parts\//.test(text);
     assert.ok(usesComponent, `${file} must compose a component or template part`);
   }
   for (const file of componentFiles) {

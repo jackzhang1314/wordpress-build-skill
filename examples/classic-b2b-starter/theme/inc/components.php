@@ -228,12 +228,16 @@ function component_related_products(array $props = []): void {
 
 /** Full-width conversion band used at the end of catalogue and article pages. */
 function component_cta_band(array $props = []): void {
-	$button = $props['button'] ?? [];
+	$button = $props['button'] ?? [
+		'url' => $props['url'] ?? '',
+		'label' => $props['button_label'] ?? '',
+	];
+	$text = $props['text'] ?? $props['description'] ?? '';
 	echo '<section class="cta-band"><div class="cta-layout">';
 	component_section_heading([
 		'eyebrow' => (string) ($props['eyebrow'] ?? 'Start here'),
 		'title' => (string) ($props['title'] ?? ''),
-		'description' => (string) ($props['text'] ?? ''),
+		'description' => (string) $text,
 	]);
 	if (!empty($button['url']) && !empty($button['label'])) {
 		printf('<a class="button" href="%s">%s</a>', esc_url((string) $button['url']), esc_html((string) $button['label']));
@@ -444,4 +448,38 @@ function component_category_editorial(array $props = []): void {
 		'title' => (string) ($props['title'] ?? 'Category guide'),
 	]);
 	printf('<article class="prose category-editorial">%s</article>', wp_kses_post($content));
+}
+
+/** Editorial blog archive with a featured lead article and compact post cards. */
+function component_blog_archive(array $props = []): void {
+	$query = $GLOBALS['wp_query'] ?? null;
+	if (!$query || !$query->have_posts()) {
+		echo '<p class="empty-state">' . esc_html((string) ($props['empty_text'] ?? 'No articles yet.')) . '</p>';
+		return;
+	}
+
+	$featured = !is_paged();
+	$index = 0;
+	echo '<div class="blog-grid">';
+	while ($query->have_posts()) : $query->the_post();
+		get_template_part('parts/blog-card', null, [
+			'featured' => $featured && 0 === $index,
+		]);
+		$index++;
+	endwhile;
+	echo '</div>';
+	wp_reset_postdata();
+}
+
+/** Related article cards. */
+function component_related_blog_cards(array $props = []): void {
+	$posts = array_values(array_filter((array) ($props['posts'] ?? [])));
+	if (!$posts) return;
+	echo '<div class="blog-grid blog-grid-compact">';
+	foreach ($posts as $related_post) {
+		setup_postdata($related_post);
+		get_template_part('parts/blog-card');
+	}
+	wp_reset_postdata();
+	echo '</div>';
 }

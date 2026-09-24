@@ -27,6 +27,7 @@
     "/guides/choose-high-bay-wattage/",
     "/guides/ip-ratings-explained/",
     "/guides/export-certifications/",
+    "/news/",
     "/about/",
     "/contact/",
     "/company-third-production-line/"
@@ -183,5 +184,6 @@
   "pluginMain": "starter-model.php",
   "hostinger": {
     "user": "starter-owner"
-  }
+  },
+  "routeCount": 24
 }

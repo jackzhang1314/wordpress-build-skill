@@ -169,6 +169,7 @@ if (!is_array($media_map) || !is_array($data)) {
 starter_delete_legacy_post_meta();
 starter_delete_by_slug('modular-surface-system', ['starter_product']);
 starter_delete_by_slug('starter-site-handover-checklist', ['post']);
+starter_delete_by_slug('hello-world', ['post']);
 starter_delete_by_slug('request-a-quote', ['page']);
 $legacy_term = term_exists('precision-surfaces', 'product_collection');
 if (is_array($legacy_term)) {
@@ -282,6 +283,7 @@ foreach ($data['pages'] ?? [] as $key => $page) {
 }
 update_option('show_on_front', 'page');
 update_option('page_on_front', $page_ids['home']);
+update_option('page_for_posts', $page_ids['news']);
 
 /* ---------- Editable global options ---------- */
 
@@ -335,7 +337,8 @@ starter_rebuild_menu([
         'url' => (string) get_post_type_archive_link('starter_guide'),
         'children' => $guide_children,
     ],
-    ['label' => 'About', 'object_id' => $page_ids['about']],
+    ['label' => 'Blog', 'object_id' => $page_ids['news']],
+        ['label' => 'About', 'object_id' => $page_ids['about']],
     ['label' => 'Contact', 'object_id' => $page_ids['contact']],
 ]);
 }
