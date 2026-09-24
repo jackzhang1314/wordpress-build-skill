@@ -126,5 +126,6 @@ test('seed content embeds through the stable starter shortcode', () => {
   const plugin = readFileSync(join(starterRoot, 'plugin/starter-model.php'), 'utf8');
   assert.match(plugin, /add_shortcode\('starter_rfq_form'/);
   assert.match(plugin, /function ensure_rfq_form\(\): int/);
+  assert.match(plugin, /form_fields\['submitButton'\]/);
   assert.doesNotMatch(plugin, /shortcode_atts\(\['id' => '3'\]/);
 });

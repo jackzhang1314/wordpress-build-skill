@@ -51,6 +51,30 @@ register_deactivation_hook(__FILE__, static function (): void {
 });
 
 /** Create the sample RFQ form once when Fluent Forms is available. */
+function ensure_rfq_form_settings(int $form_id): void {
+    global $wpdb;
+    $meta_table = $wpdb->prefix . 'fluentform_form_meta';
+    $exists = $wpdb->get_var($wpdb->prepare(
+        "SELECT id FROM {$meta_table} WHERE form_id = %d AND meta_key = 'formSettings'",
+        $form_id
+    ));
+    if ($exists) {
+        return;
+    }
+    $settings = [
+        'formExtraClasses' => [],
+        'confirmation' => [
+            'type' => 'samePage',
+            'message' => 'Thank you! We will reply within one working day.',
+        ],
+    ];
+    $wpdb->insert($meta_table, [
+        'form_id' => $form_id,
+        'meta_key' => 'formSettings',
+        'value' => wp_json_encode($settings),
+    ]);
+}
+
 function ensure_rfq_form(): int {
     global $wpdb;
     $forms_table = $wpdb->prefix . 'fluentform_forms';
@@ -60,6 +84,7 @@ function ensure_rfq_form(): int {
 
     $form_id = (int) get_option('starter_rfq_form_id');
     if ($form_id && (int) $wpdb->get_var($wpdb->prepare("SELECT ID FROM {$forms_table} WHERE ID = %d", $form_id))) {
+        ensure_rfq_form_settings($form_id);
         return $form_id;
     }
 
@@ -70,6 +95,7 @@ function ensure_rfq_form(): int {
     ));
     if ($form_id) {
         update_option('starter_rfq_form_id', $form_id);
+        ensure_rfq_form_settings($form_id);
         return $form_id;
     }
 
@@ -87,31 +113,47 @@ function ensure_rfq_form(): int {
         ];
     };
     $fields = [
-        $field('input_name', 'name', 'Name', true, 'name'),
+        $field('input_text', 'full_name', 'Full name', true),
         $field('input_email', 'email', 'Work email', true, 'email'),
         $field('input_text', 'company', 'Company'),
         $field('input_text', 'country', 'Country / region'),
         $field('input_text', 'product', 'Product or project type'),
-        $field('textarea', 'requirements', 'Requirements', true, 'textarea'),
+        $field('textarea', 'message', 'Requirements', true, 'textarea'),
         [
-            'element' => 'input_checkbox',
-            'attributes' => ['name' => 'consent', 'type' => 'checkbox', 'value' => ['Default' => []]],
+            'element' => 'custom_html',
+            'attributes' => ['name' => 'gdpr_note', 'type' => '', 'class' => '', 'placeholder' => ''],
             'settings' => [
-                'label' => 'I agree to be contacted about this enquiry',
-                'choices' => [['label' => 'Yes', 'value' => 'yes']],
-                'validation_rules' => ['required' => ['value' => true, 'message' => 'Required.']],
+                'label' => '',
+                'admin_field_label' => '',
+                'validation_rules' => [],
+                'conditional_logic' => [],
+                'html' => '<p>By submitting this form you agree to be contacted about your enquiry.</p>',
             ],
+            'editor_options' => ['title' => '', 'icon_class' => 'ff-edit-text'],
         ],
     ];
+
+    // Fluent Forms' installer-created forms have a known renderable row/meta
+    // shape. Copy that shape rather than inventing a bare form row.
+    $source = $wpdb->get_row(
+        "SELECT * FROM {$forms_table} WHERE status = 'published' ORDER BY CASE WHEN title = 'Contact Form Demo' THEN 0 ELSE 1 END, id ASC LIMIT 1"
+    );
+    $form_fields = ['fields' => $fields];
+    if ($source && !empty($source->form_fields)) {
+        $source_fields = json_decode((string) $source->form_fields, true);
+        if (!empty($source_fields['submitButton'])) {
+            $form_fields['submitButton'] = $source_fields['submitButton'];
+        }
+    }
 
     $inserted = $wpdb->insert($forms_table, [
         'title' => 'Request for quotation',
         'status' => 'published',
-        'form_fields' => wp_json_encode($fields),
-        'appearance_settings' => wp_json_encode(['css' => '']),
+        'form_fields' => wp_json_encode($form_fields),
+        'appearance_settings' => $source->appearance_settings ?? wp_json_encode(['css' => '']),
         'has_payment' => 0,
-        'type' => 'form',
-        'conditions' => wp_json_encode([]),
+        'type' => $source->type ?? 'form',
+        'conditions' => $source->conditions ?? wp_json_encode([]),
         'created_by' => get_current_user_id() ?: 1,
     ]);
     if (!$inserted) {
@@ -119,18 +161,32 @@ function ensure_rfq_form(): int {
     }
 
     $form_id = (int) $wpdb->insert_id;
+    if ($source) {
+        $source_settings = $wpdb->get_var($wpdb->prepare(
+            "SELECT value FROM {$wpdb->prefix}fluentform_form_meta WHERE form_id = %d AND meta_key = 'formSettings'",
+            $source->id
+        ));
+        if ($source_settings) {
+            $wpdb->insert($wpdb->prefix . 'fluentform_form_meta', [
+                'form_id' => $form_id,
+                'meta_key' => 'formSettings',
+                'value' => $source_settings,
+            ]);
+        }
+    }
     $wpdb->insert($wpdb->prefix . 'fluentform_form_meta', [
         'form_id' => $form_id,
         'meta_key' => 'notifications',
         'value' => wp_json_encode([[
             'name' => 'Admin notification',
             'sendTo' => ['type' => 'email', 'email' => get_option('admin_email')],
-            'subject' => 'New quotation request — {inputs.name}',
+            'subject' => 'New quotation request — {inputs.full_name}',
             'body' => '<p>{all_data}</p>',
             'isEnabled' => true,
         ]]),
     ]);
     update_option('starter_rfq_form_id', $form_id);
+    ensure_rfq_form_settings($form_id);
     return $form_id;
 }
 
