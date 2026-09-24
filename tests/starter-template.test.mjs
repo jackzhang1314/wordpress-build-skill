@@ -60,7 +60,7 @@ test('page controllers separate data access from presentation', () => {
 test('product schema is generic and seeded through admin-editable ACF fields', () => {
   const data = JSON.parse(readFileSync(join(starterRoot, 'content/site-data.json'), 'utf8'));
   for (const product of data.products) {
-    for (const field of ['quick_specs', 'product_highlights', 'spec_table', 'product_documents', 'product_cta_note', 'product_trust_points']) {
+    for (const field of ['quick_specs', 'product_highlights', 'at_a_glance', 'spec_table', 'product_documents', 'product_faq', 'product_shipping_terms', 'product_cta_note', 'product_trust_points']) {
       assert.ok(product.acf[field] !== undefined, `${product.slug} misses ${field}`);
     }
     for (const forbidden of ['wattage', 'efficacy', 'ip_rating']) {
@@ -68,7 +68,7 @@ test('product schema is generic and seeded through admin-editable ACF fields', (
     }
   }
   const plugin = readFileSync(join(starterRoot, 'plugin/starter-model.php'), 'utf8');
-  for (const field of ['quick_specs', 'spec_table', 'product_applications', 'product_documents', 'related_products']) {
+  for (const field of ['quick_specs', 'at_a_glance', 'spec_table', 'product_applications', 'product_documents', 'product_faq', 'product_shipping_terms', 'product_details_title', 'related_products']) {
     assert.match(plugin, new RegExp(`'${field}'`));
   }
 });
@@ -84,6 +84,47 @@ test('term ACF seeding uses qualified ACF object ids to prevent post-meta pollut
   const seed = readFileSync(join(starterRoot, 'scripts/seed.php'), 'utf8');
   assert.match(seed, /update_field\(\$field_name, \(string\) \$field_value, 'product_collection_' \. \$term_id\)/);
   assert.match(seed, /starter_delete_legacy_post_meta/);
+});
+
+test('product detail v2 keeps a simple hero and uses the main editor at the bottom', () => {
+  const product = readFileSync(join(starterRoot, 'theme/single-starter_product.php'), 'utf8');
+  const heroEnd = product.indexOf('</section>', product.indexOf('component_product_gallery'));
+  const hero = product.slice(product.indexOf('<section class="product-hero"'), heroEnd);
+  assert.match(hero, /component_product_gallery/);
+  assert.match(hero, /component_product_hero_summary/);
+  assert.doesNotMatch(hero, /component_spec_table|MOQ|Lead time|Back to catalogue/);
+  assert.match(product, /component_product_hero_summary/);
+  assert.match(product, /component_attribute_grid/);
+  assert.match(product, /component_fact_strip/);
+  assert.match(product, /component_document_list/);
+
+  const faqIndex = product.indexOf("title' => 'Product questions'");
+  const detailsIndex = product.indexOf('component_rich_description');
+  const relatedIndex = product.indexOf('component_related_products');
+  assert.ok(faqIndex > -1 && detailsIndex > faqIndex, 'rich details must follow structured FAQ');
+  assert.ok(relatedIndex > detailsIndex, 'related products must follow rich details');
+  assert.match(product, /the_content\(\)/);
+});
+
+test('product gallery and rich text have bounded presentation contracts', () => {
+  const components = readFileSync(join(starterRoot, 'theme/inc/components.php'), 'utf8');
+  for (const name of ['component_product_gallery', 'component_product_hero_summary', 'component_attribute_grid', 'component_fact_strip', 'component_document_list', 'component_rich_description']) {
+    assert.match(components, new RegExp(`function ${name}\\(`));
+  }
+  const css = readFileSync(join(starterRoot, 'theme/style.css'), 'utf8');
+  for (const rule of ['.product-hero', '.gallery-thumbs', '.rich-description table', '.rich-description iframe']) {
+    assert.match(css, new RegExp(rule.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  }
+  const js = readFileSync(join(starterRoot, 'theme/assets/js/nav.js'), 'utf8');
+  assert.match(js, /\.product-gallery\.has-many/);
+});
+
+test('ACF free gallery slots are registered without a PRO gallery dependency', () => {
+  const plugin = readFileSync(join(starterRoot, 'plugin/starter-model.php'), 'utf8');
+  for (let index = 1; index <= 5; index += 1) {
+    assert.match(plugin, new RegExp(`'product_gallery_${index}'`));
+  }
+  assert.doesNotMatch(plugin, /'type'\s*=>\s*'gallery'/);
 });
 
 test('seed navigation is explicit and default deploy does not rebuild it', () => {

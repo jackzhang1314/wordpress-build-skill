@@ -260,3 +260,116 @@ function component_stat_strip(array $props = []): void {
 	}
 	echo '</section>';
 }
+
+/** Product gallery with accessible thumbnail switching and a neutral empty state. */
+function component_product_gallery(array $props = []): void {
+	$images = array_values(array_filter((array) ($props['images'] ?? []), static fn ($image): bool => trim((string) ($image['url'] ?? '')) !== ''));
+	$title = (string) ($props['title'] ?? get_the_title());
+	echo '<figure class="product-gallery' . (count($images) > 1 ? ' has-many' : '') . '">';
+	if ($images) {
+		$first = $images[0];
+		printf(
+			'<div class="gallery-main"><img id="product-gallery-main" src="%s" alt="%s" loading="eager" decoding="async"></div>',
+			esc_url((string) $first['url']),
+			esc_attr((string) ($first['alt'] !== '' ? $first['alt'] : $title))
+		);
+		if ((string) ($first['caption'] ?? '') !== '') {
+			printf('<figcaption class="gallery-caption">%s</figcaption>', esc_html((string) $first['caption']));
+		}
+		if (count($images) > 1) {
+			echo '<div class="gallery-thumbs" role="group" aria-label="Product image selector">';
+			foreach ($images as $index => $image) {
+				printf(
+					'<button type="button" class="gallery-thumb%1$s" data-src="%2$s" data-alt="%3$s" data-caption="%4$s" aria-current="%5$s"><img src="%2$s" alt="" loading="lazy" decoding="async"></button>',
+					0 === $index ? ' is-active' : '',
+					esc_url((string) $image['url']),
+					esc_attr((string) ($image['alt'] !== '' ? $image['alt'] : $title)),
+					esc_attr((string) ($image['caption'] ?? '')),
+					0 === $index ? 'true' : 'false'
+				);
+			}
+			echo '</div>';
+		}
+	} else {
+		echo '<div class="gallery-main">' . media_placeholder('product', $title) . '</div>';
+	}
+	echo '</figure>';
+}
+
+/** Compact product hero summary: identity and conversion only. */
+function component_product_hero_summary(array $props = []): void {
+	$category = (array) ($props['category'] ?? []);
+	$title = (string) ($props['title'] ?? get_the_title());
+	$description = (string) ($props['description'] ?? '');
+	$chips = (array) ($props['value_chips'] ?? []);
+	$cta = (array) ($props['cta'] ?? []);
+	echo '<div class="product-summary">';
+	if (!empty($category['url'])) {
+		printf('<a class="card-chip product-category" href="%s">%s</a>', esc_url((string) $category['url']), esc_html((string) $category['name']));
+	} elseif (!empty($category['name'])) {
+		printf('<span class="card-chip product-category">%s</span>', esc_html((string) $category['name']));
+	}
+	printf('<h1>%s</h1>', esc_html($title));
+	if ($description !== '') echo '<div class="prose product-intro"><p>' . esc_html($description) . '</p></div>';
+	if ($chips) {
+		echo '<ul class="product-value-chips">';
+		foreach ($chips as $chip) {
+			printf('<li><span>%s</span><strong>%s</strong></li>', esc_html((string) ($chip['label'] ?? '')), esc_html((string) ($chip['value'] ?? '')));
+		}
+		echo '</ul>';
+	}
+	if (!empty($cta['url'])) {
+		echo '<div class="hero-conversion">';
+		printf('<a class="button button-large" href="%s">%s</a>', esc_url((string) $cta['url']), esc_html((string) ($cta['label'] ?? 'Request pricing')));
+		if (!empty($cta['note'])) printf('<p class="conversion-note">%s</p>', esc_html((string) $cta['note']));
+		echo '</div>';
+	}
+	echo '</div>';
+}
+
+/** Compact label/value grid for four to six key product attributes. */
+function component_attribute_grid(array $props = []): void {
+	$rows = array_values(array_filter((array) ($props['rows'] ?? []), static fn ($row): bool => trim((string) ($row['label'] ?? '')) !== ''));
+	if (!$rows) return;
+	echo '<dl class="attribute-grid">';
+	foreach ($rows as $row) printf('<div><dt>%s</dt><dd>%s</dd></div>', esc_html((string) $row['label']), esc_html((string) ($row['value'] ?? '')));
+	echo '</dl>';
+}
+
+/** Commercial facts strip; each named value is hidden when empty. */
+function component_fact_strip(array $props = []): void {
+	$rows = array_values(array_filter((array) ($props['rows'] ?? []), static fn ($row): bool => trim((string) ($row['value'] ?? '')) !== ''));
+	if (!$rows) return;
+	echo '<dl class="fact-strip">';
+	foreach ($rows as $row) printf('<div><dt>%s</dt><dd>%s</dd></div>', esc_html((string) $row['label']), esc_html((string) $row['value']));
+	echo '</dl>';
+}
+
+/** Named document cards; an optional second line segment becomes a link. */
+function component_document_list(array $props = []): void {
+	$documents = array_values(array_filter((array) ($props['documents'] ?? []), static fn ($row): bool => trim((string) ($row['label'] ?? '')) !== ''));
+	if (!$documents) return;
+	echo '<div class="document-card-grid">';
+	foreach ($documents as $document) {
+		$label = (string) $document['label'];
+		echo '<div class="document-card">';
+		if (!empty($document['is_link'])) {
+			printf('<a href="%s">%s<span aria-hidden="true">→</span></a>', esc_url((string) $document['url']), esc_html($label));
+		} else {
+			printf('<p>%s</p>', esc_html($label));
+		}
+		echo '</div>';
+	}
+	echo '</div>';
+}
+
+/** Constrained wrapper for WordPress main editor content. */
+function component_rich_description(array $props = []): void {
+	$content = trim((string) ($props['content'] ?? ''));
+	if ($content === '') return;
+	component_section_heading([
+		'eyebrow' => (string) ($props['eyebrow'] ?? 'Details'),
+		'title' => (string) ($props['title'] ?? 'Product details'),
+	]);
+	echo '<article class="prose rich-description">' . $content . '</article>'; // phpcs:ignore WordPress.Security.EscapeOutput -- editor content is trusted and already filtered by the_content().
+}

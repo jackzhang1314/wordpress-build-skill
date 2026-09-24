@@ -2,7 +2,7 @@
 /**
  * Plugin Name: b2b-starter Content Model
  * Description: Full B2B information architecture: products, industries, guides and RFQ capture.
- * Version: 2.2.0
+ * Version: 2.3.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Requires Plugins: advanced-custom-fields
@@ -221,7 +221,19 @@ add_action('acf/init', static function (): void {
     acf_add_local_field_group([
         'key' => 'group_starter_product', 'title' => 'Product content', 'show_in_rest' => true,
         'fields' => [
+            $field('field_p_gallery_1', 'product_gallery_1', 'Gallery image 1', 'image', [
+                'return_format' => 'array', 'preview_size' => 'medium', 'library' => 'all',
+                'instructions' => 'The featured image is also used as the first gallery image when this slot is empty.',
+            ]),
+            $field('field_p_gallery_2', 'product_gallery_2', 'Gallery image 2', 'image', ['return_format' => 'array', 'preview_size' => 'medium']),
+            $field('field_p_gallery_3', 'product_gallery_3', 'Gallery image 3', 'image', ['return_format' => 'array', 'preview_size' => 'medium']),
+            $field('field_p_gallery_4', 'product_gallery_4', 'Gallery image 4', 'image', ['return_format' => 'array', 'preview_size' => 'medium']),
+            $field('field_p_gallery_5', 'product_gallery_5', 'Gallery image 5', 'image', ['return_format' => 'array', 'preview_size' => 'medium']),
             $field('field_p_quick_specs', 'quick_specs', 'Quick specifications', 'textarea', array_merge(['rows' => 6], $rows_help('Use Label | Value.'))),
+            $field('field_p_at_a_glance', 'at_a_glance', 'At a glance', 'textarea', array_merge(['rows' => 4], $rows_help('Enter a short buyer-facing claim.'))),
+            $field('field_p_faq', 'product_faq', 'Product FAQ', 'textarea', array_merge(['rows' => 8], $rows_help('Use Question | Answer.'))),
+            $field('field_p_shipping_terms', 'product_shipping_terms', 'Shipping / trade terms', 'text'),
+            $field('field_p_details_title', 'product_details_title', 'Product details title', 'text', ['instructions' => 'Optional heading for the bottom rich-text section. Leave empty to use “Product details”.']),
             $field('field_p_highlights', 'product_highlights', 'Key selling points', 'textarea', array_merge(['rows' => 6], $rows_help('Enter a short claim.'))),
             $field('field_p_spec_table', 'spec_table', 'Full specifications', 'textarea', array_merge(['rows' => 10], $rows_help('Use Label | Value.'))),
             $field('field_p_applications', 'product_applications', 'Typical applications', 'textarea', array_merge(['rows' => 6], $rows_help('Enter an application.'))),

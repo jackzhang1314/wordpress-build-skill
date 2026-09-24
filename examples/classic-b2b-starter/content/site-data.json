@@ -66,7 +66,7 @@
       "title": "UFO LED High Bay 150W",
       "slug": "ufo-highbay-150w",
       "excerpt": "Compact 150W high bay with 22,500 lm output for 8–12 m mounting heights in warehouses and production halls.",
-      "content": "<p>The UFO series replaces 400W metal halide fittings one-for-one. A die-cast aluminium body and passive cooling keep junction temperatures low, while the standard 60° and 90° beam covers racking aisles and open production floors.</p><p>Drivers and boards are accessible from the rear cover, so on-site maintenance does not require removing the whole fitting.</p>",
+      "content": "<p>The UFO series replaces 400W metal halide fittings one-for-one. A die-cast aluminium body and passive cooling keep junction temperatures low, while the standard 60° and 90° beam covers racking aisles and open production floors.</p><p>Drivers and boards are accessible from the rear cover, so on-site maintenance does not require removing the whole fitting.</p><h2>Project documentation</h2><p>Use this rich-text area for longer product explanations, application photos, packaging details, factory evidence, certification summaries and tables. The Starter keeps this editor free-form so marketing teams can describe each product without changing code.</p><h3>Recommended content</h3><ul><li>Application and installation notes</li><li>Material, finish or configuration options</li><li>Packing, loading and maintenance details</li><li>Certification or test evidence</li></ul>",
       "terms": [
         "industrial"
       ],
@@ -87,10 +87,6 @@
           {
             "label": "Warranty",
             "value": "5 years"
-          },
-          {
-            "label": "Reference",
-            "value": "22,500 lm"
           }
         ],
         "product_highlights": [
@@ -145,14 +141,35 @@
           "Certification support",
           "Factory-direct project pricing"
         ],
-        "related_products": []
+        "related_products": [],
+        "at_a_glance": [
+          "Project-specific configuration available",
+          "Technical documentation supplied before dispatch",
+          "Export packaging and loading support"
+        ],
+        "product_faq": [
+          {
+            "label": "Can this product be configured for a project?",
+            "value": "Yes. Send the application details and target specification for a project-specific recommendation."
+          },
+          {
+            "label": "Which documents are supplied?",
+            "value": "Datasheets, installation guidance and certification documents are available before shipment."
+          },
+          {
+            "label": "How is pricing confirmed?",
+            "value": "Share the quantity and delivery window; the export team returns an itemised quotation."
+          }
+        ],
+        "product_shipping_terms": "FOB / CIF / EXW — confirmed by order",
+        "product_details_title": "Product details"
       }
     },
     {
       "title": "Linear LED High Bay 100W",
       "slug": "linear-highbay-100w",
       "excerpt": "100W linear high bay with wide beam for aisle racking, cold stores and workshop benches.",
-      "content": "<p>The linear form factor puts light where narrow aisles need it, reducing fixture count in racking layouts. An optional emergency kit maintains 10% output for 90 minutes.</p>",
+      "content": "<p>The linear form factor puts light where narrow aisles need it, reducing fixture count in racking layouts. An optional emergency kit maintains 10% output for 90 minutes.</p><h2>Project documentation</h2><p>Use this rich-text area for longer product explanations, application photos, packaging details, factory evidence, certification summaries and tables. The Starter keeps this editor free-form so marketing teams can describe each product without changing code.</p><h3>Recommended content</h3><ul><li>Application and installation notes</li><li>Material, finish or configuration options</li><li>Packing, loading and maintenance details</li><li>Certification or test evidence</li></ul>",
       "terms": [
         "industrial"
       ],
@@ -173,10 +190,6 @@
           {
             "label": "Warranty",
             "value": "5 years"
-          },
-          {
-            "label": "Reference",
-            "value": "14,500 lm"
           }
         ],
         "product_highlights": [
@@ -227,14 +240,35 @@
           "Certification support",
           "Factory-direct project pricing"
         ],
-        "related_products": []
+        "related_products": [],
+        "at_a_glance": [
+          "Project-specific configuration available",
+          "Technical documentation supplied before dispatch",
+          "Export packaging and loading support"
+        ],
+        "product_faq": [
+          {
+            "label": "Can this product be configured for a project?",
+            "value": "Yes. Send the application details and target specification for a project-specific recommendation."
+          },
+          {
+            "label": "Which documents are supplied?",
+            "value": "Datasheets, installation guidance and certification documents are available before shipment."
+          },
+          {
+            "label": "How is pricing confirmed?",
+            "value": "Share the quantity and delivery window; the export team returns an itemised quotation."
+          }
+        ],
+        "product_shipping_terms": "FOB / CIF / EXW — confirmed by order",
+        "product_details_title": "Product details"
       }
     },
     {
       "title": "LED Flood Light 200W",
       "slug": "led-flood-200w",
       "excerpt": "200W IP66 flood light with asymmetric optic for facades, yards and sports courts.",
-      "content": "<p>A tempered glass lens and marine-grade coating make the flood series suitable for coastal installations. The asymmetric optic limits spill light towards neighbours and roads.</p>",
+      "content": "<p>A tempered glass lens and marine-grade coating make the flood series suitable for coastal installations. The asymmetric optic limits spill light towards neighbours and roads.</p><h2>Project documentation</h2><p>Use this rich-text area for longer product explanations, application photos, packaging details, factory evidence, certification summaries and tables. The Starter keeps this editor free-form so marketing teams can describe each product without changing code.</p><h3>Recommended content</h3><ul><li>Application and installation notes</li><li>Material, finish or configuration options</li><li>Packing, loading and maintenance details</li><li>Certification or test evidence</li></ul>",
       "terms": [
         "outdoor"
       ],
@@ -255,10 +289,6 @@
           {
             "label": "Warranty",
             "value": "5 years"
-          },
-          {
-            "label": "Reference",
-            "value": "28,000 lm"
           }
         ],
         "product_highlights": [
@@ -305,14 +335,35 @@
           "Certification support",
           "Factory-direct project pricing"
         ],
-        "related_products": []
+        "related_products": [],
+        "at_a_glance": [
+          "Project-specific configuration available",
+          "Technical documentation supplied before dispatch",
+          "Export packaging and loading support"
+        ],
+        "product_faq": [
+          {
+            "label": "Can this product be configured for a project?",
+            "value": "Yes. Send the application details and target specification for a project-specific recommendation."
+          },
+          {
+            "label": "Which documents are supplied?",
+            "value": "Datasheets, installation guidance and certification documents are available before shipment."
+          },
+          {
+            "label": "How is pricing confirmed?",
+            "value": "Share the quantity and delivery window; the export team returns an itemised quotation."
+          }
+        ],
+        "product_shipping_terms": "FOB / CIF / EXW — confirmed by order",
+        "product_details_title": "Product details"
       }
     },
     {
       "title": "LED Street Light 120W",
       "slug": "street-light-120w",
       "excerpt": "120W road luminaire with tool-free maintenance and ME3 lighting class compliance.",
-      "content": "<p>Designed for municipal retrofits, the street series accepts 3–5 m arms and standard NEMA/Zhaga sockets for future smart-city upgrades.</p>",
+      "content": "<p>Designed for municipal retrofits, the street series accepts 3–5 m arms and standard NEMA/Zhaga sockets for future smart-city upgrades.</p><h2>Project documentation</h2><p>Use this rich-text area for longer product explanations, application photos, packaging details, factory evidence, certification summaries and tables. The Starter keeps this editor free-form so marketing teams can describe each product without changing code.</p><h3>Recommended content</h3><ul><li>Application and installation notes</li><li>Material, finish or configuration options</li><li>Packing, loading and maintenance details</li><li>Certification or test evidence</li></ul>",
       "terms": [
         "outdoor"
       ],
@@ -333,10 +384,6 @@
           {
             "label": "Warranty",
             "value": "5 years"
-          },
-          {
-            "label": "Reference",
-            "value": "18,000 lm"
           }
         ],
         "product_highlights": [
@@ -383,14 +430,35 @@
           "Certification support",
           "Factory-direct project pricing"
         ],
-        "related_products": []
+        "related_products": [],
+        "at_a_glance": [
+          "Project-specific configuration available",
+          "Technical documentation supplied before dispatch",
+          "Export packaging and loading support"
+        ],
+        "product_faq": [
+          {
+            "label": "Can this product be configured for a project?",
+            "value": "Yes. Send the application details and target specification for a project-specific recommendation."
+          },
+          {
+            "label": "Which documents are supplied?",
+            "value": "Datasheets, installation guidance and certification documents are available before shipment."
+          },
+          {
+            "label": "How is pricing confirmed?",
+            "value": "Share the quantity and delivery window; the export team returns an itemised quotation."
+          }
+        ],
+        "product_shipping_terms": "FOB / CIF / EXW — confirmed by order",
+        "product_details_title": "Product details"
       }
     },
     {
       "title": "LED Panel 600×600",
       "slug": "led-panel-600",
       "excerpt": "Low-glare recessed panel with UGR below 19 for offices and retail floors, 0-10V dimming.",
-      "content": "<p>A micro-prismatic diffuser keeps UGR below 19 for screen-heavy workspaces. The frame is compatible with standard 600×600 grid ceilings and surface-mount kits.</p>",
+      "content": "<p>A micro-prismatic diffuser keeps UGR below 19 for screen-heavy workspaces. The frame is compatible with standard 600×600 grid ceilings and surface-mount kits.</p><h2>Project documentation</h2><p>Use this rich-text area for longer product explanations, application photos, packaging details, factory evidence, certification summaries and tables. The Starter keeps this editor free-form so marketing teams can describe each product without changing code.</p><h3>Recommended content</h3><ul><li>Application and installation notes</li><li>Material, finish or configuration options</li><li>Packing, loading and maintenance details</li><li>Certification or test evidence</li></ul>",
       "terms": [
         "commercial-indoor"
       ],
@@ -411,10 +479,6 @@
           {
             "label": "Warranty",
             "value": "5 years"
-          },
-          {
-            "label": "Reference",
-            "value": "5,200 lm"
           }
         ],
         "product_highlights": [
@@ -461,14 +525,35 @@
           "Certification support",
           "Factory-direct project pricing"
         ],
-        "related_products": []
+        "related_products": [],
+        "at_a_glance": [
+          "Project-specific configuration available",
+          "Technical documentation supplied before dispatch",
+          "Export packaging and loading support"
+        ],
+        "product_faq": [
+          {
+            "label": "Can this product be configured for a project?",
+            "value": "Yes. Send the application details and target specification for a project-specific recommendation."
+          },
+          {
+            "label": "Which documents are supplied?",
+            "value": "Datasheets, installation guidance and certification documents are available before shipment."
+          },
+          {
+            "label": "How is pricing confirmed?",
+            "value": "Share the quantity and delivery window; the export team returns an itemised quotation."
+          }
+        ],
+        "product_shipping_terms": "FOB / CIF / EXW — confirmed by order",
+        "product_details_title": "Product details"
       }
     },
     {
       "title": "Tri-Proof LED 40W",
       "slug": "tri-proof-40w",
       "excerpt": "Sealed IP69K tri-proof luminaire for food processing, cold stores and washdown areas.",
-      "content": "<p>Food-grade gaskets and stainless clips survive daily high-pressure washdowns, and the smooth housing leaves no dust traps. Connection is through rear cable glands with through-wiring.</p>",
+      "content": "<p>Food-grade gaskets and stainless clips survive daily high-pressure washdowns, and the smooth housing leaves no dust traps. Connection is through rear cable glands with through-wiring.</p><h2>Project documentation</h2><p>Use this rich-text area for longer product explanations, application photos, packaging details, factory evidence, certification summaries and tables. The Starter keeps this editor free-form so marketing teams can describe each product without changing code.</p><h3>Recommended content</h3><ul><li>Application and installation notes</li><li>Material, finish or configuration options</li><li>Packing, loading and maintenance details</li><li>Certification or test evidence</li></ul>",
       "terms": [
         "food-grade"
       ],
@@ -489,10 +574,6 @@
           {
             "label": "Warranty",
             "value": "5 years"
-          },
-          {
-            "label": "Reference",
-            "value": "5,600 lm"
           }
         ],
         "product_highlights": [
@@ -539,7 +620,28 @@
           "Certification support",
           "Factory-direct project pricing"
         ],
-        "related_products": []
+        "related_products": [],
+        "at_a_glance": [
+          "Project-specific configuration available",
+          "Technical documentation supplied before dispatch",
+          "Export packaging and loading support"
+        ],
+        "product_faq": [
+          {
+            "label": "Can this product be configured for a project?",
+            "value": "Yes. Send the application details and target specification for a project-specific recommendation."
+          },
+          {
+            "label": "Which documents are supplied?",
+            "value": "Datasheets, installation guidance and certification documents are available before shipment."
+          },
+          {
+            "label": "How is pricing confirmed?",
+            "value": "Share the quantity and delivery window; the export team returns an itemised quotation."
+          }
+        ],
+        "product_shipping_terms": "FOB / CIF / EXW — confirmed by order",
+        "product_details_title": "Product details"
       }
     }
   ],

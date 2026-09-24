@@ -43,3 +43,28 @@
     }).observe(sentinel);
   }
 })();
+
+/* Product gallery: promote a selected thumbnail to the main image. */
+(function () {
+  'use strict';
+  document.querySelectorAll('.product-gallery.has-many').forEach(function (gallery) {
+    var main = gallery.querySelector('#product-gallery-main');
+    var caption = gallery.querySelector('.gallery-caption');
+    var thumbs = gallery.querySelectorAll('.gallery-thumb');
+    if (!main || !thumbs.length) return;
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        var src = thumb.getAttribute('data-src');
+        var alt = thumb.getAttribute('data-alt') || '';
+        if (!src) return;
+        main.setAttribute('src', src);
+        main.setAttribute('alt', alt);
+        thumbs.forEach(function (item) {
+          item.classList.toggle('is-active', item === thumb);
+          item.setAttribute('aria-current', item === thumb ? 'true' : 'false');
+        });
+        if (caption) caption.textContent = thumb.getAttribute('data-caption') || '';
+      });
+    });
+  });
+})();
