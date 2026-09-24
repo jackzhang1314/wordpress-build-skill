@@ -28,3 +28,9 @@
 - 遗留：
   - 用 Starter 全量内容在全新 Hostinger 空站跑 provision/deploy/verify/screenshot。
   - 建立 `dist/` 包发布、GitHub Template Repo 与安装引导。
+
+### 接手 session 复核与冲突修复（2026-09-24 晚）
+
+- 复核确认：component-duplication / zero-media / acf-binding / routes(23) 四门禁 + screenshot 命令（390/768/1440，chrome headless，字节校验）均已并入 `harness check|verify|screenshot`，`harness check` 可直接以 `project.example.json` 运行 starter 目录。
+- 实测：starter 目录 check 全绿；npm test 134/134；对运行站 smoke 截图 6/6（390/768/1440 × 2 路由）。
+- 并行冲突修复：a32b38a 在收编工作树时误删 single 产品页调用的 4 个组件（quick_specs/check_list/trust_strip/term_chips）定义，会导致前台 fatal；已在 90f7668 恢复并复跑全部门禁。两个 session 同时写同一 worktree，建议后续以任务锁或分 worktree 规避。
