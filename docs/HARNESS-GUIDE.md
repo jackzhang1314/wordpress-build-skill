@@ -70,7 +70,7 @@ node harness/cli.mjs init minimal-site --root ../projects
 ### 本机 bootstrap
 
 ```bash
-node harness/cli.mjs bootstrap --fix
+node harness/bootstrap.mjs --fix
 ```
 
 会检查并修复 Node/npm/Git/rsync/tar/gzip、项目依赖、Skill runtime、Hostinger CLI。PHP/Docker/Chrome 是推荐能力：PHP/Docker 用于本地 PHP 语法检查，Chrome 用于截图。

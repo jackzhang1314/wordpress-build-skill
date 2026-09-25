@@ -76,7 +76,7 @@ This release promotes the componentized classic B2B Starter from verification br
 - Remote `wp-config.php` syntax passed; constants were present; the legacy option was absent.
 - `wp_mail` send passed and IMAP confirmed the exact test subject in the real mailbox.
 
-## 2026-09-25 — Harness 2.11.0 guided bootstrap and SSH onboarding
+## 2026-09-25 — Harness 2.11.1 guided bootstrap and SSH onboarding
 
 ### Environment
 
@@ -101,3 +101,14 @@ This release promotes the componentized classic B2B Starter from verification br
 
 - Typecheck, lint and 180/180 tests passed.
 - Live local checks: `bootstrap`, `bootstrap --fix`, `hostinger setup --connect`, and `ssh setup` all passed against the disposable clean-chain Hostinger site.
+
+### 2.11.0 addendum: zero-dependency first run
+
+- Added `harness/bootstrap.mjs` as the fresh-clone entrypoint.
+- It uses Node built-ins only, so it can run before npm dependencies are installed.
+- Fresh-clone flow is now `node harness/bootstrap.mjs --fix`, then `init --from-starter`.
+
+## 2026-09-25 — Harness 2.11.1 zero-dependency bootstrap
+
+- Promoted `harness/bootstrap.mjs` to the official fresh-clone entrypoint after a real public clone test found the main CLI could not import `zod` before `npm ci`.
+- Tagged the complete guided onboarding baseline as `v2.11.1`.

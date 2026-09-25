@@ -8,7 +8,7 @@
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
-> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.11.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.11.1` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
 
 ### 交给 Codex 的最小指令
 
@@ -18,7 +18,7 @@
 Clone https://github.com/jackzhang1314/wordpress-build-skill.git.
 Read README.md, AGENTS.md, docs/HARNESS-GUIDE.md and examples/classic-b2b-starter/README.md first.
 Do not use the historical docs as the current default architecture.
-Install dependencies, run the local checks, then create a clean project with:
+Repair the local environment with `node harness/bootstrap.mjs --fix`, run local checks, then create a clean project with:
 node harness/cli.mjs init <kebab-case-project-name> --root ../projects --from-starter
 Before any remote write, ask me for the Hostinger SSH/domain values or use the values I provide.
 ```
@@ -49,7 +49,7 @@ Before any remote write, ask me for the Hostinger SSH/domain values or use the v
 ```bash
 git clone https://github.com/jackzhang1314/wordpress-build-skill.git
 cd wordpress-build-skill
-node harness/cli.mjs bootstrap --fix
+node harness/bootstrap.mjs --fix
 
 node harness/cli.mjs init my-factory-site \
   --root /absolute/path/to/projects \

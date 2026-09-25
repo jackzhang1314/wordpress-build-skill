@@ -25,3 +25,11 @@ User requested novice-friendly automatic detection, repair, Hostinger CLI onboar
 - Native Hostinger CLI installation remains Homebrew-first; Windows and no-Homebrew systems still require guided official-release installation.
 - SSH public key insertion into hPanel remains a user action because the public Hostinger CLI surface does not expose SSH-key management.
 - A future launch wizard can chain bootstrap → init → ssh setup → provision → deploy → email → verify behind explicit authorization.
+
+## Fresh-clone correction
+A real public clone test showed `harness/cli.mjs bootstrap` could not run before `npm ci` because the main CLI imports `zod`. Added zero-dependency `harness/bootstrap.mjs` and changed onboarding docs to use it as the first command. The in-CLI bootstrap remains useful after dependencies are installed.
+
+## Fresh-clone validation
+- Cloned public `main` into a temporary directory.
+- Ran `node harness/bootstrap.mjs --fix`: passed; npm dependencies and bundled Skill runtime were repaired.
+- Subsequent `hostinger setup --connect`: passed.
