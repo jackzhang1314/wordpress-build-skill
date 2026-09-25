@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
+import {mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {assignTemplate, editPage, navAdd, navRemove, pushPost} from '../../harness/lib/maintenance.mjs';
@@ -30,6 +30,12 @@ function makeSite(options = {}) {
         const post = posts[`${type}:${slug}`];
         const rows = post ? [{ID: post.id, post_status: post.status, post_content: post.content, post_modified_gmt: post.modified}] : [];
         return JSON.stringify(rows);
+      }
+      if (args[0] === 'post' && args[1] === 'get') {
+        const id = Number(args[2]);
+        const entry = Object.entries(posts).find(([, post]) => post.id === id);
+        if (!entry) return '';
+        return entry[1].content;
       }
       if (args[0] === 'menu' && args[1] === 'list') {
         return JSON.stringify([{term_id: 2, slug: 'primary', name: 'Primary'}]);
@@ -83,6 +89,8 @@ function makeSite(options = {}) {
     posts, items, templates, evalCalls, files, wpCalls,
     setState: entries => writeFileSync(join(root, '.content-state.json'), JSON.stringify(entries)),
     getState: () => JSON.parse(readFileSync(join(root, '.content-state.json'), 'utf8')),
+    snapshots: () => readdirSync(join(root, '.backups/external-writes')).map(name =>
+      JSON.parse(readFileSync(join(root, '.backups/external-writes', name), 'utf8'))),
   };
 }
 
@@ -183,6 +191,63 @@ test('post push creates a missing article and records journal state', async () =
       'fingerprint must see drafts (post_status=any skips them)');
     assert.equal(env.posts['post:hello-news'].content, '<p>body</p>');
     assert.equal(env.getState()['post:hello-news'].hash, await hashOf('<p>body</p>'));
+  } finally {
+    env.cleanup();
+  }
+});
+
+test('editing existing remote content creates a restore snapshot', async () => {
+  const env = makeSite({posts: {'page:home': {id: 1, status: 'publish', content: '<p>old</p>', modified: 'old-date'}}});
+  try {
+    writeFileSync(join(env.root, 'patch.html'), '<p>new</p>');
+    const result = await editPage(env.site, ['home', '--file', 'patch.html', '--adopt-remote']);
+    const snapshots = env.snapshots();
+    assert.equal(result.snapshot.kind, 'post-push');
+    assert.equal(snapshots.length, 1);
+    assert.equal(snapshots[0].previous.content, '<p>old</p>');
+  } finally {
+    env.cleanup();
+  }
+});
+
+test('external classic navigation writes create a restore snapshot', async () => {
+  const env = makeSite({items: [{id: 1, title: 'Home'}]});
+  try {
+    env.site.project = {...env.site.project, mode: 'external', remote: {navigation: 'classic-menu'}};
+    const result = await navAdd(env.site, ['Products', '--url', '/products/']);
+    const snapshots = env.snapshots();
+    assert.equal(result.snapshot.kind, 'nav-add');
+    assert.equal(snapshots.length, 1);
+    assert.equal(typeof snapshots[0].items, 'object');
+    assert.deepEqual(snapshots[0].items.map(item => item.title), ['Home']);
+  } finally {
+    env.cleanup();
+  }
+});
+
+test('external block-only navigation blocks classic menu writes', async () => {
+  const env = makeSite({items: [{id: 1, title: 'Home'}]});
+  try {
+    env.site.project = {...env.site.project, mode: 'external', remote: {navigation: 'block-navigation'}};
+    await assert.rejects(
+      navAdd(env.site, ['Products', '--url', '/products/']),
+      /block-navigation/,
+    );
+    assert.equal(env.items.length, 1);
+  } finally {
+    env.cleanup();
+  }
+});
+
+test('external FSE projects block classic page-template assignment', async () => {
+  const env = makeSite({posts: {'page:about': {id: 2, status: 'publish', content: 'x', modified: 'x'}}});
+  try {
+    env.site.project = {...env.site.project, mode: 'external', remote: {pageTemplates: 'fse'}};
+    await assert.rejects(
+      assignTemplate(env.site, ['about', '--template', 'page-templates/customer.php']),
+      /FSE-managed/,
+    );
+    assert.equal(env.templates.about, undefined);
   } finally {
     env.cleanup();
   }

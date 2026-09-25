@@ -1,5 +1,5 @@
 import {createHash} from 'node:crypto';
-import {existsSync, readFileSync, writeFileSync} from 'node:fs';
+import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import {join, resolve} from 'node:path';
 import {projectFile} from './config.mjs';
 import {shellQuote} from './ssh.mjs';
@@ -37,6 +37,45 @@ function writeState(root, state) {
 
 function stateKey(postType, slug) {
   return `${postType}:${slug}`;
+}
+
+function writeOperationSnapshot(root, kind, data) {
+  const dir = join(root, '.backups', 'external-writes');
+  const id = `${new Date().toISOString().replace(/[:.]/g, '-')}-${kind}`;
+  const path = join(dir, `${id}.json`);
+  mkdirSync(dir, {recursive: true});
+  const manifest = {
+    id,
+    kind,
+    createdAt: new Date().toISOString(),
+    ...data,
+  };
+  writeFileSync(path, `${JSON.stringify(manifest, null, 2)}\n`);
+  return {...manifest, id, path};
+}
+
+function externalWordPressShape(site) {
+  return site.project.remote || {};
+}
+
+function assertClassicNavigationSupported(site) {
+  const shape = externalWordPressShape(site).navigation;
+  if (shape === 'block-navigation') {
+    throw new Error('remote navigation is block-navigation; classic menu writes cannot change the rendered navigation. Inspect the block navigation template first.');
+  }
+  return shape === 'mixed'
+    ? 'This site has both classic menu and block navigation signals; verify every rendered navigation location.'
+    : undefined;
+}
+
+function assertClassicPageTemplateSupported(site) {
+  const shape = externalWordPressShape(site).pageTemplates;
+  if (shape === 'fse') {
+    throw new Error('remote page templates are FSE-managed; classic page-template assignment cannot change the rendered template.');
+  }
+  if (shape === 'unknown') {
+    throw new Error('remote page-template shape is unknown; run `project inspect` before assigning a template.');
+  }
 }
 
 export async function fetchFingerprint(ssh, postType, slug) {
@@ -114,10 +153,26 @@ async function pushContent({root, ssh}, {postType, slug, title, content, excerpt
     throw new Error(`Manual edit conflict: ${drift.detail}`);
   }
   let id = remote.id;
+  let snapshot;
   if (drift.action === 'push') {
     if (mode === 'create-only' && remote.exists) {
       throw new Error(`post ${postType}:${slug} already exists; edit-page is for updates`);
     }
+    const previousContent = remote.exists
+      ? ssh.wp(['post', 'get', String(remote.id), '--field=content'])
+      : '';
+    snapshot = writeOperationSnapshot(root, 'post-push', {
+      postType,
+      slug,
+      previous: remote.exists ? {
+        id: remote.id,
+        status: remote.status,
+        content: previousContent,
+        hash: remote.hash,
+        modified: remote.modified,
+      } : null,
+      next: {status: status ?? 'publish', content},
+    });
     const result = await stageAndRun(ssh, root, slug.replace(/[^a-z0-9-]/gi, '-'), [
       {name: 'update.php', content: UPDATE_POST_PHP},
       {name: 'payload.json', content: JSON.stringify({slug, type: postType, title, content, excerpt, status, mode})},
@@ -130,7 +185,7 @@ async function pushContent({root, ssh}, {postType, slug, title, content, excerpt
   }
   state[key] = {hash: remote.hash === localHash ? localHash : localHash, id, pushedAt: new Date().toISOString()};
   writeState(root, state);
-  return {id, action: drift.action};
+  return {id, action: drift.action, snapshot};
 }
 
 export async function editPage(site, args, logger = () => {}) {
@@ -214,6 +269,14 @@ export async function navAdd(site, args, logger = () => {}) {
   const menu = argValue(args, '--menu', 'primary');
   const parent = argValue(args, '--parent');
   if (!label || !url) throw new Error('usage: harness nav add <label> --url <path> [--menu primary] [--parent <item-label>]');
+  const navigationWarning = assertClassicNavigationSupported(site);
+  const snapshotItems = await listMenuItems(site.ssh, menu);
+  const snapshot = writeOperationSnapshot(site.root, 'nav-add', {
+    menu,
+    label,
+    url,
+    items: snapshotItems,
+  });
   const result = await stageAndRun(site.ssh, site.root, 'nav-add', [
     {name: 'nav.php', content: NAV_ADD_PHP},
     {name: 'payload.json', content: JSON.stringify({menu, label, url, position: argValue(args, '--position'), parent})},
@@ -222,13 +285,19 @@ export async function navAdd(site, args, logger = () => {}) {
   if (!items.some(item => item.title === label)) throw new Error(`readback failed: ${label} missing after add`);
   if (parent && !result.parent) throw new Error(`readback failed: ${label} not nested under "${parent}"`);
   logger(`  OK  nav item added: ${label} -> ${url}${parent ? ` (child of ${parent})` : ''} (id ${result.id})`);
-  return result;
+  return {...result, navigationWarning, snapshot};
 }
 
 export async function navRemove(site, args, logger = () => {}) {
   const label = firstPositional(args);
   const menu = argValue(args, '--menu', 'primary');
   if (!label) throw new Error('usage: harness nav remove <label> [--menu primary]');
+  const navigationWarning = assertClassicNavigationSupported(site);
+  const snapshot = writeOperationSnapshot(site.root, 'nav-remove', {
+    menu,
+    label,
+    items: listMenuItems(site.ssh, menu),
+  });
   const result = await stageAndRun(site.ssh, site.root, 'nav-remove', [
     {name: 'nav.php', content: NAV_REMOVE_PHP},
     {name: 'payload.json', content: JSON.stringify({menu, label})},
@@ -236,7 +305,7 @@ export async function navRemove(site, args, logger = () => {}) {
   const items = await listMenuItems(site.ssh, menu);
   if (items.some(item => item.title === label)) throw new Error(`readback failed: ${label} still present`);
   logger(`  OK  nav items removed: ${result.removed} (${label})`);
-  return result;
+  return {...result, navigationWarning, snapshot};
 }
 
 const TEMPLATE_PHP = `<?php
@@ -256,6 +325,7 @@ export async function assignTemplate(site, args, logger = () => {}) {
     throw new Error(`invalid template name: ${template}`);
   }
   if (site.project.mode === 'external') {
+    assertClassicPageTemplateSupported(site);
     if (!/^[a-z0-9][a-z0-9_-]*(?:\/[a-z0-9][a-z0-9_-]*)*\.php$/.test(template)) {
       throw new Error(`invalid template name: ${template}`);
     }
@@ -280,6 +350,15 @@ if (!preg_match('/Template\\s*Name:/', $source)) { fwrite(STDERR, 'remote-templa
 if (!preg_match('/the_content\\s*\\(/', $source)) { fwrite(STDERR, 'remote-template-does-not-render-body'); exit(1); }
 ` : '';
   const php = validation + TEMPLATE_PHP;
+  const pageRows = JSON.parse(site.ssh.wp([
+    'post', 'list', '--post_type=page', `--name=${slug}`, '--fields=ID,_wp_page_template', '--format=json',
+  ]) || '[]');
+  const pageRow = Array.isArray(pageRows) ? pageRows[0] : undefined;
+  const snapshot = writeOperationSnapshot(site.root, 'template-assign', {
+    slug,
+    previousTemplate: pageRow?._wp_page_template || 'default',
+    nextTemplate: template,
+  });
   const result = await stageAndRun(site.ssh, site.root, 'template', [
     {name: 'template.php', content: php},
     {name: 'payload.json', content: JSON.stringify({slug, template})},
@@ -287,7 +366,7 @@ if (!preg_match('/the_content\\s*\\(/', $source)) { fwrite(STDERR, 'remote-templ
   const remote = site.ssh.wp(['post', 'meta', 'get', String(result.id), '_wp_page_template']).trim();
   if (remote !== template) throw new Error(`readback failed: meta is ${remote}`);
   logger(`  OK  template assigned: ${slug} -> ${template}`);
-  return result;
+  return {...result, snapshot};
 }
 
 const FIELDS_AUDIT_PHP = `<?php
