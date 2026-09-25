@@ -2,6 +2,7 @@
 /**
  * Template Name: Product catalogue
  * Template Post Type: page
+ * Template Editor Pattern: category-guide-body
  *
  * @package b2b-starter
  */

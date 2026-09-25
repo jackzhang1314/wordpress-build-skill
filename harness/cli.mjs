@@ -11,6 +11,7 @@ import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
 import {auditCmsModel, collectCmsAudit} from './lib/cms-audit.mjs';
+import {auditEditorPatterns} from './lib/editor-audit.mjs';
 import {isBlankMediaContract} from './lib/verify.mjs';
 
 function managedMediaIds(projectRoot, project) {
@@ -74,6 +75,7 @@ Project commands:
   credentials show|rotate Hand over site credentials, or regenerate the admin password
   audit-fields           Verify every stored value has an admin-editable ACF field
   cms-audit              Audit CPTs, taxonomies, ACF locations, REST and stored values
+  editor-audit           Audit native editor module patterns and page compatibility
   email-setup            Guided setup: create business mailbox + configure SMTP + test
   smtp configure|test    Set up the sending channel and send a test email
   wp <args...>            Run WP-CLI through SSH
@@ -337,6 +339,17 @@ add_action("phpmailer_init", function ($phpmailer) {
       logger(JSON.stringify({...project, ssh: {...project.ssh, keyPath: project.ssh ? '[redacted]' : undefined}}, null, 2));
       return 0;
     }
+    if (command === 'editor-audit') {
+      const report = auditEditorPatterns(root, project);
+      if (!json) {
+        logger(`  ${report.pass ? 'OK ' : 'FAIL'} ${report.name}`);
+        for (const check of report.checks) logger(`    ${check.pass ? 'OK ' : 'FAIL'} ${check.name}${check.detail ? ` -- ${check.detail}` : ''}`);
+        for (const problem of report.problems ?? []) logger(`    FAIL ${problem.name}: ${problem.issue}`);
+      }
+      outputResult(report, json, logger);
+      return report.pass ? 0 : 1;
+    }
+
     if (command === 'cms-audit') {
       const remote = await collectCmsAudit({ssh});
       const report = auditCmsModel(remote, project);

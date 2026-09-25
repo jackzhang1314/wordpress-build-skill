@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "editor": "classic-compatible",
+  "description": "Canonical native editor patterns for page bodies. Structured ACF fields remain the source for catalogue-level data; these patterns are for editable page content.",
+  "patterns": {
+    "product-standard-body": [
+      {"type":"heading","level":2,"text":"Product overview"},
+      {"type":"paragraph","text":"Explain what the product does, the buyer problem and the main application."},
+      {"type":"heading","level":2,"text":"Key features"},
+      {"type":"list","ordered":false,"items":["Feature one","Feature two","Feature three"]},
+      {"type":"heading","level":2,"text":"Technical details"},
+      {"type":"paragraph","text":"Use this section for materials, options, compatibility and operational constraints."}
+    ],
+    "product-technical-body": [
+      {"type":"heading","level":2,"text":"Technical summary"},
+      {"type":"paragraph","text":"State the intended application and principal performance characteristics."},
+      {"type":"heading","level":2,"text":"Standards & documentation"},
+      {"type":"list","ordered":false,"items":["Datasheet","Installation guidance","Declaration or certification support"]},
+      {"type":"heading","level":2,"text":"Project information to send"},
+      {"type":"list","ordered":false,"items":["Target specification","Operating environment","Quantity and delivery window"]}
+    ],
+    "category-guide-body": [
+      {"type":"heading","level":2,"text":"Who this range is for"},
+      {"type":"paragraph","text":"Describe the buyer type, application and project context."},
+      {"type":"heading","level":2,"text":"How to select a configuration"},
+      {"type":"list","ordered":true,"items":["Define the application","Confirm operating environment","Check required standards","Request engineering support"]},
+      {"type":"heading","level":2,"text":"Quality and documentation"},
+      {"type":"paragraph","text":"Explain production control, testing and documentation supplied to buyers."}
+    ],
+    "case-study-body": [
+      {"type":"heading","level":2,"text":"Customer requirement"},
+      {"type":"paragraph","text":"Explain the buyer, site constraint and commercial objective."},
+      {"type":"heading","level":2,"text":"Solution"},
+      {"type":"paragraph","text":"Describe the selected configuration and why it suited the project."},
+      {"type":"heading","level":2,"text":"Result"},
+      {"type":"paragraph","text":"State the measurable or verifiable operational outcome."}
+    ],
+    "contact-rfq-body": [
+      {"type":"heading","level":2,"text":"Request for quotation"},
+      {"type":"paragraph","text":"Send the completed form with project details. Attachments can be sent by email if required."},
+      {"type":"form","formId":"REPLACE_FORM_ID"}
+    ]
+  }
+}

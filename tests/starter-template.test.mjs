@@ -102,6 +102,40 @@ test('layout partials never repeat the main query loop owned by template rendere
   }
 });
 
+test('native editor patterns remain compatible with the classic editor', () => {
+  const patterns = JSON.parse(readFileSync(join(starterRoot, 'config/editor-block-patterns.json'), 'utf8'));
+  const allowed = new Set(['heading', 'paragraph', 'list', 'image', 'button', 'section', 'columns', 'column', 'table', 'faq', 'form', 'catalog', 'shortcode']);
+  let count = 0;
+  for (const [name, blocks] of Object.entries(patterns.patterns)) {
+    assert.ok(Array.isArray(blocks), `${name} must contain native editor blocks`);
+    const walk = (node) => {
+      if (!node || typeof node !== 'object') return;
+      if (Array.isArray(node)) return node.forEach(walk);
+      if (typeof node.type === 'string') {
+        count++;
+        assert.ok(allowed.has(node.type), `${name} uses unsupported module ${node.type}`);
+      }
+      for (const value of Object.values(node)) {
+        if (value && typeof value === 'object') walk(value);
+      }
+    };
+    walk(blocks);
+  }
+  assert.ok(count > 0);
+
+  const plugin = readFileSync(join(starterRoot, 'plugin/starter-model.php'), 'utf8');
+  assert.match(plugin, /\$object->template = \$/);
+  assert.match(plugin, /\$object->template_lock = 'all'/);
+
+  const loader = readFileSync(join(starterRoot, 'theme/inc/template-loader.php'), 'utf8');
+  for (const key of ['product_templates', 'category_templates', 'home_templates']) {
+    assert.match(loader, new RegExp(`function ${key}\\(`));
+  }
+
+  const caseStudy = readFileSync(join(starterRoot, 'theme/page-templates/case-study.php'), 'utf8');
+  assert.match(caseStudy, /Template Editor Pattern: case-study-body/);
+});
+
 test('blog templates follow SEO-first editorial architecture', () => {
   for (const file of ['theme/home.php', 'theme/archive.php', 'theme/single.php', 'theme/inc/blog.php', 'theme/parts/blog-card.php']) {
     assert.ok(existsSync(join(starterRoot, file)), `missing ${file}`);

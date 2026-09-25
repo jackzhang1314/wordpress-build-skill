@@ -71,6 +71,9 @@ export const projectSchema = z.object({
     })).default([]),
     noindex: z.array(z.string().regex(/^[a-z0-9_-]+$/)).default([]),
   }).default({}),
+  cms: z.object({
+    editorPatterns: z.string().default('config/editor-block-patterns.json'),
+  }).optional(),
   paths: z.object({
     theme: z.string().default('theme'),
     plugin: z.string().default('plugin'),

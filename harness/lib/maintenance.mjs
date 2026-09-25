@@ -280,10 +280,24 @@ if (!defined('ABSPATH')) exit('CLI only');
 $config = json_decode(file_get_contents($args[0]), true);
 $known_types = acf_get_field_types();
 $problems = []; $checked = 0;
+function fields_audit_page_group(array $group): bool {
+  foreach ($group['location'] ?? [] as $and) {
+    foreach ($and as $condition) {
+      if (($condition['param'] ?? '') === 'options_page') return false;
+      if (str_starts_with((string) ($condition['param'] ?? ''), 'page')) return true;
+      if (($condition['param'] ?? '') === 'post_type' && ($condition['value'] ?? '') === 'page') return true;
+    }
+  }
+  return false;
+}
 foreach ($config['types'] as $type) {
   $names = [];
-  foreach (acf_get_field_groups(['post_type' => $type]) as $group) {
+  $groups = $type === 'page'
+    ? array_filter(acf_get_field_groups(), 'fields_audit_page_group')
+    : acf_get_field_groups(['post_type' => $type]);
+  foreach ($groups as $group) {
     foreach (acf_get_fields($group['key']) as $field) {
+      if ($field['type'] === 'tab') continue;
       $names[$field['name']] = $field['type'];
     }
   }

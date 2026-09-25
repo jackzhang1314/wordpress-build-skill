@@ -2,6 +2,7 @@
 /**
  * Template Name: Resource center
  * Template Post Type: page
+ * Template Editor Pattern: product-standard-body
  *
  * @package b2b-starter
  */

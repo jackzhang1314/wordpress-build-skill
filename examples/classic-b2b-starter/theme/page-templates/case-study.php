@@ -2,6 +2,7 @@
 /**
  * Template Name: Case study
  * Template Post Type: page
+ * Template Editor Pattern: case-study-body
  *
  * @package b2b-starter
  */

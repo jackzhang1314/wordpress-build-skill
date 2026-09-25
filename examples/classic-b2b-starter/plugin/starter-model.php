@@ -77,6 +77,34 @@ function register_model(): void {
 }
 add_action('init', __NAMESPACE__ . '\\register_model');
 
+/** Give structured content types a locked native-editor skeleton. */
+function register_editor_templates(): void {
+    $product_template = [
+        ['core/heading', ['level' => 2, 'content' => 'Product overview']],
+        ['core/paragraph', ['content' => 'Explain the buyer problem, application and principal benefit.']],
+        ['core/heading', ['level' => 2, 'content' => 'Key features']],
+        ['core/list', ['values' => '<li>Feature one</li><li>Feature two</li><li>Feature three</li>']],
+        ['core/heading', ['level' => 2, 'content' => 'Technical details']],
+        ['core/paragraph', ['content' => 'Describe materials, options, compatibility and operating constraints.']],
+    ];
+    $guide_template = [
+        ['core/heading', ['level' => 2, 'content' => 'Who this guide is for']],
+        ['core/paragraph', ['content' => 'Define the buyer role, application and intended outcome.']],
+        ['core/heading', ['level' => 2, 'content' => 'Selection criteria']],
+        ['core/list', ['values' => '<li>Criterion one</li><li>Criterion two</li><li>Criterion three</li>']],
+        ['core/heading', ['level' => 2, 'content' => 'Next step']],
+        ['core/paragraph', ['content' => 'Explain what the buyer should send for an accurate response.']],
+    ];
+
+    foreach (['starter_product', 'starter_guide'] as $type) {
+        $object = get_post_type_object($type);
+        if (!$object) continue;
+        $object->template = $type === 'starter_product' ? $product_template : $guide_template;
+        $object->template_lock = 'all';
+    }
+}
+add_action('init', __NAMESPACE__ . '\\register_editor_templates', 20);
+
 register_activation_hook(__FILE__, static function (): void { register_model(); flush_rewrite_rules(); });
 register_deactivation_hook(__FILE__, static function (): void {
     foreach (['starter_product', 'starter_industry', 'starter_guide'] as $type) unregister_post_type($type);
@@ -288,6 +316,7 @@ add_action('acf/init', static function (): void {
                 'default_value' => 'standard',
                 'instructions' => 'Controls the single-product front-end layout. Leave on Standard unless the product needs a special presentation.',
             ]),
+            $field('field_p_cta_label', 'product_cta_label', 'Product CTA button label', 'text', ['instructions' => 'Shown on the product and final CTA button. Leave empty to use “Request pricing”.']),
             $field('field_p_related', 'related_products', 'Related products', 'post_object', [
                 'post_type' => ['starter_product'], 'multiple' => 1, 'return_format' => 'id', 'instructions' => 'Leave empty to show automatic related products.',
             ]),

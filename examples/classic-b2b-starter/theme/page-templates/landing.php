@@ -2,6 +2,7 @@
 /**
  * Template Name: Landing page
  * Template Post Type: page
+ * Template Editor Pattern: product-standard-body
  *
  * @package b2b-starter
  */

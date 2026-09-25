@@ -2,6 +2,7 @@ import {execFileSync} from 'node:child_process';
 import {existsSync, readdirSync, readFileSync} from 'node:fs';
 import {basename, join, relative} from 'node:path';
 import {projectFile} from './config.mjs';
+import {auditEditorPatterns} from './editor-audit.mjs';
 
 function walk(root, extensions = []) {
   const output = [];
@@ -331,6 +332,7 @@ export async function auditProject(projectRoot, project, options = {}) {
     checkRoutes(projectRoot, project),
     checkWordPressClasses(projectRoot, project),
     checkUiComponentContracts(projectRoot, project),
+    auditEditorPatterns(projectRoot, project),
   ];
 
   const phpBin = options.phpBin;

@@ -2,6 +2,7 @@
 /**
  * Template Name: Contact / RFQ
  * Template Post Type: page
+ * Template Editor Pattern: contact-rfq-body
  *
  * @package b2b-starter
  */
