@@ -6,6 +6,7 @@
 
 - 当前入口与使用方式：[README](README.md)、[Harness + Starter 手册](docs/HARNESS-GUIDE.md)、[Starter 使用说明](examples/classic-b2b-starter/README.md)、[设计系统](examples/classic-b2b-starter/DESIGN.md)。`docs/TARGET-ARCHITECTURE.md`、`docs/ARCHITECTURE.md`、`docs/GETTING-STARTED.md` 与编号历史文档是研究/阶段记录，不是当前默认架构。
 - 用户环境统一入口是 `node harness/bootstrap.mjs [--fix]`；Hostinger CLI 入口是 `hostinger setup [--install] [--connect]`；项目 SSH 入口是 `--project <dir> ssh setup`。不要引导用户编辑 SSH 字段，除非向导失败并明确要求 override。
+- Hostinger shared/cloud hosting 的首次 SSH key 是唯一平台级手动 handoff：用 `ssh setup --copy-key --open` 复制 public key 并打开 hPanel，保存后重跑向导。不要编造“hosting API 安装 SSH key”；已有可用 key 用 `--ssh-key` 直接接入。VPS 才有 public-key 写入 API。
 - 新 B2B 站默认复制 Classic B2B Starter，包含 Classic PHP theme、CPT/taxonomy、ACF Free 本地字段、Fluent Forms、Rank Math、Classic Editor、mu-plugin SMTP 和 SSH/WP-CLI 部署。通用最小经典参考只用于实验；历史区块主题、HONGDA PHP 示例和区块样板保留为参考，不再作为新站默认。
 - v2 统一 Harness 入口是 `harness/cli.mjs`，用 `--project <site-dir>` 管理 init、provision、doctor、check、backup、media、content、configure-seo、deploy、verify、status、rollback、wp/ssh/cache；禁止把项目名、域名或内容模型硬编码进入口。凭据只进项目忽略目录且权限 0600。
 - 开始改动前检查目录、分支、HEAD 和未提交内容。现有共享工作区修改不得覆盖；实验环境与参考网站分别识别，不清空不明数据。

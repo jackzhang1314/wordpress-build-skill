@@ -91,11 +91,40 @@ export function ensureSshKey(project, keyPath, {exec = defaultSshExec, rotateKey
   return {privateKey: target, publicKey};
 }
 
+/** Build a novice-safe one-time handoff for Hostinger's shared/cloud SSH key limitation. */
+export function sshKeyOnboarding(project, key, {copied = false} = {}) {
+  const publicKeyPath = `${key.privateKey}.pub`;
+  const url = `https://hpanel.hostinger.com/websites/${project.domain}/advanced/ssh-access?redirectLocation=side_menu`;
+  const copyCommand = process.platform === 'darwin'
+    ? `pbcopy < ${publicKeyPath}`
+    : `wl-copy < ${publicKeyPath}  # or: xclip -selection clipboard < ${publicKeyPath}`;
+  const steps = copied ? [
+    `The public key is already on the clipboard (source: ${publicKeyPath}).`,
+    `Open hPanel: ${url}`,
+    'Choose SSH Access → Add SSH Key, paste the key, then save.',
+    'Rerun `node harness/cli.mjs --project . ssh setup`.',
+  ] : [
+    `Copy the public key from ${publicKeyPath}.`,
+    `Open hPanel: ${url}`,
+    'Choose SSH Access → Add SSH Key, paste the key, then save.',
+    'Rerun `node harness/cli.mjs --project . ssh setup`.',
+  ];
+  return {
+    url,
+    publicKeyPath,
+    copyCommand,
+    copied,
+    limitation: 'Hostinger shared/cloud hosting has no public API/CLI endpoint that installs an SSH key; only VPS public keys have a write API.',
+    steps,
+  };
+}
+
 /** Prepare defaults, persist them, install the key pair, then test SSH/WP-CLI when possible. */
 export async function setupProjectSsh(projectRoot, project, args = [], {
   exec = defaultSshExec,
   lookup = dns.lookup,
   discover = discoverHostingerWebsite,
+  openUrl,
   logger = () => {},
 } = {}) {
   if (!project.domain) throw new Error('Add project.domain before running `ssh setup`.');
@@ -135,23 +164,53 @@ export async function setupProjectSsh(projectRoot, project, args = [], {
       pass: true,
       connected: true,
       ssh: sshSettings,
+      manualKeySetup: false,
       publicKey: key.publicKey,
       wpVersion,
       next: 'Run `node harness/cli.mjs --project . doctor` to complete project checks.',
     };
   } catch (error) {
-    const url = `https://hpanel.hostinger.com/websites/${project.domain}/advanced/ssh-access?redirectLocation=side_menu`;
-    logger('  ACTION REQUIRED  Add the public key below to Hostinger, then rerun this command.');
-    logger(`  URL: ${url}`);
-    logger(`  Public key:\n${key.publicKey}`);
+    let copied = false;
+    if (args.includes('--copy-key')) {
+      const command = process.platform === 'darwin' ? 'pbcopy' : 'wl-copy';
+      try {
+        exec(command, [], {
+          input: key.publicKey,
+          encoding: 'utf8',
+          timeout: 10000,
+          maxBuffer: 1024 * 1024,
+          stdio: ['pipe', 'pipe', 'pipe'],
+        });
+        copied = true;
+        logger('  OK  Public key copied to the clipboard');
+      } catch (copyError) {
+        logger(`  WARN  Could not copy the public key automatically: ${copyError.message}`);
+      }
+    }
+    if (args.includes('--open') && openUrl) {
+      const onboardingPreview = sshKeyOnboarding(project, key, {copied});
+      try {
+        openUrl(onboardingPreview.url);
+        logger(`  OK  Opened hPanel: ${onboardingPreview.url}`);
+      } catch (openError) {
+        logger(`  WARN  Could not open hPanel automatically: ${openError.message}`);
+      }
+    }
+    const onboarding = sshKeyOnboarding(project, key, {copied});
+    logger('  ACTION REQUIRED  Hostinger shared/cloud hosting needs a one-time SSH key handoff.');
+    logger(`  ${onboarding.limitation}`);
+    for (const step of onboarding.steps) logger(`  - ${step}`);
     return {
       pass: false,
       connected: false,
       ssh: sshSettings,
       publicKey: key.publicKey,
-      url,
+      manualKeySetup: true,
+      ...onboarding,
       error: error.message,
-      next: 'After adding the key in Hostinger, rerun `node harness/cli.mjs --project . ssh setup`.',
+      next: args.includes('--open') || args.includes('--copy-key')
+        ? 'After saving the key, rerun `node harness/cli.mjs --project . ssh setup`.'
+        : 'For fewer copy/paste mistakes, rerun `node harness/cli.mjs --project . ssh setup --open --copy-key`.',
     };
   }
 }

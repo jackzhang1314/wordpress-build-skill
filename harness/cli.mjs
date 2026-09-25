@@ -83,6 +83,7 @@ Project commands:
   email-setup            Guided setup: create business mailbox + configure SMTP + test
   smtp configure|test    Configure business-mailbox SMTP constants and send a test email
   wp <args...>            Run WP-CLI through SSH
+  ssh open                Open this project's hPanel SSH-access page
   ssh                     Open an SSH session
   open                    Open the Hostinger SSH-access page
 
@@ -109,6 +110,8 @@ SSH setup options:
   --ssh-user <user>       Override the Hostinger SSH user
   --ssh-key <path>        Use an existing private key
   --rotate-key            Replace the managed key (old key is backed up locally)
+  --open                  Open the hPanel SSH page when a first key handoff is required
+  --copy-key              Copy the public key to the clipboard when handoff is required
 
 Provision options:
   --domain <domain>       Use a known domain instead of a generated subdomain
@@ -250,6 +253,11 @@ async function runCheck({root, project}, json, logger) {
 
 function firstValue(args) {
   return args.filter(item => !item.startsWith('--'))[0];
+}
+
+function openExternalUrl(url) {
+  if (process.platform === 'darwin') execFileSync('open', [url], {stdio: 'pipe'});
+  else if (process.platform === 'linux') execFileSync('xdg-open', [url], {stdio: 'pipe'});
 }
 
 export async function main(argv = process.argv.slice(2), logger = console.log, errors = console.error) {
@@ -645,9 +653,19 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
     }
     if (command === 'ssh') {
       if (firstValue(args) === 'setup') {
-        const report = await setupProjectSsh(root, project, args, {exec: execFileSync, logger: json ? () => {} : logger});
+        const report = await setupProjectSsh(root, project, args, {
+          exec: execFileSync,
+          openUrl: openExternalUrl,
+          logger: json ? () => {} : logger,
+        });
         outputResult(report, json, logger);
         return report.pass ? 0 : 2;
+      }
+      if (firstValue(args) === 'open') {
+        const url = `https://hpanel.hostinger.com/websites/${project.domain}/advanced/ssh-access?redirectLocation=side_menu`;
+        openExternalUrl(url);
+        logger(url);
+        return 0;
       }
       execFileSync('ssh', ssh.baseArgs, {stdio: 'inherit'});
       return 0;

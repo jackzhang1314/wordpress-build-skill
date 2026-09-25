@@ -6,7 +6,7 @@ import {readFileSync, readdirSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {
-  deriveSshDefaults, discoverHostingerWebsite, ensureSshKey, setupProjectSsh, writeProjectSsh,
+  deriveSshDefaults, discoverHostingerWebsite, ensureSshKey, setupProjectSsh, sshKeyOnboarding, writeProjectSsh,
 } from '../../harness/lib/ssh-setup.mjs';
 
 test('hostinger website discovery selects exact domain and exposes only SSH fields', () => {
@@ -60,6 +60,7 @@ test('ssh setup reuses an existing key, persists settings, and verifies SSH/WP-C
     });
     assert.equal(report.pass, true);
     assert.equal(report.connected, true);
+    assert.equal(report.manualKeySetup, false);
     assert.equal(report.wpVersion, '6.8');
     assert.equal(report.ssh.host, '203.0.113.10');
     assert.equal(report.ssh.user, 'site-user');
@@ -91,12 +92,69 @@ test('ssh setup returns key onboarding instructions when the server rejects it',
     });
     assert.equal(report.pass, false);
     assert.equal(report.connected, false);
+    assert.equal(report.manualKeySetup, true);
+    assert.equal(report.publicKeyPath, `${key}.pub`);
+    assert.match(report.limitation, /no public API\/CLI endpoint/);
+    assert.ok(report.steps.some(step => step.includes('SSH Access → Add SSH Key')));
+    assert.match(report.next, /--open --copy-key/);
     assert.match(report.url, /hpanel\.hostinger\.com/);
     assert.ok(logs.some(item => item.includes('ACTION REQUIRED')));
-    assert.ok(logs.some(item => item.includes('ssh-ed25519 AAA public')));
+    assert.ok(logs.some(item => item.includes('one-time SSH key handoff')));
+    assert.ok(!logs.some(item => item.includes('private-test')));
   } finally {
     await rm(root, {recursive: true, force: true});
   }
+});
+
+test('ssh key handoff can open hPanel and copy the public key', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'harness-ssh-handoff-'));
+  try {
+    await writeFile(join(root, 'project.json'), JSON.stringify({title: 'Site', slug: 'site', domain: 'site.test'}, null, 2));
+    const key = join(root, 'id_ed25519');
+    await writeFile(key, 'private-test', {mode: 0o600});
+    await writeFile(`${key}.pub`, 'ssh-ed25519 AAA public');
+    const commands = [];
+    const opened = [];
+    const logs = [];
+    const report = await setupProjectSsh(
+      root,
+      JSON.parse(await readFile(join(root, 'project.json'), 'utf8')),
+      ['--ssh-key', key, '--copy-key', '--open'],
+      {
+        exec: (name, args, options) => {
+          commands.push([name, args, options]);
+          if (name === 'ssh') throw new Error('Permission denied (publickey)');
+          if (name === 'pbcopy') return '';
+          return '';
+        },
+        lookup: async () => [{address: '203.0.113.10'}],
+        discover: () => ({domain: 'site.test', user: 'site-user'}),
+        openUrl: url => opened.push(url),
+        logger: item => logs.push(item),
+      },
+    );
+    assert.equal(report.copied, true);
+    assert.ok(opened.some(url => url.includes('site.test/advanced/ssh-access')));
+    assert.ok(commands.some(([name, , options]) => name === 'pbcopy' && options?.input === 'ssh-ed25519 AAA public'));
+    assert.ok(logs.some(item => item.includes('Public key copied')));
+    assert.ok(logs.some(item => item.includes('Opened hPanel')));
+    assert.match(report.next, /rerun `node harness\/cli\.mjs --project \. ssh setup`/);
+  } finally {
+    await rm(root, {recursive: true, force: true});
+  }
+});
+
+test('ssh key onboarding includes only the public-key path and omits public material', () => {
+  const onboarding = sshKeyOnboarding(
+    {domain: 'site.test'},
+    {privateKey: '/private/secret/id_ed25519', publicKey: 'ssh-ed25519 AAA public'},
+    {copied: true},
+  );
+  assert.equal(onboarding.publicKeyPath, '/private/secret/id_ed25519.pub');
+  const serialized = JSON.stringify(onboarding);
+  assert.ok(!serialized.includes('"publicKey"'));
+  assert.ok(!serialized.includes('ssh-ed25519 AAA public'));
+  assert.ok(serialized.includes('/private/secret/id_ed25519.pub'));
 });
 
 test('ensureSshKey rotates a managed key without deleting its backup', async () => {
