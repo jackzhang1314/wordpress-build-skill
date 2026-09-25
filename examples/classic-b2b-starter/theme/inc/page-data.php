@@ -41,7 +41,7 @@ function enabled(string $name): bool {
 }
 
 function factory_profile_data(): array {
-    $proof = field_rows('factory_stats', 'option');
+    $proof = value_rows(field_text('factory_stats', 'option'));
     $capabilities = field_rows('factory_capabilities', 'option');
     $certifications = lines('factory_certifications', 'option');
     $process = rows('factory_process', 'option');
@@ -71,10 +71,7 @@ function homepage_data(): array {
         ];
     }
     if (!array_filter($stats, static fn (array $item): bool => trim((string) $item['value']) !== '')) {
-        $stats = array_map(
-            static fn (array $row): array => ['value' => $row['label'], 'label' => $row['value']],
-            field_rows('factory_stats', 'option', $factory['stats'])
-        );
+            $stats = value_rows(field_text('factory_stats', 'option'));
     }
 
     return [

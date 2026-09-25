@@ -447,7 +447,7 @@ add_action('acf/init', static function (): void {
         'key' => 'group_factory_profile', 'title' => 'Factory profile', 'show_in_rest' => true,
         'fields' => [
             $field('field_f_intro', 'factory_intro', 'Factory introduction', 'textarea', ['rows' => 4, 'instructions' => 'Shown where the design requests a company proof block.']),
-            $field('field_f_stats', 'factory_stats', 'Factory facts', 'textarea', array_merge(['rows' => 6], $rows_help('Use Value | Label.'))),
+            $field('field_f_stats', 'factory_stats', 'Factory facts', 'textarea', array_merge(['rows' => 6], $rows_help('One fact per line. Use Value | Label (for example: 3 lines | Automated SMT, assembly and burn-in).'))),
             $field('field_f_caps', 'factory_capabilities', 'Capabilities', 'textarea', array_merge(['rows' => 8], $rows_help('Use Title | Description.'))),
             $field('field_f_certifications', 'factory_certifications', 'Certifications & standards', 'textarea', array_merge(['rows' => 6], $rows_help('Use Name | Note.'))),
             $field('field_f_process', 'factory_process', 'Manufacturing process', 'textarea', array_merge(['rows' => 8], $rows_help('Use Step | Description.'))),

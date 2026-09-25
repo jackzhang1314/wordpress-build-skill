@@ -110,6 +110,20 @@ function lines_rows(string $raw): array {
     return $rows;
 }
 
+/** Parse `Value | Label` rows for metrics where the measured value leads. */
+function value_rows(string $raw): array {
+    if (trim($raw) === '') return [];
+    $rows = [];
+    foreach (preg_split('/\r?\n/', $raw) as $line) {
+        if (trim($line) === '') continue;
+        $parts = array_map('trim', explode('|', $line, 2));
+        if (count($parts) === 2 && $parts[0] !== '') {
+            $rows[] = ['value' => $parts[0], 'label' => $parts[1]];
+        }
+    }
+    return $rows;
+}
+
 /** Generic starter fallbacks; business copy belongs in editable fields. */
 function category_defaults(string $slug): array {
     return [
@@ -191,7 +205,7 @@ function media_placeholder(string $kind = 'product', string $label = '', string 
     $screen_reader = $label !== '' ? '<span class="screen-reader-text">' . esc_html($label) . '</span>' : '';
     $aria = $label !== '' ? ' role="img" aria-label="' . esc_attr($label) . ' image placeholder"' : ' aria-hidden="true"';
     $cls = trim('media-fallback ' . $class);
-    return '<span class="' . esc_attr($cls) . '"' . $aria . '><span class="media-frame" aria-hidden="true"></span><span class="media-label">' . esc_html($dimension) . '</span>' . $screen_reader . '</span>';
+    return '<span class="' . esc_attr($cls) . '"' . $aria . '><span class="media-grid" aria-hidden="true"></span><span class="media-frame" aria-hidden="true"></span><span class="media-cross" aria-hidden="true"></span><span class="media-label">' . esc_html($dimension) . '</span>' . $screen_reader . '</span>';
 }
 
 /** Featured image or styled placeholder for a post. */

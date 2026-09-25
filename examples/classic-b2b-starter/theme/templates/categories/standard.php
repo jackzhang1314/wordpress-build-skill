@@ -7,6 +7,7 @@
 $context = get_query_var('category_template_context');
 $category = $context['category'] ?? Starter\Theme\product_category_data();
 $factory = $context['factory'] ?? Starter\Theme\factory_profile_data(); ?>
+<main id="main" class="shell">
 
 	<?php Starter\Theme\breadcrumbs(); ?>
 	<?php Starter\Theme\component_category_hero([
@@ -145,6 +146,7 @@ $factory = $context['factory'] ?? Starter\Theme\factory_profile_data(); ?>
 	]); ?>
 
 	<?php Starter\Theme\component_cta_band(array_merge(['eyebrow' => 'Start here'], $category['cta'])); ?>
+</main>
 
 	<?php
 	$collection_items = [];
@@ -172,4 +174,3 @@ $factory = $context['factory'] ?? Starter\Theme\factory_profile_data(); ?>
 	}
 	?>
 	<script type="application/ld+json"><?php echo wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?></script>
-

@@ -102,6 +102,49 @@ test('layout partials never repeat the main query loop owned by template rendere
   }
 });
 
+test('selectable layouts own one accessible main shell', () => {
+  for (const file of [
+    'theme/templates/home/corporate.php',
+    'theme/templates/home/product-led.php',
+    'theme/templates/home/conversion.php',
+    'theme/templates/home/industrial.php',
+    'theme/templates/categories/standard.php',
+    'theme/templates/categories/catalogue.php',
+    'theme/templates/categories/conversion.php',
+    'theme/templates/categories/editorial.php',
+    'theme/templates/products/standard.php',
+    'theme/templates/products/technical.php',
+    'theme/templates/products/project.php',
+    'theme/templates/products/compact.php',
+  ]) {
+    const text = readFileSync(join(starterRoot, file), 'utf8');
+    assert.match(text, /<main id="main" class="shell">/, `${file} must open the main shell`);
+    assert.match(text, /<\/main>/, `${file} must close the main shell`);
+    assert.equal((text.match(/<main id="main"/g) || []).length, 1, `${file} must have exactly one main shell`);
+  }
+});
+
+test('media placeholders are calibrated technical frames, not blank boxes', () => {
+  const functions = readFileSync(join(starterRoot, 'theme/functions.php'), 'utf8');
+  for (const required of ['media-grid', 'media-frame', 'media-cross', 'media-label', 'aria-label']) {
+    assert.match(functions, new RegExp(required), `placeholder markup misses ${required}`);
+  }
+  const css = readFileSync(join(starterRoot, 'theme/style.css'), 'utf8');
+  assert.match(css, /\.media-fallback\{[^}]*display:grid/);
+  assert.match(css, /\.media-label\{[^}]*text-transform:uppercase/);
+});
+
+test('factory metrics preserve value-first data and home avoids duplicate proof strips', () => {
+  const functions = readFileSync(join(starterRoot, 'theme/functions.php'), 'utf8');
+  assert.match(functions, /function value_rows\(/);
+  assert.match(functions, /'value' => \$parts\[0\], 'label' => \$parts\[1\]/);
+  const data = readFileSync(join(starterRoot, 'theme/inc/page-data.php'), 'utf8');
+  assert.match(data, /value_rows\(field_text\('factory_stats', 'option'\)\)/);
+  const home = readFileSync(join(starterRoot, 'theme/templates/home/corporate.php'), 'utf8');
+  assert.match(home, /component_stat_strip/);
+  assert.doesNotMatch(home, /component_factory_strip/);
+});
+
 test('native editor patterns remain compatible with the classic editor', () => {
   const patterns = JSON.parse(readFileSync(join(starterRoot, 'config/editor-block-patterns.json'), 'utf8'));
   const allowed = new Set(['heading', 'paragraph', 'list', 'image', 'button', 'section', 'columns', 'column', 'table', 'faq', 'form', 'catalog', 'shortcode']);

@@ -5,13 +5,13 @@
  * @package b2b-starter
  */
 $context = get_query_var('home_template_context'); $home = $context['home'] ?? Starter\Theme\homepage_data(); $factory = $context['factory'] ?? Starter\Theme\factory_profile_data(); ?>
+<main id="main" class="shell">
 	<?php get_template_part('parts/hero', null, [
 		'eyebrow' => $home['overline'],
 		'description' => $home['description'] ?: get_the_excerpt(),
 		'primary_label' => $home['cta']['button_label'],
 	]); ?>
 <?php Starter\Theme\component_stat_strip(['items' => $home['stats']]); ?>
-<?php Starter\Theme\component_factory_strip(['proof' => $factory['proof'], 'certifications' => $factory['certifications'], 'markets' => $factory['markets']]); ?>
 <?php if ($home['sections']['applications']['enabled']) : ?>
 <section class="section home-categories">
 	<?php Starter\Theme\component_section_heading([
@@ -69,4 +69,4 @@ $context = get_query_var('home_template_context'); $home = $context['home'] ?? S
 </section>
 <?php endif; ?>
 <?php Starter\Theme\component_cta_band(array_merge(['eyebrow' => 'Start here'], $home['cta'])); ?>
-
+</main>

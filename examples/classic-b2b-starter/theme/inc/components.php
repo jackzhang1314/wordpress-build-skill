@@ -125,11 +125,11 @@ function component_callout(array $props = []): void {
 function component_spec_table(array $props = []): void {
 	$rows = array_values(array_filter((array) ($props['rows'] ?? []), static fn ($row): bool => trim((string) ($row['label'] ?? '')) !== ''));
 	if (!$rows) return;
-	echo '<table class="spec-table"><tbody>';
+	echo '<div class="spec-table-wrap"><table class="spec-table"><tbody>';
 	foreach ($rows as $row) {
 		printf('<tr><th scope="row">%s</th><td>%s</td></tr>', esc_html((string) $row['label']), esc_html((string) ($row['value'] ?? '')));
 	}
-	echo '</tbody></table>';
+	echo '</tbody></table></div>';
 }
 
 /** Compact definition list of key specs. Fields map: field_name => label. */
