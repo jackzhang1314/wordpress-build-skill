@@ -1,14 +1,14 @@
-# WordPress B2B Harness + Starter Template
+# WordPress Harness（Starter 可选）
 
-这是当前唯一维护的 WordPress AI 建站基线：一个 **Hostinger 部署 Harness** 加一个 **Classic WordPress B2B Starter Template**。旧区块主题、历史方案和早期验收资料只作为研究归档，不再作为新站入口。
+这是当前唯一维护的 WordPress AI 建站基线：一个 **Hostinger 部署 Harness**，加一个**可选的 Classic WordPress B2B Starter Template**。Starter 是新站的快速正面示例；Harness 同样支持接管既有 WordPress 站点，并且不会假设它们使用 Starter。
 
 - Harness 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
 - Starter Template 仓库：<https://github.com/jackzhang1314/b2b-wordpress-starter-template>
-- 当前 Harness 基线：`2.11.0`
+- 当前 Harness 基线：`2.15.0`
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
-> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.14.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.15.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
 
 ### 交给 Codex 的最小指令
 
@@ -18,8 +18,9 @@
 Clone https://github.com/jackzhang1314/wordpress-build-skill.git.
 Read README.md, AGENTS.md, docs/HARNESS-GUIDE.md and examples/classic-b2b-starter/README.md first.
 Do not use the historical docs as the current default architecture.
-Repair the local environment with `node harness/bootstrap.mjs --fix`, run local checks, then create a clean project with:
-node harness/cli.mjs init <kebab-case-project-name> --root ../projects --from-starter
+Repair the local environment with `node harness/bootstrap.mjs --fix`.
+For a new site you may use: node harness/cli.mjs init <kebab-case-project-name> --root ../projects --from-starter.
+For an existing WordPress site use: node harness/cli.mjs adopt <kebab-case-project-name> --domain <domain>.
 Before any remote write, ask me for the Hostinger SSH/domain values or use the values I provide.
 ```
 
@@ -42,9 +43,9 @@ Before any remote write, ask me for the Hostinger SSH/domain values or use the v
 
 它的价值不是“帮你少写 CSS”，而是把信息架构、字段绑定、模板路由、表单、SEO、部署和验证做成**不易跑偏的正面案例**。用户可以重构样式，但仍然保留稳定的 CMS/ACF/模板/部署契约。
 
-## 2. 克隆后最快使用路径
+## 2. 两条使用路径
 
-### A. 新建一个 Starter 项目
+### A. 可选快速路径：新建一个 Starter 项目
 
 ```bash
 git clone https://github.com/jackzhang1314/wordpress-build-skill.git
@@ -77,7 +78,17 @@ cd /absolute/path/to/projects/my-factory-site
 node /absolute/path/to/wordpress-build-skill/harness/cli.mjs --project . check
 ```
 
-### B. 接入 Hostinger
+### B. 接管任意既有 WordPress 站点
+
+```bash
+node /path/to/wordpress-build-skill/harness/cli.mjs adopt existing-factory \
+  --root /absolute/path/to/projects \
+  --domain existing-site.hostingersite.com
+```
+
+`adopt` 会生成 `mode: external` 的项目，读取线上 WordPress、active theme、插件清单和站点信息，并复用账号级 SSH key。外部项目允许内容、导航、模板分配、备份、审计和状态检查；但 `deploy`、`media`、`content`、`setup` 会被阻断，避免用本地 Starter 覆盖客户线上代码。
+
+### C. 接入 Hostinger
 
 先确认 Hostinger CLI 和账户访问：
 

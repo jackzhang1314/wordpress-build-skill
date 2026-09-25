@@ -6,6 +6,7 @@ export const slug = /^[a-z0-9][a-z0-9-]*$/;
 
 export const projectSchema = z.object({
   title: z.string().min(2),
+  mode: z.enum(['source', 'external']).default('source'),
   description: z.string().default(''),
   timezone: z.string().default(''),
   slug: z.string().regex(slug).optional(),
@@ -73,6 +74,13 @@ export const projectSchema = z.object({
   }).default({}),
   cms: z.object({
     editorPatterns: z.string().default('config/editor-block-patterns.json'),
+  }).optional(),
+  remote: z.object({
+    siteUrl: z.string().optional(),
+    wpVersion: z.string().optional(),
+    activeTheme: z.string().optional(),
+    plugins: z.array(z.string()).default([]),
+    inspectedAt: z.string().optional(),
   }).optional(),
   paths: z.object({
     theme: z.string().default('theme'),

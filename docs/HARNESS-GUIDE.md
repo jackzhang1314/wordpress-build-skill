@@ -49,6 +49,29 @@ node harness/cli.mjs init minimal-site --root ../projects
 
 该路径只生成最小 Classic PHP reference，适合新架构实验；生产 B2B 站优先使用 `--from-starter`。
 
+### 接管任意既有 WordPress 站点（不需要 Starter）
+
+```bash
+node harness/cli.mjs adopt existing-factory \
+  --root ../projects \
+  --domain existing-site.hostingersite.com
+```
+
+`adopt` 会创建 `mode: external` 项目：读取线上站点标题、WordPress 版本、active theme、插件清单和时区，并配置账号级 SSH key。它**不复制、不覆盖、不重建**线上主题或插件。
+
+外部项目推荐命令：
+
+```bash
+node harness/cli.mjs --project ../projects/existing-factory check
+node harness/cli.mjs --project ../projects/existing-factory backup
+node harness/cli.mjs --project ../projects/existing-factory status
+node harness/cli.mjs --project ../projects/existing-factory edit-page about --file body.html --adopt-remote
+node harness/cli.mjs --project ../projects/existing-factory nav add 'Products' --url /products/
+node harness/cli.mjs --project ../projects/existing-factory template assign about --template page-templates/customer.php
+```
+
+外部项目会阻止 `deploy`、`media`、`content`、`setup` 和 `configure-seo`。这些命令可能同步本地主题/插件或安装插件；接管已有站时必须先显式建立源码管理策略，不能默认用 Starter 覆盖。
+
 ## 配置 project.json
 
 `--from-starter` 会生成不含 SSH 的本地 project.json。接入主机前至少修改：
@@ -58,12 +81,12 @@ node harness/cli.mjs init minimal-site --root ../projects
 | `title` | 站点标题 |
 | `domain` | Hostinger 站点域名，不含 `https://` |
 | `contentMarkers` | 部署后应出现的品牌 marker |
-| `requiredPlugins` | 默认 ACF、Rank Math、Fluent Forms、Classic Editor |
+| `requiredPlugins` | Starter 默认 ACF、Rank Math、Fluent Forms、Classic Editor；外部项目必须为空或按实际站点配置 |
 | `ssh.host/port/user/keyPath/wpPath` | SSH/WP-CLI 执行通道 |
 | `seed.enabled` | 首次部署导入示例/内容；生产正式内容部署前重新审查 |
 | `media.sources` | Starter 默认为空，保持 zero-media |
 
-远程命令会拒绝 example-only 配置，防止误写占位项目。
+远程命令会拒绝 example-only 配置，防止误写占位项目。`mode: external` 是第二层保护：它明确表示 Harness 只管理内容/配置，不拥有本地主题和插件源码。
 
 ## 部署生命周期
 
@@ -95,11 +118,15 @@ node harness/cli.mjs --project . ssh setup
 
 ### 已有 Hostinger 站点
 
+如果已有站点使用 Starter 或已有受控本地源码，先在项目目录执行：
+
 ```bash
 node harness/cli.mjs --project . doctor
 node harness/cli.mjs --project . check
 node harness/cli.mjs --project . deploy --with-content
 ```
+
+如果只是“线上已有但本地无源码”的站点，改用上文 `adopt`。外部项目的 `deploy --with-content` 会被阻断，这是防止误覆盖旧站的保护，不是缺陷。
 
 ### 首次自动开站
 
@@ -116,9 +143,9 @@ node harness/cli.mjs --project . provision \
 node harness/cli.mjs --project . deploy --skip-content
 ```
 
-`--skip-content` 适合主题/插件热更新。后台编辑的内容、导航和新增询盘不会被重建。
+`--skip-content` 适合 source 项目主题/插件热更新。后台编辑的内容、导航和新增询盘不会被重建。外部项目不使用整站 deploy；继续用 `edit-page`、`post push`、`nav`、`template assign` 做精确更新。
 
-## Starter 修改地图
+## Starter 修改地图（可选路径）
 
 | 要改什么 | 位置 |
 | --- | --- |

@@ -21,7 +21,9 @@ export function discoverHostingerWebsite(domain, {exec = defaultSshExec} = {}) {
 }
 
 /** Choose an SSH host/user when project.json does not already have one. */
-export async function deriveSshDefaults(project, {domain = project.domain, lookup = dns.lookup, discover = undefined} = {}) {
+export async function deriveSshDefaults(project, {
+  domain = project.domain, lookup = dns.lookup, discover = undefined, readHost = readAccountHost,
+} = {}) {
   if (!domain) throw new Error('SSH setup needs project.domain or --ssh-host');
   let host = '';
   let user = project.ssh?.user || project.hostinger?.user || '';
@@ -30,6 +32,9 @@ export async function deriveSshDefaults(project, {domain = project.domain, looku
     const website = discover(domain);
     if (website?.user) user ||= website.user;
     if (website?.orderId) orderId ||= website.orderId;
+  }
+  if (!host) {
+    host = readHost(user);
   }
   if (!host) {
     try {
@@ -97,6 +102,34 @@ export function ensureSshKey(project, keyPath, {exec = defaultSshExec, rotateKey
 export function accountKeyPath(user, home = homedir()) {
   const safeUser = String(user || 'site').replace(/[^A-Za-z0-9._-]/g, '-');
   return join(home, '.ssh', `hostinger-${safeUser}_ed25519`);
+}
+
+function accountHostFile(home = homedir()) {
+  return join(home, '.wordpress-builder', 'hostinger-account-hosts.json');
+}
+
+/** A website DNS record is the web server, not necessarily the SSH server. Remember verified SSH hosts by hosting user. */
+export function readAccountHost(user, home = homedir()) {
+  try {
+    const map = JSON.parse(readFileSync(accountHostFile(home), 'utf8'));
+    return map[String(user)] || '';
+  } catch {
+    return '';
+  }
+}
+
+export function rememberAccountHost(user, host, home = homedir()) {
+  if (!user || !host) return;
+  const path = accountHostFile(home);
+  let map;
+  try {
+    map = JSON.parse(readFileSync(path, 'utf8'));
+  } catch {
+    map = {};
+  }
+  map[String(user)] = host;
+  mkdirSync(dirname(path), {recursive: true});
+  writeFileSync(path, `${JSON.stringify(map, null, 2)}\n`);
 }
 
 /** Build a novice-safe one-time handoff for Hostinger's shared/cloud SSH key limitation. */
@@ -312,6 +345,7 @@ export async function setupProjectSsh(projectRoot, project, args = [], {
   try {
     ssh.run('echo ok');
     const wpVersion = ssh.wp(['core', 'version']).trim();
+    rememberAccountHost(defaults.user, defaults.host);
     logger('  OK  SSH connection and remote WP-CLI are ready');
     return {
       pass: true,
@@ -332,6 +366,7 @@ export async function setupProjectSsh(projectRoot, project, args = [], {
       try {
         const install = await installAccountSshKey(project, sshSettings, key, {exec, fetchImpl, logger});
         const wpVersion = ssh.wp(['core', 'version']).trim();
+        rememberAccountHost(defaults.user, defaults.host);
         logger('  OK  Account SSH key installed; Hostinger bootstrap cleanup requested');
         logger('  OK  SSH connection and remote WP-CLI are ready');
         return {

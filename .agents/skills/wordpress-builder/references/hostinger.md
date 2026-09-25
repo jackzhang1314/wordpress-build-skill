@@ -19,13 +19,14 @@ Hostinger AI/WordPress MCP 插件不是部署必需项，不加入统一必装�
 
 ## Harness v2 首次开通
 
-新站授权后使用中央 Harness，不用临时脚本：
+新站授权后使用中央 Harness，不用临时脚本。已有线上站点先 `adopt`；不要假设它是 Starter 或拥有本地源码：
 
 ```bash
 node harness/cli.mjs --project <site-dir> provision
+node harness/cli.mjs adopt <project-name> --domain <existing-domain> --root <projects-parent>
 ```
 
-它按官方 CLI 执行：website list → 必要时 free subdomain/website create → installation list → 必要时 WP install → 轮询异步结果 → 回写目标路径 → 自动配置 hosting account 级 SSH key。新管理员凭据只写入项目忽略目录的 0600 JSON；CLI 回执只允许出现路径，不允许出现密码。SSH host/user 缺省时由 DNS 和 website list 推导；已有可用 key 可用 `--ssh-key` 显式提供，缺失时不冒充可部署。
+Provision 按官方 CLI 执行：website list → 必要时 free subdomain/website create → installation list → 必要时 WP install → 轮询异步结果 → 回写目标路径 → 自动配置 hosting account 级 SSH key。Adopt 则生成 `mode: external` 项目，读取线上 WordPress/theme/plugin 清单，允许内容、导航、模板分配、备份和审计；阻断 deploy/media/content/setup，防止本地 Starter 覆盖客户实现。新管理员凭据只写入项目忽略目录的 0600 JSON；CLI 回执只允许出现路径，不允许出现密码。SSH host/user 缺省时由 DNS 和 website list 推导；已有可用 key 可用 `--ssh-key` 显式提供，缺失时不冒充可部署。
 
 已存在网站/安装时命令必须幂等：只回读和补齐 project.json，不重复建站，不覆盖已有 WordPress。创建成功后默认进入首次 deploy；如只做开通，用 `--no-deploy`。
 

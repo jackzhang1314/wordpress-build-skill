@@ -255,18 +255,33 @@ export async function assignTemplate(site, args, logger = () => {}) {
   if (!/^(?:[a-z0-9_-]+|page-templates\/[a-z0-9_-]+)\.php$/.test(template)) {
     throw new Error(`invalid template name: ${template}`);
   }
-  const themeDir = projectFile(site.root, site.project.paths.theme);
-  const templatePath = join(themeDir, template);
-  if (!existsSync(templatePath)) {
-    throw new Error(`template not found in theme: ${template} (deploy the theme first)`);
+  if (site.project.mode === 'external') {
+    if (!/^[a-z0-9][a-z0-9_-]*(?:\/[a-z0-9][a-z0-9_-]*)*\.php$/.test(template)) {
+      throw new Error(`invalid template name: ${template}`);
+    }
+  } else {
+    const themeDir = projectFile(site.root, site.project.paths.theme);
+    const templatePath = join(themeDir, template);
+    if (!existsSync(templatePath)) {
+      throw new Error(`template not found in theme: ${template} (deploy the theme first)`);
+    }
+    const source = readFileSync(templatePath, 'utf8');
+    if (!/Template\s*Name:/.test(source)) throw new Error(`${template} is missing the "Template Name:" header`);
+    if (!/the_content\s*\(/.test(source)) {
+      throw new Error(`${template} does not render the editable body (the_content) and must not be assigned`);
+    }
   }
-  const source = readFileSync(templatePath, 'utf8');
-  if (!/Template\s*Name:/.test(source)) throw new Error(`${template} is missing the "Template Name:" header`);
-  if (!/the_content\s*\(/.test(source)) {
-    throw new Error(`${template} does not render the editable body (the_content) and must not be assigned`);
-  }
+  const validation = site.project.mode === 'external' ? `
+$theme = wp_get_theme();
+$templates = $theme->get_page_templates();
+if (empty($templates[$p['template']])) { fwrite(STDERR, 'remote-template-not-found'); exit(1); }
+$source = (string) file_get_contents(get_theme_file_path($p['template']));
+if (!preg_match('/Template\\s*Name:/', $source)) { fwrite(STDERR, 'remote-template-missing-name'); exit(1); }
+if (!preg_match('/the_content\\s*\\(/', $source)) { fwrite(STDERR, 'remote-template-does-not-render-body'); exit(1); }
+` : '';
+  const php = validation + TEMPLATE_PHP;
   const result = await stageAndRun(site.ssh, site.root, 'template', [
-    {name: 'template.php', content: TEMPLATE_PHP},
+    {name: 'template.php', content: php},
     {name: 'payload.json', content: JSON.stringify({slug, template})},
   ]);
   const remote = site.ssh.wp(['post', 'meta', 'get', String(result.id), '_wp_page_template']).trim();

@@ -2,12 +2,12 @@
 
 ## 项目定位与真源
 
-本仓库维护 WordPress B2B Harness 和 Classic Starter Template。当前唯一新站默认是 `examples/classic-b2b-starter/` + `harness/cli.mjs init --from-starter`。客户站应有独立源码、环境及自己的 AGENTS.md，不能直接套用本仓库的测试命令和示例状态。
+本仓库维护 WordPress Harness；Classic Starter Template 是新站快速路径，不是唯一路径。新站可用 `harness/cli.mjs init --from-starter`；已有线上站必须先 `harness/cli.mjs adopt`，生成 `mode: external` 的受管项目。客户站应有独立源码、环境及自己的 AGENTS.md，不能直接套用本仓库的测试命令和示例状态。
 
 - 当前入口与使用方式：[README](README.md)、[Harness + Starter 手册](docs/HARNESS-GUIDE.md)、[Starter 使用说明](examples/classic-b2b-starter/README.md)、[设计系统](examples/classic-b2b-starter/DESIGN.md)。`docs/TARGET-ARCHITECTURE.md`、`docs/ARCHITECTURE.md`、`docs/GETTING-STARTED.md` 与编号历史文档是研究/阶段记录，不是当前默认架构。
 - 用户环境统一入口是 `node harness/bootstrap.mjs [--fix]`；Hostinger CLI 入口是 `hostinger setup [--install] [--connect]`；项目 SSH 入口是 `--project <dir> ssh setup`。不要引导用户编辑 SSH 字段，除非向导失败并明确要求 override。
 - Hostinger SSH key 按 hosting account/SSH user 管理：默认用 `~/.ssh/hostinger-<user>_ed25519`，不复制旧项目 key。已授权 CLI 后 `ssh setup` 默认通过 Files + temporary Cron 自动 bootstrap；失败自动降级到 hPanel handoff，`--no-install-key` 才禁用自动写入。不要把这个说成 Hostinger 登录账号级，也不要在不同 hosting order/user 之间冒充通用。
-- 新 B2B 站默认复制 Classic B2B Starter，包含 Classic PHP theme、CPT/taxonomy、ACF Free 本地字段、Fluent Forms、Rank Math、Classic Editor、mu-plugin SMTP 和 SSH/WP-CLI 部署。通用最小经典参考只用于实验；历史区块主题、HONGDA PHP 示例和区块样板保留为参考，不再作为新站默认。
+- Starter 是可选快速路径，包含 Classic PHP theme、CPT/taxonomy、ACF Free 本地字段、Fluent Forms、Rank Math、Classic Editor、mu-plugin SMTP 和 SSH/WP-CLI 部署。已有线上站使用 `adopt`/external 模式：允许页面、文章、导航、模板分配、备份和审计，阻断 deploy/media/content/setup，避免覆盖非 Starter 代码。历史区块主题、HONGDA PHP 示例和区块样板保留为参考。
 - v2 统一 Harness 入口是 `harness/cli.mjs`，用 `--project <site-dir>` 管理 init、provision、doctor、check、backup、media、content、configure-seo、deploy、verify、status、rollback、wp/ssh/cache；禁止把项目名、域名或内容模型硬编码进入口。凭据只进项目忽略目录且权限 0600。
 - 开始改动前检查目录、分支、HEAD 和未提交内容。现有共享工作区修改不得覆盖；实验环境与参考网站分别识别，不清空不明数据。
 

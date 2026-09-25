@@ -13,6 +13,7 @@ import {verifyDatabase, verifyPages} from './lib/verify.mjs';
 import {auditCmsModel, collectCmsAudit} from './lib/cms-audit.mjs';
 import {auditEditorPatterns} from './lib/editor-audit.mjs';
 import {isBlankMediaContract} from './lib/verify.mjs';
+import {adoptExternalSite, auditExternalSite} from './lib/external.mjs';
 
 function managedMediaIds(projectRoot, project) {
   const contentDir = project.paths?.content ?? 'content';
@@ -51,6 +52,7 @@ const HELP = `WordPress Harness v2
 
 Usage:
   node harness/cli.mjs init <project-name> --root <projects-parent> [--from-starter] [--no-git]
+  node harness/cli.mjs adopt <project-name> --domain <domain> [--root <projects-parent>] [--order <id>] [--no-git]
   node harness/cli.mjs --project <site-dir> <command> [args]
 
 Project commands:
@@ -58,7 +60,7 @@ Project commands:
   doctor                  Check tools, SSH and WP-CLI
   bootstrap               Audit and repair the local harness environment
   ssh setup               Create/configure an SSH key, save it, and test WP-CLI
-  check                   Run local quality gates
+  check                   Source projects: local quality gates; external: live-site checks
   backup                  Back up remote files and database
   media [--force]         Import configured media sources
   content                 Upload the project seed package
@@ -98,7 +100,16 @@ Deploy options:
   --json                  Machine-readable output
 
 Init options:
-  --from-starter          Copy the B2B Starter theme, ACF model, seed content and docs
+  --from-starter          Optional fast path: copy the B2B Starter theme, ACF model, seed content and docs
+
+Adopt options:
+  --domain <domain>       Existing WordPress domain to inspect and manage
+  --order <id>            Hostinger order id if website discovery is unavailable
+  --ssh-host <host>       Optional override if DNS discovery is unavailable
+  --ssh-port <port>       Optional SSH port override (default 65002)
+  --ssh-user <user>       Optional SSH user override
+                          Adopt creates mode=external: content/nav/template management is enabled,
+                          but deploy/media/content/setup are blocked to protect existing code.
 
 Bootstrap options:
   --fix                   Install npm dependencies, build Skill runtime and install Hostinger CLI when supported
@@ -245,7 +256,16 @@ async function commandDoctor({project, ssh}, json, logger) {
   return {pass, checks};
 }
 
-async function runCheck({root, project}, json, logger) {
+async function runCheck({root, project, ssh, base}, json, logger) {
+  if (project.mode === 'external') {
+    const report = await auditExternalSite({ssh, base});
+    if (!json) {
+      logger('External site checks');
+      printAudit(report, logger);
+      logger(`\n${report.pass ? 'OK: external site checks passed.' : 'FAIL: external site checks failed.'}`);
+    }
+    return report;
+  }
   const report = await auditProject(root, project, {
     phpBin: commandExists(execFileSync, 'php', ['-v']) ? 'php' : (commandExists(execFileSync, 'docker', ['info']) ? 'docker:wordpress:cli-php8.3' : undefined),
   });
@@ -264,6 +284,12 @@ function firstValue(args) {
 function openExternalUrl(url) {
   if (process.platform === 'darwin') execFileSync('open', [url], {stdio: 'pipe'});
   else if (process.platform === 'linux') execFileSync('xdg-open', [url], {stdio: 'pipe'});
+}
+
+function assertSourceMode(project, command) {
+  if (project.mode === 'external') {
+    throw new Error(`${command} is blocked for external projects; it could overwrite an existing site's code/plugins. Use edit-page, post push, nav, template assign, backup or status.`);
+  }
 }
 
 export async function main(argv = process.argv.slice(2), logger = console.log, errors = console.error) {
@@ -298,6 +324,40 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       const report = await commandBootstrap(args, json, logger);
       outputResult(report, json, logger);
       return report.pass ? 0 : 1;
+    }
+
+    if (command === 'adopt') {
+      const name = firstValue(args);
+      const rootIndex = args.indexOf('--root');
+      const domain = argValue(args, '--domain');
+      const order = argValue(args, '--order');
+      const result = await adoptExternalSite({
+        name,
+        projectsRoot: rootIndex >= 0 ? args[rootIndex + 1] : resolve(process.cwd(), '..'),
+        domain,
+        order,
+        git: !args.includes('--no-git'),
+      }, {
+        exec: execFileSync,
+        setupProjectSsh,
+        openUrl: openExternalUrl,
+        logger: json ? () => {} : logger,
+        setupArgs: ['--ssh-host', '--ssh-port', '--ssh-user'].flatMap(flag => {
+          const index = args.indexOf(flag);
+          return index >= 0 ? [flag, args[index + 1]] : [];
+        }),
+      });
+      if (!json && result.pass) {
+        logger(`OK: adopted external WordPress site: ${result.root}`);
+        logger(`  Theme: ${result.remote.activeTheme}`);
+        logger(`  WordPress: ${result.remote.wpVersion}`);
+        logger(`  Plugins: ${result.remote.plugins.join(', ') || 'none'}`);
+        logger(`  ${result.next}`);
+      } else if (!json && result.setupReport?.next) {
+        logger(`NEXT ${result.setupReport.next}`);
+      }
+      outputResult(result, json, logger);
+      return result.pass ? 0 : 2;
     }
 
     if (command === 'hostinger') {
@@ -353,6 +413,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       return main(['--project', root, 'deploy', '--with-media', '--with-content'], logger, errors);
     }
     if (command === 'configure-seo') {
+      assertSourceMode(project, command);
       if (!ssh) throw new Error('SSH configuration is required for Rank Math');
       const backup = backupProject(root, project, ssh, logger);
       configureWordPress(project, ssh, logger);
@@ -365,6 +426,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       return 0;
     }
     if (command === 'setup') {
+      assertSourceMode(project, command);
       if (!ssh) throw new Error('SSH configuration is required for setup');
       configureWordPress(project, ssh, logger);
       await syncRemotePlugins(project, ssh, logger);
@@ -483,7 +545,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       return result.pass ? 0 : 1;
     }
     if (command === 'check') {
-      const result = await runCheck(site, json, logger);
+      const result = await runCheck({...site, base}, json, logger);
       return result.pass ? 0 : 1;
     }
     if (command === 'backup') {
@@ -492,11 +554,13 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       return 0;
     }
     if (command === 'media') {
+      assertSourceMode(project, command);
       const map = await importMedia(root, project, ssh, {force: args.includes('--force'), logger});
       outputResult({pass: true, count: Object.keys(map).length}, json, logger);
       return 0;
     }
     if (command === 'content') {
+      assertSourceMode(project, command);
       await seedContent(root, project, ssh, logger, {rebuildNav: args.includes('--with-nav')});
       return 0;
     }
@@ -581,7 +645,8 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       }
     }
     if (command === 'deploy') {
-      const report = await runCheck(site, json, logger);
+      assertSourceMode(project, command);
+      const report = await runCheck({...site, base}, json, logger);
       if (!report.pass) throw new Error('local quality gates failed');
       if (!ssh) throw new Error('SSH configuration is required before deploy');
       logger(`\nDeploying ${project.title} -> ${project.domain}`);
