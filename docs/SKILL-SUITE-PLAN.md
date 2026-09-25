@@ -1,6 +1,6 @@
 # WordPress Builder Skill Suite Plan
 
-Status: implementation started — Phase 0/1 complete; Phase 2–5 references scaffolded  
+Status: implementation started — Phase 0–5 initial suite implemented; deep reference cleanup and Block/FSE adapters remain  
 Date: 2026-09-26  
 Target baseline: v2.16.0  
 

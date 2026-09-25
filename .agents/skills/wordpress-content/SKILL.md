@@ -35,6 +35,7 @@ node wordpress-builder.mjs --project . audit-fields
 - Classic navigation and classic page-template assignment are verified capabilities.
 - Block navigation and FSE templates require inspection before a write.
 - If PHP/template code must change, stop and propose a scoped source-custody upgrade.
+- Existing content, navigation and page-template writes create a lightweight restore snapshot in `.backups/external-writes/`.
 
 ## References
 

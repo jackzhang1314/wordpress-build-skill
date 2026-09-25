@@ -20,6 +20,13 @@
 - Live `project inspect --json` verified against `mistyrose-kingfisher-381103.hostingersite.com`.
 - Full gate after implementation: typecheck, lint and `npm test` — 193/193 tests.
 
+## Second-wave additions
+
+- Added live-shape preflight for navigation and template operations.
+- Added lightweight external-write snapshots for page edits, posts, navigation and template assignment.
+- Blocked Block-only navigation writes and FSE classic template assignment until dedicated adapters exist.
+- Reconciled AGENTS links to the domain skill references.
+
 ## Remaining
 
 - Complete the staged migration/removal of old `wordpress-builder/references` copies.

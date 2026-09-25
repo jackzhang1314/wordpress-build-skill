@@ -9,6 +9,8 @@
 - Added `mode: source | external` and `sourceProfile: starter | custom`.
 - Custom source projects now skip Starter-specific route, page-template, component, ACF, media and UI contracts.
 - External adoption records the real WordPress shape and inventory before content or design work.
+- External page/post/navigation/template writes create lightweight restore snapshots.
+- Block-only navigation writes and FSE classic template assignment are blocked with explicit guidance.
 - Added a reusable account SSH host map because website DNS and SSH endpoints can differ.
 
 ### Skills
