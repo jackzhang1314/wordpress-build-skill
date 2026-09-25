@@ -7,6 +7,7 @@ import {slugify} from './lib/config.mjs';
 
 const moduleDir = dirname(fileURLToPath(import.meta.url));
 const referenceDir = resolve(moduleDir, '../.agents/skills/wordpress-builder/assets/php-reference');
+const starterDir = resolve(moduleDir, '../examples/classic-b2b-starter');
 
 function copyDir(from, to) {
   mkdirSync(to, {recursive: true});
@@ -82,6 +83,40 @@ export function initProject({name, projectsRoot, git = true, reference = referen
   writeFileSync(join(root, 'content/site-data.json'), JSON.stringify({terms: [], products: [], guides: [], pages: {}}, null, 2));
   writeFileSync(join(root, 'AGENTS.md'), `# ${name}\n\nClassic PHP theme + ACF project.\n\n- Presentation lives in \`theme/\`; business models and ACF fields live in \`plugin/\`.\n- Fill \`project.json\` before deploy. Never commit credentials.\n- Run the central harness \`check\` before deploy and verify the original public URL after deploy.\n`);
   writeFileSync(join(root, 'docs/brief.md'), `# ${name} brief\n\n- Business goal:\n- Buyers:\n- Primary conversion:\n- Facts and evidence:\n- Brand assets:\n`);
+  if (git) execFileSync('git', ['init', '-b', 'main'], {cwd: root, stdio: 'pipe'});
+  return root;
+}
+
+/** Create a live project from the production-shaped B2B starter, including its example content model. */
+export function initFromStarter({name, projectsRoot, git = true, starter = starterDir}) {
+  const slug = slugify(name);
+  if (!slug || slug !== name) throw new Error('Project name must already be kebab-case (a-z, 0-9, hyphen).');
+  const sourceRoot = resolve(starter);
+  if (!existsSync(join(sourceRoot, 'theme/style.css')) || !existsSync(join(sourceRoot, 'plugin/starter-model.php')) || !existsSync(join(sourceRoot, 'project.example.json'))) {
+    throw new Error(`B2B starter template not found: ${sourceRoot}`);
+  }
+  const root = resolve(projectsRoot, slug);
+  if (existsSync(root)) throw new Error(`Project already exists: ${root}`);
+
+  cpSync(sourceRoot, root, {recursive: true});
+  const example = JSON.parse(readFileSync(join(root, 'project.example.json'), 'utf8'));
+  const project = {
+    ...example,
+    title: name,
+    slug,
+    domain: '',
+    contentMarkers: [name],
+    seed: {...(example.seed ?? {}), enabled: true},
+  };
+  delete project.ssh;
+  delete project.hostinger;
+  writeFileSync(join(root, 'project.json'), `${JSON.stringify(project, null, 2)}\n`);
+  if (!existsSync(join(root, '.gitignore'))) {
+    writeFileSync(join(root, '.gitignore'), [
+      '.backups/', '.deploy-staging/', '.wordpress-builder/', '.DS_Store', 'node_modules/', '*.log', '*.env', '!*.example.env',
+      '.seed-state.json', '.content-state.json', '.deploy-state.json',
+    ].join('\n') + '\n');
+  }
   if (git) execFileSync('git', ['init', '-b', 'main'], {cwd: root, stdio: 'pipe'});
   return root;
 }

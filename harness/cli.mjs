@@ -42,13 +42,13 @@ import {
   syncCode,
   syncRemotePlugins,
 } from './lib/ops.mjs';
-import {initProject} from './init.mjs';
+import {initFromStarter, initProject} from './init.mjs';
 
 const HELP = `WordPress Harness v2
 =====================
 
 Usage:
-  node harness/cli.mjs init <project-name> --root <projects-parent> [--no-git]
+  node harness/cli.mjs init <project-name> --root <projects-parent> [--from-starter] [--no-git]
   node harness/cli.mjs --project <site-dir> <command> [args]
 
 Project commands:
@@ -88,6 +88,9 @@ Deploy options:
   --with-nav              Explicitly rebuild the seeded navigation
   --skip-content          Do not seed in this run
   --json                  Machine-readable output
+
+Init options:
+  --from-starter          Copy the B2B Starter theme, ACF model, seed content and docs
 
 Provision options:
   --domain <domain>       Use a known domain instead of a generated subdomain
@@ -199,11 +202,17 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
 
     if (command === 'init') {
       const rootIndex = args.indexOf('--root');
-      const created = initProject({
-        name: firstValue(args),
-        projectsRoot: rootIndex >= 0 ? args[rootIndex + 1] : resolve(process.cwd(), '..'),
-        git: !args.includes('--no-git'),
-      });
+      const created = args.includes('--from-starter')
+        ? initFromStarter({
+          name: firstValue(args),
+          projectsRoot: rootIndex >= 0 ? args[rootIndex + 1] : resolve(process.cwd(), '..'),
+          git: !args.includes('--no-git'),
+        })
+        : initProject({
+          name: firstValue(args),
+          projectsRoot: rootIndex >= 0 ? args[rootIndex + 1] : resolve(process.cwd(), '..'),
+          git: !args.includes('--no-git'),
+        });
       outputResult({pass: true, projectRoot: created}, json, logger);
       if (!json) logger(`OK: project created: ${created}`);
       return 0;
@@ -298,15 +307,17 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       const mailboxPass = argValue(args, '--mailbox-pass');
       const notifyTo = argValue(args, '--notify-to');
       if (!mailbox || !mailboxPass) {
+        const emailDomain = project.domain || 'your-domain.com';
+        const exampleMailbox = `notify@${emailDomain}`;
         logger('\n📧 Email Setup Guide');
         logger('  ─────────────────────────────────────────────');
-        logger('  Step 1: Go to hPanel → Emails → owlteam.work');
-        logger('          Create mailbox: notify@owlteam.work');
+        logger(`  Step 1: Go to hPanel → Emails → ${emailDomain}`);
+        logger(`          Create mailbox: ${exampleMailbox}`);
         logger('          Set a strong password');
         logger('  Step 2: Hostinger will show DNS records (MX/SPF/DKIM)');
         logger('          Send them to me — I add them to Cloudflare automatically');
         logger('  Step 3: Run with credentials:');
-        logger('          harness email-setup --mailbox notify@owlteam.work --mailbox-pass <password> --notify-to <your@gmail.com>');
+        logger(`          harness email-setup --mailbox ${exampleMailbox} --mailbox-pass <password> --notify-to <your@gmail.com>`);
         logger('  ─────────────────────────────────────────────');
         return 0;
       }

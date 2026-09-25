@@ -4,7 +4,7 @@ import {existsSync} from 'node:fs';
 import {mkdtemp, rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {initProject} from '../../harness/init.mjs';
+import {initFromStarter, initProject} from '../../harness/init.mjs';
 import {loadProject} from '../../harness/lib/config.mjs';
 
 test('init scaffolds a generic classic theme and valid config', async () => {
@@ -32,6 +32,27 @@ test('init rejects non-kebab-case names before writes', async () => {
   const parent = await mkdtemp(join(tmpdir(), 'harness-init-bad-'));
   try {
     assert.throws(() => initProject({name: 'Bad Name', projectsRoot: parent, git: false}), /kebab-case/);
+  } finally {
+    await rm(parent, {recursive: true, force: true});
+  }
+});
+
+test('init --from-starter copies the B2B starter into a safe live project', async () => {
+  const parent = await mkdtemp(join(tmpdir(), 'harness-starter-init-'));
+  try {
+    const root = initFromStarter({name: 'factory-site', projectsRoot: parent, git: false});
+    const project = loadProject(root);
+    assert.equal(project.title, 'factory-site');
+    assert.equal(project.slug, 'factory-site');
+    assert.equal(project.domain, '');
+    assert.equal(project.theme, 'b2b-starter-theme');
+    assert.equal(project.plugin, 'starter-model');
+    assert.equal(project.seed.enabled, true);
+    assert.equal(project.ssh, undefined);
+    assert.equal(existsSync(join(root, 'project.json')), true);
+    assert.equal(existsSync(join(root, 'theme/templates/products/standard.php')), true);
+    assert.equal(existsSync(join(root, 'plugin/starter-model.php')), true);
+    assert.equal(existsSync(join(root, 'config/editor-block-patterns.json')), true);
   } finally {
     await rm(parent, {recursive: true, force: true});
   }
