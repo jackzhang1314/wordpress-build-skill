@@ -5,7 +5,7 @@
 - Harness 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
 - Starter Template 仓库：<https://github.com/jackzhang1314/b2b-wordpress-starter-template>
 - 当前 Harness 基线：`2.10.0`
-- 当前 Starter release：`v1.10.0`
+- 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
 ## 1. 这套系统解决什么问题

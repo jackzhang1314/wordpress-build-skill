@@ -52,3 +52,9 @@ This release promotes the componentized classic B2B Starter from verification br
 - CMS model audit: 14 checks passing.
 - ACF editability audit: 68/68 stored values editable.
 - Fluent Forms browser submission verified with entry increment.
+
+### 2026-09-25 consolidation addendum
+
+- Updated the standalone Starter Template release documentation to `v1.10.1`.
+- Reconciled the consolidated starter baseline with remote `main`.
+- Root README now reports `v1.10.1` as the current template release.
