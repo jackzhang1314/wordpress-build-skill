@@ -2,7 +2,7 @@
 /**
  * Plugin Name: b2b-starter Content Model
  * Description: Full B2B information architecture: products, industries, guides and RFQ capture.
- * Version: 2.7.0
+ * Version: 2.8.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Requires Plugins: advanced-custom-fields
@@ -11,35 +11,69 @@ namespace Starter\Model;
 
 defined('ABSPATH') || exit;
 
+function content_labels(string $singular, string $plural, string $menu_name = ''): array {
+    $menu_name = $menu_name ?: $plural;
+    return [
+        'name' => _x($plural, 'Post type general name', 'b2b-starter'),
+        'singular_name' => _x($singular, 'Post type singular name', 'b2b-starter'),
+        'menu_name' => _x($menu_name, 'Admin menu name', 'b2b-starter'),
+        'all_items' => sprintf(__('All %s', 'b2b-starter'), $plural),
+        'add_new' => __('Add new', 'b2b-starter'),
+        'add_new_item' => sprintf(__('Add new %s', 'b2b-starter'), $singular),
+        'edit_item' => sprintf(__('Edit %s', 'b2b-starter'), $singular),
+        'new_item' => sprintf(__('New %s', 'b2b-starter'), $singular),
+        'view_item' => sprintf(__('View %s', 'b2b-starter'), $singular),
+        'view_items' => sprintf(__('View %s', 'b2b-starter'), $plural),
+        'search_items' => sprintf(__('Search %s', 'b2b-starter'), $plural),
+        'not_found' => sprintf(__('No %s found', 'b2b-starter'), strtolower($plural)),
+        'not_found_in_trash' => sprintf(__('No %s found in trash', 'b2b-starter'), strtolower($plural)),
+    ];
+}
+
 function register_model(): void {
     register_post_type('starter_product', [
-        'labels' => ['name' => __('Products', 'b2b-starter'), 'singular_name' => __('Product', 'b2b-starter')],
-        'public' => true, 'show_in_rest' => true, 'has_archive' => 'products',
-        'rewrite' => ['slug' => 'products'], 'menu_icon' => 'dashicons-lightbulb',
+        'labels' => content_labels('Product', 'Products'),
+        'public' => true, 'publicly_queryable' => true, 'show_ui' => true, 'show_in_nav_menus' => true,
+        'show_in_rest' => true, 'rest_base' => 'products', 'has_archive' => 'products',
+        'rewrite' => ['slug' => 'products', 'with_front' => false], 'menu_icon' => 'dashicons-lightbulb',
+        'menu_position' => 20, 'map_meta_cap' => true, 'capability_type' => 'post',
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields'],
     ]);
 
     register_taxonomy('product_collection', ['starter_product'], [
-        'labels' => ['name' => __('Product Categories', 'b2b-starter'), 'singular_name' => __('Product Category', 'b2b-starter')],
-        'public' => true, 'hierarchical' => true, 'show_in_rest' => true,
-        'show_admin_column' => true, 'rewrite' => ['slug' => 'product-category'],
+        'labels' => [
+            'name' => _x('Product Categories', 'Taxonomy general name', 'b2b-starter'),
+            'singular_name' => _x('Product Category', 'Taxonomy singular name', 'b2b-starter'),
+            'menu_name' => _x('Categories', 'Admin menu name', 'b2b-starter'),
+            'all_items' => __('All product categories', 'b2b-starter'),
+            'edit_item' => __('Edit product category', 'b2b-starter'),
+            'view_item' => __('View product category', 'b2b-starter'),
+            'add_new_item' => __('Add new product category', 'b2b-starter'),
+            'search_items' => __('Search product categories', 'b2b-starter'),
+        ],
+        'public' => true, 'publicly_queryable' => true, 'show_ui' => true, 'show_in_nav_menus' => true,
+        'show_in_rest' => true, 'rest_base' => 'product-categories', 'hierarchical' => true,
+        'show_admin_column' => true, 'rewrite' => ['slug' => 'product-category', 'with_front' => false],
+        'map_meta_cap' => true,
     ]);
 
     register_post_type('starter_industry', [
-        'labels' => ['name' => __('Industry Solutions', 'b2b-starter'), 'singular_name' => __('Industry Solution', 'b2b-starter')],
-        'public' => true, 'show_in_rest' => true, 'has_archive' => 'industries',
-        'rewrite' => ['slug' => 'industries'], 'menu_icon' => 'dashicons-building',
+        'labels' => content_labels('Industry solution', 'Industry Solutions', 'Industry'),
+        'public' => true, 'publicly_queryable' => true, 'show_ui' => true, 'show_in_nav_menus' => true,
+        'show_in_rest' => true, 'rest_base' => 'industries', 'has_archive' => 'industries',
+        'rewrite' => ['slug' => 'industries', 'with_front' => false], 'menu_icon' => 'dashicons-building',
+        'menu_position' => 23, 'map_meta_cap' => true, 'capability_type' => 'post',
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields'],
     ]);
 
     register_post_type('starter_guide', [
-        'labels' => ['name' => __('Knowledge Guides', 'b2b-starter'), 'singular_name' => __('Knowledge Guide', 'b2b-starter')],
-        'public' => true, 'show_in_rest' => true, 'has_archive' => 'guides',
-        'rewrite' => ['slug' => 'guides'], 'menu_icon' => 'dashicons-book',
+        'labels' => content_labels('Knowledge guide', 'Knowledge Guides', 'Guides'),
+        'public' => true, 'publicly_queryable' => true, 'show_ui' => true, 'show_in_nav_menus' => true,
+        'show_in_rest' => true, 'rest_base' => 'guides', 'has_archive' => 'guides',
+        'rewrite' => ['slug' => 'guides', 'with_front' => false], 'menu_icon' => 'dashicons-book',
+        'menu_position' => 25, 'map_meta_cap' => true, 'capability_type' => 'post',
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields'],
     ]);
-
-
 }
 add_action('init', __NAMESPACE__ . '\\register_model');
 
@@ -210,9 +244,16 @@ add_action('acf/init', static function (): void {
     if (!function_exists('acf_add_local_field_group')) return;
 
     $field = static function (string $key, string $name, string $label, string $type, array $args = []): array {
-        return array_merge([
+        $defaults = [
             'key' => $key, 'name' => $name, 'label' => $label, 'type' => $type, 'show_in_rest' => true,
-        ], $args);
+        ];
+        if ($type !== 'tab' && empty($args['instructions'])) {
+            $args['instructions'] = 'Shown on the website when this field is completed.';
+        }
+        return array_merge($defaults, $args);
+    };
+    $tab = static function (string $key, string $name, string $label) use ($field): array {
+        return $field($key, $name, $label, 'tab', ['placement' => 'top', 'endpoint' => 0, 'show_in_rest' => false, 'instructions' => '']);
     };
     $rows_help = static function (string $format): array {
         return ['instructions' => $format . ' One item per line. Empty lines are ignored.'];
@@ -220,7 +261,9 @@ add_action('acf/init', static function (): void {
 
     acf_add_local_field_group([
         'key' => 'group_starter_product', 'title' => 'Product content', 'show_in_rest' => true,
+        'label_placement' => 'top', 'instruction_placement' => 'label',
         'fields' => [
+            $tab('field_p_tab_gallery', 'tab_product_gallery', 'Gallery'),
             $field('field_p_gallery_1', 'product_gallery_1', 'Gallery image 1', 'image', [
                 'return_format' => 'array', 'preview_size' => 'medium', 'library' => 'all',
                 'instructions' => 'The featured image is also used as the first gallery image when this slot is empty.',
@@ -229,7 +272,9 @@ add_action('acf/init', static function (): void {
             $field('field_p_gallery_3', 'product_gallery_3', 'Gallery image 3', 'image', ['return_format' => 'array', 'preview_size' => 'medium']),
             $field('field_p_gallery_4', 'product_gallery_4', 'Gallery image 4', 'image', ['return_format' => 'array', 'preview_size' => 'medium']),
             $field('field_p_gallery_5', 'product_gallery_5', 'Gallery image 5', 'image', ['return_format' => 'array', 'preview_size' => 'medium']),
+            $tab('field_p_tab_specs', 'tab_product_specs', 'Specifications & proof'),
             $field('field_p_quick_specs', 'quick_specs', 'Quick specifications', 'textarea', array_merge(['rows' => 6], $rows_help('Use Label | Value.'))),
+            $tab('field_p_tab_details', 'tab_product_details', 'Details & related'),
             $field('field_p_faq', 'product_faq', 'Product FAQ', 'textarea', array_merge(['rows' => 8], $rows_help('Use Question | Answer.'))),
             $field('field_p_details_title', 'product_details_title', 'Product details title', 'text', ['instructions' => 'Optional heading for the bottom rich-text section. Leave empty to use “Product details”.']),
             $field('field_p_spec_table', 'spec_table', 'Full specifications', 'textarea', array_merge(['rows' => 10], $rows_help('Use Label | Value.'))),
@@ -256,25 +301,32 @@ add_action('acf/init', static function (): void {
     // Rich category content uses term meta; textarea line formats keep the starter on ACF Free.
     acf_add_local_field_group([
         'key' => 'group_collection_content', 'title' => 'Category content', 'show_in_rest' => true,
+        'label_placement' => 'top', 'instruction_placement' => 'label',
         'fields' => [
+            $tab('field_tc_tab_hero', 'tab_category_hero', 'Hero & facts'),
             $field('field_tc_overline', 'category_overline', 'Hero eyebrow', 'text'),
             $field('field_tc_intro', 'category_intro', 'Hero introduction', 'textarea', ['rows' => 5, 'instructions' => 'Explain what belongs in this range and which buyers it serves.']),
             $field('field_tc_hero_image', 'category_hero_image', 'Hero image', 'image', ['return_format' => 'array', 'preview_size' => 'medium']),
             $field('field_tc_key_facts', 'category_key_facts', 'Key facts', 'textarea', array_merge(['rows' => 6], $rows_help('Use Label | Value.'))),
+            $tab('field_tc_tab_selection', 'tab_category_selection', 'Selection & specifications'),
             $field('field_tc_features', 'category_features', 'Range benefits', 'textarea', array_merge(['rows' => 8], $rows_help('Use Title | Description.'))),
             $field('field_tc_selection_guide', 'category_selection_guide', 'Selection guide', 'textarea', array_merge(['rows' => 10], $rows_help('Use Step | Buying guidance.'))),
             $field('field_tc_specifications', 'category_specifications', 'Category specifications', 'textarea', array_merge(['rows' => 10], $rows_help('Use Label | Value or range.'))),
+            $tab('field_tc_tab_applications', 'tab_category_applications', 'Applications'),
             $field('field_tc_applications', 'category_applications', 'Typical applications', 'textarea', array_merge(['rows' => 6], $rows_help('Enter an application.'))),
             $field('field_tc_use_cases', 'category_use_cases', 'Use cases', 'textarea', array_merge(['rows' => 10], $rows_help('Use Title | Description.'))),
+            $tab('field_tc_tab_trust', 'tab_category_trust', 'Factory, standards & RFQ'),
             $field('field_tc_standards', 'category_standards', 'Standards & compliance', 'textarea', array_merge(['rows' => 6], $rows_help('Enter a standard, certification or compliance note.'))),
             $field('field_tc_process', 'category_process', 'RFQ process', 'textarea', array_merge(['rows' => 8], $rows_help('Use Step | Description.'))),
             $field('field_tc_checklist', 'category_checklist', 'RFQ checklist', 'textarea', array_merge(['rows' => 6], $rows_help('Enter information buyers should send.'))),
+            $tab('field_tc_tab_resources', 'tab_category_resources', 'Resources & FAQ'),
             $field('field_tc_resources', 'category_resources', 'Resources & downloads', 'textarea', array_merge(['rows' => 6], $rows_help('Use Label | URL.'))),
             $field('field_tc_faq', 'category_faq', 'Category FAQ', 'textarea', array_merge(['rows' => 8], $rows_help('Use Question | Answer.'))),
             $field('field_tc_long_description', 'category_long_description', 'Long category description', 'wysiwyg', [
                 'media_upload' => 1, 'teeny' => 0, 'textarea_rows' => 16,
                 'instructions' => 'Rich editorial content for search intent, technical context, applications and buying guidance.',
             ]),
+            $tab('field_tc_tab_editorial', 'tab_category_editorial', 'Editorial & CTA'),
             $field('field_tc_cta_title', 'category_cta_title', 'CTA title', 'text'),
             $field('field_tc_cta_text', 'category_cta_text', 'CTA text', 'textarea', ['rows' => 3]),
             $field('field_tc_cta_button', 'category_cta_button', 'CTA button label', 'text'),
@@ -284,9 +336,12 @@ add_action('acf/init', static function (): void {
 
     acf_add_local_field_group([
         'key' => 'group_home_content', 'title' => 'Homepage content & sections', 'show_in_rest' => true,
+        'label_placement' => 'top', 'instruction_placement' => 'label',
         'fields' => [
+            $tab('field_home_tab_hero', 'tab_home_hero', 'Hero'),
             $field('field_home_overline', 'home_overline', 'Hero eyebrow', 'text'),
             $field('field_home_description', 'home_description', 'Hero description', 'textarea', ['rows' => 4]),
+            $tab('field_home_tab_sections', 'tab_home_sections', 'Sections'),
             $field('field_home_show_apps', 'show_applications', 'Show applications', 'true_false', ['default_value' => 1]),
             $field('field_home_apps_title', 'applications_title', 'Applications title', 'text'),
             $field('field_home_apps_count', 'applications_count', 'Applications count', 'number', ['default_value' => 12, 'min' => 1, 'max' => 12]),
@@ -299,6 +354,7 @@ add_action('acf/init', static function (): void {
             $field('field_home_show_guides', 'show_guides', 'Show guides', 'true_false', ['default_value' => 1]),
             $field('field_home_guides_title', 'guides_title', 'Guides title', 'text'),
             $field('field_home_guides_count', 'guides_count', 'Guides count', 'number', ['default_value' => 3, 'min' => 1, 'max' => 12]),
+            $tab('field_home_tab_cta', 'tab_home_cta', 'CTA'),
             $field('field_home_cta_title', 'home_cta_title', 'Homepage CTA title', 'text'),
             $field('field_home_cta_text', 'home_cta_text', 'Homepage CTA text', 'textarea', ['rows' => 3]),
             $field('field_home_cta_button', 'home_cta_button', 'Homepage CTA button', 'text'),

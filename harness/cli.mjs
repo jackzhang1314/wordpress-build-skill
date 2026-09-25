@@ -10,6 +10,7 @@ import {provisionHostinger} from './lib/hostinger.mjs';
 import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
+import {auditCmsModel, collectCmsAudit} from './lib/cms-audit.mjs';
 import {isBlankMediaContract} from './lib/verify.mjs';
 
 function managedMediaIds(projectRoot, project) {
@@ -72,6 +73,7 @@ Project commands:
   template assign         Assign a page template after validating it renders the body
   credentials show|rotate Hand over site credentials, or regenerate the admin password
   audit-fields           Verify every stored value has an admin-editable ACF field
+  cms-audit              Audit CPTs, taxonomies, ACF locations, REST and stored values
   email-setup            Guided setup: create business mailbox + configure SMTP + test
   smtp configure|test    Set up the sending channel and send a test email
   wp <args...>            Run WP-CLI through SSH
@@ -207,7 +209,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
 
     const site = context(options);
     const {root, project, ssh} = site;
-    const remoteCommands = ['backup', 'media', 'content', 'verify', 'verify-form', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials', 'audit-fields', 'smtp', 'email-setup'];
+    const remoteCommands = ['backup', 'media', 'content', 'verify', 'verify-form', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials', 'audit-fields', 'smtp', 'email-setup', 'cms-audit'];
     const exampleUnsafeCommands = [...remoteCommands, 'provision', 'configure-seo', 'setup'];
     if (project._isExample && exampleUnsafeCommands.includes(command)) {
       throw new Error('Copy project.example.json to project.json and fill site values before running this command');
@@ -334,6 +336,19 @@ add_action("phpmailer_init", function ($phpmailer) {
     if (command === 'config') {
       logger(JSON.stringify({...project, ssh: {...project.ssh, keyPath: project.ssh ? '[redacted]' : undefined}}, null, 2));
       return 0;
+    }
+    if (command === 'cms-audit') {
+      const remote = await collectCmsAudit({ssh});
+      const report = auditCmsModel(remote, project);
+      if (!json) {
+        if (report.pass) logger(`  OK  CMS model audit: ${report.checks.length} checks, all editable fields have valid locations`);
+        for (const problem of report.problems.slice(0, 100)) {
+          const subject = [problem.kind, problem.name, problem.term, problem.post].filter(Boolean).join(':');
+          logger(`    FAIL ${subject}${problem.field ? ` field "${problem.field}"` : ''} — ${problem.issue}`);
+        }
+      }
+      outputResult(report, json, logger);
+      return report.pass ? 0 : 1;
     }
     if (command === 'doctor') {
       const result = await commandDoctor(site, json, logger);
