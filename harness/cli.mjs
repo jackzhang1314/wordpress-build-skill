@@ -105,6 +105,7 @@ Bootstrap options:
   --dry-run               Show repair actions without changing anything
 
 SSH setup options:
+  --account-key           Force the reusable ~/.ssh/hostinger-<user>_ed25519 key
   --ssh-host <host>       Override the Hostinger SSH host
   --ssh-port <port>       Override the SSH port (default 65002)
   --ssh-user <user>       Override the Hostinger SSH user
@@ -112,6 +113,7 @@ SSH setup options:
   --rotate-key            Replace the managed key (old key is backed up locally)
   --open                  Open the hPanel SSH page when a first key handoff is required
   --copy-key              Copy the public key to the clipboard when handoff is required
+  --install-key           Bootstrap the account key via Hostinger Files + a temporary Cron Job
 
 Provision options:
   --domain <domain>       Use a known domain instead of a generated subdomain

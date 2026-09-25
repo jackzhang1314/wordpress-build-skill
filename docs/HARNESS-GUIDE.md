@@ -89,15 +89,15 @@ node harness/cli.mjs hostinger setup --install --connect
 node harness/cli.mjs --project . ssh setup
 ```
 
-向导会生成/复用专用 key，读取 Hostinger 网站列表和 DNS，保存 `project.json`，并测试 SSH/WP-CLI。若 Hostinger 后台还没有 public key，它会输出 key 和 hPanel URL；用户粘贴后重新运行即可。
+向导会生成/复用账号级 key（`~/.ssh/hostinger-<user>_ed25519`），读取 Hostinger 网站列表和 DNS，保存 `project.json`，并测试 SSH/WP-CLI。新项目不再复制旧项目 key。
 
-首次 handoff 推荐让用户执行：
+首次安装账号级 key 推荐：
 
 ```bash
-node harness/cli.mjs --project . ssh setup --copy-key --open
+node harness/cli.mjs --project . ssh setup --account-key --install-key
 ```
 
-向导会把 public key 放进剪贴板、打开当前项目的 hPanel SSH 页，并列出唯一一步操作。保存后重跑 `ssh setup`。这是 Hostinger shared/cloud hosting 的平台边界：2026-09-25 实测 CLI 3.35.0 / API 1.54.2 只有 `/api/vps/v1/public-keys` 提供写入；hosting 与 agency-hosting 均没有安装 SSH key 的 endpoint。已有可用 private key 时用 `--ssh-key <path>`，可跳过该 handoff。
+`--install-key` 通过 Hostinger Files 上传一次性 bootstrap 脚本，用 temporary Cron Job 追加 public key；SSH 连通后删除 Cron。它只针对当前已授权的 hosting account。若自动 bootstrap 不可用，向导降级为复制 key 并打开 hPanel；用户粘贴后重跑 `ssh setup`。同一 hosting user 下的后续网站直接复用该 key；不同 hosting order/user 仍需各自授权。已有可用 private key 时用 `--ssh-key <path>`。
 
 ### 已有 Hostinger 站点
 

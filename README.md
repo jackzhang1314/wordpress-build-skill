@@ -8,7 +8,7 @@
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
-> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.12.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.13.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
 
 ### 交给 Codex 的最小指令
 
@@ -98,13 +98,15 @@ node /path/to/harness/cli.mjs --project . ssh setup
 3. 保存 `project.json`；
 4. 测试 SSH 和远程 WP-CLI。
 
-如果 Hostinger 还没有收到 public key，第一次要做一个一次性 handoff。推荐命令会自动复制 public key 并打开 hPanel：
+SSH key 是 hosting account 级的：同一个 `u123456789` 账号下的网站可以复用 `~/.ssh/hostinger-u123456789_ed25519`。新项目默认选择这个账号级 key，不再复制旧项目里的 key。
+
+首次安装账号级 key 推荐：
 
 ```bash
-node /path/to/harness/cli.mjs --project . ssh setup --copy-key --open
+node /path/to/harness/cli.mjs --project . ssh setup --account-key --install-key
 ```
 
-在 hPanel 的 **SSH Access → Add SSH Key** 粘贴并保存后，重新运行不带 `--copy-key/--open` 的同一命令即可。Hostinger shared/cloud hosting 的 CLI/API 目前不能替用户安装 SSH key；只有 VPS public key 有写入 API。已有可用 private key 的用户传 `--ssh-key <path>`，完全不需要这个 handoff。
+`--install-key` 会用已授权 Hostinger CLI 的 Files + temporary Cron Job 能力 bootstrap key，成功后删除临时 Cron。若 API 权限或主机状态不允许，命令会自动降级：复制 public key、打开 hPanel，让用户粘贴一次。保存后重新运行 `ssh setup`。已有可用 private key 的用户仍可传 `--ssh-key <path>`。
 
 然后：
 
