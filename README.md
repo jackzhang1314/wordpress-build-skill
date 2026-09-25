@@ -8,6 +8,21 @@
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.10.0` 是可复测的固定 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+
+### 交给 Codex 的最小指令
+
+把本仓库链接发给 Codex 后，可以直接使用这段指令：
+
+```text
+Clone https://github.com/jackzhang1314/wordpress-build-skill.git.
+Read README.md, AGENTS.md, docs/HARNESS-GUIDE.md and examples/classic-b2b-starter/README.md first.
+Do not use the historical docs as the current default architecture.
+Install dependencies, run the local checks, then create a clean project with:
+node harness/cli.mjs init <kebab-case-project-name> --root ../projects --from-starter
+Before any remote write, ask me for the Hostinger SSH/domain values or use the values I provide.
+```
+
 ## 1. 这套系统解决什么问题
 
 `examples/classic-b2b-starter/` 是生产形态的正面基线，不是普通 demo。它预置：
