@@ -31,6 +31,7 @@ The existing executable path `harness/cli.mjs` may remain as a compatibility pat
 5. Protect existing WordPress sites from accidental Starter overwrites.
 6. Preserve the coupling between design, ACF, CMS and backend editability through one shared contract.
 7. Avoid excessive fragmentation and circular skill references.
+8. Do not assume that a `source` project is Starter or that every external WordPress site uses classic menus and classic page templates.
 
 ## 3. Naming
 
@@ -52,7 +53,20 @@ wordpress-harness-design
 wordpress-harness-delivery
 ```
 
-## 4. Suite layout
+## 4. Audit-driven prerequisites
+
+Before references are moved, the implementation must add safety prerequisites discovered in [SKILL-SUITE-PLAN-AUDIT.md](SKILL-SUITE-PLAN-AUDIT.md):
+
+1. Explicit project mode: `source` or `external`.
+2. Source profile: `starter` or `custom`.
+3. Remote WordPress shape detection: classic, block, hybrid or unknown.
+4. `project inspect` for WordPress version, theme type, plugins, navigation mechanism, templates, CPT/taxonomy and forms.
+5. A canonical command map with project-mode restrictions and verification requirements.
+6. Skill routing tests for names, references, commands and safety rules.
+
+These prerequisites prevent the refactor from copying Starter assumptions into supposedly generic skills.
+
+## 5. Suite layout
 
 ```text
 .agents/skills/
@@ -105,7 +119,7 @@ wordpress-harness-delivery
         └── incident-recovery.md
 ```
 
-## 5. Router behavior
+## 6. Router behavior
 
 `wordpress-builder/SKILL.md` is the main entrypoint.
 
@@ -137,7 +151,7 @@ Routing table:
 | Roll back after failure | `wordpress-delivery` | `wordpress-builder` |
 | Final acceptance / release report | `wordpress-delivery` | none |
 
-## 6. Project modes
+## 7. Project modes
 
 ### Source mode
 
@@ -187,7 +201,7 @@ configure-seo
 
 External mode prevents the local Starter or unrelated source code from overwriting the customer's live theme, plugin or implementation.
 
-## 7. Shared project contract
+## 8. Shared project contract
 
 `wordpress-builder/references/project-contract.md` is the shared contract used by all skills.
 
@@ -207,7 +221,7 @@ What must be backed up before writing?
 
 This contract is the main protection against the common failure mode: changing styling or templates without ensuring the content remains editable through ACF/CMS.
 
-## 8. Migration map
+## 9. Migration map
 
 | Current reference | Target |
 | --- | --- |
@@ -230,7 +244,7 @@ This contract is the main protection against the common failure mode: changing s
 | `verification.md` | `wordpress-delivery/references/release-verification.md` |
 | `seo.md` | `wordpress-delivery/references/seo-acceptance.md` |
 
-## 9. Compatibility
+## 10. Compatibility
 
 Keep the existing `wordpress-builder` skill path during migration.
 
@@ -259,7 +273,7 @@ Migration should be staged:
 7. Run link, command and routing regression checks.
 8. Remove obsolete references and the deprecated CLI path only after the suite is stable.
 
-## 10. Implementation phases
+## 11. Implementation phases
 
 ### Phase 1 — Router
 
@@ -301,7 +315,7 @@ Create `wordpress-delivery`.
 
 Migrate local checks, deployment, release verification, SEO acceptance, backup and rollback guidance.
 
-## 11. Validation
+## 12. Validation
 
 Before declaring the refactor complete:
 
