@@ -25,7 +25,7 @@ Hostinger AI/WordPress MCP 插件不是部署必需项，不加入统一必装�
 node harness/cli.mjs --project <site-dir> provision
 ```
 
-它按官方 CLI 执行：website list → 必要时 free subdomain/website create → installation list → 必要时 WP install → 轮询异步结果 → 回写目标路径。新管理员凭据只写入项目忽略目录的 0600 JSON；CLI 回执只允许出现路径，不允许出现密码。SSH host/port/key 不能从 Hostinger website API 假设时，必须用 `--ssh-host/--ssh-port/--ssh-user/--ssh-key` 显式提供；缺失时不冒充可部署。
+它按官方 CLI 执行：website list → 必要时 free subdomain/website create → installation list → 必要时 WP install → 轮询异步结果 → 回写目标路径 → 自动配置 hosting account 级 SSH key。新管理员凭据只写入项目忽略目录的 0600 JSON；CLI 回执只允许出现路径，不允许出现密码。SSH host/user 缺省时由 DNS 和 website list 推导；已有可用 key 可用 `--ssh-key` 显式提供，缺失时不冒充可部署。
 
 已存在网站/安装时命令必须幂等：只回读和补齐 project.json，不重复建站，不覆盖已有 WordPress。创建成功后默认进入首次 deploy；如只做开通，用 `--no-deploy`。
 
@@ -318,4 +318,4 @@ CLI 是默认路径；已有可用官方 Hostinger MCP 时可以复用，但无�
 
 #### SSH 启用限制（2026-09-22 确认）
 
-共享主机的 SSH 启用/禁用**没有 API/CLI 端点**，只能通过 hPanel UI 操作。Hostinger API 的 SSH key 管理仅限 VPS。 harness 应在首次部署时检测 SSH 可用性，不可用则自动打开 hPanel SSH 页面引导用户启用（一次性操作，启用后永久生效）。
+共享主机没有直接的 SSH key 管理 API/CLI 端点；Hostinger 的 public-key 写 API 仅限 VPS。2026-09-26 已验证可用 bootstrap：授权 CLI 后通过 Files 上传一次性脚本 + temporary Cron Job 追加 public key，SSH 连通后删除 Cron 和临时文件。Harness 默认执行该流程；失败时自动复制 public key 并打开 hPanel SSH 页面引导一次手动 handoff。key 复用范围是 hosting account/SSH user，不是 Hostinger 登录账号，也不能跨不同 SSH user 假设通用。

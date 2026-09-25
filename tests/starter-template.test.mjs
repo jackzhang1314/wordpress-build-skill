@@ -388,7 +388,7 @@ test('starter project contract uses required plugin baseline and placeholder dep
   ]);
   assert.equal(project.media.sources.length, 0);
   assert.equal(project.ssh.host, 'REPLACE_SSH_HOST');
-  assert.equal(project.ssh.keyPath, 'REPLACE_SSH_KEY_PATH');
+  assert.equal(project.ssh.keyPath, '~/.ssh/hostinger-REPLACE_SSH_USER_ed25519');
 });
 
 test('every consumed ACF field has an admin-editable field definition', () => {

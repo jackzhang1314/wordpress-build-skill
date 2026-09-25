@@ -105,7 +105,7 @@ Bootstrap options:
   --dry-run               Show repair actions without changing anything
 
 SSH setup options:
-  --account-key           Force the reusable ~/.ssh/hostinger-<user>_ed25519 key
+  --account-key           Force the reusable ~/.ssh/hostinger-<user>_ed25519 key (default)
   --ssh-host <host>       Override the Hostinger SSH host
   --ssh-port <port>       Override the SSH port (default 65002)
   --ssh-user <user>       Override the Hostinger SSH user
@@ -113,7 +113,10 @@ SSH setup options:
   --rotate-key            Replace the managed key (old key is backed up locally)
   --open                  Open the hPanel SSH page when a first key handoff is required
   --copy-key              Copy the public key to the clipboard when handoff is required
-  --install-key           Bootstrap the account key via Hostinger Files + a temporary Cron Job
+  --install-key           Explicitly enable automatic key bootstrap (also the default)
+  --no-install-key        Do not write the key through Hostinger; use hPanel fallback
+  --no-copy-key           Do not copy the public key during fallback
+  --no-open               Do not open hPanel during fallback
 
 Provision options:
   --domain <domain>       Use a known domain instead of a generated subdomain
@@ -126,6 +129,7 @@ Provision options:
   --ssh-key <path>        Private key path to save after provisioning
   --datacenter <code>     Required for the first site on a new plan
   --no-deploy             Create/install only; do not run the deploy pipeline
+                          Provision automatically configures the reusable account SSH key first.
   WP_ADMIN_PASSWORD is read from the environment when supplied; otherwise a private random password is generated.
 `;
 
@@ -328,6 +332,15 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
 
     if (command === 'provision') {
       const result = await provisionHostinger(root, project, args, {execFile: execFileSync, logger});
+      const sshArgs = ['--account-key'];
+      if (args.includes('--no-install-key')) sshArgs.push('--no-install-key');
+      const sshSetup = await setupProjectSsh(root, loadProject(root), sshArgs, {
+        exec: execFileSync,
+        openUrl: openExternalUrl,
+        logger: json ? () => {} : logger,
+      });
+      if (!sshSetup.pass) throw new Error('Hostinger account SSH setup is incomplete; follow the fallback steps above.');
+      result.sshSetup = sshSetup;
       if (args.includes('--no-deploy')) {
         // Even without a full deploy, required plugins must be installed and active.
         const freshProject = loadProject(root);

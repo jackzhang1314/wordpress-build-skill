@@ -61,7 +61,8 @@ export function writeProjectSsh(projectRoot, project, ssh) {
 }
 
 /** Create a dedicated non-passphrase key; a passphrase prompt is not suitable for unattended deployment. */
-export function ensureSshKey(project, keyPath, {exec = defaultSshExec, rotateKey = false} = {}) {
+export function ensureSshKey(project, keyPath, {exec = defaultSshExec, rotateKey = false, comment} = {}) {
+  const identityComment = comment || `harness-${project.slug || project.title}`;
   const target = resolve(keyPath.replace(/^~(?=$|\/)/, homedir()));
   if (rotateKey && existsSync(target)) {
     const timestamp = Date.now();
@@ -75,7 +76,7 @@ export function ensureSshKey(project, keyPath, {exec = defaultSshExec, rotateKey
   }
   if (!existsSync(target)) {
     mkdirSync(dirname(target), {recursive: true});
-    exec('ssh-keygen', ['-t', 'ed25519', '-N', '', '-C', `harness-${project.slug || project.title}`, '-f', target], {
+    exec('ssh-keygen', ['-t', 'ed25519', '-N', '', '-C', identityComment, '-f', target], {
       encoding: 'utf8', timeout: 30000, maxBuffer: 1024 * 1024, stdio: ['pipe', 'pipe', 'pipe'],
     });
     chmodSync(target, 0o600);
@@ -86,7 +87,7 @@ export function ensureSshKey(project, keyPath, {exec = defaultSshExec, rotateKey
     const material = exec('ssh-keygen', ['-y', '-f', target], {
       encoding: 'utf8', timeout: 30000, maxBuffer: 1024 * 1024, stdio: ['pipe', 'pipe', 'pipe'],
     }).trim();
-    writeFileSync(`${target}.pub`, `${material} harness-${project.slug || project.title}\n`, {mode: 0o644});
+    writeFileSync(`${target}.pub`, `${material} ${identityComment}\n`, {mode: 0o644});
   }
   const publicKey = readFileSync(`${target}.pub`, 'utf8').trim();
   return {privateKey: target, publicKey};
@@ -121,7 +122,7 @@ export function sshKeyOnboarding(project, key, {copied = false} = {}) {
     publicKeyPath,
     copyCommand,
     copied,
-    limitation: 'Hostinger shared/cloud hosting has no public API/CLI endpoint that installs an SSH key; only VPS public keys have a write API.',
+    limitation: 'Hostinger shared/cloud hosting has no direct SSH-key endpoint; Harness bootstraps it via Files + Cron and falls back to hPanel.',
     steps,
   };
 }
@@ -295,9 +296,13 @@ export async function setupProjectSsh(projectRoot, project, args = [], {
   }
 
   const keyPath = requestedKey || project.ssh?.keyPath || join(homedir(), `.ssh/hostinger-${project.slug || 'site'}-ed25519`);
-  const accountKey = args.includes('--account-key') || (!requestedKey && !project.ssh?.keyPath);
+  const accountKey = args.includes('--account-key') || !requestedKey;
   const selectedKeyPath = accountKey ? accountKeyPath(defaults.user, home) : keyPath;
-  const key = ensureSshKey(project, selectedKeyPath, {exec, rotateKey});
+  const key = ensureSshKey(project, selectedKeyPath, {
+    exec,
+    rotateKey,
+    comment: accountKey ? `harness-account-${defaults.user}` : undefined,
+  });
   const wpPath = project.ssh?.wpPath || `/home/${defaults.user}/domains/${project.domain}/public_html`;
   const sshSettings = {...defaults, keyPath: key.privateKey, wpPath};
   writeProjectSsh(projectRoot, project, sshSettings);
@@ -319,7 +324,10 @@ export async function setupProjectSsh(projectRoot, project, args = [], {
     };
   } catch (error) {
     let bootstrapError;
-    if (args.includes('--install-key')) {
+    const installKey = args.includes('--install-key') || !args.includes('--no-install-key');
+    const fallbackCopy = args.includes('--copy-key') || !args.includes('--no-copy-key');
+    const fallbackOpen = args.includes('--open') || !args.includes('--no-open');
+    if (installKey) {
       logger('  Installing the account key through the authorized Hostinger CLI...');
       try {
         const install = await installAccountSshKey(project, sshSettings, key, {exec, fetchImpl, logger});
@@ -345,7 +353,7 @@ export async function setupProjectSsh(projectRoot, project, args = [], {
     }
 
     let copied = false;
-    if (args.includes('--copy-key')) {
+    if (fallbackCopy) {
       const command = process.platform === 'darwin' ? 'pbcopy' : 'wl-copy';
       try {
         exec(command, [], {
@@ -361,7 +369,7 @@ export async function setupProjectSsh(projectRoot, project, args = [], {
         logger(`  WARN  Could not copy the public key automatically: ${copyError.message}`);
       }
     }
-    if (args.includes('--open') && openUrl) {
+    if (fallbackOpen && openUrl) {
       const onboardingPreview = sshKeyOnboarding(project, key, {copied});
       try {
         openUrl(onboardingPreview.url);
@@ -384,9 +392,7 @@ export async function setupProjectSsh(projectRoot, project, args = [], {
       ...onboarding,
       bootstrapError,
       error: error.message,
-      next: args.includes('--open') || args.includes('--copy-key')
-        ? 'After saving the key, rerun `node harness/cli.mjs --project . ssh setup`.'
-        : 'For fewer copy/paste mistakes, rerun `node harness/cli.mjs --project . ssh setup --open --copy-key`.',
+      next: 'After saving the key, rerun `node harness/cli.mjs --project . ssh setup`.',
     };
   }
 }

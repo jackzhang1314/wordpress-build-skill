@@ -47,7 +47,7 @@ test('ssh setup reuses an existing key, persists settings, and verifies SSH/WP-C
     await writeFile(key, 'private-test', {mode: 0o600});
     await writeFile(`${key}.pub`, 'ssh-ed25519 AAA public');
     const commands = [];
-    const report = await setupProjectSsh(root, JSON.parse(await readFile(join(root, 'project.json'), 'utf8')), ['--ssh-key', key], {
+    const report = await setupProjectSsh(root, JSON.parse(await readFile(join(root, 'project.json'), 'utf8')), ['--ssh-key', key, '--no-install-key'], {
       exec: (name, args) => {
         commands.push([name, args]);
         if (name === 'ssh-keygen') throw new Error('must reuse existing key');
@@ -81,7 +81,7 @@ test('ssh setup returns key onboarding instructions when the server rejects it',
     await writeFile(key, 'private-test', {mode: 0o600});
     await writeFile(`${key}.pub`, 'ssh-ed25519 AAA public');
     const logs = [];
-    const report = await setupProjectSsh(root, JSON.parse(await readFile(join(root, 'project.json'), 'utf8')), ['--ssh-key', key], {
+    const report = await setupProjectSsh(root, JSON.parse(await readFile(join(root, 'project.json'), 'utf8')), ['--ssh-key', key, '--no-install-key'], {
       exec: (name) => {
         if (name === 'ssh') throw new Error('Permission denied (publickey)');
         return name === 'wp' ? '6.8' : '';
@@ -94,9 +94,9 @@ test('ssh setup returns key onboarding instructions when the server rejects it',
     assert.equal(report.connected, false);
     assert.equal(report.manualKeySetup, true);
     assert.equal(report.publicKeyPath, `${key}.pub`);
-    assert.match(report.limitation, /no public API\/CLI endpoint/);
+    assert.match(report.limitation, /no direct SSH-key endpoint/);
     assert.ok(report.steps.some(step => step.includes('SSH Access → Add SSH Key')));
-    assert.match(report.next, /--open --copy-key/);
+    assert.equal(report.next, 'After saving the key, rerun `node harness/cli.mjs --project . ssh setup`.');
     assert.match(report.url, /hpanel\.hostinger\.com/);
     assert.ok(logs.some(item => item.includes('ACTION REQUIRED')));
     assert.ok(logs.some(item => item.includes('one-time SSH key handoff')));
@@ -120,7 +120,7 @@ test('ssh key handoff can open hPanel and copy the public key', async () => {
     const report = await setupProjectSsh(
       root,
       JSON.parse(await readFile(join(root, 'project.json'), 'utf8')),
-      ['--ssh-key', key, '--copy-key', '--open'],
+      ['--ssh-key', key, '--copy-key', '--open', '--no-install-key'],
       {
         exec: (name, args, options) => {
           commands.push([name, args]);
@@ -170,7 +170,7 @@ test('new ssh setup selects a reusable account key instead of copying another pr
     const report = await setupProjectSsh(
       root,
       JSON.parse(await readFile(join(root, 'project.json'), 'utf8')),
-      ['--ssh-host', '203.0.113.10', '--ssh-user', 'u123'],
+      ['--ssh-host', '203.0.113.10', '--ssh-user', 'u123', '--no-install-key'],
       {
         exec: name => {
           if (name === 'ssh') throw new Error('Permission denied (publickey)');
@@ -190,7 +190,7 @@ test('new ssh setup selects a reusable account key instead of copying another pr
   }
 });
 
-test('ssh setup can bootstrap an account key through Hostinger files and a temporary cron job', async () => {
+test('ssh setup defaults to automatic account-key bootstrap through Hostinger files and cron', async () => {
   const root = await mkdtemp(join(tmpdir(), 'harness-ssh-bootstrap-'));
   try {
     await writeFile(join(root, 'project.json'), JSON.stringify({title: 'Site', slug: 'site', domain: 'site.test'}, null, 2));
@@ -210,7 +210,7 @@ test('ssh setup can bootstrap an account key through Hostinger files and a tempo
     const report = await setupProjectSsh(
       root,
       JSON.parse(await readFile(join(root, 'project.json'), 'utf8')),
-      ['--install-key', '--account-key'],
+      [],
       {
         exec: (name, args) => {
           if (name === 'ssh') {

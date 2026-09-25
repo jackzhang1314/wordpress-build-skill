@@ -10,5 +10,5 @@ test('starter example config is directly readable for local gates but marked non
   assert.equal(project._isExample, true);
   assert.equal(project.livePages.length, 24);
   assert.equal(project.ssh.host, 'REPLACE_SSH_HOST');
-  assert.match(project.ssh.keyPath, /REPLACE_SSH_KEY_PATH$/);
+  assert.match(project.ssh.keyPath, /~\/\.ssh\/hostinger-REPLACE_SSH_USER_ed25519$/);
 });

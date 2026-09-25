@@ -89,15 +89,9 @@ node harness/cli.mjs hostinger setup --install --connect
 node harness/cli.mjs --project . ssh setup
 ```
 
-向导会生成/复用账号级 key（`~/.ssh/hostinger-<user>_ed25519`），读取 Hostinger 网站列表和 DNS，保存 `project.json`，并测试 SSH/WP-CLI。新项目不再复制旧项目 key。
+向导会生成/复用账号级 key（`~/.ssh/hostinger-<user>_ed25519`），读取 Hostinger 网站列表和 DNS，保存 `project.json`，并测试 SSH/WP-CLI。新项目不再复制旧项目 key。默认会自动 bootstrap key；只有传 `--no-install-key` 才禁用。
 
-首次安装账号级 key 推荐：
-
-```bash
-node harness/cli.mjs --project . ssh setup --account-key --install-key
-```
-
-`--install-key` 通过 Hostinger Files 上传一次性 bootstrap 脚本，用 temporary Cron Job 追加 public key；SSH 连通后删除 Cron。它只针对当前已授权的 hosting account。若自动 bootstrap 不可用，向导降级为复制 key 并打开 hPanel；用户粘贴后重跑 `ssh setup`。同一 hosting user 下的后续网站直接复用该 key；不同 hosting order/user 仍需各自授权。已有可用 private key 时用 `--ssh-key <path>`。
+自动 bootstrap 通过 Hostinger Files 上传一次性脚本，用 temporary Cron Job 追加 public key；SSH 连通后删除 Cron。它只针对当前已授权的 hosting account。若自动 bootstrap 不可用，向导自动降级为复制 key 并打开 hPanel；用户粘贴后重跑 `ssh setup`。同一 hosting user 下的后续网站直接复用该 key；不同 hosting order/user 仍需各自授权。已有可用 private key 时用 `--ssh-key <path>`。
 
 ### 已有 Hostinger 站点
 
@@ -111,14 +105,10 @@ node harness/cli.mjs --project . deploy --with-content
 
 ```bash
 node harness/cli.mjs --project . provision \
-  --domain your-site.hostingersite.com \
-  --ssh-host REPLACE_SSH_HOST \
-  --ssh-port 65002 \
-  --ssh-user REPLACE_SSH_USER \
-  --ssh-key REPLACE_PRIVATE_KEY_PATH
+  --domain your-site.hostingersite.com
 ```
 
-`provision` 会安装并激活默认插件：ACF Free、Rank Math Free、Fluent Forms、Classic Editor。若无环境密码，会生成随机 WP admin 密码并写入私有凭据文件。
+`provision` 会创建站点/WordPress、自动配置账号级 SSH key，再安装并激活默认插件：ACF Free、Rank Math Free、Fluent Forms、Classic Editor。若无环境密码，会生成随机 WP admin 密码并写入私有凭据文件。
 
 ### 日常更新
 
