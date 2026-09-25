@@ -2,7 +2,7 @@
 /**
  * Plugin Name: b2b-starter Content Model
  * Description: Full B2B information architecture: products, industries, guides and RFQ capture.
- * Version: 2.8.0
+ * Version: 2.9.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Requires Plugins: advanced-custom-fields
@@ -278,7 +278,16 @@ add_action('acf/init', static function (): void {
             $field('field_p_faq', 'product_faq', 'Product FAQ', 'textarea', array_merge(['rows' => 8], $rows_help('Use Question | Answer.'))),
             $field('field_p_details_title', 'product_details_title', 'Product details title', 'text', ['instructions' => 'Optional heading for the bottom rich-text section. Leave empty to use “Product details”.']),
             $field('field_p_spec_table', 'spec_table', 'Full specifications', 'textarea', array_merge(['rows' => 10], $rows_help('Use Label | Value.'))),
-            $field('field_p_cta_label', 'product_cta_label', 'Product CTA button label', 'text'),
+            $field('field_p_template', 'product_template', 'Product layout', 'select', [
+                'choices' => [
+                    'standard' => 'Standard catalogue layout',
+                    'technical' => 'Technical datasheet layout',
+                    'project' => 'Application / project layout',
+                    'compact' => 'Compact RFQ layout',
+                ],
+                'default_value' => 'standard',
+                'instructions' => 'Controls the single-product front-end layout. Leave on Standard unless the product needs a special presentation.',
+            ]),
             $field('field_p_related', 'related_products', 'Related products', 'post_object', [
                 'post_type' => ['starter_product'], 'multiple' => 1, 'return_format' => 'id', 'instructions' => 'Leave empty to show automatic related products.',
             ]),
@@ -304,6 +313,16 @@ add_action('acf/init', static function (): void {
         'label_placement' => 'top', 'instruction_placement' => 'label',
         'fields' => [
             $tab('field_tc_tab_hero', 'tab_category_hero', 'Hero & facts'),
+            $field('field_tc_template', 'category_template', 'Category layout', 'select', [
+                'choices' => [
+                    'standard' => 'Full commercial landing page',
+                    'catalogue' => 'Catalogue-first layout',
+                    'conversion' => 'Conversion-first layout',
+                    'editorial' => 'Editorial / SEO-first layout',
+                ],
+                'default_value' => 'standard',
+                'instructions' => 'Choose how this product category should present content.',
+            ]),
             $field('field_tc_overline', 'category_overline', 'Hero eyebrow', 'text'),
             $field('field_tc_intro', 'category_intro', 'Hero introduction', 'textarea', ['rows' => 5, 'instructions' => 'Explain what belongs in this range and which buyers it serves.']),
             $field('field_tc_hero_image', 'category_hero_image', 'Hero image', 'image', ['return_format' => 'array', 'preview_size' => 'medium']),
@@ -339,6 +358,16 @@ add_action('acf/init', static function (): void {
         'label_placement' => 'top', 'instruction_placement' => 'label',
         'fields' => [
             $tab('field_home_tab_hero', 'tab_home_hero', 'Hero'),
+            $field('field_home_template', 'home_template', 'Homepage layout', 'select', [
+                'choices' => [
+                    'corporate' => 'Corporate / manufacturer',
+                    'product-led' => 'Product-led catalogue',
+                    'conversion' => 'Conversion / RFQ first',
+                    'industrial' => 'Industrial capability first',
+                ],
+                'default_value' => 'corporate',
+                'instructions' => 'Select the homepage presentation style. This controls section order and emphasis.',
+            ]),
             $field('field_home_overline', 'home_overline', 'Hero eyebrow', 'text'),
             $field('field_home_description', 'home_description', 'Hero description', 'textarea', ['rows' => 4]),
             $tab('field_home_tab_sections', 'tab_home_sections', 'Sections'),

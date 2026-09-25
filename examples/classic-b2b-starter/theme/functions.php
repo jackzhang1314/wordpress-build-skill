@@ -5,6 +5,7 @@ defined('ABSPATH') || exit;
 require_once get_theme_file_path('inc/components.php');
 require_once get_theme_file_path('inc/page-data.php');
 require_once get_theme_file_path('inc/blog.php');
+require_once get_theme_file_path('inc/template-loader.php');
 
 add_action('after_setup_theme', static function (): void {
     add_theme_support('title-tag');

@@ -86,6 +86,22 @@ test('term ACF seeding uses qualified ACF object ids to prevent post-meta pollut
   assert.match(seed, /starter_delete_legacy_post_meta/);
 });
 
+test('layout partials never repeat the main query loop owned by template renderers', () => {
+  for (const file of [
+    'theme/templates/products/standard.php',
+    'theme/templates/products/technical.php',
+    'theme/templates/products/project.php',
+    'theme/templates/products/compact.php',
+    'theme/templates/home/corporate.php',
+    'theme/templates/home/product-led.php',
+    'theme/templates/home/conversion.php',
+    'theme/templates/home/industrial.php',
+  ]) {
+    const text = readFileSync(join(starterRoot, file), 'utf8');
+    assert.doesNotMatch(text, /have_posts\s*\(/, `${file} must not own the main query loop`);
+  }
+});
+
 test('blog templates follow SEO-first editorial architecture', () => {
   for (const file of ['theme/home.php', 'theme/archive.php', 'theme/single.php', 'theme/inc/blog.php', 'theme/parts/blog-card.php']) {
     assert.ok(existsSync(join(starterRoot, file)), `missing ${file}`);
@@ -125,7 +141,8 @@ test('blog templates follow SEO-first editorial architecture', () => {
 });
 
 test('product category pages use a rich commercial landing-page architecture', () => {
-  const template = readFileSync(join(starterRoot, 'theme/taxonomy-product_collection.php'), 'utf8');
+  const template = readFileSync(join(starterRoot, 'theme/templates/categories/standard.php'), 'utf8');
+  const dispatcher = readFileSync(join(starterRoot, 'theme/taxonomy-product_collection.php'), 'utf8');
   const controller = readFileSync(join(starterRoot, 'theme/inc/page-data.php'), 'utf8');
   for (const marker of [
     'component_category_hero',
@@ -143,7 +160,12 @@ test('product category pages use a rich commercial landing-page architecture', (
   ]) {
     assert.match(template, new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   }
+  assert.match(dispatcher, /render_category_archive/);
+  assert.match(dispatcher, /category_template_value/);
   assert.match(controller, /'product_collection_' \. \$term_id/);
+  const loader = readFileSync(join(starterRoot, 'theme/inc/template-loader.php'), 'utf8');
+  assert.match(loader, /'category_template'/);
+  assert.match(loader, /'home_template'/);
   for (const field of [
     'category_overline',
     'category_intro',
@@ -164,9 +186,12 @@ test('product category pages use a rich commercial landing-page architecture', (
 });
 
 test('product detail v2 keeps a simple hero and uses the main editor at the bottom', () => {
-  const product = readFileSync(join(starterRoot, 'theme/single-starter_product.php'), 'utf8');
+  const product = readFileSync(join(starterRoot, 'theme/templates/products/standard.php'), 'utf8');
   const heroEnd = product.indexOf('</section>', product.indexOf('component_product_gallery'));
   const hero = product.slice(product.indexOf('<section class="product-hero"'), heroEnd);
+  const dispatcher = readFileSync(join(starterRoot, 'theme/single-starter_product.php'), 'utf8');
+  assert.match(dispatcher, /render_product_single/);
+  assert.match(dispatcher, /product_template_value/);
   assert.match(hero, /component_product_gallery/);
   assert.match(hero, /component_product_hero_summary/);
   assert.doesNotMatch(hero, /component_spec_table|MOQ|Lead time|Back to catalogue/);
@@ -245,10 +270,26 @@ test('templates compose through components instead of repeating section shells',
     'single-starter_product.php',
     'taxonomy-product_collection.php',
     'page-templates/contact.php',
+    'templates/products/standard.php',
+    'templates/products/technical.php',
+    'templates/products/project.php',
+    'templates/products/compact.php',
+    'templates/categories/standard.php',
+    'templates/categories/catalogue.php',
+    'templates/categories/conversion.php',
+    'templates/categories/editorial.php',
+    'templates/home/corporate.php',
+    'templates/home/product-led.php',
+    'templates/home/conversion.php',
+    'templates/home/industrial.php',
+    'page-templates/product-catalogue.php',
+    'page-templates/factory-capability.php',
+    'page-templates/case-study.php',
+    'page-templates/resource-center.php',
   ];
   for (const file of componentFiles) {
     const text = readFileSync(join(starterRoot, 'theme', file), 'utf8');
-    const usesComponent = /component_page_head|component_section_heading|component_card_grid|component_blog_archive|component_cta_band|component_related_products|component_spec_table|component_feature_grid|component_link_cards|get_template_part\('parts\//.test(text);
+    const usesComponent = /component_page_head|component_section_heading|component_card_grid|component_blog_archive|component_cta_band|render_product_single|render_category_archive|render_home_layout|component_related_products|component_spec_table|component_feature_grid|component_link_cards|render_home_layout|get_template_part\('parts\//.test(text);
     assert.ok(usesComponent, `${file} must compose a component or template part`);
   }
   for (const file of componentFiles) {
