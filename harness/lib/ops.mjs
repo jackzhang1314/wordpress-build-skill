@@ -84,6 +84,12 @@ export async function syncCode(projectRoot, project, ssh, logger = () => {}) {
   ssh.run(`mkdir -p ${shellQuote(project.ssh.wpPath + '/wp-content/plugins/' + project.plugin)}`);
   ssh.rsync(themePath, `${project.ssh.wpPath}/wp-content/themes/${project.theme}`, {delete: true});
   ssh.rsync(pluginPath, `${project.ssh.wpPath}/wp-content/plugins/${project.plugin}`, {delete: true});
+  ssh.run([
+    `if [ -f ${shellQuote(`${project.ssh.wpPath}/wp-content/themes/${project.theme}/mu-plugins/smtp.php`)} ]; then`,
+    `mkdir -p ${shellQuote(`${project.ssh.wpPath}/wp-content/mu-plugins`)}`,
+    `cp ${shellQuote(`${project.ssh.wpPath}/wp-content/themes/${project.theme}/mu-plugins/smtp.php`)} ${shellQuote(`${project.ssh.wpPath}/wp-content/mu-plugins/starter-smtp.php`)}`,
+    'fi',
+  ].join(' '));
   ssh.wp(['theme', 'activate', project.theme]);
   ssh.wp(['plugin', 'activate', project.plugin]);
   ssh.wp(['rewrite', 'flush']);

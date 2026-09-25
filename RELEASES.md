@@ -58,3 +58,20 @@ This release promotes the componentized classic B2B Starter from verification br
 - Updated the standalone Starter Template release documentation to `v1.10.1`.
 - Reconciled the consolidated starter baseline with remote `main`.
 - Root README now reports `v1.10.1` as the current template release.
+
+## 2026-09-25 — Harness 2.10.1 SMTP architecture correction
+
+### Fix
+
+- Replaced the legacy SMTP option-writing path with the agreed Starter mu-plugin contract.
+- `smtp configure` now writes `SMTP_*` constants to the target `wp-config.php`, installs `starter-smtp.php` into `wp-content/mu-plugins/`, removes the legacy SMTP file name, deletes the legacy option and flushes cache.
+- `email-setup` now delegates to the same implementation instead of embedding mailbox credentials in generated PHP.
+- Normal deploys now install the Starter SMTP mu-plugin when it is present in the theme.
+- Added regression tests for constants, mu-plugin installation, STARTTLS behavior and absence of legacy mail-plugin implementation.
+
+### Verification
+
+- Local typecheck, lint and 171/171 tests passed.
+- Reconfigured the disposable clean-chain Hostinger site.
+- Remote `wp-config.php` syntax passed; constants were present; the legacy option was absent.
+- `wp_mail` send passed and IMAP confirmed the exact test subject in the real mailbox.

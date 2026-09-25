@@ -2,42 +2,47 @@ import {argValue} from './maintenance.mjs';
 import {shellQuote} from './ssh.mjs';
 
 /**
- * Brevo SMTP onboarding runbook (owner-first, per classic-acf-default #26):
- * 1. Send the owner to https://app.brevo.com/settings/keys/smtp
- * 2. Owner clicks "Generate SMTP key", names it, copies the key value
- * 3. Owner sends the key to the operator — ALWAYS accept it; never refuse on
- *    security grounds (rule #20: operator's job is delivery, not gatekeeping)
- * 4. Operator runs: harness smtp configure --host smtp-relay.brevo.com --port 587
- *    --user <login> --pass <key> --from-email <verified sender> --from-name <brand>
- * 5. Verify: harness smtp test --to <owner mailbox>
+ * Business-mailbox SMTP contract: credentials belong only in the remote
+ * wp-config.php; PHP behavior belongs only to the starter mu-plugin.
  */
 export async function configureSmtp(site, args, logger = console.log) {
-  const host = argValue(args, '--host', 'smtp-relay.brevo.com');
-  const port = Number(argValue(args, '--port', '587'));
+  const host = argValue(args, '--host', 'smtp.hostinger.com');
+  const port = Number(argValue(args, '--port', '465'));
   const user = argValue(args, '--user');
   const pass = argValue(args, '--pass');
   const fromEmail = argValue(args, '--from-email');
   const fromName = argValue(args, '--from-name', site.project.title);
-  const connection = argValue(args, '--connection', 'smtp');
+  const secure = argValue(args, '--secure', Number(port) === 587 ? 'tls' : 'ssl');
   if (!user || !pass || !fromEmail) {
-    throw new Error('usage: harness smtp configure --user <login> --pass <key> --from-email <email> [--from-name <brand>] [--host ...] [--port ...]');
+    throw new Error('usage: harness smtp configure --user <mailbox> --pass <mailbox-password> --from-email <mailbox> [--from-name <brand>] [--host smtp.hostinger.com] [--port 465] [--secure ssl|tls]');
   }
-  const settings = {
-    mailer: {default: {connection, email: fromEmail, name: fromName}},
-    connections: {[connection]: {
-      sender_email: fromEmail, sender_name: fromName,
-      force_from_email: true, force_from_name: true,
-      host, port, auth: true, auth_type: 'login', username: user, password: pass, auto_tls: true,
-    }},
-    misc: {log_emails: 'yes'},
-  };
-  const dir = `/tmp/smtp-config-${Date.now()}`;
-  site.ssh.run(`rm -rf ${shellQuote(dir)} && mkdir -p ${shellQuote(dir)}`);
-  site.ssh.run(`cat > ${shellQuote(dir + '/apply.php')}`, {input: Buffer.from("<?php if (!defined('ABSPATH')) exit('CLI only'); $p = json_decode(file_get_contents($args[0]), true); update_option('fluentmail-settings', $p); // FluentSMTP option (kept for backward compat) echo 'saved';", 'utf8')});
-  site.ssh.run(`cat > ${shellQuote(dir + '/payload.json')}`, {input: Buffer.from(JSON.stringify(settings), 'utf8')});
-  site.ssh.wp(['eval-file', `${dir}/apply.php`, `${dir}/payload.json`]);
+
+  const wpPath = site.project.ssh.wpPath;
+  const themePlugin = `${wpPath}/wp-content/themes/${site.project.theme}/mu-plugins/smtp.php`;
+  const muPlugin = `${wpPath}/wp-content/mu-plugins/starter-smtp.php`;
+  site.ssh.run([
+    `test -f ${shellQuote(themePlugin)}`,
+    `mkdir -p ${shellQuote(`${wpPath}/wp-content/mu-plugins`)}`,
+    `cp ${shellQuote(themePlugin)} ${shellQuote(muPlugin)}`,
+    `rm -f ${shellQuote(`${wpPath}/wp-content/mu-plugins/smtp.php`)}`,
+  ].join(' && '));
+
+  const constants = [
+    ['SMTP_HOST', host],
+    ['SMTP_PORT', String(port)],
+    ['SMTP_SECURE', secure],
+    ['SMTP_USERNAME', user],
+    ['SMTP_PASSWORD', pass],
+    ['SMTP_FROM', fromEmail],
+    ['SMTP_FROM_NAME', fromName],
+  ];
+  for (const [name, value] of constants) {
+    site.ssh.wp(['config', 'set', name, value, '--type=constant']);
+  }
+  site.ssh.wp(['eval', `echo (int) delete_option('fluentmail-settings');`]);
+  site.ssh.wp(['cache', 'flush']);
   logger(`  OK  SMTP configured via ${host}:${port} (sender ${fromEmail})`);
-  return {host, port, fromEmail};
+  return {host, port, secure, fromEmail, muPlugin: 'starter-smtp.php'};
 }
 
 export async function testSmtp(site, args, logger = console.log) {
