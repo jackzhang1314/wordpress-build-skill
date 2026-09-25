@@ -67,6 +67,30 @@ node harness/cli.mjs init minimal-site --root ../projects
 
 ## 部署生命周期
 
+### 本机 bootstrap
+
+```bash
+node harness/cli.mjs bootstrap --fix
+```
+
+会检查并修复 Node/npm/Git/rsync/tar/gzip、项目依赖、Skill runtime、Hostinger CLI。PHP/Docker/Chrome 是推荐能力：PHP/Docker 用于本地 PHP 语法检查，Chrome 用于截图。
+
+### Hostinger 连接
+
+```bash
+node harness/cli.mjs hostinger setup --install --connect
+```
+
+`--install` 在 macOS/Linux + Homebrew 下安装官方 Hostinger CLI；无 Homebrew 时返回官方 release 安装指引。`--connect` 用只读订单列表验证账户已授权，不会创建站点。
+
+### SSH 向导
+
+```bash
+node harness/cli.mjs --project . ssh setup
+```
+
+向导会生成/复用专用 key，读取 Hostinger 网站列表和 DNS，保存 `project.json`，并测试 SSH/WP-CLI。若 Hostinger 后台还没有 public key，它会输出 key 和 hPanel URL；用户粘贴后重新运行即可。
+
 ### 已有 Hostinger 站点
 
 ```bash

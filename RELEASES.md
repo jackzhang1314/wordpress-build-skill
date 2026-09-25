@@ -75,3 +75,29 @@ This release promotes the componentized classic B2B Starter from verification br
 - Reconfigured the disposable clean-chain Hostinger site.
 - Remote `wp-config.php` syntax passed; constants were present; the legacy option was absent.
 - `wp_mail` send passed and IMAP confirmed the exact test subject in the real mailbox.
+
+## 2026-09-25 — Harness 2.11.0 guided bootstrap and SSH onboarding
+
+### Environment
+
+- Added `node harness/cli.mjs bootstrap` as the unified local entrypoint.
+- `bootstrap --fix` can install npm dependencies, build the bundled Skill runtime, and install the official Hostinger CLI through Homebrew when available.
+- Environment checks now verify Node 22+, npm, Git, rsync, tar, gzip, npm dependencies, Skill runtime and integrity, PHP/Docker, Hostinger CLI and Chrome.
+- Skill integrity no longer requires WordPress credentials; `wp.mjs --help` is the integrity probe.
+
+### Hostinger and SSH
+
+- Added `node harness/cli.mjs hostinger setup [--install] [--connect]`.
+- Added `node harness/cli.mjs --project . ssh setup`.
+- SSH setup creates or reuses a dedicated ed25519 key, derives Hostinger SSH user/host from the website list and DNS, saves only SSH fields in `project.json`, and verifies SSH plus remote WP-CLI.
+- If Hostinger has not received the public key yet, the command prints the key and the exact hPanel URL, then asks the user to rerun after pasting it.
+
+### Safety and docs
+
+- Generated Starter projects now ignore local `project.json`, preventing accidental SSH credential commits.
+- README, Harness guide and AGENTS now route users through `bootstrap`, `hostinger setup` and `ssh setup`.
+
+### Verification
+
+- Typecheck, lint and 180/180 tests passed.
+- Live local checks: `bootstrap`, `bootstrap --fix`, `hostinger setup --connect`, and `ssh setup` all passed against the disposable clean-chain Hostinger site.

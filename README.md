@@ -4,11 +4,11 @@
 
 - Harness 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
 - Starter Template 仓库：<https://github.com/jackzhang1314/b2b-wordpress-starter-template>
-- 当前 Harness 基线：`2.10.0`
+- 当前 Harness 基线：`2.11.0`
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
-> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.10.0` 是可复测的固定 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.11.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
 
 ### 交给 Codex 的最小指令
 
@@ -49,7 +49,7 @@ Before any remote write, ask me for the Hostinger SSH/domain values or use the v
 ```bash
 git clone https://github.com/jackzhang1314/wordpress-build-skill.git
 cd wordpress-build-skill
-npm ci
+node harness/cli.mjs bootstrap --fix
 
 node harness/cli.mjs init my-factory-site \
   --root /absolute/path/to/projects \
@@ -79,21 +79,26 @@ node /absolute/path/to/wordpress-build-skill/harness/cli.mjs --project . check
 
 ### B. 接入 Hostinger
 
-复制 `project.example.json` 的 SSH 规则，编辑 `project.json`：
+先确认 Hostinger CLI 和账户访问：
 
-```json
-{
-  "title": "My Factory Site",
-  "domain": "your-site.hostingersite.com",
-  "ssh": {
-    "host": "REPLACE_SSH_HOST",
-    "port": "65002",
-    "user": "REPLACE_SSH_USER",
-    "keyPath": "REPLACE_PRIVATE_KEY_PATH",
-    "wpPath": "/home/REPLACE_SSH_USER/domains/your-site.hostingersite.com/public_html"
-  }
-}
+```bash
+node /path/to/wordpress-build-skill/harness/cli.mjs hostinger setup --install --connect
 ```
+
+然后把 `project.json` 里的 `domain` 改成实际测试/生产域名，再运行 SSH 向导：
+
+```bash
+node /path/to/harness/cli.mjs --project . ssh setup
+```
+
+向导会自动完成：
+
+1. 创建或复用专用 SSH key；
+2. 从 Hostinger 网站列表和 DNS 推导 SSH user/host；
+3. 保存 `project.json`；
+4. 测试 SSH 和远程 WP-CLI。
+
+如果 Hostinger 还没有收到 public key，向导会输出要复制的 public key 和 hPanel 页面链接。用户粘贴保存后重新运行同一命令即可。
 
 然后：
 

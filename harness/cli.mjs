@@ -31,6 +31,9 @@ import {defaultRfqFields, verifyRfqForm} from './lib/form-verify.mjs';
 import {assignTemplate, argValue, auditFields, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
 import {rotateCredentials, showCredentials} from './lib/credentials.mjs';
 import {configureSmtp, testSmtp} from './lib/smtp.mjs';
+import {auditEnvironment, bootstrapActions, repositoryRoot} from './lib/environment.mjs';
+import {setupProjectSsh} from './lib/ssh-setup.mjs';
+import {setupHostinger} from '../.agents/skills/wordpress-builder/scripts/hostinger-setup.mjs';
 import {
   backupProject,
   clearHostingerCache,
@@ -53,6 +56,8 @@ Usage:
 Project commands:
   config                  Validate project.json
   doctor                  Check tools, SSH and WP-CLI
+  bootstrap               Audit and repair the local harness environment
+  ssh setup               Create/configure an SSH key, save it, and test WP-CLI
   check                   Run local quality gates
   backup                  Back up remote files and database
   media [--force]         Import configured media sources
@@ -81,6 +86,9 @@ Project commands:
   ssh                     Open an SSH session
   open                    Open the Hostinger SSH-access page
 
+Environment commands:
+  hostinger setup         Detect/install the Hostinger CLI and optionally verify account access
+
 Deploy options:
   --with-media            Force a new media import
   --with-content          Force content seeding
@@ -90,6 +98,17 @@ Deploy options:
 
 Init options:
   --from-starter          Copy the B2B Starter theme, ACF model, seed content and docs
+
+Bootstrap options:
+  --fix                   Install npm dependencies, build Skill runtime and install Hostinger CLI when supported
+  --dry-run               Show repair actions without changing anything
+
+SSH setup options:
+  --ssh-host <host>       Override the Hostinger SSH host
+  --ssh-port <port>       Override the SSH port (default 65002)
+  --ssh-user <user>       Override the Hostinger SSH user
+  --ssh-key <path>        Use an existing private key
+  --rotate-key            Replace the managed key (old key is backed up locally)
 
 Provision options:
   --domain <domain>       Use a known domain instead of a generated subdomain
@@ -129,6 +148,12 @@ function context(options) {
   return {root, project, ssh: project.ssh ? createSSH(project, {execFile: execFileSync}) : undefined};
 }
 
+function executeCommand(name, args, timeout = 30000) {
+  return execFileSync(name, args, {
+    encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'], timeout, maxBuffer: 16 * 1024 * 1024,
+  });
+}
+
 function printAudit(report, logger) {
   for (const gate of report.gates) {
     const checks = gate.checks ?? [];
@@ -143,16 +168,53 @@ function printAudit(report, logger) {
   }
 }
 
-async function commandDoctor({project, ssh}, json, logger) {
-  const checks = {
-    node: Number(process.versions.node.split('.')[0]) >= 20,
-    git: commandExists(execFileSync, 'git', ['--version']),
-    rsync: commandExists(execFileSync, 'rsync', ['--version']),
-    tar: commandExists(execFileSync, 'tar', ['--version']),
-    gzip: commandExists(execFileSync, 'gzip', ['--version']),
-    hostingerCli: commandExists(execFileSync, 'hostinger', ['version']),
-    php: commandExists(execFileSync, 'php', ['-v']),
+function printBootstrap(report, logger) {
+  logger('Local harness environment');
+  const labels = {
+    node: 'Node.js 22+', npm: 'npm', git: 'Git', rsync: 'rsync', tar: 'tar', gzip: 'gzip',
+    dependencies: 'NPM dependencies', skillRuntime: 'Skill runtime file', skillIntegrity: 'Skill runtime integrity',
+    php: 'PHP', docker: 'Docker', hostinger: 'Hostinger CLI', chrome: 'Chrome (screenshots)',
   };
+  for (const [name, label] of Object.entries(labels)) {
+    logger(`  ${report.checks[name] ? 'OK ' : 'WARN'} ${label}`);
+  }
+  for (const action of bootstrapActions(report, {fix: true})) logger(`  NEXT ${action}`);
+}
+
+async function commandBootstrap(args, json, logger) {
+  const fix = args.includes('--fix') && !args.includes('--dry-run');
+  let report = auditEnvironment({repoRoot: repositoryRoot});
+  const actions = [];
+  if (fix && !report.checks.dependencies) {
+    execFileSync('npm', ['ci'], {encoding: 'utf8', timeout: 180000, maxBuffer: 16 * 1024 * 1024, stdio: ['pipe', 'pipe', 'pipe']});
+    actions.push('npm-ci');
+    report = auditEnvironment({repoRoot: repositoryRoot});
+  }
+  if (fix && (!report.checks.skillRuntime || !report.checks.skillIntegrity)) {
+    execFileSync('npm', ['run', 'build'], {encoding: 'utf8', timeout: 180000, maxBuffer: 16 * 1024 * 1024, stdio: ['pipe', 'pipe', 'pipe']});
+    actions.push('build-bundled-skill-runtime');
+    report = auditEnvironment({repoRoot: repositoryRoot});
+  }
+  if (fix && !report.checks.hostinger) {
+    const hostinger = setupHostinger({install: true, connect: false, platform: process.platform, run: executeCommand});
+    actions.push(hostinger.installation === 'installed' ? 'install-hostinger-cli' : 'request-hostinger-cli-install');
+    report = auditEnvironment({repoRoot: repositoryRoot});
+  }
+  report.actions = actions;
+  report.nextSteps = bootstrapActions(report, {fix});
+  report.pass = report.required.every(name => report.checks[name]);
+  if (!json) {
+    printBootstrap(report, logger);
+    if (args.includes('--dry-run')) logger('\nDRY RUN: no repair actions were executed.');
+    logger(`\n${report.pass ? 'OK: local harness is ready.' : 'FAIL: local harness is not ready yet.'}`);
+    logger(`NEXT ${report.next}`);
+  }
+  return report;
+}
+
+async function commandDoctor({project, ssh}, json, logger) {
+  const local = auditEnvironment({repoRoot: repositoryRoot});
+  const checks = {...local.checks};
   if (project?.ssh) {
     try {
       ssh.run('echo ok');
@@ -164,7 +226,8 @@ async function commandDoctor({project, ssh}, json, logger) {
       checks.sshError = error.message;
     }
   }
-  const pass = checks.node && checks.git && checks.rsync && checks.tar && checks.gzip
+  const pass = checks.node && checks.npm && checks.git && checks.rsync && checks.tar && checks.gzip
+    && checks.dependencies && checks.skillRuntime && checks.skillIntegrity
     && (!project?.ssh || (checks.ssh && Boolean(checks.wpCli)));
   if (!json) {
     for (const [name, value] of Object.entries(checks)) logger(`  ${value ? 'OK ' : 'FAIL'} ${name}: ${value}`);
@@ -215,6 +278,32 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       outputResult({pass: true, projectRoot: created}, json, logger);
       if (!json) logger(`OK: project created: ${created}`);
       return 0;
+    }
+
+    if (command === 'bootstrap') {
+      const report = await commandBootstrap(args, json, logger);
+      outputResult(report, json, logger);
+      return report.pass ? 0 : 1;
+    }
+
+    if (command === 'hostinger') {
+      const sub = firstValue(args);
+      if (sub !== 'setup') throw new Error('usage: harness hostinger setup [--install] [--connect]');
+      const install = args.includes('--install') || args.includes('--fix');
+      const connect = args.includes('--connect');
+      const report = setupHostinger({
+        install, connect, platform: process.platform, run: executeCommand,
+      });
+      if (!json) {
+        logger('Hostinger CLI setup');
+        logger(`  ${report.cli === 'available' ? 'OK ' : 'WARN'} CLI: ${report.cli}${report.version ? ` (${report.version})` : ''}`);
+        logger(`  ${report.installation === 'installed' ? 'OK ' : 'WARN'} Installation: ${report.installation}`);
+        logger(`  ${report.account === 'hosting-orders-readable' ? 'OK ' : 'WARN'} Account: ${report.account}`);
+        if (report.next) logger(`  NEXT ${report.next}`);
+      }
+      outputResult(report, json, logger);
+      const pass = report.cli === 'available' && (!connect || report.account === 'hosting-orders-readable');
+      return pass ? 0 : 1;
     }
 
     const site = context(options);
@@ -555,6 +644,11 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       return 0;
     }
     if (command === 'ssh') {
+      if (firstValue(args) === 'setup') {
+        const report = await setupProjectSsh(root, project, args, {exec: execFileSync, logger: json ? () => {} : logger});
+        outputResult(report, json, logger);
+        return report.pass ? 0 : 2;
+      }
       execFileSync('ssh', ssh.baseArgs, {stdio: 'inherit'});
       return 0;
     }
