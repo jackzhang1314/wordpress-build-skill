@@ -13,7 +13,7 @@ import {verifyDatabase, verifyPages} from './lib/verify.mjs';
 import {auditCmsModel, collectCmsAudit} from './lib/cms-audit.mjs';
 import {auditEditorPatterns} from './lib/editor-audit.mjs';
 import {isBlankMediaContract} from './lib/verify.mjs';
-import {adoptExternalSite, auditExternalSite} from './lib/external.mjs';
+import {adoptExternalSite, auditExternalSite, inspectRemoteWordPress} from './lib/external.mjs';
 
 function managedMediaIds(projectRoot, project) {
   const contentDir = project.paths?.content ?? 'content';
@@ -47,13 +47,13 @@ import {
 } from './lib/ops.mjs';
 import {initFromStarter, initProject} from './init.mjs';
 
-const HELP = `WordPress Harness v2
+const HELP = `WordPress Builder v2
 =====================
 
 Usage:
-  node harness/cli.mjs init <project-name> --root <projects-parent> [--from-starter] [--no-git]
-  node harness/cli.mjs adopt <project-name> --domain <domain> [--root <projects-parent>] [--order <id>] [--no-git]
-  node harness/cli.mjs --project <site-dir> <command> [args]
+  node wordpress-builder.mjs init <project-name> --root <projects-parent> [--from-starter] [--no-git]
+  node wordpress-builder.mjs adopt <project-name> --domain <domain> [--root <projects-parent>] [--order <id>] [--no-git]
+  node wordpress-builder.mjs --project <site-dir> <command> [args]
 
 Project commands:
   config                  Validate project.json
@@ -82,6 +82,7 @@ Project commands:
   audit-fields           Verify every stored value has an admin-editable ACF field
   cms-audit              Audit CPTs, taxonomies, ACF locations, REST and stored values
   editor-audit           Audit native editor module patterns and page compatibility
+  project inspect        Inspect WordPress shape, templates, navigation, plugins and content
   email-setup            Guided setup: create business mailbox + configure SMTP + test
   smtp configure|test    Configure business-mailbox SMTP constants and send a test email
   wp <args...>            Run WP-CLI through SSH
@@ -383,6 +384,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
     const site = context(options);
     const {root, project, ssh} = site;
     const remoteCommands = ['backup', 'media', 'content', 'verify', 'verify-form', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials', 'audit-fields', 'smtp', 'email-setup', 'cms-audit'];
+    remoteCommands.push('project');
     const exampleUnsafeCommands = [...remoteCommands, 'provision', 'configure-seo', 'setup'];
     if (project._isExample && exampleUnsafeCommands.includes(command)) {
       throw new Error('Copy project.example.json to project.json and fill site values before running this command');
@@ -525,6 +527,13 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       }
       outputResult(report, json, logger);
       return report.pass ? 0 : 1;
+    }
+
+    if (command === 'project') {
+      if (firstValue(args) !== 'inspect') throw new Error('usage: harness project inspect [--json]');
+      const inventory = await inspectRemoteWordPress(project, {exec: execFileSync});
+      outputResult(inventory, json, logger);
+      return 0;
     }
 
     if (command === 'cms-audit') {

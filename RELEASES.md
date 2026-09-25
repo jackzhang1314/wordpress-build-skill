@@ -1,5 +1,28 @@
 # Releases
 
+## 2026-09-26 — WordPress Builder 2.16.0 Skill Suite foundation
+
+### Builder
+
+- Added `wordpress-builder.mjs` as the canonical CLI entrypoint. `harness/cli.mjs` remains as a deprecated compatibility path.
+- Added `project inspect` to detect WordPress version, active theme, theme type, navigation mechanism, page templates, plugins, public CPT/taxonomy, Fluent Forms and content/media counts.
+- Added `mode: source | external` and `sourceProfile: starter | custom`.
+- Custom source projects now skip Starter-specific route, page-template, component, ACF, media and UI contracts.
+- External adoption records the real WordPress shape and inventory before content or design work.
+- Added a reusable account SSH host map because website DNS and SSH endpoints can differ.
+
+### Skills
+
+- Introduced the five-skill suite: `wordpress-builder`, `wordpress-setup`, `wordpress-content`, `wordpress-design` and `wordpress-delivery`.
+- Converted `wordpress-builder` into the router and global safety contract.
+- Added the shared project contract, mode-safety rules, Starter-versus-existing policy, handoff rules and canonical command map.
+- Added skill suite regression tests for routing, references, mode safety and WordPress inspection.
+
+### Verification
+
+- Full typecheck, lint and test suite passed: 193/193 tests.
+- Live `project inspect` verified against a real Hostinger WordPress site.
+
 ## 2026-09-25 — Harness 2.4.0 / B2B Starter 1.0.0
 
 This release promotes the componentized classic B2B Starter from verification branch to the reusable baseline.

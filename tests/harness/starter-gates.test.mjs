@@ -96,6 +96,7 @@ test('acf-binding requires every theme-read field to be registered', () => {
 test('routes gate enforces count, uniqueness and slash format', () => {
   const env = makeProject({'theme/index.php': '<?php'});
   try {
+    env.project.sourceProfile = 'starter';
     env.project.livePages = Array.from({length: 23}, (_, index) => `/route-${index}/`);
     assert.equal(checkRoutes(env.root, env.project).pass, true);
 

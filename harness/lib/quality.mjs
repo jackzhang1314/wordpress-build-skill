@@ -202,13 +202,15 @@ export function checkAcfBinding(projectRoot, project) {
 
 /** The starter declares its full route manifest; deploy verification walks it. */
 export function checkRoutes(projectRoot, project) {
-  const expectedCount = Number(project.routeCount ?? 23);
   const pages = (project.livePages ?? []).map(String);
   const checks = [
-    {name: 'count', pass: pages.length === expectedCount, detail: `${pages.length}/${expectedCount}`},
     {name: 'unique', pass: new Set(pages).size === pages.length},
     {name: 'format', pass: pages.every(page => page.startsWith('/') && page.endsWith('/'))},
   ];
+  if (project.sourceProfile === 'starter') {
+    const expectedCount = Number(project.routeCount ?? 23);
+    checks.unshift({name: 'count', pass: pages.length === expectedCount, detail: `${pages.length}/${expectedCount}`});
+  }
   return {name: 'routes', pass: checks.every(item => item.pass), checks};
 }
 
@@ -317,23 +319,29 @@ export async function checkPhpSyntax(files, {phpBin = 'php'} = {}) {
 }
 
 export async function auditProject(projectRoot, project, options = {}) {
+  const isStarter = project.sourceProfile === 'starter';
   const gates = [
-    checkStructure(projectRoot, project),
     checkTemplateHeadings(
     projectFile(projectRoot, project.paths.theme),
     projectFile(projectRoot, project.paths.plugin),
     ),
     checkContent(projectRoot, project),
     checkSecrets(projectRoot, project),
-    checkComponentDuplication(projectRoot, project),
-    checkZeroMedia(projectRoot, project),
-    checkAcfBinding(projectRoot, project),
-    checkPageTemplates(projectRoot, project),
     checkRoutes(projectRoot, project),
     checkWordPressClasses(projectRoot, project),
-    checkUiComponentContracts(projectRoot, project),
-    auditEditorPatterns(projectRoot, project),
   ];
+
+  if (isStarter) {
+    gates.push(
+      checkStructure(projectRoot, project),
+      checkComponentDuplication(projectRoot, project),
+      checkZeroMedia(projectRoot, project),
+      checkAcfBinding(projectRoot, project),
+      checkPageTemplates(projectRoot, project),
+      checkUiComponentContracts(projectRoot, project),
+      auditEditorPatterns(projectRoot, project),
+    );
+  }
 
   const phpBin = options.phpBin;
   const phpFiles = [

@@ -1,6 +1,6 @@
 {
   "name": "codex-wordpress-builder",
-  "version": "2.15.0",
+  "version": "2.16.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -12,6 +12,7 @@
     "test": "tsx --test tests/*.test.ts tests/*.test.mjs tests/harness/*.test.mjs",
     "build": "node scripts/build.mjs",
     "wp": "tsx src/cli.ts",
+    "wordpress-builder": "node wordpress-builder.mjs",
     "lab": "node scripts/lab.mjs",
     "lab:wp": "node scripts/lab-wp.mjs",
     "verify:snapshot": "node scripts/verify-snapshot.mjs",

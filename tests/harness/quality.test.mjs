@@ -24,7 +24,7 @@ test('classic project audit detects missing plugin main and content JSON errors'
     await writeFile(join(root, 'plugin/wrong.php'), "<?php\ndefined('ABSPATH') || exit;\n");
     await writeFile(join(root, 'content/site-data.json'), '{bad');
     const project = {
-      slug: 'demo', theme: 'demo-theme', plugin: 'demo-model', pluginMain: 'demo-model.php',
+      slug: 'demo', sourceProfile: 'starter', theme: 'demo-theme', plugin: 'demo-model', pluginMain: 'demo-model.php',
       requiredPlugins: [], disabledPlugins: [], contentMarkers: [], contentCounts: [],
       media: {sources: []}, seed: {enabled: true, script: 'scripts/seed.php', data: 'content/site-data.json'},
       paths: {theme: 'theme', plugin: 'plugin', content: 'content'},
@@ -67,6 +67,35 @@ test('content gate flags raw angle brackets that WordPress text helpers would sw
     const content = report.gates.find(gate => gate.name === 'content-data');
     assert.equal(content.pass, false);
     assert.match(JSON.stringify(content.checks), /UGR<19/);
+  } finally {
+    await rm(root, {recursive: true, force: true});
+  }
+});
+
+test('custom source projects skip Starter route and template contracts', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'quality-custom-'));
+  try {
+    await mkdir(join(root, 'theme'), {recursive: true});
+    await mkdir(join(root, 'plugin'), {recursive: true});
+    await mkdir(join(root, 'content'), {recursive: true});
+    await writeFile(join(root, 'theme/style.css'), '/*\nTheme Name: Custom\nVersion: 1.0\n*/\n');
+    await writeFile(join(root, 'theme/functions.php'), '<?php\n');
+    await writeFile(join(root, 'theme/index.php'), '<?php get_header(); ?><h1>Home</h1><?php get_footer();');
+    await writeFile(join(root, 'plugin/custom-model.php'), "<?php\ndefined('ABSPATH') || exit;\n");
+    await writeFile(join(root, 'content/site-data.json'), JSON.stringify({terms: [], pages: []}));
+    const project = {
+      slug: 'custom', sourceProfile: 'custom', theme: 'custom-theme', plugin: 'custom-model',
+      pluginMain: 'custom-model.php', livePages: ['/'], routeCount: 23,
+      requiredPlugins: [], disabledPlugins: [], contentMarkers: [], contentCounts: [],
+      media: {sources: []}, seed: {enabled: false, script: 'scripts/seed.php', data: 'content/site-data.json'},
+      paths: {theme: 'theme', plugin: 'plugin', content: 'content'},
+    };
+    const report = await auditProject(root, project, {phpBin: undefined});
+    assert.equal(report.pass, true);
+    assert.equal(report.gates.some(gate => gate.name === 'page-template-contract'), false);
+    assert.equal(report.gates.some(gate => gate.name === 'ui-component-contracts'), false);
+    const routes = report.gates.find(gate => gate.name === 'routes');
+    assert.equal(routes.checks.some(check => check.name === 'count'), false);
   } finally {
     await rm(root, {recursive: true, force: true});
   }

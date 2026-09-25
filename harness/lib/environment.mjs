@@ -85,7 +85,7 @@ export function auditEnvironment({
       ...required.filter(name => !checks[name]).map(name => `${name} is required`),
     ],
     next: pass
-      ? 'Local harness is ready. Next: init a Starter project, then run `ssh setup` and `hostinger setup` for deployment.'
+      ? 'WordPress Builder is ready. Starter is optional; create a project, then run `ssh setup` and `hostinger setup` for deployment.'
       : 'Run the displayed repair actions, or rerun bootstrap with --fix where repair is supported.',
   };
 }
@@ -111,7 +111,7 @@ export function bootstrapActions(report, {fix = false} = {}) {
     actions.push(fix ? 'Run `npm run build` now.' : 'Run `npm run build`, or rerun bootstrap with --fix.');
   }
   if (!report.checks.hostinger) {
-    actions.push(fix ? 'Run `node harness/cli.mjs hostinger setup --install` now.' : 'Install the Hostinger CLI, or run `node harness/cli.mjs hostinger setup --install --connect`.');
+    actions.push(fix ? 'Run `node wordpress-builder.mjs hostinger setup --install` now.' : 'Install the Hostinger CLI, or run `node wordpress-builder.mjs hostinger setup --install --connect`.');
   }
   if (!report.checks.php && !report.checks.docker) {
     actions.push('Install PHP 8.3 or Docker Desktop/Engine for local PHP syntax checks.');

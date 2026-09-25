@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "router": "wordpress-builder",
+  "skills": [
+    {
+      "name": "wordpress-builder",
+      "role": "router",
+      "references": [
+        "references/command-map.md",
+        "references/project-contract.md",
+        "references/mode-safety.md",
+        "references/starter-vs-existing.md",
+        "references/handoff-rules.md"
+      ]
+    },
+    {
+      "name": "wordpress-setup",
+      "owns": ["environment", "hostinger", "ssh", "project creation", "external adoption"],
+      "next": ["wordpress-content", "wordpress-design", "wordpress-delivery"]
+    },
+    {
+      "name": "wordpress-content",
+      "owns": ["pages", "posts", "navigation", "acf", "cpt", "taxonomy", "forms", "cms-audit"],
+      "next": ["wordpress-delivery", "wordpress-design"]
+    },
+    {
+      "name": "wordpress-design",
+      "owns": ["design-system", "theme", "page-template", "component", "accessibility"],
+      "next": ["wordpress-content", "wordpress-delivery"]
+    },
+    {
+      "name": "wordpress-delivery",
+      "owns": ["local-checks", "deployment", "release-verification", "seo-acceptance", "backup", "rollback"],
+      "next": ["wordpress-builder"]
+    }
+  ],
+  "safety": {
+    "externalBlockedCommands": ["deploy", "media", "content", "setup", "configure-seo"],
+    "productionWriteRequiresBackupOrRollbackPlan": true,
+    "starterOptional": true
+  }
+}

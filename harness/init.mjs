@@ -65,6 +65,7 @@ export function initProject({name, projectsRoot, git = true, reference = referen
   writeFileSync(join(root, 'project.json'), JSON.stringify({
     title: name,
     slug,
+    sourceProfile: 'custom',
     type: 'wordpress-b2b',
     domain: '',
     theme: themeSlug,
@@ -104,6 +105,7 @@ export function initFromStarter({name, projectsRoot, git = true, starter = start
     ...example,
     title: name,
     slug,
+    sourceProfile: 'starter',
     domain: '',
     contentMarkers: [name],
     seed: {...(example.seed ?? {}), enabled: true},

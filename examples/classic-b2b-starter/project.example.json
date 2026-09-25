@@ -2,6 +2,7 @@
   "title": "Your Company",
   "description": "A neutral B2B starter description.",
   "slug": "your-company",
+  "sourceProfile": "starter",
   "type": "wordpress-b2b",
   "domain": "example.hostingersite.com",
   "theme": "b2b-starter-theme",

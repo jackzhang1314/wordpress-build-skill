@@ -5,6 +5,14 @@ import {slugify} from './config.mjs';
 import {createSSH} from './ssh.mjs';
 import {discoverHostingerWebsite, setupProjectSsh} from './ssh-setup.mjs';
 
+function safeJson(value, fallback) {
+  try {
+    return JSON.parse(value);
+  } catch {
+    return fallback;
+  }
+}
+
 function writeJson(path, value) {
   writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
 }
@@ -45,6 +53,7 @@ export async function adoptExternalSite({
     title: name,
     slug,
     mode: 'external',
+    sourceProfile: 'custom',
     type: 'wordpress-existing',
     domain,
     theme: 'unknown',
@@ -88,10 +97,19 @@ export async function adoptExternalSite({
   const activeTheme = cli(['theme', 'list', '--status=active', '--field=name']);
   const plugins = JSON.parse(cli(['plugin', 'list', '--format=json'])).map(plugin => plugin.name);
   const timezone = cli(['option', 'get', 'timezone_string']);
+  const shape = await inspectRemoteWordPress(updated, {exec});
   updated.title = blogname || name;
   updated.theme = activeTheme;
   updated.remote = {
     siteUrl, wpVersion, activeTheme, plugins,
+    themeType: shape.themeType,
+    navigation: shape.navigation,
+    pageTemplates: shape.pageTemplates,
+    publicPostTypes: shape.publicPostTypes,
+    publicTaxonomies: shape.publicTaxonomies,
+    menus: shape.menus,
+    forms: shape.forms,
+    counts: shape.counts,
     inspectedAt: new Date().toISOString(),
   };
   if (timezone) updated.timezone = timezone;
@@ -104,6 +122,80 @@ export async function adoptExternalSite({
     pass: true, root, setupReport,
     remote: updated.remote,
     next: 'Use edit-page, post push, nav add/remove, template assign, backup and status. `deploy` is blocked in external mode.',
+  };
+}
+
+function parseCount(value) {
+  const count = Number(String(value || '').trim());
+  return Number.isFinite(count) && count >= 0 ? count : 0;
+}
+
+function normalizeMenus(rows) {
+  if (!Array.isArray(rows)) return [];
+  return rows.map(row => ({
+    id: Number(row.term_id ?? row.ID ?? row.id ?? 0),
+    name: String(row.name ?? row.title ?? ''),
+    slug: String(row.slug ?? ''),
+    locations: Array.isArray(row.locations) ? row.locations.map(String) : [],
+  })).filter(menu => menu.slug);
+}
+
+function inferWordPressShape({themeInfo, menus, pageTemplates, navigationPostCount}) {
+  const isBlockTheme = themeInfo?.is_block_theme === true;
+  const hasAssignedClassicMenu = menus.some(menu => (menu.locations ?? []).length > 0);
+  const hasBlockNavigation = Number(navigationPostCount) > 0;
+  let navigation = 'unknown';
+  if (hasAssignedClassicMenu && hasBlockNavigation) navigation = 'mixed';
+  else if (hasAssignedClassicMenu) navigation = 'classic-menu';
+  else if (hasBlockNavigation) navigation = 'block-navigation';
+
+  const classicTemplates = Object.keys(pageTemplates || {});
+  let pageTemplatesMode;
+  if (isBlockTheme && classicTemplates.length) pageTemplatesMode = 'mixed';
+  else if (isBlockTheme) pageTemplatesMode = 'fse';
+  else if (classicTemplates.length) pageTemplatesMode = 'classic';
+  else pageTemplatesMode = 'none';
+
+  return {
+    themeType: isBlockTheme ? 'block' : 'classic',
+    navigation,
+    pageTemplates: pageTemplatesMode,
+  };
+}
+
+/** Read-only WordPress inspection used to route content/design operations by real site shape. */
+export async function inspectRemoteWordPress(project, {exec = defaultExec} = {}) {
+  const ssh = createSSH(project, {execFile: exec});
+  const wp = args => ssh.wp(args).trim();
+  const themeRows = safeJson(wp(['theme', 'list', '--status=active', '--format=json']), []);
+  const themeInfo = Array.isArray(themeRows) ? themeRows[0] : {};
+  const pluginRows = safeJson(wp(['plugin', 'list', '--format=json']), []);
+  const plugins = Array.isArray(pluginRows) ? pluginRows.map(plugin => String(plugin.name)) : [];
+  const menus = normalizeMenus(safeJson(wp(['menu', 'list', '--fields=term_id,name,slug,locations', '--format=json']), []));
+  const navigationPostCount = parseCount(wp(['post', 'list', '--post_type=wp_navigation', '--post_status=publish', '--format=count']));
+  const pageTemplates = safeJson(wp(['eval', 'echo wp_json_encode(wp_get_theme()->get_page_templates());']), {});
+  const postTypeRows = safeJson(wp(['post-type', 'list', '--public=1', '--format=json']), []);
+  const taxonomyRows = safeJson(wp(['taxonomy', 'list', '--public=1', '--format=json']), []);
+  const shape = inferWordPressShape({themeInfo, menus, pageTemplates, navigationPostCount});
+  const fluentform = plugins.includes('fluentform');
+  return {
+    wordpressVersion: wp(['core', 'version']),
+    activeTheme: themeInfo?.name || '',
+    plugins,
+    ...shape,
+    publicPostTypes: Array.isArray(postTypeRows) ? postTypeRows.map(row => String(row.name)) : [],
+    publicTaxonomies: Array.isArray(taxonomyRows) ? taxonomyRows.map(row => String(row.name)) : [],
+    menus,
+    pageTemplates: shape.pageTemplates,
+    classicPageTemplates: pageTemplates,
+    forms: {fluentform},
+    counts: {
+      pages: parseCount(wp(['post', 'list', '--post_type=page', '--post_status=publish', '--format=count'])),
+      posts: parseCount(wp(['post', 'list', '--post_type=post', '--post_status=publish', '--format=count'])),
+      media: parseCount(wp(['post', 'list', '--post_type=attachment', '--post_status=any', '--format=count'])),
+      blockNavigationPosts: navigationPostCount,
+    },
+    inspectedAt: new Date().toISOString(),
   };
 }
 

@@ -1,14 +1,14 @@
-# WordPress Harness（Starter 可选）
+# WordPress Builder（Starter 可选）
 
-这是当前唯一维护的 WordPress AI 建站基线：一个 **Hostinger 部署 Harness**，加一个**可选的 Classic WordPress B2B Starter Template**。Starter 是新站的快速正面示例；Harness 同样支持接管既有 WordPress 站点，并且不会假设它们使用 Starter。
+这是当前唯一维护的 WordPress AI 建站基线：一个 **WordPress Builder CLI 和 Skill Suite**，加一个**可选的 Classic WordPress B2B Starter Template**。Starter 是新站的快速正面示例；Builder 同样支持接管既有 WordPress 站点，并且不会假设它们使用 Starter。
 
-- Harness 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
+- WordPress Builder 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
 - Starter Template 仓库：<https://github.com/jackzhang1314/b2b-wordpress-starter-template>
-- 当前 Harness 基线：`2.15.0`
+- 当前 WordPress Builder 基线：`2.16.0`
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
-> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.15.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.16.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
 
 ### 交给 Codex 的最小指令
 
@@ -19,8 +19,8 @@ Clone https://github.com/jackzhang1314/wordpress-build-skill.git.
 Read README.md, AGENTS.md, docs/HARNESS-GUIDE.md and examples/classic-b2b-starter/README.md first.
 Do not use the historical docs as the current default architecture.
 Repair the local environment with `node harness/bootstrap.mjs --fix`.
-For a new site you may use: node harness/cli.mjs init <kebab-case-project-name> --root ../projects --from-starter.
-For an existing WordPress site use: node harness/cli.mjs adopt <kebab-case-project-name> --domain <domain>.
+For a new site you may use: node wordpress-builder.mjs init <kebab-case-project-name> --root ../projects --from-starter.
+For an existing WordPress site use: node wordpress-builder.mjs adopt <kebab-case-project-name> --domain <domain>.
 Before any remote write, ask me for the Hostinger SSH/domain values or use the values I provide.
 ```
 
@@ -52,7 +52,7 @@ git clone https://github.com/jackzhang1314/wordpress-build-skill.git
 cd wordpress-build-skill
 node harness/bootstrap.mjs --fix
 
-node harness/cli.mjs init my-factory-site \
+node wordpress-builder.mjs init my-factory-site \
   --root /absolute/path/to/projects \
   --from-starter
 ```
@@ -75,31 +75,39 @@ node harness/cli.mjs init my-factory-site \
 
 ```bash
 cd /absolute/path/to/projects/my-factory-site
-node /absolute/path/to/wordpress-build-skill/harness/cli.mjs --project . check
+node /absolute/path/to/wordpress-build-skill/wordpress-builder.mjs --project . check
 ```
 
 ### B. 接管任意既有 WordPress 站点
 
 ```bash
-node /path/to/wordpress-build-skill/harness/cli.mjs adopt existing-factory \
+node /path/to/wordpress-build-skill/wordpress-builder.mjs adopt existing-factory \
   --root /absolute/path/to/projects \
   --domain existing-site.hostingersite.com
 ```
 
 `adopt` 会生成 `mode: external` 的项目，读取线上 WordPress、active theme、插件清单和站点信息，并复用账号级 SSH key。外部项目允许内容、导航、模板分配、备份、审计和状态检查；但 `deploy`、`media`、`content`、`setup` 会被阻断，避免用本地 Starter 覆盖客户线上代码。
 
-### C. 接入 Hostinger
+### C. 检查真实 WordPress 形态
+
+```bash
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . project inspect
+```
+
+它会读取 WordPress 版本、active theme、theme type、导航机制、page templates、插件、公开 CPT/taxonomy、表单和内容计数。该结果决定 Content 和 Design Skill 能安全执行哪些操作。
+
+### D. 接入 Hostinger
 
 先确认 Hostinger CLI 和账户访问：
 
 ```bash
-node /path/to/wordpress-build-skill/harness/cli.mjs hostinger setup --install --connect
+node /path/to/wordpress-build-skill/wordpress-builder.mjs hostinger setup --install --connect
 ```
 
 然后把 `project.json` 里的 `domain` 改成实际测试/生产域名，再运行 SSH 向导：
 
 ```bash
-node /path/to/harness/cli.mjs --project . ssh setup
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . ssh setup
 ```
 
 向导会自动完成：
@@ -112,13 +120,13 @@ node /path/to/harness/cli.mjs --project . ssh setup
 
 SSH key 是 hosting account 级的：同一个 `u123456789` 账号下的网站可以复用 `~/.ssh/hostinger-u123456789_ed25519`。新项目默认选择这个账号级 key，不再复制旧项目里的 key。
 
-自动 bootstrap 使用已授权 Hostinger CLI 的 Files + temporary Cron Job；成功后删除临时 Cron。若 API 权限或主机状态不允许，命令会自动降级：复制 public key、打开 hPanel，让用户粘贴一次。保存后重新运行 `ssh setup`。已有可用 private key 的用户传 `--ssh-key <path>`；不想让 Harness 自动写入 key 时加 `--no-install-key`。
+自动 bootstrap 使用已授权 Hostinger CLI 的 Files + temporary Cron Job；成功后删除临时 Cron。若 API 权限或主机状态不允许，命令会自动降级：复制 public key、打开 hPanel，让用户粘贴一次。保存后重新运行 `ssh setup`。已有可用 private key 的用户传 `--ssh-key <path>`；不想让 WordPress Builder 自动写入 key 时加 `--no-install-key`。
 
 然后：
 
 ```bash
-node /path/to/wordpress-build-skill/harness/cli.mjs --project . doctor
-node /path/to/wordpress-build-skill/harness/cli.mjs --project . deploy --with-content
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . doctor
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . deploy --with-content
 ```
 
 - 首次部署使用 `--with-content` 导入 example/seed。
@@ -126,22 +134,22 @@ node /path/to/wordpress-build-skill/harness/cli.mjs --project . deploy --with-co
 - 导航只在明确需要时用 `--with-nav` 重建。
 - 生产站点不要把真实 SSH、密码、SMTP secret 提交进 Git。
 
-### C. 交付前验证
+### D. 交付前验证
 
 ```bash
-node /path/to/wordpress-build-skill/harness/cli.mjs --project . cms-audit
-node /path/to/wordpress-build-skill/harness/cli.mjs --project . editor-audit
-node /path/to/wordpress-build-skill/harness/cli.mjs --project . audit-fields
-node /path/to/wordpress-build-skill/harness/cli.mjs --project . verify --screenshots
-node /path/to/wordpress-build-skill/harness/cli.mjs --project . verify-form
-node /path/to/wordpress-build-skill/harness/cli.mjs --project . credentials show
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . cms-audit
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . editor-audit
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . audit-fields
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . verify --screenshots
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . verify-form
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . credentials show
 ```
 
 `credentials show` 会输出后台地址、账号、一次性生成/轮换后的密码，用于直接交给站点所有者。
 
 ## 3. 日常运营与热更新
 
-WordPress 不需要停机更新。Harness 通过 SSH/WP-CLI 同步主题、插件和受控内容，正常部署流程包含备份、缓存清理和验证。
+WordPress 不需要停机更新。WordPress Builder 通过 SSH/WP-CLI 同步主题、插件和受控内容，正常部署流程包含备份、缓存清理和验证。
 
 | 场景 | 命令 |
 | --- | --- |
@@ -184,7 +192,7 @@ WordPress 不需要停机更新。Harness 通过 SSH/WP-CLI 同步主题、插�
 ```text
 init --from-starter
 → 修改 site-data / ACF demo 为客户真实信息
-→ 本地 npm test + node harness/cli.mjs --project . check
+→ 本地 npm test + node wordpress-builder.mjs --project . check
 → 接入 project.json SSH/domain
 → deploy --with-content（首次）
 → cms-audit / audit-fields / editor-audit
@@ -202,7 +210,7 @@ npm ci
 npm run typecheck
 npm run lint
 npm test
-node harness/cli.mjs --project examples/classic-b2b-starter check
+node wordpress-builder.mjs --project examples/classic-b2b-starter check
 npm run package:starter
 ```
 

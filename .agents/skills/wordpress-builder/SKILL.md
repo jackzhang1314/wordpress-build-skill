@@ -1,73 +1,44 @@
 ---
 name: wordpress-builder
-description: 用 Codex 连接 WordPress，以设计系统与视觉 QA 驱动 8 阶段管线；v2 新站默认经典 PHP 主题 + ACF 字段与业务插件 CPT/RFQ，通过 SSH/WP-CLI Harness 构建、预览、部署、验收和增量更新。
+description: Route WordPress Builder tasks for new Starter sites, existing WordPress adoption, content/CMS changes, theme/template work, deployment, audits or recovery; enforce project mode and safety before execution.
 ---
 
-# Codex WordPress 建站：8 阶段设计工程管线
+# WordPress Builder Router
 
-使用本 Skill 目录的 `scripts/wp.mjs` 调用独立 WordPress 工具。命令为 `node "<本 Skill 绝对目录>/scripts/wp.mjs" ...`。若文件缺失，在本项目根目录执行 `npm ci && npm run build`；不要调用资料快照中的扩展构建脚本。
+This is the main entrypoint for the WordPress Builder skill suite. It routes work to `wordpress-setup`, `wordpress-content`, `wordpress-design` or `wordpress-delivery`.
 
-先阅读 [执行接口](references/runtime.md)。需要整站任务时阅读 [建站与验收](references/site-workflow.md)。设计 token、Pattern、评分卡与反 AI 味规则见 [设计系统与视觉 QA](references/design.md)。历史 `selectTools/wpRead/wpWriteContent` 是另一个宿主的接口，不在 Codex 里直接调用。
+Before a write, identify:
 
-按顺序执行 8 个阶段。阶段结论写入任务目录；恢复任务时先读取已有阶段文件、`status` 和远端状态，再从下一项未完成操作继续，不重复已确认的写入。
+1. Project mode: `source` or `external`.
+2. Source profile: `starter` or `custom`.
+3. WordPress shape: classic, block, hybrid or unknown.
+4. Whether the user authorized production writes.
 
-**v2 新站默认 [经典 PHP 主题 + ACF](references/classic-acf-default.md)**：普通 PHP 模板承载视觉，ACF 承载可编辑内容，业务插件承载 CPT/taxonomy/RFQ；不要为新站默认引入 Block Theme。历史自由模板与区块规范仍用于旧站维护。生成或修改主题模板与 PHP 代码时，必读 [自由模板与主题代码工程规范](references/theme-code.md)——模板优先级、文档壳、ACF REST 细节、CSS 纪律、部署坑全部来自隔离站实测。
+For unknown shape, prefer `node wordpress-builder.mjs project inspect`.
 
-## 阶段 1：Brief
+## Routing
 
-1. 从当前用户任务确定建站范围、目标语言、企业事实、素材、询盘入口和发布授权。会话已有授权持续有效，不按每页重复确认；缺失业务事实标记待补，不编造认证、客户或性能参数。测试企业必须明确标注为示例。
-2. 记录资料路径、参数来源、图片来源、语言、转化目标、已授权/未授权范围和缺失项。来源文件要列入后续计划的 `sourceFiles`。
-3. 连接从环境读取 `WP_URL`、`WP_USERNAME`、`WP_APP_PASSWORD`，可选 `WP_REST_URL`。不要输出密码、读取无关应用凭据或写入计划。
+| Task | Load |
+| --- | --- |
+| Environment, Hostinger, SSH key, new project, adoption | [wordpress-setup](../wordpress-setup/SKILL.md) |
+| Pages, posts, navigation, ACF, CPT, forms, CMS audit | [wordpress-content](../wordpress-content/SKILL.md) |
+| Design system, theme, page template, component, accessibility | [wordpress-design](../wordpress-design/SKILL.md) |
+| Check, deploy, backup, release verification, rollback | [wordpress-delivery](../wordpress-delivery/SKILL.md) |
 
-## 阶段 2：Sitemap
+## Required references
 
-1. 根据采购者动作列出页面清单：至少明确首页、产品、关于、联系；按业务补充案例、服务和详情入口。四页是标准起点，不是完成定义。
-2. 为每页定义唯一主转化目标和次级动作（询盘、规格下载、电话、表单、产品入口）。排除没有企业事实支撑的页面。
-3. 输出导航层级：一级导航、页脚入口、产品/案例归类和跨页互链关系。原生页面标题由主题处理，正文标题从 H2 开始。
+- [Project contract](references/project-contract.md)
+- [Mode safety](references/mode-safety.md)
+- [Command map](references/command-map.md)
+- [Starter versus existing](references/starter-vs-existing.md)
+- [Handoff rules](references/handoff-rules.md)
 
-## 阶段 3：内容模型
+## Hard safety rules
 
-1. 用 `doctor --task <目录>` 读取实际账号权限、主题、区块及内容模型；用 `content-type --type <实际类型>` 读取 `/wp/v2/types` 声明和真实写入 schema。不能把 unknown 当成不支持。
-2. 产品、案例或批量导入任务阅读 [内容模型与导入](references/content.md)。先用实际 CPT/ACF 字段建立产品与案例结构，再 `content-plan/content-apply`；字段更新可保留完整原文。不要为使用工具擅自重注册客户内容模型或安装测试插件。ACF 必装；字段组开启 `show_in_rest` + `allow_in_bindings`；REST 写图片字段传附件 ID（GET 返回的也是 ID，前台渲染自动转 URL）。
-3. 映射每个页面的文字、图片、参数表和内部引用；素材使用 `upload-media` 上传已确认的本地图片/PDF，再用实际 mediaId 建图像块。不要把测试截图或生成图冒充企业实拍。参考 [素材说明](references/media.md)。
+1. Starter is an optional fast path, never a requirement for existing sites.
+2. `external` projects must not run `deploy`, `media`, `content`, `setup` or `configure-seo`.
+3. Production writes require confirmation and a backup or rollback plan.
+4. If template or plugin code must change on an external site, stop and propose a scoped source-custody upgrade.
+5. After any write, use the delivery skill to verify the affected live path and data.
 
-## 阶段 4：设计系统
-
-1. 读取实际主题 `theme.json`、模板和已注册区块；确认色板、字号、间距、行高、圆角和阴影 token。默认保留当前主题；注册区块存在不代表任意设计属性可用。
-2. 优先使用主题已注册 block pattern。没有合适主题时，仅在授权范围内按 [设计系统与视觉 QA](references/design.md) 生成 token 化 Block Theme，并保留证据与恢复方式。
-3. 显式加载本地 `frontend-design` skill 获取美学方向；再按 `references/design.md` 把方向落到 WordPress token、Pattern、类名和视觉 QA。两者互补：frontend-design 管方向与自批评，design.md 管工程落地。
-4. 先完成一页视觉验证，再批量扩展。每个页面只保留一个签名视觉焦点，其余区块服从统一节奏。
-5. 复杂视觉页面（首页、详情页、分类页、专题页）先过 HTML 预览门：产出 `design/preview-[page]-v{n}.html` 静态预览（复用主题 token 的类名与视觉、每个待编辑元素带 `data-field="acf字段名"`），浏览器桌面 + 390px QA 通过并经用户确认后再转 WordPress 模板；`data-field` 与 ACF 字段名一一对应，转模板时不允许改名或遗漏。
-
-## 阶段 5：页面生成
-
-1. 按现有计划文件执行 `build --plan <文件> --task <目录>` 创建草稿，并用实际 ID 补齐内部链接。`page:key` 只用于计划内页面引用；全部 ID 返回后必须看到最终互链，临时内容不可进入验收。
-2. 新任务先读取现有页面以避免覆盖。当前批量 build 面向新页面；已有同 slug 页面会拒绝创建，不能换 slug 偷绕。计划一经执行固定，恢复使用相同文件和目录；不能删任务目录重建。
-3. 改稿先 `read-page` 取得指纹，使用 `page-edit-plan` 生成完整前后稿并审阅，再 `page-edit-apply`。编辑计划替换整个正文，输入需保留无关内容；局部包含未适配区块的复杂页面先研究保留方法。
-4. 结果未知时读取操作记录和远端状态，不重复 POST；已收到响应但回读失败，重复相同命令只继续回读。锁冲突须先核对 owner.json 中的真实进程，不能仅凭文件时间删锁。
-5. 复用型视觉页面（产品/案例详情、产品分类等）默认走 D 模式自由模板：主题根目录 `single-{cpt}.php` / `taxonomy-{tax}.php`，完整文档壳 + `block_template_part()` + `get_field()` 读 ACF，自由 HTML 复用主题 token；同时删除同层级 `.html` 区块模板（区块模板优先级更高，会压过 PHP）。模板选择规则与实测优先级见 docs/14。需要后台逐篇切换时再注册 `templates/*.html` customTemplates + Block Bindings（B 模式）。
-6. 页面级 ACF 字段组跟随模板成对输出（`page-*.php` + `acf-*.php`，location 绑定 `page_template`），CPT 字段组集中注册并全部开启 `show_in_rest` + `allow_in_bindings`；图片字段 `return_format: url`，REST 写入传附件 ID。询盘表单优先 Fluent Forms 短代码，不手写表单处理。
-7. 页面级自由模板命名带版本号（`page-contact-v1.php`），迭代出 v2 而非覆盖 v1；新版本页面切换并验证通过后再删旧文件。模板层级模板（single/taxonomy）由 git 管版本，不加版本号。
-8. 自由模板必须过 [主题代码工程规范](references/theme-code.md) 的基线：完整文档壳（禁 `get_header()`，用 `block_template_part()` + `wp_head()/wp_footer()`）、ABSPATH 守卫、`title-tag` 支持、skip link、可移植路由 helper、ACF 安全读取 helper。站点首页用 `front-page.php` 委托（自定义页面模板对首页无效，实测）。
-9. 部署模板后按 [theme-code 规范](references/theme-code.md) 第 7 节验证：隔离站模板部件改动必须整进程重启 Playground 再验；交付前跑第 8 节检查清单。
-
-## 阶段 6：视觉 QA
-
-1. 使用可用浏览器工具登录并检查真实草稿；桌面与 390px 都截图并保存到任务目录。API 成功不能替代截图和编辑器检查。
-2. 读取原生编辑器有效块、单一 H1、图片真实加载、按钮状态、焦点、横向溢出和链接目标。按 [设计系统与视觉 QA](references/design.md) 的 6 维×4 分评分卡打分。
-3. 评分低于 20/24 时按评分卡定位问题，只做定点修改后复测；每轮记录截图路径、各维得分、问题、修改和复测结果。最多 3 轮；仍未通过如实报告阻塞，不降标交付。
-
-## 阶段 7：修订
-
-1. 评分卡通过后做最后文案与结构微调：检查首屏具体性、禁用词、行业语调、段落长度和标题表达，遵循 `references/design.md` 反 AI 味规则。
-2. 补齐或修正图片 alt、外链 rel/target、内链锚点与按钮文字；保留企业事实来源，不借修订新增未授权声明。
-3. 文案改动进入真实页面后复核关键首屏和移动端版式；改动超过微调范围时回到阶段 5 的改稿流程。
-
-## 阶段 8：发布
-
-1. 已授权发布时执行同一命令加 `--publish`。工具只改变状态、保留正文，并设置站点标题、描述和首页。
-2. 导航使用 `template-parts` 中的真实 ID 和唯一导航原文生成 `navigation-plan`；审阅影响后在既有授权范围执行 `navigation-apply`。它影响所有引用该模板部件的页面。
-3. 检查已发布前台、首页、导航的实际链接与手机菜单开关；核对 `<title>`、无 theme-compat 兜底标记、REST 无 `source: custom` 模板覆盖（[theme-code 检查清单](references/theme-code.md) 第 8 节）。交付真实 URL、ID、状态、评分卡、截图证据目录，以及仍未验证的业务要求。表单创建不等于邮件送达，静态产品表格不等于 ACF 动态绑定。
-4. 发布写入结果未知时，先读操作记录、远端状态和前台证据，再决定是否只回读或继续；不要凭猜测重复 POST。
-
-当前工具完成度以本仓库验收记录为准。CMS/ACF 文本字段、原生字段绑定与 CSV 草稿导入已有隔离站实测；复杂 ACF 字段、产品模板设计、复杂页面局部编辑、表单送达和 SEO 插件写入仍需后续实现或具体适配。继续推进完整任务，同时明确具体缺口。
+Return to this router when the user changes task type or when the selected skill says another discipline is required.

@@ -7,6 +7,7 @@ export const slug = /^[a-z0-9][a-z0-9-]*$/;
 export const projectSchema = z.object({
   title: z.string().min(2),
   mode: z.enum(['source', 'external']).default('source'),
+  sourceProfile: z.enum(['starter', 'custom']).default('custom'),
   description: z.string().default(''),
   timezone: z.string().default(''),
   slug: z.string().regex(slug).optional(),
@@ -80,6 +81,26 @@ export const projectSchema = z.object({
     wpVersion: z.string().optional(),
     activeTheme: z.string().optional(),
     plugins: z.array(z.string()).default([]),
+    themeType: z.enum(['classic', 'block', 'hybrid', 'unknown']).optional(),
+    navigation: z.enum(['classic-menu', 'block-navigation', 'mixed', 'unknown']).optional(),
+    pageTemplates: z.enum(['classic', 'fse', 'mixed', 'none', 'unknown']).optional(),
+    publicPostTypes: z.array(z.string()).default([]),
+    publicTaxonomies: z.array(z.string()).default([]),
+    menus: z.array(z.object({
+      id: z.number(),
+      name: z.string(),
+      slug: z.string(),
+      locations: z.array(z.string()).default([]),
+    })).default([]),
+    forms: z.object({
+      fluentform: z.boolean().default(false),
+    }).default({}),
+    counts: z.object({
+      pages: z.number().default(0),
+      posts: z.number().default(0),
+      media: z.number().default(0),
+      blockNavigationPosts: z.number().default(0),
+    }).default({}),
     inspectedAt: z.string().optional(),
   }).optional(),
   paths: z.object({
@@ -92,6 +113,16 @@ export const projectSchema = z.object({
 export function normalizeLegacyProject(raw) {
   const value = {...raw};
   value.slug ??= value.slug ?? raw.slug ?? slugify(raw.title ?? '');
+  if (raw.sourceProfile === undefined) {
+    const required = value.requiredPlugins ?? [];
+    const looksLikeLegacyStarter = value.mode !== 'external'
+      && required.includes('advanced-custom-fields')
+      && required.includes('seo-by-rank-math')
+      && required.includes('fluentform')
+      && required.includes('classic-editor')
+      && Number.isFinite(Number(raw.routeCount));
+    value.sourceProfile = looksLikeLegacyStarter ? 'starter' : 'custom';
+  }
   if (!value.theme && raw.themeName) value.theme = raw.themeName;
   if (!value.plugin && raw.pluginSlug) value.plugin = raw.pluginSlug;
   if (raw.partPostType && !value.contentCounts?.some(item => item.postType === raw.partPostType)) {
