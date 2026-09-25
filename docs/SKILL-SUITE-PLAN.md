@@ -234,26 +234,41 @@ This contract is the main protection against the common failure mode: changing s
 
 Keep the existing `wordpress-builder` skill path during migration.
 
+The refactor will also introduce the clean CLI entrypoint now, not in a later unrelated release:
+
+```bash
+node wordpress-builder.mjs --project . status
+```
+
+`wordpress-builder.mjs` will become the canonical command path. The existing path will remain as a deprecated compatibility alias:
+
+```bash
+node harness/cli.mjs --project . status
+```
+
+This avoids breaking existing projects, docs and user habits while making the new naming clear. Removing `harness/cli.mjs` should wait for a future major release after all docs, examples and project templates have been migrated.
+
 Migration should be staged:
 
 1. Convert `wordpress-builder` into the router.
 2. Move mixed-purpose references into the four domain skills.
-3. Keep redirects from old reference names while references are still linked elsewhere.
-4. Update README, AGENTS and the WordPress Builder guide.
-5. Run link, command and routing regression checks.
-6. Remove obsolete references only after the suite is stable.
-
-Do not rename `harness/cli.mjs` in the same release as the skill refactor. A cleaner CLI entrypoint can be introduced later behind compatibility support.
+3. Add `wordpress-builder.mjs` as the canonical CLI entrypoint.
+4. Convert `harness/cli.mjs` into a deprecated compatibility wrapper.
+5. Update README, AGENTS, the WordPress Builder guide and executable examples.
+6. Keep redirects from old reference names while references are still linked elsewhere.
+7. Run link, command and routing regression checks.
+8. Remove obsolete references and the deprecated CLI path only after the suite is stable.
 
 ## 10. Implementation phases
 
 ### Phase 1 — Router
 
-Refactor `wordpress-builder` into the main router.
+Refactor `wordpress-builder` into the main router and add the clean CLI entrypoint.
 
 Deliverables:
 
 ```text
+wordpress-builder.mjs
 wordpress-builder/SKILL.md
 wordpress-builder/references/command-map.md
 wordpress-builder/references/project-contract.md
