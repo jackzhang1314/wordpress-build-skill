@@ -1,45 +1,5 @@
-# 新站架构与所有权
+# Moved
 
-搜索质量是前置输入：按 [search-quality.md](search-quality.md) 将页面目的、内容价值、证据和责任融入模型/模板，再按 seo.md 验证技术输出。
+This reference has moved to [../../wordpress-builder/references/project-contract.md](../../wordpress-builder/references/project-contract.md).
 
-范围：从干净且可控制的环境建立企业/产品/询盘网站，支持我们建成站点的维护。暂不接管旧主题、Elementor 或其他既有 builder。
-
-## 统一组合原则
-
-新站默认设计为 **原生区块主题 + 独立业务插件/CPT/Taxonomy + ACF + 原生自定义模板/Patterns + 必要 PHP 动态块 + 定制 CSS/JavaScript**。这是本项目的工程选择，不是官方宣布的唯一最优架构。产品选模板、ACF 编辑和 PHP 渲染不与区块主题对立；用户不要求拖拽设计也可以使用这一组合。
-
-- 模板/部件组织页面；核心块与 Patterns 组织可编辑内容；Bindings 或动态块读取同一份业务数据。按模块复杂度选择实现，不为每页重复搭两套主题。
-- 标准内容优先核心块；复杂外观先使用主题样式/块样式；需要复杂数据、条件或独立交互时开发边界明确的块。允许一个块覆盖完整业务章节，不把每个文本做成新块，也不默认把整页封成单个不可编辑块。
-- `.html` 区块模板不能直接执行 PHP；`block.json` 的 render/render_callback 承担请求时的 PHP 渲染。`patterns/*.php` 的 PHP 是注册时执行，不能据此读取当前产品作为长期动态数据。
-- 独立 PHP 整页模板属于有理由才采用的例外。明确 URL、模板优先级、编辑范围和退出方案；保留标准 hooks 与同一内容模型。原生层级可回退 PHP 不等于它在 Site Editor 中具有同等编辑能力。
-- 当前随包 `assets/php-reference` 与 HONGDA 是经典 PHP 运行基线；独立区块原型已完成代表性测试，完整区块 starter 尚未随包交付。设计默认已统一，不把现有素材目录自动说成新骨架。
-
-总编排组合官方工作流，工具执行动作，证据支持交付。优先复用、必要时薄适配；模块存在不代表工具可用。可运行源码边界见 [reference-site.md](reference-site.md)，具体工程见 [theme-code.md](theme-code.md)。
-
-## 数据与代码归属
-
-| 对象 | 所有者与规则 |
-| --- | --- |
-| 产品/分类/方案、业务字段、询盘校验 | 独立业务插件；换模板不改 ID、slug、字段含义或关系 |
-| 跨主题仍需使用的业务块和数据读取服务 | 业务插件或配套块插件；保持稳定块名与兼容策略 |
-| 页面模板、页头页脚、Patterns、设计 token 和展示变体 | 主题；只与本主题外观有关的展示块可放主题 |
-| 标题、主图、摘要、正文 | 原生 WordPress 字段，不在 ACF 再存同义副本 |
-| 结构化参数/资料与关系 | ACF/原生对象；字段 schema 默认 PHP 管版本，值在数据库，图片引用媒体附件 |
-| 单块实例的装饰与布局选项 | 块属性；不复制权威产品参数 |
-| 产品模板选择、分类布局、用户模板/样式覆盖 | 数据库；备份、版本比较与恢复均要覆盖 |
-
-如需后台编辑 schema 可采用 Local JSON，但每个字段组只保留一个权威定义。ACF 免费字段 + 原生动态块不等于 ACF PRO Blocks；版本、许可、绑定源和编辑器能力分别核验。前台成功读取 ACF 不代表编辑器实时预览、点击原位编辑与双向保存也可用。
-
-分类采用真正 taxonomy 归档；多分类布局用主题拥有的 term 呈现字段和白名单映射，不伪装为 Page。产品模板用原生 customTemplates/postTypes；首页 front-page 优先级单独处理。
-
-## SEO 与渲染
-
-采用 WordPress 服务端生成公开页面 HTML，可在适用部署中加整页缓存/CDN。数据库动态内容与静态 HTML 文件都可被搜索引擎处理；本方案不要求静态导出或无头前端。核心正文、参数、主图和链接由服务器输出，JS 增强交互。Google 的 dynamic rendering 指按访问者分流渲染，和 WordPress 动态块不是同一个概念。
-
-按 [seo.md](seo.md) 设计 URL、抓取、分页、筛选、元信息、结构化数据和性能验收。只采用一个明确的 SEO 输出负责人，避免主题与多个插件重复生成 canonical/schema。技术可抓取、实际索引、排名分开报告，不能承诺收录或排名。
-
-## 环境与交付
-
-Playground 用于快速验证；正式交付核对 PHP、数据库与插件环境。REST 仅负责实际支持的内容操作，当前 build 不是通用主题编译器。
-
-基线覆盖关键页面、后台内容编辑、模板选择、移动交互、询盘、SEO、覆盖合并和恢复。记录实际版本与源码状态。维护已建站保留数据和迭代证据，不因“只支持新站”每次重建数据库。经典 PHP 基线依然有效，只有本次任务需要且授权时才迁移。
+Legacy links are preserved for compatibility. Do not extend this file.

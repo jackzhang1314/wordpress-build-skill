@@ -1,5 +1,26 @@
 # Releases
 
+## 2026-09-26 — WordPress Builder 2.17.0 external safety and account inventory
+
+### Builder
+
+- Added `sites list` to inventory every WordPress site visible to the connected Hostinger account.
+- Added external WordPress shape preflight for navigation and page-template writes.
+- Added lightweight restore snapshots for external page/post, navigation and page-template writes.
+- Block-only navigation now blocks classic menu writes; mixed navigation returns an explicit verification warning.
+- FSE-managed page templates block classic template assignment with actionable guidance.
+
+### Skills
+
+- Setup now includes account inventory.
+- Content documents classic, block, mixed and unknown navigation limits.
+- Delivery documents external write snapshots and backup boundaries.
+
+### Verification
+
+- Full typecheck, lint and test suite passed: 201/201 tests.
+- Live `sites list` verified six visible Hostinger WordPress sites.
+
 ## 2026-09-26 — WordPress Builder 2.16.0 Skill Suite foundation
 
 ### Builder

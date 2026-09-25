@@ -4,11 +4,11 @@
 
 - WordPress Builder 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
 - Starter Template 仓库：<https://github.com/jackzhang1314/b2b-wordpress-starter-template>
-- 当前 WordPress Builder 基线：`2.16.0`
+- 当前 WordPress Builder 基线：`2.17.0`
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
-> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.16.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.17.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
 
 ### 交给 Codex 的最小指令
 
@@ -102,6 +102,12 @@ node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . project in
 
 ```bash
 node /path/to/wordpress-build-skill/wordpress-builder.mjs hostinger setup --install --connect
+```
+
+查看账号下可管理的站点：
+
+```bash
+node /path/to/wordpress-build-skill/wordpress-builder.mjs sites list
 ```
 
 然后把 `project.json` 里的 `domain` 改成实际测试/生产域名，再运行 SSH 向导：

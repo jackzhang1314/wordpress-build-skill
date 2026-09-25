@@ -23,6 +23,7 @@ Not scope: page content editing, visual design, deployment or release acceptance
 ```bash
 node wordpress-builder.mjs bootstrap --fix
 node wordpress-builder.mjs hostinger setup --install --connect
+node wordpress-builder.mjs sites list
 node wordpress-builder.mjs ssh setup
 node wordpress-builder.mjs init <project-name> --root ../projects --from-starter
 node wordpress-builder.mjs adopt <project-name> --domain <domain>

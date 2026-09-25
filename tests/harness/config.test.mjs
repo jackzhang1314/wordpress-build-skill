@@ -9,6 +9,22 @@ test('project schema applies safe defaults and accepts minimal new projects', ()
   assert.equal(parsed.success, true);
   assert.equal(parsed.data.paths.theme, 'theme');
   assert.deepEqual(parsed.data.requiredPlugins, ['advanced-custom-fields', 'seo-by-rank-math', 'fluentform', 'classic-editor']);
+  assert.equal(parsed.data.mode, 'source');
+  assert.equal(parsed.data.sourceProfile, 'custom');
+});
+
+test('legacy Starter projects are detected without forcing Starter rules onto custom projects', () => {
+  const starter = normalizeLegacyProject({
+    title: 'Starter', mode: 'source', theme: 'starter-theme', plugin: 'starter-model',
+    requiredPlugins: ['advanced-custom-fields', 'seo-by-rank-math', 'fluentform', 'classic-editor'],
+    routeCount: 24,
+  });
+  const custom = normalizeLegacyProject({
+    title: 'Custom', mode: 'source', theme: 'custom-theme', plugin: 'custom-model',
+    requiredPlugins: [],
+  });
+  assert.equal(starter.sourceProfile, 'starter');
+  assert.equal(custom.sourceProfile, 'custom');
 });
 
 test('legacy project fields are normalized into generic content counts', () => {

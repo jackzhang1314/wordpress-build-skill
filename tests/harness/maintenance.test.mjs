@@ -239,6 +239,18 @@ test('external block-only navigation blocks classic menu writes', async () => {
   }
 });
 
+test('external hybrid navigation allows classic writes but warns about other locations', async () => {
+  const env = makeSite({items: [{id: 1, title: 'Home'}]});
+  try {
+    env.site.project = {...env.site.project, mode: 'external', remote: {navigation: 'mixed'}};
+    const result = await navAdd(env.site, ['Products', '--url', '/products/']);
+    assert.equal(result.navigationWarning, 'This site has both classic menu and block navigation signals; verify every rendered navigation location.');
+    assert.ok(env.items.some(item => item.title === 'Products'));
+  } finally {
+    env.cleanup();
+  }
+});
+
 test('external FSE projects block classic page-template assignment', async () => {
   const env = makeSite({posts: {'page:about': {id: 2, status: 'publish', content: 'x', modified: 'x'}}});
   try {

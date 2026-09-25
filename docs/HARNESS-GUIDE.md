@@ -107,6 +107,12 @@ node wordpress-builder.mjs hostinger setup --install --connect
 
 `--install` 在 macOS/Linux + Homebrew 下安装官方 Hostinger CLI；无 Homebrew 时返回官方 release 安装指引。`--connect` 用只读订单列表验证账户已授权，不会创建站点。
 
+列出账号下站点：
+
+```bash
+node wordpress-builder.mjs sites list
+```
+
 ### SSH 向导
 
 ```bash

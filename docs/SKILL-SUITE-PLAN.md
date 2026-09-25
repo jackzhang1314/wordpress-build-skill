@@ -1,6 +1,6 @@
 # WordPress Builder Skill Suite Plan
 
-Status: implementation started — Phase 0–5 initial suite implemented; deep reference cleanup and Block/FSE adapters remain  
+Status: initial suite and legacy migration implemented; Block/FSE adapters and source-custody promotion remain
 Date: 2026-09-26  
 Target baseline: v2.16.0  
 

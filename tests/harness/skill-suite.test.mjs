@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {existsSync, readFileSync, statSync} from 'node:fs';
 import {join} from 'node:path';
 import {inspectRemoteWordPress} from '../../harness/lib/external.mjs';
+import {commandMap} from '../../harness/lib/command-map.mjs';
 
 const skillsRoot = join(process.cwd(), '.agents/skills');
 const expectedSkills = [
@@ -48,6 +49,14 @@ test('suite safety blocks source-only operations for external projects', () => {
   const safety = readFileSync(join(skillsRoot, 'wordpress-builder/references/mode-safety.md'), 'utf8');
   assert.match(safety, /External/);
   assert.match(safety, /deploy/);
+});
+
+test('command map includes account discovery and mode-specific ownership', () => {
+  const commands = commandMap.map(item => item.command);
+  assert.ok(commands.includes('sites list'));
+  assert.ok(commands.includes('project inspect'));
+  assert.equal(commandMap.find(item => item.command === 'deploy')?.projectMode, 'source-only');
+  assert.equal(commandMap.find(item => item.command === 'backup')?.projectMode, 'source-or-external');
 });
 
 test('remote project inspection detects classic shape and content inventory', async () => {

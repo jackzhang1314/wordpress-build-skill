@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {existsSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {provisionHostinger, updateProvisionedProject} from '../../harness/lib/hostinger.mjs';
+import {listHostingerWebsites, provisionHostinger, updateProvisionedProject} from '../../harness/lib/hostinger.mjs';
 
 function fakeHostinger(domain, order) {
   return (command, args) => {
@@ -17,6 +17,24 @@ function fakeHostinger(domain, order) {
     return {message: 'Request accepted', order};
   };
 }
+
+test('sites list normalizes Hostinger websites', () => {
+  const execFile = (command, args) => {
+    assert.equal(command, 'hostinger');
+    assert.match(args.join(' '), /hosting websites list/);
+    return JSON.stringify({data: [{
+      domain: 'demo-123.hostingersite.com',
+      username: 'u_test',
+      order_id: 42,
+      is_enabled: true,
+      website_type: 'wordpress',
+      root_directory: '/home/u_test/demo',
+    }]});
+  };
+  const websites = listHostingerWebsites(execFile);
+  assert.equal(websites.length, 1);
+  assert.equal(websites[0].domain, 'demo-123.hostingersite.com');
+});
 
 test('provision is idempotent when website and WordPress already exist', async () => {
   const root = mkdtempSync(join(tmpdir(), 'harness-provision-'));

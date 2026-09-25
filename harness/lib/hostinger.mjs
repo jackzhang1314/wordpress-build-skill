@@ -29,6 +29,11 @@ export function commandValue(args, name, fallback = undefined) {
   return index >= 0 && index + 1 < args.length ? args[index + 1] : fallback;
 }
 
+export function listHostingerWebsites(execFile) {
+  const payload = jsonOutput(execFile, ['hosting', 'websites', 'list']);
+  return Array.isArray(payload?.data) ? payload.data : [];
+}
+
 function persistDomain(projectRoot, domain) {
   const path = join(projectRoot, 'project.json');
   const raw = JSON.parse(readFileSync(path, 'utf8'));

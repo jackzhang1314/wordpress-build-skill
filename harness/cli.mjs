@@ -7,6 +7,7 @@ import {loadProject, resolveProjectRoot} from './lib/config.mjs';
 import {commandExists} from './lib/process.mjs';
 import {createSSH} from './lib/ssh.mjs';
 import {provisionHostinger} from './lib/hostinger.mjs';
+import {listHostingerWebsites} from './lib/hostinger.mjs';
 import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
@@ -64,6 +65,7 @@ Project commands:
   backup                  Back up remote files and database
   media [--force]         Import configured media sources
   content                 Upload the project seed package
+  sites list              List Hostinger websites visible to the connected account
   deploy                  check, backup, plugins, sync, seed, cache, verify
   verify [--screenshots]  Verify live pages and database; --screenshots adds captures
   screenshot              Capture smoke, template or full route sets
@@ -325,6 +327,28 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       const report = await commandBootstrap(args, json, logger);
       outputResult(report, json, logger);
       return report.pass ? 0 : 1;
+    }
+
+    if (command === 'sites') {
+      if (firstValue(args) !== 'list') throw new Error('usage: harness sites list');
+      const websites = listHostingerWebsites(execFileSync).map(website => ({
+        domain: website.domain,
+        url: `https://${website.domain}`,
+        username: website.username,
+        orderId: website.order_id,
+        enabled: website.is_enabled,
+        websiteType: website.website_type,
+        rootDirectory: website.root_directory,
+      }));
+      outputResult({pass: true, count: websites.length, websites}, json, logger);
+      if (!json) {
+        for (const website of websites) {
+          logger(`  ${website.enabled ? 'OK ' : 'OFF'} ${website.domain} (${website.websiteType})`);
+          logger(`      user=${website.username} order=${website.orderId}`);
+        }
+        logger(`\n${websites.length} website${websites.length === 1 ? '' : 's'} found.`);
+      }
+      return 0;
     }
 
     if (command === 'adopt') {
