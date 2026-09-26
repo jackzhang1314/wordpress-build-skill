@@ -228,3 +228,16 @@ yellow-koala-142147.hostingersite.com
    - `/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill/.wordpress-builder/visual/wbc-rich-landing-mobile.png`
 
 历史 Elementor 页面仍未被转换或覆盖。
+
+## 发布与干净克隆复测（2026-09-27 03:26 Asia/Shanghai）
+
+- 功能提交：`7660d21c27bddead29c1db352cc8c16c52ec9fb6`（`feat: add Builder Core Rich Landing`）。
+- 已推送 `main` 并发布 tag：`v2.26.0`。
+- 从 GitHub 干净克隆 `v2.26.0` 后验证通过：
+  - `node harness/bootstrap.mjs --fix`；
+  - `npm run typecheck`；
+  - `npm run lint`；
+  - `npm test`：255/255；
+  - `npm run build`；
+  - `node wordpress-builder.mjs --help`。
+- 干净克隆工作区保持干净（detached HEAD，无未提交文件）。

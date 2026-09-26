@@ -1,7 +1,7 @@
 # WordPress Builder Project Handoff
 
 Handoff date: 2026-09-27
-Handoff time: 2026-09-27 03:55 CST (+08:00)
+Handoff time: 2026-09-27 03:25 CST (+08:00)
 Reason: continuation snapshot after WordPress Builder 2.26.0 added Builder Core Rich Landing.
 Repository: <https://github.com/jackzhang1314/wordpress-build-skill>
 Release branch: `main`
@@ -94,7 +94,7 @@ typecheck: pass
 lint: pass
 tests: 255 / 255 pass
 build: pass
-clean clone of v2.26.0: pending until tag publication
+clean clone of v2.26.0: pass
 ```
 
 ## 2. Canonical setup

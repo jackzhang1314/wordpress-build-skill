@@ -49,6 +49,7 @@
   - CMS audit passed with nine fields and zero problems;
   - desktop and mobile Chrome checks showed no horizontal overflow, 50px CTA targets, valid heading order and approximately 16.27:1 H1 contrast.
 - Captured desktop/mobile screenshots in the ignored local evidence directory.
+- Post-release clean clone of tag `v2.26.0` passed bootstrap, typecheck, lint, all 255 tests, build and CLI help.
 - Historical Elementor pages remained untouched.
 
 ## 2026-09-27 — WordPress Builder 2.25.0 Builder-managed page workflow
