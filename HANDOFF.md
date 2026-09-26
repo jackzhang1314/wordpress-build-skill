@@ -6,7 +6,7 @@ Reason: the current conversation uses GLM; the user is switching to an OpenAI ac
 Repository: <https://github.com/jackzhang1314/wordpress-build-skill>
 Implementation branch: `codex/component-starter-rebuild`
 Synced release branch: `main`
-Current tag / baseline: `v2.19.1`
+Current tag / baseline: `v2.19.2`
 Implementation baseline commit: `6490948`
 Pre-implementation rollback tag: `pre-skill-suite-implementation`
 Current worktree: `/Users/Zhuanz1/.codex/worktrees/component-starter`

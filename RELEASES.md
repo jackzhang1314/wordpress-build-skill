@@ -188,3 +188,12 @@ This release promotes the componentized classic B2B Starter from verification br
 +### Verification
 +
 +- Documentation/version metadata only; run `git diff --check`.
+
+## 2026-09-26 — WordPress Builder 2.19.2 Builder Core template assignment fix
+
+- Fixed assignment of plugin-owned `builder-templates/*.php` page templates on adopted sites.
+- Added regression coverage for external Builder Core template assignment.
+
+### Verification
+
+- Full typecheck, lint and test suite passed: 204/204 tests.
