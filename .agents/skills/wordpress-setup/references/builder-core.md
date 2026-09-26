@@ -6,7 +6,7 @@ It adds:
 
 1. Builder Project and Builder Service CPTs;
 2. Builder Category taxonomy;
-3. nine ACF-backed editable fields covering hero, CTA, benefits, specifications, FAQ and bottom action;
+3. ten ACF-backed editable fields covering hero, CTA, benefits, specifications, FAQ, Fluent Forms RFQ and bottom action;
 4. plugin-owned Canvas and responsive industrial Landing templates;
 5. a stable content layer that works independently of the old theme, Elementor, Divi or another editor.
 
@@ -16,7 +16,10 @@ Install it on an adopted site with:
 
 ```bash
 node wordpress-builder.mjs --project . builder install
+node wordpress-builder.mjs --project . builder form install
 ```
+
+`builder form install` installs/activates Fluent Forms when needed and creates or reuses the purpose-built `Builder equipment RFQ` form. It prints the numeric shortcode for `wbc_form_shortcode`.
 
 By default the command creates a backup, installs/activates ACF, syncs Builder Core and verifies its CPTs.
 
@@ -27,7 +30,7 @@ node wordpress-builder.mjs --project . builder page plan --file content/builder-
 node wordpress-builder.mjs --project . builder page apply --plan <plan-id>
 ```
 
-The input binds a `builder_project` or `builder_service` to a Builder-owned template, writes only the nine Builder Core ACF fields, verifies the live permalink and rolls back automatically on failure. Available templates include:
+The input binds a `builder_project` or `builder_service` to a Builder-owned template, writes only the ten Builder Core ACF fields, verifies the live permalink and rolls back automatically on failure. Available templates include:
 
 ```text
 WordPress Builder Canvas
@@ -39,7 +42,7 @@ This lets the Builder add new landing/product/service pages with its own ACF and
 
 ## Field and template contract
 
-Builder Core `1.1.0` fields:
+Builder Core `1.2.0` fields:
 
 ```text
 wbc_subtitle
@@ -49,6 +52,7 @@ wbc_cta_url
 wbc_benefits
 wbc_specifications
 wbc_faq
+wbc_form_shortcode
 wbc_secondary_cta_label
 wbc_secondary_cta_url
 ```
@@ -61,4 +65,4 @@ Label | Value
 Question | Answer
 ```
 
-The Landing template renders the main editor body plus buyer benefits, a specification table, FAQ disclosures and a bottom CTA. Styles are scoped to `.wordpress-builder-template`; the active theme header/footer and fonts remain responsible for site chrome.
+The Landing template renders the main editor body, buyer benefits, specifications, FAQ, an optional numeric Fluent Forms RFQ and a bottom CTA in that order. Styles are scoped to `.wordpress-builder-template`; the active theme header/footer and fonts remain responsible for site chrome.

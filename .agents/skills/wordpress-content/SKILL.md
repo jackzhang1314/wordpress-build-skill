@@ -50,6 +50,7 @@ For an existing Elementor, Divi or custom-editor site, do not convert old pages.
 
 ```bash
 node wordpress-builder.mjs --project . builder install
+node wordpress-builder.mjs --project . builder form install
 node wordpress-builder.mjs --project . builder page plan --file content/builder-page.json
 node wordpress-builder.mjs --project . builder page apply --plan <plan-id>
 
@@ -61,7 +62,7 @@ node wordpress-builder.mjs --project . template assign service --template builde
 
 Historical Elementor/Divi/Bricks pages stay on their original rendering owner. Builder Core only adds the parallel Builder content layer. Editing third-party page-builder data is a product non-goal: old editor pages are left to their native editor, while new Builder-managed pages use the Builder CPT/ACF/template architecture.
 
-Builder Core `1.1.0` supports nine editable fields: hero subtitle/summary, primary CTA, buyer benefits, specifications, FAQ and bottom CTA. Builder Landing renders these with the main editor body; no Repeater or ACF PRO is required.
+Builder Core `1.2.0` supports ten editable fields: hero subtitle/summary, primary CTA, buyer benefits, specifications, FAQ, numeric Fluent Forms RFQ and bottom CTA. Builder Landing renders the main body first, then benefits/specifications/FAQ/RFQ/bottom CTA; no Repeater or ACF PRO is required.
 
 ## References
 

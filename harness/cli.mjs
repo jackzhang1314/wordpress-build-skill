@@ -35,6 +35,7 @@ import {assignTemplate, argValue, auditFields, editPage, navAdd, navRemove, push
 import {applyBlockNavigation, planBlockNavigation} from './lib/block-navigation.mjs';
 import {applyBlockTemplate, planBlockTemplate} from './lib/block-template.mjs';
 import {applyBuilderPage, planBuilderPage} from './lib/builder-page.mjs';
+import {installBuilderForm} from './lib/builder-form.mjs';
 import {rotateCredentials, showCredentials} from './lib/credentials.mjs';
 import {configureSmtp, testSmtp} from './lib/smtp.mjs';
 import {auditEnvironment, bootstrapActions, repositoryRoot} from './lib/environment.mjs';
@@ -95,6 +96,7 @@ Project commands:
   builder install        Install theme-independent Builder Core CPT/ACF/templates
   builder status         Inspect Builder Core plugin and content types
   builder page plan|apply Create or update a Builder-managed page with live rollback
+  builder form install     Install Fluent Forms and a reusable Builder RFQ form
   project inspect        Inspect shape, templates, navigation, plugins, content and optional routes
   email-setup            Guided setup: create business mailbox + configure SMTP + test
   smtp configure|test    Configure business-mailbox SMTP constants and send a test email
@@ -619,6 +621,14 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
         outputResult(payload, json, logger);
         return payload.pluginActive && payload.contentTypes.builderProject && payload.contentTypes.builderService ? 0 : 1;
       }
+      if (sub === 'form' && args[1] === 'install') {
+        const result = await installBuilderForm(site, args.slice(2), logger);
+        outputResult({
+          ...result,
+          summary: `Builder RFQ form ${result.action}: ${result.shortcode}`,
+        }, json, logger);
+        return 0;
+      }
       if (sub === 'page') {
         const action = args[1];
         const rest = args.slice(2);
@@ -639,7 +649,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
         }
         return 0;
       }
-      throw new Error('usage: builder install|status|page plan|page apply');
+      throw new Error('usage: builder install|status|form install|page plan|page apply');
     }
     if (command === 'credentials') {
       const sub = firstValue(args) ?? 'show';

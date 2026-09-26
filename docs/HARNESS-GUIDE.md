@@ -158,11 +158,12 @@ node wordpress-builder.mjs --project . nav block apply --plan <plan-id>
 
 ```bash
 node wordpress-builder.mjs --project . builder install
+node wordpress-builder.mjs --project . builder form install
 node wordpress-builder.mjs --project . builder page plan --file content/builder-page.json
 node wordpress-builder.mjs --project . builder page apply --plan <plan-id>
 ```
 
-Plan/apply 只允许 Builder CPT、Builder 插件模板和九个 Builder ACF 字段；apply 会复查 drift、创建 snapshot、读回模板/字段、验证公网 verifyText 并自动回滚。Builder Landing 支持 hero、主内容、benefits、specifications、FAQ 和底部 CTA；第三方编辑器私有数据会被拒绝。
+Plan/apply 只允许 Builder CPT、Builder 插件模板和十个 Builder ACF 字段；apply 会复查 drift、创建 snapshot、读回模板/字段、验证公网 verifyText 并自动回滚。Builder Landing 支持 hero、主内容、benefits、specifications、FAQ、Fluent Forms RFQ 和底部 CTA；第三方编辑器私有数据会被拒绝。
 
 FSE template / template part 的精确片段修改：
 

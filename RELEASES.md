@@ -1,5 +1,60 @@
 # Releases
 
+## 2026-09-27 — WordPress Builder 2.27.0 Rich Landing RFQ workflow
+
+### Builder Core
+
+- Upgraded Builder Core from `1.1.0` to `1.2.0`.
+- Added the tenth editable field:
+  - `wbc_form_shortcode`.
+- The field is restricted to a single numeric Fluent Forms shortcode, for example:
+
+```text
+[fluentform id="3"]
+```
+
+- Rich Landing now renders, in order:
+  1. hero;
+  2. main editor body;
+  3. buyer benefits;
+  4. specifications;
+  5. FAQ;
+  6. Fluent Forms RFQ;
+  7. bottom CTA.
+- Added scoped Fluent Forms input, focus and submit-button styling.
+- Kept all fields compatible with ACF Free; no Repeater or ACF PRO is required.
+
+### Reusable RFQ form
+
+- Added `builder form install`.
+- The command installs/activates Fluent Forms when needed, creates or reuses `Builder equipment RFQ`, configures visible same-page confirmation and admin-email notification, and prints the numeric shortcode.
+- Live idempotent reuse returned form ID `3` without changing existing form fields or meta.
+
+### Builder page workflow
+
+- `builder page plan/apply` accepts and reads back the numeric Fluent Forms shortcode field.
+- Invalid shortcodes are rejected before planning.
+- Third-party editor data remains rejected.
+
+### Verification
+
+- Added/updated tests for ten-field exposure, template section order, scoped responsive styles, shortcode validation, Builder-page readback/rollback and canonical `builder form install` behavior.
+- Full local gate passed: typecheck, lint, build and **258/258 tests**.
+- Real Hostinger / Elementor-site E2E:
+  - backed up the site;
+  - installed Fluent Forms `6.2.14`;
+  - created a purpose-built `Builder equipment RFQ` form;
+  - created a realistic virtual `OEM Excavator Buckets for 20–35 Tonne Machines` page;
+  - applied Builder Core `1.2.0`;
+  - verified public HTTP 200 and core page text;
+  - verified `fluentform_3` rendered with technical-buyer fields;
+  - browser-submitted the form;
+  - confirmed Fluent Forms entries increased from 1 to 2;
+  - confirmed visible success confirmation;
+  - desktop/mobile Chrome checks showed no horizontal overflow, 50px buttons and correct heading order;
+  - CMS audit passed with ten fields and zero problems;
+  - historical Elementor page remained unchanged.
+
 ## 2026-09-27 — WordPress Builder 2.26.0 Builder Core Rich Landing
 
 ### Builder Core

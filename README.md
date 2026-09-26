@@ -4,11 +4,11 @@
 
 - WordPress Builder 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
 - Starter Template 仓库：<https://github.com/jackzhang1314/b2b-wordpress-starter-template>
-- 当前 WordPress Builder 基线：`2.26.0`
+- 当前 WordPress Builder 基线：`2.27.0`
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
-> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.26.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.27.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
 
 ### 交给 Codex 的最小指令
 
@@ -120,6 +120,7 @@ Plan 阶段只写本地；Apply 阶段会复查 route owner 和内容漂移、�
 
 ```bash
 node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . builder install
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . builder form install
 
 node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . builder page plan \
   --file content/builder-page.json
@@ -128,7 +129,9 @@ node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . builder pa
   --plan <plan-id>
 ```
 
-该流程只创建/更新 `builder_project` / `builder_service`，绑定 Builder Core 插件模板，写入九个后台可编辑 ACF 字段，验证公网页面，失败自动回滚。Builder Landing 支持 hero、主内容、buyer benefits、specifications、FAQ 和底部 CTA；历史 Elementor/Divi/Bricks 页面和私有编辑器数据不会被修改。
+该流程只创建/更新 `builder_project` / `builder_service`，绑定 Builder Core 插件模板，写入十个后台可编辑 ACF 字段，验证公网页面，失败自动回滚。Builder Landing 支持 hero、主内容、buyer benefits、specifications、FAQ、Fluent Forms RFQ 和底部 CTA；历史 Elementor/Divi/Bricks 页面和私有编辑器数据不会被修改。
+
+真实 Elementor 老站上的虚拟验证页：[OEM Excavator Buckets for 20–35 Tonne Machines](https://yellow-koala-142147.hostingersite.com/builder-projects/oem-excavator-buckets-20-35-tonne/)。该页面明确标注为 prototype，不用虚拟公司资料冒充真实业务证明。
 
 ### E. 安全修改当前路由的 FSE 模板/模板部件
 
@@ -316,7 +319,7 @@ npm run package:starter
 
 ## 8. 当前边界
 
-当前基线已完成 Hostinger 真实部署、路由验证、CMS/ACF 审计、响应式截图、Fluent Forms 浏览器提交验证、原生 Block/FSE custom 模板/导航所有权 E2E、`wp_navigation` 更新/前台验证/自动回滚 E2E、FSE template part 精确 patch / theme override / 自动回滚 E2E、Elementor 老站并行新增 Builder-managed 页面并验证公网/ACF/模板/复放 no-op 的 E2E，以及 Rich Landing 九字段编辑、响应式与可访问性实测。
+当前基线已完成 Hostinger 真实部署、路由验证、CMS/ACF 审计、响应式截图、Fluent Forms 浏览器提交验证、原生 Block/FSE custom 模板/导航所有权 E2E、`wp_navigation` 更新/前台验证/自动回滚 E2E、FSE template part 精确 patch / theme override / 自动回滚 E2E、Elementor 老站并行新增 Builder-managed 页面并验证公网/ACF/模板/复放 no-op 的 E2E，以及 Rich Landing 十字段编辑、Fluent Forms 提交/入库验证、响应式与可访问性实测。
 
 不要把以下内容当作已通用完成的能力：
 

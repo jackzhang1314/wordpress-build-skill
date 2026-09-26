@@ -1,12 +1,12 @@
 # WordPress Builder Project Handoff
 
 Handoff date: 2026-09-27
-Handoff time: 2026-09-27 03:25 CST (+08:00)
-Reason: continuation snapshot after WordPress Builder 2.26.0 added Builder Core Rich Landing.
+Handoff time: 2026-09-27 04:55 CST (+08:00)
+Reason: continuation snapshot after WordPress Builder 2.27.0 added the Rich Landing RFQ workflow.
 Repository: <https://github.com/jackzhang1314/wordpress-build-skill>
 Release branch: `main`
-Current release: `v2.26.0`
-Pre-release baseline commit: `0c5c06f4c9dfeff9dc8911725b733fff572b39f6`
+Current release: `v2.27.0`
+Pre-release baseline commit: `f137eec2e8cef249eb34487510842280649013e0`
 Current worktree: `/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill`
 
 ## 1. Read this first
@@ -22,7 +22,22 @@ The Starter Template is only an optional fast path for new B2B sites. It must ne
 
 ### 2026-09-27 addendum
 
-WordPress Builder `2.26.0` upgrades Builder Core to `1.1.0` with a Rich Landing template:
+WordPress Builder `2.27.0` upgrades Builder Core to `1.2.0` and completes the Rich Landing RFQ path:
+
+```text
+10 editable fields
+hero
+main editor body
+buyer benefits
+specifications
+FAQ
+numeric Fluent Forms RFQ
+bottom CTA
+```
+
+A real virtual replacement page was created on an existing Hello Elementor + Elementor site, the Fluent Forms entry increment and visible success confirmation were browser-verified, and the historical Elementor page remained untouched. SMTP delivery remains unverified.
+
+WordPress Builder `2.26.0` upgraded Builder Core to `1.1.0` with a Rich Landing template:
 
 ```text
 9 editable ACF fields
@@ -40,6 +55,7 @@ No ACF PRO feature is required, and the active theme header/footer remain intact
 WordPress Builder `2.25.0` added the dedicated Builder-managed page workflow:
 
 ```bash
+node wordpress-builder.mjs --project . builder form install
 node wordpress-builder.mjs --project . builder page plan --file content/builder-page.json
 node wordpress-builder.mjs --project . builder page apply --plan <plan-id>
 ```
@@ -84,7 +100,7 @@ git status --short --branch
 Latest tested tag:
 
 ```bash
-v2.26.0
+v2.27.0
 ```
 
 Full verification before handoff:
@@ -92,9 +108,9 @@ Full verification before handoff:
 ```text
 typecheck: pass
 lint: pass
-tests: 255 / 255 pass
+tests: 258 / 258 pass
 build: pass
-clean clone of v2.26.0: pass
+clean clone of v2.27.0: pending until tag publication
 ```
 
 ## 2. Canonical setup
@@ -743,7 +759,7 @@ https://github.com/jackzhang1314/wordpress-build-skill
 
 当前应使用：
 branch/main: main
-tag: v2.26.0
+tag: v2.27.0
 
 请先执行：
 
@@ -766,9 +782,9 @@ tag: v2.26.0
 
 当前项目基线：
 
-- 最新实现 tag: v2.26.0
+- 最新实现 tag: v2.27.0
 - 实施前回滚 tag: pre-skill-suite-implementation
-- 当前 tests: 255/255 passing
+- 当前 tests: 258/258 passing
 - WordPress Builder canonical CLI: node wordpress-builder.mjs
 - legacy compatibility CLI: node harness/cli.mjs
 
@@ -789,11 +805,12 @@ tag: v2.26.0
 
 第一个开发任务是：
 
-1. 先复测 `v2.26.0` 基线；
-2. 用 Rich Landing 做一个真实客户替代页面，补充行业事实、SEO 文案和视觉迭代；
-3. 在真实客户场景中使用 `builder page plan/apply`，保持第三方编辑器历史页面不动；
-4. 在真实 Hostinger Block/FSE 站点上谨慎试运行 `block-template plan`；
-5. 如需修改 theme.json、PHP theme 文件或复杂 inline navigation，先设计备份、回滚和 source-custody 方案。
+1. 先复测 `v2.27.0` 基线；
+2. 用真实客户资料替换当前虚拟 Rich Landing 页面，并做用户审美确认；
+3. 配置/验证 SMTP 通知真实送达；
+4. 在真实客户场景中使用 `builder page plan/apply`，保持第三方编辑器历史页面不动；
+5. 在真实 Hostinger Block/FSE 站点上谨慎试运行 `block-template plan`；
+6. 如需修改 theme.json、PHP theme 文件或复杂 inline navigation，先设计备份、回滚和 source-custody 方案。
 
 不要删除历史文档；不要在没有备份和授权的情况下修改生产站点。
 ```

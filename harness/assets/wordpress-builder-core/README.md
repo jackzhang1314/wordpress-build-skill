@@ -4,7 +4,7 @@ Theme-independent plugin installed by WordPress Builder. It registers Builder co
 
 ## Version
 
-Current version: `1.1.0`
+Current version: `1.2.0`
 
 ## Content layer
 
@@ -18,9 +18,18 @@ The plugin registers:
 
 All templates support `page`, `builder_project`, and `builder_service`. They call `get_header()`, `get_footer()`, and `the_content()`, so the existing site chrome and main editable body remain intact.
 
+## Reusable RFQ form
+
+On an adopted site, create or reuse the purpose-built Fluent Forms form:
+
+```bash
+node wordpress-builder.mjs --project . builder form install
+```
+
+The command installs/activates Fluent Forms when needed, creates `Builder equipment RFQ`, uses the site admin email for notification, and prints the numeric shortcode for `wbc_form_shortcode`.
 ## Editable fields
 
-Builder Core exposes nine free-ACF fields with individual REST exposure and admin instructions:
+Builder Core exposes ten free-ACF fields with individual REST exposure and admin instructions:
 
 | Field | Type | Landing usage |
 | --- | --- | --- |
@@ -31,6 +40,7 @@ Builder Core exposes nine free-ACF fields with individual REST exposure and admi
 | `wbc_benefits` | textarea | Buyer benefit cards |
 | `wbc_specifications` | textarea | Specification table |
 | `wbc_faq` | textarea | FAQ disclosures |
+| `wbc_form_shortcode` | text | Numeric Fluent Forms shortcode rendered after FAQ |
 | `wbc_secondary_cta_label` | text | Bottom action |
 | `wbc_secondary_cta_url` | url | Bottom action destination |
 
@@ -42,7 +52,7 @@ Label | Value
 Question | Answer
 ```
 
-No Repeater, Gallery, Flexible Content, or ACF PRO feature is required.
+No Repeater, Gallery, Flexible Content, or ACF PRO feature is required. The form shortcode is restricted to `[fluentform id=123]` when supplied through `builder page plan/apply`; the Rich Landing template renders it after FAQ and before the bottom CTA.
 
 ## Scoped styles
 

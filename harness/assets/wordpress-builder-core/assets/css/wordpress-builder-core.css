@@ -264,3 +264,105 @@
         transform: none;
     }
 }
+
+.wordpress-builder-template__form {
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border: 1px solid var(--wbc-line);
+    background: var(--wbc-surface);
+}
+
+.wordpress-builder-template__form-intro {
+    max-width: 72ch;
+    margin: 0 0 1.35rem;
+    color: var(--wbc-muted);
+    line-height: 1.6;
+}
+
+.wordpress-builder-template .fluentform {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 1.25rem;
+}
+
+.wordpress-builder-template .fluentform .ff-el-group {
+    margin: 0 0 1.1rem;
+}
+
+.wordpress-builder-template .fluentform .ff-el-group:has(textarea),
+.wordpress-builder-template .fluentform .ff_submit_btn_wrapper {
+    grid-column: 1 / -1;
+}
+
+.wordpress-builder-template .fluentform .ff-el-input--label label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--wbc-ink);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.wordpress-builder-template .fluentform input[type="text"],
+.wordpress-builder-template .fluentform input[type="email"],
+.wordpress-builder-template .fluentform input[type="tel"],
+.wordpress-builder-template .fluentform input[type="url"],
+.wordpress-builder-template .fluentform select,
+.wordpress-builder-template .fluentform textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.72rem 0.8rem;
+    border: 1px solid var(--wbc-line);
+    border-radius: var(--wbc-radius);
+    background: #ffffff;
+    color: var(--wbc-ink);
+    font: inherit;
+}
+
+.wordpress-builder-template .fluentform textarea {
+    min-height: 132px;
+    resize: vertical;
+}
+
+.wordpress-builder-template .fluentform input:focus,
+.wordpress-builder-template .fluentform select:focus,
+.wordpress-builder-template .fluentform textarea:focus {
+    outline: 3px solid var(--wbc-accent);
+    outline-offset: 1px;
+    border-color: var(--wbc-accent-strong);
+}
+
+.wordpress-builder-template .fluentform .ff-btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.75rem 1.35rem;
+    border: 1px solid var(--wbc-accent-strong);
+    border-radius: var(--wbc-radius);
+    background: var(--wbc-accent-strong);
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.wordpress-builder-template .fluentform .ff-btn-submit:hover {
+    background: var(--wbc-accent);
+    border-color: var(--wbc-accent);
+}
+
+.wordpress-builder-template .fluentform .ff-text-muted,
+.wordpress-builder-template .fluentform .ff-el-checkable-label,
+.wordpress-builder-template .fluentform .error-text {
+    color: var(--wbc-muted);
+}
+
+.wordpress-builder-template .fluentform .error-text {
+    font-size: 0.88rem;
+}
+
+@media (max-width: 700px) {
+    .wordpress-builder-template .fluentform {
+        grid-template-columns: 1fr;
+    }
+}

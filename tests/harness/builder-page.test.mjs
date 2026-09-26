@@ -23,6 +23,7 @@ const input = {
     wbc_benefits: 'OEM compatibility | Matched to mainstream 20-ton excavator models.\nExport documentation | Commercial invoice, packing list and inspection report included.',
     wbc_specifications: 'Minimum order | One 20-foot container\nProduction time | 25 working days after deposit',
     wbc_faq: 'Can you customize bucket width? | Yes, send the machine model and target working condition.\nDo you provide inspection reports? | Yes, a pre-shipment inspection report is included.',
+    wbc_form_shortcode: '[fluentform id="3"]',
     wbc_secondary_cta_label: 'Send requirements',
     wbc_secondary_cta_url: 'https://site.test/contact/',
   },
@@ -38,6 +39,7 @@ function emptyBuilderFields() {
     wbc_benefits: null,
     wbc_specifications: null,
     wbc_faq: null,
+    wbc_form_shortcode: null,
     wbc_secondary_cta_label: null,
     wbc_secondary_cta_url: null,
   };
@@ -262,6 +264,21 @@ test('unknown ACF field names are rejected instead of silently ignored', async (
   }
 });
 
+test('Fluent Forms shortcode field accepts only one numeric id', async () => {
+  const env = await makeEnvironment();
+  try {
+    await writeFile(join(env.root, 'invalid-form.json'), JSON.stringify({
+      ...input,
+      fields: {...input.fields, wbc_form_shortcode: '[fluentform category="contact"]'},
+    }));
+    await assert.rejects(
+      planBuilderPage(env.site, ['--file', 'invalid-form.json'], undefined, {}),
+      /single Fluent Forms id shortcode/,
+    );
+  } finally {
+    await env.cleanup();
+  }
+});
 test('canonical command map exposes the Builder-managed page workflow', () => {
   const plan = commandMap.find(item => item.command === 'builder page plan');
   const apply = commandMap.find(item => item.command === 'builder page apply');

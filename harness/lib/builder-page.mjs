@@ -14,6 +14,7 @@ const ALLOWED_FIELDS = [
   'wbc_benefits',
   'wbc_specifications',
   'wbc_faq',
+  'wbc_form_shortcode',
   'wbc_secondary_cta_label',
   'wbc_secondary_cta_url',
 ];
@@ -44,6 +45,10 @@ function normalizeFields(inputFields, previousFields = {}) {
   for (const name of ALLOWED_FIELDS) {
     if (Object.hasOwn(inputFields ?? {}, name)) fields[name] = inputFields[name] === null ? null : String(inputFields[name]);
     else fields[name] = previousFields[name] === undefined || previousFields[name] === null ? null : String(previousFields[name]);
+  }
+  const formShortcode = fields.wbc_form_shortcode;
+  if (formShortcode && !/^\[fluentform\s+id=["']?[0-9]+["']?\]$/.test(String(formShortcode))) {
+    throw new Error('wbc_form_shortcode must be a single Fluent Forms id shortcode, for example [fluentform id="3"]');
   }
   for (const name of URL_FIELDS) {
     if (typeof fields[name] === 'string' && fields[name]) {

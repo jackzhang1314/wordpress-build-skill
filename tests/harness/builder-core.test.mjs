@@ -19,7 +19,7 @@ function builderCoreFields() {
 
 test('Builder Core ACF fields are REST-exposed and documented for admin editing', () => {
   const fields = builderCoreFields();
-  assert.equal(fields.length, 9);
+  assert.equal(fields.length, 10);
   for (const field of fields) {
     assert.match(field, /'key' => 'field_wbc_/);
     assert.match(field, /'instructions' => '[^']+/);
@@ -28,14 +28,15 @@ test('Builder Core ACF fields are REST-exposed and documented for admin editing'
 });
 
 test('Builder Core plugin version is defined consistently', () => {
-  assert.match(plugin, /Version: 1\.1\.0/);
-  assert.match(plugin, /define\('WORDPRESS_BUILDER_CORE_VERSION', '1\.1\.0'\);/);
+  assert.match(plugin, /Version: 1\.2\.0/);
+  assert.match(plugin, /define\('WORDPRESS_BUILDER_CORE_VERSION', '1\.2\.0'\);/);
 });
 
 test('Builder Core templates remain editable WordPress page templates', () => {
   assert.match(landing, /wbc_benefits/);
   assert.match(landing, /wbc_specifications/);
   assert.match(landing, /wbc_faq/);
+  assert.match(landing, /wbc_form_shortcode/);
   assert.match(landing, /wbc_secondary_cta_url/);
 
   for (const templateName of ['canvas.php', 'landing.php']) {
@@ -56,5 +57,9 @@ test('Builder Core landing styles are scoped, responsive and accessible', () => 
   assert.match(pluginCss, /@media \(max-width: 600px\)/);
   assert.match(pluginCss, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(pluginCss, /:focus-visible/);
+  assert.match(pluginCss, /\.wordpress-builder-template \.fluentform/);
+  assert.match(pluginCss, /@media \(max-width: 700px\)/);
   assert.doesNotMatch(pluginCss, /linear-gradient\(/);
+  assert.ok(landing.indexOf('wbc_faq') < landing.indexOf('wbc_form_shortcode'));
+  assert.ok(landing.indexOf('if ($wbcFormValid)') < landing.indexOf('if ($wbcSecondaryCtaLabel'));
 });

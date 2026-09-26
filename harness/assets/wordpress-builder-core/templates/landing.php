@@ -19,6 +19,8 @@ $wbcSpecifications = wordpress_builder_core_lines(wordpress_builder_core_field('
 $wbcFaq = wordpress_builder_core_lines(wordpress_builder_core_field('wbc_faq', get_the_ID()));
 $wbcSecondaryCtaLabel = wordpress_builder_core_field('wbc_secondary_cta_label', get_the_ID()) ?: $wbcCtaLabel;
 $wbcSecondaryCtaUrl = wordpress_builder_core_field('wbc_secondary_cta_url', get_the_ID()) ?: $wbcCtaUrl;
+$wbcFormShortcode = wordpress_builder_core_field('wbc_form_shortcode', get_the_ID());
+$wbcFormValid = preg_match('/^\\[fluentform\\s+id=[\\\'"]?([0-9]+)[\\\'"]?\\]$/', $wbcFormShortcode, $wbcFormMatches) === 1;
 ?>
 <main class="wordpress-builder-template wordpress-builder-landing">
     <?php
@@ -98,6 +100,14 @@ $wbcSecondaryCtaUrl = wordpress_builder_core_field('wbc_secondary_cta_url', get_
                             </details>
                         <?php endforeach; ?>
                     </div>
+                </section>
+            <?php endif; ?>
+
+            <?php if ($wbcFormValid): ?>
+                <section id="rfq" class="wordpress-builder-template__form" aria-labelledby="wbc-rfq">
+                    <h2 id="wbc-rfq" class="wordpress-builder-template__section-title">Send your enquiry</h2>
+                    <p class="wordpress-builder-template__form-intro">Include the machine model, target specification, working condition, inspection requirement, destination port, and required delivery window.</p>
+                    <?php echo do_shortcode('[fluentform id="' . (int) $wbcFormMatches[1] . '"]'); ?>
                 </section>
             <?php endif; ?>
 

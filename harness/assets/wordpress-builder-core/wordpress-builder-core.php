@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WordPress Builder Core
  * Description: Theme-independent CPT, taxonomy, ACF and page-template adapter used by WordPress Builder.
- * Version: 1.1.0
+ * Version: 1.2.0
  * Requires PHP: 7.4
  * Text Domain: wordpress-builder-core
  */
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('WORDPRESS_BUILDER_CORE_VERSION', '1.1.0');
+define('WORDPRESS_BUILDER_CORE_VERSION', '1.2.0');
 define('WORDPRESS_BUILDER_CORE_PATH', plugin_dir_path(__FILE__));
 
 function wordpress_builder_core_post_types() {
@@ -165,6 +165,15 @@ function wordpress_builder_core_register_acf_fields() {
                 'show_in_rest' => 1,
                 'required' => 0,
                 'rows' => 8,
+            ],
+            [
+                'key' => 'field_wbc_form_shortcode',
+                'label' => 'Fluent Forms Shortcode',
+                'name' => 'wbc_form_shortcode',
+                'type' => 'text',
+                'instructions' => 'Optional Fluent Forms shortcode, for example [fluentform id="3"]. Rendered after the FAQ section.',
+                'show_in_rest' => 1,
+                'required' => 0,
             ],
             [
                 'key' => 'field_wbc_secondary_cta_label',
