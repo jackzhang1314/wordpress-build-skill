@@ -1,5 +1,36 @@
 # Releases
 
+## 2026-09-26 — WordPress Builder 2.20.0 free Hello Elementor compatibility E2E
+
+### Builder
+
+- Verified Builder Core on a live free Hello Elementor theme + free Elementor builder site.
+- Confirmed historical Elementor rendering remains untouched while new Builder pages and CPTs render through Builder templates.
+- Added `template assign --post-type` support for Builder CPTs such as `builder_service`.
+- Added CPT support to Builder Core `template_include`.
+- Switched Builder Core template registration to WordPress’ official `theme_templates` filter so page and CPT admin selectors expose plugin templates.
+- Corrected external template validation to use `WP_Theme::get_page_templates(null, $post_type)`.
+- Fixed Builder Core installation verification to use valid WP-CLI syntax.
+- Preserved prior template values through post metadata snapshots.
+- Made `builder status` inspect the live WordPress shape instead of reporting stale adoption metadata.
+- Blocked generic `edit-page` writes to `_elementor_edit_mode=builder` posts because changing `post_content` would not change the rendered Elementor page.
+
+### Skills and documentation
+
+- Documented the compatibility model: historical page-builder pages stay on their rendering owner; new pages use Builder CPT/ACF/template architecture.
+- Added a live E2E process record with environment, evidence, fixes, validation and remaining Elementor adapter boundary.
+- Updated README usage for page/CPT template assignment and the Elementor limitation.
+
+### Verification
+
+- Full typecheck, lint and test suite passed: 206/206 tests.
+- Live verification on `yellow-koala-142147.hostingersite.com`:
+  - historical Elementor marker still rendered;
+  - Builder page and `builder_service` markers rendered;
+  - page and CPT template selectors exposed Builder Canvas/Landing;
+  - ACF field group and four editable field definitions were present with stored values;
+  - generic `edit-page` safely refused an Elementor-owned historical page.
+
 ## 2026-09-26 — WordPress Builder 2.18.0 theme-agnostic rendering adapters
 
 ### Builder

@@ -111,6 +111,11 @@ function checkDrift(state, key, remote, localHash, {adoptRemote = false} = {}) {
   return {action: 'push'};
 }
 
+function pageBuilderOwnership(ssh, postId) {
+  const elementorMode = ssh.wp(['post', 'meta', 'get', String(postId), '_elementor_edit_mode']).trim();
+  return elementorMode === 'builder' ? 'elementor' : null;
+}
+
 async function stageAndRun(ssh, projectRoot, tag, files, readback) {
   const dir = `/tmp/${tag}-maintenance`;
   ssh.run(`rm -rf ${shellQuote(dir)} && mkdir -p ${shellQuote(dir)}`);
@@ -151,6 +156,15 @@ async function pushContent({root, ssh}, {postType, slug, title, content, excerpt
   const drift = checkDrift(state, key, remote, localHash, {adoptRemote});
   if (drift.action === 'conflict') {
     throw new Error(`Manual edit conflict: ${drift.detail}`);
+  }
+  if (drift.action === 'push' && remote.exists) {
+    const owner = pageBuilderOwnership(ssh, remote.id);
+    if (owner) {
+      throw new Error(
+        `refusing to update ${postType}:${slug}: ${owner} owns the rendered content through builder metadata. ` +
+        'Generic post_content edits would be invisible; preserve the historical page or use a dedicated editor adapter.'
+      );
+    }
   }
   let id = remote.id;
   let snapshot;
@@ -308,10 +322,12 @@ export async function navRemove(site, args, logger = () => {}) {
   return {...result, navigationWarning, snapshot};
 }
 
-const TEMPLATE_PHP = `<?php
+const TEMPLATE_PREPARE = `
 if (!defined('ABSPATH')) exit('CLI only');
 $p = json_decode(file_get_contents($args[0]), true);
-$post = get_page_by_path($p['slug'], OBJECT, ['page']);
+`;
+const TEMPLATE_ACTION = `
+$post = get_page_by_path($p['slug'], OBJECT, [$p['postType'] ?? 'page']);
 if (!$post) { fwrite(STDERR, 'post-not-found'); exit(1); }
 update_post_meta($post->ID, '_wp_page_template', $p['template']);
 echo wp_json_encode(['id' => (int) $post->ID, 'template' => get_page_template_slug($post->ID)]);
@@ -320,7 +336,9 @@ echo wp_json_encode(['id' => (int) $post->ID, 'template' => get_page_template_sl
 export async function assignTemplate(site, args, logger = () => {}) {
   const slug = firstPositional(args);
   const template = argValue(args, '--template');
-  if (!slug || !template) throw new Error('usage: harness template assign <slug> --template <file.php>');
+  const postType = argValue(args, '--post-type', 'page');
+  if (!/^[a-z0-9_-]+$/.test(postType)) throw new Error(`invalid post type: ${postType}`);
+  if (!slug || !template) throw new Error('usage: harness template assign <slug> --template <file.php> [--post-type page]');
   if (!/^[a-z0-9][a-z0-9_-]*(?:\/[a-z0-9][a-z0-9_-]*)*\.php$/.test(template)) {
     throw new Error(`invalid template name: ${template}`);
   }
@@ -343,7 +361,8 @@ export async function assignTemplate(site, args, logger = () => {}) {
   }
   const validation = site.project.mode === 'external' ? `
 $theme = wp_get_theme();
-$templates = $theme->get_page_templates();
+$postType = $p['postType'] ?? 'page';
+$templates = $theme->get_page_templates(null, $postType);
 if (empty($templates[$p['template']])) { fwrite(STDERR, 'remote-template-not-found'); exit(1); }
 $template_path = get_theme_file_path($p['template']);
 if (str_starts_with($p['template'], 'builder-templates/') && function_exists('wordpress_builder_core_template_path')) {
@@ -353,19 +372,28 @@ $source = (string) file_get_contents($template_path);
 if (!preg_match('/Template\\s*Name:/', $source)) { fwrite(STDERR, 'remote-template-missing-name'); exit(1); }
 if (!preg_match('/the_content\\s*\\(/', $source)) { fwrite(STDERR, 'remote-template-does-not-render-body'); exit(1); }
 ` : '';
-  const php = validation + TEMPLATE_PHP;
+  const php = `<?php\n${TEMPLATE_PREPARE}${validation}${TEMPLATE_ACTION}`;
   const pageRows = JSON.parse(site.ssh.wp([
-    'post', 'list', '--post_type=page', `--name=${slug}`, '--fields=ID,_wp_page_template', '--format=json',
+    'post', 'list', `--post_type=${postType}`, `--name=${slug}`, '--fields=ID', '--format=json',
   ]) || '[]');
   const pageRow = Array.isArray(pageRows) ? pageRows[0] : undefined;
+  let previousTemplate = 'default';
+  if (pageRow) {
+    try {
+      const metadata = JSON.parse(site.ssh.wp(['post', 'meta', 'list', String(pageRow.ID), '--format=json']) || '[]');
+      previousTemplate = String(metadata.find(item => item.meta_key === '_wp_page_template')?.meta_value || 'default');
+    } catch {
+      previousTemplate = 'default';
+    }
+  }
   const snapshot = writeOperationSnapshot(site.root, 'template-assign', {
     slug,
-    previousTemplate: pageRow?._wp_page_template || 'default',
+    previousTemplate,
     nextTemplate: template,
   });
   const result = await stageAndRun(site.ssh, site.root, 'template', [
     {name: 'template.php', content: php},
-    {name: 'payload.json', content: JSON.stringify({slug, template})},
+    {name: 'payload.json', content: JSON.stringify({slug, template, postType})},
   ]);
   const remote = site.ssh.wp(['post', 'meta', 'get', String(result.id), '_wp_page_template']).trim();
   if (remote !== template) throw new Error(`readback failed: meta is ${remote}`);

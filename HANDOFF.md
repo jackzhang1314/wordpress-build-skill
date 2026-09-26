@@ -1,15 +1,13 @@
 # WordPress Builder Project Handoff
 
 Handoff date: 2026-09-26
-Handoff time: 2026-09-26 07:05 CST (+08:00)
-Reason: the current conversation uses GLM; the user is switching to an OpenAI account and will continue in a new Codex session.
+Handoff time: 2026-09-26 19:02 CST (+08:00)
+Reason: continuation snapshot after the live free Hello Elementor compatibility E2E and WordPress Builder 2.20.0 release candidate.
 Repository: <https://github.com/jackzhang1314/wordpress-build-skill>
-Implementation branch: `codex/component-starter-rebuild`
-Synced release branch: `main`
-Current tag / baseline: `v2.19.2`
-Implementation baseline commit: `6490948`
-Pre-implementation rollback tag: `pre-skill-suite-implementation`
-Current worktree: `/Users/Zhuanz1/.codex/worktrees/component-starter`
+Release branch: `main`
+Current release candidate: `v2.20.0`
+Pre-release baseline commit: `30aae2f809808f48e6bfd55fbe1409189e0b6ad3`
+Current worktree: `/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill`
 
 ## 1. Read this first
 
@@ -22,18 +20,18 @@ The system has two distinct layers:
 
 The Starter Template is only an optional fast path for new B2B sites. It must never be copied over an existing/custom WordPress site without explicit authorization, backup and a source-custody decision.
 
-Current clean state:
+Expected state after the release commit/tag push:
 
 ```bash
 git status --short --branch
-## codex/component-starter-rebuild
+## main
 ## (no local or remote divergence)
 ```
 
 Latest tested tag:
 
 ```bash
-v2.17.0
+v2.20.0
 ```
 
 Full verification before handoff:
@@ -41,7 +39,7 @@ Full verification before handoff:
 ```text
 typecheck: pass
 lint: pass
-tests: 201 / 201 pass
+tests: 206 / 206 pass
 ```
 
 ## 2. Canonical setup
@@ -214,7 +212,7 @@ Old `wordpress-builder/references/*.md` files are compatibility stubs pointing a
 
 ## 6. Current deployed Hostinger sites
 
-All six sites are currently visible to the same connected Hostinger hosting user:
+All seven sites are currently visible to the same connected Hostinger hosting user:
 
 ```text
 u939005367
@@ -241,14 +239,23 @@ SHA256:TpFJnrS6GQq8IWMexVXFAcDeTJUUgZkbLfmMI4ISF68
 | 4 | `violet-vulture-561066.hostingersite.com` | `IRONTRACK PARTS` | <https://violet-vulture-561066.hostingersite.com> |
 | 5 | `brightdozer-482910.hostingersite.com` | `LITENG PARTS` | <https://brightdozer-482910.hostingersite.com> |
 | 6 | `mediumblue-quail-505146.hostingersite.com` | adopted historical site; no original local project | <https://mediumblue-quail-505146.hostingersite.com> |
+| 7 | `yellow-koala-142147.hostingersite.com` | `hello-elementor-external` / free Hello Elementor + Elementor E2E | <https://yellow-koala-142147.hostingersite.com> |
 
-All six have been tested over account-level SSH with WP-CLI. The current account key can operate them.
+All seven have been tested over account-level SSH with WP-CLI. The current account key can operate them.
 
 Do not interpret this as permission to deploy Starter code over every site. SSH ownership is account-level; safe code changes require the local project to own the matching source.
 
 ## 7. Current implementation status
 
 ### Completed in this session
+
+#### Free Hello Elementor compatibility E2E
+
+- Created a disposable Hostinger site with free Hello Elementor `3.5.1` and free Elementor `4.3.2`.
+- Adopted it as `mode: external` and installed Builder Core without converting the historical page.
+- Verified historical `_elementor_data` rendering, a new Builder page and a `builder_service` CPT.
+- Added page/CPT template assignment, official WordPress template-selector registration, live `builder status` inspection and an Elementor write guard.
+- Evidence: `/Users/Zhuanz1/Documents/ChatGPT/wordpress-projects/hello-elementor-external/evidence/hello-elementor-e2e/report.json`.
 
 #### Account-level SSH
 
@@ -333,7 +340,8 @@ Safety rules:
 2. Mixed navigation allows classic writes but warns that another rendered navigation location may exist.
 3. FSE-managed templates block classic template assignment.
 4. Unknown shape requires inspection.
-5. External projects still cannot deploy source code.
+5. Elementor-owned historical pages block generic `post_content` edits because they would not change the rendered page.
+6. External projects still cannot deploy source code.
 
 #### Skill Suite refactor
 
@@ -485,18 +493,20 @@ npm test
 Result:
 
 ```text
-201 / 201 tests passing
+206 / 206 tests passing
 typecheck: pass
 lint: pass
 ```
 
 Live checks performed in this session:
 
-1. `sites list` found six Hostinger sites;
-2. account-level SSH reached all six WP sites;
+1. `sites list` found seven Hostinger sites;
+2. account-level SSH reached all seven WP sites;
 3. WP-CLI returned WordPress 7.1.2 on each test;
 4. `project inspect` worked on a live site;
-5. external write safety was covered by regression tests.
+5. external write safety was covered by regression tests;
+6. free Hello Elementor + Elementor historical page, Builder page and Builder CPT were verified live;
+7. page/CPT template selectors and the Elementor `edit-page` guard were verified live.
 
 ## 10. Known boundaries and remaining work
 
@@ -519,6 +529,22 @@ Next task:
 ```text
 Add Block/FSE-specific inspection and, only after explicit authorization, controlled template-part/navigation editing.
 ```
+
+### Historical Elementor visible editing
+
+Implemented:
+
+1. detection of `_elementor_edit_mode=builder`;
+2. preservation of historical Elementor pages;
+3. a pre-write guard against invisible `post_content` updates.
+
+Not implemented:
+
+1. reading and editing `_elementor_data`;
+2. converting Elementor widgets to Builder templates;
+3. an Elementor rollback-aware visual editor.
+
+Do not use generic `edit-page` as a substitute. A future adapter must understand Elementor data and verify the rendered result.
 
 ### 2. External to source custody
 

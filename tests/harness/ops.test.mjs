@@ -125,8 +125,8 @@ test('builder core installer backs up, syncs plugin and verifies CPT', async () 
       if (text.includes('plugin list')) {
         return JSON.stringify([{name: 'jetpack', status: 'active'}]);
       }
-      if (text.includes('post-type list') && text.includes('builder_project')) {
-        return JSON.stringify([{name: 'builder_project'}]);
+      if (text.includes('post-type list')) {
+        return JSON.stringify([{name: 'builder_project'}, {name: 'builder_service'}]);
       }
       return '';
     },
@@ -150,6 +150,7 @@ test('builder core installer backs up, syncs plugin and verifies CPT', async () 
     assert.equal(rsyncCommands[0].delete, true);
     assert.ok(pluginCalls.some(args => args.join(' ').includes('plugin install advanced-custom-fields --activate')));
     assert.ok(pluginCalls.some(args => args.join(' ').includes('plugin activate wordpress-builder-core')));
+    assert.ok(!pluginCalls.some(args => args.length > 2 && args[2] === 'builder_project'));
   } finally {
     rmSync(root, {recursive: true, force: true});
   }

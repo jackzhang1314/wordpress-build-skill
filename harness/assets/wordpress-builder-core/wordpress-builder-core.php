@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WordPress Builder Core
  * Description: Theme-independent CPT, taxonomy, ACF and page-template adapter used by WordPress Builder.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires PHP: 7.4
  * Text Domain: wordpress-builder-core
  */
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('WORDPRESS_BUILDER_CORE_VERSION', '1.0.0');
+define('WORDPRESS_BUILDER_CORE_VERSION', '1.0.1');
 define('WORDPRESS_BUILDER_CORE_PATH', plugin_dir_path(__FILE__));
 
 function wordpress_builder_core_post_types() {
@@ -150,14 +150,21 @@ function wordpress_builder_core_register_acf_fields() {
 }
 add_action('init', 'wordpress_builder_core_register_acf_fields', 20);
 
-function wordpress_builder_core_templates($templates) {
+function wordpress_builder_core_template_post_types() {
+    return apply_filters('wordpress_builder_core_template_post_types', ['page', 'builder_project', 'builder_service']);
+}
+
+function wordpress_builder_core_templates($templates, $theme = null, $post = null, $postType = 'page') {
+    if (!in_array($postType, wordpress_builder_core_template_post_types(), true)) {
+        return $templates;
+    }
+
     return array_merge([
         'builder-templates/canvas.php' => 'WordPress Builder Canvas',
         'builder-templates/landing.php' => 'WordPress Builder Landing',
     ], $templates);
 }
-add_filter('theme_post_templates', 'wordpress_builder_core_templates');
-add_filter('breath_post_templates', 'wordpress_builder_core_templates');
+add_filter('theme_templates', 'wordpress_builder_core_templates', 10, 4);
 
 function wordpress_builder_core_template_path($slug) {
     return WORDPRESS_BUILDER_CORE_PATH . 'templates/' . basename($slug);
@@ -166,7 +173,8 @@ function wordpress_builder_core_template_path($slug) {
 function wordpress_builder_core_template_include($template) {
     global $post;
 
-    if (!$post instanceof WP_Post || 'page' !== $post->post_type) {
+    $supportedTypes = wordpress_builder_core_template_post_types();
+    if (!$post instanceof WP_Post || !in_array($post->post_type, $supportedTypes, true)) {
         return $template;
     }
 

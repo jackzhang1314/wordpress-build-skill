@@ -25,6 +25,7 @@ node wordpress-builder.mjs --project . post push article.json
 node wordpress-builder.mjs --project . nav add Products --url /products/
 node wordpress-builder.mjs --project . nav remove 'Old label'
 node wordpress-builder.mjs --project . template assign about --template page-templates/customer.php
+node wordpress-builder.mjs --project . template assign service --template builder-templates/canvas.php --post-type builder_service
 node wordpress-builder.mjs --project . cms-audit
 node wordpress-builder.mjs --project . audit-fields
 ```
@@ -36,6 +37,7 @@ node wordpress-builder.mjs --project . audit-fields
 - Classic navigation and classic page-template assignment are verified capabilities.
 - Block navigation and FSE templates require inspection before a write.
 - Page-builder layouts require builder-specific inspection before markup or template claims.
+- `edit-page` updates `post_content`; it must not be presented as visible editing for an Elementor-owned historical page. The command refuses `_elementor_edit_mode=builder` writes instead of silently changing fallback content.
 - If PHP/template code must change, stop and propose a scoped source-custody upgrade.
 - Existing content, navigation and page-template writes create a lightweight restore snapshot in `.backups/external-writes/`.
 
@@ -47,7 +49,10 @@ For an existing Elementor, Divi or custom-editor site, do not convert old pages.
 node wordpress-builder.mjs --project . builder install
 node wordpress-builder.mjs --project . post push new-page.json
 node wordpress-builder.mjs --project . template assign new-page --template builder-templates/landing.php
+node wordpress-builder.mjs --project . template assign service --template builder-templates/canvas.php --post-type builder_service
 ```
+
+Historical Elementor/Divi/Bricks pages stay on their original rendering owner. Builder Core only adds the parallel Builder content layer; visible historical page-builder editing requires a dedicated data adapter and is not provided by generic `edit-page`.
 
 ## References
 

@@ -156,7 +156,7 @@ export async function installBuilderCore(projectRoot, project, ssh, {
   ssh.wp(['plugin', 'activate', 'wordpress-builder-core']);
   ssh.wp(['rewrite', 'flush']);
 
-  const registered = JSON.parse(ssh.wp(['post-type', 'list', 'builder_project', '--format=json']));
+  const registered = JSON.parse(ssh.wp(['post-type', 'list', '--format=json']));
   if (!Array.isArray(registered) || !registered.some(item => item.name === 'builder_project')) {
     throw new Error('WordPress Builder Core verification failed: builder_project is not registered');
   }

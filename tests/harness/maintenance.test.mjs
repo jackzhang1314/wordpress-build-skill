@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
+import {existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {assignTemplate, editPage, navAdd, navRemove, pushPost} from '../../harness/lib/maintenance.mjs';
@@ -43,10 +43,17 @@ function makeSite(options = {}) {
       if (args[0] === 'menu' && args[1] === 'item' && args[2] === 'list') {
         return JSON.stringify(items.map(item => ({db_id: item.id, title: item.title, url: item.url ?? ''})));
       }
-      if (args[0] === 'post' && args[1] === 'meta') {
+      if (args[0] === 'post' && args[1] === 'meta' && args[2] !== 'list') {
+        const id = Number(args[3]);
+        const entry = Object.entries(posts).find(([, post]) => post.id === id);
+        if (args[4] === '_elementor_edit_mode') return entry?.[1]?.elementorEditMode ?? '';
+        return (entry && templates[entry[0]]) ?? '';
+      }
+      if (args[0] === 'post' && args[1] === 'meta' && args[2] === 'list') {
         const id = Number(args[3]);
         const key = Object.keys(posts).find(entry => posts[entry].id === id);
-        return (key && templates[key.split(':')[1]]) ?? '';
+        const template = key ? templates[key] : undefined;
+        return template ? JSON.stringify([{post_id: id, meta_key: '_wp_page_template', meta_value: template}]) : '[]';
       }
       if (args[0] === 'eval-file') {
         const [phpPath, jsonPath] = [args[1], args[2]];
@@ -68,8 +75,9 @@ function makeSite(options = {}) {
           return JSON.stringify({removed: before - items.length});
         }
         if (php.includes('_wp_page_template')) {
-          templates[payload.slug] = payload.template;
-          return JSON.stringify({id: posts[`page:${payload.slug}`]?.id ?? 7, template: payload.template});
+          const templateKey = `${payload.postType ?? 'page'}:${payload.slug}`;
+          templates[templateKey] = payload.template;
+          return JSON.stringify({id: posts[templateKey]?.id ?? 7, template: payload.template});
         }
         const key = `${payload.type}:${payload.slug}`;
         if (!posts[key]) {
@@ -89,8 +97,12 @@ function makeSite(options = {}) {
     posts, items, templates, evalCalls, files, wpCalls,
     setState: entries => writeFileSync(join(root, '.content-state.json'), JSON.stringify(entries)),
     getState: () => JSON.parse(readFileSync(join(root, '.content-state.json'), 'utf8')),
-    snapshots: () => readdirSync(join(root, '.backups/external-writes')).map(name =>
-      JSON.parse(readFileSync(join(root, '.backups/external-writes', name), 'utf8'))),
+    snapshots: () => {
+      const directory = join(root, '.backups/external-writes');
+      return existsSync(directory)
+        ? readdirSync(directory).map(name => JSON.parse(readFileSync(join(directory, name), 'utf8')))
+        : [];
+    },
   };
 }
 
@@ -132,6 +144,27 @@ test('edit-page --adopt-remote takes over unknown remote content', async () => {
     const result = await editPage(env.site, ['home', '--file', 'patch.html', '--adopt-remote']);
     assert.equal(result.action, 'push');
     assert.equal(env.posts['page:home'].content, '<p>local</p>');
+  } finally {
+    env.cleanup();
+  }
+});
+
+test('edit-page refuses invisible Elementor post_content updates', async () => {
+  const env = makeSite({posts: {'page:historical': {
+    id: 6,
+    status: 'publish',
+    content: '<p>fallback</p>',
+    modified: 'x',
+    elementorEditMode: 'builder',
+  }}});
+  try {
+    writeFileSync(join(env.root, 'patch.html'), '<p>new fallback</p>');
+    await assert.rejects(
+      editPage(env.site, ['historical', '--file', 'patch.html', '--adopt-remote']),
+      /elementor owns the rendered content.*dedicated editor adapter/s,
+    );
+    assert.equal(env.posts['page:historical'].content, '<p>fallback</p>');
+    assert.equal(env.snapshots().length, 0, 'refused write must not create a restore snapshot');
   } finally {
     env.cleanup();
   }
@@ -259,7 +292,7 @@ test('external FSE projects block classic page-template assignment', async () =>
       assignTemplate(env.site, ['about', '--template', 'page-templates/customer.php']),
       /FSE-managed/,
     );
-    assert.equal(env.templates.about, undefined);
+    assert.equal(env.templates['page:about'], undefined);
   } finally {
     env.cleanup();
   }
@@ -270,10 +303,29 @@ test('external projects can assign plugin-owned Builder Core templates', async (
   try {
     env.site.project = {...env.site.project, mode: 'external', remote: {pageTemplates: 'classic'}};
     const result = await assignTemplate(env.site, ['home', '--template', 'builder-templates/landing.php']);
-    assert.equal(env.templates.home, 'builder-templates/landing.php');
+    assert.equal(env.templates['page:home'], 'builder-templates/landing.php');
     assert.equal(result.snapshot.nextTemplate, 'builder-templates/landing.php');
     const invocation = env.evalCalls.find(call => call.php.includes('_wp_page_template'));
     assert.match(invocation.php, /wordpress_builder_core_template_path/);
+    assert.match(invocation.php, /get_page_templates\(null, \$postType\)/);
+  } finally {
+    env.cleanup();
+  }
+});
+
+test('template assignment supports Builder Core custom post types', async () => {
+  const env = makeSite({posts: {'builder_service:industrial-maintenance': {id: 21, status: 'publish', content: 'x', modified: 'x'}}});
+  try {
+    env.site.project = {...env.site.project, mode: 'external', remote: {pageTemplates: 'classic'}};
+    const result = await assignTemplate(env.site, [
+      'industrial-maintenance',
+      '--template', 'builder-templates/canvas.php',
+      '--post-type', 'builder_service',
+    ]);
+    assert.equal(result.id, 21);
+    assert.equal(env.templates['builder_service:industrial-maintenance'], 'builder-templates/canvas.php');
+    const invocation = env.evalCalls.find(call => call.php.includes('_wp_page_template'));
+    assert.match(invocation.payload.postType, /^builder_service$/);
   } finally {
     env.cleanup();
   }
@@ -285,7 +337,7 @@ test('template assign accepts official nested page templates and rejects travers
     mkdirSync(join(env.root, 'theme/page-templates'), {recursive: true});
     writeFileSync(join(env.root, 'theme/page-templates/about.php'), '<?php /* Template Name: About page */ the_content(); ?>');
     const result = await assignTemplate(env.site, ['about', '--template', 'page-templates/about.php']);
-    assert.equal(env.templates.about, 'page-templates/about.php');
+    assert.equal(env.templates['page:about'], 'page-templates/about.php');
     assert.equal(result.template, 'page-templates/about.php');
     await assert.rejects(
       assignTemplate(env.site, ['about', '--template', 'page-templates/../bad.php']),
@@ -303,7 +355,7 @@ test('template assign validates the body-render rule before touching remote', as
     writeFileSync(join(env.root, 'theme/good.php'), '<?php /* Template Name: Good */ the_content(); ?>');
     await assert.rejects(assignTemplate(env.site, ['home', '--template', 'bad.php']), /the_content/);
     const result = await assignTemplate(env.site, ['home', '--template', 'good.php']);
-    assert.equal(env.templates.home, 'good.php');
+    assert.equal(env.templates['page:home'], 'good.php');
     assert.equal(result.template, 'good.php');
   } finally {
     env.cleanup();

@@ -4,11 +4,11 @@
 
 - WordPress Builder 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
 - Starter Template 仓库：<https://github.com/jackzhang1314/b2b-wordpress-starter-template>
-- 当前 WordPress Builder 基线：`2.19.2`
+- 当前 WordPress Builder 基线：`2.20.0`
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
-> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.18.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.20.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
 
 ### 交给 Codex 的最小指令
 
@@ -163,14 +163,16 @@ WordPress 不需要停机更新。WordPress Builder 通过 SSH/WP-CLI 同步主�
 node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . builder install
 ```
 
-新页面使用 Builder 的 CPT、ACF 和 page templates；旧页面继续使用原来的编辑器和模板。
+新页面使用 Builder 的 CPT、ACF 和 page templates；旧页面继续使用原来的编辑器和模板。`template assign` 支持 page 和 Builder CPT，例如 `--post-type builder_service`。
+
+已在免费 Hello Elementor + 免费 Elementor 的 Hostinger 站点上完成 E2E：Builder Core 与 Elementor 共存，历史 Elementor 页面 marker 保持不变，新增 Builder page/CPT 正常渲染，后台 page 与 Builder CPT 的模板选择都能看到 Builder Canvas/Landing。边界也很明确：历史 Elementor 页面可见内容由 `_elementor_data` 渲染，通用 `edit-page` 会直接拒绝这类写入，避免把内容写进不可见的 `post_content`；可见编辑需要未来实现专用 Elementor adapter。
 
 | 场景 | 命令 |
 | --- | --- |
-| 改一个已上线页面正文 | `edit-page <slug> --file body.html` |
+| 改一个已上线 Classic/Builder 页面正文 | `edit-page <slug> --file body.html` |
 | 新增/更新文章 | `post push article.json` |
 | 增加或删除导航项 | `nav add ...` / `nav remove ...` |
-| 给页面换模板 | `template assign <slug> --template page-templates/xxx.php` |
+| 给页面/CPT 换模板 | `template assign <slug> --template page-templates/xxx.php [--post-type page]` |
 | 轮换后台密码 | `credentials rotate` |
 | 配置/测试邮件 | `smtp configure` / `smtp test` / `email-setup` |
 | 清缓存 | `cache` |

@@ -80,7 +80,7 @@ Project commands:
   edit-page <slug>        Push one page body (--file <html>, --adopt-remote on conflict)
   post push <article>     Create/update a single post from JSON (--adopt-remote on conflict)
   nav add|remove          Surgical menu item operations (no full rebuild)
-  template assign         Assign a page template after validating it renders the body
+  template assign         Assign a page/CPT template after validating it renders the body
   credentials show|rotate Hand over site credentials, or regenerate the admin password
   audit-fields           Verify every stored value has an admin-editable ACF field
   cms-audit              Audit CPTs, taxonomies, ACF locations, REST and stored values
@@ -480,7 +480,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       return 0;
     }
     if (command === 'template') {
-      if (firstValue(args) !== 'assign') throw new Error('usage: harness template assign <slug> --template <file.php>');
+      if (firstValue(args) !== 'assign') throw new Error('usage: harness template assign <slug> --template <file.php> [--post-type page]');
       await assignTemplate(site, args.slice(1), logger);
       return 0;
     }
@@ -497,18 +497,21 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
         return 0;
       }
       if (sub === 'status') {
-        const plugins = JSON.parse(ssh.wp(['plugin', 'list', '--format=json'])).map(plugin => plugin.name);
-        const postTypes = JSON.parse(ssh.wp(['post-type', 'list', '--format=json'])).map(item => item.name);
+        const pluginRows = JSON.parse(ssh.wp(['plugin', 'list', '--format=json']));
+        const builderPlugin = pluginRows.find(plugin => plugin.name === 'wordpress-builder-core');
+        const inventory = await inspectRemoteWordPress(project, {exec: execFileSync});
         const payload = {
           mode: project.mode,
-          pluginInstalled: plugins.includes('wordpress-builder-core'),
-          pluginActive: plugins.includes('wordpress-builder-core'),
+          pluginInstalled: Boolean(builderPlugin),
+          pluginActive: builderPlugin?.status === 'active',
           contentTypes: {
-            builderProject: postTypes.includes('builder_project'),
-            builderService: postTypes.includes('builder_service'),
+            builderProject: inventory.publicPostTypes.includes('builder_project'),
+            builderService: inventory.publicPostTypes.includes('builder_service'),
           },
-          renderingSystem: project.remote?.renderingSystem ?? 'unknown',
-          navigation: project.remote?.navigation ?? 'unknown',
+          renderingSystem: inventory.renderingSystem,
+          navigation: inventory.navigation,
+          authoringSystems: inventory.authoringSystems,
+          pageBuilder: inventory.pageBuilder,
         };
         if (!json) {
           logger(`\n=== WordPress Builder Core ===`);
