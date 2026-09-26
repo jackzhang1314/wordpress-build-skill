@@ -1,6 +1,6 @@
 # Sites Status Remote/Local Custody Correlation
 
-- 时间：2026-09-26 19:50–20:01 CST（+08:00）
+- 时间：2026-09-26 19:50–20:05 CST（+08:00）
 - 触发：用户确认继续下一项优先级，为 Hostinger 账号与本地项目建立可读的 custody inventory。
 - 版本：WordPress Builder `2.21.0`
 
@@ -73,6 +73,12 @@ invalidProjectCount: 0
 2. `hello-elementor-external`：当前 external/custom adopted 项目。
 
 这证明命令没有为了输出“好看”而隐藏重复 custody。后续需要用户决定是否归档或重命名旧 source 测试项目；本任务不自动删除。
+
+发布 `v2.21.0` 后，再次从 GitHub 干净克隆该 tag（commit `3883cc0`）验证：
+
+1. bootstrap 通过；
+2. typecheck / lint / tests 215/215 通过；
+3. `sites status --json` 输出同一组账号/本地关联统计。
 
 ## 遗留
 

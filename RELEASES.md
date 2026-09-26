@@ -16,6 +16,7 @@
 - Added regression coverage for matched/unmatched sites, stale inspection, duplicate local projects, local-only projects, missing roots and invalid project JSON.
 - Full local gate passed: 215/215 tests.
 - Live account inventory correlated 7 Hostinger sites with 6 local projects: 5 remote sites matched, 2 were unmatched, and 1 had duplicate local projects (`yellow-koala-142147.hostingersite.com`) and was correctly reported as `ambiguous`.
+- Post-release clean clone of tag `v2.21.0` passed bootstrap, typecheck, lint, all 215 tests and `sites status`.
 
 ## 2026-09-26 — WordPress Builder 2.20.1 fresh-clone CMS audit regression
 

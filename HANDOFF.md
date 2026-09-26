@@ -1,7 +1,7 @@
 # WordPress Builder Project Handoff
 
 Handoff date: 2026-09-26
-Handoff time: 2026-09-26 20:01 CST (+08:00)
+Handoff time: 2026-09-26 20:05 CST (+08:00)
 Reason: continuation snapshot after WordPress Builder 2.21.0 added remote/local site custody status.
 Repository: <https://github.com/jackzhang1314/wordpress-build-skill>
 Release branch: `main`
@@ -514,6 +514,7 @@ Live checks performed in this session:
 11. Builder page/CPT markers and the historical Elementor marker remained live;
 12. a second clean clone of published tag `v2.20.1` passed bootstrap, all 212 tests, Hostinger inventory, Starter init/check and external `cms-audit`.
 13. `sites status` correlated the live account inventory with local projects and exposed one ambiguous duplicate, two unmatched remote sites and zero local-only/invalid projects.
+14. a clean clone of published tag `v2.21.0` passed bootstrap, all 215 tests and `sites status`.
 
 ## 10. Known boundaries and remaining work
 
