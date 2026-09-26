@@ -385,3 +385,16 @@ lint ✅
 tests ✅ 258/258
 build ✅
 ```
+
+## 发布与干净克隆复测（2026-09-27 05:10 Asia/Shanghai）
+
+- 功能提交：`7fd0b9f1871c3fdd3e358b9c9acbadf00e5e1de4`（`feat: complete Rich Landing RFQ workflow`）。
+- 已推送 `main` 并发布 tag：`v2.27.0`。
+- 从 GitHub 干净克隆 `v2.27.0` 后验证通过：
+  - `node harness/bootstrap.mjs --fix`；
+  - `npm run typecheck`；
+  - `npm run lint`；
+  - `npm test`：258/258；
+  - `npm run build`；
+  - `node wordpress-builder.mjs --help`。
+- 干净克隆工作区保持干净（detached HEAD，无未提交文件）。

@@ -40,6 +40,7 @@
 
 - Added/updated tests for ten-field exposure, template section order, scoped responsive styles, shortcode validation, Builder-page readback/rollback and canonical `builder form install` behavior.
 - Full local gate passed: typecheck, lint, build and **258/258 tests**.
+- Post-release clean clone of tag `v2.27.0` passed bootstrap, typecheck, lint, all 258 tests, build and CLI help.
 - Real Hostinger / Elementor-site E2E:
   - backed up the site;
   - installed Fluent Forms `6.2.14`;

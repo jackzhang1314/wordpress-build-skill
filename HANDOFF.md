@@ -110,7 +110,7 @@ typecheck: pass
 lint: pass
 tests: 258 / 258 pass
 build: pass
-clean clone of v2.27.0: pending until tag publication
+clean clone of v2.27.0: pass
 ```
 
 ## 2. Canonical setup
