@@ -54,6 +54,7 @@ test('suite safety blocks source-only operations for external projects', () => {
 test('command map includes account discovery and mode-specific ownership', () => {
   const commands = commandMap.map(item => item.command);
   assert.ok(commands.includes('sites list'));
+  assert.ok(commands.includes('sites status'));
   assert.ok(commands.includes('project inspect'));
   assert.ok(commands.includes('builder install'));
   assert.ok(commands.includes('builder status'));

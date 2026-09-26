@@ -4,11 +4,11 @@
 
 - WordPress Builder 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
 - Starter Template 仓库：<https://github.com/jackzhang1314/b2b-wordpress-starter-template>
-- 当前 WordPress Builder 基线：`2.20.1`
+- 当前 WordPress Builder 基线：`2.21.0`
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
-> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.20.1` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.21.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
 
 ### 交给 Codex 的最小指令
 
@@ -109,6 +109,15 @@ node /path/to/wordpress-build-skill/wordpress-builder.mjs hostinger setup --inst
 ```bash
 node /path/to/wordpress-build-skill/wordpress-builder.mjs sites list
 ```
+
+查看远端站点与本地项目的对应关系：
+
+```bash
+node /path/to/wordpress-build-skill/wordpress-builder.mjs sites status \
+  --root /absolute/path/to/projects
+```
+
+它会列出每个 Hostinger 域名对应的本地 `project.json`、项目模式、Starter/custom 来源、active theme、SSH 配置、最近备份/部署和远程 inspection 新鲜度；重复映射会标记为 `ambiguous`，未匹配的远端站点不会被猜测归属。
 
 然后把 `project.json` 里的 `domain` 改成实际测试/生产域名，再运行 SSH 向导：
 

@@ -8,6 +8,7 @@ import {commandExists} from './lib/process.mjs';
 import {createSSH} from './lib/ssh.mjs';
 import {provisionHostinger} from './lib/hostinger.mjs';
 import {listHostingerWebsites} from './lib/hostinger.mjs';
+import {buildSitesStatus} from './lib/site-status.mjs';
 import {configureRankMath, verifyRankMath} from './lib/seo.mjs';
 import {auditProject} from './lib/quality.mjs';
 import {verifyDatabase, verifyPages} from './lib/verify.mjs';
@@ -67,6 +68,7 @@ Project commands:
   media [--force]         Import configured media sources
   content                 Upload the project seed package
   sites list              List Hostinger websites visible to the connected account
+  sites status            Correlate Hostinger websites with local projects
   deploy                  check, backup, plugins, sync, seed, cache, verify
   verify [--screenshots]  Verify live pages and database; --screenshots adds captures
   screenshot              Capture smoke, template or full route sets
@@ -333,8 +335,10 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
     }
 
     if (command === 'sites') {
-      if (firstValue(args) !== 'list') throw new Error('usage: harness sites list');
-      const websites = listHostingerWebsites(execFileSync).map(website => ({
+      const sub = firstValue(args);
+      if (sub !== 'list' && sub !== 'status') throw new Error('usage: wordpress-builder sites list|status [--root <projects-parent>]');
+      const hostingerWebsites = listHostingerWebsites(execFileSync);
+      const websites = hostingerWebsites.map(website => ({
         domain: website.domain,
         url: `https://${website.domain}`,
         username: website.username,
@@ -343,13 +347,50 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
         websiteType: website.website_type,
         rootDirectory: website.root_directory,
       }));
-      outputResult({pass: true, count: websites.length, websites}, json, logger);
-      if (!json) {
-        for (const website of websites) {
-          logger(`  ${website.enabled ? 'OK ' : 'OFF'} ${website.domain} (${website.websiteType})`);
-          logger(`      user=${website.username} order=${website.orderId}`);
+      if (sub === 'list') {
+        outputResult({pass: true, count: websites.length, websites}, json, logger);
+        if (!json) {
+          for (const website of websites) {
+            logger(`  ${website.enabled ? 'OK ' : 'OFF'} ${website.domain} (${website.websiteType})`);
+            logger(`      user=${website.username} order=${website.orderId}`);
+          }
+          logger(`\n${websites.length} website${websites.length === 1 ? '' : 's'} found.`);
         }
-        logger(`\n${websites.length} website${websites.length === 1 ? '' : 's'} found.`);
+        return 0;
+      }
+
+      const explicitRoot = argValue(args, '--root') ?? argValue(args, '--projects-root');
+      const defaultRoot = process.env.WORDPRESS_PROJECTS_ROOT
+        ?? (existsSync(resolve(process.cwd(), '..', 'projects')) ? resolve(process.cwd(), '..', 'projects') : undefined)
+        ?? (existsSync(resolve(process.cwd(), '..', 'wordpress-projects')) ? resolve(process.cwd(), '..', 'wordpress-projects') : undefined)
+        ?? resolve(process.cwd(), '..', 'projects');
+      const report = buildSitesStatus(hostingerWebsites, explicitRoot ?? defaultRoot);
+      if (json) {
+        logger(JSON.stringify(report, null, 2));
+      } else {
+        logger(`\nProjects root: ${report.projectsRoot}${report.projectsRootExists ? '' : ' (not found)'}`);
+        logger('Remote sites:');
+        for (const website of report.websites) {
+          const marker = !website.enabled ? 'OFF' : (website.matchState === 'ambiguous' ? 'WARN' : (website.matchState === 'unmatched' ? 'MISS' : 'OK '));
+          logger(`  ${marker} ${website.domain} (${website.websiteType}) — ${website.matchState}`);
+          logger(`      user=${website.username ?? '-'} order=${website.orderId ?? '-'} local=${website.localProjects.length}`);
+          for (const project of website.localProjects) {
+            logger(`      ${project.relativePath} [${project.mode}/${project.sourceProfile}] theme=${project.activeTheme ?? `${project.configuredTheme} (configured)`}`);
+            logger(`      inspection=${project.remoteInspection.state} backup=${project.lastBackup?.id ?? '-'} deploy=${project.lastDeploy?.deployedAt ?? '-'}`);
+          }
+        }
+        if (report.localOnlyProjects.length) {
+          logger('Local projects without a remote inventory match:');
+          for (const project of report.localOnlyProjects) {
+            logger(`  ORPHAN ${project.relativePath} [${project.mode}/${project.sourceProfile}]`);
+          }
+        }
+        if (report.invalidProjects.length) {
+          logger('Invalid local projects:');
+          for (const project of report.invalidProjects) logger(`  FAIL ${project.projectRoot}: ${project.error}`);
+        }
+        const summary = report.summary;
+        logger(`\nRemote ${summary.remoteCount}, matched ${summary.matchedRemoteCount}, unmatched ${summary.unmatchedRemoteCount}, ambiguous ${summary.ambiguousRemoteCount}; local-only ${summary.localOnlyProjectCount}.`);
       }
       return 0;
     }

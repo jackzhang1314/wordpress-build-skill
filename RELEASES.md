@@ -1,5 +1,22 @@
 # Releases
 
+## 2026-09-26 — WordPress Builder 2.21.0 remote/local site custody status
+
+### Builder
+
+- Added `sites status` as a read-only account and local-project inventory.
+- Correlated Hostinger website domains with local `project.json` directories.
+- Reported local path, mode, source profile, configured and inspected active theme, SSH presence, latest backup, latest deploy and inspection freshness.
+- Marked remote domains as `unique`, `unmatched` or `ambiguous`; local-only projects and invalid project files are reported separately.
+- Preserved ownership safety: unmatched remote sites are never guessed to belong to a local project, and duplicate local domains remain explicit warnings.
+- Added `--root <projects-parent>` (also accepted as `--projects-root`) and automatic default discovery for common `../projects` / `../wordpress-projects` layouts.
+
+### Verification
+
+- Added regression coverage for matched/unmatched sites, stale inspection, duplicate local projects, local-only projects, missing roots and invalid project JSON.
+- Full local gate passed: 215/215 tests.
+- Live account inventory correlated 7 Hostinger sites with 6 local projects: 5 remote sites matched, 2 were unmatched, and 1 had duplicate local projects (`yellow-koala-142147.hostingersite.com`) and was correctly reported as `ambiguous`.
+
 ## 2026-09-26 — WordPress Builder 2.20.1 fresh-clone CMS audit regression
 
 ### Builder

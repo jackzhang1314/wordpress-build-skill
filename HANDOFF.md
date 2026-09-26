@@ -1,11 +1,11 @@
 # WordPress Builder Project Handoff
 
 Handoff date: 2026-09-26
-Handoff time: 2026-09-26 19:41 CST (+08:00)
-Reason: continuation snapshot after the fresh-clone regression, CMS audit fixes and WordPress Builder 2.20.1 patch release.
+Handoff time: 2026-09-26 20:01 CST (+08:00)
+Reason: continuation snapshot after WordPress Builder 2.21.0 added remote/local site custody status.
 Repository: <https://github.com/jackzhang1314/wordpress-build-skill>
 Release branch: `main`
-Current release: `v2.20.1`
+Current release: `v2.21.0`
 Pre-release baseline commit: `30aae2f809808f48e6bfd55fbe1409189e0b6ad3`
 Current worktree: `/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill`
 
@@ -31,7 +31,7 @@ git status --short --branch
 Latest tested tag:
 
 ```bash
-v2.20.1
+v2.21.0
 ```
 
 Full verification before handoff:
@@ -39,7 +39,7 @@ Full verification before handoff:
 ```text
 typecheck: pass
 lint: pass
-tests: 212 / 212 pass
+tests: 215 / 215 pass
 ```
 
 ## 2. Canonical setup
@@ -53,6 +53,7 @@ cd wordpress-build-skill
 node harness/bootstrap.mjs --fix
 node wordpress-builder.mjs help
 node wordpress-builder.mjs sites list
+node wordpress-builder.mjs sites status --root ../projects
 
 npm run typecheck
 npm run lint
@@ -493,7 +494,7 @@ npm test
 Result:
 
 ```text
-212 / 212 tests passing
+215 / 215 tests passing
 typecheck: pass
 lint: pass
 ```
@@ -512,6 +513,7 @@ Live checks performed in this session:
 10. external `cms-audit` passed after field REST/instructions and WordPress template-inventory fixes;
 11. Builder page/CPT markers and the historical Elementor marker remained live;
 12. a second clean clone of published tag `v2.20.1` passed bootstrap, all 212 tests, Hostinger inventory, Starter init/check and external `cms-audit`.
+13. `sites status` correlated the live account inventory with local projects and exposed one ambiguous duplicate, two unmatched remote sites and zero local-only/invalid projects.
 
 ## 10. Known boundaries and remaining work
 
@@ -610,15 +612,18 @@ Starter checks are now isolated by:
 
 Continue adding generic checks under `custom`, not Starter assumptions.
 
-### 6. `sites list` local mapping
+### 6. `sites status`
 
-`sites list` currently inventories Hostinger websites but does not automatically map them to local `project.json` directories.
+Implemented:
 
-Future enhancement:
+1. Hostinger inventory plus local project correlation;
+2. mode, source profile, configured/active theme and SSH presence;
+3. latest matching backup and deploy state;
+4. remote-inspection freshness;
+5. `unique`, `unmatched` and `ambiguous` custody states;
+6. local-only and invalid project reporting.
 
-```text
-Add `sites status` to correlate remote domains with local projects, modes, themes and last backup.
-```
+Boundary: it does not run remote `project inspect` for every site. Refresh a selected project with `node wordpress-builder.mjs --project . project inspect`.
 
 ## 11. Safety rules for the next session
 
@@ -639,19 +644,7 @@ node wordpress-builder.mjs
 
 ## 12. Immediate next-task recommendations
 
-### Priority 1 — `sites status`
-
-Goal:
-
-Correlate Hostinger's remote site inventory with local projects and report project path, mode, source profile, active theme, last backup/deploy and remote-inspection freshness.
-
-Acceptance:
-
-1. one command inventories all visible sites;
-2. unmatched remote sites are reported without guessing local ownership;
-3. test fixtures cover matched, unmatched and stale-project states.
-
-### Priority 2 — Block/FSE shape adapters
+### Priority 1 — Block/FSE shape adapters
 
 Goal:
 
@@ -666,7 +659,7 @@ Acceptance:
 2. never claims a change worked when only one navigation source changed;
 3. includes tests for classic, block and mixed shapes.
 
-### Priority 3 — source-custody promotion
+### Priority 2 — source-custody promotion
 
 Goal:
 
@@ -694,7 +687,7 @@ https://github.com/jackzhang1314/wordpress-build-skill
 
 当前应使用：
 branch/main: main
-tag: v2.17.0
+tag: v2.21.0
 
 请先执行：
 
@@ -710,15 +703,16 @@ tag: v2.17.0
 3. 运行环境检查和测试：
    - node harness/bootstrap.mjs --fix
    - node wordpress-builder.mjs sites list
+   - node wordpress-builder.mjs sites status --root <projects-parent>
    - npm run typecheck
    - npm run lint
    - npm test
 
 当前项目基线：
 
-- 最新实现 tag: v2.17.0
+- 最新实现 tag: v2.21.0
 - 实施前回滚 tag: pre-skill-suite-implementation
-- 当前 tests: 201/201 passing
+- 当前 tests: 215/215 passing
 - WordPress Builder canonical CLI: node wordpress-builder.mjs
 - legacy compatibility CLI: node harness/cli.mjs
 

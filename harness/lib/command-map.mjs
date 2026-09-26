@@ -1,5 +1,6 @@
 export const commandMap = [
   {command: 'sites list', projectMode: 'not-loaded', skill: 'wordpress-setup', risk: 'account-read', destructive: false},
+  {command: 'sites status', projectMode: 'not-loaded', skill: 'wordpress-setup', risk: 'account-read', destructive: false},
   {command: 'init', projectMode: 'not-loaded', skill: 'wordpress-setup', risk: 'local-write', destructive: false},
   {command: 'adopt', projectMode: 'creates-external', skill: 'wordpress-setup', risk: 'remote-write', destructive: false},
   {command: 'hostinger setup', projectMode: 'any', skill: 'wordpress-setup', risk: 'account-read-or-install', destructive: false},

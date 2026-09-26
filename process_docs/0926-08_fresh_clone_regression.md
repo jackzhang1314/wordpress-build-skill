@@ -97,6 +97,6 @@ node harness/bootstrap.mjs: pass, NEXT uses wordpress-builder.mjs
 
 ## 遗留
 
-- `sites list` 尚未关联本地项目并输出 `sites status`。
+- 当时遗留的 remote/local 项目关联已在 `process_docs/0926-09_sites_status.md` 对应版本中实现。
 - Block/FSE 形状诊断与 external-to-source custody promotion 仍未实施。
 - 本次只验证 Hello Elementor 外部站和 Starter 本地检查；不做跨主机商回归。

@@ -113,6 +113,14 @@ node wordpress-builder.mjs hostinger setup --install --connect
 node wordpress-builder.mjs sites list
 ```
 
+把远端站点和本地项目目录关联起来：
+
+```bash
+node wordpress-builder.mjs sites status --root ../projects
+```
+
+该命令只读取 Hostinger 清单、本地 `project.json`、备份 manifest 和部署状态文件，不写任何远端数据。它输出 unique / unmatched / ambiguous、local-only 项目、模式、主题、SSH、最近备份/部署与 inspection 新鲜度。
+
 ### SSH 向导
 
 ```bash
