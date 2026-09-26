@@ -530,7 +530,7 @@ Next task:
 Add Block/FSE-specific inspection and, only after explicit authorization, controlled template-part/navigation editing.
 ```
 
-### Historical Elementor visible editing
+### Historical Elementor visible editing policy
 
 Implemented:
 
@@ -538,13 +538,13 @@ Implemented:
 2. preservation of historical Elementor pages;
 3. a pre-write guard against invisible `post_content` updates.
 
-Not implemented:
+Out of scope by product decision:
 
 1. reading and editing `_elementor_data`;
 2. converting Elementor widgets to Builder templates;
 3. an Elementor rollback-aware visual editor.
 
-Do not use generic `edit-page` as a substitute. A future adapter must understand Elementor data and verify the rendered result.
+Do not plan or implement an Elementor data-writing adapter. If an old page must be visibly edited, the owner uses its native editor. If Builder should own the route, create a separate Builder-managed page and switch routing only after explicit authorization and verification.
 
 ### 2. External to source custody
 

@@ -18,7 +18,7 @@
 ### Skills and documentation
 
 - Documented the compatibility model: historical page-builder pages stay on their rendering owner; new pages use Builder CPT/ACF/template architecture.
-- Added a live E2E process record with environment, evidence, fixes, validation and remaining Elementor adapter boundary.
+- Added a live E2E process record with environment, evidence, fixes, validation and the Elementor out-of-scope boundary.
 - Updated README usage for page/CPT template assignment and the Elementor limitation.
 
 ### Verification

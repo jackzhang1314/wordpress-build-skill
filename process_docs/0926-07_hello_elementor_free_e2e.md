@@ -64,6 +64,6 @@
 ## 边界与下一步
 
 - 这不是“把 Elementor 页面迁移到 Builder”，而是“历史页面保留 + 新页面使用 Builder 架构”的并行模式。
-- 可见编辑历史 Elementor 页面需要未来专用 `_elementor_data` adapter；当前不得用 `edit-page` 伪装支持。
+- 用户后续明确决策（2026-09-26 19:14 CST）：不规划 `_elementor_data` 专用编辑模块。历史 Elementor 页面留给原编辑器；需要 Builder 接管时创建 Builder-managed 新页面并另行处理路由，不得用 `edit-page` 伪装支持。
 - Builder Core 的 canvas/landing 是结构正确但视觉极简的最小模板，后续应扩展产品、文章、首页等设计变体。
 - 测试站为一次性验证站，未经用户确认不得删除。

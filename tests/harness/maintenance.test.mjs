@@ -161,7 +161,7 @@ test('edit-page refuses invisible Elementor post_content updates', async () => {
     writeFileSync(join(env.root, 'patch.html'), '<p>new fallback</p>');
     await assert.rejects(
       editPage(env.site, ['historical', '--file', 'patch.html', '--adopt-remote']),
-      /elementor owns the rendered content.*dedicated editor adapter/s,
+      /elementor owns the rendered content.*native editor.*Builder-managed page/s,
     );
     assert.equal(env.posts['page:historical'].content, '<p>fallback</p>');
     assert.equal(env.snapshots().length, 0, 'refused write must not create a restore snapshot');

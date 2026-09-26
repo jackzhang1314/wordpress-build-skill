@@ -52,7 +52,7 @@ node wordpress-builder.mjs --project . template assign new-page --template build
 node wordpress-builder.mjs --project . template assign service --template builder-templates/canvas.php --post-type builder_service
 ```
 
-Historical Elementor/Divi/Bricks pages stay on their original rendering owner. Builder Core only adds the parallel Builder content layer; visible historical page-builder editing requires a dedicated data adapter and is not provided by generic `edit-page`.
+Historical Elementor/Divi/Bricks pages stay on their original rendering owner. Builder Core only adds the parallel Builder content layer. Editing third-party page-builder data is a product non-goal: old editor pages are left to their native editor, while new Builder-managed pages use the Builder CPT/ACF/template architecture.
 
 ## References
 

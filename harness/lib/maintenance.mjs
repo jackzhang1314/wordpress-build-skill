@@ -162,7 +162,7 @@ async function pushContent({root, ssh}, {postType, slug, title, content, excerpt
     if (owner) {
       throw new Error(
         `refusing to update ${postType}:${slug}: ${owner} owns the rendered content through builder metadata. ` +
-        'Generic post_content edits would be invisible; preserve the historical page or use a dedicated editor adapter.'
+        'Generic post_content edits would be invisible; edit it in its native editor or create a Builder-managed page.'
       );
     }
   }

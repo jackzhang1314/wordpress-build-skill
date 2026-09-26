@@ -165,7 +165,7 @@ node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . builder in
 
 新页面使用 Builder 的 CPT、ACF 和 page templates；旧页面继续使用原来的编辑器和模板。`template assign` 支持 page 和 Builder CPT，例如 `--post-type builder_service`。
 
-已在免费 Hello Elementor + 免费 Elementor 的 Hostinger 站点上完成 E2E：Builder Core 与 Elementor 共存，历史 Elementor 页面 marker 保持不变，新增 Builder page/CPT 正常渲染，后台 page 与 Builder CPT 的模板选择都能看到 Builder Canvas/Landing。边界也很明确：历史 Elementor 页面可见内容由 `_elementor_data` 渲染，通用 `edit-page` 会直接拒绝这类写入，避免把内容写进不可见的 `post_content`；可见编辑需要未来实现专用 Elementor adapter。
+已在免费 Hello Elementor + 免费 Elementor 的 Hostinger 站点上完成 E2E：Builder Core 与 Elementor 共存，历史 Elementor 页面 marker 保持不变，新增 Builder page/CPT 正常渲染，后台 page 与 Builder CPT 的模板选择都能看到 Builder Canvas/Landing。边界也很明确：历史 Elementor 页面可见内容由 `_elementor_data` 渲染，通用 `edit-page` 会直接拒绝这类写入，避免把内容写进不可见的 `post_content`。Builder 不规划 Elementor 数据编辑模块；旧编辑器页面留给原编辑器，新页面走 Builder 架构。
 
 | 场景 | 命令 |
 | --- | --- |
