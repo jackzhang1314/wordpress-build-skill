@@ -4,11 +4,11 @@
 
 - WordPress Builder 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
 - Starter Template 仓库：<https://github.com/jackzhang1314/b2b-wordpress-starter-template>
-- 当前 WordPress Builder 基线：`2.24.0`
+- 当前 WordPress Builder 基线：`2.25.0`
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
-> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.24.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.25.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
 
 ### 交给 Codex 的最小指令
 
@@ -116,7 +116,21 @@ node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . nav block 
 
 Plan 阶段只写本地；Apply 阶段会复查 route owner 和内容漂移、创建 restore snapshot、更新 `wp_navigation`、读回 hash、清缓存、验证原始前台 HTML 中的每个 label，失败时自动回滚。
 
-### D. 安全修改当前路由的 FSE 模板/模板部件
+### D. 给 Elementor/混合老站新增 Builder-managed 页面
+
+```bash
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . builder install
+
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . builder page plan \
+  --file content/builder-page.json
+
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . builder page apply \
+  --plan <plan-id>
+```
+
+该流程只创建/更新 `builder_project` / `builder_service`，绑定 Builder Core 插件模板，写入四个后台可编辑 ACF 字段，验证公网页面，失败自动回滚。历史 Elementor/Divi/Bricks 页面和私有编辑器数据不会被修改。
+
+### E. 安全修改当前路由的 FSE 模板/模板部件
 
 ```bash
 node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . block-template plan \
@@ -302,7 +316,7 @@ npm run package:starter
 
 ## 8. 当前边界
 
-当前基线已完成 Hostinger 真实部署、路由验证、CMS/ACF 审计、响应式截图、Fluent Forms 浏览器提交验证、原生 Block/FSE custom 模板/导航所有权 E2E、`wp_navigation` 更新/前台验证/自动回滚 E2E，以及 FSE template part 精确 patch / theme override / 自动回滚 E2E。
+当前基线已完成 Hostinger 真实部署、路由验证、CMS/ACF 审计、响应式截图、Fluent Forms 浏览器提交验证、原生 Block/FSE custom 模板/导航所有权 E2E、`wp_navigation` 更新/前台验证/自动回滚 E2E、FSE template part 精确 patch / theme override / 自动回滚 E2E，以及 Elementor 老站并行新增 Builder-managed 页面并验证公网/ACF/模板/复放 no-op 的 E2E。
 
 不要把以下内容当作已通用完成的能力：
 

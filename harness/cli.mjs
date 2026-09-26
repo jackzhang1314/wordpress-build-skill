@@ -34,6 +34,7 @@ import {defaultRfqFields, verifyRfqForm} from './lib/form-verify.mjs';
 import {assignTemplate, argValue, auditFields, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
 import {applyBlockNavigation, planBlockNavigation} from './lib/block-navigation.mjs';
 import {applyBlockTemplate, planBlockTemplate} from './lib/block-template.mjs';
+import {applyBuilderPage, planBuilderPage} from './lib/builder-page.mjs';
 import {rotateCredentials, showCredentials} from './lib/credentials.mjs';
 import {configureSmtp, testSmtp} from './lib/smtp.mjs';
 import {auditEnvironment, bootstrapActions, repositoryRoot} from './lib/environment.mjs';
@@ -93,6 +94,7 @@ Project commands:
   editor-audit           Audit native editor module patterns and page compatibility
   builder install        Install theme-independent Builder Core CPT/ACF/templates
   builder status         Inspect Builder Core plugin and content types
+  builder page plan|apply Create or update a Builder-managed page with live rollback
   project inspect        Inspect shape, templates, navigation, plugins, content and optional routes
   email-setup            Guided setup: create business mailbox + configure SMTP + test
   smtp configure|test    Configure business-mailbox SMTP constants and send a test email
@@ -617,7 +619,27 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
         outputResult(payload, json, logger);
         return payload.pluginActive && payload.contentTypes.builderProject && payload.contentTypes.builderService ? 0 : 1;
       }
-      throw new Error('usage: harness builder install|status');
+      if (sub === 'page') {
+        const action = args[1];
+        const rest = args.slice(2);
+        if (action === 'plan') {
+          const result = await planBuilderPage(site, rest, logger);
+          outputResult({
+            ...result,
+            summary: `Planned ${result.action} ${result.type}:${result.slug}; apply with --plan ${result.planId}`,
+          }, json, logger);
+        } else if (action === 'apply') {
+          const result = await applyBuilderPage(site, rest, logger);
+          outputResult({
+            ...result,
+            summary: `${result.action === 'noop' ? 'No change needed' : result.action === 'create' ? 'Created' : 'Updated'} ${result.url}`,
+          }, json, logger);
+        } else {
+          throw new Error('usage: builder page plan --file <builder-page.json> | builder page apply --plan <id>');
+        }
+        return 0;
+      }
+      throw new Error('usage: builder install|status|page plan|page apply');
     }
     if (command === 'credentials') {
       const sub = firstValue(args) ?? 'show';

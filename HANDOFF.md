@@ -1,12 +1,12 @@
 # WordPress Builder Project Handoff
 
 Handoff date: 2026-09-27
-Handoff time: 2026-09-27 02:20 CST (+08:00)
-Reason: continuation snapshot after WordPress Builder 2.24.0 added route-owned FSE template patches.
+Handoff time: 2026-09-27 03:00 CST (+08:00)
+Reason: continuation snapshot after WordPress Builder 2.25.0 added the Builder-managed page workflow.
 Repository: <https://github.com/jackzhang1314/wordpress-build-skill>
 Release branch: `main`
-Current release: `v2.24.0`
-Pre-release baseline commit: `797c84bf5304493b7fcc96807c539fde3d98210a`
+Current release: `v2.25.0`
+Pre-release baseline commit: `b1717d813f4c45878e1a9d3345acf1cd83a7bcbc`
 Current worktree: `/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill`
 
 ## 1. Read this first
@@ -22,7 +22,16 @@ The Starter Template is only an optional fast path for new B2B sites. It must ne
 
 ### 2026-09-27 addendum
 
-WordPress Builder `2.24.0` adds selected-route FSE template patches:
+WordPress Builder `2.25.0` adds the dedicated Builder-managed page workflow:
+
+```bash
+node wordpress-builder.mjs --project . builder page plan --file content/builder-page.json
+node wordpress-builder.mjs --project . builder page apply --plan <plan-id>
+```
+
+It is the preferred path for adding pages to an existing Elementor/Divi/custom-editor site. Input is limited to Builder CPTs, plugin-owned templates and Builder ACF fields; apply includes drift checks, readback, live text verification and automatic rollback. Third-party editor data remains a non-goal.
+
+WordPress Builder `2.24.0` added selected-route FSE template patches:
 
 ```bash
 node wordpress-builder.mjs --project . block-template plan --route / --part header --file content/template-patch.json
@@ -60,7 +69,7 @@ git status --short --branch
 Latest tested tag:
 
 ```bash
-v2.24.0
+v2.25.0
 ```
 
 Full verification before handoff:
@@ -68,9 +77,9 @@ Full verification before handoff:
 ```text
 typecheck: pass
 lint: pass
-tests: 246 / 246 pass
+tests: 254 / 254 pass
 build: pass
-clean clone of v2.24.0: pass
+clean clone of v2.25.0: pending until tag publication
 ```
 
 ## 2. Canonical setup
@@ -719,7 +728,7 @@ https://github.com/jackzhang1314/wordpress-build-skill
 
 当前应使用：
 branch/main: main
-tag: v2.24.0
+tag: v2.25.0
 
 请先执行：
 
@@ -742,9 +751,9 @@ tag: v2.24.0
 
 当前项目基线：
 
-- 最新实现 tag: v2.24.0
+- 最新实现 tag: v2.25.0
 - 实施前回滚 tag: pre-skill-suite-implementation
-- 当前 tests: 246/246 passing
+- 当前 tests: 254/254 passing
 - WordPress Builder canonical CLI: node wordpress-builder.mjs
 - legacy compatibility CLI: node harness/cli.mjs
 
@@ -765,10 +774,10 @@ tag: v2.24.0
 
 第一个开发任务是：
 
-1. 先复测 `v2.24.0` 基线；
-2. 在真实 Hostinger Block/FSE 站点上谨慎试运行 `block-template plan`，先审查 route owner、source、find/replace 和 verifyText；
-3. 如需修改 theme.json、PHP theme 文件或复杂 inline navigation，先设计备份、回滚和 source-custody 方案；
-4. 继续保持 Elementor `_elementor_data` 编辑为非目标；
+1. 先复测 `v2.25.0` 基线；
+2. 在真实客户场景中使用 `builder page plan/apply` 新增替代页面，保持第三方编辑器历史页面不动；
+3. 在真实 Hostinger Block/FSE 站点上谨慎试运行 `block-template plan`，先审查 route owner、source、find/replace 和 verifyText；
+4. 如需修改 theme.json、PHP theme 文件或复杂 inline navigation，先设计备份、回滚和 source-custody 方案；
 5. 完成后更新 Skill、测试、过程记录和 README。
 
 不要删除历史文档；不要在没有备份和授权的情况下修改生产站点。

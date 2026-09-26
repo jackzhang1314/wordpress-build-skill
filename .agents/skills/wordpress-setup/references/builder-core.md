@@ -20,7 +20,14 @@ node wordpress-builder.mjs --project . builder install
 
 By default the command creates a backup, installs/activates ACF, syncs Builder Core and verifies its CPTs.
 
-Old pages remain untouched. New Builder-managed pages can use:
+Old pages remain untouched. New Builder-managed pages should use the two-phase workflow:
+
+```bash
+node wordpress-builder.mjs --project . builder page plan --file content/builder-page.json
+node wordpress-builder.mjs --project . builder page apply --plan <plan-id>
+```
+
+The input binds a `builder_project` or `builder_service` to a Builder-owned template, writes only the four Builder Core ACF fields, verifies the live permalink and rolls back automatically on failure. Available templates include:
 
 ```text
 WordPress Builder Canvas

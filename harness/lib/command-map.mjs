@@ -11,6 +11,8 @@ export const commandMap = [
   {command: 'project inspect', projectMode: 'source-or-external', skill: 'wordpress-content', risk: 'read-only', destructive: false},
   {command: 'builder install', projectMode: 'source-or-external', skill: 'wordpress-setup', risk: 'scoped-remote-write', destructive: false},
   {command: 'builder status', projectMode: 'source-or-external', skill: 'wordpress-content', risk: 'read-only', destructive: false},
+  {command: 'builder page plan', projectMode: 'source-or-external', skill: 'wordpress-content', risk: 'local-plan-write', destructive: false},
+  {command: 'builder page apply', projectMode: 'source-or-external', skill: 'wordpress-content', risk: 'remote-write-with-rollback', destructive: false},
   {command: 'check', projectMode: 'source-or-external', skill: 'wordpress-delivery', risk: 'read-only', destructive: false},
   {command: 'backup', projectMode: 'source-or-external', skill: 'wordpress-delivery', risk: 'read-only', destructive: false},
   {command: 'status', projectMode: 'source-or-external', skill: 'wordpress-content', risk: 'read-only', destructive: false},

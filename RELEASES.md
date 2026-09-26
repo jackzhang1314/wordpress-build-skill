@@ -1,5 +1,40 @@
 # Releases
 
+## 2026-09-27 — WordPress Builder 2.25.0 Builder-managed page workflow
+
+### Builder
+
+- Added a dedicated two-stage workflow for new pages on existing editor-specific sites:
+  - `builder page plan --file <builder-page.json>`;
+  - `builder page apply --plan <plan-id>`.
+- Input is limited to `builder_project` / `builder_service`, Builder Core plugin-owned templates and the four Builder Core ACF fields.
+- Rejected Elementor/Divi/Bricks private builder payloads before planning.
+- Plan records prior/desired title, slug, status, excerpt, content, template, ACF fields, live verify text and hashes.
+- Apply rechecks Builder Core, CPT/template availability, site URL and target drift.
+- One remote action writes the post, plugin template binding and ACF whitelist fields, then reads all values back.
+- Apply flushes cache and verifies the original `get_permalink()` URL; failed live verification restores an existing post or deletes a newly created one.
+- Receipts are separate from immutable plans.
+
+### Skills and documentation
+
+- Promoted Builder-managed pages to the documented path for existing Elementor/Divi/custom-editor sites.
+- Updated Content skill, Builder Core reference, mode safety, project command map, README and guide.
+- Added `process_docs/0927-03_builder_managed_page_workflow.md`.
+
+### Verification
+
+- Added eight Builder-page regressions covering local-only planning, create/update writes, new-post rollback, existing-post rollback, drift refusal, third-party/unknown field refusal and command-map safety.
+- Full local gate passed: typecheck, lint, build and **254/254 tests**.
+- Live E2E on `yellow-koala-142147.hostingersite.com`, an external Hello Elementor + Elementor site with Builder Core active:
+  - planned `builder_project:builder-managed-e2e`;
+  - applied `builder-templates/landing.php`;
+  - created post 12;
+  - live URL returned HTTP 200;
+  - all three verify texts rendered;
+  - template and four ACF fields read back from WordPress;
+  - historical Elementor pages were not converted or overwritten.
+  - replaying the completed plan returned a verified `noop` instead of a false drift conflict.
+
 ## 2026-09-27 — WordPress Builder 2.24.0 route-owned FSE template patches
 
 ### Builder

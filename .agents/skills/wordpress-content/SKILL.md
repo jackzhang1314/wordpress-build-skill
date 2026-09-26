@@ -50,6 +50,10 @@ For an existing Elementor, Divi or custom-editor site, do not convert old pages.
 
 ```bash
 node wordpress-builder.mjs --project . builder install
+node wordpress-builder.mjs --project . builder page plan --file content/builder-page.json
+node wordpress-builder.mjs --project . builder page apply --plan <plan-id>
+
+# Legacy surgical path when the dedicated workflow is not suitable:
 node wordpress-builder.mjs --project . post push new-page.json
 node wordpress-builder.mjs --project . template assign new-page --template builder-templates/landing.php
 node wordpress-builder.mjs --project . template assign service --template builder-templates/canvas.php --post-type builder_service

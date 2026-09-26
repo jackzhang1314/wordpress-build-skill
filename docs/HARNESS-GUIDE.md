@@ -152,6 +152,18 @@ node wordpress-builder.mjs --project . nav block apply --plan <plan-id>
 
 只支持当前 route 引用且内容为扁平 `wp:navigation-link` 的导航。Plan 记录 owner、影响面和 before/after hash；Apply 复查漂移、创建 snapshot、更新、读回、清缓存、验证前台 label，失败自动回滚。inline navigation、子菜单和 template/part 编辑仍需明确 source custody。
 
+### Builder-managed 新页面
+
+在已有 Elementor/Divi/自定义编辑器站点上，不转换历史页面，新增页面使用 Builder Core：
+
+```bash
+node wordpress-builder.mjs --project . builder install
+node wordpress-builder.mjs --project . builder page plan --file content/builder-page.json
+node wordpress-builder.mjs --project . builder page apply --plan <plan-id>
+```
+
+Plan/apply 只允许 Builder CPT、Builder 插件模板和四个 Builder ACF 字段；apply 会复查 drift、创建 snapshot、读回模板/字段、验证公网 verifyText 并自动回滚。第三方编辑器私有数据会被拒绝。
+
 FSE template / template part 的精确片段修改：
 
 ```bash
