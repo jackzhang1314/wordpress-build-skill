@@ -29,4 +29,26 @@ node wordpress-builder.mjs --project . nav add Products --url /products/
 node wordpress-builder.mjs --project . nav remove 'Old label'
 ```
 
-Block navigation and FSE templates are read-only in this Builder release. Do not claim a classic menu change fixed a block navigation site. If template or plugin code must change, stop and propose an authorized source-custody workflow with backup and live verification.
+## Supported `wp_navigation` write
+
+Only a flat `wp:navigation-link` list referenced by the selected route can be updated through the two-phase workflow:
+
+```bash
+node wordpress-builder.mjs --project . nav block plan --route / --file content/block-nav.json
+node wordpress-builder.mjs --project . nav block apply --plan <plan-id>
+```
+
+Input:
+
+```json
+{
+  "links": [
+    {"label": "Home", "path": "/"},
+    {"label": "Products", "path": "/products/"}
+  ]
+}
+```
+
+`plan` is local-only. It records the selected template, selected parts, navigation owner, impact and before/after hashes. `apply` rechecks route ownership and content drift, creates a restore snapshot, updates `wp_navigation`, reads it back, flushes cache, verifies every label in the original route HTML and automatically restores the previous content if live verification fails.
+
+Multiple `wp_navigation` candidates require `--navigation <id>`. Inline navigation, submenus, locked/custom blocks and missing/low-confidence owners are not supported by this path. FSE template/template-part editing remains a source-custody workflow; do not use classic menu commands as a workaround.

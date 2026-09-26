@@ -1,12 +1,12 @@
 # WordPress Builder Project Handoff
 
 Handoff date: 2026-09-27
-Handoff time: 2026-09-27 00:35 CST (+08:00)
-Reason: continuation snapshot after WordPress Builder 2.22.0 added Block/FSE route-level shape diagnosis.
+Handoff time: 2026-09-27 01:55 CST (+08:00)
+Reason: continuation snapshot after WordPress Builder 2.23.0 added route-owned wp_navigation writes.
 Repository: <https://github.com/jackzhang1314/wordpress-build-skill>
 Release branch: `main`
-Current release: `v2.22.0`
-Pre-release baseline commit: `c9057ddab80651d3b41ea4602b97eb9ba030e237`
+Current release: `v2.23.0`
+Pre-release baseline commit: `fc58bcfa4681793110a7b0962bb9ce0350e35b1b`
 Current worktree: `/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill`
 
 ## 1. Read this first
@@ -22,7 +22,16 @@ The Starter Template is only an optional fast path for new B2B sites. It must ne
 
 ### 2026-09-27 addendum
 
-WordPress Builder `2.22.0` adds read-only Block/FSE route diagnosis:
+WordPress Builder `2.23.0` adds the first supported Block/FSE write path:
+
+```bash
+node wordpress-builder.mjs --project . nav block plan --route / --file content/block-nav.json
+node wordpress-builder.mjs --project . nav block apply --plan <plan-id>
+```
+
+It only updates a `wp_navigation` post that is owned by the selected route and contains a flat `wp:navigation-link` list. Plan is local-only; apply checks drift, snapshots prior content, updates, reads back, verifies the original route HTML and rolls back automatically on failure. Template/template-part and inline-navigation editing remains source custody.
+
+WordPress Builder `2.22.0` added read-only Block/FSE route diagnosis:
 
 ```bash
 node wordpress-builder.mjs --project . project inspect --route-set core --json
@@ -42,7 +51,7 @@ git status --short --branch
 Latest tested tag:
 
 ```bash
-v2.22.0
+v2.23.0
 ```
 
 Full verification before handoff:
@@ -50,9 +59,9 @@ Full verification before handoff:
 ```text
 typecheck: pass
 lint: pass
-tests: 224 / 224 pass
+tests: 235 / 235 pass
 build: pass
-clean clone of v2.22.0: pass
+clean clone of v2.23.0: pending until tag publication
 ```
 
 ## 2. Canonical setup
@@ -701,7 +710,7 @@ https://github.com/jackzhang1314/wordpress-build-skill
 
 当前应使用：
 branch/main: main
-tag: v2.22.0
+tag: v2.23.0
 
 请先执行：
 
@@ -724,9 +733,9 @@ tag: v2.22.0
 
 当前项目基线：
 
-- 最新实现 tag: v2.22.0
+- 最新实现 tag: v2.23.0
 - 实施前回滚 tag: pre-skill-suite-implementation
-- 当前 tests: 224/224 passing
+- 当前 tests: 235/235 passing
 - WordPress Builder canonical CLI: node wordpress-builder.mjs
 - legacy compatibility CLI: node harness/cli.mjs
 
@@ -747,9 +756,9 @@ tag: v2.22.0
 
 第一个开发任务是：
 
-1. 先复测 `v2.22.0` 基线；
-2. 审计 Block/FSE route diagnosis 的输出与真实站点是否仍有偏差；
-3. 如需写入 Block/FSE template/template part/wp_navigation，先设计备份、回滚和 source-custody 方案；
+1. 先复测 `v2.23.0` 基线；
+2. 在真实 Hostinger Block/FSE 站点上谨慎试运行 `nav block plan`，先审查 owner、影响面和 before/after；
+3. 如需写入 Block/FSE template/template part 或 inline navigation，先设计备份、回滚和 source-custody 方案；
 4. 继续保持 Elementor `_elementor_data` 编辑为非目标；
 5. 完成后更新 Skill、测试、过程记录和 README。
 

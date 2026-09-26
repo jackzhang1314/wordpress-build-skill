@@ -4,11 +4,11 @@
 
 - WordPress Builder 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
 - Starter Template 仓库：<https://github.com/jackzhang1314/b2b-wordpress-starter-template>
-- 当前 WordPress Builder 基线：`2.22.0`
+- 当前 WordPress Builder 基线：`2.23.0`
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
-> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.22.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.23.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
 
 ### 交给 Codex 的最小指令
 
@@ -101,7 +101,20 @@ node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . project in
 node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . project inspect --routes /,/about/ --json
 ```
 
-`--route-set core` 会抽样首页、普通 page、post、CPT archive/single、分类、搜索和 404。路由输出会记录实际选中的 FSE template、template parts、导航归属、`theme/custom` 来源和置信度，并只保存 hash/摘要，不把完整模板内容写入 `project.json`。未使用的 `wp_navigation`、未渲染的 Classic menu location、Site Editor custom 覆盖和缺失 template part 都会被区分；本版本对 Block/FSE 模板与导航写入保持只读安全边界。
+`--route-set core` 会抽样首页、普通 page、post、CPT archive/single、分类、搜索和 404。路由输出会记录实际选中的 FSE template、template parts、导航归属、`theme/custom` 来源和置信度，并只保存 hash/摘要，不把完整模板内容写入 `project.json`。未使用的 `wp_navigation`、未渲染的 Classic menu location、Site Editor custom 覆盖和缺失 template part 都会被区分。Block/FSE 模板与 template part 写入仍走 source custody；受支持的扁平 `wp_navigation` 可用下方两阶段命令安全更新。
+
+受支持的 `wp_navigation` 更新：
+
+```bash
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . nav block plan \
+  --route / \
+  --file content/block-nav.json
+
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . nav block apply \
+  --plan <plan-id>
+```
+
+Plan 阶段只写本地；Apply 阶段会复查 route owner 和内容漂移、创建 restore snapshot、更新 `wp_navigation`、读回 hash、清缓存、验证原始前台 HTML 中的每个 label，失败时自动回滚。
 
 ### D. 接入 Hostinger
 
@@ -265,7 +278,7 @@ npm run package:starter
 
 ## 8. 当前边界
 
-当前基线已完成 Hostinger 真实部署、路由验证、CMS/ACF 审计、响应式截图、Fluent Forms 浏览器提交验证，以及原生 Block/FSE custom 模板/导航所有权 E2E。
+当前基线已完成 Hostinger 真实部署、路由验证、CMS/ACF 审计、响应式截图、Fluent Forms 浏览器提交验证、原生 Block/FSE custom 模板/导航所有权 E2E，以及 `wp_navigation` 更新/前台验证/自动回滚 E2E。
 
 不要把以下内容当作已通用完成的能力：
 

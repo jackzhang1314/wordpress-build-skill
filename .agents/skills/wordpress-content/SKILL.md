@@ -25,6 +25,8 @@ node wordpress-builder.mjs --project . edit-page about --file body.html --adopt-
 node wordpress-builder.mjs --project . post push article.json
 node wordpress-builder.mjs --project . nav add Products --url /products/
 node wordpress-builder.mjs --project . nav remove 'Old label'
+node wordpress-builder.mjs --project . nav block plan --route / --file content/block-nav.json
+node wordpress-builder.mjs --project . nav block apply --plan <plan-id>
 node wordpress-builder.mjs --project . template assign about --template page-templates/customer.php
 node wordpress-builder.mjs --project . template assign service --template builder-templates/canvas.php --post-type builder_service
 node wordpress-builder.mjs --project . cms-audit
@@ -36,7 +38,7 @@ node wordpress-builder.mjs --project . audit-fields
 - Do not deploy.
 - Do not overwrite theme/plugin code.
 - Classic navigation and classic page-template assignment are verified capabilities.
-- Block navigation and FSE templates require route-level inspection. This release is read-only for Block/FSE template and navigation writes; do not use classic menu commands as a workaround.
+- Block navigation requires route-level ownership. A supported flat `wp_navigation` list may use `nav block plan` then `nav block apply`; inline navigation, submenus and template-part markup still require an authorized source-custody workflow. Do not use classic menu commands as a workaround.
 - Page-builder layouts require builder-specific inspection before markup or template claims.
 - `edit-page` updates `post_content`; it must not be presented as visible editing for an Elementor-owned historical page. The command refuses `_elementor_edit_mode=builder` writes instead of silently changing fallback content.
 - If PHP/template code must change, stop and propose a scoped source-custody upgrade.

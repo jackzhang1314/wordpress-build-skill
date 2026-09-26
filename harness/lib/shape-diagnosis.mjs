@@ -291,3 +291,60 @@ export function routeCapabilities({navigation, fseSelected, sitePageTemplates = 
     fseTemplateInspection: fseSelected,
   };
 }
+
+export function parseNavigationPostContent(content) {
+  const source = String(content ?? '');
+  const links = [];
+  const unsupportedBlocks = [];
+  let cursor = 0;
+  for (const match of source.matchAll(BLOCK_COMMENT)) {
+    const prefix = source.slice(cursor, match.index);
+    if (prefix.trim()) unsupportedBlocks.push({type: 'text', value: prefix.trim()});
+    cursor = match.index + match[0].length;
+    const attributes = parseAttributes(match[2]);
+    if (match[1] !== 'navigation-link' || !attributes.valid) {
+      unsupportedBlocks.push({type: match[1], reason: attributes.valid ? 'unsupported-block' : 'invalid-attributes'});
+      continue;
+    }
+    const label = String(attributes.value.label ?? '').trim();
+    const url = String(attributes.value.url ?? '').trim();
+    const lockedOrBound = attributes.value.lock !== undefined
+      || attributes.value.templateLock !== undefined
+      || attributes.value.metadata !== undefined;
+    if (!label || !url || lockedOrBound) {
+      unsupportedBlocks.push({type: 'navigation-link', reason: !label || !url ? 'missing-label-or-url' : 'locked-or-bound'});
+      continue;
+    }
+    links.push({label, url});
+  }
+  if (source.slice(cursor).trim()) unsupportedBlocks.push({type: 'text', value: source.slice(cursor).trim()});
+  return {
+    supported: links.length > 0 && unsupportedBlocks.length === 0,
+    links,
+    unsupportedBlocks,
+  };
+}
+
+function navigationJsonAttributes(value) {
+  return JSON.stringify(value)
+    .replaceAll('--', '\\u002d\\u002d')
+    .replaceAll('<', '\\u003c')
+    .replaceAll('>', '\\u003e')
+    .replaceAll('&', '\\u0026');
+}
+
+export function buildNavigationPostContent(links) {
+  const normalized = links.map(link => ({
+    label: String(link.label ?? '').trim(),
+    url: String(link.url ?? '').trim(),
+  }));
+  if (normalized.length === 0 || normalized.length > 20) throw new Error('block navigation requires 1-20 links');
+  if (normalized.some(link => !link.label || !link.url)) throw new Error('every block navigation link needs a label and URL');
+  if (new Set(normalized.map(link => link.label)).size !== normalized.length) throw new Error('block navigation labels must be unique');
+  if (new Set(normalized.map(link => link.url)).size !== normalized.length) throw new Error('block navigation URLs must be unique');
+  return normalized.map(link => `<!-- wp:navigation-link ${navigationJsonAttributes({
+    label: link.label,
+    url: link.url,
+    kind: 'custom',
+  })} /-->`).join('\n') + '\n';
+}

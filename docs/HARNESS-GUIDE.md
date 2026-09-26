@@ -143,6 +143,15 @@ node wordpress-builder.mjs --project . project inspect --routes /,/about/ --json
 
 对 Block/FSE 或混合站点，`--route-set core` / `--routes` 会继续向 WordPress 的 `_wp-find-template` 只读探测协议请求每个路由，记录实际选中的 template、template parts、导航归属和 `theme/custom` 来源。站点库存只说明对象存在；路由诊断才说明当前页面由谁渲染。因此未使用的 `wp_navigation` 不能当成当前导航，Classic menu location 不能在 Block 主题里自动当成已渲染导航，custom 数据库模板不能误报成 theme 文件。诊断失败、缺少部件或 markup 无效时输出 low confidence，不转成写权限。
 
+受支持的路由级 `wp_navigation` 更新使用两阶段命令：
+
+```bash
+node wordpress-builder.mjs --project . nav block plan --route / --file content/block-nav.json
+node wordpress-builder.mjs --project . nav block apply --plan <plan-id>
+```
+
+只支持当前 route 引用且内容为扁平 `wp:navigation-link` 的导航。Plan 记录 owner、影响面和 before/after hash；Apply 复查漂移、创建 snapshot、更新、读回、清缓存、验证前台 label，失败自动回滚。inline navigation、子菜单和 template/part 编辑仍需明确 source custody。
+
 ### 已有 Hostinger 站点
 
 如果已有站点使用 Starter 或已有受控本地源码，先在项目目录执行：

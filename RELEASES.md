@@ -1,5 +1,38 @@
 # Releases
 
+## 2026-09-27 — WordPress Builder 2.23.0 route-owned `wp_navigation` writes
+
+### Builder
+
+- Added a two-phase Block navigation workflow:
+  - `nav block plan --route </path/> --file <links.json> [--navigation <id>]`;
+  - `nav block apply --plan <plan-id>`.
+- Plan is local-only and records route, active theme, selected template, selected parts, navigation owner, shared impact, before/after navigation hashes and the immutable navigation content needed for rollback.
+- Apply rechecks site/theme/route/template/part/navigation drift, creates a restore snapshot, updates only a route-owned `wp_navigation`, reads back the hash, flushes cache, verifies every requested label in the original route HTML and automatically restores the previous content if verification fails.
+- Supported navigation content is deliberately limited to a flat list of `wp:navigation-link` blocks.
+- Rejected inline-only navigation, submenus, unknown/locked blocks, unreferenced navigation posts, multiple candidates without an explicit ID and low-confidence/missing owners.
+- FSE template and template-part editing remains a separate source-custody workflow; this release does not modify theme files.
+
+### Skills and documentation
+
+- Updated Content navigation guidance, Design route ownership rules, project contract and command-map safety.
+- Documented input format, plan/apply flow, impact, rollback and current non-goals.
+- Added `process_docs/0927-01_block_navigation_write_workflow.md`.
+
+### Verification
+
+- Added twelve block-navigation/CLI regressions covering parsing, planning, impact, apply, live verification, readback failure rollback, frontend-failure rollback, manual drift, route-owner drift, unreferenced targets, inline-only refusal and command-map safety.
+- Full local gate passed: typecheck, lint, build and **236/236 tests**.
+- Live canonical CLI safety check on a real Hostinger route without `wp_navigation` correctly refused planning, created no plan and wrote no remote data.
+- Real local Block/FSE E2E verified:
+  - custom `front-page` template;
+  - custom header template part;
+  - route owner `template-part:header`;
+  - `wp_navigation 279`;
+  - failed live verification automatically restored `Shape Home`;
+  - normal apply rendered `E2E Home` and `E2E Products`;
+  - cleanup restored the original navigation.
+
 ## 2026-09-27 — WordPress Builder 2.22.0 Block/FSE route shape diagnosis
 
 ### Builder

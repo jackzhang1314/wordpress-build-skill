@@ -32,6 +32,7 @@ import {captureScreenshots, detectChromeBin} from './lib/screenshots.mjs';
 import {launchCdpBrowser} from './lib/cdp-browser.mjs';
 import {defaultRfqFields, verifyRfqForm} from './lib/form-verify.mjs';
 import {assignTemplate, argValue, auditFields, editPage, navAdd, navRemove, pushPost} from './lib/maintenance.mjs';
+import {applyBlockNavigation, planBlockNavigation} from './lib/block-navigation.mjs';
 import {rotateCredentials, showCredentials} from './lib/credentials.mjs';
 import {configureSmtp, testSmtp} from './lib/smtp.mjs';
 import {auditEnvironment, bootstrapActions, repositoryRoot} from './lib/environment.mjs';
@@ -81,7 +82,8 @@ Project commands:
   setup                   Configure core WP, plugins and Rank Math
   edit-page <slug>        Push one page body (--file <html>, --adopt-remote on conflict)
   post push <article>     Create/update a single post from JSON (--adopt-remote on conflict)
-  nav add|remove          Surgical menu item operations (no full rebuild)
+  nav add|remove          Surgical classic menu operations (no full rebuild)
+  nav block plan|apply    Plan and apply an owned wp_navigation update with live rollback
   template assign         Assign a page/CPT template after validating it renders the body
   credentials show|rotate Hand over site credentials, or regenerate the admin password
   audit-fields           Verify every stored value has an admin-editable ACF field
@@ -524,9 +526,26 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
     if (command === 'nav') {
       const sub = firstValue(args);
       const rest = args.slice(1);
-      if (sub === 'add') await navAdd(site, rest, logger);
+      if (sub === 'block') {
+        const action = firstValue(rest);
+        if (action === 'plan') {
+          const result = await planBlockNavigation(site, rest.slice(1), logger);
+          outputResult({
+            ...result,
+            summary: `Planned wp_navigation ${result.navigationId} for ${result.route}; apply with --plan ${result.planId}`,
+          }, json, logger);
+        } else if (action === 'apply') {
+          const result = await applyBlockNavigation(site, rest.slice(1), logger);
+          outputResult({
+            ...result,
+            summary: `${result.action === 'noop' ? 'No change needed' : 'Updated'} wp_navigation ${result.navigationId}; live labels verified`,
+          }, json, logger);
+        } else {
+          throw new Error('usage: nav block plan --route </path/> --file <links.json> [--navigation <id>] | nav block apply --plan <id>');
+        }
+      } else if (sub === 'add') await navAdd(site, rest, logger);
       else if (sub === 'remove') await navRemove(site, rest, logger);
-      else throw new Error('usage: harness nav add|remove ...');
+      else throw new Error('usage: nav add|remove ... or nav block plan|apply');
       return 0;
     }
     if (command === 'template') {
