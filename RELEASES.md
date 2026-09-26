@@ -25,6 +25,7 @@
 
 - Added eight Builder-page regressions covering local-only planning, create/update writes, new-post rollback, existing-post rollback, drift refusal, third-party/unknown field refusal and command-map safety.
 - Full local gate passed: typecheck, lint, build and **254/254 tests**.
+- Post-release clean clone of tag `v2.25.0` passed bootstrap, typecheck, lint, all 254 tests, build and CLI help.
 - Live E2E on `yellow-koala-142147.hostingersite.com`, an external Hello Elementor + Elementor site with Builder Core active:
   - planned `builder_project:builder-managed-e2e`;
   - applied `builder-templates/landing.php`;

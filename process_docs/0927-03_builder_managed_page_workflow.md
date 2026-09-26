@@ -227,3 +227,16 @@ https://yellow-koala-142147.hostingersite.com/builder-projects/builder-managed-e
   - action `noop`;
   - HTTP 200;
   - 三个 verifyText 全部再次验证通过。
+
+## 发布与干净克隆复测（2026-09-27 03:03 Asia/Shanghai）
+
+- 功能提交：`f75e65a5eeef5f1894852b563dd80b500d847015`（`feat: add rollback-safe Builder-managed pages`）。
+- 已推送 `main` 并发布 tag：`v2.25.0`。
+- 从 GitHub 干净克隆 `v2.25.0` 后验证通过：
+  - `node harness/bootstrap.mjs --fix`；
+  - `npm run typecheck`；
+  - `npm run lint`；
+  - `npm test`：254/254；
+  - `npm run build`；
+  - `node wordpress-builder.mjs --help`。
+- 干净克隆工作区保持干净（detached HEAD，无未提交文件）。
