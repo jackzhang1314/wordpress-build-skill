@@ -61,6 +61,8 @@ node wordpress-builder.mjs --project . template assign service --template builde
 
 Historical Elementor/Divi/Bricks pages stay on their original rendering owner. Builder Core only adds the parallel Builder content layer. Editing third-party page-builder data is a product non-goal: old editor pages are left to their native editor, while new Builder-managed pages use the Builder CPT/ACF/template architecture.
 
+Builder Core `1.1.0` supports nine editable fields: hero subtitle/summary, primary CTA, buyer benefits, specifications, FAQ and bottom CTA. Builder Landing renders these with the main editor body; no Repeater or ACF PRO is required.
+
 ## References
 
 - [Content model](references/content-model.md)

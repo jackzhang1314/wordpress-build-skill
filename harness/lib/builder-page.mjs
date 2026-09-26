@@ -6,7 +6,18 @@ import {shellQuote} from './ssh.mjs';
 const PLAN_VERSION = 1;
 const ALLOWED_TYPES = ['builder_project', 'builder_service'];
 const ALLOWED_TEMPLATES = ['builder-templates/canvas.php', 'builder-templates/landing.php'];
-const ALLOWED_FIELDS = ['wbc_subtitle', 'wbc_summary', 'wbc_cta_label', 'wbc_cta_url'];
+const ALLOWED_FIELDS = [
+  'wbc_subtitle',
+  'wbc_summary',
+  'wbc_cta_label',
+  'wbc_cta_url',
+  'wbc_benefits',
+  'wbc_specifications',
+  'wbc_faq',
+  'wbc_secondary_cta_label',
+  'wbc_secondary_cta_url',
+];
+const URL_FIELDS = ['wbc_cta_url', 'wbc_secondary_cta_url'];
 const ALLOWED_STATUSES = ['publish'];
 
 function sha256(value) {
@@ -34,12 +45,14 @@ function normalizeFields(inputFields, previousFields = {}) {
     if (Object.hasOwn(inputFields ?? {}, name)) fields[name] = inputFields[name] === null ? null : String(inputFields[name]);
     else fields[name] = previousFields[name] === undefined || previousFields[name] === null ? null : String(previousFields[name]);
   }
-  if (typeof fields.wbc_cta_url === 'string' && fields.wbc_cta_url) {
-    try {
-      const url = new URL(fields.wbc_cta_url);
-      if (!['http:', 'https:'].includes(url.protocol)) throw new Error('invalid protocol');
-    } catch {
-      throw new Error('wbc_cta_url must be a full http(s) URL');
+  for (const name of URL_FIELDS) {
+    if (typeof fields[name] === 'string' && fields[name]) {
+      try {
+        const url = new URL(fields[name]);
+        if (!['http:', 'https:'].includes(url.protocol)) throw new Error('invalid protocol');
+      } catch {
+        throw new Error(`${name} must be a full http(s) URL`);
+      }
     }
   }
   return fields;
@@ -117,7 +130,7 @@ $post = get_page_by_path($p['slug'], OBJECT, [$p['type']]);
 if ($post instanceof WP_Post) {
   $post->template = get_page_template_slug($post->ID);
   $post->fields = array();
-  foreach (['wbc_subtitle', 'wbc_summary', 'wbc_cta_label', 'wbc_cta_url'] as $name) {
+  foreach (${JSON.stringify(ALLOWED_FIELDS)} as $name) {
     $value = get_post_meta($post->ID, $name, true);
     $post->fields[$name] = $value === '' ? null : $value;
   }

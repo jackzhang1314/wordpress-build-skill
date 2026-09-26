@@ -20,9 +20,28 @@ const input = {
     wbc_summary: 'Custom buckets for export buyers.',
     wbc_cta_label: 'Request a quote',
     wbc_cta_url: 'https://site.test/contact/',
+    wbc_benefits: 'OEM compatibility | Matched to mainstream 20-ton excavator models.\nExport documentation | Commercial invoice, packing list and inspection report included.',
+    wbc_specifications: 'Minimum order | One 20-foot container\nProduction time | 25 working days after deposit',
+    wbc_faq: 'Can you customize bucket width? | Yes, send the machine model and target working condition.\nDo you provide inspection reports? | Yes, a pre-shipment inspection report is included.',
+    wbc_secondary_cta_label: 'Send requirements',
+    wbc_secondary_cta_url: 'https://site.test/contact/',
   },
-  verifyText: ['Custom Excavator Solutions', 'Factory capability'],
+  verifyText: ['Custom Excavator Solutions', 'Factory capability', 'Matched to mainstream 20-ton excavator models'],
 };
+
+function emptyBuilderFields() {
+  return {
+    wbc_subtitle: null,
+    wbc_summary: null,
+    wbc_cta_label: null,
+    wbc_cta_url: null,
+    wbc_benefits: null,
+    wbc_specifications: null,
+    wbc_faq: null,
+    wbc_secondary_cta_label: null,
+    wbc_secondary_cta_url: null,
+  };
+}
 
 function makeSite(existing = null) {
   const state = {post: existing && JSON.parse(JSON.stringify(existing)), nextId: existing?.id ?? 0};
@@ -168,7 +187,7 @@ test('failed live verification restores an existing Builder page', async () => {
     excerpt: 'Old excerpt',
     content: '<p>Old content</p>',
     template: 'builder-templates/canvas.php',
-    fields: {wbc_subtitle: null, wbc_summary: null, wbc_cta_label: null, wbc_cta_url: null},
+    fields: emptyBuilderFields(),
     url: `https://site.test/builder-projects/${input.slug}/`,
   };
   const env = await makeEnvironment(existing);
@@ -201,7 +220,7 @@ test('apply refuses target drift after planning', async () => {
       excerpt: '',
       content: '<p>Client content</p>',
       template: 'builder-templates/canvas.php',
-      fields: {wbc_subtitle: null, wbc_summary: null, wbc_cta_label: null, wbc_cta_url: null},
+      fields: emptyBuilderFields(),
       url: `https://site.test/builder-projects/${input.slug}/`,
     };
     await assert.rejects(

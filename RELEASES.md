@@ -1,5 +1,56 @@
 # Releases
 
+## 2026-09-27 — WordPress Builder 2.26.0 Builder Core Rich Landing
+
+### Builder Core
+
+- Upgraded Builder Core from `1.0.2` to `1.1.0`.
+- Expanded the editable ACF field set from four to nine fields:
+  - hero subtitle and summary;
+  - primary CTA label and URL;
+  - buyer benefits;
+  - specifications;
+  - FAQ;
+  - secondary bottom CTA label and URL.
+- Kept every field available in ACF Free with field-level REST exposure and non-empty admin instructions.
+- Added scoped, responsive, theme-independent styles under `.wordpress-builder-template`.
+- Upgraded Landing information architecture:
+  - industrial hero;
+  - main editor body;
+  - buyer benefits;
+  - specification table;
+  - FAQ disclosures;
+  - bottom CTA.
+- Kept the active theme header/footer and fonts intact.
+- Added reduced-motion and visible-focus handling; avoided gradient/SaaS-template styling.
+
+### Builder page workflow
+
+- Extended `builder page plan/apply` to all nine Builder Core fields.
+- Added full http(s) validation for both CTA URLs.
+- Kept unknown ACF fields, Elementor, Divi and Bricks private data rejected.
+
+### Skills and documentation
+
+- Updated Builder Core reference and README, Content skill, project README and guide.
+- Added `process_docs/0927-04_builder_core_rich_landing.md`.
+
+### Verification
+
+- PHP syntax checks passed for the plugin and both templates.
+- Added/updated tests for nine-field exposure, version consistency, rich Landing sections, scoped/responsive CSS and Builder-page field handling.
+- Full local gate passed: typecheck, lint, build and **255/255 tests**.
+- Live E2E on `yellow-koala-142147.hostingersite.com`:
+  - backed up and upgraded Builder Core to `1.1.0`;
+  - updated the Builder-managed page through plan/apply;
+  - live URL returned HTTP 200 and all four verify texts rendered;
+  - plugin CSS loaded with version `1.1.0`;
+  - benefits, specifications and FAQ rendered in public HTML;
+  - CMS audit passed with nine fields and zero problems;
+  - desktop and mobile Chrome checks showed no horizontal overflow, 50px CTA targets, valid heading order and approximately 16.27:1 H1 contrast.
+- Captured desktop/mobile screenshots in the ignored local evidence directory.
+- Historical Elementor pages remained untouched.
+
 ## 2026-09-27 — WordPress Builder 2.25.0 Builder-managed page workflow
 
 ### Builder

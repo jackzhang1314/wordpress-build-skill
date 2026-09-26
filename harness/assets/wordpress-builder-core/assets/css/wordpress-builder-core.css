@@ -1,0 +1,266 @@
+.wordpress-builder-template {
+    --wbc-accent: #155e75;
+    --wbc-accent-strong: #0f4a5d;
+    --wbc-ink: #172033;
+    --wbc-muted: #4c5a6d;
+    --wbc-line: #ccd5df;
+    --wbc-surface: #ffffff;
+    --wbc-soft: #f2f5f8;
+    --wbc-radius: 3px;
+    --wbc-max: 1160px;
+    --wbc-gap: clamp(1.25rem, 3vw, 2.25rem);
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 3.5rem) 1.25rem;
+    max-width: var(--wbc-max);
+    color: var(--wbc-ink);
+}
+
+.wordpress-builder-template *,
+.wordpress-builder-template *::before,
+.wordpress-builder-template *::after {
+    box-sizing: border-box;
+}
+
+.wordpress-builder-template a {
+    color: var(--wbc-accent-strong);
+}
+
+.wordpress-builder-template__hero,
+.wordpress-builder-template__section,
+.wordpress-builder-template__cta {
+    margin: 0 0 clamp(2rem, 5vw, 3.5rem);
+}
+
+.wordpress-builder-template__hero {
+    padding: clamp(1.75rem, 4vw, 3rem);
+    border: 1px solid var(--wbc-line);
+    border-left: 5px solid var(--wbc-accent);
+    background: var(--wbc-surface);
+}
+
+.wordpress-builder-template__subtitle {
+    margin: 0 0 0.65rem;
+    color: var(--wbc-accent-strong);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.wordpress-builder-template__title {
+    max-width: 22ch;
+    margin: 0;
+    color: inherit;
+    font-size: clamp(2.1rem, 5vw, 3.7rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+}
+
+.wordpress-builder-template__summary {
+    max-width: 72ch;
+    margin: 1.1rem 0 0;
+    color: var(--wbc-muted);
+    font-size: 1.08rem;
+    line-height: 1.65;
+}
+
+.wordpress-builder-template__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin: 1.7rem 0 0;
+}
+
+.wordpress-builder-template__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.75rem 1.35rem;
+    border: 1px solid var(--wbc-accent-strong);
+    border-radius: var(--wbc-radius);
+    background: var(--wbc-accent-strong);
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.wordpress-builder-template__cta:hover {
+    background: var(--wbc-accent);
+    border-color: var(--wbc-accent);
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.wordpress-builder-template__cta--secondary {
+    background: transparent;
+    color: var(--wbc-accent-strong);
+}
+
+.wordpress-builder-template__cta--secondary:hover {
+    background: var(--wbc-soft);
+    color: var(--wbc-accent-strong);
+}
+
+.wordpress-builder-template :where(a):focus-visible,
+.wordpress-builder-template :where(summary):focus-visible {
+    outline: 3px solid var(--wbc-accent);
+    outline-offset: 3px;
+}
+
+.wordpress-builder-template__content {
+    max-width: none;
+}
+
+.wordpress-builder-template__content > * + * {
+    margin-top: 1.15em;
+}
+
+.wordpress-builder-template__section-title {
+    margin: 0 0 1.35rem;
+    font-size: clamp(1.45rem, 3vw, 2.1rem);
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+}
+
+.wordpress-builder-template__benefit-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wordpress-builder-template__benefit {
+    padding: 1.15rem;
+    border: 1px solid var(--wbc-line);
+    background: var(--wbc-surface);
+}
+
+.wordpress-builder-template__benefit-title {
+    margin: 0 0 0.4rem;
+    font-size: 1.05rem;
+    font-weight: 750;
+    line-height: 1.35;
+}
+
+.wordpress-builder-template__benefit-detail {
+    margin: 0;
+    color: var(--wbc-muted);
+    font-size: 0.95rem;
+    line-height: 1.58;
+}
+
+.wordpress-builder-template__table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--wbc-line);
+    background: var(--wbc-surface);
+}
+
+.wordpress-builder-template__table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+.wordpress-builder-template__table th,
+.wordpress-builder-template__table td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--wbc-line);
+    text-align: left;
+    vertical-align: top;
+}
+
+.wordpress-builder-template__table th {
+    width: min(38%, 320px);
+    background: var(--wbc-soft);
+    color: var(--wbc-ink);
+    font-weight: 700;
+}
+
+.wordpress-builder-template__table tr:last-child th,
+.wordpress-builder-template__table tr:last-child td {
+    border-bottom: 0;
+}
+
+.wordpress-builder-template__faq-list {
+    margin: 0;
+}
+
+.wordpress-builder-template__faq {
+    border: 1px solid var(--wbc-line);
+    border-bottom: 0;
+    background: var(--wbc-surface);
+}
+
+.wordpress-builder-template__faq:last-child {
+    border-bottom: 1px solid var(--wbc-line);
+}
+
+.wordpress-builder-template__question {
+    min-height: 52px;
+    padding: 0.95rem 1rem;
+    color: var(--wbc-ink);
+    cursor: pointer;
+    font-size: 1.03rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.wordpress-builder-template__answer {
+    margin: 0;
+    padding: 0 1rem 1rem 1rem;
+    color: var(--wbc-muted);
+    line-height: 1.65;
+}
+
+.wordpress-builder-template__cta-band {
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border: 1px solid var(--wbc-line);
+    background: var(--wbc-soft);
+}
+
+.wordpress-builder-template__cta-heading {
+    max-width: 28ch;
+    margin: 0 0 0.65rem;
+    font-size: clamp(1.35rem, 3vw, 1.9rem);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.wordpress-builder-template__cta-copy {
+    max-width: 68ch;
+    margin: 0 0 1.25rem;
+    color: var(--wbc-muted);
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .wordpress-builder-template {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .wordpress-builder-template__actions,
+    .wordpress-builder-template__benefit-list {
+        grid-template-columns: 1fr;
+    }
+
+    .wordpress-builder-template__table th,
+    .wordpress-builder-template__table td {
+        min-width: 170px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wordpress-builder-template__cta,
+    .wordpress-builder-template__cta:hover {
+        transition: none;
+        transform: none;
+    }
+}

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WordPress Builder Core
  * Description: Theme-independent CPT, taxonomy, ACF and page-template adapter used by WordPress Builder.
- * Version: 1.0.2
+ * Version: 1.1.0
  * Requires PHP: 7.4
  * Text Domain: wordpress-builder-core
  */
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('WORDPRESS_BUILDER_CORE_VERSION', '1.0.2');
+define('WORDPRESS_BUILDER_CORE_VERSION', '1.1.0');
 define('WORDPRESS_BUILDER_CORE_PATH', plugin_dir_path(__FILE__));
 
 function wordpress_builder_core_post_types() {
@@ -104,7 +104,7 @@ function wordpress_builder_core_register_acf_fields() {
                 'label' => 'Subtitle',
                 'name' => 'wbc_subtitle',
                 'type' => 'text',
-                'instructions' => 'Optional secondary heading shown by Builder templates.',
+                'instructions' => 'Optional secondary heading shown above the H1 in Builder templates.',
                 'show_in_rest' => 1,
                 'required' => 0,
             ],
@@ -113,7 +113,7 @@ function wordpress_builder_core_register_acf_fields() {
                 'label' => 'Summary',
                 'name' => 'wbc_summary',
                 'type' => 'textarea',
-                'instructions' => 'Short summary used above the main content.',
+                'instructions' => 'Short buyer-facing summary used in the landing hero.',
                 'show_in_rest' => 1,
                 'required' => 0,
                 'rows' => 3,
@@ -123,7 +123,7 @@ function wordpress_builder_core_register_acf_fields() {
                 'label' => 'CTA Label',
                 'name' => 'wbc_cta_label',
                 'type' => 'text',
-                'instructions' => 'Primary call-to-action label, for example "Request a quote".',
+                'instructions' => 'Primary action label, for example "Request a quote".',
                 'show_in_rest' => 1,
                 'required' => 0,
             ],
@@ -133,6 +133,54 @@ function wordpress_builder_core_register_acf_fields() {
                 'name' => 'wbc_cta_url',
                 'type' => 'url',
                 'instructions' => 'Full URL opened by the primary call-to-action button.',
+                'show_in_rest' => 1,
+                'required' => 0,
+            ],
+            [
+                'key' => 'field_wbc_benefits',
+                'label' => 'Buyer Benefits',
+                'name' => 'wbc_benefits',
+                'type' => 'textarea',
+                'instructions' => 'One benefit per line. Optional format: Benefit | Supporting detail.',
+                'show_in_rest' => 1,
+                'required' => 0,
+                'rows' => 6,
+            ],
+            [
+                'key' => 'field_wbc_specifications',
+                'label' => 'Specifications',
+                'name' => 'wbc_specifications',
+                'type' => 'textarea',
+                'instructions' => 'One row per line using: Label | Value.',
+                'show_in_rest' => 1,
+                'required' => 0,
+                'rows' => 8,
+            ],
+            [
+                'key' => 'field_wbc_faq',
+                'label' => 'FAQ',
+                'name' => 'wbc_faq',
+                'type' => 'textarea',
+                'instructions' => 'One question per line using: Question | Answer.',
+                'show_in_rest' => 1,
+                'required' => 0,
+                'rows' => 8,
+            ],
+            [
+                'key' => 'field_wbc_secondary_cta_label',
+                'label' => 'Secondary CTA Label',
+                'name' => 'wbc_secondary_cta_label',
+                'type' => 'text',
+                'instructions' => 'Optional bottom action label; falls back to the primary CTA label.',
+                'show_in_rest' => 1,
+                'required' => 0,
+            ],
+            [
+                'key' => 'field_wbc_secondary_cta_url',
+                'label' => 'Secondary CTA URL',
+                'name' => 'wbc_secondary_cta_url',
+                'type' => 'url',
+                'instructions' => 'Full URL for the bottom action; falls back to the primary CTA URL.',
                 'show_in_rest' => 1,
                 'required' => 0,
             ],
@@ -155,6 +203,45 @@ function wordpress_builder_core_register_acf_fields() {
     ]);
 }
 add_action('init', 'wordpress_builder_core_register_acf_fields', 20);
+
+function wordpress_builder_core_field($name, $postId = null) {
+    $value = function_exists('get_field') ? get_field($name, $postId) : get_post_meta($postId, $name, true);
+    return $value === false || $value === '' ? '' : (string) $value;
+}
+
+function wordpress_builder_core_lines($value) {
+    $lines = preg_split('/\R/u', (string) $value);
+    if (!is_array($lines)) {
+        return [];
+    }
+    return array_values(array_filter(array_map('trim', $lines), static function ($line) {
+        return $line !== '';
+    }));
+}
+
+function wordpress_builder_core_line_parts($line, $fallback = '') {
+    $parts = array_map('trim', explode('|', (string) $line, 2));
+    return [$parts[0] ?? '', $parts[1] ?? $fallback];
+}
+
+function wordpress_builder_core_enqueue_assets() {
+    if (!is_singular(wordpress_builder_core_template_post_types())) {
+        return;
+    }
+
+    $currentPost = get_queried_object();
+    if (!$currentPost instanceof WP_Post || !str_starts_with((string) get_page_template_slug($currentPost), 'builder-templates/')) {
+        return;
+    }
+
+    wp_enqueue_style(
+        'wordpress-builder-core',
+        plugins_url('assets/css/wordpress-builder-core.css', __FILE__),
+        [],
+        WORDPRESS_BUILDER_CORE_VERSION
+    );
+}
+add_action('wp_enqueue_scripts', 'wordpress_builder_core_enqueue_assets');
 
 function wordpress_builder_core_template_post_types() {
     return apply_filters('wordpress_builder_core_template_post_types', ['page', 'builder_project', 'builder_service']);
