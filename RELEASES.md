@@ -16,6 +16,7 @@
 - Fresh clean clone at `8ec2339`: bootstrap, dependency repair, typecheck, lint, Hostinger inventory, Starter init/check and external adoption all passed.
 - Full local gate after the fix: `212/212` tests passed.
 - Live external regression on `yellow-koala-142147.hostingersite.com`: Builder Core `1.0.2` installed after backup, `cms-audit` passed with five available page templates, all four ACF fields returned `show_in_rest=true` with instructions, Builder page/CPT markers still rendered, and the historical Elementor marker remained unchanged.
+- Post-release clean clone of tag `v2.20.1` again passed bootstrap, typecheck, lint, 212 tests, Hostinger inventory, Starter init/check and external `cms-audit`.
 
 ## 2026-09-26 — WordPress Builder 2.20.0 free Hello Elementor compatibility E2E
 

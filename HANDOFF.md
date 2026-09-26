@@ -510,7 +510,8 @@ Live checks performed in this session:
 8. a clean clone completed bootstrap, quality gate, Starter init/check and external adoption;
 9. Builder Core `1.0.2` was installed after a full backup on the external regression site;
 10. external `cms-audit` passed after field REST/instructions and WordPress template-inventory fixes;
-11. Builder page/CPT markers and the historical Elementor marker remained live.
+11. Builder page/CPT markers and the historical Elementor marker remained live;
+12. a second clean clone of published tag `v2.20.1` passed bootstrap, all 212 tests, Hostinger inventory, Starter init/check and external `cms-audit`.
 
 ## 10. Known boundaries and remaining work
 

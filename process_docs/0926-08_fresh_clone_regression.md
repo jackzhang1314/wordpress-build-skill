@@ -1,6 +1,6 @@
 # Fresh Clone Regression and CMS Audit Fix
 
-- 时间：2026-09-26 19:26–19:41 CST（+08:00）
+- 时间：2026-09-26 19:26–19:49 CST（+08:00）
 - 触发：发布前用干净 GitHub clone 验证新用户链路，发现 adopted external 站点 `cms-audit` 失败。
 - 主仓库：`/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill`
 - 干净 clone：`/tmp/wordpress-builder-fresh-clone-siwcYJ/wordpress-build-skill`
@@ -78,6 +78,15 @@ node harness/bootstrap.mjs: pass, NEXT uses wordpress-builder.mjs
 4. 四个 ACF 字段 live 返回 `show_in_rest=true` 且 instructions 非空；
 5. `page` 与 `builder_service` 的官方模板清单包含 `builder-templates/canvas.php` 和 `builder-templates/landing.php`；
 6. Builder page 前台 marker、Builder CPT marker 和历史 Elementor marker 均 HTTP 200 并保持可见。
+
+发布后再次从 GitHub 克隆 `v2.20.1`（commit `617b0e4`）到干净目录：
+
+1. bootstrap 输出 canonical WordPress Builder 入口；
+2. typecheck / lint / tests 212/212 通过；
+3. `sites list` 列出 7 个网站；
+4. `init fresh-starter-final --from-starter` 成功；
+5. Starter `check` 通过；
+6. 使用该干净 clone 对 external regression 项目运行 `cms-audit` 通过，问题列表为空。
 
 ## 经验沉淀
 
