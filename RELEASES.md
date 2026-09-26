@@ -24,6 +24,7 @@
 - Added twelve block-navigation/CLI regressions covering parsing, planning, impact, apply, live verification, readback failure rollback, frontend-failure rollback, manual drift, route-owner drift, unreferenced targets, inline-only refusal and command-map safety.
 - Full local gate passed: typecheck, lint, build and **236/236 tests**.
 - Live canonical CLI safety check on a real Hostinger route without `wp_navigation` correctly refused planning, created no plan and wrote no remote data.
+- Post-release clean clone of tag `v2.23.0` passed bootstrap, typecheck, lint, all 236 tests, build and CLI help.
 - Real local Block/FSE E2E verified:
   - custom `front-page` template;
   - custom header template part;

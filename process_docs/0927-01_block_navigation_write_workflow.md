@@ -235,3 +235,16 @@ tests/harness/block-navigation.test.mjs
   - 命令以 exit 1 拒绝；
   - 未生成本地 plan；
   - 未写远端。
+
+## 发布与干净克隆复测（2026-09-27 02:02 Asia/Shanghai）
+
+- 功能提交：`74d3c63461fcf59e627a7d7cabbf715893b58c76`（`feat: add route-owned block navigation updates`）。
+- 已推送 `main` 并发布 tag：`v2.23.0`。
+- 从 GitHub 干净克隆 `v2.23.0` 后验证通过：
+  - `node harness/bootstrap.mjs --fix`；
+  - `npm run typecheck`；
+  - `npm run lint`；
+  - `npm test`：236/236；
+  - `npm run build`；
+  - `node wordpress-builder.mjs --help`。
+- 干净克隆工作区保持干净（detached HEAD，无未提交文件）。
