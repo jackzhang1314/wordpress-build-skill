@@ -55,6 +55,8 @@ test('command map includes account discovery and mode-specific ownership', () =>
   const commands = commandMap.map(item => item.command);
   assert.ok(commands.includes('sites list'));
   assert.ok(commands.includes('project inspect'));
+  assert.ok(commands.includes('builder install'));
+  assert.ok(commands.includes('builder status'));
   assert.equal(commandMap.find(item => item.command === 'deploy')?.projectMode, 'source-only');
   assert.equal(commandMap.find(item => item.command === 'backup')?.projectMode, 'source-or-external');
 });

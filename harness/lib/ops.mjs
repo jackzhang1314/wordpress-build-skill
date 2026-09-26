@@ -127,6 +127,49 @@ export async function syncRemotePlugins(project, ssh, logger = () => {}) {
   logger(`  ✅ Plugins ready (${project.requiredPlugins.join(', ')})`);
 }
 
+export async function installBuilderCore(projectRoot, project, ssh, {
+  sourceDir,
+  backup = true,
+  withAcf = true,
+  logger = () => {},
+} = {}) {
+  if (!sourceDir) throw new Error('WordPress Builder Core sourceDir is required');
+  if (!existsSync(join(sourceDir, 'wordpress-builder-core.php'))) {
+    throw new Error(`WordPress Builder Core source not found: ${sourceDir}`);
+  }
+
+  let backupResult;
+  if (backup) {
+    backupResult = backupProject(projectRoot, project, ssh, logger);
+  }
+
+  const installed = JSON.parse(ssh.wp(['plugin', 'list', '--format=json']));
+  const acf = installed.find(plugin => plugin.name === 'advanced-custom-fields');
+  if (!acf) {
+    if (withAcf) ssh.wp(['plugin', 'install', 'advanced-custom-fields', '--activate']);
+  } else if (acf.status !== 'active') {
+    ssh.wp(['plugin', 'activate', 'advanced-custom-fields']);
+  }
+
+  const remotePath = `${project.ssh.wpPath}/wp-content/plugins/wordpress-builder-core`;
+  ssh.rsync(sourceDir, remotePath, {delete: true});
+  ssh.wp(['plugin', 'activate', 'wordpress-builder-core']);
+  ssh.wp(['rewrite', 'flush']);
+
+  const registered = JSON.parse(ssh.wp(['post-type', 'list', 'builder_project', '--format=json']));
+  if (!Array.isArray(registered) || !registered.some(item => item.name === 'builder_project')) {
+    throw new Error('WordPress Builder Core verification failed: builder_project is not registered');
+  }
+
+  logger('  ✅ WordPress Builder Core installed and activated');
+  return {
+    pass: true,
+    plugin: 'wordpress-builder-core',
+    acfInstalled: withAcf,
+    backup: backupResult?.manifest,
+  };
+}
+
 export async function importMedia(projectRoot, project, ssh, {force = false, logger = () => {}} = {}) {
   const mapPath = join(projectRoot, 'content', 'media-map.json');
   const hasMap = existsSync(mapPath);

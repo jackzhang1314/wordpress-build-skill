@@ -8,12 +8,14 @@
 - Added authoring-system detection for Elementor, Divi, Beaver Builder, WPBakery, Bricks and Oxygen.
 - Enhanced `project inspect` with classic menu items, block navigation references, FSE templates/template parts and rendering capabilities.
 - Fixed navigation count parsing when WP-CLI returns a numeric scalar.
+- Added theme-independent Builder Core plugin installation for adopted sites.
 
 ### Skills
 
 - Clarified that ACF/CPT/page-content workflows are theme-agnostic.
 - Documented Classic, Block/FSE, page-builder and hybrid adapters.
 - Made clear that theme type is an adapter signal, not an incompatibility.
+- Builder Core now provides Builder CPTs, taxonomy, ACF fields and plugin-owned page templates without converting existing editor pages.
 
 ### Verification
 

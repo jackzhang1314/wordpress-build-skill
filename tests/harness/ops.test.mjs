@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {mkdirSync, mkdtempSync, rmSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {backupProject, configureWordPress, importMedia, seedContent} from '../../harness/lib/ops.mjs';
+import {backupProject, configureWordPress, importMedia, installBuilderCore, seedContent} from '../../harness/lib/ops.mjs';
 
 test('seed contract passes staged media map and site data as explicit arguments', async () => {
   const root = mkdtempSync(join(tmpdir(), 'harness-seed-'));
@@ -98,6 +98,58 @@ test('forced media import is idempotent and only uploads keys missing from the m
     const map = await importMedia(root, project, ssh, {force: true});
     assert.deepEqual(imports, ['/tmp/demo-media/products/b.png']);
     assert.deepEqual(map, {a: 5, b: 201});
+  } finally {
+    rmSync(root, {recursive: true, force: true});
+  }
+});
+
+test('builder core installer backs up, syncs plugin and verifies CPT', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'harness-builder-core-'));
+  const sourceDir = join(root, 'source/wordpress-builder-core');
+  mkdirSync(sourceDir, {recursive: true});
+  writeFileSync(join(sourceDir, 'wordpress-builder-core.php'), '<?php /* plugin */');
+  const pluginCalls = [];
+  const runCommands = [];
+  const rsyncCommands = [];
+  const ssh = {
+    run: command => {
+      runCommands.push(command);
+      return Buffer.from('database');
+    },
+    rsync: (local, remote, options = {}) => {
+      rsyncCommands.push({local, remote, delete: Boolean(options.delete)});
+    },
+    wp: args => {
+      pluginCalls.push(args);
+      const text = args.join(' ');
+      if (text.includes('plugin list')) {
+        return JSON.stringify([{name: 'jetpack', status: 'active'}]);
+      }
+      if (text.includes('post-type list') && text.includes('builder_project')) {
+        return JSON.stringify([{name: 'builder_project'}]);
+      }
+      return '';
+    },
+  };
+  const project = {
+    domain: 'demo.test',
+    mode: 'external',
+    ssh: {wpPath: '/home/u_test/site'},
+  };
+  try {
+    const result = await installBuilderCore(root, project, ssh, {
+      sourceDir,
+      backup: true,
+      withAcf: true,
+      logger: () => {},
+    });
+    assert.equal(result.pass, true);
+    assert.equal(result.acfInstalled, true);
+    assert.ok(result.backup?.id);
+    assert.equal(rsyncCommands[0].remote, '/home/u_test/site/wp-content/plugins/wordpress-builder-core');
+    assert.equal(rsyncCommands[0].delete, true);
+    assert.ok(pluginCalls.some(args => args.join(' ').includes('plugin install advanced-custom-fields --activate')));
+    assert.ok(pluginCalls.some(args => args.join(' ').includes('plugin activate wordpress-builder-core')));
   } finally {
     rmSync(root, {recursive: true, force: true});
   }

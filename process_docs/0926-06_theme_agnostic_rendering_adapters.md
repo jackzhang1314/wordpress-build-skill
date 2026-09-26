@@ -10,6 +10,8 @@
 - Added authoring-system detection for Classic PHP, Block/FSE, Elementor, Divi, Beaver Builder, WPBakery, Bricks and Oxygen.
 - Enhanced `project inspect` with classic menu items, block navigation references, FSE templates/template parts and rendering capabilities.
 - Clarified Skill contracts: ACF/CPT/page-content workflows are theme-agnostic; theme type selects the rendering adapter.
+- Added `wordpress-builder-core` theme-independent plugin with Builder CPTs, taxonomy, ACF fields and plugin-owned page templates.
+- Added `builder install` and `builder status` for scoped adoption of the theme-independent content layer.
 
 ## Validation
 

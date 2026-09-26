@@ -39,6 +39,16 @@ node wordpress-builder.mjs --project . audit-fields
 - If PHP/template code must change, stop and propose a scoped source-custody upgrade.
 - Existing content, navigation and page-template writes create a lightweight restore snapshot in `.backups/external-writes/`.
 
+## Builder-managed new pages
+
+For an existing Elementor, Divi or custom-editor site, do not convert old pages. Install Builder Core, then create new pages with Builder CPTs, ACF fields and plugin-owned page templates:
+
+```bash
+node wordpress-builder.mjs --project . builder install
+node wordpress-builder.mjs --project . post push new-page.json
+node wordpress-builder.mjs --project . template assign new-page --template builder-templates/landing.php
+```
+
 ## References
 
 - [Content model](references/content-model.md)

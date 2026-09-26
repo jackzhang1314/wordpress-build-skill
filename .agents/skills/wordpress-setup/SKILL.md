@@ -39,6 +39,7 @@ The old `node harness/cli.mjs` path remains a deprecated compatibility wrapper.
 - [Account SSH key](references/account-ssh-key.md)
 - [Starter project](references/starter-project.md)
 - [External adoption](references/external-adoption.md)
+- [Builder Core](references/builder-core.md)
 - [Project AGENTS](references/project-agents.md)
 
 ## Handoff

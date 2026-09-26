@@ -157,6 +157,14 @@ node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . credential
 
 WordPress 不需要停机更新。WordPress Builder 通过 SSH/WP-CLI 同步主题、插件和受控内容，正常部署流程包含备份、缓存清理和验证。
 
+对已有 Elementor、Divi 或其他编辑器站点，旧页面保持不变。新增 Builder-managed 页面前，可安装 theme-independent Builder Core：
+
+```bash
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . builder install
+```
+
+新页面使用 Builder 的 CPT、ACF 和 page templates；旧页面继续使用原来的编辑器和模板。
+
 | 场景 | 命令 |
 | --- | --- |
 | 改一个已上线页面正文 | `edit-page <slug> --file body.html` |

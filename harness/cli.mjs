@@ -45,6 +45,7 @@ import {
   seedContent,
   syncCode,
   syncRemotePlugins,
+  installBuilderCore,
 } from './lib/ops.mjs';
 import {initFromStarter, initProject} from './init.mjs';
 
@@ -84,6 +85,8 @@ Project commands:
   audit-fields           Verify every stored value has an admin-editable ACF field
   cms-audit              Audit CPTs, taxonomies, ACF locations, REST and stored values
   editor-audit           Audit native editor module patterns and page compatibility
+  builder install        Install theme-independent Builder Core CPT/ACF/templates
+  builder status         Inspect Builder Core plugin and content types
   project inspect        Inspect WordPress shape, templates, navigation, plugins and content
   email-setup            Guided setup: create business mailbox + configure SMTP + test
   smtp configure|test    Configure business-mailbox SMTP constants and send a test email
@@ -407,7 +410,7 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
 
     const site = context(options);
     const {root, project, ssh} = site;
-    const remoteCommands = ['backup', 'media', 'content', 'verify', 'verify-form', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'credentials', 'audit-fields', 'smtp', 'email-setup', 'cms-audit'];
+    const remoteCommands = ['backup', 'media', 'content', 'verify', 'verify-form', 'deploy', 'status', 'rollback', 'cache', 'wp', 'ssh', 'open', 'edit-page', 'post', 'nav', 'template', 'builder', 'credentials', 'audit-fields', 'smtp', 'email-setup', 'cms-audit'];
     remoteCommands.push('project');
     const exampleUnsafeCommands = [...remoteCommands, 'provision', 'configure-seo', 'setup'];
     if (project._isExample && exampleUnsafeCommands.includes(command)) {
@@ -480,6 +483,45 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
       if (firstValue(args) !== 'assign') throw new Error('usage: harness template assign <slug> --template <file.php>');
       await assignTemplate(site, args.slice(1), logger);
       return 0;
+    }
+    if (command === 'builder') {
+      const sub = firstValue(args);
+      if (sub === 'install') {
+        const result = await installBuilderCore(root, project, ssh, {
+          sourceDir: resolve(repositoryRoot, 'harness/assets/wordpress-builder-core'),
+          backup: !args.includes('--skip-backup'),
+          withAcf: !args.includes('--without-acf'),
+          logger,
+        });
+        outputResult(result, json, logger);
+        return 0;
+      }
+      if (sub === 'status') {
+        const plugins = JSON.parse(ssh.wp(['plugin', 'list', '--format=json'])).map(plugin => plugin.name);
+        const postTypes = JSON.parse(ssh.wp(['post-type', 'list', '--format=json'])).map(item => item.name);
+        const payload = {
+          mode: project.mode,
+          pluginInstalled: plugins.includes('wordpress-builder-core'),
+          pluginActive: plugins.includes('wordpress-builder-core'),
+          contentTypes: {
+            builderProject: postTypes.includes('builder_project'),
+            builderService: postTypes.includes('builder_service'),
+          },
+          renderingSystem: project.remote?.renderingSystem ?? 'unknown',
+          navigation: project.remote?.navigation ?? 'unknown',
+        };
+        if (!json) {
+          logger(`\n=== WordPress Builder Core ===`);
+          logger(`Mode: ${payload.mode}`);
+          logger(`Plugin installed/active: ${payload.pluginInstalled ? 'yes' : 'no'} / ${payload.pluginActive ? 'yes' : 'no'}`);
+          logger(`Project CPT: ${payload.contentTypes.builderProject ? 'ready' : 'missing'}, ${payload.contentTypes.builderService ? 'ready' : 'missing'}`);
+          logger(`Rendering system: ${payload.renderingSystem}`);
+          logger(`Navigation: ${payload.navigation}`);
+        }
+        outputResult(payload, json, logger);
+        return payload.pluginActive && payload.contentTypes.builderProject && payload.contentTypes.builderService ? 0 : 1;
+      }
+      throw new Error('usage: harness builder install|status');
     }
     if (command === 'credentials') {
       const sub = firstValue(args) ?? 'show';

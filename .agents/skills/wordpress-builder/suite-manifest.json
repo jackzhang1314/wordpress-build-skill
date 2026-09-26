@@ -15,7 +15,7 @@
     },
     {
       "name": "wordpress-setup",
-      "owns": ["environment", "hostinger", "ssh", "project creation", "external adoption"],
+      "owns": ["environment", "hostinger", "ssh", "project creation", "external adoption", "builder-core plugin"],
       "next": ["wordpress-content", "wordpress-design", "wordpress-delivery"]
     },
     {
@@ -37,6 +37,7 @@
   "safety": {
     "externalBlockedCommands": ["deploy", "media", "content", "setup", "configure-seo"],
     "productionWriteRequiresBackupOrRollbackPlan": true,
-    "starterOptional": true
+    "starterOptional": true,
+    "builderCoreIsolatedFromExistingEditorPages": true
   }
 }
