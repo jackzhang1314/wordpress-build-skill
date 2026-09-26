@@ -63,6 +63,10 @@ export function stableContentHash(content) {
   return createHash('sha256').update(String(content ?? ''), 'utf8').digest('hex').slice(0, 16);
 }
 
+export function fullContentHash(content) {
+  return createHash('sha256').update(String(content ?? ''), 'utf8').digest('hex');
+}
+
 function summarizeTemplate(template, type) {
   const content = String(template.content ?? '');
   const parsed = parseTemplateContent(content);
@@ -347,4 +351,47 @@ export function buildNavigationPostContent(links) {
     url: link.url,
     kind: 'custom',
   })} /-->`).join('\n') + '\n';
+}
+
+export function validateBlockMarkup(content) {
+  const source = String(content ?? '');
+  if (!source.trim()) return {valid: false, reason: 'empty-content'};
+  if (/<\?php|<\?=|<\?[\s]/i.test(source)) return {valid: false, reason: 'php-not-allowed'};
+  const comment = /<!--\s*(\/?)wp:([a-z][a-z0-9-]*)([\s\S]*?)-->/g;
+  const stack = [];
+  let count = 0;
+  for (const match of source.matchAll(comment)) {
+    count += 1;
+    const [, closing, name, attributes] = match;
+    if (closing) {
+      if (stack.at(-1) !== name) {
+        return {valid: false, reason: `unexpected-close:${name}`};
+      }
+      stack.pop();
+      continue;
+    }
+    if (!String(attributes ?? '').trimEnd().endsWith('/')) stack.push(name);
+  }
+  if (count === 0) return {valid: false, reason: 'no-block-markup'};
+  if (stack.length) return {valid: false, reason: `unclosed-block:${stack.at(-1)}`};
+  return {valid: true, reason: 'ok'};
+}
+
+export function patchBlockTemplateContent(content, find, replace) {
+  const source = String(content ?? '');
+  const target = String(find ?? '');
+  const replacement = String(replace ?? '');
+  if (!target || !replacement) throw new Error('template patch requires non-empty find and replace values');
+  if (target === replacement) throw new Error('template patch replace value is identical to find value');
+  const first = source.indexOf(target);
+  if (first < 0) throw new Error('template patch target was not found');
+  if (source.indexOf(target, first + target.length) >= 0) throw new Error('template patch target must be unique');
+  const patched = source.slice(0, first) + replacement + source.slice(first + target.length);
+  const validation = validateBlockMarkup(patched);
+  if (!validation.valid) throw new Error(`patched template markup is invalid: ${validation.reason}`);
+  return {
+    content: patched,
+    beforeHash: fullContentHash(source),
+    afterHash: fullContentHash(patched),
+  };
 }

@@ -4,11 +4,11 @@
 
 - WordPress Builder 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
 - Starter Template 仓库：<https://github.com/jackzhang1314/b2b-wordpress-starter-template>
-- 当前 WordPress Builder 基线：`2.23.0`
+- 当前 WordPress Builder 基线：`2.24.0`
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
-> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.23.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
+> 给 Codex / AI Agent 的入口：默认 clone `main`。`main` 是当前集成基线；`v2.24.0` 是最新可复测 tag。历史 `docs/01-*` 到 `docs/19-*`、旧区块主题和旧验收资料只用于追溯，不作为新站入口。
 
 ### 交给 Codex 的最小指令
 
@@ -115,6 +115,30 @@ node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . nav block 
 ```
 
 Plan 阶段只写本地；Apply 阶段会复查 route owner 和内容漂移、创建 restore snapshot、更新 `wp_navigation`、读回 hash、清缓存、验证原始前台 HTML 中的每个 label，失败时自动回滚。
+
+### D. 安全修改当前路由的 FSE 模板/模板部件
+
+```bash
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . block-template plan \
+  --route / \
+  --part header \
+  --file content/template-patch.json
+
+node /path/to/wordpress-build-skill/wordpress-builder.mjs --project . block-template apply \
+  --plan <plan-id>
+```
+
+`template-patch.json` 格式：
+
+```json
+{
+  "find": "<!-- wp:site-title /-->",
+  "replace": "<!-- wp:site-title {"level":1} /-->",
+  "verifyText": ["My Factory"]
+}
+```
+
+只允许修改当前 route 选中的 template 或 template part；`find` 必须唯一；patch 后的 block markup 会做结构校验。`source: custom` 直接更新数据库 override；`source: theme` 会创建 WordPress custom override 而不修改主题文件。Apply 会复查漂移、创建 snapshot、读回、清缓存并验证前台文本，失败时自动恢复或删除新建 override。
 
 ### D. 接入 Hostinger
 
@@ -278,7 +302,7 @@ npm run package:starter
 
 ## 8. 当前边界
 
-当前基线已完成 Hostinger 真实部署、路由验证、CMS/ACF 审计、响应式截图、Fluent Forms 浏览器提交验证、原生 Block/FSE custom 模板/导航所有权 E2E，以及 `wp_navigation` 更新/前台验证/自动回滚 E2E。
+当前基线已完成 Hostinger 真实部署、路由验证、CMS/ACF 审计、响应式截图、Fluent Forms 浏览器提交验证、原生 Block/FSE custom 模板/导航所有权 E2E、`wp_navigation` 更新/前台验证/自动回滚 E2E，以及 FSE template part 精确 patch / theme override / 自动回滚 E2E。
 
 不要把以下内容当作已通用完成的能力：
 

@@ -1,5 +1,36 @@
 # Releases
 
+## 2026-09-27 — WordPress Builder 2.24.0 route-owned FSE template patches
+
+### Builder
+
+- Added a two-phase Block/FSE template patch workflow:
+  - `block-template plan --route </path/> (--part <slug>|--template <slug>) --file <patch.json>`;
+  - `block-template apply --plan <plan-id>`.
+- A plan may target only the selected route template or one of its selected template parts.
+- Patch input requires one unique `find`, one different `replace`, and 1-5 `verifyText` values present in the replacement.
+- Added block markup structural validation for the complete patched content before planning.
+- Supported source custody:
+  - `custom`: updates the existing database override;
+  - `theme`: creates a same-slug Site Editor custom override without editing theme files.
+- Apply rechecks site/theme/route/template/part/content drift, snapshots prior state, updates or creates the override, reads it back, flushes cache and verifies the original live route text.
+- Automatic rollback restores an existing custom override or deletes a newly created theme override when readback or live verification fails.
+- Kept theme.json, PHP theme files, arbitrary full-template overwrites and Elementor data out of scope.
+
+### Skills and documentation
+
+- Updated Design route ownership guidance, project contract, mode safety and command map.
+- Documented patch input, custom-versus-theme source strategy, rollback and live verification.
+- Added `process_docs/0927-02_block_template_patch_workflow.md`.
+
+### Verification
+
+- Added ten block-template/CLI regressions covering markup validation, unique patch hashing, local-only planning, custom update, live failure rollback, theme override creation/deletion rollback, non-selected target refusal, drift refusal and command-map safety.
+- Full local gate passed: typecheck, lint, build and **246/246 tests**.
+- Real local Block/FSE E2E verified a custom header part patch, automatic rollback, normal apply and live `Template Patch OK` output.
+- Real local theme-source E2E verified `theme -> custom` override creation, failed live verification, automatic override deletion and restoration of the original fixture.
+- Live canonical CLI safety check on a real Hostinger route rejected a patch whose `find` fragment did not exist, created no plan and wrote no remote data.
+
 ## 2026-09-27 — WordPress Builder 2.23.0 route-owned `wp_navigation` writes
 
 ### Builder

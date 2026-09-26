@@ -24,4 +24,4 @@ deploy, media, content, setup, configure-seo
 
 If PHP/theme/plugin code must change, stop and propose a scoped source-custody upgrade after full backup and explicit authorization.
 Before navigation or page-template writes on Block/FSE/hybrid sites, run route-level `project inspect --route-set core`. Unreferenced `wp_navigation` posts and unrendered Classic menu locations are not write permission. Mixed/unknown ownership must remain blocked.
-External Block/FSE navigation writes are limited to the two-phase `nav block plan` / `nav block apply` workflow for a route-owned, flat `wp_navigation` list. Template/template-part and inline-navigation edits still require source custody.
+External Block/FSE navigation writes are limited to the two-phase `nav block plan` / `nav block apply` workflow for a route-owned, flat `wp_navigation` list. Selected FSE template/part patches may use `block-template plan/apply`; theme-source targets become custom overrides and remain rollback-protected. Theme.json, PHP theme files and unscoped full-template overwrites still require source custody.

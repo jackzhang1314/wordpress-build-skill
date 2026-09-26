@@ -26,7 +26,7 @@
 node wordpress-builder.mjs --project . project inspect --route-set core --json
 ```
 
-以每个路由的 `fseTemplate`、`templateParts`、`navigation` 和 `source` 为准：`custom` 数据库模板/部件覆盖同名 theme 文件；未引用的 `wp_navigation` 不是当前导航；探测失败或缺少部件时保持 low confidence。模板 / template part 内容修改仍必须走明确授权的 source-custody 流程；扁平 `wp_navigation` 只能通过 `nav block plan/apply` 的路由归属、回滚和前台验证通道更新。
+以每个路由的 `fseTemplate`、`templateParts`、`navigation` 和 `source` 为准：`custom` 数据库模板/部件覆盖同名 theme 文件；未引用的 `wp_navigation` 不是当前导航；探测失败或缺少部件时保持 low confidence。精确片段修改优先通过 `block-template plan/apply`：目标必须是当前 route 选中的 template/part，patch 唯一、可校验、可回滚并在前台验证。扁平 `wp_navigation` 使用 `nav block plan/apply`。theme.json、PHP theme 文件、inline navigation 的复杂改写和任意全文覆盖仍必须走明确授权的 source-custody 流程。
 
 ## 实现选择
 

@@ -15,5 +15,6 @@ See `harness/lib/command-map.mjs` for the machine-readable command ownership, pr
 3. `deploy`, `media`, `content`, `setup` and `configure-seo` are source-only.
 4. `edit-page`, `post`, `nav`, `template assign`, `backup`, `status`, audits and `verify` can be external.
 5. `nav block plan` is local-only; `nav block apply` is external-safe only for a route-owned flat `wp_navigation` list and includes restore/live verification.
-6. `wp` passes arbitrary WP-CLI arguments; inspect the command before treating it as safe.
-7. Any production write requires confirmation, backup or rollback policy and live verification.
+6. `block-template plan` is local-only; `block-template apply` is external-safe only for a selected route template/part, one unique patch and rollback-protected live verification.
+7. `wp` passes arbitrary WP-CLI arguments; inspect the command before treating it as safe.
+8. Any production write requires confirmation, backup or rollback policy and live verification.

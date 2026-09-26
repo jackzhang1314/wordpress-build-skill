@@ -152,6 +152,15 @@ node wordpress-builder.mjs --project . nav block apply --plan <plan-id>
 
 只支持当前 route 引用且内容为扁平 `wp:navigation-link` 的导航。Plan 记录 owner、影响面和 before/after hash；Apply 复查漂移、创建 snapshot、更新、读回、清缓存、验证前台 label，失败自动回滚。inline navigation、子菜单和 template/part 编辑仍需明确 source custody。
 
+FSE template / template part 的精确片段修改：
+
+```bash
+node wordpress-builder.mjs --project . block-template plan --route / --part header --file content/template-patch.json
+node wordpress-builder.mjs --project . block-template apply --plan <plan-id>
+```
+
+Patch 文件包含唯一 `find`、`replace` 和 `verifyText`。目标必须是当前 route 选中的 template/part。custom source 直接更新 override；theme source 创建 custom override。Apply 复查漂移、创建 snapshot、读回、清缓存并验证前台文本，失败自动恢复或删除新建 override。theme.json、PHP 文件和任意全文覆盖仍需 source custody。
+
 ### 已有 Hostinger 站点
 
 如果已有站点使用 Starter 或已有受控本地源码，先在项目目录执行：

@@ -19,6 +19,8 @@ export const commandMap = [
   {command: 'nav add|remove', projectMode: 'source-or-external', skill: 'wordpress-content', risk: 'remote-write', destructive: false},
   {command: 'nav block plan', projectMode: 'source-or-external', skill: 'wordpress-content', risk: 'local-plan-write', destructive: false},
   {command: 'nav block apply', projectMode: 'source-or-external', skill: 'wordpress-content', risk: 'remote-write-with-rollback', destructive: false},
+  {command: 'block-template plan', projectMode: 'source-or-external', skill: 'wordpress-design', risk: 'local-plan-write', destructive: false},
+  {command: 'block-template apply', projectMode: 'source-or-external', skill: 'wordpress-design', risk: 'remote-write-with-rollback', destructive: false},
   {command: 'template assign', projectMode: 'source-or-external', skill: 'wordpress-content', risk: 'remote-write', destructive: false},
   {command: 'cms-audit', projectMode: 'source-or-external', skill: 'wordpress-content', risk: 'read-only', destructive: false},
   {command: 'audit-fields', projectMode: 'source-or-external', skill: 'wordpress-content', risk: 'read-only', destructive: false},

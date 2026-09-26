@@ -23,6 +23,7 @@ Every content, design, navigation or deployment task must answer:
 | New section | Data source, ACF/location, template inclusion, editability, live render |
 | New field | ACF group/location/REST, template binding, backend edit, live output |
 | New page template | Template header, `the_content()`, page assignment, live render; Block/FSE/hybrid sites also need selected route template/source evidence |
+| FSE template patch | Selected route owner, unique find/replace, markup validation, custom override strategy, rollback, live text verification |
 | New route/page | IA, template, CMS ownership, SEO, verification |
 | Navigation | Menu mechanism, selected route owner, affected labels, front-end path, rollback; `wp_navigation` must use plan/apply when supported |
 | External theme/plugin code | Stop; propose explicit source-custody upgrade |
