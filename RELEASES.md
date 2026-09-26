@@ -179,3 +179,12 @@ This release promotes the componentized classic B2B Starter from verification br
 
 - Promoted `harness/bootstrap.mjs` to the official fresh-clone entrypoint after a real public clone test found the main CLI could not import `zod` before `npm ci`.
 - Tagged the complete guided onboarding baseline as `v2.11.1`.
++
++## 2026-09-26 — WordPress Builder 2.19.1 version metadata correction
++
++- Corrected package version metadata after the Builder Core release.
++- Confirmed current main includes theme-agnostic adoption, Builder Core, external safety, account inventory and the five-skill suite.
++
++### Verification
++
++- Documentation/version metadata only; run `git diff --check`.

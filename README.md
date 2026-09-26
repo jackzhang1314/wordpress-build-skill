@@ -4,7 +4,7 @@
 
 - WordPress Builder 仓库：<https://github.com/jackzhang1314/wordpress-build-skill>
 - Starter Template 仓库：<https://github.com/jackzhang1314/b2b-wordpress-starter-template>
-- 当前 WordPress Builder 基线：`2.18.0`
+- 当前 WordPress Builder 基线：`2.19.1`
 - 当前 Starter release：`v1.10.1`
 - 当前 Starter content model：`2.9.0`
 
