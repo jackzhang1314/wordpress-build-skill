@@ -112,7 +112,7 @@ Behavior:
 
 Existing Starter projects should be normalized to `sourceProfile: starter`.
 
-### Finding 2 — external projects need a WordPress shape adapter
+### Finding 2 — external projects need WordPress shape/rendering adapters, not a theme restriction
 
 High priority.
 
@@ -124,7 +124,7 @@ The current external workflow is strongest for classic WordPress sites:
 
 That covers the current Hostinger test sites, but not every arbitrary WordPress implementation.
 
-Block/FSE themes can store navigation and template structure differently. Therefore the external skill must not claim that `nav add` or `template assign` works universally.
+Block/FSE themes can store navigation and template structure differently. Page-builder sites may store layout and styling in postmeta or builder templates. Therefore the external skill must inspect the rendering system and choose an adapter; it must not infer incompatibility merely because the site is not a Classic theme.
 
 Required change:
 

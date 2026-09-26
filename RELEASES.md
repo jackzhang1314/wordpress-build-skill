@@ -1,5 +1,24 @@
 # Releases
 
+## 2026-09-26 — WordPress Builder 2.18.0 theme-agnostic rendering adapters
+
+### Builder
+
+- Added remote rendering-system detection for Classic PHP, Block/FSE, page builders, hybrid and unknown implementations.
+- Added authoring-system detection for Elementor, Divi, Beaver Builder, WPBakery, Bricks and Oxygen.
+- Enhanced `project inspect` with classic menu items, block navigation references, FSE templates/template parts and rendering capabilities.
+- Fixed navigation count parsing when WP-CLI returns a numeric scalar.
+
+### Skills
+
+- Clarified that ACF/CPT/page-content workflows are theme-agnostic.
+- Documented Classic, Block/FSE, page-builder and hybrid adapters.
+- Made clear that theme type is an adapter signal, not an incompatibility.
+
+### Verification
+
+- Full typecheck, lint and test suite passed: 202/202 tests.
+
 ## 2026-09-26 — WordPress Builder 2.17.0 external safety and account inventory
 
 ### Builder

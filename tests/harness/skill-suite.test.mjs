@@ -87,3 +87,29 @@ test('remote project inspection detects classic shape and content inventory', as
   assert.equal(inventory.forms.fluentform, true);
   assert.equal(inventory.counts.media, 31);
 });
+
+test('remote project inspection records page-builder sites as an adapter, not an incompatibility', async () => {
+  const exec = (command, args = []) => {
+    assert.equal(command, 'ssh');
+    const text = args.at(-1) || '';
+    if (text.includes('theme list')) return JSON.stringify([{name: 'Hello Elementor', slug: 'hello-elementor', is_block_theme: false}]);
+    if (text.includes('plugin list')) return JSON.stringify([{name: 'elementor'}, {name: 'advanced-custom-fields'}]);
+    if (text.includes('menu list')) return JSON.stringify([]);
+    if (text.includes('wp_navigation')) return '0';
+    if (text.includes('get_page_templates')) return JSON.stringify({'page-templates/full-width.php': 'Full Width'});
+    if (text.includes('post-type list')) return JSON.stringify([{name: 'page'}, {name: 'project'}]);
+    if (text.includes('taxonomy list')) return JSON.stringify([{name: 'category'}]);
+    if (text.includes('post_type=page')) return '4';
+    if (text.includes('post_type=post')) return '2';
+    if (text.includes('post_type=attachment')) return '18';
+    if (text.includes('core version')) return '7.1.2';
+    return '';
+  };
+  const inventory = await inspectRemoteWordPress({
+    domain: 'elementor.test',
+    ssh: {host: '203.0.113.10', port: '65002', user: 'u123', keyPath: '/keys/id', wpPath: '/home/u123/site'},
+  }, {exec});
+  assert.equal(inventory.renderingSystem, 'hybrid');
+  assert.deepEqual(inventory.authoringSystems, ['classic-php', 'elementor']);
+  assert.equal(inventory.pageBuilder, 'elementor');
+});

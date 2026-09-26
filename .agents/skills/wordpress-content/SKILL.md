@@ -1,6 +1,6 @@
 ---
 name: wordpress-content
-description: Edit existing WordPress pages, posts, navigation, ACF/CMS models and forms using project-aware source or external workflows, with backend editability and shape limits enforced.
+description: Edit existing WordPress pages, posts, navigation, ACF/CPT models and forms across Classic, Block/FSE, page-builder and hybrid WordPress sites, with backend editability and rendering-system safety enforced.
 ---
 
 # WordPress Content and CMS
@@ -10,10 +10,11 @@ Use this skill for page bodies, posts, navigation, ACF fields, CPT/taxonomy ques
 ## First checks
 
 1. Confirm `mode`.
-2. For external projects, inspect WordPress shape with `project inspect`.
-3. Confirm whether navigation is a classic menu, block navigation or mixed.
-4. Confirm whether the page template is classic or FSE.
-5. Confirm whether any new field is editable in WordPress admin.
+2. Confirm the rendering system: Classic PHP, Block/FSE, page builder, hybrid or unknown.
+3. For external projects, inspect the live WordPress shape with `project inspect`.
+4. Confirm whether navigation is a classic menu, block navigation, page-builder menu/module or mixed.
+5. Confirm whether the page uses a classic PHP template, FSE template or page-builder layout.
+6. Confirm whether any new field is editable in WordPress admin.
 
 ## Commands
 
@@ -34,6 +35,7 @@ node wordpress-builder.mjs --project . audit-fields
 - Do not overwrite theme/plugin code.
 - Classic navigation and classic page-template assignment are verified capabilities.
 - Block navigation and FSE templates require inspection before a write.
+- Page-builder layouts require builder-specific inspection before markup or template claims.
 - If PHP/template code must change, stop and propose a scoped source-custody upgrade.
 - Existing content, navigation and page-template writes create a lightweight restore snapshot in `.backups/external-writes/`.
 

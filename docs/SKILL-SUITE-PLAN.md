@@ -1,6 +1,6 @@
 # WordPress Builder Skill Suite Plan
 
-Status: initial suite and legacy migration implemented; Block/FSE adapters and source-custody promotion remain
+Status: initial suite, legacy migration and theme-agnostic rendering detection implemented; page-builder write adapters and source-custody promotion remain
 Date: 2026-09-26  
 Target baseline: v2.16.0  
 
