@@ -221,3 +221,16 @@ node wordpress-builder.mjs --project <dir> project inspect --route-set core --js
 - Block/FSE template、template part、`wp_navigation` 写入仍是下一步，需要单独授权、备份和 source custody；
 - 404 或无法被 `_wp-find-template` 返回 JSON 的路由保持 low confidence；本次不猜测 Classic PHP 文件名；
 - `--route-set core` 只选择代表性内容，不代表全站每个 permalink 都已诊断。
+
+## 发布与干净克隆复测（2026-09-27 00:36 Asia/Shanghai）
+
+- 功能提交：`5b3e198ed474e2425c30a32ce6064f61315cff35`（`feat: diagnose Block/FSE route ownership`）。
+- 已推送 `main` 并发布 tag：`v2.22.0`。
+- 从 GitHub 干净克隆 `v2.22.0` 到独立临时目录后验证通过：
+  - `node harness/bootstrap.mjs --fix`；
+  - `npm run typecheck`；
+  - `npm run lint`；
+  - `npm test`：224/224；
+  - `npm run build`；
+  - `node wordpress-builder.mjs --help`。
+- 干净克隆工作区保持干净（detached HEAD，无未提交文件）。

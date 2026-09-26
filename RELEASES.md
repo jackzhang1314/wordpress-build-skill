@@ -24,6 +24,7 @@
 - Added an unreferenced `wp_navigation`; inventory counted it but route ownership remained unchanged.
 - Live read-only Hostinger regression on `brightdozer-482910.hostingersite.com` sampled 10 core routes. Nine resolved with high confidence; the non-JSON 404 route stayed low confidence instead of inventing an owner.
 - Performance regression found and fixed: one-route live inspection fell from about 7m41s with serial inventory commands to about 5.7s; the 10-route core set completed in about 62s.
+- Post-release clean clone of tag `v2.22.0` passed bootstrap, typecheck, lint, all 224 tests, build and CLI help.
 
 ## 2026-09-26 — WordPress Builder 2.21.0 remote/local site custody status
 

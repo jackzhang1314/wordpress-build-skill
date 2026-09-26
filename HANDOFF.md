@@ -51,6 +51,8 @@ Full verification before handoff:
 typecheck: pass
 lint: pass
 tests: 224 / 224 pass
+build: pass
+clean clone of v2.22.0: pass
 ```
 
 ## 2. Canonical setup
