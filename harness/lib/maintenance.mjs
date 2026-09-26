@@ -321,7 +321,7 @@ export async function assignTemplate(site, args, logger = () => {}) {
   const slug = firstPositional(args);
   const template = argValue(args, '--template');
   if (!slug || !template) throw new Error('usage: harness template assign <slug> --template <file.php>');
-  if (!/^(?:[a-z0-9_-]+|page-templates\/[a-z0-9_-]+)\.php$/.test(template)) {
+  if (!/^[a-z0-9][a-z0-9_-]*(?:\/[a-z0-9][a-z0-9_-]*)*\.php$/.test(template)) {
     throw new Error(`invalid template name: ${template}`);
   }
   if (site.project.mode === 'external') {
@@ -345,7 +345,11 @@ export async function assignTemplate(site, args, logger = () => {}) {
 $theme = wp_get_theme();
 $templates = $theme->get_page_templates();
 if (empty($templates[$p['template']])) { fwrite(STDERR, 'remote-template-not-found'); exit(1); }
-$source = (string) file_get_contents(get_theme_file_path($p['template']));
+$template_path = get_theme_file_path($p['template']);
+if (str_starts_with($p['template'], 'builder-templates/') && function_exists('wordpress_builder_core_template_path')) {
+  $template_path = wordpress_builder_core_template_path($p['template']);
+}
+$source = (string) file_get_contents($template_path);
 if (!preg_match('/Template\\s*Name:/', $source)) { fwrite(STDERR, 'remote-template-missing-name'); exit(1); }
 if (!preg_match('/the_content\\s*\\(/', $source)) { fwrite(STDERR, 'remote-template-does-not-render-body'); exit(1); }
 ` : '';

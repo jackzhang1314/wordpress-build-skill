@@ -265,6 +265,20 @@ test('external FSE projects block classic page-template assignment', async () =>
   }
 });
 
+test('external projects can assign plugin-owned Builder Core templates', async () => {
+  const env = makeSite({posts: {'page:home': {id: 1, status: 'publish', content: 'x', modified: 'x'}}});
+  try {
+    env.site.project = {...env.site.project, mode: 'external', remote: {pageTemplates: 'classic'}};
+    const result = await assignTemplate(env.site, ['home', '--template', 'builder-templates/landing.php']);
+    assert.equal(env.templates.home, 'builder-templates/landing.php');
+    assert.equal(result.snapshot.nextTemplate, 'builder-templates/landing.php');
+    const invocation = env.evalCalls.find(call => call.php.includes('_wp_page_template'));
+    assert.match(invocation.php, /wordpress_builder_core_template_path/);
+  } finally {
+    env.cleanup();
+  }
+});
+
 test('template assign accepts official nested page templates and rejects traversal', async () => {
   const env = makeSite({posts: {'page:about': {id: 2, status: 'publish', content: 'x', modified: 'x'}}});
   try {
