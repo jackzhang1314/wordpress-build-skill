@@ -15,7 +15,7 @@ import {verifyDatabase, verifyPages} from './lib/verify.mjs';
 import {auditCmsModel, collectCmsAudit} from './lib/cms-audit.mjs';
 import {auditEditorPatterns} from './lib/editor-audit.mjs';
 import {isBlankMediaContract} from './lib/verify.mjs';
-import {adoptExternalSite, auditExternalSite, inspectRemoteWordPress} from './lib/external.mjs';
+import {adoptExternalSite, auditExternalSite, inspectRemoteWordPress, saveRemoteRouteShapes} from './lib/external.mjs';
 
 function managedMediaIds(projectRoot, project) {
   const contentDir = project.paths?.content ?? 'content';
@@ -89,7 +89,7 @@ Project commands:
   editor-audit           Audit native editor module patterns and page compatibility
   builder install        Install theme-independent Builder Core CPT/ACF/templates
   builder status         Inspect Builder Core plugin and content types
-  project inspect        Inspect WordPress shape, templates, navigation, plugins and content
+  project inspect        Inspect shape, templates, navigation, plugins, content and optional routes
   email-setup            Guided setup: create business mailbox + configure SMTP + test
   smtp configure|test    Configure business-mailbox SMTP constants and send a test email
   wp <args...>            Run WP-CLI through SSH
@@ -109,6 +109,10 @@ Deploy options:
 
 Init options:
   --from-starter          Optional fast path: copy the B2B Starter theme, ACF model, seed content and docs
+
+Project inspect options:
+  --routes <paths>        Diagnose explicit site paths, comma-separated (for example /,/about/)
+  --route-set core        Sample homepage, page, post, CPT, taxonomy, search and 404 routes
 
 Adopt options:
   --domain <domain>       Existing WordPress domain to inspect and manage
@@ -287,6 +291,11 @@ async function runCheck({root, project, ssh, base}, json, logger) {
 
 function firstValue(args) {
   return args.filter(item => !item.startsWith('--'))[0];
+}
+
+function optionValue(args, name) {
+  const inline = args.find(item => item.startsWith(`${name}=`));
+  return inline ? inline.slice(name.length + 1) : argValue(args, name);
 }
 
 function openExternalUrl(url) {
@@ -640,9 +649,14 @@ export async function main(argv = process.argv.slice(2), logger = console.log, e
     }
 
     if (command === 'project') {
-      if (firstValue(args) !== 'inspect') throw new Error('usage: harness project inspect [--json]');
-      const inventory = await inspectRemoteWordPress(project, {exec: execFileSync});
-      outputResult(inventory, json, logger);
+      if (firstValue(args) !== 'inspect') throw new Error('usage: project inspect [--json] [--routes /,/about/ | --route-set core]');
+      const routes = optionValue(args, '--routes');
+      const routeSet = optionValue(args, '--route-set');
+      const inventory = await inspectRemoteWordPress(project, {exec: execFileSync, routes, routeSet});
+      if (inventory.routeShapes) saveRemoteRouteShapes(root, project, inventory);
+      const routeCount = inventory.routeShapes?.routes.length ?? 0;
+      const summary = `Inspected ${inventory.activeTheme || 'unknown theme'}${routeCount ? `; ${routeCount} route shape(s), ${inventory.routeShapes.routes.filter(route => route.confidence === 'high').length} high confidence` : ''}`;
+      outputResult({...inventory, summary}, json, logger);
       return 0;
     }
 

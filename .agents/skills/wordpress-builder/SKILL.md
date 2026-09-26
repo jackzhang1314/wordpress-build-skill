@@ -14,7 +14,7 @@ Before a write, identify:
 3. WordPress shape: classic, block, hybrid or unknown.
 4. Whether the user authorized production writes.
 
-For unknown shape, prefer `node wordpress-builder.mjs project inspect`.
+For unknown shape, prefer `node wordpress-builder.mjs project inspect`. For Block/FSE or hybrid routing questions, add `--route-set core` or explicit `--routes`; route ownership, not object existence, decides the safe adapter.
 
 ## Routing
 

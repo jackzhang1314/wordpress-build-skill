@@ -12,7 +12,7 @@ Use this skill for visual direction, theme architecture, page templates, compone
 1. Is this a `source` project or `external`?
 2. Is the source profile Starter or custom?
 3. Is the active theme classic, block, hybrid or unknown?
-4. Which template actually controls the route?
+4. Which template actually controls the route? For Block/FSE or hybrid sites, run `project inspect --route-set core` and use the selected template, selected parts and `source: theme|custom` as the ownership evidence.
 5. Which ACF/CMS fields provide the content?
 
 ## Starter and custom contracts

@@ -22,9 +22,9 @@ Every content, design, navigation or deployment task must answer:
 | Component markup | ACF/CMS source, heading order, accessibility, template route |
 | New section | Data source, ACF/location, template inclusion, editability, live render |
 | New field | ACF group/location/REST, template binding, backend edit, live output |
-| New page template | Template header, `the_content()`, page assignment, live render |
+| New page template | Template header, `the_content()`, page assignment, live render; Block/FSE/hybrid sites also need selected route template/source evidence |
 | New route/page | IA, template, CMS ownership, SEO, verification |
-| Navigation | Menu mechanism, affected labels, front-end path, rollback |
+| Navigation | Menu mechanism, selected route owner, affected labels, front-end path, rollback |
 | External theme/plugin code | Stop; propose explicit source-custody upgrade |
 
 Theme type is not a compatibility blocker. It is an adapter signal: the same ACF/CPT/content workflow can power Classic PHP, Block/FSE and page-builder sites, but rendering changes require the matching template/layout owner.

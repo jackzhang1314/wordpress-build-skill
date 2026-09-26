@@ -1,12 +1,12 @@
 # WordPress Builder Project Handoff
 
-Handoff date: 2026-09-26
-Handoff time: 2026-09-26 20:05 CST (+08:00)
-Reason: continuation snapshot after WordPress Builder 2.21.0 added remote/local site custody status.
+Handoff date: 2026-09-27
+Handoff time: 2026-09-27 00:35 CST (+08:00)
+Reason: continuation snapshot after WordPress Builder 2.22.0 added Block/FSE route-level shape diagnosis.
 Repository: <https://github.com/jackzhang1314/wordpress-build-skill>
 Release branch: `main`
-Current release: `v2.21.0`
-Pre-release baseline commit: `30aae2f809808f48e6bfd55fbe1409189e0b6ad3`
+Current release: `v2.22.0`
+Pre-release baseline commit: `c9057ddab80651d3b41ea4602b97eb9ba030e237`
 Current worktree: `/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill`
 
 ## 1. Read this first
@@ -20,6 +20,17 @@ The system has two distinct layers:
 
 The Starter Template is only an optional fast path for new B2B sites. It must never be copied over an existing/custom WordPress site without explicit authorization, backup and a source-custody decision.
 
+### 2026-09-27 addendum
+
+WordPress Builder `2.22.0` adds read-only Block/FSE route diagnosis:
+
+```bash
+node wordpress-builder.mjs --project . project inspect --route-set core --json
+node wordpress-builder.mjs --project . project inspect --routes /,/about/ --json
+```
+
+Use the selected `fseTemplate`, `templateParts`, navigation owner and `source: theme|custom` as the ownership evidence. Unreferenced `wp_navigation` posts, unrendered Classic menu locations and failed probes are not write permission. Block/FSE template and navigation writes remain a separate authorized source-custody task.
+
 Expected state after the release commit/tag push:
 
 ```bash
@@ -31,7 +42,7 @@ git status --short --branch
 Latest tested tag:
 
 ```bash
-v2.21.0
+v2.22.0
 ```
 
 Full verification before handoff:
@@ -39,7 +50,7 @@ Full verification before handoff:
 ```text
 typecheck: pass
 lint: pass
-tests: 215 / 215 pass
+tests: 224 / 224 pass
 ```
 
 ## 2. Canonical setup
@@ -688,7 +699,7 @@ https://github.com/jackzhang1314/wordpress-build-skill
 
 当前应使用：
 branch/main: main
-tag: v2.21.0
+tag: v2.22.0
 
 请先执行：
 
@@ -711,9 +722,9 @@ tag: v2.21.0
 
 当前项目基线：
 
-- 最新实现 tag: v2.21.0
+- 最新实现 tag: v2.22.0
 - 实施前回滚 tag: pre-skill-suite-implementation
-- 当前 tests: 215/215 passing
+- 当前 tests: 224/224 passing
 - WordPress Builder canonical CLI: node wordpress-builder.mjs
 - legacy compatibility CLI: node harness/cli.mjs
 
@@ -734,11 +745,11 @@ tag: v2.21.0
 
 第一个开发任务是：
 
-1. 先复测当前基线；
-2. 然后实现 Block/FSE shape adapter：可靠识别 wp_navigation、FSE template parts、classic menu 和 mixed navigation；
-3. 先只做只读检查和明确报告，不做未经授权的前台写入；
-4. 为 classic/block/mixed 三种形态添加回归测试；
-5. 完成后再讨论 external-to-source promotion。
+1. 先复测 `v2.22.0` 基线；
+2. 审计 Block/FSE route diagnosis 的输出与真实站点是否仍有偏差；
+3. 如需写入 Block/FSE template/template part/wp_navigation，先设计备份、回滚和 source-custody 方案；
+4. 继续保持 Elementor `_elementor_data` 编辑为非目标；
+5. 完成后更新 Skill、测试、过程记录和 README。
 
 不要删除历史文档；不要在没有备份和授权的情况下修改生产站点。
 ```

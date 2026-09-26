@@ -131,13 +131,17 @@ node wordpress-builder.mjs --project . ssh setup
 
 自动 bootstrap 通过 Hostinger Files 上传一次性脚本，用 temporary Cron Job 追加 public key；SSH 连通后删除 Cron。它只针对当前已授权的 hosting account。若自动 bootstrap 不可用，向导自动降级为复制 key 并打开 hPanel；用户粘贴后重跑 `ssh setup`。同一 hosting user 下的后续网站直接复用该 key；不同 hosting order/user 仍需各自授权。已有可用 private key 时用 `--ssh-key <path>`。
 
-### 项目与站点检查
+### 项目、站点与路由检查
 
 ```bash
-node wordpress-builder.mjs --project . project inspect
+node wordpress-builder.mjs --project . project inspect --json
+node wordpress-builder.mjs --project . project inspect --route-set core --json
+node wordpress-builder.mjs --project . project inspect --routes /,/about/ --json
 ```
 
-`project inspect` 读取 WordPress 版本、active theme、theme type、插件、导航机制、page templates、公开 CPT/taxonomy、表单和内容计数。Content 和 Design 操作必须根据这个真实形态选择适配器。
+`project inspect` 用一次只读 WP-CLI 请求读取 WordPress 版本、active theme、theme type、插件、导航机制、page templates、公开 CPT/taxonomy、表单和内容计数。Content 和 Design 操作必须根据这个真实形态选择适配器。
+
+对 Block/FSE 或混合站点，`--route-set core` / `--routes` 会继续向 WordPress 的 `_wp-find-template` 只读探测协议请求每个路由，记录实际选中的 template、template parts、导航归属和 `theme/custom` 来源。站点库存只说明对象存在；路由诊断才说明当前页面由谁渲染。因此未使用的 `wp_navigation` 不能当成当前导航，Classic menu location 不能在 Block 主题里自动当成已渲染导航，custom 数据库模板不能误报成 theme 文件。诊断失败、缺少部件或 markup 无效时输出 low confidence，不转成写权限。
 
 ### 已有 Hostinger 站点
 

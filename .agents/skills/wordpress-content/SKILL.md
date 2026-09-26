@@ -11,7 +11,7 @@ Use this skill for page bodies, posts, navigation, ACF fields, CPT/taxonomy ques
 
 1. Confirm `mode`.
 2. Confirm the rendering system: Classic PHP, Block/FSE, page builder, hybrid or unknown.
-3. For external projects, inspect the live WordPress shape with `project inspect`.
+3. For external projects, inspect the live WordPress shape with `project inspect`; for Block/FSE or hybrid sites, add route-level `project inspect --route-set core` before navigation/template work.
 4. Confirm whether navigation is a classic menu, block navigation, page-builder menu/module or mixed.
 5. Confirm whether the page uses a classic PHP template, FSE template or page-builder layout.
 6. Confirm whether any new field is editable in WordPress admin.
@@ -20,6 +20,7 @@ Use this skill for page bodies, posts, navigation, ACF fields, CPT/taxonomy ques
 
 ```bash
 node wordpress-builder.mjs --project . status
+node wordpress-builder.mjs --project . project inspect --route-set core --json
 node wordpress-builder.mjs --project . edit-page about --file body.html --adopt-remote
 node wordpress-builder.mjs --project . post push article.json
 node wordpress-builder.mjs --project . nav add Products --url /products/
@@ -35,7 +36,7 @@ node wordpress-builder.mjs --project . audit-fields
 - Do not deploy.
 - Do not overwrite theme/plugin code.
 - Classic navigation and classic page-template assignment are verified capabilities.
-- Block navigation and FSE templates require inspection before a write.
+- Block navigation and FSE templates require route-level inspection. This release is read-only for Block/FSE template and navigation writes; do not use classic menu commands as a workaround.
 - Page-builder layouts require builder-specific inspection before markup or template claims.
 - `edit-page` updates `post_content`; it must not be presented as visible editing for an Elementor-owned historical page. The command refuses `_elementor_edit_mode=builder` writes instead of silently changing fallback content.
 - If PHP/template code must change, stop and propose a scoped source-custody upgrade.

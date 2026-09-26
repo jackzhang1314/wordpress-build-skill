@@ -23,3 +23,4 @@ deploy, media, content, setup, configure-seo
 ```
 
 If PHP/theme/plugin code must change, stop and propose a scoped source-custody upgrade after full backup and explicit authorization.
+Before navigation or page-template writes on Block/FSE/hybrid sites, run route-level `project inspect --route-set core`. Unreferenced `wp_navigation` posts and unrendered Classic menu locations are not write permission. Mixed/unknown ownership must remain blocked.

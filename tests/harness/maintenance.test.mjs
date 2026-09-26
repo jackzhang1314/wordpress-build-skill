@@ -264,7 +264,7 @@ test('external block-only navigation blocks classic menu writes', async () => {
     env.site.project = {...env.site.project, mode: 'external', remote: {navigation: 'block-navigation'}};
     await assert.rejects(
       navAdd(env.site, ['Products', '--url', '/products/']),
-      /block-navigation/,
+      /includes block navigation/,
     );
     assert.equal(env.items.length, 1);
   } finally {
@@ -272,13 +272,15 @@ test('external block-only navigation blocks classic menu writes', async () => {
   }
 });
 
-test('external hybrid navigation allows classic writes but warns about other locations', async () => {
+test('external mixed navigation blocks classic writes until ownership is proven', async () => {
   const env = makeSite({items: [{id: 1, title: 'Home'}]});
   try {
     env.site.project = {...env.site.project, mode: 'external', remote: {navigation: 'mixed'}};
-    const result = await navAdd(env.site, ['Products', '--url', '/products/']);
-    assert.equal(result.navigationWarning, 'This site has both classic menu and block navigation signals; verify every rendered navigation location.');
-    assert.ok(env.items.some(item => item.title === 'Products'));
+    await assert.rejects(
+      navAdd(env.site, ['Products', '--url', '/products/']),
+      /includes block navigation/,
+    );
+    assert.equal(env.items.some(item => item.title === 'Products'), false);
   } finally {
     env.cleanup();
   }
@@ -291,6 +293,24 @@ test('external FSE projects block classic page-template assignment', async () =>
     await assert.rejects(
       assignTemplate(env.site, ['about', '--template', 'page-templates/customer.php']),
       /FSE-managed/,
+    );
+    assert.equal(env.templates['page:about'], undefined);
+  } finally {
+    env.cleanup();
+  }
+});
+
+test('external Classic/FSE hybrids block classic template assignment until the route owner is known', async () => {
+  const env = makeSite({posts: {'page:about': {id: 2, status: 'publish', content: 'x', modified: 'x'}}});
+  try {
+    env.site.project = {
+      ...env.site.project,
+      mode: 'external',
+      remote: {pageTemplates: 'mixed', authoringSystems: ['classic-php', 'block-fse']},
+    };
+    await assert.rejects(
+      assignTemplate(env.site, ['about', '--template', 'page-templates/customer.php']),
+      /Block\/FSE ownership/,
     );
     assert.equal(env.templates['page:about'], undefined);
   } finally {

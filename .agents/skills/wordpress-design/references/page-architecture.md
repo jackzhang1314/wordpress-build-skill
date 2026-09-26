@@ -18,6 +18,16 @@
 
 首页和 About Us 的布局不必复用产品详情的模块排列。产品详情重视参数与选型，分类页重视检索密度，方案页重视场景与解决过程。不要机械为每页放同一个大横幅和三列卡片。
 
+## Block/FSE 路由所有权
+
+修改 Block/FSE 或混合站点前先运行：
+
+```bash
+node wordpress-builder.mjs --project . project inspect --route-set core --json
+```
+
+以每个路由的 `fseTemplate`、`templateParts`、`navigation` 和 `source` 为准：`custom` 数据库模板/部件覆盖同名 theme 文件；未引用的 `wp_navigation` 不是当前导航；探测失败或缺少部件时保持 low confidence。本阶段只诊断不写入 Block/FSE 模板，修改必须走明确授权的 source-custody 流程。
+
 ## 实现选择
 
 - 同一原生区块主题内，各页可组合核心块、Patterns、定制 CSS 与 PHP 动态模块。产品模板和 ACF 属于不同层，正常共用。特殊整页 PHP 要明确路由与编辑限制；现有经典 PHP 基线不自动迁移。

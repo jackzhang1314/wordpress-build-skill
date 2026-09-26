@@ -60,18 +60,21 @@ function externalWordPressShape(site) {
 
 function assertClassicNavigationSupported(site) {
   const shape = externalWordPressShape(site).navigation;
-  if (shape === 'block-navigation') {
-    throw new Error('remote navigation is block-navigation; classic menu writes cannot change the rendered navigation. Inspect the block navigation template first.');
+  if (shape === 'block-navigation' || shape === 'mixed') {
+    throw new Error('remote navigation includes block navigation; classic menu writes cannot safely change the rendered navigation.');
   }
-  return shape === 'mixed'
-    ? 'This site has both classic menu and block navigation signals; verify every rendered navigation location.'
-    : undefined;
+  if (shape === 'unknown') throw new Error('remote navigation shape is unknown; run `project inspect` before changing navigation.');
+  return undefined;
 }
 
 function assertClassicPageTemplateSupported(site) {
-  const shape = externalWordPressShape(site).pageTemplates;
+  const remote = externalWordPressShape(site);
+  const shape = remote.pageTemplates;
   if (shape === 'fse') {
     throw new Error('remote page templates are FSE-managed; classic page-template assignment cannot change the rendered template.');
+  }
+  if (shape === 'mixed' && (remote.authoringSystems ?? []).includes('block-fse')) {
+    throw new Error('remote page templates mix Classic PHP and Block/FSE ownership; run route diagnosis and use the rendering owner for this route.');
   }
   if (shape === 'unknown') {
     throw new Error('remote page-template shape is unknown; run `project inspect` before assigning a template.');

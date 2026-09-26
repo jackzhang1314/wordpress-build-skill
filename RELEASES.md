@@ -1,5 +1,30 @@
 # Releases
 
+## 2026-09-27 — WordPress Builder 2.22.0 Block/FSE route shape diagnosis
+
+### Builder
+
+- Added route-level read-only diagnosis for Block/FSE and hybrid WordPress sites:
+  - `project inspect --routes /,/about/`;
+  - `project inspect --route-set core`.
+- Used WordPress Core’s `_wp-find-template` read-only protocol to identify the template actually selected for each route, instead of guessing from object inventory.
+- Reported selected FSE template slug/id/source/hash, selected template parts, `wp_navigation` references, inline Navigation blocks, navigation owner and confidence.
+- Persisted only compact `project.remote.routeShapes`; full block markup is not copied into `project.json`.
+- Distinguished theme files from Site Editor `source: custom` database overrides.
+- Treated unreferenced `wp_navigation` posts and unrendered Classic menu locations as candidates, not proven route owners.
+- Kept Block/FSE template and navigation edits read-only in this release.
+- Hardened writes: mixed navigation blocks Classic menu writes, and Classic/FSE hybrids block classic template assignment until route ownership is proven.
+- Consolidated remote inventory into one WP-CLI request while retaining the legacy multi-command path as fallback.
+
+### Verification
+
+- Added parser, hierarchy, ownership, custom-override, missing-part, failed-probe and safety regressions.
+- Full local gate passed: typecheck, lint, build and **224/224 tests**.
+- Real local Block/FSE E2E verified a custom `front-page` template and custom header part referencing `wp_navigation`; diagnostic IDs/source/owner matched the rendered frontend HTML.
+- Added an unreferenced `wp_navigation`; inventory counted it but route ownership remained unchanged.
+- Live read-only Hostinger regression on `brightdozer-482910.hostingersite.com` sampled 10 core routes. Nine resolved with high confidence; the non-JSON 404 route stayed low confidence instead of inventing an owner.
+- Performance regression found and fixed: one-route live inspection fell from about 7m41s with serial inventory commands to about 5.7s; the 10-route core set completed in about 62s.
+
 ## 2026-09-26 — WordPress Builder 2.21.0 remote/local site custody status
 
 ### Builder
