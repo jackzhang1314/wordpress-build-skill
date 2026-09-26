@@ -110,6 +110,14 @@ foreach (get_pages(['post_status' => 'publish,draft,private', 'number' => 300]) 
     'is_posts_page' => (int) get_option('page_for_posts') === (int) $page->ID,
   ];
 }
+$page_templates = [];
+$theme = wp_get_theme();
+foreach (get_post_types(['public' => true]) as $type) {
+  $templates = $theme->get_page_templates(null, $type);
+  if ($templates) {
+    $page_templates[$type] = array_keys($templates);
+  }
+}
 echo wp_json_encode([
   'postTypes' => $post_types,
   'taxonomies' => $taxonomies,
@@ -118,6 +126,7 @@ echo wp_json_encode([
   'terms' => $terms,
   'options' => $options,
   'pages' => $pages,
+  'pageTemplates' => $page_templates,
   'settings' => [
     'pageOnFront' => (int) get_option('page_on_front'),
     'pageForPosts' => (int) get_option('page_for_posts'),
@@ -223,13 +232,19 @@ export function auditCmsModel(remote, project = {}) {
   if (remote.settings?.showOnFront === 'page' && (!pageOnFront || !pageForPosts)) {
     problems.push({kind: 'settings', name: 'page_assignment', issue: 'static front page or posts page is not assigned'});
   }
+  const availablePageTemplates = Array.isArray(remote.pageTemplates?.page) ? remote.pageTemplates.page : null;
+  if (!availablePageTemplates) {
+    problems.push({kind: 'page_template_inventory', name: 'page', issue: 'available page-template inventory is missing'});
+  }
   for (const page of remote.pages ?? []) {
-    if (page.template && page.template !== 'default' && !page.template.startsWith('page-templates/')) {
-      problems.push({kind: 'page_template', name: page.slug, field: page.template, issue: 'page uses a slug-bound or unexpected template'});
+    if (!page.template || page.template === 'default') continue;
+    if (availablePageTemplates && !availablePageTemplates.includes(page.template)) {
+      problems.push({kind: 'page_template', name: page.slug, field: page.template, issue: 'page template is not available to WordPress'});
     }
   }
 
   checks.push({name: 'settings', pass: problems.every(problem => problem.kind !== 'settings'), front: pageOnFront, posts: pageForPosts});
+  checks.push({name: 'page-templates', pass: !problems.some(problem => ['page_template', 'page_template_inventory'].includes(problem.kind)), available: availablePageTemplates?.length ?? 0});
   checks.push({name: 'stored-values', pass: !problems.some(problem => ['stored_meta', 'stored_term_meta'].includes(problem.kind)), checked: (remote.terms ?? []).length});
   return {pass: problems.length === 0, checks, problems};
 }

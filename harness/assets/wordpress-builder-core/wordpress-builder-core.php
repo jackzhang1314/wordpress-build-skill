@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WordPress Builder Core
  * Description: Theme-independent CPT, taxonomy, ACF and page-template adapter used by WordPress Builder.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Requires PHP: 7.4
  * Text Domain: wordpress-builder-core
  */
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('WORDPRESS_BUILDER_CORE_VERSION', '1.0.1');
+define('WORDPRESS_BUILDER_CORE_VERSION', '1.0.2');
 define('WORDPRESS_BUILDER_CORE_PATH', plugin_dir_path(__FILE__));
 
 function wordpress_builder_core_post_types() {
@@ -105,6 +105,7 @@ function wordpress_builder_core_register_acf_fields() {
                 'name' => 'wbc_subtitle',
                 'type' => 'text',
                 'instructions' => 'Optional secondary heading shown by Builder templates.',
+                'show_in_rest' => 1,
                 'required' => 0,
             ],
             [
@@ -113,6 +114,7 @@ function wordpress_builder_core_register_acf_fields() {
                 'name' => 'wbc_summary',
                 'type' => 'textarea',
                 'instructions' => 'Short summary used above the main content.',
+                'show_in_rest' => 1,
                 'required' => 0,
                 'rows' => 3,
             ],
@@ -121,6 +123,8 @@ function wordpress_builder_core_register_acf_fields() {
                 'label' => 'CTA Label',
                 'name' => 'wbc_cta_label',
                 'type' => 'text',
+                'instructions' => 'Primary call-to-action label, for example "Request a quote".',
+                'show_in_rest' => 1,
                 'required' => 0,
             ],
             [
@@ -128,6 +132,8 @@ function wordpress_builder_core_register_acf_fields() {
                 'label' => 'CTA URL',
                 'name' => 'wbc_cta_url',
                 'type' => 'url',
+                'instructions' => 'Full URL opened by the primary call-to-action button.',
+                'show_in_rest' => 1,
                 'required' => 0,
             ],
         ],

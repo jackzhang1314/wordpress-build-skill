@@ -24,10 +24,10 @@ function execute(name, args_, timeout = 30000) {
 
 function print(report) {
   if (json) return;
-  logger('Local harness environment');
+  logger('Local WordPress Builder environment');
   for (const name of report.required) logger(`  ${report.checks[name] ? 'OK ' : 'FAIL'} ${name}`);
   for (const action of report.nextSteps) logger(`  NEXT ${action}`);
-  logger(`\n${report.pass ? 'OK: local harness is ready.' : 'FAIL: local harness is not ready yet.'}`);
+  logger(`\n${report.pass ? 'OK: local WordPress Builder is ready.' : 'FAIL: local WordPress Builder is not ready yet.'}`);
   logger(`NEXT ${report.next}`);
 }
 
@@ -56,7 +56,7 @@ try {
   report.nextSteps = bootstrapActions(report, {fix});
   report.pass = report.required.every(name => report.checks[name]);
   report.next = report.pass
-    ? 'Run `node harness/cli.mjs init <project-name> --root ../projects --from-starter`.'
+    ? 'Run `node wordpress-builder.mjs init <project-name> --root ../projects --from-starter`.'
     : 'Complete the NEXT actions above, then rerun this command.';
   print(report);
   if (json) console.log(JSON.stringify(report, null, 2));

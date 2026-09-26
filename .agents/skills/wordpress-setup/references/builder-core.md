@@ -10,6 +10,8 @@ It adds:
 4. plugin-owned Canvas and Landing page templates;
 5. a stable content layer that works independently of the old theme, Elementor, Divi or another editor.
 
+The content contract is intentional: every Builder Core ACF field is individually REST-exposed (`show_in_rest`) and carries non-empty admin instructions. Group-level REST settings do not replace field-level settings, and undocumented fields fail the CMS audit.
+
 Install it on an adopted site with:
 
 ```bash

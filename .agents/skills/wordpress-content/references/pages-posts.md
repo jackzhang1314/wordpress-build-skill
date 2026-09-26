@@ -15,3 +15,5 @@ After writing, verify:
 4. H1/heading order;
 5. links and media;
 6. backend editability.
+
+For classic page-template assignment, validate against the official WordPress template inventory (`WP_Theme::get_page_templates(null, $post_type)`) rather than a path prefix. Plugin-owned templates such as `builder-templates/landing.php` are valid when WordPress exposes them; a slug that is absent from that inventory is invalid even if it looks like a template path.

@@ -1,11 +1,11 @@
 # WordPress Builder Project Handoff
 
 Handoff date: 2026-09-26
-Handoff time: 2026-09-26 19:02 CST (+08:00)
-Reason: continuation snapshot after the live free Hello Elementor compatibility E2E and WordPress Builder 2.20.0 release candidate.
+Handoff time: 2026-09-26 19:41 CST (+08:00)
+Reason: continuation snapshot after the fresh-clone regression, CMS audit fixes and WordPress Builder 2.20.1 patch release.
 Repository: <https://github.com/jackzhang1314/wordpress-build-skill>
 Release branch: `main`
-Current release candidate: `v2.20.0`
+Current release: `v2.20.1`
 Pre-release baseline commit: `30aae2f809808f48e6bfd55fbe1409189e0b6ad3`
 Current worktree: `/Users/Zhuanz1/Documents/ChatGPT/wordpress-builder-skill`
 
@@ -31,7 +31,7 @@ git status --short --branch
 Latest tested tag:
 
 ```bash
-v2.20.0
+v2.20.1
 ```
 
 Full verification before handoff:
@@ -39,7 +39,7 @@ Full verification before handoff:
 ```text
 typecheck: pass
 lint: pass
-tests: 206 / 206 pass
+tests: 212 / 212 pass
 ```
 
 ## 2. Canonical setup
@@ -493,7 +493,7 @@ npm test
 Result:
 
 ```text
-206 / 206 tests passing
+212 / 212 tests passing
 typecheck: pass
 lint: pass
 ```
@@ -506,7 +506,11 @@ Live checks performed in this session:
 4. `project inspect` worked on a live site;
 5. external write safety was covered by regression tests;
 6. free Hello Elementor + Elementor historical page, Builder page and Builder CPT were verified live;
-7. page/CPT template selectors and the Elementor `edit-page` guard were verified live.
+7. page/CPT template selectors and the Elementor `edit-page` guard were verified live;
+8. a clean clone completed bootstrap, quality gate, Starter init/check and external adoption;
+9. Builder Core `1.0.2` was installed after a full backup on the external regression site;
+10. external `cms-audit` passed after field REST/instructions and WordPress template-inventory fixes;
+11. Builder page/CPT markers and the historical Elementor marker remained live.
 
 ## 10. Known boundaries and remaining work
 
@@ -634,7 +638,19 @@ node wordpress-builder.mjs
 
 ## 12. Immediate next-task recommendations
 
-### Priority 1 — Block/FSE shape adapters
+### Priority 1 — `sites status`
+
+Goal:
+
+Correlate Hostinger's remote site inventory with local projects and report project path, mode, source profile, active theme, last backup/deploy and remote-inspection freshness.
+
+Acceptance:
+
+1. one command inventories all visible sites;
+2. unmatched remote sites are reported without guessing local ownership;
+3. test fixtures cover matched, unmatched and stale-project states.
+
+### Priority 2 — Block/FSE shape adapters
 
 Goal:
 
@@ -649,7 +665,7 @@ Acceptance:
 2. never claims a change worked when only one navigation source changed;
 3. includes tests for classic, block and mixed shapes.
 
-### Priority 2 — source-custody promotion
+### Priority 3 — source-custody promotion
 
 Goal:
 
@@ -664,33 +680,6 @@ Acceptance:
 5. rollback remains possible;
 6. live verification after promotion.
 
-### Priority 3 — site/project correlation
-
-Goal:
-
-Extend `sites list` to show:
-
-1. local project path, if found;
-2. project mode;
-3. source profile;
-4. active theme;
-5. last backup;
-6. last deploy;
-7. whether remote inspection is stale.
-
-### Priority 4 — handoff regression
-
-Goal:
-
-Confirm a fresh clone and fresh session can complete:
-
-```bash
-node harness/bootstrap.mjs --fix
-node wordpress-builder.mjs sites list
-npm test
-```
-
-without undocumented local setup.
 
 ## 13. Handoff prompt for the new OpenAI session
 

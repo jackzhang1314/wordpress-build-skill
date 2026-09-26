@@ -1,5 +1,22 @@
 # Releases
 
+## 2026-09-26 — WordPress Builder 2.20.1 fresh-clone CMS audit regression
+
+### Builder
+
+- Updated Builder Core to `1.0.2`.
+- Exposed every Builder Core ACF field individually through `show_in_rest`; group-level REST exposure does not cascade to fields.
+- Added non-empty admin instructions for the CTA label and CTA URL fields.
+- Changed CMS template auditing to collect the official `WP_Theme::get_page_templates(null, $post_type)` inventory and validate assigned templates against it. Plugin-owned `builder-templates/*.php` templates now pass when WordPress exposes them, while genuinely unavailable templates still fail.
+- Required the CMS audit payload to include the available template inventory instead of silently skipping that check.
+- Corrected fresh-clone bootstrap guidance to use canonical `node wordpress-builder.mjs ...` and user-facing WordPress Builder terminology.
+
+### Verification
+
+- Fresh clean clone at `8ec2339`: bootstrap, dependency repair, typecheck, lint, Hostinger inventory, Starter init/check and external adoption all passed.
+- Full local gate after the fix: `212/212` tests passed.
+- Live external regression on `yellow-koala-142147.hostingersite.com`: Builder Core `1.0.2` installed after backup, `cms-audit` passed with five available page templates, all four ACF fields returned `show_in_rest=true` with instructions, Builder page/CPT markers still rendered, and the historical Elementor marker remained unchanged.
+
 ## 2026-09-26 — WordPress Builder 2.20.0 free Hello Elementor compatibility E2E
 
 ### Builder

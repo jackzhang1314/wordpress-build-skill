@@ -33,6 +33,7 @@ function validRemote() {
     terms: [{taxonomy: 'product_collection', id: 2, slug: 'industrial', name: 'Industrial', values: {}}],
     options: {},
     pages: [{id: 1, slug: 'home', title: 'Home', status: 'publish', template: '', is_front: true, is_posts_page: false}],
+    pageTemplates: {page: []},
     settings: {pageOnFront: 1, pageForPosts: 2, showOnFront: 'page'},
   };
 }
@@ -65,7 +66,42 @@ test('third-party SEO meta is excluded from ACF orphan checks', () => {
   assert.equal(report.pass, true);
 });
 
+test('CMS model audit accepts templates exposed through the WordPress template API', () => {
+  const remote = validRemote();
+  remote.pages[0].template = 'builder-templates/landing.php';
+  remote.pageTemplates.page.push('builder-templates/landing.php');
+  const report = auditCmsModel(remote, project);
+  assert.equal(report.pass, true);
+});
+
+test('CMS model audit rejects assigned templates missing from the WordPress template API', () => {
+  const remote = validRemote();
+  remote.pages[0].template = 'builder-templates/landing.php';
+  const report = auditCmsModel(remote, project);
+  assert.equal(report.pass, false);
+  assert.deepEqual(report.problems, [{
+    kind: 'page_template',
+    name: 'home',
+    field: 'builder-templates/landing.php',
+    issue: 'page template is not available to WordPress',
+  }]);
+});
+
+test('CMS model audit requires a page-template inventory', () => {
+  const remote = validRemote();
+  delete remote.pageTemplates;
+  const report = auditCmsModel(remote, project);
+  assert.equal(report.pass, false);
+  assert.deepEqual(report.problems, [{
+    kind: 'page_template_inventory',
+    name: 'page',
+    issue: 'available page-template inventory is missing',
+  }]);
+});
+
 test('audit PHP is a WP-CLI payload with ABSPATH guard', () => {
   assert.match(cmsAuditPhp(), /^<\?php/);
   assert.match(cmsAuditPhp(), /defined\('ABSPATH'\)/);
+  assert.match(cmsAuditPhp(), /get_page_templates\(null, \$type\)/);
+  assert.match(cmsAuditPhp(), /'pageTemplates' => \$page_templates/);
 });

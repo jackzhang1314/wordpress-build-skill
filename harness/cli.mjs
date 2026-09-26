@@ -195,7 +195,7 @@ function printAudit(report, logger) {
 }
 
 function printBootstrap(report, logger) {
-  logger('Local harness environment');
+  logger('Local WordPress Builder environment');
   const labels = {
     node: 'Node.js 22+', npm: 'npm', git: 'Git', rsync: 'rsync', tar: 'tar', gzip: 'gzip',
     dependencies: 'NPM dependencies', skillRuntime: 'Skill runtime file', skillIntegrity: 'Skill runtime integrity',
@@ -232,7 +232,7 @@ async function commandBootstrap(args, json, logger) {
   if (!json) {
     printBootstrap(report, logger);
     if (args.includes('--dry-run')) logger('\nDRY RUN: no repair actions were executed.');
-    logger(`\n${report.pass ? 'OK: local harness is ready.' : 'FAIL: local harness is not ready yet.'}`);
+    logger(`\n${report.pass ? 'OK: local WordPress Builder is ready.' : 'FAIL: local WordPress Builder is not ready yet.'}`);
     logger(`NEXT ${report.next}`);
   }
   return report;
