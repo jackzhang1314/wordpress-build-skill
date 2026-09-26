@@ -227,6 +227,7 @@ npm run package:starter
 | 文档 | 用途 |
 | --- | --- |
 | [docs/HARNESS-GUIDE.md](docs/HARNESS-GUIDE.md) | 当前 WordPress Builder/Starter 使用手册（历史文件名保留） |
+| [HANDOFF.md](HANDOFF.md) | 跨模型/新会话交接、当前基线和下一步提示词 |
 | [docs/SKILL-SUITE-PLAN.md](docs/SKILL-SUITE-PLAN.md) | WordPress Builder Skill Suite 拆分与迁移方案 |
 | [docs/SKILL-SUITE-PLAN-AUDIT.md](docs/SKILL-SUITE-PLAN-AUDIT.md) | Skill Suite 方案审计、当前架构限制和实施前置条件 |
 | [examples/classic-b2b-starter/README.md](examples/classic-b2b-starter/README.md) | Starter 能力和快速上手 |
