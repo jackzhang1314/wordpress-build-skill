@@ -30,6 +30,7 @@
 - Real local Block/FSE E2E verified a custom header part patch, automatic rollback, normal apply and live `Template Patch OK` output.
 - Real local theme-source E2E verified `theme -> custom` override creation, failed live verification, automatic override deletion and restoration of the original fixture.
 - Live canonical CLI safety check on a real Hostinger route rejected a patch whose `find` fragment did not exist, created no plan and wrote no remote data.
+- Post-release clean clone of tag `v2.24.0` passed bootstrap, typecheck, lint, all 246 tests, build and CLI help.
 
 ## 2026-09-27 — WordPress Builder 2.23.0 route-owned `wp_navigation` writes
 

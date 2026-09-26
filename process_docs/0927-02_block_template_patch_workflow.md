@@ -297,3 +297,16 @@ FAIL template patch target was not found
 ## 追加防护
 
 - `create` 动作若在 PHP 读回阶段失败，会先删除刚创建的 override 再退出，避免 readback 异常留下 slug 被 uniquify 的孤儿 custom post。
+
+## 发布与干净克隆复测（2026-09-27 02:26 Asia/Shanghai）
+
+- 功能提交：`4f0c6f30ab0a87c648230ca5ee39785163b770fe`（`feat: add rollback-safe FSE template patches`）。
+- 已推送 `main` 并发布 tag：`v2.24.0`。
+- 从 GitHub 干净克隆 `v2.24.0` 后验证通过：
+  - `node harness/bootstrap.mjs --fix`；
+  - `npm run typecheck`；
+  - `npm run lint`；
+  - `npm test`：246/246；
+  - `npm run build`；
+  - `node wordpress-builder.mjs --help`。
+- 干净克隆工作区保持干净（detached HEAD，无未提交文件）。
